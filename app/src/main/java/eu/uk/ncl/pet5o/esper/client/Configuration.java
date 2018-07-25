@@ -34,6 +34,9 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
+import eu.uk.ncl.pet5o.esper.client.annotation.Name;
+import eu.uk.ncl.pet5o.esper.event.EventTypeUtility;
+
 /**
  * An instance of <tt>Configuration</tt> allows the application
  * to specify properties to be used when
@@ -661,7 +664,7 @@ public class Configuration implements ConfigurationOperations, ConfigurationInfo
 
     /**
      * Add a plugin loader (f.e. an input/output adapter loader).
-     * <p>The class is expected to implement {@link com.espertech.esper.plugin.PluginLoader}</p>.
+     * <p>The class is expected to implement {@link eu.uk.ncl.pet5o.esper.plugin.PluginLoader}</p>.
      *
      * @param loaderName    is the name of the loader
      * @param className     is the fully-qualified classname of the loader class
@@ -673,7 +676,7 @@ public class Configuration implements ConfigurationOperations, ConfigurationInfo
 
     /**
      * Add a plugin loader (f.e. an input/output adapter loader) without any additional loader configuration
-     * <p>The class is expected to implement {@link com.espertech.esper.plugin.PluginLoader}</p>.
+     * <p>The class is expected to implement {@link eu.uk.ncl.pet5o.esper.plugin.PluginLoader}</p>.
      *
      * @param loaderName is the name of the loader
      * @param className  is the fully-qualified classname of the loader class
@@ -684,7 +687,7 @@ public class Configuration implements ConfigurationOperations, ConfigurationInfo
 
     /**
      * Add a plugin loader (f.e. an input/output adapter loader).
-     * <p>The class is expected to implement {@link com.espertech.esper.plugin.PluginLoader}</p>.
+     * <p>The class is expected to implement {@link eu.uk.ncl.pet5o.esper.plugin.PluginLoader}</p>.
      *
      * @param loaderName       is the name of the loader
      * @param className        is the fully-qualified classname of the loader class
