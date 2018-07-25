@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.core.support;
 
-import com.espertech.esper.core.service.EPStatementHandleCallback;
-import com.espertech.esper.schedule.ScheduleBucket;
-import com.espertech.esper.schedule.ScheduleHandle;
-import com.espertech.esper.schedule.ScheduleHandleCallback;
-import com.espertech.esper.schedule.SchedulingService;
+import eu.uk.ncl.pet5o.esper.core.service.EPStatementHandleCallback;
+import eu.uk.ncl.pet5o.esper.schedule.ScheduleBucket;
+import eu.uk.ncl.pet5o.esper.schedule.ScheduleHandle;
+import eu.uk.ncl.pet5o.esper.schedule.ScheduleHandleCallback;
+import eu.uk.ncl.pet5o.esper.schedule.SchedulingService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

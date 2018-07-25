@@ -10,15 +10,15 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.core.context.util.EPStatementAgentInstanceHandle;
-import com.espertech.esper.filter.FilterHandle;
-import com.espertech.esper.filter.FilterHandleCallback;
-import com.espertech.esper.schedule.ScheduleHandle;
-import com.espertech.esper.schedule.ScheduleHandleCallback;
+import eu.uk.ncl.pet5o.esper.core.context.util.EPStatementAgentInstanceHandle;
+import eu.uk.ncl.pet5o.esper.filter.FilterHandle;
+import eu.uk.ncl.pet5o.esper.filter.FilterHandleCallback;
+import eu.uk.ncl.pet5o.esper.schedule.ScheduleHandle;
+import eu.uk.ncl.pet5o.esper.schedule.ScheduleHandleCallback;
 
 /**
- * Statement resource handle and callback for use with {@link com.espertech.esper.filter.FilterService} and
- * {@link com.espertech.esper.schedule.SchedulingService}.
+ * Statement resource handle and callback for use with {@link eu.uk.ncl.pet5o.esper.filter.FilterService} and
+ * {@link eu.uk.ncl.pet5o.esper.schedule.SchedulingService}.
  * <p>
  * Links the statement handle identifying a statement and containing the statement resource lock,
  * with the actual callback to invoke for a statement together.
