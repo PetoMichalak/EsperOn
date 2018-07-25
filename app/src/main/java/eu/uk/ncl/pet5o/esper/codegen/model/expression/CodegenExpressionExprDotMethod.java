@@ -13,8 +13,8 @@ package eu.uk.ncl.pet5o.esper.codegen.model.expression;
 import java.util.Map;
 import java.util.Set;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.mergeClassesExpressions;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.renderExpressions;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.mergeClassesExpressions;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.renderExpressions;
 
 public class CodegenExpressionExprDotMethod implements CodegenExpression {
     private final CodegenExpression expression;

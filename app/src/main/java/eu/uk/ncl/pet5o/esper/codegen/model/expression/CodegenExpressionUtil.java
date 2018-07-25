@@ -13,7 +13,7 @@ package eu.uk.ncl.pet5o.esper.codegen.model.expression;
 import java.lang.reflect.Array;
 import java.util.Map;
 
-import static com.espertech.esper.codegen.core.CodeGenerationHelper.appendClassName;
+import static eu.uk.ncl.pet5o.esper.codegen.core.CodeGenerationHelper.appendClassName;
 
 public class CodegenExpressionUtil {
     public static void renderConstant(StringBuilder builder, Object constant, Map<Class, String> imports) {

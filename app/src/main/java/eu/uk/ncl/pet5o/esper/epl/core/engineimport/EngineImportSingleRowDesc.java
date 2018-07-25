@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.engineimport;
 
-import com.espertech.esper.client.ConfigurationPlugInSingleRowFunction;
+import eu.uk.ncl.pet5o.esper.client.ConfigurationPlugInSingleRowFunction;
 
 import java.io.Serializable;
 

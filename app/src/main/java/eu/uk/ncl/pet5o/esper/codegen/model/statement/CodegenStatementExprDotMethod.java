@@ -10,14 +10,14 @@
  */
 package eu.uk.ncl.pet5o.esper.codegen.model.statement;
 
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.codegen.model.expression.CodegenExpressionRef;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRef;
 
 import java.util.Map;
 import java.util.Set;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.mergeClassesExpressions;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.renderExpressions;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.mergeClassesExpressions;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.renderExpressions;
 
 public class CodegenStatementExprDotMethod extends CodegenStatementBase {
     private final CodegenExpression expression;

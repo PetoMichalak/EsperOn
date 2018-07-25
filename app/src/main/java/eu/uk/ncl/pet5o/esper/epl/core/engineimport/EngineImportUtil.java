@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.engineimport;
 
-import com.espertech.esper.client.annotation.Hook;
-import com.espertech.esper.client.annotation.HookType;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.client.annotation.Hook;
+import eu.uk.ncl.pet5o.esper.client.annotation.HookType;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;

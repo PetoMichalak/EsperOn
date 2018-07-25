@@ -13,7 +13,7 @@ package eu.uk.ncl.pet5o.esper.codegen.model.expression;
 import java.util.Map;
 import java.util.Set;
 
-import static com.espertech.esper.codegen.core.CodeGenerationHelper.appendClassName;
+import static eu.uk.ncl.pet5o.esper.codegen.core.CodeGenerationHelper.appendClassName;
 
 public class CodegenExpressionCastRef implements CodegenExpression {
     private final Class clazz;

@@ -10,19 +10,19 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.engineimport;
 
-import com.espertech.esper.client.*;
-import com.espertech.esper.client.hook.AggregationFunctionFactory;
-import com.espertech.esper.client.util.ClassForNameProvider;
-import com.espertech.esper.client.util.ClassLoaderProvider;
-import com.espertech.esper.codegen.compile.CodegenCompiler;
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.epl.agg.factory.AggregationFactoryFactory;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.expression.time.TimeAbacus;
-import com.espertech.esper.epl.index.service.AdvancedIndexFactoryProvider;
-import com.espertech.esper.event.EventPropertyGetterIndexedSPI;
-import com.espertech.esper.event.EventPropertyGetterMappedSPI;
-import com.espertech.esper.event.EventPropertyGetterSPI;
+import eu.uk.ncl.pet5o.esper.client.*;
+import eu.uk.ncl.pet5o.esper.client.hook.AggregationFunctionFactory;
+import eu.uk.ncl.pet5o.esper.client.util.ClassForNameProvider;
+import eu.uk.ncl.pet5o.esper.client.util.ClassLoaderProvider;
+import eu.uk.ncl.pet5o.esper.codegen.compile.CodegenCompiler;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.epl.agg.factory.AggregationFactoryFactory;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.time.TimeAbacus;
+import eu.uk.ncl.pet5o.esper.epl.index.service.AdvancedIndexFactoryProvider;
+import eu.uk.ncl.pet5o.esper.event.EventPropertyGetterIndexedSPI;
+import eu.uk.ncl.pet5o.esper.event.EventPropertyGetterMappedSPI;
+import eu.uk.ncl.pet5o.esper.event.EventPropertyGetterSPI;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;

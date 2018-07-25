@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.codegen.model.statement;
 
-import com.espertech.esper.codegen.core.CodegenIndent;
+import eu.uk.ncl.pet5o.esper.codegen.core.CodegenIndent;
 
 import java.util.Map;
 

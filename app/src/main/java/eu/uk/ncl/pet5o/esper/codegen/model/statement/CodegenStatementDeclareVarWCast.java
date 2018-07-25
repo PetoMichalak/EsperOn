@@ -13,7 +13,7 @@ package eu.uk.ncl.pet5o.esper.codegen.model.statement;
 import java.util.Map;
 import java.util.Set;
 
-import static com.espertech.esper.codegen.core.CodeGenerationHelper.appendClassName;
+import static eu.uk.ncl.pet5o.esper.codegen.core.CodeGenerationHelper.appendClassName;
 
 public class CodegenStatementDeclareVarWCast extends CodegenStatementBase {
     private final String var;

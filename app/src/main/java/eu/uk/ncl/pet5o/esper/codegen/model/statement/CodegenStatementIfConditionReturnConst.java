@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.codegen.model.statement;
 
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
 
 import java.util.Map;
 import java.util.Set;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionUtil.renderConstant;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionUtil.renderConstant;
 
 public class CodegenStatementIfConditionReturnConst extends CodegenStatementBase {
 

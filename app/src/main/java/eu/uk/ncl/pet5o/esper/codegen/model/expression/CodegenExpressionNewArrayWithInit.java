@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.codegen.model.expression;
 
-import com.espertech.esper.codegen.core.CodeGenerationHelper;
+import eu.uk.ncl.pet5o.esper.codegen.core.CodeGenerationHelper;
 
 import java.util.Map;
 import java.util.Set;
 
-import static com.espertech.esper.codegen.util.CodegenClassUtil.getComponentTypeOutermost;
-import static com.espertech.esper.codegen.util.CodegenClassUtil.getNumberOfDimensions;
+import static eu.uk.ncl.pet5o.esper.codegen.util.CodegenClassUtil.getComponentTypeOutermost;
+import static eu.uk.ncl.pet5o.esper.codegen.util.CodegenClassUtil.getNumberOfDimensions;
 
 public class CodegenExpressionNewArrayWithInit implements CodegenExpression {
     private final Class component;

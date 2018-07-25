@@ -10,17 +10,17 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.codegen;
 
-import com.espertech.esper.codegen.base.CodegenBlock;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.event.EventPropertyGetterSPI;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenBlock;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.event.EventPropertyGetterSPI;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
-import static com.espertech.esper.epl.expression.codegen.CodegenLegoPropertyBeanOrUnd.AccessType.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.CodegenLegoPropertyBeanOrUnd.AccessType.*;
 
 /**
  * if (!(valueMap instanceof TYPE)) {
@@ -36,8 +36,8 @@ public class CodegenLegoPropertyBeanOrUnd {
         CodegenMethodNode methodNode = codegenMethodScope.makeChild(accessType == AccessType.EXISTS ? boolean.class : Object.class, generator, codegenClassScope).addParam(Object.class, "value");
         CodegenBlock block = methodNode.getBlock()
                 .ifNotInstanceOf("value", expectedUnderlyingType)
-                .ifInstanceOf("value", com.espertech.esper.client.EventBean.class)
-                .declareVarWCast(com.espertech.esper.client.EventBean.class, "bean", "value");
+                .ifInstanceOf("value", eu.uk.ncl.pet5o.esper.client.EventBean.class)
+                .declareVarWCast(eu.uk.ncl.pet5o.esper.client.EventBean.class, "bean", "value");
 
         if (accessType == AccessType.GET) {
             block = block.blockReturn(innerGetter.eventBeanGetCodegen(ref("bean"), codegenMethodScope, codegenClassScope));

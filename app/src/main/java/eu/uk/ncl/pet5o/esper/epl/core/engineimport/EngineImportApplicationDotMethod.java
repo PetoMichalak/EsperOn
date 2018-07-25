@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.engineimport;
 
-import com.espertech.esper.epl.expression.core.*;
-import com.espertech.esper.epl.join.plan.FilterExprAnalyzerAffector;
-import com.espertech.esper.filter.FilterSpecCompilerAdvIndexDesc;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.FilterExprAnalyzerAffector;
+import eu.uk.ncl.pet5o.esper.filter.FilterSpecCompilerAdvIndexDesc;
 
 public interface EngineImportApplicationDotMethod {
 

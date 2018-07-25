@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.codegen.model.expression;
 
-import com.espertech.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
 
 import java.util.List;
 import java.util.Map;

@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.engineimport;
 
-import com.espertech.esper.client.ConfigurationEngineDefaults;
+import eu.uk.ncl.pet5o.esper.client.ConfigurationEngineDefaults;
 
 import java.net.URI;
 

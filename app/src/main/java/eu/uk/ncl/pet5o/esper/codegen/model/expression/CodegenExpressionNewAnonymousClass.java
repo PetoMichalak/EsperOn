@@ -10,16 +10,16 @@
  */
 package eu.uk.ncl.pet5o.esper.codegen.model.expression;
 
-import com.espertech.esper.codegen.base.CodegenBlock;
-import com.espertech.esper.codegen.core.CodegenIndent;
-import com.espertech.esper.codegen.core.CodegenNamedParam;
-import com.espertech.esper.codegen.model.statement.CodegenStatementWBlockBase;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenBlock;
+import eu.uk.ncl.pet5o.esper.codegen.core.CodegenIndent;
+import eu.uk.ncl.pet5o.esper.codegen.core.CodegenNamedParam;
+import eu.uk.ncl.pet5o.esper.codegen.model.statement.CodegenStatementWBlockBase;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static com.espertech.esper.codegen.core.CodeGenerationHelper.appendClassName;
+import static eu.uk.ncl.pet5o.esper.codegen.core.CodeGenerationHelper.appendClassName;
 
 public class CodegenExpressionNewAnonymousClass extends CodegenStatementWBlockBase implements CodegenExpression {
 

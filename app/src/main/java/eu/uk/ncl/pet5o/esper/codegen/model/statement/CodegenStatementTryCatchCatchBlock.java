@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.codegen.model.statement;
 
-import com.espertech.esper.codegen.base.CodegenBlock;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenBlock;
 
 import java.util.Set;
 
