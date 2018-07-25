@@ -10,18 +10,18 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.baseagg;
 
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.core.service.StatementType;
-import com.espertech.esper.epl.agg.service.common.AggregationMethodFactory;
-import com.espertech.esper.epl.agg.service.common.AggregationResultFuture;
-import com.espertech.esper.epl.expression.codegen.CodegenLegoEvaluateSelf;
-import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
-import com.espertech.esper.epl.expression.core.*;
-import com.espertech.esper.epl.util.ExprNodeUtilityRich;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.core.service.StatementType;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationMethodFactory;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationResultFuture;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.CodegenLegoEvaluateSelf;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.epl.util.ExprNodeUtilityRich;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import java.io.StringWriter;
 
@@ -33,7 +33,7 @@ import java.io.StringWriter;
  * In terms of evaluation this base class will ask the assigned {@link AggregationResultFuture} for the current state,
  * using a column number assigned to the node.
  * <p>
- * Concrete subclasses must supply an aggregation state prototype node {@link com.espertech.esper.epl.agg.aggregator.AggregationMethod} that reflects
+ * Concrete subclasses must supply an aggregation state prototype node {@link eu.uk.ncl.pet5o.esper.epl.agg.aggregator.AggregationMethod} that reflects
  * each group's (there may be group-by critera) current aggregation state.
  */
 public abstract class ExprAggregateNodeBase extends ExprNodeBase implements ExprEvaluator, ExprAggregateNode, ExprForge {
@@ -74,7 +74,7 @@ public abstract class ExprAggregateNodeBase extends ExprNodeBase implements Expr
      *
      * @param validationContext validation information
      * @return aggregation function factory to use
-     * @throws com.espertech.esper.epl.expression.core.ExprValidationException when expression validation failed
+     * @throws eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException when expression validation failed
      */
     protected abstract AggregationMethodFactory validateAggregationChild(ExprValidationContext validationContext)
             throws ExprValidationException;
@@ -158,7 +158,7 @@ public abstract class ExprAggregateNodeBase extends ExprNodeBase implements Expr
         this.column = column;
     }
 
-    public final Object evaluate(com.espertech.esper.client.EventBean[] events, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public final Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] events, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         if (InstrumentationHelper.ENABLED) {
             Object value = aggregationResultFuture.getValue(column, exprEvaluatorContext.getAgentInstanceId(), events, isNewData, exprEvaluatorContext);
             InstrumentationHelper.get().qaExprAggValue(this, value);
@@ -216,7 +216,7 @@ public abstract class ExprAggregateNodeBase extends ExprNodeBase implements Expr
      *
      * @param hasFilter for filter indication
      * @return numeric type of single child
-     * @throws com.espertech.esper.epl.expression.core.ExprValidationException if the validation failed
+     * @throws eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException if the validation failed
      */
     protected final Class validateNumericChildAllowFilter(boolean hasFilter)
             throws ExprValidationException {

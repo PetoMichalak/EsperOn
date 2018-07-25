@@ -8,7 +8,7 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.client;
+package eu.uk.ncl.pet5o.esper.client;
 
 /**
  * Interface for event representation. All events have an {@link EventType}. Events also

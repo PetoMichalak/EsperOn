@@ -10,14 +10,14 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.codegen;
 
-import com.espertech.esper.codegen.core.CodegenNamedParam;
-import com.espertech.esper.codegen.model.expression.CodegenExpressionRef;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.codegen.core.CodegenNamedParam;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRef;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
 
 public class ExprForgeCodegenNames {
 
@@ -29,7 +29,7 @@ public class ExprForgeCodegenNames {
     public final static CodegenExpressionRef REF_ISNEWDATA = ref(NAME_ISNEWDATA);
     public final static CodegenExpressionRef REF_EXPREVALCONTEXT = ref(NAME_EXPREVALCONTEXT);
 
-    public final static CodegenNamedParam FP_EPS = new CodegenNamedParam(com.espertech.esper.client.EventBean[].class, NAME_EPS);
+    public final static CodegenNamedParam FP_EPS = new CodegenNamedParam(eu.uk.ncl.pet5o.esper.client.EventBean[].class, NAME_EPS);
     public final static CodegenNamedParam FP_ISNEWDATA = new CodegenNamedParam(boolean.class, NAME_ISNEWDATA);
     public final static CodegenNamedParam FP_EXPREVALCONTEXT = new CodegenNamedParam(ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT);
 

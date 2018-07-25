@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.codegen.base;
 
-import com.espertech.esper.codegen.model.expression.CodegenExpressionRef;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRef;
 
 public interface CodegenMethodScope {
     CodegenMethodNode makeChild(Class returnType, Class generator, CodegenClassScope codegenClassScope);

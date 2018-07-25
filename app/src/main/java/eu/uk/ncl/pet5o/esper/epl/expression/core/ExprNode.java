@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.core;
 
-import com.espertech.esper.epl.expression.visitor.ExprNodeVisitor;
-import com.espertech.esper.epl.expression.visitor.ExprNodeVisitorWithParent;
+import eu.uk.ncl.pet5o.esper.epl.expression.visitor.ExprNodeVisitor;
+import eu.uk.ncl.pet5o.esper.epl.expression.visitor.ExprNodeVisitorWithParent;
 
 import java.io.Serializable;
 import java.util.Collection;

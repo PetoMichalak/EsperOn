@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.codegen.base;
 
-import com.espertech.esper.codegen.core.CodegenCtor;
-import com.espertech.esper.codegen.core.CodegenIndent;
-import com.espertech.esper.codegen.model.expression.*;
-import com.espertech.esper.codegen.model.statement.*;
+import eu.uk.ncl.pet5o.esper.codegen.core.CodegenCtor;
+import eu.uk.ncl.pet5o.esper.codegen.core.CodegenIndent;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.*;
+import eu.uk.ncl.pet5o.esper.codegen.model.statement.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,13 +22,13 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.equalsNull;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.instanceOf;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.newInstance;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.notEqualsNull;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.notInstanceOf;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.equalsNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.instanceOf;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.newInstance;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.notEqualsNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.notInstanceOf;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
 
 public class CodegenBlock {
     private final CodegenCtor parentCtor;

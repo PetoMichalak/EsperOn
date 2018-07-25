@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.client.hook;
 
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
-import com.espertech.esper.epl.expression.core.ExprForge;
-import com.espertech.esper.epl.expression.methodagg.ExprPlugInAggNode;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprForge;
+import eu.uk.ncl.pet5o.esper.epl.expression.methodagg.ExprPlugInAggNode;
 
 /**
  * Context for apply-enter/leave unmanaged code generation
