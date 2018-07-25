@@ -10,9 +10,6 @@
  */
 package eu.uk.ncl.pet5o.esper.client;
 
-import com.espertech.esper.client.annotation.Name;
-import com.espertech.esper.event.EventTypeUtility;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
@@ -816,7 +813,7 @@ public class Configuration implements ConfigurationOperations, ConfigurationInfo
      *
      * @param eventRepresentationRootURI   uniquely identifies the event representation and acts as a parent
      *                                     for child URIs used in resolving
-     * @param eventRepresentationClassName is the name of the class implementing {@link com.espertech.esper.plugin.PlugInEventRepresentation}.
+     * @param eventRepresentationClassName is the name of the class implementing {@link eu.uk.ncl.pet5o.esper.plugin.PlugInEventRepresentation}.
      * @param initializer                  is optional configuration or initialization information, or null if none required
      */
     public void addPlugInEventRepresentation(URI eventRepresentationRootURI, String eventRepresentationClassName, Serializable initializer) {
@@ -832,7 +829,7 @@ public class Configuration implements ConfigurationOperations, ConfigurationInfo
      *
      * @param eventRepresentationRootURI uniquely identifies the event representation and acts as a parent
      *                                   for child URIs used in resolving
-     * @param eventRepresentationClass   is the class implementing {@link com.espertech.esper.plugin.PlugInEventRepresentation}.
+     * @param eventRepresentationClass   is the class implementing {@link eu.uk.ncl.pet5o.esper.plugin.PlugInEventRepresentation}.
      * @param initializer                is optional configuration or initialization information, or null if none required
      */
     public void addPlugInEventRepresentation(URI eventRepresentationRootURI, Class eventRepresentationClass, Serializable initializer) {
