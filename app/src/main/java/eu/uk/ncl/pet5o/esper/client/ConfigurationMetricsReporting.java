@@ -10,19 +10,16 @@
  */
 package eu.uk.ncl.pet5o.esper.client;
 
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.type.StringPatternSet;
-import com.espertech.esper.type.StringPatternSetLike;
-import com.espertech.esper.type.StringPatternSetRegex;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.type.StringPatternSet;
+import eu.uk.ncl.pet5o.esper.type.StringPatternSetLike;
+import eu.uk.ncl.pet5o.esper.type.StringPatternSetRegex;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
-import eu.uk.ncl.pet5o.esper.collection.Pair;
-import eu.uk.ncl.pet5o.esper.type.StringPatternSet;
 
 /**
  * Configuratiom for metrics reporting.
