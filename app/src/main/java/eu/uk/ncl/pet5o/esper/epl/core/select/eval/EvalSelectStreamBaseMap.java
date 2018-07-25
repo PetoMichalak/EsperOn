@@ -10,37 +10,37 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.select.eval;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.codegen.base.CodegenBlock;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMember;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.codegen.model.expression.CodegenExpressionRef;
-import com.espertech.esper.core.service.speccompiled.SelectClauseStreamCompiledSpec;
-import com.espertech.esper.epl.core.select.SelectExprProcessor;
-import com.espertech.esper.epl.core.select.SelectExprProcessorCodegenSymbol;
-import com.espertech.esper.epl.core.select.SelectExprProcessorForge;
-import com.espertech.esper.epl.expression.codegen.CodegenLegoMayVoid;
-import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.core.ExprForge;
-import com.espertech.esper.epl.table.mgmt.TableMetadataInternalEventToPublic;
-import com.espertech.esper.util.CollectionUtil;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenBlock;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMember;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRef;
+import eu.uk.ncl.pet5o.esper.core.service.speccompiled.SelectClauseStreamCompiledSpec;
+import eu.uk.ncl.pet5o.esper.epl.core.select.SelectExprProcessor;
+import eu.uk.ncl.pet5o.esper.epl.core.select.SelectExprProcessorCodegenSymbol;
+import eu.uk.ncl.pet5o.esper.epl.core.select.SelectExprProcessorForge;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.CodegenLegoMayVoid;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprForge;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadataInternalEventToPublic;
+import eu.uk.ncl.pet5o.esper.util.CollectionUtil;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.arrayAtIndex;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.member;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.newInstance;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.arrayAtIndex;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.member;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.newInstance;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
 
 public abstract class EvalSelectStreamBaseMap extends EvalSelectStreamBase implements SelectExprProcessorForge, SelectExprProcessor {
 
@@ -48,11 +48,11 @@ public abstract class EvalSelectStreamBaseMap extends EvalSelectStreamBase imple
         super(selectExprForgeContext, resultEventType, namedStreams, usingWildcard);
     }
 
-    protected abstract com.espertech.esper.client.EventBean processSpecific(Map<String, Object> props, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext);
+    protected abstract eu.uk.ncl.pet5o.esper.client.EventBean processSpecific(Map<String, Object> props, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext);
 
     protected abstract CodegenExpression processSpecificCodegen(CodegenMember memberResultEventType, CodegenMember memberEventAdapterService, CodegenExpression props, CodegenMethodScope codegenMethodScope, ExprForgeCodegenSymbol exprSymbol, CodegenClassScope codegenClassScope);
 
-    public com.espertech.esper.client.EventBean process(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext exprEvaluatorContext) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean process(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext exprEvaluatorContext) {
         // Evaluate all expressions and build a map of name-value pairs
         Map<String, Object> props = new HashMap<String, Object>();
         int count = 0;
@@ -62,7 +62,7 @@ public abstract class EvalSelectStreamBaseMap extends EvalSelectStreamBase imple
             count++;
         }
         for (SelectClauseStreamCompiledSpec element : namedStreams) {
-            com.espertech.esper.client.EventBean theEvent = eventsPerStream[element.getStreamNumber()];
+            eu.uk.ncl.pet5o.esper.client.EventBean theEvent = eventsPerStream[element.getStreamNumber()];
             if (element.getTableMetadata() != null) {
                 if (theEvent != null) {
                     theEvent = element.getTableMetadata().getEventToPublic().convert(theEvent, eventsPerStream, isNewData, exprEvaluatorContext);
@@ -72,7 +72,7 @@ public abstract class EvalSelectStreamBaseMap extends EvalSelectStreamBase imple
             count++;
         }
         if (isUsingWildcard && eventsPerStream.length > 1) {
-            for (com.espertech.esper.client.EventBean anEventsPerStream : eventsPerStream) {
+            for (eu.uk.ncl.pet5o.esper.client.EventBean anEventsPerStream : eventsPerStream) {
                 props.put(context.getColumnNames()[count], anEventsPerStream);
                 count++;
             }
@@ -84,7 +84,7 @@ public abstract class EvalSelectStreamBaseMap extends EvalSelectStreamBase imple
     public CodegenMethodNode processCodegen(CodegenMember memberResultEventType, CodegenMember memberEventAdapterService, CodegenMethodScope codegenMethodScope, SelectExprProcessorCodegenSymbol selectSymbol, ExprForgeCodegenSymbol exprSymbol, CodegenClassScope codegenClassScope) {
         int size = this.context.getExprForges().length + namedStreams.size() + (isUsingWildcard && this.context.getNumStreams() > 1 ? this.context.getNumStreams() : 0);
 
-        CodegenMethodNode methodNode = codegenMethodScope.makeChild(com.espertech.esper.client.EventBean.class, this.getClass(), codegenClassScope);
+        CodegenMethodNode methodNode = codegenMethodScope.makeChild(eu.uk.ncl.pet5o.esper.client.EventBean.class, this.getClass(), codegenClassScope);
         CodegenExpressionRef refEPS = exprSymbol.getAddEPS(methodNode);
         CodegenExpression refIsNewData = exprSymbol.getAddIsNewData(methodNode);
         CodegenExpressionRef refExprEvalCtx = exprSymbol.getAddExprEvalCtx(methodNode);

@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.filterspec;
 
-import com.espertech.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.EventType;
 
 import java.io.StringWriter;
 import java.util.Arrays;

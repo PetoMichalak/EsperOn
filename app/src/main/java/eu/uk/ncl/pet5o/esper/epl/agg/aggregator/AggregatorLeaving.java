@@ -10,17 +10,17 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.aggregator;
 
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMembersColumnized;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.core.CodegenCtor;
-import com.espertech.esper.epl.agg.factory.AggregationMethodFactoryLeaving;
-import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMembersColumnized;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.core.CodegenCtor;
+import eu.uk.ncl.pet5o.esper.epl.agg.factory.AggregationMethodFactoryLeaving;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantFalse;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantTrue;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.refCol;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantFalse;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantTrue;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.refCol;
 
 /**
  * For testing if a remove stream entry has been present.

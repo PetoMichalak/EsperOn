@@ -10,25 +10,25 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.util;
 
-import com.espertech.esper.collection.ViewUpdatedCollection;
-import com.espertech.esper.core.service.ExpressionResultCacheService;
-import com.espertech.esper.core.service.StatementAgentInstanceLock;
-import com.espertech.esper.core.service.StatementContext;
-import com.espertech.esper.core.service.StatementType;
-import com.espertech.esper.core.start.EPStatementStartMethodHelperPrevious;
-import com.espertech.esper.core.start.EPStatementStartMethodHelperPrior;
-import com.espertech.esper.epl.core.viewres.ViewResourceDelegateVerifiedStream;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.prior.ExprPriorNode;
-import com.espertech.esper.epl.expression.time.TimeAbacus;
-import com.espertech.esper.epl.script.AgentInstanceScriptContext;
-import com.espertech.esper.epl.table.mgmt.TableExprEvaluatorContext;
-import com.espertech.esper.schedule.TimeProvider;
-import com.espertech.esper.util.StopCallback;
-import com.espertech.esper.view.DataWindowViewFactory;
-import com.espertech.esper.view.DataWindowViewWithPrevious;
-import com.espertech.esper.view.ViewFactory;
-import com.espertech.esper.view.internal.PriorEventViewFactory;
+import eu.uk.ncl.pet5o.esper.collection.ViewUpdatedCollection;
+import eu.uk.ncl.pet5o.esper.core.service.ExpressionResultCacheService;
+import eu.uk.ncl.pet5o.esper.core.service.StatementAgentInstanceLock;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.core.service.StatementType;
+import eu.uk.ncl.pet5o.esper.core.start.EPStatementStartMethodHelperPrevious;
+import eu.uk.ncl.pet5o.esper.core.start.EPStatementStartMethodHelperPrior;
+import eu.uk.ncl.pet5o.esper.epl.core.viewres.ViewResourceDelegateVerifiedStream;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.prior.ExprPriorNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.time.TimeAbacus;
+import eu.uk.ncl.pet5o.esper.epl.script.AgentInstanceScriptContext;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.schedule.TimeProvider;
+import eu.uk.ncl.pet5o.esper.util.StopCallback;
+import eu.uk.ncl.pet5o.esper.view.DataWindowViewFactory;
+import eu.uk.ncl.pet5o.esper.view.DataWindowViewWithPrevious;
+import eu.uk.ncl.pet5o.esper.view.ViewFactory;
+import eu.uk.ncl.pet5o.esper.view.internal.PriorEventViewFactory;
 
 import java.util.Collection;
 import java.util.List;
@@ -91,7 +91,7 @@ public class AgentInstanceViewFactoryChainContext implements ExprEvaluatorContex
         return agentInstanceContext.getAgentInstanceId();
     }
 
-    public com.espertech.esper.client.EventBean getContextProperties() {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getContextProperties() {
         return agentInstanceContext.getContextProperties();
     }
 

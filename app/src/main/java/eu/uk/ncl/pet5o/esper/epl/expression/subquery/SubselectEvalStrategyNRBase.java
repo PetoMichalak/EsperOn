@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.subquery;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.agg.service.common.AggregationService;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.event.EventBeanUtility;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationService;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.event.EventBeanUtility;
 
 import java.util.Collection;
 
@@ -23,7 +23,7 @@ public abstract class SubselectEvalStrategyNRBase implements SubselectEvalStrate
     protected final ExprEvaluator selectEval;
     private final boolean resultWhenNoMatchingEvents;
 
-    protected abstract Object evaluateInternal(Object leftResult, com.espertech.esper.client.EventBean[] events, boolean isNewData, Collection<EventBean> matchingEvents, ExprEvaluatorContext exprEvaluatorContext, AggregationService aggregationService);
+    protected abstract Object evaluateInternal(Object leftResult, eu.uk.ncl.pet5o.esper.client.EventBean[] events, boolean isNewData, Collection<EventBean> matchingEvents, ExprEvaluatorContext exprEvaluatorContext, AggregationService aggregationService);
 
     public SubselectEvalStrategyNRBase(ExprEvaluator valueEval, ExprEvaluator selectEval, boolean resultWhenNoMatchingEvents) {
         this.valueEval = valueEval;
@@ -31,13 +31,13 @@ public abstract class SubselectEvalStrategyNRBase implements SubselectEvalStrate
         this.resultWhenNoMatchingEvents = resultWhenNoMatchingEvents;
     }
 
-    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, Collection<EventBean> matchingEvents, ExprEvaluatorContext exprEvaluatorContext, AggregationService aggregationService) {
+    public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, Collection<EventBean> matchingEvents, ExprEvaluatorContext exprEvaluatorContext, AggregationService aggregationService) {
         if (matchingEvents == null || matchingEvents.size() == 0) {
             return resultWhenNoMatchingEvents;
         }
 
         Object leftResult = valueEval.evaluate(eventsPerStream, isNewData, exprEvaluatorContext);
-        com.espertech.esper.client.EventBean[] events = EventBeanUtility.allocatePerStreamShift(eventsPerStream);
+        eu.uk.ncl.pet5o.esper.client.EventBean[] events = EventBeanUtility.allocatePerStreamShift(eventsPerStream);
         return evaluateInternal(leftResult, events, isNewData, matchingEvents, exprEvaluatorContext, aggregationService);
     }
 

@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.core;
 
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

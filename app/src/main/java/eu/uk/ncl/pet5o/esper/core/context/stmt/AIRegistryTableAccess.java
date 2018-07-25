@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.stmt;
 
-import com.espertech.esper.epl.expression.table.ExprTableAccessEvalStrategy;
+import eu.uk.ncl.pet5o.esper.epl.expression.table.ExprTableAccessEvalStrategy;
 
 public interface AIRegistryTableAccess extends ExprTableAccessEvalStrategy {
     public void assignService(int num, ExprTableAccessEvalStrategy value);

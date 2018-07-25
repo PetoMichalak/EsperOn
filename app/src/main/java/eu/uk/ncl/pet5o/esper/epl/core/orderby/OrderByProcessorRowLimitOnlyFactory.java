@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.orderby;
 
-import com.espertech.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
 
 /**
  * An order-by processor that sorts events according to the expressions

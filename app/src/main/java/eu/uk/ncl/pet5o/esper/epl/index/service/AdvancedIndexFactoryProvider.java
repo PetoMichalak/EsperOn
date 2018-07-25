@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.index.service;
 
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.expression.core.ExprValidationContext;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.epl.lookup.AdvancedIndexConfigContextPartition;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.epl.lookup.AdvancedIndexConfigContextPartition;
 
 public interface AdvancedIndexFactoryProvider {
     EventAdvancedIndexProvisionDesc validateEventIndex(String indexName, String indexTypeName, ExprNode[] columns, ExprNode[] parameters)

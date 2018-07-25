@@ -10,34 +10,34 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.access;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.codegen.base.CodegenMember;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.epl.agg.factory.AggregationStateSortedForge;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.table.mgmt.TableMetadata;
-import com.espertech.esper.epl.table.mgmt.TableMetadataInternalEventToPublic;
-import com.espertech.esper.plugin.PlugInAggregationMultiFunctionCodegenType;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMember;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.epl.agg.factory.AggregationStateSortedForge;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadata;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadataInternalEventToPublic;
+import eu.uk.ncl.pet5o.esper.plugin.PlugInAggregationMultiFunctionCodegenType;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import java.lang.reflect.Array;
 import java.util.Collection;
 import java.util.Iterator;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.cast;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.equalsIdentity;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.member;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.newArrayByLength;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.*;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_EPS;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_EXPREVALCONTEXT;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_ISNEWDATA;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.cast;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.equalsIdentity;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.member;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.newArrayByLength;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.*;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_EPS;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_EXPREVALCONTEXT;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_ISNEWDATA;
 
 /**
  * Represents the aggregation accessor that provides the result for the "maxBy" aggregation function.
@@ -57,7 +57,7 @@ public class AggregationAccessorSortedTable implements AggregationAccessor, Aggr
         return PlugInAggregationMultiFunctionCodegenType.CODEGEN_ALL;
     }
 
-    public Object getValue(AggregationState state, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public Object getValue(AggregationState state, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         AggregationStateSorted sorted = (AggregationStateSorted) state;
         if (sorted.size() == 0) {
             return null;
@@ -73,7 +73,7 @@ public class AggregationAccessorSortedTable implements AggregationAccessor, Aggr
 
         int count = 0;
         for (; it.hasNext(); ) {
-            com.espertech.esper.client.EventBean bean = it.next();
+            eu.uk.ncl.pet5o.esper.client.EventBean bean = it.next();
             Object und = tableMetadata.getEventToPublic().convertToUnd(bean, eventsPerStream, isNewData, exprEvaluatorContext);
             Array.set(array, count++, und);
         }
@@ -91,14 +91,14 @@ public class AggregationAccessorSortedTable implements AggregationAccessor, Aggr
                 .declareVar(int.class, "count", constant(0))
                 .declareVar(Iterator.class, "it", iterator)
                 .whileLoop(exprDotMethod(ref("it"), "hasNext"))
-                .declareVar(com.espertech.esper.client.EventBean.class, "bean", cast(com.espertech.esper.client.EventBean.class, exprDotMethod(ref("it"), "next")))
+                .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "bean", cast(eu.uk.ncl.pet5o.esper.client.EventBean.class, exprDotMethod(ref("it"), "next")))
                 .assignArrayElement(ref("array"), ref("count"), exprDotMethod(member(eventToPublic.getMemberId()), "convertToUnd", ref("bean"), REF_EPS, REF_ISNEWDATA, REF_EXPREVALCONTEXT))
                 .increment("count")
                 .blockEnd()
                 .methodReturn(ref("array"));
     }
 
-    public Collection<EventBean> getEnumerableEvents(AggregationState state, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public Collection<EventBean> getEnumerableEvents(AggregationState state, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         return ((AggregationStateSorted) state).collectionReadOnly();
     }
 
@@ -107,7 +107,7 @@ public class AggregationAccessorSortedTable implements AggregationAccessor, Aggr
         context.getMethod().getBlock().methodReturn(sorted.collectionReadOnlyCodegen(context.getColumn()));
     }
 
-    public Collection<Object> getEnumerableScalar(AggregationState state, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public Collection<Object> getEnumerableScalar(AggregationState state, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         return null;
     }
 
@@ -115,7 +115,7 @@ public class AggregationAccessorSortedTable implements AggregationAccessor, Aggr
         context.getMethod().getBlock().methodReturn(constantNull());
     }
 
-    public com.espertech.esper.client.EventBean getEnumerableEvent(AggregationState state, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getEnumerableEvent(AggregationState state, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         return null;
     }
 

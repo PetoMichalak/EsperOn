@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.dot;
 
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
 
 public interface ExprDotEval {
-    public Object evaluate(Object target, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext);
+    public Object evaluate(Object target, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext);
     public ExprDotForge getDotForge();
 }

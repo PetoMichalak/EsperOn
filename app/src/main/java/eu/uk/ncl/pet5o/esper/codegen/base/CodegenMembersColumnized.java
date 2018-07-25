@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.codegen.base;
 
-import com.espertech.esper.codegen.model.expression.CodegenExpressionRefWCol;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRefWCol;
 
 import java.util.LinkedHashMap;
 

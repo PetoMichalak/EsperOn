@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.event.bean;
 
-import com.espertech.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
 import net.sf.cglib.reflect.FastMethod;
 
 public class BeanEventPropertyWriterMapProp extends BeanEventPropertyWriter {
@@ -22,7 +22,7 @@ public class BeanEventPropertyWriterMapProp extends BeanEventPropertyWriter {
         this.key = key;
     }
 
-    public void write(Object value, com.espertech.esper.client.EventBean target) {
+    public void write(Object value, eu.uk.ncl.pet5o.esper.client.EventBean target) {
         super.invoke(new Object[]{key, value}, target.getUnderlying());
     }
 }

@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.service.groupby;
 
-import com.espertech.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
 
 public interface AggSvcGroupByReclaimAgedEvalFuncFactory {
     public AggSvcGroupByReclaimAgedEvalFunc make(AgentInstanceContext agentInstanceContext);

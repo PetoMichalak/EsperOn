@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.ops;
 
-import com.espertech.esper.epl.expression.core.*;
-import com.espertech.esper.util.JavaClassHelper;
-import com.espertech.esper.util.LikeUtil;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.util.LikeUtil;
 
 import java.io.StringWriter;
 

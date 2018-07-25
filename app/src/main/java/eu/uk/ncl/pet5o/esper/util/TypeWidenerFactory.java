@@ -10,19 +10,19 @@
  */
 package eu.uk.ncl.pet5o.esper.util;
 
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
 
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethodBuild;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.staticMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.localMethodBuild;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.staticMethod;
 
 /**
  * Factory for type widening.

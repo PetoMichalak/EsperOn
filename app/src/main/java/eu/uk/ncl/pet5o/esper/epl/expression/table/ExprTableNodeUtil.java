@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.table;
 
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.expression.core.ExprNodeUtilityCore;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNodeUtilityCore;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 public class ExprTableNodeUtil {
     public static void validateExpressions(String tableName,

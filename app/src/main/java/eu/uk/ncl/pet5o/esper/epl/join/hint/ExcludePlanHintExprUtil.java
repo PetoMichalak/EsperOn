@@ -10,21 +10,21 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.hint;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.core.context.mgr.ContextManagementServiceImpl;
-import com.espertech.esper.core.service.EPAdministratorHelper;
-import com.espertech.esper.core.service.StatementContext;
-import com.espertech.esper.core.support.SupportEventAdapterService;
-import com.espertech.esper.epl.declexpr.ExprDeclaredServiceImpl;
-import com.espertech.esper.epl.expression.core.*;
-import com.espertech.esper.epl.spec.SelectClauseStreamSelectorEnum;
-import com.espertech.esper.epl.spec.StatementSpecRaw;
-import com.espertech.esper.epl.table.mgmt.TableServiceImpl;
-import com.espertech.esper.epl.util.EPLValidationUtil;
-import com.espertech.esper.event.EventTypeMetadata;
-import com.espertech.esper.event.arr.ObjectArrayEventBean;
-import com.espertech.esper.event.arr.ObjectArrayEventType;
-import com.espertech.esper.pattern.PatternNodeFactoryImpl;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.core.context.mgr.ContextManagementServiceImpl;
+import eu.uk.ncl.pet5o.esper.core.service.EPAdministratorHelper;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.core.support.SupportEventAdapterService;
+import eu.uk.ncl.pet5o.esper.epl.declexpr.ExprDeclaredServiceImpl;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.epl.spec.SelectClauseStreamSelectorEnum;
+import eu.uk.ncl.pet5o.esper.epl.spec.StatementSpecRaw;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableServiceImpl;
+import eu.uk.ncl.pet5o.esper.epl.util.EPLValidationUtil;
+import eu.uk.ncl.pet5o.esper.event.EventTypeMetadata;
+import eu.uk.ncl.pet5o.esper.event.arr.ObjectArrayEventBean;
+import eu.uk.ncl.pet5o.esper.event.arr.ObjectArrayEventType;
+import eu.uk.ncl.pet5o.esper.pattern.PatternNodeFactoryImpl;
 
 import java.util.LinkedHashMap;
 

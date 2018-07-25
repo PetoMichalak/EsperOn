@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
 
 public interface ContextStatePathValueBinding {
     public Object byteArrayToObject(byte[] bytes, EventAdapterService eventAdapterService);

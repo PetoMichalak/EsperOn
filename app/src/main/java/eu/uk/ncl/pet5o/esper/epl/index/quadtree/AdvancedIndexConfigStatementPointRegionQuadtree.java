@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.index.quadtree;
 
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.lookup.EventAdvancedIndexConfigStatement;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.lookup.EventAdvancedIndexConfigStatement;
 
 public class AdvancedIndexConfigStatementPointRegionQuadtree implements EventAdvancedIndexConfigStatement {
     private final ExprEvaluator xEval;

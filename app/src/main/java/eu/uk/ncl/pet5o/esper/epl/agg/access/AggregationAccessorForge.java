@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.access;
 
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.plugin.PlugInAggregationMultiFunctionCodegenType;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.plugin.PlugInAggregationMultiFunctionCodegenType;
 
 public interface AggregationAccessorForge {
     AggregationAccessor getAccessor(EngineImportService engineImportService, boolean isFireAndForget, String statementName);

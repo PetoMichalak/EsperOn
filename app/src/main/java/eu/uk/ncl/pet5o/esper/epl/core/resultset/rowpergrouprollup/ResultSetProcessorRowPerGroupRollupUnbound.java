@@ -10,43 +10,43 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.resultset.rowpergrouprollup;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMember;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.core.CodegenInstanceAux;
-import com.espertech.esper.collection.ArrayEventIterator;
-import com.espertech.esper.collection.UniformPair;
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.epl.agg.service.common.AggregationService;
-import com.espertech.esper.epl.core.orderby.OrderByProcessor;
-import com.espertech.esper.epl.core.resultset.core.ResultSetProcessorHelperFactory;
-import com.espertech.esper.epl.core.resultset.core.ResultSetProcessorUtil;
-import com.espertech.esper.epl.core.resultset.grouped.ResultSetProcessorGroupedUtil;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
-import com.espertech.esper.view.Viewable;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMember;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.core.CodegenInstanceAux;
+import eu.uk.ncl.pet5o.esper.collection.ArrayEventIterator;
+import eu.uk.ncl.pet5o.esper.collection.UniformPair;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationService;
+import eu.uk.ncl.pet5o.esper.epl.core.orderby.OrderByProcessor;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessorHelperFactory;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessorUtil;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.grouped.ResultSetProcessorGroupedUtil;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.view.Viewable;
 
 import java.util.Iterator;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantFalse;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantTrue;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.member;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.newArrayByLength;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.staticMethod;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.*;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_AGENTINSTANCECONTEXT;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_AGGREGATIONSVC;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_ISSYNTHESIZE;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_NEWDATA;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_OLDDATA;
-import static com.espertech.esper.epl.core.resultset.core.ResultSetProcessorUtil.METHOD_TOPAIRNULLIFALLNULL;
-import static com.espertech.esper.epl.core.resultset.grouped.ResultSetProcessorGroupedUtil.METHOD_APPLYAGGVIEWRESULTKEYEDVIEW;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantFalse;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantTrue;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.member;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.newArrayByLength;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.staticMethod;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.*;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_AGENTINSTANCECONTEXT;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_AGGREGATIONSVC;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_ISSYNTHESIZE;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_NEWDATA;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_OLDDATA;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessorUtil.METHOD_TOPAIRNULLIFALLNULL;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.grouped.ResultSetProcessorGroupedUtil.METHOD_APPLYAGGVIEWRESULTKEYEDVIEW;
 
 public class ResultSetProcessorRowPerGroupRollupUnbound extends ResultSetProcessorRowPerGroupRollupImpl {
 
@@ -71,10 +71,10 @@ public class ResultSetProcessorRowPerGroupRollupUnbound extends ResultSetProcess
     }
 
     @Override
-    public void applyViewResult(com.espertech.esper.client.EventBean[] newData, com.espertech.esper.client.EventBean[] oldData) {
+    public void applyViewResult(eu.uk.ncl.pet5o.esper.client.EventBean[] newData, eu.uk.ncl.pet5o.esper.client.EventBean[] oldData) {
         Object[][] newDataMultiKey = generateGroupKeysView(newData, unboundHelper.getBuffer(), true);
         Object[][] oldDataMultiKey = generateGroupKeysView(oldData, unboundHelper.getBuffer(), false);
-        com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[1];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
         ResultSetProcessorGroupedUtil.applyAggViewResultKeyedView(aggregationService, agentInstanceContext, newData, newDataMultiKey, oldData, oldDataMultiKey, eventsPerStream);
     }
 
@@ -84,12 +84,12 @@ public class ResultSetProcessorRowPerGroupRollupUnbound extends ResultSetProcess
         method.getBlock()
                 .declareVar(Object[][].class, "newDataMultiKey", localMethod(generateGroupKeysView, REF_NEWDATA, exprDotMethod(ref(NAME_UNBOUNDHELPER), "getBuffer"), constantTrue()))
                 .declareVar(Object[][].class, "oldDataMultiKey", localMethod(generateGroupKeysView, REF_OLDDATA, exprDotMethod(ref(NAME_UNBOUNDHELPER), "getBuffer"), constantFalse()))
-                .declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStream", newArrayByLength(com.espertech.esper.client.EventBean.class, constant(1)))
+                .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStream", newArrayByLength(eu.uk.ncl.pet5o.esper.client.EventBean.class, constant(1)))
                 .staticMethod(ResultSetProcessorGroupedUtil.class, METHOD_APPLYAGGVIEWRESULTKEYEDVIEW, REF_AGGREGATIONSVC, REF_AGENTINSTANCECONTEXT, REF_NEWDATA, ref("newDataMultiKey"), REF_OLDDATA, ref("oldDataMultiKey"), ref("eventsPerStream"));
     }
 
     @Override
-    public UniformPair<com.espertech.esper.client.EventBean[]> processViewResult(com.espertech.esper.client.EventBean[] newData, com.espertech.esper.client.EventBean[] oldData, boolean isSynthesize) {
+    public UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> processViewResult(eu.uk.ncl.pet5o.esper.client.EventBean[] newData, eu.uk.ncl.pet5o.esper.client.EventBean[] oldData, boolean isSynthesize) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qResultSetProcessGroupedRowPerGroup();
         }
@@ -97,15 +97,15 @@ public class ResultSetProcessorRowPerGroupRollupUnbound extends ResultSetProcess
         Object[][] newDataMultiKey = generateGroupKeysView(newData, unboundHelper.getBuffer(), true);
         Object[][] oldDataMultiKey = generateGroupKeysView(oldData, unboundHelper.getBuffer(), false);
 
-        com.espertech.esper.client.EventBean[] selectOldEvents = null;
+        eu.uk.ncl.pet5o.esper.client.EventBean[] selectOldEvents = null;
         if (prototype.isSelectRStream()) {
             selectOldEvents = generateOutputEventsView(unboundHelper.getBuffer(), false, isSynthesize);
         }
 
-        com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[1];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
         ResultSetProcessorGroupedUtil.applyAggViewResultKeyedView(aggregationService, agentInstanceContext, newData, newDataMultiKey, oldData, oldDataMultiKey, eventsPerStream);
 
-        com.espertech.esper.client.EventBean[] selectNewEvents = generateOutputEventsView(unboundHelper.getBuffer(), true, isSynthesize);
+        eu.uk.ncl.pet5o.esper.client.EventBean[] selectNewEvents = generateOutputEventsView(unboundHelper.getBuffer(), true, isSynthesize);
 
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().aResultSetProcessGroupedRowPerGroup(selectNewEvents, selectOldEvents);
@@ -126,23 +126,23 @@ public class ResultSetProcessorRowPerGroupRollupUnbound extends ResultSetProcess
         method.getBlock()
                 .declareVar(Object[][].class, "newDataMultiKey", localMethod(generateGroupKeysView, REF_NEWDATA, exprDotMethod(ref(NAME_UNBOUNDHELPER), "getBuffer"), constantTrue()))
                 .declareVar(Object[][].class, "oldDataMultiKey", localMethod(generateGroupKeysView, REF_OLDDATA, exprDotMethod(ref(NAME_UNBOUNDHELPER), "getBuffer"), constantFalse()))
-                .declareVar(com.espertech.esper.client.EventBean[].class, "selectOldEvents", forge.isSelectRStream() ? localMethod(generateOutputEventsView, exprDotMethod(ref(NAME_UNBOUNDHELPER), "getBuffer"), constantFalse(), REF_ISSYNTHESIZE) : constantNull())
-                .declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStream", newArrayByLength(com.espertech.esper.client.EventBean.class, constant(1)))
+                .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "selectOldEvents", forge.isSelectRStream() ? localMethod(generateOutputEventsView, exprDotMethod(ref(NAME_UNBOUNDHELPER), "getBuffer"), constantFalse(), REF_ISSYNTHESIZE) : constantNull())
+                .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStream", newArrayByLength(eu.uk.ncl.pet5o.esper.client.EventBean.class, constant(1)))
                 .staticMethod(ResultSetProcessorGroupedUtil.class, METHOD_APPLYAGGVIEWRESULTKEYEDVIEW, REF_AGGREGATIONSVC, REF_AGENTINSTANCECONTEXT, REF_NEWDATA, ref("newDataMultiKey"), REF_OLDDATA, ref("oldDataMultiKey"), ref("eventsPerStream"))
-                .declareVar(com.espertech.esper.client.EventBean[].class, "selectNewEvents", localMethod(generateOutputEventsView, exprDotMethod(ref(NAME_UNBOUNDHELPER), "getBuffer"), constantTrue(), REF_ISSYNTHESIZE))
+                .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "selectNewEvents", localMethod(generateOutputEventsView, exprDotMethod(ref(NAME_UNBOUNDHELPER), "getBuffer"), constantTrue(), REF_ISSYNTHESIZE))
                 .methodReturn(staticMethod(ResultSetProcessorUtil.class, METHOD_TOPAIRNULLIFALLNULL, ref("selectNewEvents"), ref("selectOldEvents")));
     }
 
     @Override
     public Iterator<EventBean> getIterator(Viewable parent) {
-        com.espertech.esper.client.EventBean[] output = generateOutputEventsView(unboundHelper.getBuffer(), true, true);
+        eu.uk.ncl.pet5o.esper.client.EventBean[] output = generateOutputEventsView(unboundHelper.getBuffer(), true, true);
         return new ArrayEventIterator(output);
     }
 
     static void getIteratorViewUnboundCodegen(ResultSetProcessorRowPerGroupRollupForge forge, CodegenClassScope classScope, CodegenMethodNode method, CodegenInstanceAux instance) {
         CodegenMethodNode generateOutputEventsView = generateOutputEventsViewCodegen(forge, classScope, instance);
 
-        method.getBlock().declareVar(com.espertech.esper.client.EventBean[].class, "output", localMethod(generateOutputEventsView, exprDotMethod(ref(NAME_UNBOUNDHELPER), "getBuffer"), constantTrue(), constantTrue()))
+        method.getBlock().declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "output", localMethod(generateOutputEventsView, exprDotMethod(ref(NAME_UNBOUNDHELPER), "getBuffer"), constantTrue(), constantTrue()))
                 .methodReturn(newInstance(ArrayEventIterator.class, ref("output")));
     }
 }

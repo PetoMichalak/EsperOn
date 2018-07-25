@@ -10,15 +10,15 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.table.onaction;
 
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.table.mgmt.TableMetadata;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadata;
 
 public class TableOnViewUtil {
-    public static com.espertech.esper.client.EventBean[] toPublic(com.espertech.esper.client.EventBean[] matching, TableMetadata tableMetadata, com.espertech.esper.client.EventBean[] triggers, boolean isNewData, ExprEvaluatorContext context) {
-        com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[2];
+    public static eu.uk.ncl.pet5o.esper.client.EventBean[] toPublic(eu.uk.ncl.pet5o.esper.client.EventBean[] matching, TableMetadata tableMetadata, eu.uk.ncl.pet5o.esper.client.EventBean[] triggers, boolean isNewData, ExprEvaluatorContext context) {
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[2];
         eventsPerStream[0] = triggers[0];
 
-        com.espertech.esper.client.EventBean[] events = new com.espertech.esper.client.EventBean[matching.length];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] events = new eu.uk.ncl.pet5o.esper.client.EventBean[matching.length];
         for (int i = 0; i < events.length; i++) {
             eventsPerStream[1] = matching[i];
             events[i] = tableMetadata.getEventToPublic().convert(matching[i], eventsPerStream, isNewData, context);

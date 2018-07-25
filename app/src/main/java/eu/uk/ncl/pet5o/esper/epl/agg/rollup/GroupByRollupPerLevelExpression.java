@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.rollup;
 
-import com.espertech.esper.epl.core.select.SelectExprProcessor;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.core.select.SelectExprProcessor;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
 
 public class GroupByRollupPerLevelExpression {
     private final SelectExprProcessor[] selectExprProcessor;

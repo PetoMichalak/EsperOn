@@ -10,29 +10,29 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.service.table;
 
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.core.CodegenNamedMethods;
-import com.espertech.esper.epl.agg.access.AggregationAccessorSlotPair;
-import com.espertech.esper.epl.agg.access.AggregationAgent;
-import com.espertech.esper.epl.agg.access.AggregationAgentCodegenSymbols;
-import com.espertech.esper.epl.agg.access.AggregationAgentForge;
-import com.espertech.esper.epl.agg.service.common.AggregationGroupByRollupDesc;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.table.mgmt.TableColumnMethodPair;
-import com.espertech.esper.epl.table.mgmt.TableMetadata;
-import com.espertech.esper.epl.table.mgmt.TableStateInstanceGrouped;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.core.CodegenNamedMethods;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationAccessorSlotPair;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationAgent;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationAgentCodegenSymbols;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationAgentForge;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationGroupByRollupDesc;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableColumnMethodPair;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadata;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableStateInstanceGrouped;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.cast;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
-import static com.espertech.esper.epl.agg.codegen.AggregationServiceCodegenNames.NAME_GROUPKEY;
-import static com.espertech.esper.epl.agg.codegen.AggregationServiceCodegenNames.REF_GROUPKEY;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.*;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.NAME_EPS;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.NAME_EXPREVALCONTEXT;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_EPS;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_EXPREVALCONTEXT;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.cast;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.epl.agg.codegen.AggregationServiceCodegenNames.NAME_GROUPKEY;
+import static eu.uk.ncl.pet5o.esper.epl.agg.codegen.AggregationServiceCodegenNames.REF_GROUPKEY;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.*;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.NAME_EPS;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.NAME_EXPREVALCONTEXT;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_EPS;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_EXPREVALCONTEXT;
 
 /**
  * Implementation for handling aggregation with grouping by group-keys.
@@ -42,14 +42,14 @@ public class AggSvcGroupByWTableRollupSingleKeyImpl extends AggSvcGroupByWTableB
         super(tableMetadata, methodPairs, accessors, join, tableStateInstance, targetStates, accessStateExpr, agents);
     }
 
-    public void applyEnterInternal(com.espertech.esper.client.EventBean[] eventsPerStream, Object compositeGroupByKey, ExprEvaluatorContext exprEvaluatorContext) {
+    public void applyEnterInternal(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, Object compositeGroupByKey, ExprEvaluatorContext exprEvaluatorContext) {
         Object[] groupKeyPerLevel = (Object[]) compositeGroupByKey;
         for (Object groupByKey : groupKeyPerLevel) {
             applyEnterGroupKey(eventsPerStream, groupByKey, exprEvaluatorContext);
         }
     }
 
-    public void applyLeaveInternal(com.espertech.esper.client.EventBean[] eventsPerStream, Object compositeGroupByKey, ExprEvaluatorContext exprEvaluatorContext) {
+    public void applyLeaveInternal(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, Object compositeGroupByKey, ExprEvaluatorContext exprEvaluatorContext) {
         Object[] groupKeyPerLevel = (Object[]) compositeGroupByKey;
         for (Object groupByKey : groupKeyPerLevel) {
             applyLeaveGroupKey(eventsPerStream, groupByKey, exprEvaluatorContext);
@@ -58,7 +58,7 @@ public class AggSvcGroupByWTableRollupSingleKeyImpl extends AggSvcGroupByWTableB
 
     public static CodegenMethodNode applyRollupCodegen(boolean enter, CodegenMethodNode parent, CodegenClassScope classScope, CodegenNamedMethods namedMethods, TableColumnMethodPair[] methodPairs, AggregationAgentForge[] agentForges, AggregationAgent[] agents, int[] targetStates, AggregationGroupByRollupDesc groupByRollupDesc, int numTableKeys) {
         AggregationAgentCodegenSymbols symbols = new AggregationAgentCodegenSymbols(true, enter);
-        CodegenMethodNode method = parent.makeChildWithScope(void.class, AggSvcGroupByWTableImpl.class, symbols, classScope).addParam(com.espertech.esper.client.EventBean[].class, NAME_EPS).addParam(Object.class, NAME_GROUPKEY).addParam(ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT);
+        CodegenMethodNode method = parent.makeChildWithScope(void.class, AggSvcGroupByWTableImpl.class, symbols, classScope).addParam(eu.uk.ncl.pet5o.esper.client.EventBean[].class, NAME_EPS).addParam(Object.class, NAME_GROUPKEY).addParam(ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT);
         CodegenMethodNode applyKey = AggSvcGroupByWTableImpl.applyGroupKeyCodegen(enter, method, classScope, methodPairs, agentForges, agents, targetStates);
 
         method.getBlock().declareVar(Object[].class, "groupKeyPerLevel", cast(Object[].class, REF_GROUPKEY))

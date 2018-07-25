@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.prior;
 
-import com.espertech.esper.view.window.RandomAccessByIndex;
+import eu.uk.ncl.pet5o.esper.view.window.RandomAccessByIndex;
 
 /**
  * Represents the 'prior' prior event function in an expression node tree.
@@ -22,7 +22,7 @@ public class ExprPriorEvalStrategyRandomAccess extends ExprPriorEvalStrategyBase
         this.randomAccess = randomAccess;
     }
 
-    public com.espertech.esper.client.EventBean getSubstituteEvent(com.espertech.esper.client.EventBean originalEvent, boolean isNewData, int constantIndexNumber) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getSubstituteEvent(eu.uk.ncl.pet5o.esper.client.EventBean originalEvent, boolean isNewData, int constantIndexNumber) {
         if (isNewData) {
             return randomAccess.getNewData(constantIndexNumber);
         } else {

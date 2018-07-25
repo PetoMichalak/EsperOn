@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen;
 
-import com.espertech.esper.epl.agg.service.common.AggregationServiceFactory;
-import com.espertech.esper.epl.core.orderby.OrderByProcessorFactory;
-import com.espertech.esper.epl.core.resultset.core.ResultSetProcessorFactory;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationServiceFactory;
+import eu.uk.ncl.pet5o.esper.epl.core.orderby.OrderByProcessorFactory;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessorFactory;
 
 public interface ResultSetProcessorFactoryProvider {
     ResultSetProcessorFactory getResultSetProcessorFactory();

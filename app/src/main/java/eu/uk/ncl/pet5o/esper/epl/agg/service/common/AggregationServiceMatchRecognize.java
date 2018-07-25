@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.service.common;
 
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
 
 /**
  * Aggregation result future for use with match recognize.
@@ -23,7 +23,7 @@ public interface AggregationServiceMatchRecognize extends AggregationResultFutur
      * @param streamId             variable number that is the base
      * @param exprEvaluatorContext context for expression evaluatiom
      */
-    public void applyEnter(com.espertech.esper.client.EventBean[] eventsPerStream, int streamId, ExprEvaluatorContext exprEvaluatorContext);
+    public void applyEnter(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, int streamId, ExprEvaluatorContext exprEvaluatorContext);
 
     /**
      * Clear current aggregation state.

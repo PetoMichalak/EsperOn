@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.prev;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.view.window.RandomAccessByIndex;
-import com.espertech.esper.view.window.RandomAccessByIndexGetter;
-import com.espertech.esper.view.window.RelativeAccessByEventNIndex;
-import com.espertech.esper.view.window.RelativeAccessByEventNIndexGetter;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.view.window.RandomAccessByIndex;
+import eu.uk.ncl.pet5o.esper.view.window.RandomAccessByIndexGetter;
+import eu.uk.ncl.pet5o.esper.view.window.RelativeAccessByEventNIndex;
+import eu.uk.ncl.pet5o.esper.view.window.RelativeAccessByEventNIndexGetter;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -42,14 +42,14 @@ public class ExprPreviousEvalStrategyPrev implements ExprPreviousEvalStrategy {
         isTail = tail;
     }
 
-    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
-        com.espertech.esper.client.EventBean substituteEvent = getSubstitute(eventsPerStream, exprEvaluatorContext);
+    public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
+        eu.uk.ncl.pet5o.esper.client.EventBean substituteEvent = getSubstitute(eventsPerStream, exprEvaluatorContext);
         if (substituteEvent == null) {
             return null;
         }
 
         // Substitute original event with prior event, evaluate inner expression
-        com.espertech.esper.client.EventBean originalEvent = eventsPerStream[streamNumber];
+        eu.uk.ncl.pet5o.esper.client.EventBean originalEvent = eventsPerStream[streamNumber];
         eventsPerStream[streamNumber] = substituteEvent;
         Object evalResult = evalNode.evaluate(eventsPerStream, true, exprEvaluatorContext);
         eventsPerStream[streamNumber] = originalEvent;
@@ -57,15 +57,15 @@ public class ExprPreviousEvalStrategyPrev implements ExprPreviousEvalStrategy {
         return evalResult;
     }
 
-    public com.espertech.esper.client.EventBean evaluateGetEventBean(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext context) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean evaluateGetEventBean(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext context) {
         return getSubstitute(eventsPerStream, context);
     }
 
-    public Collection<EventBean> evaluateGetCollEvents(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext context) {
+    public Collection<EventBean> evaluateGetCollEvents(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext context) {
         return null;
     }
 
-    public Collection evaluateGetCollScalar(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext context) {
+    public Collection evaluateGetCollScalar(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext context) {
         Object result = evaluate(eventsPerStream, context);
         if (result == null) {
             return null;
@@ -73,7 +73,7 @@ public class ExprPreviousEvalStrategyPrev implements ExprPreviousEvalStrategy {
         return Collections.singletonList(result);
     }
 
-    private com.espertech.esper.client.EventBean getSubstitute(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
+    private eu.uk.ncl.pet5o.esper.client.EventBean getSubstitute(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
 
         // Use constant if supplied
         Integer index;
@@ -89,7 +89,7 @@ public class ExprPreviousEvalStrategyPrev implements ExprPreviousEvalStrategy {
         }
 
         // access based on index returned
-        com.espertech.esper.client.EventBean substituteEvent;
+        eu.uk.ncl.pet5o.esper.client.EventBean substituteEvent;
         if (randomAccessGetter != null) {
             RandomAccessByIndex randomAccess = randomAccessGetter.getAccessor();
             if (!isTail) {
@@ -98,7 +98,7 @@ public class ExprPreviousEvalStrategyPrev implements ExprPreviousEvalStrategy {
                 substituteEvent = randomAccess.getNewDataTail(index);
             }
         } else {
-            com.espertech.esper.client.EventBean evalEvent = eventsPerStream[streamNumber];
+            eu.uk.ncl.pet5o.esper.client.EventBean evalEvent = eventsPerStream[streamNumber];
             RelativeAccessByEventNIndex relativeAccess = relativeAccessGetter.getAccessor(evalEvent);
             if (relativeAccess == null) {
                 return null;

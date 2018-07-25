@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.stmt;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.table.ExprTableAccessEvalStrategy;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.table.ExprTableAccessEvalStrategy;
 
 import java.util.Collection;
 
@@ -32,23 +32,23 @@ public class AIRegistryTableAccessSingle implements AIRegistryTableAccess, ExprT
         return strategy == null ? 0 : 1;
     }
 
-    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         return strategy.evaluate(eventsPerStream, isNewData, exprEvaluatorContext);
     }
 
-    public Object[] evaluateTypableSingle(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Object[] evaluateTypableSingle(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return strategy.evaluateTypableSingle(eventsPerStream, isNewData, context);
     }
 
-    public Collection<EventBean> evaluateGetROCollectionEvents(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Collection<EventBean> evaluateGetROCollectionEvents(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return strategy.evaluateGetROCollectionEvents(eventsPerStream, isNewData, context);
     }
 
-    public com.espertech.esper.client.EventBean evaluateGetEventBean(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean evaluateGetEventBean(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return strategy.evaluateGetEventBean(eventsPerStream, isNewData, context);
     }
 
-    public Collection evaluateGetROCollectionScalar(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Collection evaluateGetROCollectionScalar(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return strategy.evaluateGetROCollectionScalar(eventsPerStream, isNewData, context);
     }
 }

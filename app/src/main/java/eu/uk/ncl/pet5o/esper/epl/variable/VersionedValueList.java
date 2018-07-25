@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.variable;
 
-import com.espertech.esper.util.ExecutionPathDebugLog;
+import eu.uk.ncl.pet5o.esper.util.ExecutionPathDebugLog;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

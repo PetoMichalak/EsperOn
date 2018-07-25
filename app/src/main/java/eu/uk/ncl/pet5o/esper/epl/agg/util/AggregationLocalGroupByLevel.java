@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.util;
 
-import com.espertech.esper.epl.agg.service.common.AggregationMethodFactory;
-import com.espertech.esper.epl.agg.service.common.AggregationStateFactory;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationMethodFactory;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationStateFactory;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
 
 public class AggregationLocalGroupByLevel {
 

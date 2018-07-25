@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.client.SafeIterator;
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.core.service.StatementAgentInstanceLock;
+import eu.uk.ncl.pet5o.esper.client.SafeIterator;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.core.service.StatementAgentInstanceLock;
 
-public class AgentInstanceArraySafeIterator extends AgentInstanceArrayIterator implements SafeIterator<com.espertech.esper.client.EventBean> {
+public class AgentInstanceArraySafeIterator extends AgentInstanceArrayIterator implements SafeIterator<eu.uk.ncl.pet5o.esper.client.EventBean> {
 
     public AgentInstanceArraySafeIterator(AgentInstance[] instances) {
         super(instances);

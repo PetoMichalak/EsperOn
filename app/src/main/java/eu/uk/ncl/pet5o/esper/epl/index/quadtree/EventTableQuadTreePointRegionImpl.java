@@ -10,22 +10,22 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.index.quadtree;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.join.table.EventTableOrganization;
-import com.espertech.esper.spatial.quadtree.core.BoundingBox;
-import com.espertech.esper.spatial.quadtree.pointregion.PointRegionQuadTree;
-import com.espertech.esper.spatial.quadtree.prqdrowindex.PointRegionQuadTreeRowIndexAdd;
-import com.espertech.esper.spatial.quadtree.prqdrowindex.PointRegionQuadTreeRowIndexQuery;
-import com.espertech.esper.spatial.quadtree.prqdrowindex.PointRegionQuadTreeRowIndexRemove;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.join.table.EventTableOrganization;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.core.BoundingBox;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.pointregion.PointRegionQuadTree;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.prqdrowindex.PointRegionQuadTreeRowIndexAdd;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.prqdrowindex.PointRegionQuadTreeRowIndexQuery;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.prqdrowindex.PointRegionQuadTreeRowIndexRemove;
 
 import java.util.Collection;
 import java.util.Iterator;
 
-import static com.espertech.esper.epl.index.quadtree.AdvancedIndexQuadTreeConstants.COL_X;
-import static com.espertech.esper.epl.index.quadtree.AdvancedIndexQuadTreeConstants.COL_Y;
-import static com.espertech.esper.epl.index.service.AdvancedIndexEvaluationHelper.evalDoubleColumn;
-import static com.espertech.esper.epl.index.service.AdvancedIndexEvaluationHelper.invalidColumnValue;
+import static eu.uk.ncl.pet5o.esper.epl.index.quadtree.AdvancedIndexQuadTreeConstants.COL_X;
+import static eu.uk.ncl.pet5o.esper.epl.index.quadtree.AdvancedIndexQuadTreeConstants.COL_Y;
+import static eu.uk.ncl.pet5o.esper.epl.index.service.AdvancedIndexEvaluationHelper.evalDoubleColumn;
+import static eu.uk.ncl.pet5o.esper.epl.index.service.AdvancedIndexEvaluationHelper.invalidColumnValue;
 
 public class EventTableQuadTreePointRegionImpl implements EventTableQuadTree {
 

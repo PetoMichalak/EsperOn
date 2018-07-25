@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.core.start;
 
-import com.espertech.esper.core.context.mgr.ContextManagementService;
-import com.espertech.esper.util.DestroyCallback;
+import eu.uk.ncl.pet5o.esper.core.context.mgr.ContextManagementService;
+import eu.uk.ncl.pet5o.esper.util.DestroyCallback;
 
 public class EPStatementDestroyCallbackContext implements DestroyCallback {
     private final ContextManagementService contextManagementService;

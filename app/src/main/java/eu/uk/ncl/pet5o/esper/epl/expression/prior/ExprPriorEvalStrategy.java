@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.prior;
 
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
 
 /**
  * Represents the 'prior' prior event resolution strategy for use in an expression node tree.
  */
 public interface ExprPriorEvalStrategy {
-    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext,
+    public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext,
                            int streamNumber, ExprEvaluator evaluator, int constantIndexNumber);
 }

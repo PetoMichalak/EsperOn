@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.resultset.agggrouped;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.agg.service.common.AggregationService;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationService;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -24,8 +24,8 @@ public class ResultSetProcessorAggregateGroupedIterator implements Iterator<Even
     private final Iterator<EventBean> sourceIterator;
     private final ResultSetProcessorAggregateGrouped resultSetProcessor;
     private final AggregationService aggregationService;
-    private com.espertech.esper.client.EventBean nextResult;
-    private final com.espertech.esper.client.EventBean[] eventsPerStream;
+    private eu.uk.ncl.pet5o.esper.client.EventBean nextResult;
+    private final eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream;
     private final ExprEvaluatorContext exprEvaluatorContext;
 
     /**
@@ -40,7 +40,7 @@ public class ResultSetProcessorAggregateGroupedIterator implements Iterator<Even
         this.sourceIterator = sourceIterator;
         this.resultSetProcessor = resultSetProcessor;
         this.aggregationService = aggregationService;
-        eventsPerStream = new com.espertech.esper.client.EventBean[1];
+        eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
         this.exprEvaluatorContext = exprEvaluatorContext;
     }
 
@@ -55,15 +55,15 @@ public class ResultSetProcessorAggregateGroupedIterator implements Iterator<Even
         return false;
     }
 
-    public com.espertech.esper.client.EventBean next() {
+    public eu.uk.ncl.pet5o.esper.client.EventBean next() {
         if (nextResult != null) {
-            com.espertech.esper.client.EventBean result = nextResult;
+            eu.uk.ncl.pet5o.esper.client.EventBean result = nextResult;
             nextResult = null;
             return result;
         }
         findNext();
         if (nextResult != null) {
-            com.espertech.esper.client.EventBean result = nextResult;
+            eu.uk.ncl.pet5o.esper.client.EventBean result = nextResult;
             nextResult = null;
             return result;
         }
@@ -72,7 +72,7 @@ public class ResultSetProcessorAggregateGroupedIterator implements Iterator<Even
 
     private void findNext() {
         while (sourceIterator.hasNext()) {
-            com.espertech.esper.client.EventBean candidate = sourceIterator.next();
+            eu.uk.ncl.pet5o.esper.client.EventBean candidate = sourceIterator.next();
             eventsPerStream[0] = candidate;
 
             Object groupKey = resultSetProcessor.generateGroupKeySingle(eventsPerStream, true);

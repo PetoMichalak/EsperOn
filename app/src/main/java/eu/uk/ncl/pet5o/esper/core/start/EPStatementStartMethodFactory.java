@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.start;
 
-import com.espertech.esper.core.service.speccompiled.StatementSpecCompiled;
+import eu.uk.ncl.pet5o.esper.core.service.speccompiled.StatementSpecCompiled;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

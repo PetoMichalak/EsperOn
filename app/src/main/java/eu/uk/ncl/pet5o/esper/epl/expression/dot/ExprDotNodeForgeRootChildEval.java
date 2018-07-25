@@ -10,23 +10,23 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.dot;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.codegen.base.CodegenBlock;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
-import com.espertech.esper.epl.expression.core.ExprEnumerationEval;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.rettype.EPTypeHelper;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenBlock;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEnumerationEval;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.rettype.EPTypeHelper;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
 
 import java.util.Collection;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
 
 public class ExprDotNodeForgeRootChildEval implements ExprEvaluator, ExprEnumerationEval {
     private final ExprDotNodeForgeRootChild forge;
@@ -45,7 +45,7 @@ public class ExprDotNodeForgeRootChildEval implements ExprEvaluator, ExprEnumera
         return this;
     }
 
-    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qExprDot(forge.getParent());
         }
@@ -85,7 +85,7 @@ public class ExprDotNodeForgeRootChildEval implements ExprEvaluator, ExprEnumera
         return localMethod(methodNode);
     }
 
-    public Collection<EventBean> evaluateGetROCollectionEvents(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Collection<EventBean> evaluateGetROCollectionEvents(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         Object inner = innerEvaluator.evaluateGetROCollectionEvents(eventsPerStream, isNewData, context);
         if (inner != null) {
             if (InstrumentationHelper.ENABLED) {
@@ -112,7 +112,7 @@ public class ExprDotNodeForgeRootChildEval implements ExprEvaluator, ExprEnumera
         return localMethod(methodNode);
     }
 
-    public Collection evaluateGetROCollectionScalar(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Collection evaluateGetROCollectionScalar(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         Object inner = innerEvaluator.evaluateGetROCollectionScalar(eventsPerStream, isNewData, context);
         if (inner != null) {
             if (InstrumentationHelper.ENABLED) {
@@ -139,7 +139,7 @@ public class ExprDotNodeForgeRootChildEval implements ExprEvaluator, ExprEnumera
         return localMethod(methodNode);
     }
 
-    public com.espertech.esper.client.EventBean evaluateGetEventBean(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean evaluateGetEventBean(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return null;
     }
 

@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.codegen.core;
 
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMember;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMember;
 
 import java.util.HashSet;
 import java.util.IdentityHashMap;

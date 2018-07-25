@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.access;
 
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
 
 /**
  * Base interface for providing access-aggregations, i.e. aggregations that mirror a data window
@@ -23,7 +23,7 @@ public interface AggregationState {
      * @param eventsPerStream      all events in all streams, typically implementations pick the relevant stream's events to add
      * @param exprEvaluatorContext expression eval context
      */
-    void applyEnter(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext);
+    void applyEnter(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext);
 
     /**
      * Remove an event.
@@ -31,7 +31,7 @@ public interface AggregationState {
      * @param eventsPerStream      all events in all streams, typically implementations pick the relevant stream's events to remove
      * @param exprEvaluatorContext expression eval context
      */
-    void applyLeave(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext);
+    void applyLeave(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext);
 
     /**
      * Clear all events in the group.

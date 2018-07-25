@@ -10,23 +10,23 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.ops;
 
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMember;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
-import com.espertech.esper.util.LikeUtil;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMember;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.util.LikeUtil;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.member;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.not;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.member;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.not;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
 
 public class ExprLikeNodeForgeConstEval implements ExprEvaluator {
     private final ExprLikeNodeForgeConst forge;
@@ -37,7 +37,7 @@ public class ExprLikeNodeForgeConstEval implements ExprEvaluator {
         this.lhsEval = lhsEval;
     }
 
-    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qExprLike(forge.getForgeRenderable());
         }

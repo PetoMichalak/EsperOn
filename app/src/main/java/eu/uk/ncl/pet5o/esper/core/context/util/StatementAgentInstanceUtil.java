@@ -10,37 +10,37 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.util;
 
-import com.espertech.esper.client.context.ContextPartitionStateListener;
-import com.espertech.esper.client.context.ContextStateEventContextPartitionDeallocated;
-import com.espertech.esper.client.hook.ExceptionHandlerExceptionType;
-import com.espertech.esper.core.context.factory.StatementAgentInstanceFactoryResult;
-import com.espertech.esper.core.context.factory.StatementAgentInstancePreload;
-import com.espertech.esper.core.context.mgr.*;
-import com.espertech.esper.core.context.stmt.AIRegistryAggregation;
-import com.espertech.esper.core.context.stmt.AIRegistryExpr;
-import com.espertech.esper.core.context.subselect.SubSelectStrategyHolder;
-import com.espertech.esper.core.service.*;
-import com.espertech.esper.core.service.resource.StatementResourceHolder;
-import com.espertech.esper.core.start.EPStatementStopMethodImpl;
-import com.espertech.esper.epl.expression.prev.ExprPreviousEvalStrategy;
-import com.espertech.esper.epl.expression.prev.ExprPreviousNode;
-import com.espertech.esper.epl.expression.prior.ExprPriorEvalStrategy;
-import com.espertech.esper.epl.expression.prior.ExprPriorNode;
-import com.espertech.esper.epl.expression.subquery.ExprSubselectNode;
-import com.espertech.esper.epl.expression.table.ExprTableAccessEvalStrategy;
-import com.espertech.esper.epl.expression.table.ExprTableAccessNode;
-import com.espertech.esper.epl.named.NamedWindowProcessor;
-import com.espertech.esper.epl.named.NamedWindowProcessorInstance;
-import com.espertech.esper.epl.script.AgentInstanceScriptContext;
-import com.espertech.esper.epl.spec.OnTriggerDesc;
-import com.espertech.esper.epl.spec.OnTriggerWindowDesc;
-import com.espertech.esper.epl.view.OutputProcessViewTerminable;
-import com.espertech.esper.event.MappedEventBean;
-import com.espertech.esper.filter.FilterHandle;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
-import com.espertech.esper.rowregex.RegexExprPreviousEvalStrategy;
-import com.espertech.esper.util.StopCallback;
-import com.espertech.esper.view.Viewable;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionStateListener;
+import eu.uk.ncl.pet5o.esper.client.context.ContextStateEventContextPartitionDeallocated;
+import eu.uk.ncl.pet5o.esper.client.hook.ExceptionHandlerExceptionType;
+import eu.uk.ncl.pet5o.esper.core.context.factory.StatementAgentInstanceFactoryResult;
+import eu.uk.ncl.pet5o.esper.core.context.factory.StatementAgentInstancePreload;
+import eu.uk.ncl.pet5o.esper.core.context.mgr.*;
+import eu.uk.ncl.pet5o.esper.core.context.stmt.AIRegistryAggregation;
+import eu.uk.ncl.pet5o.esper.core.context.stmt.AIRegistryExpr;
+import eu.uk.ncl.pet5o.esper.core.context.subselect.SubSelectStrategyHolder;
+import eu.uk.ncl.pet5o.esper.core.service.*;
+import eu.uk.ncl.pet5o.esper.core.service.resource.StatementResourceHolder;
+import eu.uk.ncl.pet5o.esper.core.start.EPStatementStopMethodImpl;
+import eu.uk.ncl.pet5o.esper.epl.expression.prev.ExprPreviousEvalStrategy;
+import eu.uk.ncl.pet5o.esper.epl.expression.prev.ExprPreviousNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.prior.ExprPriorEvalStrategy;
+import eu.uk.ncl.pet5o.esper.epl.expression.prior.ExprPriorNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.subquery.ExprSubselectNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.table.ExprTableAccessEvalStrategy;
+import eu.uk.ncl.pet5o.esper.epl.expression.table.ExprTableAccessNode;
+import eu.uk.ncl.pet5o.esper.epl.named.NamedWindowProcessor;
+import eu.uk.ncl.pet5o.esper.epl.named.NamedWindowProcessorInstance;
+import eu.uk.ncl.pet5o.esper.epl.script.AgentInstanceScriptContext;
+import eu.uk.ncl.pet5o.esper.epl.spec.OnTriggerDesc;
+import eu.uk.ncl.pet5o.esper.epl.spec.OnTriggerWindowDesc;
+import eu.uk.ncl.pet5o.esper.epl.view.OutputProcessViewTerminable;
+import eu.uk.ncl.pet5o.esper.event.MappedEventBean;
+import eu.uk.ncl.pet5o.esper.filter.FilterHandle;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.rowregex.RegexExprPreviousEvalStrategy;
+import eu.uk.ncl.pet5o.esper.util.StopCallback;
+import eu.uk.ncl.pet5o.esper.view.Viewable;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,7 +58,7 @@ public class StatementAgentInstanceUtil {
 
     private static final Logger log = LoggerFactory.getLogger(EPStatementStopMethodImpl.class);
 
-    public static void handleFilterFault(com.espertech.esper.client.EventBean theEvent, long version, EPServicesContext servicesContext, Map<Integer, ContextControllerTreeAgentInstanceList> agentInstanceListMap) {
+    public static void handleFilterFault(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, long version, EPServicesContext servicesContext, Map<Integer, ContextControllerTreeAgentInstanceList> agentInstanceListMap) {
         for (Map.Entry<Integer, ContextControllerTreeAgentInstanceList> agentInstanceEntry : agentInstanceListMap.entrySet()) {
             if (agentInstanceEntry.getValue().getFilterVersionAfterAllocation() > version) {
                 StatementAgentInstanceUtil.evaluateEventForStatement(servicesContext, theEvent, null, agentInstanceEntry.getValue().getAgentInstances());
@@ -276,18 +276,18 @@ public class StatementAgentInstanceUtil {
         }
     }
 
-    public static void evaluateEventForStatement(EPServicesContext servicesContext, com.espertech.esper.client.EventBean theEvent, Map<String, Object> optionalTriggeringPattern, List<AgentInstance> agentInstances) {
+    public static void evaluateEventForStatement(EPServicesContext servicesContext, eu.uk.ncl.pet5o.esper.client.EventBean theEvent, Map<String, Object> optionalTriggeringPattern, List<AgentInstance> agentInstances) {
         if (theEvent != null) {
             evaluateEventForStatementInternal(servicesContext, theEvent, agentInstances);
         }
         if (optionalTriggeringPattern != null) {
             // evaluation order definition is up to the originator of the triggering pattern
             for (Map.Entry<String, Object> entry : optionalTriggeringPattern.entrySet()) {
-                if (entry.getValue() instanceof com.espertech.esper.client.EventBean) {
-                    evaluateEventForStatementInternal(servicesContext, (com.espertech.esper.client.EventBean) entry.getValue(), agentInstances);
-                } else if (entry.getValue() instanceof com.espertech.esper.client.EventBean[]) {
-                    com.espertech.esper.client.EventBean[] eventsArray = (com.espertech.esper.client.EventBean[]) entry.getValue();
-                    for (com.espertech.esper.client.EventBean eventElement : eventsArray) {
+                if (entry.getValue() instanceof eu.uk.ncl.pet5o.esper.client.EventBean) {
+                    evaluateEventForStatementInternal(servicesContext, (eu.uk.ncl.pet5o.esper.client.EventBean) entry.getValue(), agentInstances);
+                } else if (entry.getValue() instanceof eu.uk.ncl.pet5o.esper.client.EventBean[]) {
+                    eu.uk.ncl.pet5o.esper.client.EventBean[] eventsArray = (eu.uk.ncl.pet5o.esper.client.EventBean[]) entry.getValue();
+                    for (eu.uk.ncl.pet5o.esper.client.EventBean eventElement : eventsArray) {
                         evaluateEventForStatementInternal(servicesContext, eventElement, agentInstances);
                     }
                 }
@@ -295,7 +295,7 @@ public class StatementAgentInstanceUtil {
         }
     }
 
-    private static void evaluateEventForStatementInternal(EPServicesContext servicesContext, com.espertech.esper.client.EventBean theEvent, List<AgentInstance> agentInstances) {
+    private static void evaluateEventForStatementInternal(EPServicesContext servicesContext, eu.uk.ncl.pet5o.esper.client.EventBean theEvent, List<AgentInstance> agentInstances) {
         // context was created - reevaluate for the given event
         ArrayDeque<FilterHandle> callbacks = new ArrayDeque<FilterHandle>(2);
         servicesContext.getFilterService().evaluate(theEvent, callbacks);   // evaluates for ALL statements
@@ -384,7 +384,7 @@ public class StatementAgentInstanceUtil {
         }
     }
 
-    public static boolean evaluateFilterForStatement(EPServicesContext servicesContext, com.espertech.esper.client.EventBean theEvent, AgentInstanceContext agentInstanceContext, FilterHandle filterHandle) {
+    public static boolean evaluateFilterForStatement(EPServicesContext servicesContext, eu.uk.ncl.pet5o.esper.client.EventBean theEvent, AgentInstanceContext agentInstanceContext, FilterHandle filterHandle) {
         // context was created - reevaluate for the given event
         ArrayDeque<FilterHandle> callbacks = new ArrayDeque<FilterHandle>();
         servicesContext.getFilterService().evaluate(theEvent, callbacks, agentInstanceContext.getStatementContext().getStatementId());
@@ -420,7 +420,7 @@ public class StatementAgentInstanceUtil {
     private static void process(AgentInstance agentInstance,
                                 EPServicesContext servicesContext,
                                 Collection<FilterHandle> callbacks,
-                                com.espertech.esper.client.EventBean theEvent) {
+                                eu.uk.ncl.pet5o.esper.client.EventBean theEvent) {
         AgentInstanceContext agentInstanceContext = agentInstance.getAgentInstanceContext();
         agentInstance.getAgentInstanceContext().getAgentInstanceLock().acquireWriteLock();
         try {

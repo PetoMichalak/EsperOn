@@ -64,8 +64,8 @@ public final class MatchedEventMapImpl implements MatchedEventMap {
      * @param tag is the identifier to look for
      * @return event instances for the tag
      */
-    public com.espertech.esper.client.EventBean getMatchingEvent(final int tag) {
-        return (com.espertech.esper.client.EventBean) matches[tag];
+    public eu.uk.ncl.pet5o.esper.client.EventBean getMatchingEvent(final int tag) {
+        return (eu.uk.ncl.pet5o.esper.client.EventBean) matches[tag];
     }
 
     public Object getMatchingEventAsObject(final int tag) {
@@ -142,9 +142,9 @@ public final class MatchedEventMapImpl implements MatchedEventMap {
         return meta;
     }
 
-    public com.espertech.esper.client.EventBean getMatchingEventByTag(String resultEventAsName) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getMatchingEventByTag(String resultEventAsName) {
         Object obj = getMatchingEventAsObjectByTag(resultEventAsName);
-        return (com.espertech.esper.client.EventBean) obj;
+        return (eu.uk.ncl.pet5o.esper.client.EventBean) obj;
     }
 
     public Object getMatchingEventAsObjectByTag(String key) {

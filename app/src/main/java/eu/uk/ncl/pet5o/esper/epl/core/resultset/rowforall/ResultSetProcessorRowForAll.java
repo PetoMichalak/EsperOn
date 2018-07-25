@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.resultset.rowforall;
 
-import com.espertech.esper.epl.agg.service.common.AggregationService;
-import com.espertech.esper.epl.core.resultset.core.ResultSetProcessor;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationService;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessor;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
 
 public interface ResultSetProcessorRowForAll extends ResultSetProcessor {
-    com.espertech.esper.client.EventBean[] getSelectListEventsAsArray(boolean isNewData, boolean isSynthesize, boolean join);
+    eu.uk.ncl.pet5o.esper.client.EventBean[] getSelectListEventsAsArray(boolean isNewData, boolean isSynthesize, boolean join);
 
     boolean isSelectRStream();
 

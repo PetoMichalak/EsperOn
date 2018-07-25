@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.core.start;
 
-import com.espertech.esper.epl.table.mgmt.TableMetadata;
-import com.espertech.esper.epl.table.mgmt.TableService;
-import com.espertech.esper.util.DestroyCallback;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadata;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableService;
+import eu.uk.ncl.pet5o.esper.util.DestroyCallback;
 
 public class EPStatementDestroyCallbackTableIdxRef implements DestroyCallback {
     private final TableService tableService;

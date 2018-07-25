@@ -10,40 +10,40 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.resultset.rowperevent;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.collection.MultiKey;
-import com.espertech.esper.collection.UniformPair;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.collection.MultiKey;
+import eu.uk.ncl.pet5o.esper.collection.UniformPair;
 
 import java.util.Set;
 
 public class ResultSetProcessorRowPerEventOutputLastHelperImpl implements ResultSetProcessorRowPerEventOutputLastHelper {
     private final ResultSetProcessorRowPerEvent processor;
 
-    private com.espertech.esper.client.EventBean lastEventIStreamForOutputLast;
-    private com.espertech.esper.client.EventBean lastEventRStreamForOutputLast;
+    private eu.uk.ncl.pet5o.esper.client.EventBean lastEventIStreamForOutputLast;
+    private eu.uk.ncl.pet5o.esper.client.EventBean lastEventRStreamForOutputLast;
 
     public ResultSetProcessorRowPerEventOutputLastHelperImpl(ResultSetProcessorRowPerEvent processor) {
         this.processor = processor;
     }
 
-    public void processView(com.espertech.esper.client.EventBean[] newData, com.espertech.esper.client.EventBean[] oldData, boolean isGenerateSynthetic) {
-        UniformPair<com.espertech.esper.client.EventBean[]> pair = processor.processViewResult(newData, oldData, isGenerateSynthetic);
+    public void processView(eu.uk.ncl.pet5o.esper.client.EventBean[] newData, eu.uk.ncl.pet5o.esper.client.EventBean[] oldData, boolean isGenerateSynthetic) {
+        UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> pair = processor.processViewResult(newData, oldData, isGenerateSynthetic);
         apply(pair);
     }
 
     public void processJoin(Set<MultiKey<EventBean>> newEvents, Set<MultiKey<EventBean>> oldEvents, boolean isGenerateSynthetic) {
-        UniformPair<com.espertech.esper.client.EventBean[]> pair = processor.processJoinResult(newEvents, oldEvents, isGenerateSynthetic);
+        UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> pair = processor.processJoinResult(newEvents, oldEvents, isGenerateSynthetic);
         apply(pair);
     }
 
-    public UniformPair<com.espertech.esper.client.EventBean[]> output() {
-        UniformPair<com.espertech.esper.client.EventBean[]> newOldEvents = null;
+    public UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> output() {
+        UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> newOldEvents = null;
         if (lastEventIStreamForOutputLast != null) {
-            com.espertech.esper.client.EventBean[] istream = new com.espertech.esper.client.EventBean[]{lastEventIStreamForOutputLast};
+            eu.uk.ncl.pet5o.esper.client.EventBean[] istream = new eu.uk.ncl.pet5o.esper.client.EventBean[]{lastEventIStreamForOutputLast};
             newOldEvents = new UniformPair<>(istream, null);
         }
         if (lastEventRStreamForOutputLast != null) {
-            com.espertech.esper.client.EventBean[] rstream = new com.espertech.esper.client.EventBean[]{lastEventRStreamForOutputLast};
+            eu.uk.ncl.pet5o.esper.client.EventBean[] rstream = new eu.uk.ncl.pet5o.esper.client.EventBean[]{lastEventRStreamForOutputLast};
             if (newOldEvents == null) {
                 newOldEvents = new UniformPair<>(null, rstream);
             } else {
@@ -60,7 +60,7 @@ public class ResultSetProcessorRowPerEventOutputLastHelperImpl implements Result
         // no action required
     }
 
-    private void apply(UniformPair<com.espertech.esper.client.EventBean[]> pair) {
+    private void apply(UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> pair) {
         if (pair == null) {
             return;
         }

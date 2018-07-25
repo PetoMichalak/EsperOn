@@ -48,7 +48,7 @@ public interface ConfigurationOperations {
      * The same function name cannot be added twice.
      *
      * @param functionName                is the new aggregation function name for use in EPL
-     * @param aggregationFactoryClassName is the fully-qualified class name of the class implementing the aggregation function factory interface {@link com.espertech.esper.client.hook.AggregationFunctionFactory}
+     * @param aggregationFactoryClassName is the fully-qualified class name of the class implementing the aggregation function factory interface {@link eu.uk.ncl.pet5o.esper.client.hook.AggregationFunctionFactory}
      * @throws ConfigurationException is thrown to indicate a problem adding the aggregation function
      */
     public void addPlugInAggregationFunctionFactory(String functionName, String aggregationFactoryClassName) throws ConfigurationException;
@@ -308,7 +308,7 @@ public interface ConfigurationOperations {
      * @param type                the type name of the variable, must be a primitive or boxed Java-builtin scalar type or "object" for any
      *                            value or an event type name or a class name or fully-qualified class name.  Append "[]" for array.
      * @param initializationValue is the first assigned value.
-     *                            For static initialization via the {@link com.espertech.esper.client.Configuration} object the value can be string-typed and will be parsed.
+     *                            For static initialization via the {@link eu.uk.ncl.pet5o.esper.client.Configuration} object the value can be string-typed and will be parsed.
      *                            For static initialization the initialization value, if provided, must implement {@link Serializable} or {@link java.io.Externalizable}.
      * @throws ConfigurationException if the type and initialization value don't match or the variable name
      *                                is already in use
@@ -324,7 +324,7 @@ public interface ConfigurationOperations {
      * @param type                the type name of the variable, must be a primitive or boxed Java-builtin scalar type or "object" for any
      *                            value or an event type name or a class name or fully-qualified class name.  Append "[]" for array.
      * @param initializationValue is the first assigned value
-     *                            For static initialization via the {@link com.espertech.esper.client.Configuration} object the value can be string-typed and will be parsed.
+     *                            For static initialization via the {@link eu.uk.ncl.pet5o.esper.client.Configuration} object the value can be string-typed and will be parsed.
      *                            For static initialization the initialization value, if provided, must implement {@link Serializable} or {@link java.io.Externalizable}.
      * @throws ConfigurationException if the type and initialization value don't match or the variable name
      *                                is already in use
@@ -340,7 +340,7 @@ public interface ConfigurationOperations {
      * @param type                the type name of the variable, must be a primitive or boxed Java-builtin scalar type or "object" for any
      *                            value or an event type name or a class name or fully-qualified class name.  Append "[]" for array.
      * @param initializationValue is the first assigned value
-     *                            For static initialization via the {@link com.espertech.esper.client.Configuration} object the value can be string-typed and will be parsed.
+     *                            For static initialization via the {@link eu.uk.ncl.pet5o.esper.client.Configuration} object the value can be string-typed and will be parsed.
      *                            For static initialization the initialization value, if provided, must implement {@link Serializable} or {@link java.io.Externalizable}.
      * @param constant            true to identify the variable as a constant
      * @throws ConfigurationException if the type and initialization value don't match or the variable name

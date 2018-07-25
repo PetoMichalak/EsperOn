@@ -10,19 +10,19 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.client.EventPropertyGetter;
-import com.espertech.esper.client.context.*;
-import com.espertech.esper.collection.MultiKeyUntyped;
-import com.espertech.esper.core.context.util.ContextControllerSelectorUtil;
-import com.espertech.esper.core.context.util.StatementAgentInstanceUtil;
-import com.espertech.esper.epl.spec.ContextDetailConditionFilter;
-import com.espertech.esper.epl.spec.ContextDetailPartitionItem;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.filter.FilterFaultHandler;
-import com.espertech.esper.filter.FilterHandleCallback;
-import com.espertech.esper.filterspec.FilterSpecCompiled;
-import com.espertech.esper.filterspec.MatchedEventMap;
-import com.espertech.esper.filterspec.MatchedEventMapImpl;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.client.context.*;
+import eu.uk.ncl.pet5o.esper.collection.MultiKeyUntyped;
+import eu.uk.ncl.pet5o.esper.core.context.util.ContextControllerSelectorUtil;
+import eu.uk.ncl.pet5o.esper.core.context.util.StatementAgentInstanceUtil;
+import eu.uk.ncl.pet5o.esper.epl.spec.ContextDetailConditionFilter;
+import eu.uk.ncl.pet5o.esper.epl.spec.ContextDetailPartitionItem;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.filter.FilterFaultHandler;
+import eu.uk.ncl.pet5o.esper.filter.FilterHandleCallback;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterSpecCompiled;
+import eu.uk.ncl.pet5o.esper.filterspec.MatchedEventMap;
+import eu.uk.ncl.pet5o.esper.filterspec.MatchedEventMapImpl;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -44,7 +44,7 @@ public class ContextControllerPartitioned implements ContextController, ContextC
 
     private ContextInternalFilterAddendum activationFilterAddendum;
     protected int currentSubpathId;
-    private com.espertech.esper.client.EventBean lastTerminatingEvent;
+    private eu.uk.ncl.pet5o.esper.client.EventBean lastTerminatingEvent;
 
     public ContextControllerPartitioned(int pathId, ContextControllerLifecycleCallback activationCallback, ContextControllerPartitionedFactoryImpl factory) {
         this.pathId = pathId;
@@ -112,7 +112,7 @@ public class ContextControllerPartitioned implements ContextController, ContextC
         throw ContextControllerSelectorUtil.getInvalidSelector(new Class[]{ContextPartitionSelectorSegmented.class}, contextPartitionSelector);
     }
 
-    public void activate(com.espertech.esper.client.EventBean optionalTriggeringEvent, Map<String, Object> optionalTriggeringPattern, ContextControllerState controllerState, ContextInternalFilterAddendum filterAddendum, Integer importPathId) {
+    public void activate(eu.uk.ncl.pet5o.esper.client.EventBean optionalTriggeringEvent, Map<String, Object> optionalTriggeringPattern, ContextControllerState controllerState, ContextInternalFilterAddendum filterAddendum, Integer importPathId) {
         this.activationFilterAddendum = filterAddendum;
 
         ContextControllerFactoryContext factoryContext = factory.getFactoryContext();
@@ -152,7 +152,7 @@ public class ContextControllerPartitioned implements ContextController, ContextC
         factory.getFactoryContext().getStateCache().removeContextParentPath(factoryContext.getOutermostContextName(), factoryContext.getNestingLevel(), pathId);
     }
 
-    public synchronized void createKey(Object key, com.espertech.esper.client.EventBean theEvent, Collection<FilterHandleCallback> allStmtMatches, String initConditionAsName) {
+    public synchronized void createKey(Object key, eu.uk.ncl.pet5o.esper.client.EventBean theEvent, Collection<FilterHandleCallback> allStmtMatches, String initConditionAsName) {
         boolean exists = partitionKeys.containsKey(key);
         if (exists || theEvent == lastTerminatingEvent) {  // if all-matches is more than one, the termination has also fired
             return;
@@ -193,9 +193,9 @@ public class ContextControllerPartitioned implements ContextController, ContextC
         factory.getFactoryContext().getStateCache().addContextPath(factoryContext.getOutermostContextName(), factoryContext.getNestingLevel(), pathId, currentSubpathId, handle.getContextPartitionOrPathId(), state, factory.getBinding());
     }
 
-    private ContextControllerCondition activateTermination(Object key, Map<String, Object> props, com.espertech.esper.client.EventBean optionalTriggeringEvent, ContextControllerInstanceHandle handle, String initCondAsName) {
+    private ContextControllerCondition activateTermination(Object key, Map<String, Object> props, eu.uk.ncl.pet5o.esper.client.EventBean optionalTriggeringEvent, ContextControllerInstanceHandle handle, String initCondAsName) {
         ContextControllerConditionCallback callback = new ContextControllerConditionCallback() {
-            public void rangeNotification(Map<String, Object> builtinProperties, ContextControllerCondition originEndpoint, com.espertech.esper.client.EventBean optionalTriggeringEvent, Map<String, Object> optionalTriggeringPattern, com.espertech.esper.client.EventBean optionalTriggeringEventPattern, ContextInternalFilterAddendum filterAddendum) {
+            public void rangeNotification(Map<String, Object> builtinProperties, ContextControllerCondition originEndpoint, eu.uk.ncl.pet5o.esper.client.EventBean optionalTriggeringEvent, Map<String, Object> optionalTriggeringPattern, eu.uk.ncl.pet5o.esper.client.EventBean optionalTriggeringEventPattern, ContextInternalFilterAddendum filterAddendum) {
                 ContextControllerPartitionedEntry entry = partitionKeys.remove(key);
                 if (entry == null) {
                     return;
@@ -249,7 +249,7 @@ public class ContextControllerPartitioned implements ContextController, ContextC
         }
     }
 
-    private void initializeFromState(com.espertech.esper.client.EventBean optionalTriggeringEvent,
+    private void initializeFromState(eu.uk.ncl.pet5o.esper.client.EventBean optionalTriggeringEvent,
                                      Map<String, Object> optionalTriggeringPattern,
                                      ContextInternalFilterAddendum filterAddendum,
                                      ContextControllerState controllerState,
@@ -294,7 +294,7 @@ public class ContextControllerPartitioned implements ContextController, ContextC
             ContextControllerCondition terminationCondition = null;
             if (factory.getSegmentedSpec().getOptionalTermination() != null) {
                 Map.Entry<String, Object> initEvent = state.getInitEvents().isEmpty() ? null : state.getInitEvents().entrySet().iterator().next();
-                terminationCondition = activateTermination(mapKey, props, initEvent == null ? null : (com.espertech.esper.client.EventBean) initEvent.getValue(), handle, initEvent == null ? null : initEvent.getKey());
+                terminationCondition = activateTermination(mapKey, props, initEvent == null ? null : (eu.uk.ncl.pet5o.esper.client.EventBean) initEvent.getValue(), handle, initEvent == null ? null : initEvent.getKey());
             }
 
             ContextControllerPartitionedEntry partition = new ContextControllerPartitionedEntry(handle, terminationCondition);
@@ -309,7 +309,7 @@ public class ContextControllerPartitioned implements ContextController, ContextC
         }
     }
 
-    private void activateFilters(ContextControllerFactoryContext factoryContext, com.espertech.esper.client.EventBean optionalTriggeringEvent, ContextInternalFilterAddendum filterAddendum) {
+    private void activateFilters(ContextControllerFactoryContext factoryContext, eu.uk.ncl.pet5o.esper.client.EventBean optionalTriggeringEvent, ContextInternalFilterAddendum filterAddendum) {
         List<ContextDetailConditionFilter> optionalInit = factory.getSegmentedSpec().getOptionalInit();
         if (optionalInit == null || optionalInit.isEmpty()) {
             activateFiltersFromPartitionKeys(factoryContext, optionalTriggeringEvent, filterAddendum);
@@ -318,13 +318,13 @@ public class ContextControllerPartitioned implements ContextController, ContextC
         }
     }
 
-    private void activateFiltersFromPartitionKeys(ContextControllerFactoryContext factoryContext, com.espertech.esper.client.EventBean optionalTriggeringEvent, ContextInternalFilterAddendum filterAddendum) {
+    private void activateFiltersFromPartitionKeys(ContextControllerFactoryContext factoryContext, eu.uk.ncl.pet5o.esper.client.EventBean optionalTriggeringEvent, ContextInternalFilterAddendum filterAddendum) {
         for (ContextDetailPartitionItem item : factory.getSegmentedSpec().getItems()) {
             activateFilter(factoryContext, optionalTriggeringEvent, item.getGetters(), item.getFilterSpecCompiled(), filterAddendum, item.getAliasName());
         }
     }
 
-    private void activateFiltersFromInit(ContextControllerFactoryContext factoryContext, com.espertech.esper.client.EventBean optionalTriggeringEvent, ContextInternalFilterAddendum filterAddendum) {
+    private void activateFiltersFromInit(ContextControllerFactoryContext factoryContext, eu.uk.ncl.pet5o.esper.client.EventBean optionalTriggeringEvent, ContextInternalFilterAddendum filterAddendum) {
         List<ContextDetailConditionFilter> inits = factory.getSegmentedSpec().getOptionalInit();
         for (ContextDetailConditionFilter init : inits) {
 
@@ -343,7 +343,7 @@ public class ContextControllerPartitioned implements ContextController, ContextC
         }
     }
 
-    private void activateFilter(ContextControllerFactoryContext factoryContext, com.espertech.esper.client.EventBean optionalTriggeringEvent, EventPropertyGetter[] getters, FilterSpecCompiled filterSpecCompiled, ContextInternalFilterAddendum filterAddendum, String optionalInitConditionAsName) {
+    private void activateFilter(ContextControllerFactoryContext factoryContext, eu.uk.ncl.pet5o.esper.client.EventBean optionalTriggeringEvent, EventPropertyGetter[] getters, FilterSpecCompiled filterSpecCompiled, ContextInternalFilterAddendum filterAddendum, String optionalInitConditionAsName) {
         ContextControllerPartitionedFilterCallback callback = new ContextControllerPartitionedFilterCallback(factoryContext.getServicesContext(), factoryContext.getAgentInstanceContextCreate(), getters, filterSpecCompiled, this, filterAddendum, optionalInitConditionAsName);
         filterCallbacks.add(callback);
 
@@ -359,7 +359,7 @@ public class ContextControllerPartitioned implements ContextController, ContextC
     private static class ContextControllerWTerminationFilterFaultHandler implements FilterFaultHandler {
         public static final FilterFaultHandler INSTANCE = new ContextControllerWTerminationFilterFaultHandler();
 
-        public boolean handleFilterFault(com.espertech.esper.client.EventBean theEvent, long version) {
+        public boolean handleFilterFault(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, long version) {
             return true;
         }
     }

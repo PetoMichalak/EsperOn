@@ -10,15 +10,15 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.aggregator;
 
-import com.espertech.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.equalsIdentity;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.op;
-import static com.espertech.esper.epl.agg.aggregator.AggregatorCodegenUtil.cntRefCol;
-import static com.espertech.esper.epl.agg.aggregator.AggregatorCodegenUtil.sumRefCol;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.equalsIdentity;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.op;
+import static eu.uk.ncl.pet5o.esper.epl.agg.aggregator.AggregatorCodegenUtil.cntRefCol;
+import static eu.uk.ncl.pet5o.esper.epl.agg.aggregator.AggregatorCodegenUtil.sumRefCol;
 
 /**
  * Average that generates double-typed numbers.

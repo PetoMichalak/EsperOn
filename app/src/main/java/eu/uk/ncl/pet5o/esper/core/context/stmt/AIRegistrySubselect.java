@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.stmt;
 
-import com.espertech.esper.epl.expression.subquery.ExprSubselectStrategy;
+import eu.uk.ncl.pet5o.esper.epl.expression.subquery.ExprSubselectStrategy;
 
 public interface AIRegistrySubselect extends ExprSubselectStrategy {
     public void assignService(int num, ExprSubselectStrategy value);

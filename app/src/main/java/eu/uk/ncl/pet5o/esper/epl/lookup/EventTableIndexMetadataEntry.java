@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.lookup;
 
-import com.espertech.esper.epl.join.plan.QueryPlanIndexItem;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.QueryPlanIndexItem;
 
 import java.util.HashSet;
 import java.util.Set;

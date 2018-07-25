@@ -23,7 +23,7 @@ public class ConfigurationPlugInEventRepresentation implements Serializable {
     /**
      * Returns the class name of the class providing the pluggable event representation.
      *
-     * @return class name of class implementing {@link com.espertech.esper.plugin.PlugInEventRepresentation}
+     * @return class name of class implementing {@link eu.uk.ncl.pet5o.esper.plugin.PlugInEventRepresentation}
      */
     public String getEventRepresentationClassName() {
         return eventRepresentationClassName;
@@ -32,7 +32,7 @@ public class ConfigurationPlugInEventRepresentation implements Serializable {
     /**
      * Sets the class name of the class providing the pluggable event representation.
      *
-     * @param factoryClassName class name of class implementing {@link com.espertech.esper.plugin.PlugInEventRepresentation}
+     * @param factoryClassName class name of class implementing {@link eu.uk.ncl.pet5o.esper.plugin.PlugInEventRepresentation}
      */
     public void setEventRepresentationClassName(String factoryClassName) {
         this.eventRepresentationClassName = factoryClassName;

@@ -41,7 +41,7 @@ public interface MatchedEventMap {
      * @param tag is the identifier to look for
      * @return event instances for the tag
      */
-    public com.espertech.esper.client.EventBean getMatchingEvent(final int tag);
+    public eu.uk.ncl.pet5o.esper.client.EventBean getMatchingEvent(final int tag);
 
     /**
      * Returns the object for the matching event, be it the event bean array or the event bean.
@@ -68,7 +68,7 @@ public interface MatchedEventMap {
 
     public Map<String, Object> getMatchingEventsAsMap();
 
-    public com.espertech.esper.client.EventBean getMatchingEventByTag(String resultEventAsName);
+    public eu.uk.ncl.pet5o.esper.client.EventBean getMatchingEventByTag(String resultEventAsName);
 
     public Object getMatchingEventAsObjectByTag(String key);
 

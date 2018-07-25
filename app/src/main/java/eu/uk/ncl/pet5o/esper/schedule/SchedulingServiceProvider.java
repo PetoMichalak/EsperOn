@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.schedule;
 
-import com.espertech.esper.timer.TimeSourceService;
+import eu.uk.ncl.pet5o.esper.timer.TimeSourceService;
 
 /**
  * Static factory for implementations of the SchedulingService interface.

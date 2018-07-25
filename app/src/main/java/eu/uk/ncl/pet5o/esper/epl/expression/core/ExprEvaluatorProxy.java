@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.core;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.annotation.AuditEnum;
-import com.espertech.esper.event.EventBeanUtility;
-import com.espertech.esper.util.AuditPath;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.annotation.AuditEnum;
+import eu.uk.ncl.pet5o.esper.event.EventBeanUtility;
+import eu.uk.ncl.pet5o.esper.util.AuditPath;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
@@ -70,7 +70,7 @@ public class ExprEvaluatorProxy implements java.lang.reflect.InvocationHandler {
                         } else {
                             StringWriter buf = new StringWriter();
                             int count = 0;
-                            for (com.espertech.esper.client.EventBean theEvent : resultBeans) {
+                            for (eu.uk.ncl.pet5o.esper.client.EventBean theEvent : resultBeans) {
                                 buf.append(" Event ");
                                 buf.append(Integer.toString(count++));
                                 buf.append(":");
@@ -98,7 +98,7 @@ public class ExprEvaluatorProxy implements java.lang.reflect.InvocationHandler {
                     String outStr = "null";
                     if (result != null) {
                         StringWriter buf = new StringWriter();
-                        EventBeanUtility.appendEvent(buf, (com.espertech.esper.client.EventBean) result);
+                        EventBeanUtility.appendEvent(buf, (eu.uk.ncl.pet5o.esper.client.EventBean) result);
                         outStr = buf.toString();
                     }
                     AuditPath.auditLog(engineURI, statementName, AuditEnum.EXPRESSION, expressionToString + " result " + outStr);

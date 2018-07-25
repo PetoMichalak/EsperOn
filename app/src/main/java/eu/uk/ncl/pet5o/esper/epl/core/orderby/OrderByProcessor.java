@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.orderby;
 
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.epl.agg.rollup.GroupByRollupKey;
-import com.espertech.esper.epl.agg.service.common.AggregationGroupByRollupLevel;
-import com.espertech.esper.epl.agg.service.common.AggregationService;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.epl.agg.rollup.GroupByRollupKey;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationGroupByRollupLevel;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationService;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
 
 import java.util.List;
 
@@ -35,7 +35,7 @@ public interface OrderByProcessor {
      * @param aggregationService   aggregation svc
      * @return an array containing the output events in sorted order
      */
-    public com.espertech.esper.client.EventBean[] sortPlain(com.espertech.esper.client.EventBean[] outgoingEvents, com.espertech.esper.client.EventBean[][] generatingEvents, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext, AggregationService aggregationService);
+    public eu.uk.ncl.pet5o.esper.client.EventBean[] sortPlain(eu.uk.ncl.pet5o.esper.client.EventBean[] outgoingEvents, eu.uk.ncl.pet5o.esper.client.EventBean[][] generatingEvents, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext, AggregationService aggregationService);
 
     /**
      * Sort the output events, using the provided group-by keys for
@@ -50,7 +50,7 @@ public interface OrderByProcessor {
      * @param aggregationService   aggregation svc
      * @return an array containing the output events in sorted order
      */
-    public com.espertech.esper.client.EventBean[] sortWGroupKeys(com.espertech.esper.client.EventBean[] outgoingEvents, com.espertech.esper.client.EventBean[][] generatingEvents, Object[] groupByKeys, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext, AggregationService aggregationService);
+    public eu.uk.ncl.pet5o.esper.client.EventBean[] sortWGroupKeys(eu.uk.ncl.pet5o.esper.client.EventBean[] outgoingEvents, eu.uk.ncl.pet5o.esper.client.EventBean[][] generatingEvents, Object[] groupByKeys, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext, AggregationService aggregationService);
 
     /**
      * Sort the output events, using the provided group-by keys for
@@ -64,7 +64,7 @@ public interface OrderByProcessor {
      * @param aggregationService   aggregation svc
      * @return an array containing the output events in sorted order
      */
-    public com.espertech.esper.client.EventBean[] sortRollup(com.espertech.esper.client.EventBean[] outgoingEvents, List<GroupByRollupKey> currentGenerators, boolean newData, AgentInstanceContext agentInstanceContext, AggregationService aggregationService);
+    public eu.uk.ncl.pet5o.esper.client.EventBean[] sortRollup(eu.uk.ncl.pet5o.esper.client.EventBean[] outgoingEvents, List<GroupByRollupKey> currentGenerators, boolean newData, AgentInstanceContext agentInstanceContext, AggregationService aggregationService);
 
     /**
      * Returns the sort key for a given row.
@@ -74,7 +74,7 @@ public interface OrderByProcessor {
      * @param exprEvaluatorContext context for expression evalauation
      * @return sort key
      */
-    public Object getSortKey(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext);
+    public Object getSortKey(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext);
 
     /**
      * Returns the sort key for a given row for rollup.
@@ -85,7 +85,7 @@ public interface OrderByProcessor {
      * @param level rollup level
      * @return sort key
      */
-    public Object getSortKeyRollup(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext, AggregationGroupByRollupLevel level);
+    public Object getSortKeyRollup(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext, AggregationGroupByRollupLevel level);
 
     /**
      * Sort a given array of outgoing events using the sort keys returning a sorted outgoing event array.
@@ -95,7 +95,7 @@ public interface OrderByProcessor {
      * @param exprEvaluatorContext context for expression evalauation
      * @return sorted events
      */
-    public com.espertech.esper.client.EventBean[] sortWOrderKeys(com.espertech.esper.client.EventBean[] outgoingEvents, Object[] orderKeys, ExprEvaluatorContext exprEvaluatorContext);
+    public eu.uk.ncl.pet5o.esper.client.EventBean[] sortWOrderKeys(eu.uk.ncl.pet5o.esper.client.EventBean[] outgoingEvents, Object[] orderKeys, ExprEvaluatorContext exprEvaluatorContext);
 
     /**
      * Sort two keys and events
@@ -105,5 +105,5 @@ public interface OrderByProcessor {
      * @param sortKeySecond sort key seconds
      * @return sorted
      */
-    public com.espertech.esper.client.EventBean[] sortTwoKeys(com.espertech.esper.client.EventBean first, Object sortKeyFirst, com.espertech.esper.client.EventBean second, Object sortKeySecond);
+    public eu.uk.ncl.pet5o.esper.client.EventBean[] sortTwoKeys(eu.uk.ncl.pet5o.esper.client.EventBean first, Object sortKeyFirst, eu.uk.ncl.pet5o.esper.client.EventBean second, Object sortKeySecond);
 }

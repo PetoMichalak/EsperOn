@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.filter;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.epl.expression.core.ExprFilterSpecLookupable;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprFilterSpecLookupable;
 
 public class FilterNonPropertyRegisteryServiceImpl implements FilterNonPropertyRegisteryService {
 

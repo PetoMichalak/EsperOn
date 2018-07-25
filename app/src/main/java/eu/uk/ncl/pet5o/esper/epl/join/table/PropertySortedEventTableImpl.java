@@ -10,15 +10,15 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.table;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventPropertyGetter;
-import com.espertech.esper.collection.SuperIterator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.join.exec.base.RangeIndexLookupValue;
-import com.espertech.esper.epl.join.exec.base.RangeIndexLookupValueEquals;
-import com.espertech.esper.epl.join.exec.base.RangeIndexLookupValueRange;
-import com.espertech.esper.epl.join.plan.QueryGraphRangeEnum;
-import com.espertech.esper.filterspec.Range;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.collection.SuperIterator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.join.exec.base.RangeIndexLookupValue;
+import eu.uk.ncl.pet5o.esper.epl.join.exec.base.RangeIndexLookupValueEquals;
+import eu.uk.ncl.pet5o.esper.epl.join.exec.base.RangeIndexLookupValueRange;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.QueryGraphRangeEnum;
+import eu.uk.ncl.pet5o.esper.filterspec.Range;
 
 import java.util.Collection;
 import java.util.Collections;

@@ -10,18 +10,18 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.access;
 
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.core.ExprForge;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprForge;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.arrayAtIndex;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.newArrayWithInit;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.arrayAtIndex;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.newArrayWithInit;
 
 public class AggregationAgentRewriteStream implements AggregationAgent, AggregationAgentForge {
 
@@ -35,13 +35,13 @@ public class AggregationAgentRewriteStream implements AggregationAgent, Aggregat
         return this;
     }
 
-    public void applyEnter(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext, AggregationState aggregationState) {
-        com.espertech.esper.client.EventBean[] rewrite = new com.espertech.esper.client.EventBean[]{eventsPerStream[streamNum]};
+    public void applyEnter(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext, AggregationState aggregationState) {
+        eu.uk.ncl.pet5o.esper.client.EventBean[] rewrite = new eu.uk.ncl.pet5o.esper.client.EventBean[]{eventsPerStream[streamNum]};
         aggregationState.applyEnter(rewrite, exprEvaluatorContext);
     }
 
-    public void applyLeave(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext, AggregationState aggregationState) {
-        com.espertech.esper.client.EventBean[] rewrite = new com.espertech.esper.client.EventBean[]{eventsPerStream[streamNum]};
+    public void applyLeave(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext, AggregationState aggregationState) {
+        eu.uk.ncl.pet5o.esper.client.EventBean[] rewrite = new eu.uk.ncl.pet5o.esper.client.EventBean[]{eventsPerStream[streamNum]};
         aggregationState.applyLeave(rewrite, exprEvaluatorContext);
     }
 
@@ -54,7 +54,7 @@ public class AggregationAgentRewriteStream implements AggregationAgent, Aggregat
     }
 
     private CodegenExpression applyCodegen(boolean enter, CodegenMethodScope parent, AggregationAgentCodegenSymbols symbols, CodegenClassScope classScope) {
-        return exprDotMethod(symbols.getAddState(parent), enter ? "applyEnter" : "applyLeave", newArrayWithInit(com.espertech.esper.client.EventBean.class, arrayAtIndex(symbols.getAddEPS(parent), constant(streamNum))), symbols.getAddExprEvalCtx(parent));
+        return exprDotMethod(symbols.getAddState(parent), enter ? "applyEnter" : "applyLeave", newArrayWithInit(eu.uk.ncl.pet5o.esper.client.EventBean.class, arrayAtIndex(symbols.getAddEPS(parent), constant(streamNum))), symbols.getAddExprEvalCtx(parent));
     }
 
     public ExprForge getOptionalFilter() {

@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.event.bean;
 
-import com.espertech.esper.client.ConfigurationEventTypeLegacy;
-import com.espertech.esper.client.ConfigurationException;
-import com.espertech.esper.event.EventPropertyType;
+import eu.uk.ncl.pet5o.esper.client.ConfigurationEventTypeLegacy;
+import eu.uk.ncl.pet5o.esper.client.ConfigurationException;
+import eu.uk.ncl.pet5o.esper.event.EventPropertyType;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

@@ -10,21 +10,21 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.activator;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.core.service.EPServicesContext;
-import com.espertech.esper.core.service.EPStatementHandleCallback;
-import com.espertech.esper.filter.FilterHandleCallback;
-import com.espertech.esper.filter.FilterServiceEntry;
-import com.espertech.esper.filterspec.FilterSpecCompiled;
-import com.espertech.esper.filterspec.FilterValueSet;
-import com.espertech.esper.filterspec.FilterValueSetParam;
-import com.espertech.esper.metrics.instrumentation.InstrumentationAgent;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
-import com.espertech.esper.view.EventStream;
-import com.espertech.esper.view.ZeroDepthStreamIterable;
-import com.espertech.esper.view.ZeroDepthStreamNoIterate;
-import com.espertech.esper.view.stream.EventStreamProxy;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.core.service.EPServicesContext;
+import eu.uk.ncl.pet5o.esper.core.service.EPStatementHandleCallback;
+import eu.uk.ncl.pet5o.esper.filter.FilterHandleCallback;
+import eu.uk.ncl.pet5o.esper.filter.FilterServiceEntry;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterSpecCompiled;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterValueSet;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterValueSetParam;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationAgent;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.view.EventStream;
+import eu.uk.ncl.pet5o.esper.view.ZeroDepthStreamIterable;
+import eu.uk.ncl.pet5o.esper.view.ZeroDepthStreamNoIterate;
+import eu.uk.ncl.pet5o.esper.view.stream.EventStreamProxy;
 
 import java.lang.annotation.Annotation;
 import java.util.Collection;
@@ -66,8 +66,8 @@ public class ViewableActivatorFilterProxy implements ViewableActivator {
                     return statementId;
                 }
 
-                public void matchFound(com.espertech.esper.client.EventBean theEvent, Collection<FilterHandleCallback> allStmtMatches) {
-                    com.espertech.esper.client.EventBean[] result = filterSpec.getOptionalPropertyEvaluator().getProperty(theEvent, agentInstanceContext);
+                public void matchFound(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, Collection<FilterHandleCallback> allStmtMatches) {
+                    eu.uk.ncl.pet5o.esper.client.EventBean[] result = filterSpec.getOptionalPropertyEvaluator().getProperty(theEvent, agentInstanceContext);
                     if (result == null) {
                         return;
                     }
@@ -84,7 +84,7 @@ public class ViewableActivatorFilterProxy implements ViewableActivator {
                     return statementId;
                 }
 
-                public void matchFound(com.espertech.esper.client.EventBean theEvent, Collection<FilterHandleCallback> allStmtMatches) {
+                public void matchFound(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, Collection<FilterHandleCallback> allStmtMatches) {
                     if (InstrumentationHelper.ENABLED) {
                         instrumentationAgent.indicateQ();
                     }

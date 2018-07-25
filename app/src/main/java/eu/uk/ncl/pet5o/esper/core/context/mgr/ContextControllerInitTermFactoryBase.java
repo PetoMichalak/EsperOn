@@ -10,21 +10,21 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.context.ContextPartitionIdentifier;
-import com.espertech.esper.client.context.ContextPartitionIdentifierInitiatedTerminated;
-import com.espertech.esper.core.context.stmt.*;
-import com.espertech.esper.core.service.EPStatementHandle;
-import com.espertech.esper.core.service.StatementContext;
-import com.espertech.esper.epl.expression.core.ExprFilterSpecLookupable;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.epl.spec.ContextDetailInitiatedTerminated;
-import com.espertech.esper.epl.spec.ContextDetailPartitionItem;
-import com.espertech.esper.filterspec.FilterSpecCompiled;
-import com.espertech.esper.filterspec.FilterValueSetParam;
-import com.espertech.esper.filterspec.MatchedEventMapMeta;
-import com.espertech.esper.schedule.SchedulingService;
-import com.espertech.esper.schedule.TimeProvider;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionIdentifier;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionIdentifierInitiatedTerminated;
+import eu.uk.ncl.pet5o.esper.core.context.stmt.*;
+import eu.uk.ncl.pet5o.esper.core.service.EPStatementHandle;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprFilterSpecLookupable;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.epl.spec.ContextDetailInitiatedTerminated;
+import eu.uk.ncl.pet5o.esper.epl.spec.ContextDetailPartitionItem;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterSpecCompiled;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterValueSetParam;
+import eu.uk.ncl.pet5o.esper.filterspec.MatchedEventMapMeta;
+import eu.uk.ncl.pet5o.esper.schedule.SchedulingService;
+import eu.uk.ncl.pet5o.esper.schedule.TimeProvider;
 
 import java.util.Collections;
 import java.util.IdentityHashMap;

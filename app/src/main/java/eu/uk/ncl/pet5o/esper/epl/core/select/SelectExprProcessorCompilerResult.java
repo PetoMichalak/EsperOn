@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.select;
 
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
 
 public class SelectExprProcessorCompilerResult {
     private final CodegenMethodNode topNode;

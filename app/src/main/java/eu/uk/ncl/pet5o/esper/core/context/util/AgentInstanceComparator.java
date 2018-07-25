@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.util;
 
-import com.espertech.esper.core.context.mgr.AgentInstance;
+import eu.uk.ncl.pet5o.esper.core.context.mgr.AgentInstance;
 
 import java.io.Serializable;
 import java.util.Comparator;

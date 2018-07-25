@@ -10,20 +10,20 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.rollup;
 
-import com.espertech.esper.epl.agg.service.common.AggregationGroupByRollupLevel;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationGroupByRollupLevel;
 
 public class GroupByRollupKey {
-    private final com.espertech.esper.client.EventBean[] generator;
+    private final eu.uk.ncl.pet5o.esper.client.EventBean[] generator;
     private final AggregationGroupByRollupLevel level;
     private final Object groupKey;
 
-    public GroupByRollupKey(com.espertech.esper.client.EventBean[] generator, AggregationGroupByRollupLevel level, Object groupKey) {
+    public GroupByRollupKey(eu.uk.ncl.pet5o.esper.client.EventBean[] generator, AggregationGroupByRollupLevel level, Object groupKey) {
         this.generator = generator;
         this.level = level;
         this.groupKey = groupKey;
     }
 
-    public com.espertech.esper.client.EventBean[] getGenerator() {
+    public eu.uk.ncl.pet5o.esper.client.EventBean[] getGenerator() {
         return generator;
     }
 

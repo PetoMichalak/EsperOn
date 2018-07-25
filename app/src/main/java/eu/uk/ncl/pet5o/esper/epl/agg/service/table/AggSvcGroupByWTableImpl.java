@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.service.table;
 
-import com.espertech.esper.epl.agg.access.AggregationAccessorSlotPair;
-import com.espertech.esper.epl.agg.access.AggregationAgent;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.table.mgmt.TableColumnMethodPair;
-import com.espertech.esper.epl.table.mgmt.TableMetadata;
-import com.espertech.esper.epl.table.mgmt.TableStateInstanceGrouped;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationAccessorSlotPair;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationAgent;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableColumnMethodPair;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadata;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableStateInstanceGrouped;
 
 /**
  * Implementation for handling aggregation with grouping by group-keys.
@@ -26,11 +26,11 @@ public class AggSvcGroupByWTableImpl extends AggSvcGroupByWTableBase {
         super(tableMetadata, methodPairs, accessors, join, tableStateInstance, targetStates, accessStateExpr, agents);
     }
 
-    public void applyEnterInternal(com.espertech.esper.client.EventBean[] eventsPerStream, Object groupByKey, ExprEvaluatorContext exprEvaluatorContext) {
+    public void applyEnterInternal(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, Object groupByKey, ExprEvaluatorContext exprEvaluatorContext) {
         applyEnterGroupKey(eventsPerStream, groupByKey, exprEvaluatorContext);
     }
 
-    public void applyLeaveInternal(com.espertech.esper.client.EventBean[] eventsPerStream, Object groupByKey, ExprEvaluatorContext exprEvaluatorContext) {
+    public void applyLeaveInternal(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, Object groupByKey, ExprEvaluatorContext exprEvaluatorContext) {
         applyLeaveGroupKey(eventsPerStream, groupByKey, exprEvaluatorContext);
     }
 }

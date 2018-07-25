@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service.multimatch;
 
-import com.espertech.esper.filter.FilterHandleCallback;
+import eu.uk.ncl.pet5o.esper.filter.FilterHandleCallback;
 
 import java.util.Collection;
 
@@ -21,7 +21,7 @@ public class MultiMatchHandlerNoSubqueryNoDedup implements MultiMatchHandler {
     private MultiMatchHandlerNoSubqueryNoDedup() {
     }
 
-    public void handle(Collection<FilterHandleCallback> callbacks, com.espertech.esper.client.EventBean theEvent) {
+    public void handle(Collection<FilterHandleCallback> callbacks, eu.uk.ncl.pet5o.esper.client.EventBean theEvent) {
         for (FilterHandleCallback callback : callbacks) {
             callback.matchFound(theEvent, callbacks);
         }

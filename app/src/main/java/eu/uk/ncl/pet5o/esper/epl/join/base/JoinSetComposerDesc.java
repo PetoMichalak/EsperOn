@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.base;
 
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
 
 public class JoinSetComposerDesc {
     private final JoinSetComposer joinSetComposer;

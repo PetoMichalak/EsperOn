@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.util;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.client.annotation.HookType;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.epl.core.engineimport.EngineImportUtil;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.client.annotation.HookType;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportUtil;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
 
 import java.lang.annotation.Annotation;
 

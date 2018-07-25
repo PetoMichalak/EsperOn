@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.dot;
 
-import com.espertech.esper.epl.expression.core.ExprEnumerationEval;
-import com.espertech.esper.epl.rettype.EPType;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEnumerationEval;
+import eu.uk.ncl.pet5o.esper.epl.rettype.EPType;
 
 public class ExprDotEnumerationSource {
     private final EPType returnType;

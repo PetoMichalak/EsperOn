@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.table.strategy;
 
-import com.espertech.esper.epl.table.mgmt.TableStateInstanceUngrouped;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableStateInstanceUngrouped;
 
 import java.util.concurrent.locks.Lock;
 

@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.plan;
 
-import com.espertech.esper.collection.MultiKeyUntyped;
+import eu.uk.ncl.pet5o.esper.collection.MultiKeyUntyped;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Property lists stored as a value for each stream-to-stream relationship, for use by {@link com.espertech.esper.epl.join.plan.QueryGraph}.
+ * Property lists stored as a value for each stream-to-stream relationship, for use by {@link eu.uk.ncl.pet5o.esper.epl.join.plan.QueryGraph}.
  */
 public class QueryGraphRangeUtil {
     private static final Map<MultiKeyUntyped, QueryGraphRangeConsolidateDesc> OPS_TABLE = new HashMap<MultiKeyUntyped, QueryGraphRangeConsolidateDesc>();

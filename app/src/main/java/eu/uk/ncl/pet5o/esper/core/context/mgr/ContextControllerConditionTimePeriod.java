@@ -10,15 +10,15 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.core.context.util.EPStatementAgentInstanceHandle;
-import com.espertech.esper.core.service.EPStatementHandleCallback;
-import com.espertech.esper.core.service.EngineLevelExtensionServicesContext;
-import com.espertech.esper.core.service.StatementAgentInstanceFilterVersion;
-import com.espertech.esper.epl.spec.ContextDetailConditionTimePeriod;
-import com.espertech.esper.filterspec.MatchedEventMap;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
-import com.espertech.esper.schedule.ScheduleHandleCallback;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.core.context.util.EPStatementAgentInstanceHandle;
+import eu.uk.ncl.pet5o.esper.core.service.EPStatementHandleCallback;
+import eu.uk.ncl.pet5o.esper.core.service.EngineLevelExtensionServicesContext;
+import eu.uk.ncl.pet5o.esper.core.service.StatementAgentInstanceFilterVersion;
+import eu.uk.ncl.pet5o.esper.epl.spec.ContextDetailConditionTimePeriod;
+import eu.uk.ncl.pet5o.esper.filterspec.MatchedEventMap;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.schedule.ScheduleHandleCallback;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,7 +47,7 @@ public class ContextControllerConditionTimePeriod implements ContextControllerCo
         this.filterAddendum = filterAddendum;
     }
 
-    public void activate(com.espertech.esper.client.EventBean optionalTriggerEvent, MatchedEventMap priorMatches, long timeOffset, boolean isRecoveringResilient) {
+    public void activate(eu.uk.ncl.pet5o.esper.client.EventBean optionalTriggerEvent, MatchedEventMap priorMatches, long timeOffset, boolean isRecoveringResilient) {
         startContextCallback(timeOffset);
     }
 

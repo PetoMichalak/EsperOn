@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.table.merge;
 
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.table.mgmt.TableStateInstance;
-import com.espertech.esper.epl.table.onaction.TableOnMergeViewChangeHandler;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableStateInstance;
+import eu.uk.ncl.pet5o.esper.epl.table.onaction.TableOnMergeViewChangeHandler;
 
 public abstract class TableOnMergeAction {
 
@@ -23,7 +23,7 @@ public abstract class TableOnMergeAction {
         this.optionalFilter = optionalFilter;
     }
 
-    public boolean isApplies(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext context) {
+    public boolean isApplies(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext context) {
         if (optionalFilter == null) {
             return true;
         }
@@ -31,8 +31,8 @@ public abstract class TableOnMergeAction {
         return result != null && (Boolean) result;
     }
 
-    public abstract void apply(com.espertech.esper.client.EventBean matchingEvent,
-                               com.espertech.esper.client.EventBean[] eventsPerStream,
+    public abstract void apply(eu.uk.ncl.pet5o.esper.client.EventBean matchingEvent,
+                               eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream,
                                TableStateInstance tableStateInstance,
                                TableOnMergeViewChangeHandler changeHandlerAdded,
                                TableOnMergeViewChangeHandler changeHandlerRemoved,

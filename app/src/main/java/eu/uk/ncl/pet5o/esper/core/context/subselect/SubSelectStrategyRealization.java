@@ -10,20 +10,20 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.subselect;
 
-import com.espertech.esper.core.context.factory.StatementAgentInstancePostLoad;
-import com.espertech.esper.epl.agg.service.common.AggregationService;
-import com.espertech.esper.epl.expression.prev.ExprPreviousEvalStrategy;
-import com.espertech.esper.epl.expression.prev.ExprPreviousNode;
-import com.espertech.esper.epl.expression.prior.ExprPriorEvalStrategy;
-import com.espertech.esper.epl.expression.prior.ExprPriorNode;
-import com.espertech.esper.epl.lookup.SubordTableLookupStrategy;
-import com.espertech.esper.epl.subquery.SubselectAggregationPreprocessorBase;
-import com.espertech.esper.view.Viewable;
+import eu.uk.ncl.pet5o.esper.core.context.factory.StatementAgentInstancePostLoad;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationService;
+import eu.uk.ncl.pet5o.esper.epl.expression.prev.ExprPreviousEvalStrategy;
+import eu.uk.ncl.pet5o.esper.epl.expression.prev.ExprPreviousNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.prior.ExprPriorEvalStrategy;
+import eu.uk.ncl.pet5o.esper.epl.expression.prior.ExprPriorNode;
+import eu.uk.ncl.pet5o.esper.epl.lookup.SubordTableLookupStrategy;
+import eu.uk.ncl.pet5o.esper.epl.subquery.SubselectAggregationPreprocessorBase;
+import eu.uk.ncl.pet5o.esper.view.Viewable;
 
 import java.util.Map;
 
 /**
- * Entry holding lookup resource references for use by {@link com.espertech.esper.core.context.subselect.SubSelectActivationCollection}.
+ * Entry holding lookup resource references for use by {@link eu.uk.ncl.pet5o.esper.core.context.subselect.SubSelectActivationCollection}.
  */
 public class SubSelectStrategyRealization {
     private final SubordTableLookupStrategy strategy;

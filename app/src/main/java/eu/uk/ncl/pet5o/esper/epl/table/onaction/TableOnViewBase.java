@@ -10,15 +10,15 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.table.onaction;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.lookup.SubordWMatchExprLookupStrategy;
-import com.espertech.esper.epl.table.mgmt.TableMetadata;
-import com.espertech.esper.epl.table.mgmt.TableStateInstance;
-import com.espertech.esper.util.CollectionUtil;
-import com.espertech.esper.util.StopCallback;
-import com.espertech.esper.view.ViewSupport;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.lookup.SubordWMatchExprLookupStrategy;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadata;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableStateInstance;
+import eu.uk.ncl.pet5o.esper.util.CollectionUtil;
+import eu.uk.ncl.pet5o.esper.util.StopCallback;
+import eu.uk.ncl.pet5o.esper.view.ViewSupport;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,13 +42,13 @@ public abstract class TableOnViewBase extends ViewSupport implements StopCallbac
         this.acquireWriteLock = acquireWriteLock;
     }
 
-    public abstract void handleMatching(com.espertech.esper.client.EventBean[] triggerEvents, com.espertech.esper.client.EventBean[] matchingEvents);
+    public abstract void handleMatching(eu.uk.ncl.pet5o.esper.client.EventBean[] triggerEvents, eu.uk.ncl.pet5o.esper.client.EventBean[] matchingEvents);
 
     public void stop() {
         log.debug(".stop");
     }
 
-    public void update(com.espertech.esper.client.EventBean[] newData, com.espertech.esper.client.EventBean[] oldData) {
+    public void update(eu.uk.ncl.pet5o.esper.client.EventBean[] newData, eu.uk.ncl.pet5o.esper.client.EventBean[] oldData) {
         if (newData == null) {
             return;
         }
@@ -56,7 +56,7 @@ public abstract class TableOnViewBase extends ViewSupport implements StopCallbac
         if (acquireWriteLock) {
             tableStateInstance.getTableLevelRWLock().writeLock().lock();
             try {
-                com.espertech.esper.client.EventBean[] eventsFound = lookupStrategy.lookup(newData, exprEvaluatorContext);
+                eu.uk.ncl.pet5o.esper.client.EventBean[] eventsFound = lookupStrategy.lookup(newData, exprEvaluatorContext);
                 handleMatching(newData, eventsFound);
             } finally {
                 tableStateInstance.getTableLevelRWLock().writeLock().unlock();
@@ -64,7 +64,7 @@ public abstract class TableOnViewBase extends ViewSupport implements StopCallbac
         } else {
             tableStateInstance.getTableLevelRWLock().readLock().lock();
             try {
-                com.espertech.esper.client.EventBean[] eventsFound = lookupStrategy.lookup(newData, exprEvaluatorContext);
+                eu.uk.ncl.pet5o.esper.client.EventBean[] eventsFound = lookupStrategy.lookup(newData, exprEvaluatorContext);
                 handleMatching(newData, eventsFound);
             } finally {
                 tableStateInstance.getTableLevelRWLock().readLock().unlock();

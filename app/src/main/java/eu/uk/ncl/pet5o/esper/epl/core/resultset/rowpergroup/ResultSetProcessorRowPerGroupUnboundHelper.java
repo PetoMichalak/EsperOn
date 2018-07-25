@@ -10,14 +10,14 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.resultset.rowpergroup;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.agg.service.common.AggregationRowRemovedCallback;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationRowRemovedCallback;
 
 import java.util.Iterator;
 
 public interface ResultSetProcessorRowPerGroupUnboundHelper extends AggregationRowRemovedCallback {
 
-    void put(Object key, com.espertech.esper.client.EventBean event);
+    void put(Object key, eu.uk.ncl.pet5o.esper.client.EventBean event);
 
     void removedAggregationGroupKey(Object key);
 

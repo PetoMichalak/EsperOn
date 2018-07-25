@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.util;
 
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
 
 import java.math.BigInteger;
 

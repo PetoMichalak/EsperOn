@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.stmt;
 
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.rowregex.RegexExprPreviousEvalStrategy;
-import com.espertech.esper.rowregex.RegexPartitionStateRandomAccess;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.rowregex.RegexExprPreviousEvalStrategy;
+import eu.uk.ncl.pet5o.esper.rowregex.RegexPartitionStateRandomAccess;
 
 public class AIRegistryMatchRecognizePreviousSingle implements AIRegistryMatchRecognizePrevious, RegexExprPreviousEvalStrategy {
 

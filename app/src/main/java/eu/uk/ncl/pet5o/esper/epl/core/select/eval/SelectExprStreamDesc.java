@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.select.eval;
 
-import com.espertech.esper.core.service.speccompiled.SelectClauseStreamCompiledSpec;
-import com.espertech.esper.epl.spec.SelectClauseExprCompiledSpec;
+import eu.uk.ncl.pet5o.esper.core.service.speccompiled.SelectClauseStreamCompiledSpec;
+import eu.uk.ncl.pet5o.esper.epl.spec.SelectClauseExprCompiledSpec;
 
 public class SelectExprStreamDesc {
     private final SelectClauseStreamCompiledSpec streamSelected;

@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.event.bean;
 
-import com.espertech.esper.client.EPRuntime;
-import com.espertech.esper.event.SendableEvent;
+import eu.uk.ncl.pet5o.esper.client.EPRuntime;
+import eu.uk.ncl.pet5o.esper.event.SendableEvent;
 
 public class SendableEventBean implements SendableEvent {
     private final Object event;

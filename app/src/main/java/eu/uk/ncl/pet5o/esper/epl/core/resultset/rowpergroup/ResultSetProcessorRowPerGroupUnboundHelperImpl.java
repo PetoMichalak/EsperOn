@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.resultset.rowpergroup;
 
-import com.espertech.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
 
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -20,7 +20,7 @@ public class ResultSetProcessorRowPerGroupUnboundHelperImpl implements ResultSet
 
     private final Map<Object, EventBean> groupReps = new LinkedHashMap<Object, EventBean>();
 
-    public void put(Object key, com.espertech.esper.client.EventBean event) {
+    public void put(Object key, eu.uk.ncl.pet5o.esper.client.EventBean event) {
         groupReps.put(key, event);
     }
 

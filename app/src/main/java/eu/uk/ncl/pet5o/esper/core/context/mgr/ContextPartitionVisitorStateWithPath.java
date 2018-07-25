@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.client.context.ContextPartitionDescriptor;
-import com.espertech.esper.client.context.ContextPartitionIdentifier;
-import com.espertech.esper.client.context.ContextPartitionIdentifierNested;
-import com.espertech.esper.client.context.ContextPartitionState;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionDescriptor;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionIdentifier;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionIdentifierNested;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionState;
 
 import java.util.ArrayList;
 import java.util.Collection;

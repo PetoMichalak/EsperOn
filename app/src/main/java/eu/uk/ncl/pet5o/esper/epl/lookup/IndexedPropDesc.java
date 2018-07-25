@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.lookup;
 
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import java.io.StringWriter;
 import java.util.ArrayList;

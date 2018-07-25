@@ -10,15 +10,15 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.activator;
 
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.named.NamedWindowConsumerDesc;
-import com.espertech.esper.epl.named.NamedWindowConsumerView;
-import com.espertech.esper.epl.named.NamedWindowProcessor;
-import com.espertech.esper.epl.util.ExprNodeUtilityRich;
-import com.espertech.esper.filterspec.PropertyEvaluator;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.named.NamedWindowConsumerDesc;
+import eu.uk.ncl.pet5o.esper.epl.named.NamedWindowConsumerView;
+import eu.uk.ncl.pet5o.esper.epl.named.NamedWindowProcessor;
+import eu.uk.ncl.pet5o.esper.epl.util.ExprNodeUtilityRich;
+import eu.uk.ncl.pet5o.esper.filterspec.PropertyEvaluator;
 
 import java.util.List;
 

@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.filter;
 
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.filterspec.FilterSpecParamInValue;
-import com.espertech.esper.filterspec.MatchedEventMap;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterSpecParamInValue;
+import eu.uk.ncl.pet5o.esper.filterspec.MatchedEventMap;
 
 /**
  * Constant value in a list of values following an in-keyword.

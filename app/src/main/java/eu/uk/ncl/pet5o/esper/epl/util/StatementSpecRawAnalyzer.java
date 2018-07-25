@@ -10,14 +10,14 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.util;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.epl.expression.core.ExprIdentNode;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.epl.expression.subquery.ExprSubselectNode;
-import com.espertech.esper.epl.expression.visitor.ExprNodeSubselectDeclaredDotVisitor;
-import com.espertech.esper.epl.spec.*;
-import com.espertech.esper.pattern.*;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprIdentNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.epl.expression.subquery.ExprSubselectNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.visitor.ExprNodeSubselectDeclaredDotVisitor;
+import eu.uk.ncl.pet5o.esper.epl.spec.*;
+import eu.uk.ncl.pet5o.esper.pattern.*;
 
 import java.util.ArrayList;
 import java.util.List;

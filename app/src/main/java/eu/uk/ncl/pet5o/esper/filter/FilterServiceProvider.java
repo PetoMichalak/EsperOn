@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.filter;
 
-import com.espertech.esper.client.ConfigurationEngineDefaults;
+import eu.uk.ncl.pet5o.esper.client.ConfigurationEngineDefaults;
 
 /**
  * Static factory for implementations of the {@link FilterService} interface.

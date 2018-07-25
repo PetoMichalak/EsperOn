@@ -17,7 +17,7 @@ public class ExprNodeUtilExprStreamNumEnumCollEval implements ExprEvaluator {
         this.enumeration = enumeration;
     }
 
-    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return enumeration.evaluateGetROCollectionEvents(eventsPerStream, isNewData, context);
     }
 

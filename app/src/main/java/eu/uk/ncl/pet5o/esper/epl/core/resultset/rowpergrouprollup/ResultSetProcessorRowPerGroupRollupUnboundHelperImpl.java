@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.resultset.rowpergrouprollup;
 
-import com.espertech.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

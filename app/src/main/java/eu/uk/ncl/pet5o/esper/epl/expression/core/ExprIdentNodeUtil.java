@@ -10,16 +10,16 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.core;
 
-import com.espertech.esper.client.EventPropertyDescriptor;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.PropertyAccessException;
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.epl.core.streamtype.PropertyResolutionDescriptor;
-import com.espertech.esper.epl.core.streamtype.StreamTypeService;
-import com.espertech.esper.epl.core.streamtype.StreamTypesException;
-import com.espertech.esper.epl.table.mgmt.TableServiceUtil;
-import com.espertech.esper.util.LevenshteinDistance;
-import com.espertech.esper.util.StringValue;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyDescriptor;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.PropertyAccessException;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.epl.core.streamtype.PropertyResolutionDescriptor;
+import eu.uk.ncl.pet5o.esper.epl.core.streamtype.StreamTypeService;
+import eu.uk.ncl.pet5o.esper.epl.core.streamtype.StreamTypesException;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableServiceUtil;
+import eu.uk.ncl.pet5o.esper.util.LevenshteinDistance;
+import eu.uk.ncl.pet5o.esper.util.StringValue;
 
 public class ExprIdentNodeUtil {
     public static Pair<PropertyResolutionDescriptor, String> getTypeFromStream(StreamTypeService streamTypeService, String propertyNameNestable, boolean explicitPropertiesOnly, boolean obtainFragment)

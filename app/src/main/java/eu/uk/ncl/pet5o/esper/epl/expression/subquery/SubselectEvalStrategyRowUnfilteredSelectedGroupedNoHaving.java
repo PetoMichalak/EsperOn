@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.subquery;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.agg.service.common.AggregationService;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationService;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
 
 import java.util.ArrayDeque;
 import java.util.Collection;
@@ -24,7 +24,7 @@ import java.util.Map;
 public class SubselectEvalStrategyRowUnfilteredSelectedGroupedNoHaving extends SubselectEvalStrategyRowUnfilteredSelected
         implements SubselectEvalStrategyRow {
 
-    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean newData, Collection<EventBean> matchingEvents, ExprEvaluatorContext exprEvaluatorContext, ExprSubselectRowNode parent) {
+    public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean newData, Collection<EventBean> matchingEvents, ExprEvaluatorContext exprEvaluatorContext, ExprSubselectRowNode parent) {
 
         Collection<Object> groupKeys = parent.getSubselectAggregationService().getGroupKeys(exprEvaluatorContext);
         if (groupKeys.isEmpty() || groupKeys.size() > 1) {
@@ -35,15 +35,15 @@ public class SubselectEvalStrategyRowUnfilteredSelectedGroupedNoHaving extends S
         return super.evaluate(eventsPerStream, newData, matchingEvents, exprEvaluatorContext, parent);
     }
 
-    public Collection evaluateGetCollScalar(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, Collection<EventBean> matchingEvents, ExprEvaluatorContext context, ExprSubselectRowNode parent) {
+    public Collection evaluateGetCollScalar(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, Collection<EventBean> matchingEvents, ExprEvaluatorContext context, ExprSubselectRowNode parent) {
         return null;
     }
 
-    public com.espertech.esper.client.EventBean evaluateGetEventBean(com.espertech.esper.client.EventBean[] eventsPerStream, boolean newData, Collection<EventBean> matchingEvents, ExprEvaluatorContext context, ExprSubselectRowNode parent) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean evaluateGetEventBean(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean newData, Collection<EventBean> matchingEvents, ExprEvaluatorContext context, ExprSubselectRowNode parent) {
         return null;
     }
 
-    public Collection<EventBean> evaluateGetCollEvents(com.espertech.esper.client.EventBean[] eventsPerStream, boolean newData, Collection<EventBean> matchingEvents, ExprEvaluatorContext context, ExprSubselectRowNode parent) {
+    public Collection<EventBean> evaluateGetCollEvents(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean newData, Collection<EventBean> matchingEvents, ExprEvaluatorContext context, ExprSubselectRowNode parent) {
         AggregationService aggregationService = parent.getSubselectAggregationService().getContextPartitionAggregationService(context.getAgentInstanceId());
         Collection<Object> groupKeys = aggregationService.getGroupKeys(context);
         if (groupKeys.isEmpty()) {
@@ -53,7 +53,7 @@ public class SubselectEvalStrategyRowUnfilteredSelectedGroupedNoHaving extends S
         for (Object groupKey : groupKeys) {
             aggregationService.setCurrentAccess(groupKey, context.getAgentInstanceId(), null);
             Map<String, Object> row = parent.evaluateRow(null, true, context);
-            com.espertech.esper.client.EventBean event = parent.subselectMultirowType.getEventAdapterService().adapterForTypedMap(row, parent.subselectMultirowType.getEventType());
+            eu.uk.ncl.pet5o.esper.client.EventBean event = parent.subselectMultirowType.getEventAdapterService().adapterForTypedMap(row, parent.subselectMultirowType.getEventType());
             events.add(event);
         }
         return events;

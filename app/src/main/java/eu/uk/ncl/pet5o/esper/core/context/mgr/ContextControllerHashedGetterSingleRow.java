@@ -10,17 +10,17 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.client.EventPropertyGetter;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.PropertyAccessException;
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.epl.core.engineimport.EngineImportSingleRowDesc;
-import com.espertech.esper.epl.expression.core.*;
-import com.espertech.esper.epl.table.mgmt.TableService;
-import com.espertech.esper.epl.util.ExprNodeUtilityRich;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.PropertyAccessException;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportSingleRowDesc;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableService;
+import eu.uk.ncl.pet5o.esper.epl.util.ExprNodeUtilityRich;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import net.sf.cglib.reflect.FastMethod;
 
@@ -47,8 +47,8 @@ public class ContextControllerHashedGetterSingleRow implements EventPropertyGett
         this.fastMethod = staticMethodDesc.getFastMethod();
     }
 
-    public Object get(com.espertech.esper.client.EventBean eventBean) throws PropertyAccessException {
-        com.espertech.esper.client.EventBean[] events = new com.espertech.esper.client.EventBean[]{eventBean};
+    public Object get(eu.uk.ncl.pet5o.esper.client.EventBean eventBean) throws PropertyAccessException {
+        eu.uk.ncl.pet5o.esper.client.EventBean[] events = new eu.uk.ncl.pet5o.esper.client.EventBean[]{eventBean};
 
         Object[] parameters = new Object[evaluators.length];
         for (int i = 0; i < evaluators.length; i++) {
@@ -73,11 +73,11 @@ public class ContextControllerHashedGetterSingleRow implements EventPropertyGett
         return 0;
     }
 
-    public boolean isExistsProperty(com.espertech.esper.client.EventBean eventBean) {
+    public boolean isExistsProperty(eu.uk.ncl.pet5o.esper.client.EventBean eventBean) {
         return false;
     }
 
-    public Object getFragment(com.espertech.esper.client.EventBean eventBean) throws PropertyAccessException {
+    public Object getFragment(eu.uk.ncl.pet5o.esper.client.EventBean eventBean) throws PropertyAccessException {
         return null;
     }
 }

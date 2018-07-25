@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.table.upd;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.join.table.EventTable;
-import com.espertech.esper.epl.table.mgmt.TableStateInstance;
-import com.espertech.esper.epl.updatehelper.EventBeanUpdateHelper;
-import com.espertech.esper.event.ObjectArrayBackedEventBean;
-import com.espertech.esper.event.arr.ObjectArrayEventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.join.table.EventTable;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableStateInstance;
+import eu.uk.ncl.pet5o.esper.epl.updatehelper.EventBeanUpdateHelper;
+import eu.uk.ncl.pet5o.esper.event.ObjectArrayBackedEventBean;
+import eu.uk.ncl.pet5o.esper.event.arr.ObjectArrayEventBean;
 
 import java.util.Collection;
 import java.util.Set;
@@ -31,12 +31,12 @@ public class TableUpdateStrategyIndexNonUnique implements TableUpdateStrategy {
         this.affectedIndexNames = affectedIndexNames;
     }
 
-    public void updateTable(Collection<EventBean> eventsUnsafeIter, TableStateInstance instance, com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
+    public void updateTable(Collection<EventBean> eventsUnsafeIter, TableStateInstance instance, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
         // copy references to array - as it is allowed to pass an index-originating collection
         // and those same indexes are being changed now
-        com.espertech.esper.client.EventBean[] events = new com.espertech.esper.client.EventBean[eventsUnsafeIter.size()];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] events = new eu.uk.ncl.pet5o.esper.client.EventBean[eventsUnsafeIter.size()];
         int count = 0;
-        for (com.espertech.esper.client.EventBean event : eventsUnsafeIter) {
+        for (eu.uk.ncl.pet5o.esper.client.EventBean event : eventsUnsafeIter) {
             events[count++] = event;
         }
 
@@ -47,7 +47,7 @@ public class TableUpdateStrategyIndexNonUnique implements TableUpdateStrategy {
         }
 
         // update (no-copy unless original values required)
-        for (com.espertech.esper.client.EventBean event : events) {
+        for (eu.uk.ncl.pet5o.esper.client.EventBean event : events) {
             eventsPerStream[0] = event;
             ObjectArrayBackedEventBean updatedEvent = (ObjectArrayBackedEventBean) event;
 

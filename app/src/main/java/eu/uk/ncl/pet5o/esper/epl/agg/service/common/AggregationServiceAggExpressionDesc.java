@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.service.common;
 
-import com.espertech.esper.epl.expression.baseagg.ExprAggregateNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.baseagg.ExprAggregateNode;
 
 import java.util.ArrayList;
 import java.util.List;

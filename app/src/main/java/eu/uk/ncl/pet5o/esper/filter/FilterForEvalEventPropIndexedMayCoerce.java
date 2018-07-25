@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.filter;
 
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.filterspec.FilterSpecParamInValue;
-import com.espertech.esper.filterspec.MatchedEventMap;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterSpecParamInValue;
+import eu.uk.ncl.pet5o.esper.filterspec.MatchedEventMap;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,7 +59,7 @@ public class FilterForEvalEventPropIndexedMayCoerce implements FilterSpecParamIn
     }
 
     public Object getFilterValue(MatchedEventMap matchedEvents, ExprEvaluatorContext evaluatorContext) {
-        com.espertech.esper.client.EventBean[] events = (com.espertech.esper.client.EventBean[]) matchedEvents.getMatchingEventAsObjectByTag(resultEventAsName);
+        eu.uk.ncl.pet5o.esper.client.EventBean[] events = (eu.uk.ncl.pet5o.esper.client.EventBean[]) matchedEvents.getMatchingEventAsObjectByTag(resultEventAsName);
 
         Object value = null;
         if (events == null) {

@@ -10,25 +10,25 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.dot;
 
-import com.espertech.esper.codegen.base.CodegenBlock;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMember;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.variable.VariableMetaData;
-import com.espertech.esper.epl.variable.VariableReader;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenBlock;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMember;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.variable.VariableMetaData;
+import eu.uk.ncl.pet5o.esper.epl.variable.VariableReader;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.cast;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.member;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.cast;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.member;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
 
 public class ExprDotNodeForgeVariableEval implements ExprEvaluator {
     private final ExprDotNodeForgeVariable forge;
@@ -39,7 +39,7 @@ public class ExprDotNodeForgeVariableEval implements ExprEvaluator {
         this.chainEval = chainEval;
     }
 
-    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qExprDot(forge.getForgeRenderable());
         }
@@ -59,7 +59,7 @@ public class ExprDotNodeForgeVariableEval implements ExprEvaluator {
         Class variableType;
         VariableMetaData metaData = forge.getVariableReader().getVariableMetaData();
         if (metaData.getEventType() != null) {
-            variableType = com.espertech.esper.client.EventBean.class;
+            variableType = eu.uk.ncl.pet5o.esper.client.EventBean.class;
         } else {
             variableType = metaData.getType();
         }

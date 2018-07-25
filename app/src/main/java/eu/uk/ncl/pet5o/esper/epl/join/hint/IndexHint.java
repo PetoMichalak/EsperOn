@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.hint;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.client.annotation.HintEnum;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.client.annotation.HintEnum;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;

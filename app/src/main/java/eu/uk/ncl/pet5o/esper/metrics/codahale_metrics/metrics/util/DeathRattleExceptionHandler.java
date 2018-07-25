@@ -23,7 +23,7 @@
 
 package eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.util;
 
-import com.espertech.esper.metrics.codahale_metrics.metrics.core.Counter;
+import eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.core.Counter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

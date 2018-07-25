@@ -10,24 +10,24 @@
  */
 package eu.uk.ncl.pet5o.esper.event.vaevent;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.PropertyAccessException;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.collection.MultiKeyUntyped;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.event.EventPropertyGetterSPI;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.PropertyAccessException;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.collection.MultiKeyUntyped;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.event.EventPropertyGetterSPI;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.arrayAtIndex;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.cast;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantTrue;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
-import static com.espertech.esper.event.vaevent.VAERevisionEventPropertyGetterDeclaredGetVersioned.revisionImplementationNotProvided;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.arrayAtIndex;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.cast;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantTrue;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.event.vaevent.VAERevisionEventPropertyGetterDeclaredGetVersioned.revisionImplementationNotProvided;
 
 public class VAERevisionEventPropertyGetterDeclaredNKey implements EventPropertyGetterSPI {
     private final int keyPropertyNumber;
@@ -36,7 +36,7 @@ public class VAERevisionEventPropertyGetterDeclaredNKey implements EventProperty
         this.keyPropertyNumber = keyPropertyNumber;
     }
 
-    public Object get(com.espertech.esper.client.EventBean eventBean) throws PropertyAccessException {
+    public Object get(eu.uk.ncl.pet5o.esper.client.EventBean eventBean) throws PropertyAccessException {
         RevisionEventBeanDeclared riv = (RevisionEventBeanDeclared) eventBean;
         MultiKeyUntyped key = (MultiKeyUntyped) riv.getKey();
         if (key == null) {
@@ -46,18 +46,18 @@ public class VAERevisionEventPropertyGetterDeclaredNKey implements EventProperty
     }
 
     private CodegenMethodNode getCodegen(CodegenMethodScope codegenMethodScope, CodegenClassScope codegenClassScope) {
-        return codegenMethodScope.makeChild(Object.class, this.getClass(), codegenClassScope).addParam(com.espertech.esper.client.EventBean.class, "eventBean").getBlock()
+        return codegenMethodScope.makeChild(Object.class, this.getClass(), codegenClassScope).addParam(eu.uk.ncl.pet5o.esper.client.EventBean.class, "eventBean").getBlock()
                 .declareVar(RevisionEventBeanDeclared.class, "riv", cast(RevisionEventBeanDeclared.class, ref("eventBean")))
                 .declareVar(MultiKeyUntyped.class, "key", cast(MultiKeyUntyped.class, exprDotMethod(ref("riv"), "getKey")))
                 .ifRefNullReturnNull("key")
                 .methodReturn(arrayAtIndex(exprDotMethod(ref("key"), "getKeys"), constant(keyPropertyNumber)));
     }
 
-    public boolean isExistsProperty(com.espertech.esper.client.EventBean eventBean) {
+    public boolean isExistsProperty(eu.uk.ncl.pet5o.esper.client.EventBean eventBean) {
         return true;
     }
 
-    public Object getFragment(com.espertech.esper.client.EventBean eventBean) {
+    public Object getFragment(eu.uk.ncl.pet5o.esper.client.EventBean eventBean) {
         return null;
     }
 

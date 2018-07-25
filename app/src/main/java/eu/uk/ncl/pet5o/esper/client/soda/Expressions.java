@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.client.soda;
 
-import com.espertech.esper.type.BitWiseOpEnum;
+import eu.uk.ncl.pet5o.esper.type.BitWiseOpEnum;
 
 import java.io.Serializable;
 import java.util.ArrayList;

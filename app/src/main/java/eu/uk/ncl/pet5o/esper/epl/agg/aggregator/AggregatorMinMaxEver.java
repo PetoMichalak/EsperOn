@@ -10,30 +10,30 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.aggregator;
 
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMembersColumnized;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.core.CodegenCtor;
-import com.espertech.esper.codegen.model.expression.CodegenExpressionRef;
-import com.espertech.esper.epl.agg.factory.AggregationMethodFactoryMinMax;
-import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
-import com.espertech.esper.epl.expression.core.ExprForge;
-import com.espertech.esper.epl.expression.core.MinMaxTypeEnum;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMembersColumnized;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.core.CodegenCtor;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRef;
+import eu.uk.ncl.pet5o.esper.epl.agg.factory.AggregationMethodFactoryMinMax;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprForge;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.MinMaxTypeEnum;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.equalsNull;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.refCol;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.relational;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionRelational.CodegenRelational.GT;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionRelational.CodegenRelational.LT;
-import static com.espertech.esper.epl.expression.core.MinMaxTypeEnum.MAX;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.equalsNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.refCol;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.relational;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRelational.CodegenRelational.GT;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRelational.CodegenRelational.LT;
+import static eu.uk.ncl.pet5o.esper.epl.expression.core.MinMaxTypeEnum.MAX;
 
 /**
  * Min/max aggregator for all values, not considering events leaving the aggregation (i.e. ever).

@@ -10,26 +10,26 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.accessagg;
 
-import com.espertech.esper.client.ConfigurationPlugInAggregationMultiFunction;
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.epl.agg.service.common.AggregationMethodFactory;
-import com.espertech.esper.epl.enummethod.dot.ArrayWrappingCollection;
-import com.espertech.esper.epl.expression.baseagg.ExprAggregateNode;
-import com.espertech.esper.epl.expression.baseagg.ExprAggregateNodeBase;
-import com.espertech.esper.epl.expression.baseagg.ExprAggregationPlugInNodeMarker;
-import com.espertech.esper.epl.expression.codegen.CodegenLegoEvaluateSelf;
-import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
-import com.espertech.esper.epl.expression.core.*;
-import com.espertech.esper.epl.table.mgmt.TableMetadataColumnAggregation;
-import com.espertech.esper.epl.util.ExprNodeUtilityRich;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.plugin.PlugInAggregationMultiFunctionFactory;
-import com.espertech.esper.plugin.PlugInAggregationMultiFunctionHandler;
-import com.espertech.esper.plugin.PlugInAggregationMultiFunctionValidationContext;
+import eu.uk.ncl.pet5o.esper.client.ConfigurationPlugInAggregationMultiFunction;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationMethodFactory;
+import eu.uk.ncl.pet5o.esper.epl.enummethod.dot.ArrayWrappingCollection;
+import eu.uk.ncl.pet5o.esper.epl.expression.baseagg.ExprAggregateNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.baseagg.ExprAggregateNodeBase;
+import eu.uk.ncl.pet5o.esper.epl.expression.baseagg.ExprAggregationPlugInNodeMarker;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.CodegenLegoEvaluateSelf;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadataColumnAggregation;
+import eu.uk.ncl.pet5o.esper.epl.util.ExprNodeUtilityRich;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.plugin.PlugInAggregationMultiFunctionFactory;
+import eu.uk.ncl.pet5o.esper.plugin.PlugInAggregationMultiFunctionHandler;
+import eu.uk.ncl.pet5o.esper.plugin.PlugInAggregationMultiFunctionValidationContext;
 
 import java.util.Collection;
 
@@ -77,7 +77,7 @@ public class ExprPlugInAggMultiFunctionNode extends ExprAggregateNodeBase implem
         return functionName;
     }
 
-    public Collection<EventBean> evaluateGetROCollectionEvents(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Collection<EventBean> evaluateGetROCollectionEvents(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return super.aggregationResultFuture.getCollectionOfEvents(column, eventsPerStream, isNewData, context);
     }
 
@@ -85,7 +85,7 @@ public class ExprPlugInAggMultiFunctionNode extends ExprAggregateNodeBase implem
         return CodegenLegoEvaluateSelf.evaluateSelfGetROCollectionEvents(this, codegenMethodScope, exprSymbol, codegenClassScope);
     }
 
-    public Collection evaluateGetROCollectionScalar(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Collection evaluateGetROCollectionScalar(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         Object result = super.aggregationResultFuture.getValue(column, context.getAgentInstanceId(), eventsPerStream, isNewData, context);
         if (result == null) {
             return null;
@@ -112,7 +112,7 @@ public class ExprPlugInAggMultiFunctionNode extends ExprAggregateNodeBase implem
         return factory.getEventTypeSingle();
     }
 
-    public com.espertech.esper.client.EventBean evaluateGetEventBean(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean evaluateGetEventBean(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return super.aggregationResultFuture.getEventBean(column, eventsPerStream, isNewData, context);
     }
 

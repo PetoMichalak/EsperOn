@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.stmt;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.collection.ArrayWrap;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.subquery.ExprSubselectStrategy;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.collection.ArrayWrap;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.subquery.ExprSubselectStrategy;
 
 import java.util.Collection;
 
@@ -37,7 +37,7 @@ public class AIRegistrySubselectMultiPerm implements AIRegistrySubselect, ExprSu
         count--;
     }
 
-    public Collection<EventBean> evaluateMatching(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
+    public Collection<EventBean> evaluateMatching(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
         int agentInstanceId = exprEvaluatorContext.getAgentInstanceId();
         ExprSubselectStrategy strategy = strategies.getArray()[agentInstanceId];
         return strategy.evaluateMatching(eventsPerStream, exprEvaluatorContext);

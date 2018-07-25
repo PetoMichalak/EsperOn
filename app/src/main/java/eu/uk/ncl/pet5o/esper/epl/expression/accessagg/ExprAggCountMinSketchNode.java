@@ -10,32 +10,32 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.accessagg;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.util.CountMinSketchAgent;
-import com.espertech.esper.client.util.CountMinSketchAgentStringUTF16;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.core.service.StatementType;
-import com.espertech.esper.epl.agg.factory.AggregationStateFactoryCountMinSketch;
-import com.espertech.esper.epl.agg.service.common.AggregationMethodFactory;
-import com.espertech.esper.epl.approx.CountMinSketchAggType;
-import com.espertech.esper.epl.approx.CountMinSketchSpec;
-import com.espertech.esper.epl.approx.CountMinSketchSpecHashes;
-import com.espertech.esper.epl.expression.baseagg.ExprAggregateNode;
-import com.espertech.esper.epl.expression.baseagg.ExprAggregateNodeBase;
-import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
-import com.espertech.esper.epl.expression.core.*;
-import com.espertech.esper.epl.table.mgmt.TableMetadataColumnAggregation;
-import com.espertech.esper.epl.util.ExprNodeUtilityRich;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.util.CountMinSketchAgent;
+import eu.uk.ncl.pet5o.esper.client.util.CountMinSketchAgentStringUTF16;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.core.service.StatementType;
+import eu.uk.ncl.pet5o.esper.epl.agg.factory.AggregationStateFactoryCountMinSketch;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationMethodFactory;
+import eu.uk.ncl.pet5o.esper.epl.approx.CountMinSketchAggType;
+import eu.uk.ncl.pet5o.esper.epl.approx.CountMinSketchSpec;
+import eu.uk.ncl.pet5o.esper.epl.approx.CountMinSketchSpecHashes;
+import eu.uk.ncl.pet5o.esper.epl.expression.baseagg.ExprAggregateNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.baseagg.ExprAggregateNodeBase;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadataColumnAggregation;
+import eu.uk.ncl.pet5o.esper.epl.util.ExprNodeUtilityRich;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import java.util.Collection;
 import java.util.Map;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
 
 /**
  * Represents the Count-min sketch aggregate function.
@@ -90,7 +90,7 @@ public class ExprAggCountMinSketchNode extends ExprAggregateNodeBase implements 
         return null;
     }
 
-    public Collection<EventBean> evaluateGetROCollectionEvents(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Collection<EventBean> evaluateGetROCollectionEvents(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return null;
     }
 
@@ -98,7 +98,7 @@ public class ExprAggCountMinSketchNode extends ExprAggregateNodeBase implements 
         return null;
     }
 
-    public Collection evaluateGetROCollectionScalar(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Collection evaluateGetROCollectionScalar(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return null;
     }
 
@@ -114,7 +114,7 @@ public class ExprAggCountMinSketchNode extends ExprAggregateNodeBase implements 
         return null;
     }
 
-    public com.espertech.esper.client.EventBean evaluateGetEventBean(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean evaluateGetEventBean(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return null;
     }
 

@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.util;
 
-import com.espertech.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.client.EPException;
 
 /**
  * Exception to represent a mismatch in Java types in an expression.

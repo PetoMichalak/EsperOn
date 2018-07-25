@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.service.common;
 
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
 
 /**
  * Factory for aggregation service instances.

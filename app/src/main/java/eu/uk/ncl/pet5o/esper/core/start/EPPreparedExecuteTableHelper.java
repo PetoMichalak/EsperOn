@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.core.start;
 
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.core.service.EPServicesContext;
-import com.espertech.esper.epl.expression.table.ExprTableAccessEvalStrategy;
-import com.espertech.esper.epl.expression.table.ExprTableAccessNode;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.core.service.EPServicesContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.table.ExprTableAccessEvalStrategy;
+import eu.uk.ncl.pet5o.esper.epl.expression.table.ExprTableAccessNode;
 
 import java.util.Map;
 

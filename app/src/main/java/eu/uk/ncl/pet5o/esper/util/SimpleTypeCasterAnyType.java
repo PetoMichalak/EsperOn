@@ -10,18 +10,18 @@
  */
 package eu.uk.ncl.pet5o.esper.util;
 
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMember;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder;
-import com.espertech.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMember;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
 
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.staticMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.staticMethod;
 
 /**
  * Cast implementation for non-numeric values that caches allowed casts assuming there is a small set of casts allowed.

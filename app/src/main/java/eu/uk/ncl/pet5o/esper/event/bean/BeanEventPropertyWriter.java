@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.event.bean;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.event.EventPropertyWriter;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.event.EventPropertyWriter;
 
 import net.sf.cglib.reflect.FastMethod;
 

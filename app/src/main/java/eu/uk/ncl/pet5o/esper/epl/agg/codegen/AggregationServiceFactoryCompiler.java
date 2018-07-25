@@ -10,27 +10,27 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.codegen;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.codegen.base.*;
-import com.espertech.esper.codegen.compile.CodegenClassGenerator;
-import com.espertech.esper.codegen.compile.CodegenCompilerException;
-import com.espertech.esper.codegen.compile.CodegenMessageUtil;
-import com.espertech.esper.codegen.core.*;
-import com.espertech.esper.codegen.model.expression.CodegenExpressionRefWCol;
-import com.espertech.esper.codegen.util.CodegenStackGenerator;
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.core.service.StatementContext;
-import com.espertech.esper.epl.agg.access.AggregationAccessor;
-import com.espertech.esper.epl.agg.access.AggregationAccessorForgeGetCodegenContext;
-import com.espertech.esper.epl.agg.access.AggregationAccessorSlotPairForge;
-import com.espertech.esper.epl.agg.service.common.*;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.epl.core.resultset.core.ResultSetProcessorFactoryFactory;
-import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames;
-import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.core.ExprForge;
-import com.espertech.esper.plugin.PlugInAggregationMultiFunctionCodegenType;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.codegen.base.*;
+import eu.uk.ncl.pet5o.esper.codegen.compile.CodegenClassGenerator;
+import eu.uk.ncl.pet5o.esper.codegen.compile.CodegenCompilerException;
+import eu.uk.ncl.pet5o.esper.codegen.compile.CodegenMessageUtil;
+import eu.uk.ncl.pet5o.esper.codegen.core.*;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRefWCol;
+import eu.uk.ncl.pet5o.esper.codegen.util.CodegenStackGenerator;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationAccessor;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationAccessorForgeGetCodegenContext;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationAccessorSlotPairForge;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.*;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessorFactoryFactory;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprForge;
+import eu.uk.ncl.pet5o.esper.plugin.PlugInAggregationMultiFunctionCodegenType;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,30 +43,30 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.member;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.refCol;
-import static com.espertech.esper.epl.agg.codegen.AggregationRowCodegenUtil.classnameForLevel;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.NAME_AGENTINSTANCECONTEXT;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.NAME_ISNEWDATA;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.*;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.NAME_EPS;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.NAME_EXPREVALCONTEXT;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_EPS;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_EXPREVALCONTEXT;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_ISNEWDATA;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.member;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.refCol;
+import static eu.uk.ncl.pet5o.esper.epl.agg.codegen.AggregationRowCodegenUtil.classnameForLevel;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.NAME_AGENTINSTANCECONTEXT;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.NAME_ISNEWDATA;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.*;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.NAME_EPS;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.NAME_EXPREVALCONTEXT;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_EPS;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_EXPREVALCONTEXT;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_ISNEWDATA;
 
 public class AggregationServiceFactoryCompiler {
 
     private final static Logger log = LoggerFactory.getLogger(AggregationServiceFactoryCompiler.class);
 
     private final static String MEMBERNAME_AGGREGATIONSVCFACTORY = "aggFactory";
-    private final static List<CodegenNamedParam> UPDPARAMS = CodegenNamedParam.from(com.espertech.esper.client.EventBean[].class, NAME_EPS, ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT);
-    private final static List<CodegenNamedParam> GETPARAMS = CodegenNamedParam.from(int.class, AggregationServiceCodegenNames.NAME_COLUMN, com.espertech.esper.client.EventBean[].class, NAME_EPS, boolean.class, ExprForgeCodegenNames.NAME_ISNEWDATA, ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT);
+    private final static List<CodegenNamedParam> UPDPARAMS = CodegenNamedParam.from(eu.uk.ncl.pet5o.esper.client.EventBean[].class, NAME_EPS, ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT);
+    private final static List<CodegenNamedParam> GETPARAMS = CodegenNamedParam.from(int.class, AggregationServiceCodegenNames.NAME_COLUMN, eu.uk.ncl.pet5o.esper.client.EventBean[].class, NAME_EPS, boolean.class, ExprForgeCodegenNames.NAME_ISNEWDATA, ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT);
     private final static List<CodegenNamedParam> MAKESERVICEPARAMS = CodegenNamedParam.from(AgentInstanceContext.class, NAME_AGENTINSTANCECONTEXT, EngineImportService.class, AggregationServiceCodegenNames.NAME_ENGINEIMPORTSVC, boolean.class, AggregationServiceCodegenNames.NAME_ISSUBQUERY, Integer.class, AggregationServiceCodegenNames.NAME_SUBQUERYNUMBER);
 
     public static AggregationServiceFactory allocate(AggregationServiceFactoryForge forge, StatementContext stmtContext, boolean isFireAndForget) {
@@ -209,7 +209,7 @@ public class AggregationServiceFactoryCompiler {
         int numMethodStates = 0;
         if (methodFactories != null) {
             for (AggregationMethodFactory factory : methodFactories) {
-                CodegenMethodNode method = parent.makeChild(getType.getReturnType(), factory.getClass(), classScope).addParam(CodegenNamedParam.from(com.espertech.esper.client.EventBean[].class, NAME_EPS, boolean.class, ExprForgeCodegenNames.NAME_ISNEWDATA, ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT));
+                CodegenMethodNode method = parent.makeChild(getType.getReturnType(), factory.getClass(), classScope).addParam(CodegenNamedParam.from(eu.uk.ncl.pet5o.esper.client.EventBean[].class, NAME_EPS, boolean.class, ExprForgeCodegenNames.NAME_ISNEWDATA, ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT));
                 methods.add(method);
 
                 if (getType == AggregationCodegenGetType.GETVALUE) {
@@ -224,7 +224,7 @@ public class AggregationServiceFactoryCompiler {
 
         if (accessAccessors != null) {
             for (AggregationAccessorSlotPairForge accessorSlotPair : accessAccessors) {
-                CodegenMethodNode method = parent.makeChild(getType.getReturnType(), accessorSlotPair.getAccessorForge().getClass(), classScope).addParam(CodegenNamedParam.from(com.espertech.esper.client.EventBean[].class, NAME_EPS, boolean.class, ExprForgeCodegenNames.NAME_ISNEWDATA, ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT));
+                CodegenMethodNode method = parent.makeChild(getType.getReturnType(), accessorSlotPair.getAccessorForge().getClass(), classScope).addParam(CodegenNamedParam.from(eu.uk.ncl.pet5o.esper.client.EventBean[].class, NAME_EPS, boolean.class, ExprForgeCodegenNames.NAME_ISNEWDATA, ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT));
                 int stateNumber = numMethodStates + accessorSlotPair.getSlot();
 
                 if (accessorSlotPair.getAccessorForge().getPluginCodegenType() == PlugInAggregationMultiFunctionCodegenType.CODEGEN_NONE) {
@@ -336,10 +336,10 @@ public class AggregationServiceFactoryCompiler {
     private static void makeService(AggregationServiceFactoryForge forge, List<CodegenInnerClass> innerClasses, CodegenClassScope classScope, String providerClassName) {
         CodegenNamedMethods namedMethods = new CodegenNamedMethods();
 
-        CodegenMethodNode applyEnterMethod = CodegenMethodNode.makeParentNode(void.class, forge.getClass(), CodegenSymbolProviderEmpty.INSTANCE, classScope).addParam(com.espertech.esper.client.EventBean[].class, NAME_EPS).addParam(Object.class, AggregationServiceCodegenNames.NAME_GROUPKEY).addParam(ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT);
+        CodegenMethodNode applyEnterMethod = CodegenMethodNode.makeParentNode(void.class, forge.getClass(), CodegenSymbolProviderEmpty.INSTANCE, classScope).addParam(eu.uk.ncl.pet5o.esper.client.EventBean[].class, NAME_EPS).addParam(Object.class, AggregationServiceCodegenNames.NAME_GROUPKEY).addParam(ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT);
         forge.applyEnterCodegen(applyEnterMethod, classScope, namedMethods);
 
-        CodegenMethodNode applyLeaveMethod = CodegenMethodNode.makeParentNode(void.class, forge.getClass(), CodegenSymbolProviderEmpty.INSTANCE, classScope).addParam(com.espertech.esper.client.EventBean[].class, NAME_EPS).addParam(Object.class, AggregationServiceCodegenNames.NAME_GROUPKEY).addParam(ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT);
+        CodegenMethodNode applyLeaveMethod = CodegenMethodNode.makeParentNode(void.class, forge.getClass(), CodegenSymbolProviderEmpty.INSTANCE, classScope).addParam(eu.uk.ncl.pet5o.esper.client.EventBean[].class, NAME_EPS).addParam(Object.class, AggregationServiceCodegenNames.NAME_GROUPKEY).addParam(ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT);
         forge.applyLeaveCodegen(applyLeaveMethod, classScope, namedMethods);
 
         CodegenMethodNode setCurrentAccessMethod = CodegenMethodNode.makeParentNode(void.class, forge.getClass(), CodegenSymbolProviderEmpty.INSTANCE, classScope).addParam(Object.class, AggregationServiceCodegenNames.NAME_GROUPKEY).addParam(int.class, AggregationServiceCodegenNames.NAME_AGENTINSTANCEID).addParam(AggregationGroupByRollupLevel.class, AggregationServiceCodegenNames.NAME_ROLLUPLEVEL);
@@ -363,13 +363,13 @@ public class AggregationServiceFactoryCompiler {
         CodegenMethodNode getContextPartitionAggregationServiceMethod = CodegenMethodNode.makeParentNode(AggregationService.class, forge.getClass(), CodegenSymbolProviderEmpty.INSTANCE, classScope).addParam(int.class, AggregationServiceCodegenNames.NAME_AGENTINSTANCEID);
         getContextPartitionAggregationServiceMethod.getBlock().methodReturn(ref("this"));
 
-        CodegenMethodNode getValueMethod = CodegenMethodNode.makeParentNode(Object.class, forge.getClass(), CodegenSymbolProviderEmpty.INSTANCE, classScope).addParam(int.class, AggregationServiceCodegenNames.NAME_COLUMN).addParam(int.class, AggregationServiceCodegenNames.NAME_AGENTINSTANCEID).addParam(com.espertech.esper.client.EventBean[].class, NAME_EPS).addParam(boolean.class, NAME_ISNEWDATA).addParam(ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT);
+        CodegenMethodNode getValueMethod = CodegenMethodNode.makeParentNode(Object.class, forge.getClass(), CodegenSymbolProviderEmpty.INSTANCE, classScope).addParam(int.class, AggregationServiceCodegenNames.NAME_COLUMN).addParam(int.class, AggregationServiceCodegenNames.NAME_AGENTINSTANCEID).addParam(eu.uk.ncl.pet5o.esper.client.EventBean[].class, NAME_EPS).addParam(boolean.class, NAME_ISNEWDATA).addParam(ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT);
         forge.getValueCodegen(getValueMethod, classScope, namedMethods);
 
-        CodegenMethodNode getCollectionOfEventsMethod = CodegenMethodNode.makeParentNode(Collection.class, forge.getClass(), CodegenSymbolProviderEmpty.INSTANCE, classScope).addParam(int.class, AggregationServiceCodegenNames.NAME_COLUMN).addParam(com.espertech.esper.client.EventBean[].class, NAME_EPS).addParam(boolean.class, NAME_ISNEWDATA).addParam(ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT);
+        CodegenMethodNode getCollectionOfEventsMethod = CodegenMethodNode.makeParentNode(Collection.class, forge.getClass(), CodegenSymbolProviderEmpty.INSTANCE, classScope).addParam(int.class, AggregationServiceCodegenNames.NAME_COLUMN).addParam(eu.uk.ncl.pet5o.esper.client.EventBean[].class, NAME_EPS).addParam(boolean.class, NAME_ISNEWDATA).addParam(ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT);
         forge.getCollectionOfEventsCodegen(getCollectionOfEventsMethod, classScope, namedMethods);
 
-        CodegenMethodNode getEventBeanMethod = CodegenMethodNode.makeParentNode(com.espertech.esper.client.EventBean.class, forge.getClass(), CodegenSymbolProviderEmpty.INSTANCE, classScope).addParam(int.class, AggregationServiceCodegenNames.NAME_COLUMN).addParam(com.espertech.esper.client.EventBean[].class, NAME_EPS).addParam(boolean.class, NAME_ISNEWDATA).addParam(ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT);
+        CodegenMethodNode getEventBeanMethod = CodegenMethodNode.makeParentNode(eu.uk.ncl.pet5o.esper.client.EventBean.class, forge.getClass(), CodegenSymbolProviderEmpty.INSTANCE, classScope).addParam(int.class, AggregationServiceCodegenNames.NAME_COLUMN).addParam(eu.uk.ncl.pet5o.esper.client.EventBean[].class, NAME_EPS).addParam(boolean.class, NAME_ISNEWDATA).addParam(ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT);
         forge.getEventBeanCodegen(getEventBeanMethod, classScope, namedMethods);
 
         CodegenMethodNode getGroupKeyMethod = CodegenMethodNode.makeParentNode(Object.class, forge.getClass(), CodegenSymbolProviderEmpty.INSTANCE, classScope).addParam(int.class, AggregationServiceCodegenNames.NAME_AGENTINSTANCEID);
@@ -378,7 +378,7 @@ public class AggregationServiceFactoryCompiler {
         CodegenMethodNode getGroupKeysMethod = CodegenMethodNode.makeParentNode(Collection.class, forge.getClass(), CodegenSymbolProviderEmpty.INSTANCE, classScope).addParam(ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT);
         forge.getGroupKeysCodegen(getGroupKeysMethod, classScope);
 
-        CodegenMethodNode getCollectionScalarMethod = CodegenMethodNode.makeParentNode(Collection.class, forge.getClass(), CodegenSymbolProviderEmpty.INSTANCE, classScope).addParam(int.class, AggregationServiceCodegenNames.NAME_COLUMN).addParam(com.espertech.esper.client.EventBean[].class, NAME_EPS).addParam(boolean.class, NAME_ISNEWDATA).addParam(ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT);
+        CodegenMethodNode getCollectionScalarMethod = CodegenMethodNode.makeParentNode(Collection.class, forge.getClass(), CodegenSymbolProviderEmpty.INSTANCE, classScope).addParam(int.class, AggregationServiceCodegenNames.NAME_COLUMN).addParam(eu.uk.ncl.pet5o.esper.client.EventBean[].class, NAME_EPS).addParam(boolean.class, NAME_ISNEWDATA).addParam(ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT);
         forge.getCollectionScalarCodegen(getCollectionScalarMethod, classScope, namedMethods);
 
         CodegenMethodNode stopMethod = CodegenMethodNode.makeParentNode(void.class, forge.getClass(), CodegenSymbolProviderEmpty.INSTANCE, classScope);
@@ -456,7 +456,7 @@ public class AggregationServiceFactoryCompiler {
     private enum AggregationCodegenGetType {
 
         GETVALUE("getValue", Object.class),
-        GETEVENTBEAN("getEnumerableEvent", com.espertech.esper.client.EventBean.class),
+        GETEVENTBEAN("getEnumerableEvent", eu.uk.ncl.pet5o.esper.client.EventBean.class),
         GETCOLLECTIONSCALAR("getEnumerableScalar", Collection.class),
         GETCOLLECTIONOFEVENTS("getEnumerableEvents", Collection.class);
 

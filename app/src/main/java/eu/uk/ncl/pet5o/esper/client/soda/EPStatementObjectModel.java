@@ -18,10 +18,10 @@ import java.util.List;
  * Object model of an EPL statement.
  * <p>
  * Applications can create an object model by instantiating this class and then setting the various clauses.
- * When done, use {@link com.espertech.esper.client.EPAdministrator} to create a statement from the model.
+ * When done, use {@link eu.uk.ncl.pet5o.esper.client.EPAdministrator} to create a statement from the model.
  * <p>
  * Alternativly, a given textual EPL can be compiled into an object model representation via the compile method on
- * {@link com.espertech.esper.client.EPAdministrator}.
+ * {@link eu.uk.ncl.pet5o.esper.client.EPAdministrator}.
  * <p>
  * Use the toEPL method to generate a textual EPL from an object model.
  * <p>

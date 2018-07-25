@@ -10,22 +10,22 @@
  */
 package eu.uk.ncl.pet5o.esper.event.avro;
 
-import com.espertech.esper.client.*;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.epl.core.select.SelectExprProcessorRepresentationFactory;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.event.EventBeanManufacturer;
-import com.espertech.esper.event.EventTypeMetadata;
-import com.espertech.esper.event.WriteablePropertyDescriptor;
-import com.espertech.esper.util.TypeWidenerCustomizer;
+import eu.uk.ncl.pet5o.esper.client.*;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.epl.core.select.SelectExprProcessorRepresentationFactory;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.event.EventBeanManufacturer;
+import eu.uk.ncl.pet5o.esper.event.EventTypeMetadata;
+import eu.uk.ncl.pet5o.esper.event.WriteablePropertyDescriptor;
+import eu.uk.ncl.pet5o.esper.util.TypeWidenerCustomizer;
 
 import java.lang.annotation.Annotation;
 import java.util.Map;
 import java.util.Set;
 
 public interface EventAdapterAvroHandler {
-    String HANDLER_IMPL = "com.espertech.esper.avro.core.EventAdapterAvroHandlerImpl";
+    String HANDLER_IMPL = "eu.uk.ncl.pet5o.esper.avro.core.EventAdapterAvroHandlerImpl";
 
     void init(ConfigurationEngineDefaults.EventMeta.AvroSettings avroSettings, EngineImportService engineImportService);
 

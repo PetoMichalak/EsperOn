@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.assemble;
 
-import com.espertech.esper.util.IndentWriter;
+import eu.uk.ncl.pet5o.esper.util.IndentWriter;
 
 /**
  * Assembly node for an event stream that is a branch with a two or more child nodes (required and optional) below it.

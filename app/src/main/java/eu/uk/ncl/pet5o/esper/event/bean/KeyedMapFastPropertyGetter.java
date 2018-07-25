@@ -10,27 +10,27 @@
  */
 package eu.uk.ncl.pet5o.esper.event.bean;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.PropertyAccessException;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.event.EventPropertyGetterAndMapped;
-import com.espertech.esper.event.vaevent.PropertyUtility;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.PropertyAccessException;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.event.EventPropertyGetterAndMapped;
+import eu.uk.ncl.pet5o.esper.event.vaevent.PropertyUtility;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 import net.sf.cglib.reflect.FastMethod;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Map;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.castUnderlying;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantTrue;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
-import static com.espertech.esper.event.bean.KeyedMapMethodPropertyGetter.getBeanPropInternalCodegen;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.castUnderlying;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantTrue;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
+import static eu.uk.ncl.pet5o.esper.event.bean.KeyedMapMethodPropertyGetter.getBeanPropInternalCodegen;
 
 /**
  * Getter for a key property identified by a given key value of a map, using the CGLIB fast method.
@@ -61,7 +61,7 @@ public class KeyedMapFastPropertyGetter extends BaseNativePropertyGetter impleme
         return getBeanPropInternal(object, key);
     }
 
-    public Object get(com.espertech.esper.client.EventBean eventBean, String mapKey) throws PropertyAccessException {
+    public Object get(eu.uk.ncl.pet5o.esper.client.EventBean eventBean, String mapKey) throws PropertyAccessException {
         return getBeanPropInternal(eventBean.getUnderlying(), mapKey);
     }
 
@@ -80,7 +80,7 @@ public class KeyedMapFastPropertyGetter extends BaseNativePropertyGetter impleme
         }
     }
 
-    public final Object get(com.espertech.esper.client.EventBean obj) throws PropertyAccessException {
+    public final Object get(eu.uk.ncl.pet5o.esper.client.EventBean obj) throws PropertyAccessException {
         Object underlying = obj.getUnderlying();
         return getBeanProp(underlying);
     }
@@ -91,7 +91,7 @@ public class KeyedMapFastPropertyGetter extends BaseNativePropertyGetter impleme
                 " key=" + key;
     }
 
-    public boolean isExistsProperty(com.espertech.esper.client.EventBean eventBean) {
+    public boolean isExistsProperty(eu.uk.ncl.pet5o.esper.client.EventBean eventBean) {
         return true; // Property exists as the property is not dynamic (unchecked)
     }
 

@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.client.context.ContextPartitionIdentifier;
-import com.espertech.esper.client.context.ContextPartitionState;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionIdentifier;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionState;
 
 import java.util.List;
 import java.util.Map;
@@ -20,7 +20,7 @@ import java.util.function.Supplier;
 public interface ContextControllerLifecycleCallback {
     public ContextControllerInstanceHandle contextPartitionInstantiate(Integer optionalContextPartitionId,
                                                                        int subpath,
-                                                                       Integer importSubpathId, ContextController originator, com.espertech.esper.client.EventBean optionalTriggeringEvent,
+                                                                       Integer importSubpathId, ContextController originator, eu.uk.ncl.pet5o.esper.client.EventBean optionalTriggeringEvent,
                                                                        Map<String, Object> optionalTriggeringPattern,
                                                                        Object partitionKey,
                                                                        Map<String, Object> contextProperties,

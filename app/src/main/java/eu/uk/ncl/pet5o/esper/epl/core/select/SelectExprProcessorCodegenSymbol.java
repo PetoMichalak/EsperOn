@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.select;
 
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.model.expression.CodegenExpressionRef;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRef;
 
 import java.util.Map;
 

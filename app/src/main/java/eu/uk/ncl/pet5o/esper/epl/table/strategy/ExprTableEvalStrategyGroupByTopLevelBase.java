@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.table.strategy;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.table.ExprTableAccessEvalStrategy;
-import com.espertech.esper.epl.table.mgmt.TableMetadataColumn;
-import com.espertech.esper.event.ObjectArrayBackedEventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.table.ExprTableAccessEvalStrategy;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadataColumn;
+import eu.uk.ncl.pet5o.esper.event.ObjectArrayBackedEventBean;
 
 import java.util.Collection;
 import java.util.Map;
@@ -28,7 +28,7 @@ public abstract class ExprTableEvalStrategyGroupByTopLevelBase extends ExprTable
         this.items = items;
     }
 
-    protected Object evaluateInternal(Object groupKey, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    protected Object evaluateInternal(Object groupKey, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         ObjectArrayBackedEventBean row = lockTableReadAndGet(groupKey, context);
         if (row == null) {
             return null;
@@ -36,7 +36,7 @@ public abstract class ExprTableEvalStrategyGroupByTopLevelBase extends ExprTable
         return ExprTableEvalStrategyUtil.evalMap(row, ExprTableEvalStrategyUtil.getRow(row), items, eventsPerStream, isNewData, context);
     }
 
-    protected Object[] evaluateTypableSingleInternal(Object groupKey, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    protected Object[] evaluateTypableSingleInternal(Object groupKey, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         ObjectArrayBackedEventBean row = lockTableReadAndGet(groupKey, context);
         if (row == null) {
             return null;
@@ -44,15 +44,15 @@ public abstract class ExprTableEvalStrategyGroupByTopLevelBase extends ExprTable
         return ExprTableEvalStrategyUtil.evalTypable(row, ExprTableEvalStrategyUtil.getRow(row), items, eventsPerStream, isNewData, context);
     }
 
-    public Collection<EventBean> evaluateGetROCollectionEvents(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Collection<EventBean> evaluateGetROCollectionEvents(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return null;
     }
 
-    public com.espertech.esper.client.EventBean evaluateGetEventBean(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean evaluateGetEventBean(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return null;
     }
 
-    public Collection evaluateGetROCollectionScalar(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Collection evaluateGetROCollectionScalar(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return null;
     }
 }

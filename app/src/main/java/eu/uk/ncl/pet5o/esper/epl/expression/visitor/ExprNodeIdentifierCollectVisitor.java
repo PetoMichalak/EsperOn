@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.visitor;
 
-import com.espertech.esper.epl.expression.core.ExprIdentNode;
-import com.espertech.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprIdentNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
 
 import java.util.HashSet;
 import java.util.LinkedList;

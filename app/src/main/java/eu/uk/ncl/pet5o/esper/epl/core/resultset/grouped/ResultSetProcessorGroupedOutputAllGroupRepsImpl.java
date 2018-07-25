@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.resultset.grouped;
 
-import com.espertech.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
 
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -20,7 +20,7 @@ public class ResultSetProcessorGroupedOutputAllGroupRepsImpl implements ResultSe
 
     private final Map<Object, EventBean[]> groupRepsView = new LinkedHashMap<>();
 
-    public Object put(Object mk, com.espertech.esper.client.EventBean[] array) {
+    public Object put(Object mk, eu.uk.ncl.pet5o.esper.client.EventBean[] array) {
         return groupRepsView.put(mk, array);
     }
 

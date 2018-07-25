@@ -1167,7 +1167,7 @@ public class Configuration implements ConfigurationOperations, ConfigurationInfo
         imports.add("java.text.*");
         imports.add("java.util.*");
         imports.add(ANNOTATION_IMPORT);
-        imports.add("com.espertech.esper.dataflow.ops.*");
+        imports.add("eu.uk.ncl.pet5o.esper.dataflow.ops.*");
     }
 
     /**

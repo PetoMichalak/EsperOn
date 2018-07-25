@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.table.strategy;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.expression.core.ExprEnumerationGivenEvent;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.table.ExprTableAccessEvalStrategy;
-import com.espertech.esper.event.ObjectArrayBackedEventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEnumerationGivenEvent;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.table.ExprTableAccessEvalStrategy;
+import eu.uk.ncl.pet5o.esper.event.ObjectArrayBackedEventBean;
 
 import java.util.Collection;
 
@@ -45,7 +45,7 @@ public abstract class ExprTableEvalStrategyGroupByPropBase extends ExprTableEval
         return optionalEnumEval.evaluateEventGetROCollectionEvents(row, context);
     }
 
-    public com.espertech.esper.client.EventBean evaluateGetEventBeanInternal(Object groupKey, ExprEvaluatorContext context) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean evaluateGetEventBeanInternal(Object groupKey, ExprEvaluatorContext context) {
         ObjectArrayBackedEventBean row = lockTableReadAndGet(groupKey, context);
         if (row == null) {
             return null;
@@ -61,7 +61,7 @@ public abstract class ExprTableEvalStrategyGroupByPropBase extends ExprTableEval
         return optionalEnumEval.evaluateEventGetROCollectionScalar(row, context);
     }
 
-    public Object[] evaluateTypableSingle(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Object[] evaluateTypableSingle(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return null;
     }
 }

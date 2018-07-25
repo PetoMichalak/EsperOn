@@ -22,5 +22,5 @@ public interface ExprEvaluator {
      * @param context         context for expression evaluation
      * @return evaluation result, a boolean value for OR/AND-type evalution nodes.
      */
-    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context);
+    public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context);
 }

@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.poll;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.epl.script.ExprNodeScript;
-import com.espertech.esper.epl.variable.VariableReader;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.epl.script.ExprNodeScript;
+import eu.uk.ncl.pet5o.esper.epl.variable.VariableReader;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

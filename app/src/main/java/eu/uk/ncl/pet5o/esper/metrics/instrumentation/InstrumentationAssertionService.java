@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.metrics.instrumentation;
 
-import com.espertech.esper.client.EPServiceProvider;
+import eu.uk.ncl.pet5o.esper.client.EPServiceProvider;
 
 public interface InstrumentationAssertionService {
     public void startTest(EPServiceProvider engine, Class testClass, String testName);

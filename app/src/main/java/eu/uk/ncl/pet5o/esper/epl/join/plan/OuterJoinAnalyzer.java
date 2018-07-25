@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.plan;
 
-import com.espertech.esper.epl.expression.core.ExprIdentNode;
-import com.espertech.esper.epl.spec.OuterJoinDesc;
-import com.espertech.esper.type.OuterJoinType;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprIdentNode;
+import eu.uk.ncl.pet5o.esper.epl.spec.OuterJoinDesc;
+import eu.uk.ncl.pet5o.esper.type.OuterJoinType;
 
 /**
  * Analyzes an outer join descriptor list and builds a query graph model from it.

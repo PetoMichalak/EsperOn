@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.subselect;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.epl.expression.subquery.ExprSubselectNode;
-import com.espertech.esper.view.ViewFactoryChain;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.epl.expression.subquery.ExprSubselectNode;
+import eu.uk.ncl.pet5o.esper.view.ViewFactoryChain;
 
 import java.util.HashMap;
 import java.util.Map;

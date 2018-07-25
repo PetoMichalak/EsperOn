@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.stmt;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.subquery.ExprSubselectStrategy;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.subquery.ExprSubselectStrategy;
 
 import java.util.Collection;
 
@@ -31,7 +31,7 @@ public class AIRegistrySubselectSingle implements AIRegistrySubselect, ExprSubse
         this.strategy = null;
     }
 
-    public Collection<EventBean> evaluateMatching(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
+    public Collection<EventBean> evaluateMatching(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
         return strategy.evaluateMatching(eventsPerStream, exprEvaluatorContext);
     }
 

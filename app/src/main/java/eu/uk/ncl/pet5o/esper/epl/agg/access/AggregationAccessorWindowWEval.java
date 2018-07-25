@@ -10,14 +10,14 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.access;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.epl.agg.factory.AggregationStateLinearForge;
-import com.espertech.esper.epl.expression.codegen.CodegenLegoMethodExpression;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.epl.agg.factory.AggregationStateLinearForge;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.CodegenLegoMethodExpression;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -25,16 +25,16 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.cast;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantTrue;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.equalsIdentity;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.newArrayByLength;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.cast;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantTrue;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.equalsIdentity;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.newArrayByLength;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
 
 /**
  * Represents the aggregation accessor that provides the result for the "window" aggregation function.
@@ -57,7 +57,7 @@ public class AggregationAccessorWindowWEval implements AggregationAccessor {
         this.componentType = componentType;
     }
 
-    public Object getValue(AggregationState state, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public Object getValue(AggregationState state, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         AggregationStateLinear linear = (AggregationStateLinear) state;
         if (linear.size() == 0) {
             return null;
@@ -65,9 +65,9 @@ public class AggregationAccessorWindowWEval implements AggregationAccessor {
         Object array = Array.newInstance(componentType, linear.size());
         Iterator<EventBean> it = linear.iterator();
         int count = 0;
-        com.espertech.esper.client.EventBean[] eventsPerStreamBuf = new com.espertech.esper.client.EventBean[streamNum + 1];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStreamBuf = new eu.uk.ncl.pet5o.esper.client.EventBean[streamNum + 1];
         while (it.hasNext()) {
-            com.espertech.esper.client.EventBean bean = it.next();
+            eu.uk.ncl.pet5o.esper.client.EventBean bean = it.next();
             eventsPerStreamBuf[streamNum] = bean;
             Object value = childNode.evaluate(eventsPerStreamBuf, true, null);
             Array.set(array, count++, value);
@@ -85,9 +85,9 @@ public class AggregationAccessorWindowWEval implements AggregationAccessor {
                 .declareVar(JavaClassHelper.getArrayType(forge.getComponentType()), "array", newArrayByLength(forge.getComponentType(), size))
                 .declareVar(int.class, "count", constant(0))
                 .declareVar(Iterator.class, "it", iterator)
-                .declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStreamBuf", newArrayByLength(com.espertech.esper.client.EventBean.class, constant(forge.getStreamNum() + 1)))
+                .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStreamBuf", newArrayByLength(eu.uk.ncl.pet5o.esper.client.EventBean.class, constant(forge.getStreamNum() + 1)))
                 .whileLoop(exprDotMethod(ref("it"), "hasNext"))
-                .declareVar(com.espertech.esper.client.EventBean.class, "bean", cast(com.espertech.esper.client.EventBean.class, exprDotMethod(ref("it"), "next")))
+                .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "bean", cast(eu.uk.ncl.pet5o.esper.client.EventBean.class, exprDotMethod(ref("it"), "next")))
                 .assignArrayElement("eventsPerStreamBuf", constant(forge.getStreamNum()), ref("bean"))
                 .assignArrayElement(ref("array"), ref("count"), localMethod(childExpr, ref("eventsPerStreamBuf"), constant(true), constantNull()))
                 .increment("count")
@@ -95,7 +95,7 @@ public class AggregationAccessorWindowWEval implements AggregationAccessor {
                 .methodReturn(ref("array"));
     }
 
-    public Collection<EventBean> getEnumerableEvents(AggregationState state, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public Collection<EventBean> getEnumerableEvents(AggregationState state, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         AggregationStateLinear linear = (AggregationStateLinear) state;
         if (linear.size() == 0) {
             return null;
@@ -109,7 +109,7 @@ public class AggregationAccessorWindowWEval implements AggregationAccessor {
                 .methodReturn(stateForge.collectionReadOnlyCodegen(context.getColumn(), context.getMethod(), context.getClassScope(), context.getNamedMethods()));
     }
 
-    public Collection<Object> getEnumerableScalar(AggregationState state, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public Collection<Object> getEnumerableScalar(AggregationState state, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         AggregationStateLinear linear = (AggregationStateLinear) state;
         int size = linear.size();
         if (size == 0) {
@@ -117,9 +117,9 @@ public class AggregationAccessorWindowWEval implements AggregationAccessor {
         }
         List<Object> values = new ArrayList<Object>(size);
         Iterator<EventBean> it = linear.iterator();
-        com.espertech.esper.client.EventBean[] eventsPerStreamBuf = new com.espertech.esper.client.EventBean[streamNum + 1];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStreamBuf = new eu.uk.ncl.pet5o.esper.client.EventBean[streamNum + 1];
         for (; it.hasNext(); ) {
-            com.espertech.esper.client.EventBean bean = it.next();
+            eu.uk.ncl.pet5o.esper.client.EventBean bean = it.next();
             eventsPerStreamBuf[streamNum] = bean;
             Object value = childNode.evaluate(eventsPerStreamBuf, true, null);
             values.add(value);
@@ -133,9 +133,9 @@ public class AggregationAccessorWindowWEval implements AggregationAccessor {
                 .ifCondition(equalsIdentity(ref("size"), constant(0))).blockReturn(constantNull())
                 .declareVar(List.class, "values", newInstance(ArrayList.class, ref("size")))
                 .declareVar(Iterator.class, "it", stateForge.iteratorCodegen(context.getColumn(), context.getClassScope(), context.getMethod(), context.getNamedMethods()))
-                .declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStreamBuf", newArrayByLength(com.espertech.esper.client.EventBean.class, constant(forge.getStreamNum() + 1)))
+                .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStreamBuf", newArrayByLength(eu.uk.ncl.pet5o.esper.client.EventBean.class, constant(forge.getStreamNum() + 1)))
                 .whileLoop(exprDotMethod(ref("it"), "hasNext"))
-                .declareVar(com.espertech.esper.client.EventBean.class, "bean", cast(com.espertech.esper.client.EventBean.class, exprDotMethod(ref("it"), "next")))
+                .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "bean", cast(eu.uk.ncl.pet5o.esper.client.EventBean.class, exprDotMethod(ref("it"), "next")))
                 .assignArrayElement("eventsPerStreamBuf", constant(forge.getStreamNum()), ref("bean"))
                 .declareVar(JavaClassHelper.getBoxedType(forge.getChildNode().getEvaluationType()), "value", localMethod(CodegenLegoMethodExpression.codegenExpression(forge.getChildNode(), context.getMethod(), context.getClassScope()), ref("eventsPerStreamBuf"), constantTrue(), constantNull()))
                 .exprDotMethod(ref("values"), "add", ref("value"))
@@ -143,7 +143,7 @@ public class AggregationAccessorWindowWEval implements AggregationAccessor {
                 .methodReturn(ref("values"));
     }
 
-    public com.espertech.esper.client.EventBean getEnumerableEvent(AggregationState state, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getEnumerableEvent(AggregationState state, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         return null;
     }
 }

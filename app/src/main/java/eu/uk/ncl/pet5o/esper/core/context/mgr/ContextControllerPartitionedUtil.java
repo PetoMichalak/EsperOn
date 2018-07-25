@@ -10,20 +10,20 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.client.EventPropertyGetter;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.collection.MultiKeyUntyped;
-import com.espertech.esper.core.service.speccompiled.StatementSpecCompiled;
-import com.espertech.esper.epl.expression.core.ExprFilterSpecLookupable;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.epl.named.NamedWindowMgmtService;
-import com.espertech.esper.epl.named.NamedWindowProcessor;
-import com.espertech.esper.epl.spec.ContextDetailPartitionItem;
-import com.espertech.esper.epl.spec.ContextDetailPartitioned;
-import com.espertech.esper.epl.util.StatementSpecCompiledAnalyzerResult;
-import com.espertech.esper.event.EventTypeUtility;
-import com.espertech.esper.filterspec.*;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.collection.MultiKeyUntyped;
+import eu.uk.ncl.pet5o.esper.core.service.speccompiled.StatementSpecCompiled;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprFilterSpecLookupable;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.epl.named.NamedWindowMgmtService;
+import eu.uk.ncl.pet5o.esper.epl.named.NamedWindowProcessor;
+import eu.uk.ncl.pet5o.esper.epl.spec.ContextDetailPartitionItem;
+import eu.uk.ncl.pet5o.esper.epl.spec.ContextDetailPartitioned;
+import eu.uk.ncl.pet5o.esper.epl.util.StatementSpecCompiledAnalyzerResult;
+import eu.uk.ncl.pet5o.esper.event.EventTypeUtility;
+import eu.uk.ncl.pet5o.esper.filterspec.*;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import java.util.ArrayList;
 import java.util.Collection;

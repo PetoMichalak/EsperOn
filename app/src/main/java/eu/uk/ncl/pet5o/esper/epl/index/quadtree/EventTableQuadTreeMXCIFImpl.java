@@ -10,25 +10,25 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.index.quadtree;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.join.table.EventTableOrganization;
-import com.espertech.esper.spatial.quadtree.core.BoundingBox;
-import com.espertech.esper.spatial.quadtree.mxcif.MXCIFQuadTree;
-import com.espertech.esper.spatial.quadtree.mxcifrowindex.MXCIFQuadTreeRowIndexAdd;
-import com.espertech.esper.spatial.quadtree.mxcifrowindex.MXCIFQuadTreeRowIndexQuery;
-import com.espertech.esper.spatial.quadtree.mxcifrowindex.MXCIFQuadTreeRowIndexRemove;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.join.table.EventTableOrganization;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.core.BoundingBox;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.mxcif.MXCIFQuadTree;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.mxcifrowindex.MXCIFQuadTreeRowIndexAdd;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.mxcifrowindex.MXCIFQuadTreeRowIndexQuery;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.mxcifrowindex.MXCIFQuadTreeRowIndexRemove;
 
 import java.util.Collection;
 import java.util.Iterator;
 
-import static com.espertech.esper.epl.index.quadtree.AdvancedIndexQuadTreeConstants.*;
-import static com.espertech.esper.epl.index.quadtree.AdvancedIndexQuadTreeConstants.COL_HEIGHT;
-import static com.espertech.esper.epl.index.quadtree.AdvancedIndexQuadTreeConstants.COL_WIDTH;
-import static com.espertech.esper.epl.index.quadtree.AdvancedIndexQuadTreeConstants.COL_X;
-import static com.espertech.esper.epl.index.quadtree.AdvancedIndexQuadTreeConstants.COL_Y;
-import static com.espertech.esper.epl.index.service.AdvancedIndexEvaluationHelper.evalDoubleColumn;
-import static com.espertech.esper.epl.index.service.AdvancedIndexEvaluationHelper.invalidColumnValue;
+import static eu.uk.ncl.pet5o.esper.epl.index.quadtree.AdvancedIndexQuadTreeConstants.*;
+import static eu.uk.ncl.pet5o.esper.epl.index.quadtree.AdvancedIndexQuadTreeConstants.COL_HEIGHT;
+import static eu.uk.ncl.pet5o.esper.epl.index.quadtree.AdvancedIndexQuadTreeConstants.COL_WIDTH;
+import static eu.uk.ncl.pet5o.esper.epl.index.quadtree.AdvancedIndexQuadTreeConstants.COL_X;
+import static eu.uk.ncl.pet5o.esper.epl.index.quadtree.AdvancedIndexQuadTreeConstants.COL_Y;
+import static eu.uk.ncl.pet5o.esper.epl.index.service.AdvancedIndexEvaluationHelper.evalDoubleColumn;
+import static eu.uk.ncl.pet5o.esper.epl.index.service.AdvancedIndexEvaluationHelper.invalidColumnValue;
 
 public class EventTableQuadTreeMXCIFImpl implements EventTableQuadTree {
 

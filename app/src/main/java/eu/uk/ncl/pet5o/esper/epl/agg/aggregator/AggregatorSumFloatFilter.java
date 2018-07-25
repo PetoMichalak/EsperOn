@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.aggregator;
 
-import com.espertech.esper.epl.agg.service.common.AggregatorUtil;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregatorUtil;
 
 /**
  * Sum for float values.

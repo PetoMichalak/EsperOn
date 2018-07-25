@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.access;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
 
 import java.util.Collection;
 
@@ -37,7 +37,7 @@ public interface AggregationAccessor {
      * @param exprEvaluatorContext eval context
      * @return return value
      */
-    public Object getValue(AggregationState state, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext);
+    public Object getValue(AggregationState state, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext);
 
     /**
      * Return the aggregation state value consisting of a collection of events.
@@ -48,7 +48,7 @@ public interface AggregationAccessor {
      * @param exprEvaluatorContext eval context
      * @return return collection of events or null or empty collection
      */
-    public Collection<EventBean> getEnumerableEvents(AggregationState state, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext);
+    public Collection<EventBean> getEnumerableEvents(AggregationState state, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext);
 
     /**
      * Return the aggregation state value consisting of a single event.
@@ -59,7 +59,7 @@ public interface AggregationAccessor {
      * @param exprEvaluatorContext eval context
      * @return return event or null
      */
-    public com.espertech.esper.client.EventBean getEnumerableEvent(AggregationState state, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext);
+    public eu.uk.ncl.pet5o.esper.client.EventBean getEnumerableEvent(AggregationState state, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext);
 
     /**
      * Return the aggregation state value consisting of a collection of scalar values.
@@ -70,5 +70,5 @@ public interface AggregationAccessor {
      * @param exprEvaluatorContext eval context
      * @return return collection of scalar or null or empty collection
      */
-    public Collection<Object> getEnumerableScalar(AggregationState state, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext);
+    public Collection<Object> getEnumerableScalar(AggregationState state, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext);
 }

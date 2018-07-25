@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.plan;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.epl.table.mgmt.TableMetadata;
-import com.espertech.esper.type.OuterJoinType;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadata;
+import eu.uk.ncl.pet5o.esper.type.OuterJoinType;
 
 /**
  * Builds a query plan for the simple 2-stream scenario.

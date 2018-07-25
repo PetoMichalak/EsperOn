@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.service.table;
 
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.model.expression.CodegenExpressionRef;
-import com.espertech.esper.epl.table.strategy.ExprTableEvalLockUtil;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRef;
+import eu.uk.ncl.pet5o.esper.epl.table.strategy.ExprTableEvalLockUtil;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethodChain;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_AGENTINSTANCECONTEXT;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethodChain;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_AGENTINSTANCECONTEXT;
 
 public class AggSvcGroupByWTableCodegenUtil {
     protected final static CodegenExpressionRef REF_TABLESTATEINSTANCE = ref("tableStateInstance");

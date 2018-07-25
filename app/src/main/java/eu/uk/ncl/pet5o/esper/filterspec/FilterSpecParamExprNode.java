@@ -10,16 +10,16 @@
  */
 package eu.uk.ncl.pet5o.esper.filterspec;
 
-import com.espertech.esper.client.ConfigurationEngineDefaults;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.core.ExprFilterSpecLookupable;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.table.mgmt.TableService;
-import com.espertech.esper.epl.variable.VariableService;
-import com.espertech.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.client.ConfigurationEngineDefaults;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprFilterSpecLookupable;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableService;
+import eu.uk.ncl.pet5o.esper.epl.variable.VariableService;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
 
 import java.lang.annotation.Annotation;
 import java.util.LinkedHashMap;
@@ -96,13 +96,13 @@ public final class FilterSpecParamExprNode extends FilterSpecParam {
     }
 
     public final ExprNodeAdapterBase getFilterValue(MatchedEventMap matchedEvents, ExprEvaluatorContext exprEvaluatorContext, EngineImportService engineImportService, Annotation[] annotations) {
-        com.espertech.esper.client.EventBean[] events = null;
+        eu.uk.ncl.pet5o.esper.client.EventBean[] events = null;
 
         if ((taggedEventTypes != null && !taggedEventTypes.isEmpty()) || (arrayEventTypes != null && !arrayEventTypes.isEmpty())) {
             int size = 0;
             size += (taggedEventTypes != null) ? taggedEventTypes.size() : 0;
             size += (arrayEventTypes != null) ? arrayEventTypes.size() : 0;
-            events = new com.espertech.esper.client.EventBean[size + 1];
+            events = new eu.uk.ncl.pet5o.esper.client.EventBean[size + 1];
 
             int count = 1;
             if (taggedEventTypes != null) {

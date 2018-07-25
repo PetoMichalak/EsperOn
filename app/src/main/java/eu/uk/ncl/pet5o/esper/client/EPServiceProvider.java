@@ -157,8 +157,8 @@ public interface EPServiceProvider {
 
     /**
      * Returns the engine-instance global read-write lock.
-     * The {@link com.espertech.esper.client.EPRuntime#sendEvent} method takes a read lock.
-     * The {@link com.espertech.esper.client.EPAdministrator#createEPL} methods take a write lock.
+     * The {@link eu.uk.ncl.pet5o.esper.client.EPRuntime#sendEvent} method takes a read lock.
+     * The {@link eu.uk.ncl.pet5o.esper.client.EPAdministrator#createEPL} methods take a write lock.
      *
      * @return engine instance global read-write lock
      */

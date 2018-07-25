@@ -10,25 +10,25 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.service.groupby;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMember;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.core.CodegenCtor;
-import com.espertech.esper.codegen.core.CodegenNamedMethods;
-import com.espertech.esper.codegen.core.CodegenNamedParam;
-import com.espertech.esper.codegen.core.CodegenTypedParam;
-import com.espertech.esper.codegen.model.expression.CodegenExpressionRef;
-import com.espertech.esper.epl.agg.access.AggregationAccessorSlotPair;
-import com.espertech.esper.epl.agg.access.AggregationState;
-import com.espertech.esper.epl.agg.aggregator.AggregationMethod;
-import com.espertech.esper.epl.agg.service.common.*;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.time.TimeAbacus;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
-import com.espertech.esper.util.ExecutionPathDebugLog;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMember;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.core.CodegenCtor;
+import eu.uk.ncl.pet5o.esper.codegen.core.CodegenNamedMethods;
+import eu.uk.ncl.pet5o.esper.codegen.core.CodegenNamedParam;
+import eu.uk.ncl.pet5o.esper.codegen.core.CodegenTypedParam;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRef;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationAccessorSlotPair;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationState;
+import eu.uk.ncl.pet5o.esper.epl.agg.aggregator.AggregationMethod;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.*;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.time.TimeAbacus;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.util.ExecutionPathDebugLog;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,25 +41,25 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.cast;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.equalsNull;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethodChain;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.member;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.newInstance;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.op;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.or;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.relational;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.staticMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionRelational.CodegenRelational.GT;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionRelational.CodegenRelational.LE;
-import static com.espertech.esper.epl.agg.codegen.AggregationServiceCodegenNames.CLASSNAME_AGGREGATIONROW_TOP;
-import static com.espertech.esper.epl.agg.service.groupby.AggSvcGroupByForge.REF_AGGREGATORSPERGROUP;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_AGENTINSTANCECONTEXT;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_EXPREVALCONTEXT;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.cast;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.equalsNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethodChain;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.member;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.newInstance;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.op;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.or;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.relational;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.staticMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRelational.CodegenRelational.GT;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRelational.CodegenRelational.LE;
+import static eu.uk.ncl.pet5o.esper.epl.agg.codegen.AggregationServiceCodegenNames.CLASSNAME_AGGREGATIONROW_TOP;
+import static eu.uk.ncl.pet5o.esper.epl.agg.service.groupby.AggSvcGroupByForge.REF_AGGREGATORSPERGROUP;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_AGENTINSTANCECONTEXT;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_EXPREVALCONTEXT;
 
 /**
  * Implementation for handling aggregation with grouping by group-keys.
@@ -132,7 +132,7 @@ public class AggSvcGroupByReclaimAgedImpl extends AggregationServiceBaseGrouped 
                 .assignRef(REF_EVALUATIONFUNCTIONFREQUENCY, exprDotMethod(member(memberFrequencyFactory.getMemberId()), "make", REF_AGENTINSTANCECONTEXT));
     }
 
-    public void applyEnter(com.espertech.esper.client.EventBean[] eventsPerStream, Object groupByKey, ExprEvaluatorContext exprEvaluatorContext) {
+    public void applyEnter(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, Object groupByKey, ExprEvaluatorContext exprEvaluatorContext) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qAggregationGroupedApplyEnterLeave(true, aggregators.length, accessAggregations.length, groupByKey);
         }
@@ -206,7 +206,7 @@ public class AggSvcGroupByReclaimAgedImpl extends AggregationServiceBaseGrouped 
                     .localMethod(sweepCodegen(method, classScope), ref("currentTime"), REF_CURRENTMAXAGE);
     }
 
-    public void applyLeave(com.espertech.esper.client.EventBean[] eventsPerStream, Object groupByKey, ExprEvaluatorContext exprEvaluatorContext) {
+    public void applyLeave(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, Object groupByKey, ExprEvaluatorContext exprEvaluatorContext) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qAggregationGroupedApplyEnterLeave(false, aggregators.length, accessAggregations.length, groupByKey);
         }
@@ -283,7 +283,7 @@ public class AggSvcGroupByReclaimAgedImpl extends AggregationServiceBaseGrouped 
         this.currentGroupKey = groupByKey;
     }
 
-    public Object getValue(int column, int agentInstanceId, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public Object getValue(int column, int agentInstanceId, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         if (column < aggregators.length) {
             return currentAggregatorMethods[column].getValue();
         } else {
@@ -292,7 +292,7 @@ public class AggSvcGroupByReclaimAgedImpl extends AggregationServiceBaseGrouped 
         }
     }
 
-    public Collection<EventBean> getCollectionOfEvents(int column, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Collection<EventBean> getCollectionOfEvents(int column, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         if (column < aggregators.length) {
             return null;
         } else {
@@ -301,7 +301,7 @@ public class AggSvcGroupByReclaimAgedImpl extends AggregationServiceBaseGrouped 
         }
     }
 
-    public Collection<Object> getCollectionScalar(int column, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Collection<Object> getCollectionScalar(int column, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         if (column < aggregators.length) {
             return null;
         } else {
@@ -310,7 +310,7 @@ public class AggSvcGroupByReclaimAgedImpl extends AggregationServiceBaseGrouped 
         }
     }
 
-    public com.espertech.esper.client.EventBean getEventBean(int column, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getEventBean(int column, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         if (column < aggregators.length) {
             return null;
         } else {

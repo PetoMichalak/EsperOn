@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.filterspec;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayDeque;

@@ -10,15 +10,15 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.access;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
 
 import java.util.Collection;
 import java.util.Collections;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
 
 /**
  * Represents the aggregation accessor that provides the result for the "maxBy" aggregation function.
@@ -30,8 +30,8 @@ public abstract class AggregationAccessorMinMaxByBase implements AggregationAcce
         this.max = max;
     }
 
-    public Collection<EventBean> getEnumerableEvents(AggregationState state, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
-        com.espertech.esper.client.EventBean bean = getEnumerableEvent(state, eventsPerStream, isNewData, context);
+    public Collection<EventBean> getEnumerableEvents(AggregationState state, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+        eu.uk.ncl.pet5o.esper.client.EventBean bean = getEnumerableEvent(state, eventsPerStream, isNewData, context);
         if (bean == null) {
             return null;
         }
@@ -41,12 +41,12 @@ public abstract class AggregationAccessorMinMaxByBase implements AggregationAcce
     public void getEnumerableEventsCodegen(AggregationAccessorForgeGetCodegenContext context) {
         AggregationStateSortedCodegen forge = (AggregationStateSortedCodegen) context.getAccessStateForge();
         context.getMethod().getBlock()
-                .declareVar(com.espertech.esper.client.EventBean.class, "bean", max ? forge.getLastValueCodegen(context.getColumn(), context.getClassScope(), context.getMethod()) : forge.getFirstValueCodegen(context.getColumn(), context.getClassScope(), context.getMethod()))
+                .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "bean", max ? forge.getLastValueCodegen(context.getColumn(), context.getClassScope(), context.getMethod()) : forge.getFirstValueCodegen(context.getColumn(), context.getClassScope(), context.getMethod()))
                 .ifRefNullReturnNull("bean")
                 .methodReturn(staticMethod(Collections.class, "singletonList", ref("bean")));
     }
 
-    public Collection<Object> getEnumerableScalar(AggregationState state, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public Collection<Object> getEnumerableScalar(AggregationState state, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         return null;
     }
 
@@ -54,7 +54,7 @@ public abstract class AggregationAccessorMinMaxByBase implements AggregationAcce
         context.getMethod().getBlock().methodReturn(constantNull());
     }
 
-    public com.espertech.esper.client.EventBean getEnumerableEvent(AggregationState state, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getEnumerableEvent(AggregationState state, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         if (max) {
             return ((AggregationStateSorted) state).getLastValue();
         } else {

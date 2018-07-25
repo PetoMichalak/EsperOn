@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.lookup;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.join.table.PropertyIndexedEventTableSingle;
-import com.espertech.esper.event.EventBeanUtility;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.join.table.PropertyIndexedEventTableSingle;
+import eu.uk.ncl.pet5o.esper.event.EventBeanUtility;
 
 /**
  * Index lookup strategy that coerces the key values before performing a lookup.

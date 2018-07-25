@@ -10,36 +10,36 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.core;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.codegen.base.CodegenBlock;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMember;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.codegen.model.expression.CodegenExpressionRef;
-import com.espertech.esper.core.start.EPStatementStartMethod;
-import com.espertech.esper.epl.core.streamtype.DuplicatePropertyException;
-import com.espertech.esper.epl.core.streamtype.PropertyNotFoundException;
-import com.espertech.esper.epl.expression.codegen.CodegenLegoCast;
-import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
-import com.espertech.esper.epl.variable.VariableMetaData;
-import com.espertech.esper.epl.variable.VariableReader;
-import com.espertech.esper.event.EventPropertyGetterSPI;
-import com.espertech.esper.event.EventTypeSPI;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenBlock;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMember;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRef;
+import eu.uk.ncl.pet5o.esper.core.start.EPStatementStartMethod;
+import eu.uk.ncl.pet5o.esper.epl.core.streamtype.DuplicatePropertyException;
+import eu.uk.ncl.pet5o.esper.epl.core.streamtype.PropertyNotFoundException;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.CodegenLegoCast;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
+import eu.uk.ncl.pet5o.esper.epl.variable.VariableMetaData;
+import eu.uk.ncl.pet5o.esper.epl.variable.VariableReader;
+import eu.uk.ncl.pet5o.esper.event.EventPropertyGetterSPI;
+import eu.uk.ncl.pet5o.esper.event.EventTypeSPI;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import java.io.StringWriter;
 import java.util.Map;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.cast;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotUnderlying;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.member;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.cast;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotUnderlying;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.member;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
 
 /**
  * Represents a variable in an expression tree.
@@ -159,7 +159,7 @@ public class ExprVariableNodeImpl extends ExprNodeBase implements ExprForge, Exp
         return "variableName=" + variableName;
     }
 
-    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         VariableReader reader;
         if (readerNonCP != null) {
             reader = readerNonCP;
@@ -178,7 +178,7 @@ public class ExprVariableNodeImpl extends ExprNodeBase implements ExprForge, Exp
             return value;
         }
 
-        com.espertech.esper.client.EventBean theEvent = (com.espertech.esper.client.EventBean) value;
+        eu.uk.ncl.pet5o.esper.client.EventBean theEvent = (eu.uk.ncl.pet5o.esper.client.EventBean) value;
         if (optSubPropName == null) {
             if (InstrumentationHelper.ENABLED) {
                 InstrumentationHelper.get().aExprVariable(theEvent.getUnderlying());
@@ -213,7 +213,7 @@ public class ExprVariableNodeImpl extends ExprNodeBase implements ExprForge, Exp
         } else {
             block.declareVar(Object.class, "value", exprDotMethod(ref("reader"), "getValue"))
                     .ifRefNullReturnNull("value")
-                    .declareVar(com.espertech.esper.client.EventBean.class, "theEvent", cast(com.espertech.esper.client.EventBean.class, ref("value")));
+                    .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "theEvent", cast(eu.uk.ncl.pet5o.esper.client.EventBean.class, ref("value")));
             if (optSubPropName == null) {
                 block.methodReturn(cast(variableType, exprDotUnderlying(ref("theEvent"))));
             } else {

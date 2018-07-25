@@ -10,19 +10,19 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.table;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.core.service.StatementContext;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.join.base.HistoricalIndexLookupStrategy;
-import com.espertech.esper.epl.join.base.JoinSetComposerPrototypeFactory;
-import com.espertech.esper.epl.join.plan.QueryGraph;
-import com.espertech.esper.epl.join.plan.QueryGraphValue;
-import com.espertech.esper.epl.join.plan.QueryGraphValueEntryHashKeyed;
-import com.espertech.esper.epl.join.plan.QueryGraphValuePairHashKeyIndex;
-import com.espertech.esper.epl.join.pollindex.PollResultIndexingStrategy;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.join.base.HistoricalIndexLookupStrategy;
+import eu.uk.ncl.pet5o.esper.epl.join.base.JoinSetComposerPrototypeFactory;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.QueryGraph;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.QueryGraphValue;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.QueryGraphValueEntryHashKeyed;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.QueryGraphValuePairHashKeyIndex;
+import eu.uk.ncl.pet5o.esper.epl.join.pollindex.PollResultIndexingStrategy;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import java.io.StringWriter;
 import java.util.Iterator;

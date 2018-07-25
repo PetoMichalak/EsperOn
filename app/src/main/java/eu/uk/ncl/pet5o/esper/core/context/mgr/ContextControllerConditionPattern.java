@@ -10,15 +10,15 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.core.service.EPServicesContext;
-import com.espertech.esper.core.service.StatementContext;
-import com.espertech.esper.epl.spec.ContextDetailConditionPattern;
-import com.espertech.esper.epl.spec.PatternStreamSpecCompiled;
-import com.espertech.esper.filterspec.MatchedEventMap;
-import com.espertech.esper.filterspec.MatchedEventMapImpl;
-import com.espertech.esper.filterspec.MatchedEventMapMeta;
-import com.espertech.esper.pattern.*;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.core.service.EPServicesContext;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.epl.spec.ContextDetailConditionPattern;
+import eu.uk.ncl.pet5o.esper.epl.spec.PatternStreamSpecCompiled;
+import eu.uk.ncl.pet5o.esper.filterspec.MatchedEventMap;
+import eu.uk.ncl.pet5o.esper.filterspec.MatchedEventMapImpl;
+import eu.uk.ncl.pet5o.esper.filterspec.MatchedEventMapMeta;
+import eu.uk.ncl.pet5o.esper.pattern.*;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -46,7 +46,7 @@ public class ContextControllerConditionPattern implements ContextControllerCondi
         this.contextStatePathKey = contextStatePathKey;
     }
 
-    public void activate(com.espertech.esper.client.EventBean optionalTriggeringEvent, MatchedEventMap priorMatches, long timeOffset, boolean isRecoveringReslient) {
+    public void activate(eu.uk.ncl.pet5o.esper.client.EventBean optionalTriggeringEvent, MatchedEventMap priorMatches, long timeOffset, boolean isRecoveringReslient) {
         if (patternStopCallback != null) {
             patternStopCallback.stop();
         }
@@ -80,7 +80,7 @@ public class ContextControllerConditionPattern implements ContextControllerCondi
         }
     }
 
-    public void matchFound(Map<String, Object> matchEvent, com.espertech.esper.client.EventBean optionalTriggeringEventPattern) {
+    public void matchFound(Map<String, Object> matchEvent, eu.uk.ncl.pet5o.esper.client.EventBean optionalTriggeringEventPattern) {
         Map<String, Object> matchEventInclusive = null;
         if (endpointPatternSpec.isInclusive()) {
             if (matchEvent.size() < 2) {
@@ -132,7 +132,7 @@ public class ContextControllerConditionPattern implements ContextControllerCondi
             this.condition = condition;
         }
 
-        public void matchFound(Map<String, Object> matchEvent, com.espertech.esper.client.EventBean optionalTriggeringEvent) {
+        public void matchFound(Map<String, Object> matchEvent, eu.uk.ncl.pet5o.esper.client.EventBean optionalTriggeringEvent) {
             isInvoked = true;
             if (forwardCalls) {
                 condition.matchFound(matchEvent, optionalTriggeringEvent);

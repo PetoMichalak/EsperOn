@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.table;
 
-import com.espertech.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
 
 public class EventTableFactoryTableIdentAgentInstanceSubq extends EventTableFactoryTableIdentAgentInstance {
     private final int subqueryNumber;

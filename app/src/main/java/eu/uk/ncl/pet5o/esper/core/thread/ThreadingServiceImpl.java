@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.core.thread;
 
-import com.espertech.esper.client.ConfigurationEngineDefaults;
-import com.espertech.esper.core.service.EPRuntimeImpl;
-import com.espertech.esper.core.service.EPServicesContext;
+import eu.uk.ncl.pet5o.esper.client.ConfigurationEngineDefaults;
+import eu.uk.ncl.pet5o.esper.core.service.EPRuntimeImpl;
+import eu.uk.ncl.pet5o.esper.core.service.EPServicesContext;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -206,7 +206,7 @@ public class ThreadingServiceImpl implements ThreadingService {
             engineURI = "default";
         }
 
-        String threadGroupName = "com.espertech.esper." + engineURI + "-" + name;
+        String threadGroupName = "eu.uk.ncl.pet5o.esper." + engineURI + "-" + name;
         ThreadGroup threadGroup = new ThreadGroup(threadGroupName);
         ThreadPoolExecutor pool = new ThreadPoolExecutor(numThreads, numThreads, 1, TimeUnit.SECONDS, queue, new EngineThreadFactory(engineURI, name, threadGroup, Thread.NORM_PRIORITY));
         pool.prestartAllCoreThreads();
@@ -219,7 +219,7 @@ public class ThreadingServiceImpl implements ThreadingService {
             engineURI = "default";
         }
 
-        String threadGroupName = "com.espertech.esper." + engineURI + "-source-" + sourceName;
+        String threadGroupName = "eu.uk.ncl.pet5o.esper." + engineURI + "-source-" + sourceName;
         ThreadGroup threadGroup = new ThreadGroup(threadGroupName);
         return new Thread(threadGroup, runnable);
     }

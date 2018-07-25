@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -38,7 +38,7 @@ public class AgentInstanceArrayIterator implements Iterator<EventBean> {
         return currentIterator != null && currentIterator.hasNext();
     }
 
-    public com.espertech.esper.client.EventBean next() {
+    public eu.uk.ncl.pet5o.esper.client.EventBean next() {
         if (currentIterator != null) {
             if (currentIterator.hasNext()) {
                 return currentIterator.next();

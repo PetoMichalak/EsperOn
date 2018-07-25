@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.poll;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.db.PollExecStrategy;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.script.ExprNodeScript;
-import com.espertech.esper.epl.script.ExprNodeScriptEvaluator;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.db.PollExecStrategy;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.script.ExprNodeScript;
+import eu.uk.ncl.pet5o.esper.epl.script.ExprNodeScriptEvaluator;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,11 +38,11 @@ public class MethodPollingExecStrategyScript implements PollExecStrategy {
 
     public List<EventBean> poll(Object[] lookupValues, ExprEvaluatorContext exprEvaluatorContext) {
         Object result = eval.evaluate(lookupValues, exprEvaluatorContext);
-        if (!(result instanceof com.espertech.esper.client.EventBean[])) {
+        if (!(result instanceof eu.uk.ncl.pet5o.esper.client.EventBean[])) {
             log.warn("Script expected return type EventBean[] does not match result " + result == null ? "null" : result.getClass().getName());
             return Collections.emptyList();
         }
-        return Arrays.asList((com.espertech.esper.client.EventBean[]) result);
+        return Arrays.asList((eu.uk.ncl.pet5o.esper.client.EventBean[]) result);
     }
 
     public void done() {

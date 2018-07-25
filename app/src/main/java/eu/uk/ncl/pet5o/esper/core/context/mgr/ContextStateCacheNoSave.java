@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.epl.spec.ContextDetailInitiatedTerminated;
-import com.espertech.esper.epl.spec.ContextDetailPartitioned;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.util.SerializerUtil;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.epl.spec.ContextDetailInitiatedTerminated;
+import eu.uk.ncl.pet5o.esper.epl.spec.ContextDetailPartitioned;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.util.SerializerUtil;
 
 import java.io.Serializable;
 import java.util.Collections;
@@ -132,8 +132,8 @@ public class ContextStateCacheNoSave implements ContextStateCache {
         if (state != null) {
             serializableProps.putAll(state);
             for (Map.Entry<String, Object> entry : state.entrySet()) {
-                if (entry.getValue() instanceof com.espertech.esper.client.EventBean) {
-                    com.espertech.esper.client.EventBean event = (com.espertech.esper.client.EventBean) entry.getValue();
+                if (entry.getValue() instanceof eu.uk.ncl.pet5o.esper.client.EventBean) {
+                    eu.uk.ncl.pet5o.esper.client.EventBean event = (eu.uk.ncl.pet5o.esper.client.EventBean) entry.getValue();
                     serializableProps.put(entry.getKey(), new EventBeanNameValuePair(event.getEventType().getName(), SerializerUtil.objectToByteArr(event.getUnderlying())));
                 }
             }

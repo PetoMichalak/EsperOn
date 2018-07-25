@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.aggregator;
 
-import com.espertech.esper.epl.agg.service.common.AggregatorUtil;
-import com.espertech.esper.epl.expression.core.MinMaxTypeEnum;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregatorUtil;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.MinMaxTypeEnum;
 
 /**
  * Min/max aggregator for all values, not considering events leaving the aggregation (i.e. ever).

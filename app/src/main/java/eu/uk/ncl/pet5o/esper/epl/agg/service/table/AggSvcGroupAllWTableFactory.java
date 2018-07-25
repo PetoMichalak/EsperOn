@@ -10,16 +10,16 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.service.table;
 
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.epl.agg.access.AggregationAccessorSlotPair;
-import com.espertech.esper.epl.agg.access.AggregationAgent;
-import com.espertech.esper.epl.agg.service.common.AggregationService;
-import com.espertech.esper.epl.agg.service.common.AggregationServiceFactory;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.table.mgmt.TableColumnMethodPair;
-import com.espertech.esper.epl.table.mgmt.TableMetadata;
-import com.espertech.esper.epl.table.mgmt.TableStateInstanceUngrouped;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationAccessorSlotPair;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationAgent;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationService;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationServiceFactory;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableColumnMethodPair;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadata;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableStateInstanceUngrouped;
 
 /**
  * Implementation for handling aggregation without any grouping (no group-by).

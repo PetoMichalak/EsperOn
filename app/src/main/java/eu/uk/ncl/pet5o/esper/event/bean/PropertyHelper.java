@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.event.bean;
 
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.event.EventPropertyGetterSPI;
-import com.espertech.esper.event.EventPropertyType;
-import com.espertech.esper.event.WriteablePropertyDescriptor;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.event.EventPropertyGetterSPI;
+import eu.uk.ncl.pet5o.esper.event.EventPropertyType;
+import eu.uk.ncl.pet5o.esper.event.WriteablePropertyDescriptor;
 
 import net.sf.cglib.reflect.FastClass;
 import net.sf.cglib.reflect.FastMethod;

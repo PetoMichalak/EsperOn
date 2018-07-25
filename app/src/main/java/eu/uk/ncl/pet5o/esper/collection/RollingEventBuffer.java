@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.collection;
 
-import com.espertech.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
 
 /**
  * Event buffer of a given size provides a random access API into the most current event to prior events

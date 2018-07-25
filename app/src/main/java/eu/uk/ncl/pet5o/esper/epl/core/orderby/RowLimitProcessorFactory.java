@@ -10,14 +10,14 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.orderby;
 
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.epl.spec.RowLimitSpec;
-import com.espertech.esper.epl.variable.VariableMetaData;
-import com.espertech.esper.epl.variable.VariableReader;
-import com.espertech.esper.epl.variable.VariableService;
-import com.espertech.esper.epl.variable.VariableServiceUtil;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.epl.spec.RowLimitSpec;
+import eu.uk.ncl.pet5o.esper.epl.variable.VariableMetaData;
+import eu.uk.ncl.pet5o.esper.epl.variable.VariableReader;
+import eu.uk.ncl.pet5o.esper.epl.variable.VariableService;
+import eu.uk.ncl.pet5o.esper.epl.variable.VariableServiceUtil;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 /**
  * A factory for row-limit processor instances.
@@ -35,7 +35,7 @@ public class RowLimitProcessorFactory {
      * @param rowLimitSpec        specification for row limit, or null if no row limit is defined
      * @param variableService     for retrieving variable state for use with row limiting
      * @param optionalContextName context name
-     * @throws com.espertech.esper.epl.expression.core.ExprValidationException if row limit specification validation fails
+     * @throws eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException if row limit specification validation fails
      */
     public RowLimitProcessorFactory(RowLimitSpec rowLimitSpec, VariableService variableService, String optionalContextName)
             throws ExprValidationException {

@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.client;
 
-import com.espertech.esper.client.context.ContextPartitionSelector;
-import com.espertech.esper.client.context.ContextPartitionVariableState;
-import com.espertech.esper.client.dataflow.EPDataFlowRuntime;
-import com.espertech.esper.client.soda.EPStatementObjectModel;
-import com.espertech.esper.client.util.EventRenderer;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionSelector;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionVariableState;
+import eu.uk.ncl.pet5o.esper.client.dataflow.EPDataFlowRuntime;
+import eu.uk.ncl.pet5o.esper.client.soda.EPStatementObjectModel;
+import eu.uk.ncl.pet5o.esper.client.util.EventRenderer;
 
 import java.net.URI;
 import java.util.List;

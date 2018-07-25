@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.dot;
 
-import com.espertech.esper.epl.expression.core.ExprForge;
-import com.espertech.esper.epl.join.plan.FilterExprAnalyzerAffector;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprForge;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.FilterExprAnalyzerAffector;
 
 public abstract class ExprDotNodeForge implements ExprForge {
     public abstract boolean isReturnsConstantResult();

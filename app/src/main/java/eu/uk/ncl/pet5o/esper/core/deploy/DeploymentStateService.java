@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.deploy;
 
-import com.espertech.esper.client.deploy.DeploymentInformation;
+import eu.uk.ncl.pet5o.esper.client.deploy.DeploymentInformation;
 
 /**
  * Interface for a service maintaining deployment state.

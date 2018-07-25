@@ -10,14 +10,14 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.service.groupby;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.agg.access.AggregationAccessorSlotPair;
-import com.espertech.esper.epl.agg.access.AggregationState;
-import com.espertech.esper.epl.agg.aggregator.AggregationMethod;
-import com.espertech.esper.epl.agg.service.common.*;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationAccessorSlotPair;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationState;
+import eu.uk.ncl.pet5o.esper.epl.agg.aggregator.AggregationMethod;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.*;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -71,7 +71,7 @@ public class AggSvcGroupByRefcountedWAccessImpl extends AggregationServiceBaseGr
         aggregatorsPerGroup.clear();
     }
 
-    public void applyEnter(com.espertech.esper.client.EventBean[] eventsPerStream, Object groupByKey, ExprEvaluatorContext exprEvaluatorContext) {
+    public void applyEnter(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, Object groupByKey, ExprEvaluatorContext exprEvaluatorContext) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qAggregationGroupedApplyEnterLeave(true, aggregators.length, accessAggregations.length, groupByKey);
         }
@@ -123,7 +123,7 @@ public class AggSvcGroupByRefcountedWAccessImpl extends AggregationServiceBaseGr
         }
     }
 
-    public void applyLeave(com.espertech.esper.client.EventBean[] eventsPerStream, Object groupByKey, ExprEvaluatorContext exprEvaluatorContext) {
+    public void applyLeave(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, Object groupByKey, ExprEvaluatorContext exprEvaluatorContext) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qAggregationGroupedApplyEnterLeave(false, aggregators.length, accessAggregations.length, groupByKey);
         }
@@ -195,7 +195,7 @@ public class AggSvcGroupByRefcountedWAccessImpl extends AggregationServiceBaseGr
         this.currentGroupKey = groupByKey;
     }
 
-    public Object getValue(int column, int agentInstanceId, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public Object getValue(int column, int agentInstanceId, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         if (column < aggregators.length) {
             return currentAggregatorMethods[column].getValue();
         } else {
@@ -204,7 +204,7 @@ public class AggSvcGroupByRefcountedWAccessImpl extends AggregationServiceBaseGr
         }
     }
 
-    public Collection<EventBean> getCollectionOfEvents(int column, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Collection<EventBean> getCollectionOfEvents(int column, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         if (column < aggregators.length) {
             return null;
         } else {
@@ -213,7 +213,7 @@ public class AggSvcGroupByRefcountedWAccessImpl extends AggregationServiceBaseGr
         }
     }
 
-    public Collection<Object> getCollectionScalar(int column, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Collection<Object> getCollectionScalar(int column, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         if (column < aggregators.length) {
             return null;
         } else {
@@ -222,7 +222,7 @@ public class AggSvcGroupByRefcountedWAccessImpl extends AggregationServiceBaseGr
         }
     }
 
-    public com.espertech.esper.client.EventBean getEventBean(int column, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getEventBean(int column, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         if (column < aggregators.length) {
             return null;
         } else {

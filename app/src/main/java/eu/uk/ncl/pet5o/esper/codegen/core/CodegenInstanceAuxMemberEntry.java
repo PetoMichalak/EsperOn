@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.codegen.core;
 
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
 
 public class CodegenInstanceAuxMemberEntry {
     private final String name;

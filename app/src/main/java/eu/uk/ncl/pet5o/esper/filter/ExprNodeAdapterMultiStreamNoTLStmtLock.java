@@ -10,21 +10,21 @@
  */
 package eu.uk.ncl.pet5o.esper.filter;
 
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.variable.VariableService;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.variable.VariableService;
 
 import java.lang.annotation.Annotation;
 
 public class ExprNodeAdapterMultiStreamNoTLStmtLock extends ExprNodeAdapterMultiStreamNoTL {
-    public ExprNodeAdapterMultiStreamNoTLStmtLock(int filterSpecId, int filterSpecParamPathNum, ExprNode exprNode, ExprEvaluator exprEvaluator, ExprEvaluatorContext evaluatorContext, VariableService variableService, EngineImportService engineImportService, com.espertech.esper.client.EventBean[] prototype, Annotation[] annotations) {
+    public ExprNodeAdapterMultiStreamNoTLStmtLock(int filterSpecId, int filterSpecParamPathNum, ExprNode exprNode, ExprEvaluator exprEvaluator, ExprEvaluatorContext evaluatorContext, VariableService variableService, EngineImportService engineImportService, eu.uk.ncl.pet5o.esper.client.EventBean[] prototype, Annotation[] annotations) {
         super(filterSpecId, filterSpecParamPathNum, exprNode, exprEvaluator, evaluatorContext, variableService, engineImportService, prototype, annotations);
     }
 
     @Override
-    protected boolean evaluatePerStream(com.espertech.esper.client.EventBean[] eventsPerStream) {
+    protected boolean evaluatePerStream(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream) {
         boolean obtained = evaluatorContext.getAgentInstanceLock().acquireWriteLock(ExprNodeAdapterMultiStreamStmtLock.LOCK_BACKOFF_MSEC);
         if (!obtained) {
             throw new FilterLockBackoffException();

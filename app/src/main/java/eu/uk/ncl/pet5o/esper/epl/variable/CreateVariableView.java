@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.variable;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.collection.SingleEventIterator;
-import com.espertech.esper.core.service.StatementResultService;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.view.ViewSupport;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.collection.SingleEventIterator;
+import eu.uk.ncl.pet5o.esper.core.service.StatementResultService;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.view.ViewSupport;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -66,17 +66,17 @@ public class CreateVariableView extends ViewSupport implements VariableChangeCal
         if (statementResultService.isMakeNatural() || statementResultService.isMakeSynthetic()) {
             Map<String, Object> valuesOld = new HashMap<String, Object>();
             valuesOld.put(variableName, oldValue);
-            com.espertech.esper.client.EventBean eventOld = eventAdapterService.adapterForTypedMap(valuesOld, eventType);
+            eu.uk.ncl.pet5o.esper.client.EventBean eventOld = eventAdapterService.adapterForTypedMap(valuesOld, eventType);
 
             Map<String, Object> valuesNew = new HashMap<String, Object>();
             valuesNew.put(variableName, newValue);
-            com.espertech.esper.client.EventBean eventNew = eventAdapterService.adapterForTypedMap(valuesNew, eventType);
+            eu.uk.ncl.pet5o.esper.client.EventBean eventNew = eventAdapterService.adapterForTypedMap(valuesNew, eventType);
 
-            this.updateChildren(new com.espertech.esper.client.EventBean[]{eventNew}, new com.espertech.esper.client.EventBean[]{eventOld});
+            this.updateChildren(new eu.uk.ncl.pet5o.esper.client.EventBean[]{eventNew}, new eu.uk.ncl.pet5o.esper.client.EventBean[]{eventOld});
         }
     }
 
-    public void update(com.espertech.esper.client.EventBean[] newData, com.espertech.esper.client.EventBean[] oldData) {
+    public void update(eu.uk.ncl.pet5o.esper.client.EventBean[] newData, eu.uk.ncl.pet5o.esper.client.EventBean[] oldData) {
         throw new UnsupportedOperationException("Update not supported");
     }
 
@@ -88,7 +88,7 @@ public class CreateVariableView extends ViewSupport implements VariableChangeCal
         Object value = reader.getValue();
         Map<String, Object> values = new HashMap<String, Object>();
         values.put(variableName, value);
-        com.espertech.esper.client.EventBean theEvent = eventAdapterService.adapterForTypedMap(values, eventType);
+        eu.uk.ncl.pet5o.esper.client.EventBean theEvent = eventAdapterService.adapterForTypedMap(values, eventType);
         return new SingleEventIterator(theEvent);
     }
 }

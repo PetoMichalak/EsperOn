@@ -10,15 +10,15 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.rollup;
 
-import com.espertech.esper.collection.CombinationEnumeration;
-import com.espertech.esper.collection.MultiKeyInt;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.expression.core.ExprNodeUtilityCore;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.epl.expression.visitor.ExprNodeSubselectDeclaredDotVisitor;
-import com.espertech.esper.epl.spec.*;
-import com.espertech.esper.util.CollectionUtil;
-import com.espertech.esper.util.SerializableObjectCopier;
+import eu.uk.ncl.pet5o.esper.collection.CombinationEnumeration;
+import eu.uk.ncl.pet5o.esper.collection.MultiKeyInt;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNodeUtilityCore;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.epl.expression.visitor.ExprNodeSubselectDeclaredDotVisitor;
+import eu.uk.ncl.pet5o.esper.epl.spec.*;
+import eu.uk.ncl.pet5o.esper.util.CollectionUtil;
+import eu.uk.ncl.pet5o.esper.util.SerializableObjectCopier;
 
 import java.io.StringWriter;
 import java.util.ArrayList;

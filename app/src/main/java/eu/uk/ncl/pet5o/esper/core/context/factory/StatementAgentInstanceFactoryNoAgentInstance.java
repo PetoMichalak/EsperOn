@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.factory;
 
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.util.CollectionUtil;
-import com.espertech.esper.view.Viewable;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.util.CollectionUtil;
+import eu.uk.ncl.pet5o.esper.view.Viewable;
 
 public class StatementAgentInstanceFactoryNoAgentInstance implements StatementAgentInstanceFactory {
 

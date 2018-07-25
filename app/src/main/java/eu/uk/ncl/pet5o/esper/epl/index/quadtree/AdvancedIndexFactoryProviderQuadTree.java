@@ -10,27 +10,27 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.index.quadtree;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.epl.expression.core.*;
-import com.espertech.esper.epl.index.service.AdvancedIndexFactoryProvider;
-import com.espertech.esper.epl.lookup.AdvancedIndexConfigContextPartition;
-import com.espertech.esper.spatial.quadtree.pointregion.PointRegionQuadTreeFactory;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.epl.index.service.AdvancedIndexFactoryProvider;
+import eu.uk.ncl.pet5o.esper.epl.lookup.AdvancedIndexConfigContextPartition;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.pointregion.PointRegionQuadTreeFactory;
 
-import static com.espertech.esper.epl.index.quadtree.AdvancedIndexQuadTreeConstants.*;
-import static com.espertech.esper.epl.index.quadtree.AdvancedIndexQuadTreeConstants.PARAM_HEIGHT;
-import static com.espertech.esper.epl.index.quadtree.AdvancedIndexQuadTreeConstants.PARAM_LEAFCAPACITY;
-import static com.espertech.esper.epl.index.quadtree.AdvancedIndexQuadTreeConstants.PARAM_MAXTREEHEIGHT;
-import static com.espertech.esper.epl.index.quadtree.AdvancedIndexQuadTreeConstants.PARAM_WIDTH;
-import static com.espertech.esper.epl.index.quadtree.AdvancedIndexQuadTreeConstants.PARAM_XMIN;
-import static com.espertech.esper.epl.index.quadtree.AdvancedIndexQuadTreeConstants.PARAM_YMIN;
-import static com.espertech.esper.epl.index.service.AdvancedIndexEvaluationHelper.*;
-import static com.espertech.esper.epl.index.service.AdvancedIndexEvaluationHelper.evalDoubleParameter;
-import static com.espertech.esper.epl.index.service.AdvancedIndexEvaluationHelper.evalIntParameter;
-import static com.espertech.esper.epl.index.service.AdvancedIndexEvaluationHelper.invalidParameterValue;
-import static com.espertech.esper.epl.index.service.AdvancedIndexValidationHelper.*;
-import static com.espertech.esper.epl.index.service.AdvancedIndexValidationHelper.validateParameterCount;
-import static com.espertech.esper.epl.index.service.AdvancedIndexValidationHelper.validateParameterReturnType;
-import static com.espertech.esper.epl.index.service.AdvancedIndexValidationHelper.validateParameterReturnTypeNumber;
+import static eu.uk.ncl.pet5o.esper.epl.index.quadtree.AdvancedIndexQuadTreeConstants.*;
+import static eu.uk.ncl.pet5o.esper.epl.index.quadtree.AdvancedIndexQuadTreeConstants.PARAM_HEIGHT;
+import static eu.uk.ncl.pet5o.esper.epl.index.quadtree.AdvancedIndexQuadTreeConstants.PARAM_LEAFCAPACITY;
+import static eu.uk.ncl.pet5o.esper.epl.index.quadtree.AdvancedIndexQuadTreeConstants.PARAM_MAXTREEHEIGHT;
+import static eu.uk.ncl.pet5o.esper.epl.index.quadtree.AdvancedIndexQuadTreeConstants.PARAM_WIDTH;
+import static eu.uk.ncl.pet5o.esper.epl.index.quadtree.AdvancedIndexQuadTreeConstants.PARAM_XMIN;
+import static eu.uk.ncl.pet5o.esper.epl.index.quadtree.AdvancedIndexQuadTreeConstants.PARAM_YMIN;
+import static eu.uk.ncl.pet5o.esper.epl.index.service.AdvancedIndexEvaluationHelper.*;
+import static eu.uk.ncl.pet5o.esper.epl.index.service.AdvancedIndexEvaluationHelper.evalDoubleParameter;
+import static eu.uk.ncl.pet5o.esper.epl.index.service.AdvancedIndexEvaluationHelper.evalIntParameter;
+import static eu.uk.ncl.pet5o.esper.epl.index.service.AdvancedIndexEvaluationHelper.invalidParameterValue;
+import static eu.uk.ncl.pet5o.esper.epl.index.service.AdvancedIndexValidationHelper.*;
+import static eu.uk.ncl.pet5o.esper.epl.index.service.AdvancedIndexValidationHelper.validateParameterCount;
+import static eu.uk.ncl.pet5o.esper.epl.index.service.AdvancedIndexValidationHelper.validateParameterReturnType;
+import static eu.uk.ncl.pet5o.esper.epl.index.service.AdvancedIndexValidationHelper.validateParameterReturnTypeNumber;
 
 public abstract class AdvancedIndexFactoryProviderQuadTree implements AdvancedIndexFactoryProvider {
 

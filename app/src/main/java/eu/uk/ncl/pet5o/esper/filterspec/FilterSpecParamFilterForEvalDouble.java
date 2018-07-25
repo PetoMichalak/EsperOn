@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.filterspec;
 
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
 
 public interface FilterSpecParamFilterForEvalDouble extends FilterSpecParamFilterForEval {
     Double getFilterValueDouble(MatchedEventMap matchedEvents, ExprEvaluatorContext exprEvaluatorContext);

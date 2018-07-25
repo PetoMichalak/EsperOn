@@ -147,7 +147,7 @@ public class OutputLimitClause implements Serializable {
     }
 
     /**
-     * Creates an output limit clause with a crontab 'at' schedule parameters, see {@link com.espertech.esper.type.FrequencyParameter} and related.
+     * Creates an output limit clause with a crontab 'at' schedule parameters, see {@link eu.uk.ncl.pet5o.esper.type.FrequencyParameter} and related.
      *
      * @param scheduleParameters the crontab schedule parameters
      * @return clause

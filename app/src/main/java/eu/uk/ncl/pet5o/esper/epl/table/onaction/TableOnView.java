@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.table.onaction;
 
-import com.espertech.esper.view.View;
+import eu.uk.ncl.pet5o.esper.view.View;
 
 public interface TableOnView extends View {
 }

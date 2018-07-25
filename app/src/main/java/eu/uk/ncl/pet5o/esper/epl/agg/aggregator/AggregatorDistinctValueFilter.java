@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.aggregator;
 
-import com.espertech.esper.collection.RefCountedSet;
+import eu.uk.ncl.pet5o.esper.collection.RefCountedSet;
 
 /**
  * AggregationMethod for use on top of another aggregator that handles unique value aggregation (versus all-value aggregation)

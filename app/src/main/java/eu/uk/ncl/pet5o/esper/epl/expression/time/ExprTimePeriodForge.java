@@ -10,29 +10,29 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.time;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.client.util.TimePeriod;
-import com.espertech.esper.codegen.base.CodegenBlock;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
-import com.espertech.esper.epl.expression.core.*;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
-import com.espertech.esper.util.SimpleNumberCoercerFactory;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.client.util.TimePeriod;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenBlock;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.util.SimpleNumberCoercerFactory;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.newInstance;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.op;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.staticMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.newInstance;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.op;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.staticMethod;
 
 /**
  * Expression representing a time period.
@@ -82,7 +82,7 @@ public class ExprTimePeriodForge implements ExprForge {
 
     public ExprEvaluator getExprEvaluator() {
         return new ExprEvaluator() {
-            public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+            public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
                 throw new IllegalStateException("Time-Period expression must be evaluated via any of " + ExprTimePeriod.class.getSimpleName() + " interface methods");
             }
 
@@ -120,7 +120,7 @@ public class ExprTimePeriodForge implements ExprForge {
         return evaluators;
     }
 
-    public double evaluateAsSeconds(com.espertech.esper.client.EventBean[] eventsPerStream, boolean newData, ExprEvaluatorContext context) {
+    public double evaluateAsSeconds(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean newData, ExprEvaluatorContext context) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qExprTimePeriod(parent);
         }
@@ -161,7 +161,7 @@ public class ExprTimePeriodForge implements ExprForge {
         return localMethod(methodNode);
     }
 
-    private Double eval(ExprEvaluator expr, com.espertech.esper.client.EventBean[] events, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    private Double eval(ExprEvaluator expr, eu.uk.ncl.pet5o.esper.client.EventBean[] events, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         Object value = expr.evaluate(events, isNewData, exprEvaluatorContext);
         if (value == null) {
             return null;
@@ -175,7 +175,7 @@ public class ExprTimePeriodForge implements ExprForge {
         return ((Number) value).doubleValue();
     }
 
-    public TimePeriod evaluateGetTimePeriod(com.espertech.esper.client.EventBean[] eventsPerStream, boolean newData, ExprEvaluatorContext context) {
+    public TimePeriod evaluateGetTimePeriod(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean newData, ExprEvaluatorContext context) {
         if (evaluators == null) {
             evaluators = ExprNodeUtilityCore.getEvaluatorsNoCompile(parent.getChildNodes());
         }

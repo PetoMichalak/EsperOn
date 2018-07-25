@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.core.thread;
 
-import com.espertech.esper.collection.UniformPair;
-import com.espertech.esper.core.service.StatementResultServiceImpl;
+import eu.uk.ncl.pet5o.esper.collection.UniformPair;
+import eu.uk.ncl.pet5o.esper.core.service.StatementResultServiceImpl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
 public class OutboundUnitRunnable implements Runnable {
     private static final Logger log = LoggerFactory.getLogger(OutboundUnitRunnable.class);
 
-    private final UniformPair<com.espertech.esper.client.EventBean[]> events;
+    private final UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> events;
     private final StatementResultServiceImpl statementResultService;
 
     /**
@@ -31,7 +31,7 @@ public class OutboundUnitRunnable implements Runnable {
      * @param events                 to dispatch
      * @param statementResultService handles result indicate
      */
-    public OutboundUnitRunnable(UniformPair<com.espertech.esper.client.EventBean[]> events, StatementResultServiceImpl statementResultService) {
+    public OutboundUnitRunnable(UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> events, StatementResultServiceImpl statementResultService) {
         this.events = events;
         this.statementResultService = statementResultService;
     }

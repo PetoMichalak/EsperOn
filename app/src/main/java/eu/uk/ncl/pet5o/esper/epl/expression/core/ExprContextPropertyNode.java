@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.core;
 
-import com.espertech.esper.client.EventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyGetter;
 
 public interface ExprContextPropertyNode {
     EventPropertyGetter getGetter();

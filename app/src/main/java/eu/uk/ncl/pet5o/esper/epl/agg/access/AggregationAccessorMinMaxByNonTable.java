@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.access;
 
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.plugin.PlugInAggregationMultiFunctionCodegenType;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.plugin.PlugInAggregationMultiFunctionCodegenType;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotUnderlying;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotUnderlying;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
 
 /**
  * Represents the aggregation accessor that provides the result for the "maxBy" aggregation function.
@@ -29,8 +29,8 @@ public class AggregationAccessorMinMaxByNonTable extends AggregationAccessorMinM
         return PlugInAggregationMultiFunctionCodegenType.CODEGEN_ALL;
     }
 
-    public Object getValue(AggregationState state, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
-        com.espertech.esper.client.EventBean event = getEnumerableEvent(state, eventsPerStream, isNewData, context);
+    public Object getValue(AggregationState state, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+        eu.uk.ncl.pet5o.esper.client.EventBean event = getEnumerableEvent(state, eventsPerStream, isNewData, context);
         if (event == null) {
             return null;
         }
@@ -39,7 +39,7 @@ public class AggregationAccessorMinMaxByNonTable extends AggregationAccessorMinM
 
     public void getValueCodegen(AggregationAccessorForgeGetCodegenContext context) {
         AggregationStateSortedCodegen forge = (AggregationStateSortedCodegen) context.getAccessStateForge();
-        context.getMethod().getBlock().declareVar(com.espertech.esper.client.EventBean.class, "event", max ? forge.getLastValueCodegen(context.getColumn(), context.getClassScope(), context.getMethod()) : forge.getFirstValueCodegen(context.getColumn(), context.getClassScope(), context.getMethod()))
+        context.getMethod().getBlock().declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "event", max ? forge.getLastValueCodegen(context.getColumn(), context.getClassScope(), context.getMethod()) : forge.getFirstValueCodegen(context.getColumn(), context.getClassScope(), context.getMethod()))
                 .ifRefNullReturnNull("event")
                 .methodReturn(exprDotUnderlying(ref("event")));
     }

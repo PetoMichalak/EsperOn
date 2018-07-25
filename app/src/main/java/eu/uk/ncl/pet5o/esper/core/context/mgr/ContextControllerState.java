@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.core.context.util.ContextPartitionImportCallback;
+import eu.uk.ncl.pet5o.esper.core.context.util.ContextPartitionImportCallback;
 
 import java.util.TreeMap;
 

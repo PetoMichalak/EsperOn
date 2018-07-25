@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.factory;
 
-import com.espertech.esper.epl.join.table.EventTable;
+import eu.uk.ncl.pet5o.esper.epl.join.table.EventTable;
 
 import java.util.List;
 

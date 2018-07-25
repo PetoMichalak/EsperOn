@@ -10,14 +10,14 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.hint;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.annotation.HintEnum;
-import com.espertech.esper.core.service.ExprEvaluatorContextStatement;
-import com.espertech.esper.core.service.StatementContext;
-import com.espertech.esper.epl.expression.core.*;
-import com.espertech.esper.event.EventBeanUtility;
-import com.espertech.esper.util.AuditPath;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.annotation.HintEnum;
+import eu.uk.ncl.pet5o.esper.core.service.ExprEvaluatorContextStatement;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.event.EventBeanUtility;
+import eu.uk.ncl.pet5o.esper.util.AuditPath;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

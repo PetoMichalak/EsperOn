@@ -10,16 +10,16 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.core;
 
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.codegen.model.expression.CodegenExpressionRef;
-import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRef;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
 
 import java.io.StringWriter;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.arrayAtIndex;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.arrayAtIndex;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
 
 public class ExprNodeUtilExprStreamNumEvent implements ExprForge, ExprEvaluator, ExprNodeRenderable {
     private final int streamNum;
@@ -28,7 +28,7 @@ public class ExprNodeUtilExprStreamNumEvent implements ExprForge, ExprEvaluator,
         this.streamNum = streamNum;
     }
 
-    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return eventsPerStream[streamNum];
     }
 
@@ -46,7 +46,7 @@ public class ExprNodeUtilExprStreamNumEvent implements ExprForge, ExprEvaluator,
     }
 
     public Class getEvaluationType() {
-        return com.espertech.esper.client.EventBean.class;
+        return eu.uk.ncl.pet5o.esper.client.EventBean.class;
     }
 
     public ExprNodeRenderable getForgeRenderable() {

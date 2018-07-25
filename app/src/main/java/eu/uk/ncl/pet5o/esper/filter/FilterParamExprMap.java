@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.filter;
 
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.filterspec.FilterSpecParam;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterSpecParam;
 
 import java.util.ArrayList;
 import java.util.Collection;

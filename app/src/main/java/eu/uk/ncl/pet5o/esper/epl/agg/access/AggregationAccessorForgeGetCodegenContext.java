@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.access;
 
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.core.CodegenNamedMethods;
-import com.espertech.esper.epl.agg.service.common.AggregationStateFactoryForge;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.core.CodegenNamedMethods;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationStateFactoryForge;
 
 public class AggregationAccessorForgeGetCodegenContext {
     private final int column;

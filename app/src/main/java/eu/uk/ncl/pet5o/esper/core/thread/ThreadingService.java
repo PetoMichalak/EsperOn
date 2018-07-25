@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.core.thread;
 
-import com.espertech.esper.core.service.EPRuntimeImpl;
-import com.espertech.esper.core.service.EPServicesContext;
+import eu.uk.ncl.pet5o.esper.core.service.EPRuntimeImpl;
+import eu.uk.ncl.pet5o.esper.core.service.EPServicesContext;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;

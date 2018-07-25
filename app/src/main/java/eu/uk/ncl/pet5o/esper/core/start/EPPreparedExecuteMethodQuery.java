@@ -10,39 +10,39 @@
  */
 package eu.uk.ncl.pet5o.esper.core.start;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.context.ContextPartitionSelector;
-import com.espertech.esper.collection.MultiKey;
-import com.espertech.esper.collection.UniformPair;
-import com.espertech.esper.core.context.mgr.ContextPropertyRegistryImpl;
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.core.service.*;
-import com.espertech.esper.core.service.speccompiled.StatementSpecCompiled;
-import com.espertech.esper.epl.core.resultset.core.ResultSetProcessor;
-import com.espertech.esper.epl.core.resultset.core.ResultSetProcessorFactoryDesc;
-import com.espertech.esper.epl.core.resultset.core.ResultSetProcessorFactoryFactory;
-import com.espertech.esper.epl.core.streamtype.StreamTypeService;
-import com.espertech.esper.epl.core.streamtype.StreamTypeServiceImpl;
-import com.espertech.esper.epl.expression.core.*;
-import com.espertech.esper.epl.expression.table.ExprTableAccessNode;
-import com.espertech.esper.epl.join.base.*;
-import com.espertech.esper.epl.join.hint.ExcludePlanHint;
-import com.espertech.esper.epl.join.plan.FilterExprAnalyzer;
-import com.espertech.esper.epl.join.plan.OuterJoinAnalyzer;
-import com.espertech.esper.epl.join.plan.QueryGraph;
-import com.espertech.esper.epl.spec.NamedWindowConsumerStreamSpec;
-import com.espertech.esper.epl.spec.StreamSpecCompiled;
-import com.espertech.esper.epl.spec.TableQueryStreamSpec;
-import com.espertech.esper.epl.util.ExprNodeUtilityRich;
-import com.espertech.esper.epl.virtualdw.VirtualDWView;
-import com.espertech.esper.epl.virtualdw.VirtualDWViewProviderForAgentInstance;
-import com.espertech.esper.event.EventBeanReader;
-import com.espertech.esper.event.EventBeanReaderDefaultImpl;
-import com.espertech.esper.event.EventBeanUtility;
-import com.espertech.esper.event.EventTypeSPI;
-import com.espertech.esper.util.AuditPath;
-import com.espertech.esper.view.Viewable;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionSelector;
+import eu.uk.ncl.pet5o.esper.collection.MultiKey;
+import eu.uk.ncl.pet5o.esper.collection.UniformPair;
+import eu.uk.ncl.pet5o.esper.core.context.mgr.ContextPropertyRegistryImpl;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.core.service.*;
+import eu.uk.ncl.pet5o.esper.core.service.speccompiled.StatementSpecCompiled;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessor;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessorFactoryDesc;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessorFactoryFactory;
+import eu.uk.ncl.pet5o.esper.epl.core.streamtype.StreamTypeService;
+import eu.uk.ncl.pet5o.esper.epl.core.streamtype.StreamTypeServiceImpl;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.epl.expression.table.ExprTableAccessNode;
+import eu.uk.ncl.pet5o.esper.epl.join.base.*;
+import eu.uk.ncl.pet5o.esper.epl.join.hint.ExcludePlanHint;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.FilterExprAnalyzer;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.OuterJoinAnalyzer;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.QueryGraph;
+import eu.uk.ncl.pet5o.esper.epl.spec.NamedWindowConsumerStreamSpec;
+import eu.uk.ncl.pet5o.esper.epl.spec.StreamSpecCompiled;
+import eu.uk.ncl.pet5o.esper.epl.spec.TableQueryStreamSpec;
+import eu.uk.ncl.pet5o.esper.epl.util.ExprNodeUtilityRich;
+import eu.uk.ncl.pet5o.esper.epl.virtualdw.VirtualDWView;
+import eu.uk.ncl.pet5o.esper.epl.virtualdw.VirtualDWViewProviderForAgentInstance;
+import eu.uk.ncl.pet5o.esper.event.EventBeanReader;
+import eu.uk.ncl.pet5o.esper.event.EventBeanReaderDefaultImpl;
+import eu.uk.ncl.pet5o.esper.event.EventBeanUtility;
+import eu.uk.ncl.pet5o.esper.event.EventTypeSPI;
+import eu.uk.ncl.pet5o.esper.util.AuditPath;
+import eu.uk.ncl.pet5o.esper.view.Viewable;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -247,9 +247,9 @@ public class EPPreparedExecuteMethodQuery implements EPPreparedExecuteMethod {
                 if (statementSpec.getFilterRootNode() != null) {
                     snapshot = getFiltered(snapshot, Collections.singletonList(statementSpec.getFilterRootNode()));
                 }
-                com.espertech.esper.client.EventBean[] rows = snapshot.toArray(new com.espertech.esper.client.EventBean[snapshot.size()]);
+                eu.uk.ncl.pet5o.esper.client.EventBean[] rows = snapshot.toArray(new eu.uk.ncl.pet5o.esper.client.EventBean[snapshot.size()]);
                 resultSetProcessor.setAgentInstanceContext(contextPartitionResult.getContext());
-                UniformPair<com.espertech.esper.client.EventBean[]> results = resultSetProcessor.processViewResult(rows, null, true);
+                UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> results = resultSetProcessor.processViewResult(rows, null, true);
                 if (results != null && results.getFirst() != null && results.getFirst().length > 0) {
                     events.add(results.getFirst());
                 }
@@ -309,12 +309,12 @@ public class EPPreparedExecuteMethodQuery implements EPPreparedExecuteMethod {
 
         int numStreams = processors.length;
 
-        UniformPair<com.espertech.esper.client.EventBean[]> results;
+        UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> results;
         if (numStreams == 1) {
             if (statementSpec.getFilterRootNode() != null) {
                 snapshots[0] = getFiltered(snapshots[0], Arrays.asList(statementSpec.getFilterRootNode()));
             }
-            com.espertech.esper.client.EventBean[] rows = snapshots[0].toArray(new com.espertech.esper.client.EventBean[snapshots[0].size()]);
+            eu.uk.ncl.pet5o.esper.client.EventBean[] rows = snapshots[0].toArray(new eu.uk.ncl.pet5o.esper.client.EventBean[snapshots[0].size()]);
             results = resultSetProcessor.processViewResult(rows, null, true);
         } else {
             Viewable[] viewablePerStream = new Viewable[numStreams];
@@ -335,10 +335,10 @@ public class EPPreparedExecuteMethodQuery implements EPPreparedExecuteMethod {
                 joinFilter = null;
             }
 
-            com.espertech.esper.client.EventBean[][] oldDataPerStream = new com.espertech.esper.client.EventBean[numStreams][];
-            com.espertech.esper.client.EventBean[][] newDataPerStream = new com.espertech.esper.client.EventBean[numStreams][];
+            eu.uk.ncl.pet5o.esper.client.EventBean[][] oldDataPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[numStreams][];
+            eu.uk.ncl.pet5o.esper.client.EventBean[][] newDataPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[numStreams][];
             for (int i = 0; i < numStreams; i++) {
-                newDataPerStream[i] = snapshots[i].toArray(new com.espertech.esper.client.EventBean[snapshots[i].size()]);
+                newDataPerStream[i] = snapshots[i].toArray(new eu.uk.ncl.pet5o.esper.client.EventBean[snapshots[i].size()]);
             }
             UniformPair<Set<MultiKey<EventBean>>> result = joinComposer.join(newDataPerStream, oldDataPerStream, agentInstanceContext);
             if (joinFilter != null) {
@@ -347,7 +347,7 @@ public class EPPreparedExecuteMethodQuery implements EPPreparedExecuteMethod {
             results = resultSetProcessor.processJoinResult(result.getFirst(), null, true);
         }
 
-        com.espertech.esper.client.EventBean[] queryResult = results == null ? null : results.getFirst();
+        eu.uk.ncl.pet5o.esper.client.EventBean[] queryResult = results == null ? null : results.getFirst();
 
         if (queryResult != null && statementSpec.getSelectClauseSpec().isDistinct()) {
             queryResult = EventBeanUtility.getDistinctByProp(queryResult, eventBeanReader);

@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.client.context.*;
-import com.espertech.esper.core.context.util.ContextControllerSelectorUtil;
-import com.espertech.esper.epl.spec.ContextDetailCategoryItem;
+import eu.uk.ncl.pet5o.esper.client.context.*;
+import eu.uk.ncl.pet5o.esper.core.context.util.ContextControllerSelectorUtil;
+import eu.uk.ncl.pet5o.esper.epl.spec.ContextDetailCategoryItem;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -100,7 +100,7 @@ public class ContextControllerCategory implements ContextController {
         throw ContextControllerSelectorUtil.getInvalidSelector(new Class[]{ContextPartitionSelectorCategory.class}, contextPartitionSelector);
     }
 
-    public void activate(com.espertech.esper.client.EventBean optionalTriggeringEvent, Map<String, Object> optionalTriggeringPattern, ContextControllerState controllerState, ContextInternalFilterAddendum activationFilterAddendum, Integer importPathId) {
+    public void activate(eu.uk.ncl.pet5o.esper.client.EventBean optionalTriggeringEvent, Map<String, Object> optionalTriggeringPattern, ContextControllerState controllerState, ContextInternalFilterAddendum activationFilterAddendum, Integer importPathId) {
         if (factory.getFactoryContext().getNestingLevel() == 1) {
             controllerState = ContextControllerStateUtil.getRecoveryStates(factory.getFactoryContext().getStateCache(), factory.getFactoryContext().getOutermostContextName());
         }
@@ -143,7 +143,7 @@ public class ContextControllerCategory implements ContextController {
         handleCategories.clear();
     }
 
-    private void initializeFromState(com.espertech.esper.client.EventBean optionalTriggeringEvent,
+    private void initializeFromState(eu.uk.ncl.pet5o.esper.client.EventBean optionalTriggeringEvent,
                                      Map<String, Object> optionalTriggeringPattern,
                                      ContextInternalFilterAddendum activationFilterAddendum,
                                      ContextControllerState controllerState,

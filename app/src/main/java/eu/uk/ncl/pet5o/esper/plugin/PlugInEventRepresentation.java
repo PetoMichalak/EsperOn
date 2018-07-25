@@ -33,9 +33,9 @@ package eu.uk.ncl.pet5o.esper.plugin;
  * <p>
  * An implementation can participate in dynamic resolution of new (unseen)
  * event type names if the application configures the URI of the event representation, or a child URI (parameters possible) via
- * {@link com.espertech.esper.client.ConfigurationOperations#setPlugInEventTypeResolutionURIs(java.net.URI[])}.
+ * {@link eu.uk.ncl.pet5o.esper.client.ConfigurationOperations#setPlugInEventTypeResolutionURIs(java.net.URI[])}.
  * <p>
- * Last, see {@link com.espertech.esper.client.EPRuntime#getEventSender(java.net.URI[])}. An event sender
+ * Last, see {@link eu.uk.ncl.pet5o.esper.client.EPRuntime#getEventSender(java.net.URI[])}. An event sender
  * allows dynamic reflection on an incoming event object. At the time such an event
  * sender is obtained and a matching URI specified, the {@link #acceptsEventBeanResolution} method
  * indicates that the event representation can or cannot inspect events, and the {@link PlugInEventBeanFactory}
@@ -72,7 +72,7 @@ public interface PlugInEventRepresentation {
     public PlugInEventTypeHandler getTypeHandler(PlugInEventTypeHandlerContext eventTypeContext);
 
     /**
-     * For use with {@link com.espertech.esper.client.EPRuntime#getEventSender(java.net.URI[])},
+     * For use with {@link eu.uk.ncl.pet5o.esper.client.EPRuntime#getEventSender(java.net.URI[])},
      * returns true if the event representation intends to provide event wrappers for event objects passed in.
      *
      * @param acceptBeanContext provides the URI specified for resolving the event object reflection
@@ -81,8 +81,8 @@ public interface PlugInEventRepresentation {
     public boolean acceptsEventBeanResolution(PlugInEventBeanReflectorContext acceptBeanContext);
 
     /**
-     * For use with {@link com.espertech.esper.client.EPRuntime#getEventSender(java.net.URI[])},
-     * returns the factory that can inspect event objects and provide an event {@link com.espertech.esper.client.EventBean}
+     * For use with {@link eu.uk.ncl.pet5o.esper.client.EPRuntime#getEventSender(java.net.URI[])},
+     * returns the factory that can inspect event objects and provide an event {@link eu.uk.ncl.pet5o.esper.client.EventBean}
      * wrapper.
      *
      * @param eventBeanContext provides the URI specified for resolving the event object reflection

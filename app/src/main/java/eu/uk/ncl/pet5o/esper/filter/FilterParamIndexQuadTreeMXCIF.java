@@ -10,14 +10,14 @@
  */
 package eu.uk.ncl.pet5o.esper.filter;
 
-import com.espertech.esper.epl.expression.core.ExprFilterSpecLookupable;
-import com.espertech.esper.epl.index.quadtree.AdvancedIndexConfigContextPartitionQuadTree;
-import com.espertech.esper.filterspec.FilterOperator;
-import com.espertech.esper.spatial.quadtree.core.QuadTreeCollector;
-import com.espertech.esper.spatial.quadtree.mxcif.MXCIFQuadTree;
-import com.espertech.esper.spatial.quadtree.mxcif.MXCIFQuadTreeFactory;
-import com.espertech.esper.spatial.quadtree.mxciffilterindex.*;
-import com.espertech.esper.type.XYWHRectangle;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprFilterSpecLookupable;
+import eu.uk.ncl.pet5o.esper.epl.index.quadtree.AdvancedIndexConfigContextPartitionQuadTree;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterOperator;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.core.QuadTreeCollector;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.mxcif.MXCIFQuadTree;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.mxcif.MXCIFQuadTreeFactory;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.mxciffilterindex.*;
+import eu.uk.ncl.pet5o.esper.type.XYWHRectangle;
 
 import java.util.Collection;
 import java.util.concurrent.locks.ReadWriteLock;
@@ -28,7 +28,7 @@ public class FilterParamIndexQuadTreeMXCIF extends FilterParamIndexLookupableBas
     private final FilterSpecLookupableAdvancedIndex advancedIndex;
 
     private final static QuadTreeCollector<EventEvaluator, Collection<FilterHandle>> COLLECTOR = new QuadTreeCollector<EventEvaluator, Collection<FilterHandle>>() {
-        public void collectInto(com.espertech.esper.client.EventBean event, EventEvaluator eventEvaluator, Collection<FilterHandle> c) {
+        public void collectInto(eu.uk.ncl.pet5o.esper.client.EventBean event, EventEvaluator eventEvaluator, Collection<FilterHandle> c) {
             eventEvaluator.matchEvent(event, c);
         }
     };
@@ -41,7 +41,7 @@ public class FilterParamIndexQuadTreeMXCIF extends FilterParamIndexLookupableBas
         quadTree = MXCIFQuadTreeFactory.make(quadTreeConfig.getX(), quadTreeConfig.getY(), quadTreeConfig.getWidth(), quadTreeConfig.getHeight());
     }
 
-    public void matchEvent(com.espertech.esper.client.EventBean theEvent, Collection<FilterHandle> matches) {
+    public void matchEvent(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, Collection<FilterHandle> matches) {
         double x = ((Number) advancedIndex.getX().get(theEvent)).doubleValue();
         double y = ((Number) advancedIndex.getY().get(theEvent)).doubleValue();
         double width = ((Number) advancedIndex.getWidth().get(theEvent)).doubleValue();

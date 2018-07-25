@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.util;
 
-import com.espertech.esper.epl.expression.core.ExprIdentNode;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.join.plan.QueryGraph;
-import com.espertech.esper.epl.join.plan.QueryGraphRangeEnum;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprIdentNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.QueryGraph;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.QueryGraphRangeEnum;
 
 public class RangeFilterAnalyzer {
 

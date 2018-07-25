@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.table;
 
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
 
 /**
  * Factory for simple table of events without an index.

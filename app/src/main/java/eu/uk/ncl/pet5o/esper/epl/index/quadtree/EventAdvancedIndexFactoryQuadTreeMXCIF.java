@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.index.quadtree;
 
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.join.table.EventTable;
-import com.espertech.esper.epl.join.table.EventTableOrganization;
-import com.espertech.esper.epl.lookup.AdvancedIndexConfigContextPartition;
-import com.espertech.esper.epl.lookup.EventAdvancedIndexConfigStatement;
-import com.espertech.esper.spatial.quadtree.mxcif.MXCIFQuadTree;
-import com.espertech.esper.spatial.quadtree.mxcif.MXCIFQuadTreeFactory;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.join.table.EventTable;
+import eu.uk.ncl.pet5o.esper.epl.join.table.EventTableOrganization;
+import eu.uk.ncl.pet5o.esper.epl.lookup.AdvancedIndexConfigContextPartition;
+import eu.uk.ncl.pet5o.esper.epl.lookup.EventAdvancedIndexConfigStatement;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.mxcif.MXCIFQuadTree;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.mxcif.MXCIFQuadTreeFactory;
 
 import java.util.Map;
 

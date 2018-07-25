@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.plan;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.lookup.SubordPropHashKey;
-import com.espertech.esper.epl.lookup.SubordPropRangeKey;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.lookup.SubordPropHashKey;
+import eu.uk.ncl.pet5o.esper.epl.lookup.SubordPropRangeKey;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import java.util.List;
 import java.util.Map;

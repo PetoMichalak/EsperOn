@@ -10,16 +10,16 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.variable;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.VariableValueException;
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.core.service.StatementExtensionSvcContext;
-import com.espertech.esper.core.start.EPStatementStartMethod;
-import com.espertech.esper.epl.core.engineimport.EngineImportException;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.schedule.TimeProvider;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.VariableValueException;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.core.service.StatementExtensionSvcContext;
+import eu.uk.ncl.pet5o.esper.core.start.EPStatementStartMethod;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportException;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.schedule.TimeProvider;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -67,10 +67,10 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * before processing a statement that has variables.
  * This places into a threadlocal variable the current version number, say version 570.
  * <p>
- * A statement that reads a variable has an {@link com.espertech.esper.epl.expression.core.ExprVariableNode} that has a {@link com.espertech.esper.epl.variable.VariableReader} handle
+ * A statement that reads a variable has an {@link eu.uk.ncl.pet5o.esper.epl.expression.core.ExprVariableNode} that has a {@link eu.uk.ncl.pet5o.esper.epl.variable.VariableReader} handle
  * obtained during validation (example).
  * <p>
- * The {@link com.espertech.esper.epl.variable.VariableReader} takes the version from the threadlocal (570) and compares the version number with the
+ * The {@link eu.uk.ncl.pet5o.esper.epl.variable.VariableReader} takes the version from the threadlocal (570) and compares the version number with the
  * version numbers held for the variable.
  * If the current version is same or lower (520, as old or older) then the threadlocal version,
  * then use the current value.
@@ -553,7 +553,7 @@ public class VariableServiceImpl implements VariableService {
                         + "' of declared event type '" + metaData.getEventType().getName() + "' underlying type '" + metaData.getEventType().getUnderlyingType().getName() +
                         "' cannot be assigned a value of type '" + valueType.getName() + "'");
             }
-            com.espertech.esper.client.EventBean eventBean = eventAdapterService.adapterForType(newValue, metaData.getEventType());
+            eu.uk.ncl.pet5o.esper.client.EventBean eventBean = eventAdapterService.adapterForType(newValue, metaData.getEventType());
             write(variableNumber, agentInstanceId, eventBean);
             return;
         }

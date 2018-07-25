@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.select.eval;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.core.service.speccompiled.SelectClauseStreamCompiledSpec;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.epl.core.select.SelectExprProcessor;
-import com.espertech.esper.epl.core.select.SelectExprProcessorForge;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.util.ExprNodeUtilityRich;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.core.service.speccompiled.SelectClauseStreamCompiledSpec;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.epl.core.select.SelectExprProcessor;
+import eu.uk.ncl.pet5o.esper.epl.core.select.SelectExprProcessorForge;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.util.ExprNodeUtilityRich;
 
 import java.util.List;
 

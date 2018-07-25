@@ -10,14 +10,14 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.select;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.epl.core.select.eval.SelectExprForgeContext;
-import com.espertech.esper.epl.expression.core.ExprForge;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.epl.table.mgmt.TableService;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.event.avro.AvroSchemaEventType;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.epl.core.select.eval.SelectExprForgeContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprForge;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableService;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.event.avro.AvroSchemaEventType;
 
 public interface SelectExprProcessorRepresentationFactory {
     SelectExprProcessorForge makeSelectNoWildcard(SelectExprForgeContext selectExprForgeContext, ExprForge[] exprForges, EventType resultEventType, TableService tableService, String statementName, String engineURI) throws ExprValidationException;

@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.index.service;
 
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.lookup.AdvancedIndexDesc;
-import com.espertech.esper.epl.lookup.EventAdvancedIndexConfigStatement;
-import com.espertech.esper.epl.lookup.EventAdvancedIndexFactory;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.lookup.AdvancedIndexDesc;
+import eu.uk.ncl.pet5o.esper.epl.lookup.EventAdvancedIndexConfigStatement;
+import eu.uk.ncl.pet5o.esper.epl.lookup.EventAdvancedIndexFactory;
 
 public class EventAdvancedIndexProvisionDesc {
     private final AdvancedIndexDesc indexDesc;

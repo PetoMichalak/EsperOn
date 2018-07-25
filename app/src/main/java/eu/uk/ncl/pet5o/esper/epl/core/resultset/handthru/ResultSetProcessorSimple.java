@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.resultset.handthru;
 
-import com.espertech.esper.epl.core.resultset.core.ResultSetProcessor;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessor;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
 
 public interface ResultSetProcessorSimple extends ResultSetProcessor {
     boolean hasHavingClause();
 
-    boolean evaluateHavingClause(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext);
+    boolean evaluateHavingClause(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext);
 
     ExprEvaluatorContext getAgentInstanceContext();
 }

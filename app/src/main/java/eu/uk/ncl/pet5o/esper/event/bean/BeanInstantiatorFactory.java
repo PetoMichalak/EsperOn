@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.event.bean;
 
-import com.espertech.esper.epl.core.engineimport.EngineImportException;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.event.EventBeanManufactureException;
-import com.espertech.esper.util.OnDemandSunReflectionFactory;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportException;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.event.EventBeanManufactureException;
+import eu.uk.ncl.pet5o.esper.util.OnDemandSunReflectionFactory;
 
 import net.sf.cglib.reflect.FastClass;
 

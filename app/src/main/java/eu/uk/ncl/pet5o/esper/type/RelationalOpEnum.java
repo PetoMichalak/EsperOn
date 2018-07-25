@@ -10,23 +10,23 @@
  */
 package eu.uk.ncl.pet5o.esper.type;
 
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.codegen.model.expression.CodegenExpressionRef;
-import com.espertech.esper.codegen.model.expression.CodegenExpressionRelational;
-import com.espertech.esper.collection.MultiKeyUntyped;
-import com.espertech.esper.util.SimpleNumberBigDecimalCoercer;
-import com.espertech.esper.util.SimpleNumberBigIntegerCoercer;
-import com.espertech.esper.util.SimpleNumberCoercerFactory;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRef;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRelational;
+import eu.uk.ncl.pet5o.esper.collection.MultiKeyUntyped;
+import eu.uk.ncl.pet5o.esper.util.SimpleNumberBigDecimalCoercer;
+import eu.uk.ncl.pet5o.esper.util.SimpleNumberBigIntegerCoercer;
+import eu.uk.ncl.pet5o.esper.util.SimpleNumberCoercerFactory;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.op;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.relational;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.op;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.relational;
 
 /**
  * Enum representing relational types of operation.

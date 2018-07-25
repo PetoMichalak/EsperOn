@@ -10,14 +10,14 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.collection.MultiKeyUntyped;
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.epl.spec.ContextDetailCondition;
-import com.espertech.esper.epl.spec.ContextDetailConditionFilter;
-import com.espertech.esper.epl.spec.ContextDetailConditionPattern;
-import com.espertech.esper.epl.spec.ContextDetailPartitioned;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.collection.MultiKeyUntyped;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.epl.spec.ContextDetailCondition;
+import eu.uk.ncl.pet5o.esper.epl.spec.ContextDetailConditionFilter;
+import eu.uk.ncl.pet5o.esper.epl.spec.ContextDetailConditionPattern;
+import eu.uk.ncl.pet5o.esper.epl.spec.ContextDetailPartitioned;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -105,7 +105,7 @@ public class ContextPropertyEventType {
         }
     }
 
-    public static Map<String, Object> getTempOverlapBean(String contextName, int agentInstanceId, Map<String, Object> matchEvent, com.espertech.esper.client.EventBean theEvent, String filterAsName) {
+    public static Map<String, Object> getTempOverlapBean(String contextName, int agentInstanceId, Map<String, Object> matchEvent, eu.uk.ncl.pet5o.esper.client.EventBean theEvent, String filterAsName) {
         Map<String, Object> props = new HashMap<String, Object>();
         props.put(PROP_CTX_NAME, contextName);
         props.put(PROP_CTX_ID, agentInstanceId);

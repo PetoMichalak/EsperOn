@@ -10,33 +10,33 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.poll;
 
-import com.espertech.esper.client.ConfigurationInformation;
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.collection.IterablesArrayIterator;
-import com.espertech.esper.core.service.StatementContext;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.epl.core.streamtype.StreamTypeService;
-import com.espertech.esper.epl.db.DataCache;
-import com.espertech.esper.epl.db.PollExecStrategy;
-import com.espertech.esper.epl.expression.core.*;
-import com.espertech.esper.epl.expression.visitor.ExprNodeIdentifierAndStreamRefVisitor;
-import com.espertech.esper.epl.join.pollindex.PollResultIndexingStrategy;
-import com.espertech.esper.epl.join.table.EventTable;
-import com.espertech.esper.epl.join.table.UnindexedEventTableList;
-import com.espertech.esper.epl.spec.MethodStreamSpec;
-import com.espertech.esper.epl.table.mgmt.TableService;
-import com.espertech.esper.epl.util.ExprNodeUtilityRich;
-import com.espertech.esper.epl.variable.VariableReader;
-import com.espertech.esper.epl.variable.VariableService;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.schedule.SchedulingService;
-import com.espertech.esper.schedule.TimeProvider;
-import com.espertech.esper.util.JavaClassHelper;
-import com.espertech.esper.view.HistoricalEventViewable;
-import com.espertech.esper.view.View;
-import com.espertech.esper.view.ViewSupport;
+import eu.uk.ncl.pet5o.esper.client.ConfigurationInformation;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.collection.IterablesArrayIterator;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.epl.core.streamtype.StreamTypeService;
+import eu.uk.ncl.pet5o.esper.epl.db.DataCache;
+import eu.uk.ncl.pet5o.esper.epl.db.PollExecStrategy;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.epl.expression.visitor.ExprNodeIdentifierAndStreamRefVisitor;
+import eu.uk.ncl.pet5o.esper.epl.join.pollindex.PollResultIndexingStrategy;
+import eu.uk.ncl.pet5o.esper.epl.join.table.EventTable;
+import eu.uk.ncl.pet5o.esper.epl.join.table.UnindexedEventTableList;
+import eu.uk.ncl.pet5o.esper.epl.spec.MethodStreamSpec;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableService;
+import eu.uk.ncl.pet5o.esper.epl.util.ExprNodeUtilityRich;
+import eu.uk.ncl.pet5o.esper.epl.variable.VariableReader;
+import eu.uk.ncl.pet5o.esper.epl.variable.VariableService;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.schedule.SchedulingService;
+import eu.uk.ncl.pet5o.esper.schedule.TimeProvider;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.view.HistoricalEventViewable;
+import eu.uk.ncl.pet5o.esper.view.View;
+import eu.uk.ncl.pet5o.esper.view.ViewSupport;
 
 import net.sf.cglib.reflect.FastMethod;
 
@@ -64,11 +64,11 @@ public class MethodPollingViewable implements HistoricalEventViewable {
     private ExprEvaluator[] validatedExprNodes;
     private StatementContext statementContext;
 
-    private static final com.espertech.esper.client.EventBean[][] NULL_ROWS;
+    private static final eu.uk.ncl.pet5o.esper.client.EventBean[][] NULL_ROWS;
 
     static {
-        NULL_ROWS = new com.espertech.esper.client.EventBean[1][];
-        NULL_ROWS[0] = new com.espertech.esper.client.EventBean[1];
+        NULL_ROWS = new eu.uk.ncl.pet5o.esper.client.EventBean[1][];
+        NULL_ROWS[0] = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
     }
 
     private static final PollResultIndexingStrategy ITERATOR_INDEXING_STRATEGY = new PollResultIndexingStrategy() {
@@ -194,7 +194,7 @@ public class MethodPollingViewable implements HistoricalEventViewable {
         }
     }
 
-    public EventTable[][] poll(com.espertech.esper.client.EventBean[][] lookupEventsPerStream, PollResultIndexingStrategy indexingStrategy, ExprEvaluatorContext exprEvaluatorContext) {
+    public EventTable[][] poll(eu.uk.ncl.pet5o.esper.client.EventBean[][] lookupEventsPerStream, PollResultIndexingStrategy indexingStrategy, ExprEvaluatorContext exprEvaluatorContext) {
         DataCache localDataCache = dataCacheThreadLocal.get();
         boolean strategyStarted = false;
 

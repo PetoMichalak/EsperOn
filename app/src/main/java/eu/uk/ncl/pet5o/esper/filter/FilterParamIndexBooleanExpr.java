@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.filter;
 
-import com.espertech.esper.filterspec.ExprNodeAdapterBase;
-import com.espertech.esper.filterspec.FilterOperator;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.filterspec.ExprNodeAdapterBase;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterOperator;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;
@@ -60,7 +60,7 @@ public final class FilterParamIndexBooleanExpr extends FilterParamIndexBase {
         return constantsMapRWLock;
     }
 
-    public final void matchEvent(com.espertech.esper.client.EventBean theEvent, Collection<FilterHandle> matches) {
+    public final void matchEvent(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, Collection<FilterHandle> matches) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qFilterBoolean(this);
         }

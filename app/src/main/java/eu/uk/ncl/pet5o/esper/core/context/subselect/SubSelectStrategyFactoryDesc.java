@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.subselect;
 
-import com.espertech.esper.epl.agg.service.common.AggregationServiceFactoryDesc;
-import com.espertech.esper.epl.expression.prev.ExprPreviousNode;
-import com.espertech.esper.epl.expression.prior.ExprPriorNode;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationServiceFactoryDesc;
+import eu.uk.ncl.pet5o.esper.epl.expression.prev.ExprPreviousNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.prior.ExprPriorNode;
 
 import java.util.List;
 

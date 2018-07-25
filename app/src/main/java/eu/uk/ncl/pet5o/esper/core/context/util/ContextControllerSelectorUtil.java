@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.util;
 
-import com.espertech.esper.client.context.*;
-import com.espertech.esper.util.CollectionUtil;
+import eu.uk.ncl.pet5o.esper.client.context.*;
+import eu.uk.ncl.pet5o.esper.util.CollectionUtil;
 
 import java.util.LinkedHashSet;
 

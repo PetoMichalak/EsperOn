@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.util;
 
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
 
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -47,10 +47,10 @@ import java.util.Set;
 
 import eu.uk.ncl.pet5o.esper.client.util.ClassForNameProvider;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.newInstance;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.staticMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.newInstance;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.staticMethod;
 
 /**
  * Helper for questions about Java classes such as

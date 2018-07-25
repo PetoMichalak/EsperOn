@@ -23,5 +23,5 @@ public interface FilterServiceListener {
      * @param matches     matches found
      * @param statementId optional statement id if for a statement
      */
-    public void filtering(com.espertech.esper.client.EventBean theEvent, Collection<FilterHandle> matches, Integer statementId);
+    public void filtering(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, Collection<FilterHandle> matches, Integer statementId);
 }

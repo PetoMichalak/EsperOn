@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.exec.composite;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.collection.MultiKeyUntyped;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.collection.MultiKeyUntyped;
 
 import java.util.Map;
 import java.util.Set;

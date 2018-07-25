@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.table;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventPropertyGetter;
-import com.espertech.esper.collection.MultiKeyUntyped;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.collection.MultiKeyUntyped;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
 
 import java.util.HashMap;
 import java.util.Iterator;

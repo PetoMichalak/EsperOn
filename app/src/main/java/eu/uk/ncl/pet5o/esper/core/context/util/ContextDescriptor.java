@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.util;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.SafeIterator;
-import com.espertech.esper.client.context.ContextPartitionSelector;
-import com.espertech.esper.core.context.stmt.StatementAIResourceRegistryFactory;
-import com.espertech.esper.epl.spec.ContextDetail;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.SafeIterator;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionSelector;
+import eu.uk.ncl.pet5o.esper.core.context.stmt.StatementAIResourceRegistryFactory;
+import eu.uk.ncl.pet5o.esper.epl.spec.ContextDetail;
 
 import java.util.Iterator;
 
@@ -56,7 +56,7 @@ public class ContextDescriptor {
         return iteratorHandler.iterator(statementId);
     }
 
-    public SafeIterator<com.espertech.esper.client.EventBean> safeIterator(int statementId) {
+    public SafeIterator<eu.uk.ncl.pet5o.esper.client.EventBean> safeIterator(int statementId) {
         return iteratorHandler.safeIterator(statementId);
     }
 
@@ -64,7 +64,7 @@ public class ContextDescriptor {
         return iteratorHandler.iterator(statementId, selector);
     }
 
-    public SafeIterator<com.espertech.esper.client.EventBean> safeIterator(int statementId, ContextPartitionSelector selector) {
+    public SafeIterator<eu.uk.ncl.pet5o.esper.client.EventBean> safeIterator(int statementId, ContextPartitionSelector selector) {
         return iteratorHandler.safeIterator(statementId, selector);
     }
 

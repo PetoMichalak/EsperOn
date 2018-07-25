@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.type;
 
-import com.espertech.esper.util.LikeUtil;
+import eu.uk.ncl.pet5o.esper.util.LikeUtil;
 
 /**
  *

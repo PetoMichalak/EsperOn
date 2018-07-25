@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.assemble;
 
-import com.espertech.esper.util.IndentWriter;
+import eu.uk.ncl.pet5o.esper.util.IndentWriter;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

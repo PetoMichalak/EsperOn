@@ -10,17 +10,17 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.plan;
 
-import com.espertech.esper.epl.expression.core.ExprIdentNode;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.expression.core.ExprNodeUtilityCore;
-import com.espertech.esper.epl.expression.ops.*;
-import com.espertech.esper.epl.join.util.Eligibility;
-import com.espertech.esper.epl.join.util.EligibilityDesc;
-import com.espertech.esper.epl.join.util.EligibilityUtil;
-import com.espertech.esper.epl.join.util.RangeFilterAnalyzer;
-import com.espertech.esper.filter.FilterSpecCompilerMakeParamUtil;
-import com.espertech.esper.type.RelationalOpEnum;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprIdentNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNodeUtilityCore;
+import eu.uk.ncl.pet5o.esper.epl.expression.ops.*;
+import eu.uk.ncl.pet5o.esper.epl.join.util.Eligibility;
+import eu.uk.ncl.pet5o.esper.epl.join.util.EligibilityDesc;
+import eu.uk.ncl.pet5o.esper.epl.join.util.EligibilityUtil;
+import eu.uk.ncl.pet5o.esper.epl.join.util.RangeFilterAnalyzer;
+import eu.uk.ncl.pet5o.esper.filter.FilterSpecCompilerMakeParamUtil;
+import eu.uk.ncl.pet5o.esper.type.RelationalOpEnum;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;

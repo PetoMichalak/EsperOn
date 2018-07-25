@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.filter;
 
-import com.espertech.esper.filterspec.FilterSpecCompiled;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterSpecCompiled;
 
 import java.util.Collection;
 
@@ -20,13 +20,13 @@ import java.util.Collection;
  */
 public interface FilterHandleCallback extends FilterHandle {
     /**
-     * Indicate that an event was evaluated by the {@link com.espertech.esper.filter.FilterService}
+     * Indicate that an event was evaluated by the {@link eu.uk.ncl.pet5o.esper.filter.FilterService}
      * which matches the filter specification {@link FilterSpecCompiled} associated with this callback.
      *
      * @param theEvent       - the event received that matches the filter specification
      * @param allStmtMatches - collection of matches that represent all matches for the same statement
      */
-    public void matchFound(com.espertech.esper.client.EventBean theEvent, Collection<FilterHandleCallback> allStmtMatches);
+    public void matchFound(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, Collection<FilterHandleCallback> allStmtMatches);
 
     /**
      * Returns true if the filter applies to subselects.

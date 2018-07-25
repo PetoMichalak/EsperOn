@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.table;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventPropertyGetter;
-import com.espertech.esper.event.EventBeanUtility;
-import com.espertech.esper.util.SimpleNumberCoercer;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.event.EventBeanUtility;
+import eu.uk.ncl.pet5o.esper.util.SimpleNumberCoercer;
 
 public class PropertyIndexedEventTableSingleCoerceAdd extends PropertyIndexedEventTableSingleUnadorned {
     private final SimpleNumberCoercer coercer;

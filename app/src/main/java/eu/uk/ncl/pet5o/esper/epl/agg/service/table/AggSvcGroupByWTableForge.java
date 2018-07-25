@@ -10,48 +10,48 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.service.table;
 
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMember;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.core.CodegenCtor;
-import com.espertech.esper.codegen.core.CodegenNamedMethods;
-import com.espertech.esper.codegen.core.CodegenTypedParam;
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.core.service.StatementContext;
-import com.espertech.esper.epl.agg.access.AggregationAccessorSlotPair;
-import com.espertech.esper.epl.agg.access.AggregationAccessorSlotPairForge;
-import com.espertech.esper.epl.agg.access.AggregationAgent;
-import com.espertech.esper.epl.agg.access.AggregationAgentForge;
-import com.espertech.esper.epl.agg.codegen.AggregationCodegenRowLevelDesc;
-import com.espertech.esper.epl.agg.service.common.AggregationGroupByRollupDesc;
-import com.espertech.esper.epl.agg.service.common.AggregationServiceFactory;
-import com.espertech.esper.epl.agg.service.common.AggregationServiceFactoryForge;
-import com.espertech.esper.epl.agg.service.common.AggregatorUtil;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.table.mgmt.*;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMember;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.core.CodegenCtor;
+import eu.uk.ncl.pet5o.esper.codegen.core.CodegenNamedMethods;
+import eu.uk.ncl.pet5o.esper.codegen.core.CodegenTypedParam;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationAccessorSlotPair;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationAccessorSlotPairForge;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationAgent;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationAgentForge;
+import eu.uk.ncl.pet5o.esper.epl.agg.codegen.AggregationCodegenRowLevelDesc;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationGroupByRollupDesc;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationServiceFactory;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationServiceFactoryForge;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregatorUtil;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.*;
 
 import java.util.List;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.cast;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.member;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.newInstanceInnerClass;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
-import static com.espertech.esper.epl.agg.codegen.AggregationServiceCodegenNames.CLASSNAME_AGGREGATIONSERVICE;
-import static com.espertech.esper.epl.agg.codegen.AggregationServiceCodegenNames.REF_GROUPKEY;
-import static com.espertech.esper.epl.agg.service.table.AggSvcGroupByWTableCodegenUtil.REF_TABLESTATEINSTANCE;
-import static com.espertech.esper.epl.agg.service.table.AggSvcTableGetterType.*;
-import static com.espertech.esper.epl.agg.service.table.AggSvcTableGetterType.GETCOLLECTIONOFEVENTS;
-import static com.espertech.esper.epl.agg.service.table.AggSvcTableGetterType.GETCOLLECTIONSCALAR;
-import static com.espertech.esper.epl.agg.service.table.AggSvcTableGetterType.GETEVENTBEAN;
-import static com.espertech.esper.epl.agg.service.table.AggSvcTableGetterType.GETVALUE;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.NAME_AGENTINSTANCECONTEXT;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_AGENTINSTANCECONTEXT;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_EPS;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_EXPREVALCONTEXT;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.cast;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.member;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.newInstanceInnerClass;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.epl.agg.codegen.AggregationServiceCodegenNames.CLASSNAME_AGGREGATIONSERVICE;
+import static eu.uk.ncl.pet5o.esper.epl.agg.codegen.AggregationServiceCodegenNames.REF_GROUPKEY;
+import static eu.uk.ncl.pet5o.esper.epl.agg.service.table.AggSvcGroupByWTableCodegenUtil.REF_TABLESTATEINSTANCE;
+import static eu.uk.ncl.pet5o.esper.epl.agg.service.table.AggSvcTableGetterType.*;
+import static eu.uk.ncl.pet5o.esper.epl.agg.service.table.AggSvcTableGetterType.GETCOLLECTIONOFEVENTS;
+import static eu.uk.ncl.pet5o.esper.epl.agg.service.table.AggSvcTableGetterType.GETCOLLECTIONSCALAR;
+import static eu.uk.ncl.pet5o.esper.epl.agg.service.table.AggSvcTableGetterType.GETEVENTBEAN;
+import static eu.uk.ncl.pet5o.esper.epl.agg.service.table.AggSvcTableGetterType.GETVALUE;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.NAME_AGENTINSTANCECONTEXT;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_AGENTINSTANCECONTEXT;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_EPS;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_EXPREVALCONTEXT;
 
 /**
  * Implementation for handling aggregation with grouping by group-keys.

@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.activator;
 
-import com.espertech.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
 
 public interface ViewableActivator {
     public ViewableActivationResult activate(AgentInstanceContext agentInstanceContext, boolean isSubselect, boolean isRecoveringResilient);

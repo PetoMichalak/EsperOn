@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.rollup;
 
-import com.espertech.esper.epl.agg.service.common.AggregationGroupByRollupDesc;
-import com.espertech.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationGroupByRollupDesc;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
 
 public class GroupByRollupPlanDesc {
     private final ExprNode[] expressions;

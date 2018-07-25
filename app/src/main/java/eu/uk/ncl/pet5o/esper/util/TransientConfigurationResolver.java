@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.util;
 
-import com.espertech.esper.client.util.*;
+import eu.uk.ncl.pet5o.esper.client.util.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

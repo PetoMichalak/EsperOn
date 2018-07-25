@@ -10,22 +10,22 @@
  */
 package eu.uk.ncl.pet5o.esper.core.start;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.context.ContextPartitionSelector;
-import com.espertech.esper.core.service.EPPreparedQueryResult;
-import com.espertech.esper.core.service.EPServicesContext;
-import com.espertech.esper.core.service.StatementContext;
-import com.espertech.esper.core.service.speccompiled.StatementSpecCompiled;
-import com.espertech.esper.epl.core.streamtype.StreamTypeServiceImpl;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.epl.join.hint.ExcludePlanHint;
-import com.espertech.esper.epl.join.plan.QueryGraph;
-import com.espertech.esper.epl.spec.*;
-import com.espertech.esper.epl.util.EPLValidationUtil;
-import com.espertech.esper.util.AuditPath;
-import com.espertech.esper.util.CollectionUtil;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionSelector;
+import eu.uk.ncl.pet5o.esper.core.service.EPPreparedQueryResult;
+import eu.uk.ncl.pet5o.esper.core.service.EPServicesContext;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.core.service.speccompiled.StatementSpecCompiled;
+import eu.uk.ncl.pet5o.esper.epl.core.streamtype.StreamTypeServiceImpl;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.epl.join.hint.ExcludePlanHint;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.QueryGraph;
+import eu.uk.ncl.pet5o.esper.epl.spec.*;
+import eu.uk.ncl.pet5o.esper.epl.util.EPLValidationUtil;
+import eu.uk.ncl.pet5o.esper.util.AuditPath;
+import eu.uk.ncl.pet5o.esper.util.CollectionUtil;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,7 +58,7 @@ public abstract class EPPreparedExecuteIUDSingleStream implements EPPreparedExec
      *                         may have been used in the statement, i.e. if defines the select clauses, insert into, outer joins etc.
      * @param services         is the service instances for dependency injection
      * @param statementContext is statement-level information and statement services
-     * @throws com.espertech.esper.epl.expression.core.ExprValidationException if the preparation failed
+     * @throws eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException if the preparation failed
      */
     public EPPreparedExecuteIUDSingleStream(StatementSpecCompiled statementSpec,
                                             EPServicesContext services,
@@ -147,7 +147,7 @@ public abstract class EPPreparedExecuteIUDSingleStream implements EPPreparedExec
             if (statementSpec.getOptionalContextName() == null) {
                 FireAndForgetInstance processorInstance = processor.getProcessorInstanceNoContext();
                 if (processorInstance != null) {
-                    com.espertech.esper.client.EventBean[] rows = executor.execute(processorInstance);
+                    eu.uk.ncl.pet5o.esper.client.EventBean[] rows = executor.execute(processorInstance);
                     if (rows != null && rows.length > 0) {
                         dispatch();
                     }
@@ -166,7 +166,7 @@ public abstract class EPPreparedExecuteIUDSingleStream implements EPPreparedExec
             if (agentInstanceIds.size() == 1) {
                 int agentInstanceId = agentInstanceIds.iterator().next();
                 FireAndForgetInstance processorInstance = processor.getProcessorInstanceContextById(agentInstanceId);
-                com.espertech.esper.client.EventBean[] rows = executor.execute(processorInstance);
+                eu.uk.ncl.pet5o.esper.client.EventBean[] rows = executor.execute(processorInstance);
                 if (rows.length > 0) {
                     dispatch();
                 }
@@ -177,14 +177,14 @@ public abstract class EPPreparedExecuteIUDSingleStream implements EPPreparedExec
             for (int agentInstanceId : agentInstanceIds) {
                 FireAndForgetInstance processorInstance = processor.getProcessorInstanceContextById(agentInstanceId);
                 if (processorInstance != null) {
-                    com.espertech.esper.client.EventBean[] rows = executor.execute(processorInstance);
+                    eu.uk.ncl.pet5o.esper.client.EventBean[] rows = executor.execute(processorInstance);
                     allRows.addAll(Arrays.asList(rows));
                 }
             }
             if (allRows.size() > 0) {
                 dispatch();
             }
-            return new EPPreparedQueryResult(processor.getEventTypeResultSetProcessor(), allRows.toArray(new com.espertech.esper.client.EventBean[allRows.size()]));
+            return new EPPreparedQueryResult(processor.getEventTypeResultSetProcessor(), allRows.toArray(new eu.uk.ncl.pet5o.esper.client.EventBean[allRows.size()]));
         } finally {
             if (hasTableAccess) {
                 services.getTableService().getTableExprEvaluatorContext().releaseAcquiredLocks();

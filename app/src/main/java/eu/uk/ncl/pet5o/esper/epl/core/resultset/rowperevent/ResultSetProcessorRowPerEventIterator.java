@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.resultset.rowperevent;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -22,8 +22,8 @@ import java.util.NoSuchElementException;
 public class ResultSetProcessorRowPerEventIterator implements Iterator<EventBean> {
     private final Iterator<EventBean> sourceIterator;
     private final ResultSetProcessorRowPerEvent resultSetProcessor;
-    private com.espertech.esper.client.EventBean nextResult;
-    private final com.espertech.esper.client.EventBean[] eventsPerStream;
+    private eu.uk.ncl.pet5o.esper.client.EventBean nextResult;
+    private final eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream;
     private ExprEvaluatorContext exprEvaluatorContext;
 
     /**
@@ -36,7 +36,7 @@ public class ResultSetProcessorRowPerEventIterator implements Iterator<EventBean
     public ResultSetProcessorRowPerEventIterator(Iterator<EventBean> sourceIterator, ResultSetProcessorRowPerEvent resultSetProcessor, ExprEvaluatorContext exprEvaluatorContext) {
         this.sourceIterator = sourceIterator;
         this.resultSetProcessor = resultSetProcessor;
-        eventsPerStream = new com.espertech.esper.client.EventBean[1];
+        eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
         this.exprEvaluatorContext = exprEvaluatorContext;
     }
 
@@ -48,15 +48,15 @@ public class ResultSetProcessorRowPerEventIterator implements Iterator<EventBean
         return nextResult != null;
     }
 
-    public com.espertech.esper.client.EventBean next() {
+    public eu.uk.ncl.pet5o.esper.client.EventBean next() {
         if (nextResult != null) {
-            com.espertech.esper.client.EventBean result = nextResult;
+            eu.uk.ncl.pet5o.esper.client.EventBean result = nextResult;
             nextResult = null;
             return result;
         }
         findNext();
         if (nextResult != null) {
-            com.espertech.esper.client.EventBean result = nextResult;
+            eu.uk.ncl.pet5o.esper.client.EventBean result = nextResult;
             nextResult = null;
             return result;
         }
@@ -67,13 +67,13 @@ public class ResultSetProcessorRowPerEventIterator implements Iterator<EventBean
         nextResult = null;
         if (!resultSetProcessor.hasHavingClause()) {
             if (sourceIterator.hasNext()) {
-                com.espertech.esper.client.EventBean candidate = sourceIterator.next();
+                eu.uk.ncl.pet5o.esper.client.EventBean candidate = sourceIterator.next();
                 eventsPerStream[0] = candidate;
                 nextResult = resultSetProcessor.getSelectExprProcessor().process(eventsPerStream, true, true, exprEvaluatorContext);
             }
         } else {
             while (sourceIterator.hasNext()) {
-                com.espertech.esper.client.EventBean candidate = sourceIterator.next();
+                eu.uk.ncl.pet5o.esper.client.EventBean candidate = sourceIterator.next();
                 eventsPerStream[0] = candidate;
                 if (!resultSetProcessor.evaluateHavingClause(eventsPerStream, true, exprEvaluatorContext)) {
                     continue;

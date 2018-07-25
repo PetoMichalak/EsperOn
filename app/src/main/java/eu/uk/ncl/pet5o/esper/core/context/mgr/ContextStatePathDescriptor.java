@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.client.context.ContextPartitionDescriptor;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionDescriptor;
 
 import java.util.Map;
 import java.util.TreeMap;

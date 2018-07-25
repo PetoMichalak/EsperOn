@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.resultset.core;
 
-import com.espertech.esper.epl.expression.core.ExprIdentNode;
-import com.espertech.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprIdentNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
 
 /**
  * A utility class for replacing select-clause column names with their

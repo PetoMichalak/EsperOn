@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.stmt;
 
-import com.espertech.esper.collection.ArrayWrap;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.prior.ExprPriorEvalStrategy;
+import eu.uk.ncl.pet5o.esper.collection.ArrayWrap;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.prior.ExprPriorEvalStrategy;
 
 public class AIRegistryPriorMultiPerm implements AIRegistryPrior, ExprPriorEvalStrategy {
 
@@ -39,7 +39,7 @@ public class AIRegistryPriorMultiPerm implements AIRegistryPrior, ExprPriorEvalS
         return count;
     }
 
-    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext, int streamNumber, ExprEvaluator evaluator, int constantIndexNumber) {
+    public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext, int streamNumber, ExprEvaluator evaluator, int constantIndexNumber) {
         int agentInstanceId = exprEvaluatorContext.getAgentInstanceId();
         ExprPriorEvalStrategy strategy = strategies.getArray()[agentInstanceId];
         return strategy.evaluate(eventsPerStream, isNewData, exprEvaluatorContext, streamNumber, evaluator, constantIndexNumber);

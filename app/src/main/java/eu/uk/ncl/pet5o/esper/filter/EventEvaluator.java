@@ -24,5 +24,5 @@ public interface EventEvaluator {
      * @param theEvent is the event object wrapper to obtain event property values from
      * @param matches  accumulates the matching filter callbacks
      */
-    public void matchEvent(com.espertech.esper.client.EventBean theEvent, Collection<FilterHandle> matches);
+    public void matchEvent(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, Collection<FilterHandle> matches);
 }

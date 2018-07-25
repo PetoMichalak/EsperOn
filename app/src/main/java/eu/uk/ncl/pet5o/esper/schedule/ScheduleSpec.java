@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.schedule;
 
-import com.espertech.esper.type.CronParameter;
-import com.espertech.esper.type.ScheduleUnit;
+import eu.uk.ncl.pet5o.esper.type.CronParameter;
+import eu.uk.ncl.pet5o.esper.type.ScheduleUnit;
 
 import java.io.Serializable;
 import java.util.Arrays;

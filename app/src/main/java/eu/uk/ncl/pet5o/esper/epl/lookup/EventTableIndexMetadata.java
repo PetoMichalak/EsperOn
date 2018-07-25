@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.lookup;
 
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.epl.join.plan.QueryPlanIndexItem;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.QueryPlanIndexItem;
 
 import java.util.ArrayDeque;
 import java.util.Collection;

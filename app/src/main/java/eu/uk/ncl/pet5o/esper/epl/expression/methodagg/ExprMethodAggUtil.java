@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.methodagg;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
 
 public class ExprMethodAggUtil {
     public static ExprForge[] getDefaultForges(ExprNode[] childNodes, boolean join, EventType[] typesPerStream) throws ExprValidationException {
@@ -45,7 +45,7 @@ public class ExprMethodAggUtil {
         }
 
         return new ExprEvaluator() {
-            public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+            public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
                 Object[] values = new Object[evaluators.length];
                 for (int i = 0; i < evaluators.length; i++) {
                     values[i] = evaluators[i].evaluate(eventsPerStream, isNewData, exprEvaluatorContext);

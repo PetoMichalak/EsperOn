@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.stmt;
 
-import com.espertech.esper.epl.agg.service.common.AggregationService;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationService;
 
 public interface AIRegistryAggregation extends AggregationService {
     public void assignService(int serviceId, AggregationService aggregationService);

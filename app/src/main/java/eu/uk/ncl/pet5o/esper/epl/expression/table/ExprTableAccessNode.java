@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.table;
 
-import com.espertech.esper.epl.expression.core.*;
-import com.espertech.esper.epl.table.mgmt.TableMetadata;
-import com.espertech.esper.epl.table.mgmt.TableMetadataColumn;
-import com.espertech.esper.epl.util.ExprNodeUtilityRich;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadata;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadataColumn;
+import eu.uk.ncl.pet5o.esper.epl.util.ExprNodeUtilityRich;
 
 import java.io.StringWriter;
 

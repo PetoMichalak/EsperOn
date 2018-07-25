@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.epl.spec.ContextDetail;
-import com.espertech.esper.epl.spec.ContextDetailNested;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.epl.spec.ContextDetail;
+import eu.uk.ncl.pet5o.esper.epl.spec.ContextDetailNested;
 
 public class ContextManagerFactoryServiceImpl implements ContextManagerFactoryService {
     public ContextManager make(ContextDetail contextDetail, ContextControllerFactoryServiceContext factoryServiceContext) throws ExprValidationException {

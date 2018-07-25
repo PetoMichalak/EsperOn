@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.event.vaevent;
 
-import com.espertech.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
 
 /**
  * A variant event is a type that can represent many event types.
@@ -21,5 +21,5 @@ public interface VariantEvent {
      *
      * @return underlying event
      */
-    public com.espertech.esper.client.EventBean getUnderlyingEventBean();
+    public eu.uk.ncl.pet5o.esper.client.EventBean getUnderlyingEventBean();
 }

@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.util;
 
-import com.espertech.esper.epl.spec.*;
-import com.espertech.esper.filterspec.FilterSpecCompiled;
-import com.espertech.esper.pattern.EvalFilterFactoryNode;
-import com.espertech.esper.pattern.EvalNodeAnalysisResult;
-import com.espertech.esper.pattern.EvalNodeUtil;
+import eu.uk.ncl.pet5o.esper.epl.spec.*;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterSpecCompiled;
+import eu.uk.ncl.pet5o.esper.pattern.EvalFilterFactoryNode;
+import eu.uk.ncl.pet5o.esper.pattern.EvalNodeAnalysisResult;
+import eu.uk.ncl.pet5o.esper.pattern.EvalNodeUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;

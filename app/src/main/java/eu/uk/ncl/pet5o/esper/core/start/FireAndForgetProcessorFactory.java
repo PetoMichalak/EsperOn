@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.core.start;
 
-import com.espertech.esper.core.service.EPServicesContext;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.epl.named.NamedWindowProcessor;
-import com.espertech.esper.epl.spec.NamedWindowConsumerStreamSpec;
-import com.espertech.esper.epl.spec.StreamSpecCompiled;
-import com.espertech.esper.epl.spec.TableQueryStreamSpec;
-import com.espertech.esper.epl.table.mgmt.TableMetadata;
+import eu.uk.ncl.pet5o.esper.core.service.EPServicesContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.epl.named.NamedWindowProcessor;
+import eu.uk.ncl.pet5o.esper.epl.spec.NamedWindowConsumerStreamSpec;
+import eu.uk.ncl.pet5o.esper.epl.spec.StreamSpecCompiled;
+import eu.uk.ncl.pet5o.esper.epl.spec.TableQueryStreamSpec;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadata;
 
 public class FireAndForgetProcessorFactory {
     public static FireAndForgetProcessor validateResolveProcessor(StreamSpecCompiled streamSpec, EPServicesContext services)

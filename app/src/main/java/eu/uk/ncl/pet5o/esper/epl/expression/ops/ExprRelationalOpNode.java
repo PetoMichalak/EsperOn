@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.ops;
 
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.type.RelationalOpEnum;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.type.RelationalOpEnum;
 
 /**
  * Represents a lesser or greater then (&lt;/&lt;=/&gt;/&gt;=) expression in a filter expression tree.

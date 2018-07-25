@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.poll;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.epl.variable.VariableReader;
-import com.espertech.esper.epl.variable.VariableService;
-import com.espertech.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.epl.variable.VariableReader;
+import eu.uk.ncl.pet5o.esper.epl.variable.VariableService;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
 
 import net.sf.cglib.reflect.FastMethod;
 
@@ -35,7 +35,7 @@ public class MethodPollingExecStrategyEventBeans extends MethodPollingExecStrate
             return Collections.emptyList();
         }
         if (invocationResult.getClass().isArray()) {
-            return Arrays.asList((com.espertech.esper.client.EventBean[]) invocationResult);
+            return Arrays.asList((eu.uk.ncl.pet5o.esper.client.EventBean[]) invocationResult);
         }
         if (invocationResult instanceof Collection) {
             Collection collection = (Collection) invocationResult;
@@ -46,7 +46,7 @@ public class MethodPollingExecStrategyEventBeans extends MethodPollingExecStrate
             ArrayList<EventBean> rowResult = new ArrayList<EventBean>(length);
             Iterator<EventBean> it = collection.iterator();
             for (; it.hasNext(); ) {
-                com.espertech.esper.client.EventBean value = it.next();
+                eu.uk.ncl.pet5o.esper.client.EventBean value = it.next();
                 if (value != null) {
                     rowResult.add(value);
                 }
@@ -59,7 +59,7 @@ public class MethodPollingExecStrategyEventBeans extends MethodPollingExecStrate
         }
         ArrayList<EventBean> rowResult = new ArrayList<>();
         for (; it.hasNext(); ) {
-            com.espertech.esper.client.EventBean value = it.next();
+            eu.uk.ncl.pet5o.esper.client.EventBean value = it.next();
             if (value != null) {
                 rowResult.add(value);
             }

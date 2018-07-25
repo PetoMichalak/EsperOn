@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.collection;
 
-import com.espertech.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
 
 import java.io.Serializable;
 import java.util.Arrays;
 
 /**
- * Functions as a key value for Maps where keys need to be composite values, and includes an {@link com.espertech.esper.client.EventBean} handle
+ * Functions as a key value for Maps where keys need to be composite values, and includes an {@link eu.uk.ncl.pet5o.esper.client.EventBean} handle
  * The class allows a Map that uses MultiKeyUntyped entries for key values to use multiple objects as keys.
  * It calculates the hashCode from the key objects on construction and caches the hashCode.
  */

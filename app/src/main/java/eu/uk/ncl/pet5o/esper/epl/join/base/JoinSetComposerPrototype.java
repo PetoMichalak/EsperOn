@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.base;
 
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.view.Viewable;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.view.Viewable;
 
 /**
  * Interface for a prototype populating a join tuple result set from new data and old data for each stream.

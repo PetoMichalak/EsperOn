@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.start;
 
-import com.espertech.esper.util.DestroyCallback;
+import eu.uk.ncl.pet5o.esper.util.DestroyCallback;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.select;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.core.service.StatementEventTypeRef;
-import com.espertech.esper.event.EventTypeSPI;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.core.service.StatementEventTypeRef;
+import eu.uk.ncl.pet5o.esper.event.EventTypeSPI;
 
 /**
  * Registry for event types creates as part of the select expression analysis.

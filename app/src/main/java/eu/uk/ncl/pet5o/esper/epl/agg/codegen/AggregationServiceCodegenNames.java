@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.codegen;
 
-import com.espertech.esper.codegen.model.expression.CodegenExpressionRef;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRef;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
 
 public class AggregationServiceCodegenNames {
     public final static String NAME_ENGINEIMPORTSVC = "engineImportService";

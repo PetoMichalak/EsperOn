@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.stmt;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.collection.ArrayWrap;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.prev.ExprPreviousEvalStrategy;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.collection.ArrayWrap;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.prev.ExprPreviousEvalStrategy;
 
 import java.util.Collection;
 
@@ -41,25 +41,25 @@ public class AIRegistryPreviousMultiPerm implements AIRegistryPrevious, ExprPrev
         return count;
     }
 
-    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
+    public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
         int agentInstanceId = exprEvaluatorContext.getAgentInstanceId();
         ExprPreviousEvalStrategy strategy = strategies.getArray()[agentInstanceId];
         return strategy.evaluate(eventsPerStream, exprEvaluatorContext);
     }
 
-    public Collection<EventBean> evaluateGetCollEvents(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext context) {
+    public Collection<EventBean> evaluateGetCollEvents(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext context) {
         int agentInstanceId = context.getAgentInstanceId();
         ExprPreviousEvalStrategy strategy = strategies.getArray()[agentInstanceId];
         return strategy.evaluateGetCollEvents(eventsPerStream, context);
     }
 
-    public Collection evaluateGetCollScalar(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext context) {
+    public Collection evaluateGetCollScalar(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext context) {
         int agentInstanceId = context.getAgentInstanceId();
         ExprPreviousEvalStrategy strategy = strategies.getArray()[agentInstanceId];
         return strategy.evaluateGetCollScalar(eventsPerStream, context);
     }
 
-    public com.espertech.esper.client.EventBean evaluateGetEventBean(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext context) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean evaluateGetEventBean(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext context) {
         int agentInstanceId = context.getAgentInstanceId();
         ExprPreviousEvalStrategy strategy = strategies.getArray()[agentInstanceId];
         return strategy.evaluateGetEventBean(eventsPerStream, context);

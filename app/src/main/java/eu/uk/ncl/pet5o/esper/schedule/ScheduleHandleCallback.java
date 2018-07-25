@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.schedule;
 
-import com.espertech.esper.core.service.EngineLevelExtensionServicesContext;
+import eu.uk.ncl.pet5o.esper.core.service.EngineLevelExtensionServicesContext;
 
 /**
  * Interface for scheduled callbacks.

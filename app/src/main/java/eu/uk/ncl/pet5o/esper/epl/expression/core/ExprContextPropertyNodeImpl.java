@@ -10,27 +10,27 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.core;
 
-import com.espertech.esper.client.EventPropertyGetter;
-import com.espertech.esper.codegen.base.CodegenBlock;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.codegen.model.expression.CodegenExpressionRef;
-import com.espertech.esper.epl.expression.codegen.CodegenLegoCast;
-import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
-import com.espertech.esper.event.EventPropertyGetterSPI;
-import com.espertech.esper.event.EventTypeSPI;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenBlock;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRef;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.CodegenLegoCast;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
+import eu.uk.ncl.pet5o.esper.event.EventPropertyGetterSPI;
+import eu.uk.ncl.pet5o.esper.event.EventTypeSPI;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import java.io.StringWriter;
 import java.util.Arrays;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
 
 /**
  * Represents an stream property identifier in a filter expressiun tree.
@@ -85,11 +85,11 @@ public class ExprContextPropertyNodeImpl extends ExprNodeBase implements ExprCon
         return false;
     }
 
-    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qExprContextProp(this);
         }
-        com.espertech.esper.client.EventBean props = context.getContextProperties();
+        eu.uk.ncl.pet5o.esper.client.EventBean props = context.getContextProperties();
         Object result = props != null ? getter.get(props) : null;
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().aExprContextProp(result);
@@ -101,7 +101,7 @@ public class ExprContextPropertyNodeImpl extends ExprNodeBase implements ExprCon
         CodegenMethodNode methodNode = codegenMethodScope.makeChild(getEvaluationType(), ExprContextPropertyNodeImpl.class, codegenClassScope);
         CodegenExpressionRef refExprEvalCtx = exprSymbol.getAddExprEvalCtx(methodNode);
         CodegenBlock block = methodNode.getBlock()
-                .declareVar(com.espertech.esper.client.EventBean.class, "props", exprDotMethod(refExprEvalCtx, "getContextProperties"))
+                .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "props", exprDotMethod(refExprEvalCtx, "getContextProperties"))
                 .ifRefNullReturnNull("props");
         block.methodReturn(CodegenLegoCast.castSafeFromObjectType(returnType, getter.eventBeanGetCodegen(ref("props"), methodNode, codegenClassScope)));
         return localMethod(methodNode);

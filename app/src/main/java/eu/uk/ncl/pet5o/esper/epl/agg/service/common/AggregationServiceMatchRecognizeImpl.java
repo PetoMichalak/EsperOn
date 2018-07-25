@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.service.common;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.agg.aggregator.AggregationMethod;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.agg.aggregator.AggregationMethod;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
 
 import java.util.Collection;
 
@@ -31,7 +31,7 @@ public class AggregationServiceMatchRecognizeImpl implements AggregationServiceM
         this.aggregatorsAll = aggregatorsAll;
     }
 
-    public void applyEnter(com.espertech.esper.client.EventBean[] eventsPerStream, int streamId, ExprEvaluatorContext exprEvaluatorContext) {
+    public void applyEnter(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, int streamId, ExprEvaluatorContext exprEvaluatorContext) {
 
         ExprEvaluator[] evaluatorsStream = evaluatorsEachStream[streamId];
         if (evaluatorsStream == null) {
@@ -45,19 +45,19 @@ public class AggregationServiceMatchRecognizeImpl implements AggregationServiceM
         }
     }
 
-    public Object getValue(int column, int agentInstanceId, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public Object getValue(int column, int agentInstanceId, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         return aggregatorsAll[column].getValue();
     }
 
-    public Collection<EventBean> getCollectionOfEvents(int column, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Collection<EventBean> getCollectionOfEvents(int column, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return null;
     }
 
-    public Collection<Object> getCollectionScalar(int column, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Collection<Object> getCollectionScalar(int column, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return null;
     }
 
-    public com.espertech.esper.client.EventBean getEventBean(int column, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getEventBean(int column, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return null;
     }
 

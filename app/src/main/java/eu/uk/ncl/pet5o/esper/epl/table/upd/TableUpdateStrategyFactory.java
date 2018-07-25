@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.table.upd;
 
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.epl.lookup.EventTableIndexMetadataEntry;
-import com.espertech.esper.epl.lookup.IndexMultiKey;
-import com.espertech.esper.epl.lookup.IndexedPropDesc;
-import com.espertech.esper.epl.table.mgmt.TableMetadata;
-import com.espertech.esper.epl.updatehelper.EventBeanUpdateHelper;
-import com.espertech.esper.epl.updatehelper.EventBeanUpdateItem;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.epl.lookup.EventTableIndexMetadataEntry;
+import eu.uk.ncl.pet5o.esper.epl.lookup.IndexMultiKey;
+import eu.uk.ncl.pet5o.esper.epl.lookup.IndexedPropDesc;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadata;
+import eu.uk.ncl.pet5o.esper.epl.updatehelper.EventBeanUpdateHelper;
+import eu.uk.ncl.pet5o.esper.epl.updatehelper.EventBeanUpdateItem;
 
 import java.util.LinkedHashSet;
 import java.util.Map;

@@ -22,7 +22,7 @@
  */
 package eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.core;
 
-import com.espertech.esper.metrics.codahale_metrics.metrics.stats.Snapshot;
+import eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.stats.Snapshot;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ScheduledExecutorService;

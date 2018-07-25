@@ -10,35 +10,35 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.poll;
 
-import com.espertech.esper.client.ConfigurationDataCache;
-import com.espertech.esper.client.ConfigurationMethodRef;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.core.context.util.EPStatementAgentInstanceHandle;
-import com.espertech.esper.core.service.StatementContext;
-import com.espertech.esper.core.start.EPStatementStartMethod;
-import com.espertech.esper.epl.core.engineimport.EngineImportException;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.epl.core.engineimport.EngineImportSingleRowDesc;
-import com.espertech.esper.epl.db.DataCache;
-import com.espertech.esper.epl.db.DataCacheFactory;
-import com.espertech.esper.epl.declexpr.ExprDeclaredHelper;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.core.ExprNodeOrigin;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.epl.script.ExprNodeScript;
-import com.espertech.esper.epl.spec.ExpressionScriptProvided;
-import com.espertech.esper.epl.spec.MethodStreamSpec;
-import com.espertech.esper.epl.util.EPLValidationUtil;
-import com.espertech.esper.epl.variable.VariableMetaData;
-import com.espertech.esper.epl.variable.VariableReader;
-import com.espertech.esper.epl.variable.VariableService;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.event.EventTypeUtility;
-import com.espertech.esper.schedule.ScheduleBucket;
-import com.espertech.esper.schedule.SchedulingService;
-import com.espertech.esper.util.JavaClassHelper;
-import com.espertech.esper.view.HistoricalEventViewable;
+import eu.uk.ncl.pet5o.esper.client.ConfigurationDataCache;
+import eu.uk.ncl.pet5o.esper.client.ConfigurationMethodRef;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.core.context.util.EPStatementAgentInstanceHandle;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.core.start.EPStatementStartMethod;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportException;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportSingleRowDesc;
+import eu.uk.ncl.pet5o.esper.epl.db.DataCache;
+import eu.uk.ncl.pet5o.esper.epl.db.DataCacheFactory;
+import eu.uk.ncl.pet5o.esper.epl.declexpr.ExprDeclaredHelper;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNodeOrigin;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.epl.script.ExprNodeScript;
+import eu.uk.ncl.pet5o.esper.epl.spec.ExpressionScriptProvided;
+import eu.uk.ncl.pet5o.esper.epl.spec.MethodStreamSpec;
+import eu.uk.ncl.pet5o.esper.epl.util.EPLValidationUtil;
+import eu.uk.ncl.pet5o.esper.epl.variable.VariableMetaData;
+import eu.uk.ncl.pet5o.esper.epl.variable.VariableReader;
+import eu.uk.ncl.pet5o.esper.epl.variable.VariableService;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.event.EventTypeUtility;
+import eu.uk.ncl.pet5o.esper.schedule.ScheduleBucket;
+import eu.uk.ncl.pet5o.esper.schedule.SchedulingService;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.view.HistoricalEventViewable;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -120,8 +120,8 @@ public class MethodPollingViewableFactory {
                     variableReader = variableService.getReader(methodStreamSpec.getClassName(), EPStatementStartMethod.DEFAULT_AGENT_INSTANCE_ID);
                     if (variableMetaData.isConstant()) {
                         invocationTarget = variableReader.getValue();
-                        if (invocationTarget instanceof com.espertech.esper.client.EventBean) {
-                            invocationTarget = ((com.espertech.esper.client.EventBean) invocationTarget).getUnderlying();
+                        if (invocationTarget instanceof eu.uk.ncl.pet5o.esper.client.EventBean) {
+                            invocationTarget = ((eu.uk.ncl.pet5o.esper.client.EventBean) invocationTarget).getUnderlying();
                         }
                         strategy = MethodPollingExecStrategyEnum.TARGET_CONST;
                     } else {
@@ -175,7 +175,7 @@ public class MethodPollingViewableFactory {
             if ((beanClass == void.class) || (beanClass == Void.class) || (JavaClassHelper.isJavaBuiltinDataType(beanClass))) {
                 throw new ExprValidationException("Invalid return type for static method '" + methodReflection.getName() + "' of class '" + methodStreamSpec.getClassName() + "', expecting a Java class");
             }
-            if (methodReflection.getReturnType().isArray() && methodReflection.getReturnType().getComponentType() != com.espertech.esper.client.EventBean.class) {
+            if (methodReflection.getReturnType().isArray() && methodReflection.getReturnType().getComponentType() != eu.uk.ncl.pet5o.esper.client.EventBean.class) {
                 beanClass = methodReflection.getReturnType().getComponentType();
             }
 
@@ -227,9 +227,9 @@ public class MethodPollingViewableFactory {
 
             // Determine event type from class and method name
             // If the method returns EventBean[], require the event type
-            if ((methodReflection.getReturnType().isArray() && methodReflection.getReturnType().getComponentType() == com.espertech.esper.client.EventBean.class) ||
-                    (isCollection && collectionClass == com.espertech.esper.client.EventBean.class) ||
-                    (isIterator && iteratorClass == com.espertech.esper.client.EventBean.class)) {
+            if ((methodReflection.getReturnType().isArray() && methodReflection.getReturnType().getComponentType() == eu.uk.ncl.pet5o.esper.client.EventBean.class) ||
+                    (isCollection && collectionClass == eu.uk.ncl.pet5o.esper.client.EventBean.class) ||
+                    (isIterator && iteratorClass == eu.uk.ncl.pet5o.esper.client.EventBean.class)) {
                 String typeName = methodStreamSpec.getEventTypeName() == null ? eventTypeNameProvidedUDFOrScript : methodStreamSpec.getEventTypeName();
                 eventType = EventTypeUtility.requireEventType("Method", methodReflection.getName(), eventAdapterService, typeName);
                 eventTypeWhenMethodReturnsEventBeans = eventType;
@@ -283,8 +283,8 @@ public class MethodPollingViewableFactory {
             throw new ExprValidationException(messagePrefix + "The variable value is null and the metadata method is an instance method");
         }
 
-        if (value instanceof com.espertech.esper.client.EventBean) {
-            value = ((com.espertech.esper.client.EventBean) value).getUnderlying();
+        if (value instanceof eu.uk.ncl.pet5o.esper.client.EventBean) {
+            value = ((eu.uk.ncl.pet5o.esper.client.EventBean) value).getUnderlying();
         }
         return invokeMetadataMethod(value, variableMetaData.getClass().getSimpleName(), typeGetterMethod);
     }

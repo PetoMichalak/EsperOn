@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.access;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.plugin.PlugInAggregationMultiFunctionCodegenType;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.plugin.PlugInAggregationMultiFunctionCodegenType;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -39,7 +39,7 @@ public class AggregationAccessorWindowNoEval implements AggregationAccessor, Agg
         return PlugInAggregationMultiFunctionCodegenType.CODEGEN_ALL; // not currently applicable as table-related only
     }
 
-    public Object getValue(AggregationState state, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public Object getValue(AggregationState state, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         AggregationStateLinear linear = (AggregationStateLinear) state;
         if (linear.size() == 0) {
             return null;
@@ -48,13 +48,13 @@ public class AggregationAccessorWindowNoEval implements AggregationAccessor, Agg
         Iterator<EventBean> it = linear.iterator();
         int count = 0;
         for (; it.hasNext(); ) {
-            com.espertech.esper.client.EventBean bean = it.next();
+            eu.uk.ncl.pet5o.esper.client.EventBean bean = it.next();
             Array.set(array, count++, bean.getUnderlying());
         }
         return array;
     }
 
-    public Collection<EventBean> getEnumerableEvents(AggregationState state, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public Collection<EventBean> getEnumerableEvents(AggregationState state, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         AggregationStateLinear linear = (AggregationStateLinear) state;
         if (linear.size() == 0) {
             return null;
@@ -62,7 +62,7 @@ public class AggregationAccessorWindowNoEval implements AggregationAccessor, Agg
         return linear.collectionReadOnly();
     }
 
-    public Collection<Object> getEnumerableScalar(AggregationState state, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public Collection<Object> getEnumerableScalar(AggregationState state, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         AggregationStateLinear linear = (AggregationStateLinear) state;
         if (linear.size() == 0) {
             return null;
@@ -70,13 +70,13 @@ public class AggregationAccessorWindowNoEval implements AggregationAccessor, Agg
         List<Object> values = new ArrayList<Object>(linear.size());
         Iterator<EventBean> it = linear.iterator();
         for (; it.hasNext(); ) {
-            com.espertech.esper.client.EventBean bean = it.next();
+            eu.uk.ncl.pet5o.esper.client.EventBean bean = it.next();
             values.add(bean.getUnderlying());
         }
         return values;
     }
 
-    public com.espertech.esper.client.EventBean getEnumerableEvent(AggregationState state, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getEnumerableEvent(AggregationState state, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         return null;
     }
 

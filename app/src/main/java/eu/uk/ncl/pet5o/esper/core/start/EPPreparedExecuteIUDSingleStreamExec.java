@@ -11,5 +11,5 @@
 package eu.uk.ncl.pet5o.esper.core.start;
 
 public interface EPPreparedExecuteIUDSingleStreamExec {
-    public com.espertech.esper.client.EventBean[] execute(FireAndForgetInstance instance);
+    public eu.uk.ncl.pet5o.esper.client.EventBean[] execute(FireAndForgetInstance instance);
 }

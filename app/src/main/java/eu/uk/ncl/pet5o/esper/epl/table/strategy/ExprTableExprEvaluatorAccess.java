@@ -10,23 +10,23 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.table.strategy;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.epl.agg.access.AggregationAccessorSlotPair;
-import com.espertech.esper.epl.agg.service.common.AggregationRowPair;
-import com.espertech.esper.epl.expression.codegen.CodegenLegoEvaluateSelf;
-import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
-import com.espertech.esper.epl.expression.core.*;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.event.ObjectArrayBackedEventBean;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationAccessorSlotPair;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationRowPair;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.CodegenLegoEvaluateSelf;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.event.ObjectArrayBackedEventBean;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
 
 import java.util.Collection;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
 
 public class ExprTableExprEvaluatorAccess extends ExprTableExprEvaluatorBase implements ExprEvaluator, ExprEnumerationForge, ExprEnumerationEval {
 
@@ -39,7 +39,7 @@ public class ExprTableExprEvaluatorAccess extends ExprTableExprEvaluatorBase imp
         this.eventTypeColl = eventTypeColl;
     }
 
-    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qExprTableSubproperty(exprNode, tableName, subpropName);
         }
@@ -62,7 +62,7 @@ public class ExprTableExprEvaluatorAccess extends ExprTableExprEvaluatorBase imp
         return eventTypeColl;
     }
 
-    public Collection<EventBean> evaluateGetROCollectionEvents(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Collection<EventBean> evaluateGetROCollectionEvents(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         ObjectArrayBackedEventBean oa = (ObjectArrayBackedEventBean) eventsPerStream[streamNum];
         AggregationRowPair row = ExprTableEvalStrategyUtil.getRow(oa);
         return accessAccessorSlotPair.getAccessor().getEnumerableEvents(row.getStates()[accessAccessorSlotPair.getSlot()], eventsPerStream, isNewData, context);
@@ -76,7 +76,7 @@ public class ExprTableExprEvaluatorAccess extends ExprTableExprEvaluatorBase imp
         return null;
     }
 
-    public Collection evaluateGetROCollectionScalar(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Collection evaluateGetROCollectionScalar(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return null;
     }
 
@@ -88,7 +88,7 @@ public class ExprTableExprEvaluatorAccess extends ExprTableExprEvaluatorBase imp
         return null;
     }
 
-    public com.espertech.esper.client.EventBean evaluateGetEventBean(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean evaluateGetEventBean(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return null;
     }
 

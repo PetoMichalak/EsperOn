@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.util;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.collection.UniformPair;
-import com.espertech.esper.core.service.UpdateDispatchView;
-import com.espertech.esper.view.ViewSupport;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.collection.UniformPair;
+import eu.uk.ncl.pet5o.esper.core.service.UpdateDispatchView;
+import eu.uk.ncl.pet5o.esper.view.ViewSupport;
 
 import java.util.Iterator;
 
@@ -26,11 +26,11 @@ public class ContextMergeView extends ViewSupport implements UpdateDispatchView 
         this.eventType = eventType;
     }
 
-    public void update(com.espertech.esper.client.EventBean[] newData, com.espertech.esper.client.EventBean[] oldData) {
+    public void update(eu.uk.ncl.pet5o.esper.client.EventBean[] newData, eu.uk.ncl.pet5o.esper.client.EventBean[] oldData) {
         // no action required
     }
 
-    public void newResult(UniformPair<com.espertech.esper.client.EventBean[]> result) {
+    public void newResult(UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> result) {
         if (result != null) {
             updateChildren(result.getFirst(), result.getSecond());
         }

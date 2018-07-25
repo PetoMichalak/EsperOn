@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.subquery;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.agg.service.common.AggregationService;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.util.SimpleNumberCoercer;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationService;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.util.SimpleNumberCoercer;
 
 import java.util.Collection;
 
@@ -29,10 +29,10 @@ public class SubselectEvalStrategyNREqualsAllDefault extends SubselectEvalStrate
         this.filterEval = filterEval;
     }
 
-    protected Object evaluateInternal(Object leftResult, com.espertech.esper.client.EventBean[] events, boolean isNewData, Collection<EventBean> matchingEvents, ExprEvaluatorContext exprEvaluatorContext, AggregationService aggregationService) {
+    protected Object evaluateInternal(Object leftResult, eu.uk.ncl.pet5o.esper.client.EventBean[] events, boolean isNewData, Collection<EventBean> matchingEvents, ExprEvaluatorContext exprEvaluatorContext, AggregationService aggregationService) {
 
         boolean hasNullRow = false;
-        for (com.espertech.esper.client.EventBean theEvent : matchingEvents) {
+        for (eu.uk.ncl.pet5o.esper.client.EventBean theEvent : matchingEvents) {
             events[0] = theEvent;
 
             // Eval filter expression

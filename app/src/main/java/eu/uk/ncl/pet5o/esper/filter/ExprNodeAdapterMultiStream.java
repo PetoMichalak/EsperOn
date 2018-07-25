@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.filter;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.variable.VariableService;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.variable.VariableService;
 
 import java.lang.annotation.Annotation;
 
@@ -25,16 +25,16 @@ import java.lang.annotation.Annotation;
  * boolean expression filter parameters.
  */
 public class ExprNodeAdapterMultiStream extends ExprNodeAdapterBaseVariables {
-    protected final com.espertech.esper.client.EventBean[] prototypeArray;
+    protected final eu.uk.ncl.pet5o.esper.client.EventBean[] prototypeArray;
     private final ThreadLocal<EventBean[]> arrayPerThread;
 
-    public ExprNodeAdapterMultiStream(int filterSpecId, int filterSpecParamPathNum, ExprNode exprNode, ExprEvaluator exprEvaluator, ExprEvaluatorContext evaluatorContext, VariableService variableService, EngineImportService engineImportService, com.espertech.esper.client.EventBean[] prototype, Annotation[] annotations) {
+    public ExprNodeAdapterMultiStream(int filterSpecId, int filterSpecParamPathNum, ExprNode exprNode, ExprEvaluator exprEvaluator, ExprEvaluatorContext evaluatorContext, VariableService variableService, EngineImportService engineImportService, eu.uk.ncl.pet5o.esper.client.EventBean[] prototype, Annotation[] annotations) {
         super(filterSpecId, filterSpecParamPathNum, exprNode, exprEvaluator, evaluatorContext, variableService, engineImportService, annotations);
         this.prototypeArray = prototype;
 
         arrayPerThread = new ThreadLocal<EventBean[]>() {
-            protected synchronized com.espertech.esper.client.EventBean[] initialValue() {
-                com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[prototypeArray.length];
+            protected synchronized eu.uk.ncl.pet5o.esper.client.EventBean[] initialValue() {
+                eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[prototypeArray.length];
                 System.arraycopy(prototypeArray, 0, eventsPerStream, 0, prototypeArray.length);
                 return eventsPerStream;
             }
@@ -42,16 +42,16 @@ public class ExprNodeAdapterMultiStream extends ExprNodeAdapterBaseVariables {
     }
 
     @Override
-    public boolean evaluate(com.espertech.esper.client.EventBean theEvent) {
+    public boolean evaluate(eu.uk.ncl.pet5o.esper.client.EventBean theEvent) {
         if (variableService != null) {
             variableService.setLocalVersion();
         }
-        com.espertech.esper.client.EventBean[] eventsPerStream = arrayPerThread.get();
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = arrayPerThread.get();
         eventsPerStream[0] = theEvent;
         return evaluatePerStream(eventsPerStream);
     }
 
-    public com.espertech.esper.client.EventBean[] getPrototypeArray() {
+    public eu.uk.ncl.pet5o.esper.client.EventBean[] getPrototypeArray() {
         return prototypeArray;
     }
 }

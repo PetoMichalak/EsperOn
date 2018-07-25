@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.client.util;
 
-import com.espertech.esper.epl.approx.CountMinSketchState;
+import eu.uk.ncl.pet5o.esper.epl.approx.CountMinSketchState;
 
 /**
  * Count-min sketch base context object.

@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.table;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.epl.join.plan.QueryPlanIndexItem;
-import com.espertech.esper.epl.lookup.EventTableIndexService;
-import com.espertech.esper.util.CollectionUtil;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.QueryPlanIndexItem;
+import eu.uk.ncl.pet5o.esper.epl.lookup.EventTableIndexService;
+import eu.uk.ncl.pet5o.esper.util.CollectionUtil;
 
 public class EventTableUtil {
     /**

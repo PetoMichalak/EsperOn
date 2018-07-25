@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.codegen;
 
-import com.espertech.esper.epl.agg.access.AggregationAccessorSlotPairForge;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationAccessorSlotPairForge;
 
 public class AggregationCodegenRowDetailDesc {
     private final AggregationCodegenRowDetailStateDesc stateDesc;

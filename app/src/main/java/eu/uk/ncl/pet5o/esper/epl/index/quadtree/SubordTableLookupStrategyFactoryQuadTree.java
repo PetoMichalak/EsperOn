@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.index.quadtree;
 
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.join.table.EventTable;
-import com.espertech.esper.epl.lookup.LookupStrategyDesc;
-import com.espertech.esper.epl.lookup.SubordTableLookupStrategy;
-import com.espertech.esper.epl.lookup.SubordTableLookupStrategyFactory;
-import com.espertech.esper.epl.virtualdw.VirtualDWView;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.join.table.EventTable;
+import eu.uk.ncl.pet5o.esper.epl.lookup.LookupStrategyDesc;
+import eu.uk.ncl.pet5o.esper.epl.lookup.SubordTableLookupStrategy;
+import eu.uk.ncl.pet5o.esper.epl.lookup.SubordTableLookupStrategyFactory;
+import eu.uk.ncl.pet5o.esper.epl.virtualdw.VirtualDWView;
 
 public class SubordTableLookupStrategyFactoryQuadTree implements SubordTableLookupStrategyFactory {
 

@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.orderby;
 
-import com.espertech.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -32,7 +32,7 @@ public class OrderByProcessorUtil {
      * @param comparator comparator
      * @return sorted
      */
-    public static com.espertech.esper.client.EventBean[] sortGivenOutgoingAndSortKeys(com.espertech.esper.client.EventBean[] outgoingEvents, List<Object> sortValuesMultiKeys, Comparator<Object> comparator) {
+    public static eu.uk.ncl.pet5o.esper.client.EventBean[] sortGivenOutgoingAndSortKeys(eu.uk.ncl.pet5o.esper.client.EventBean[] outgoingEvents, List<Object> sortValuesMultiKeys, Comparator<Object> comparator) {
         // Map the sort values to the corresponding outgoing events
         Map<Object, List<EventBean>> sortToOutgoing = new HashMap<>();
         int countOne = 0;
@@ -50,11 +50,11 @@ public class OrderByProcessorUtil {
 
         // Sort the outgoing events in the same order
         Set<Object> sortSet = new LinkedHashSet<>(sortValuesMultiKeys);
-        com.espertech.esper.client.EventBean[] result = new com.espertech.esper.client.EventBean[outgoingEvents.length];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] result = new eu.uk.ncl.pet5o.esper.client.EventBean[outgoingEvents.length];
         int countTwo = 0;
         for (Object sortValues : sortSet) {
             Collection<EventBean> output = sortToOutgoing.get(sortValues);
-            for (com.espertech.esper.client.EventBean theEvent : output) {
+            for (eu.uk.ncl.pet5o.esper.client.EventBean theEvent : output) {
                 result[countTwo++] = theEvent;
             }
         }
@@ -69,7 +69,7 @@ public class OrderByProcessorUtil {
      * @param comparator comparator
      * @return sorted
      */
-    public static com.espertech.esper.client.EventBean[] sortWOrderKeys(com.espertech.esper.client.EventBean[] outgoingEvents, Object[] orderKeys, Comparator<Object> comparator) {
+    public static eu.uk.ncl.pet5o.esper.client.EventBean[] sortWOrderKeys(eu.uk.ncl.pet5o.esper.client.EventBean[] outgoingEvents, Object[] orderKeys, Comparator<Object> comparator) {
         TreeMap<Object, Object> sort = new TreeMap<>(comparator);
 
         if (outgoingEvents == null || outgoingEvents.length < 2) {
@@ -80,9 +80,9 @@ public class OrderByProcessorUtil {
             Object entry = sort.get(orderKeys[i]);
             if (entry == null) {
                 sort.put(orderKeys[i], outgoingEvents[i]);
-            } else if (entry instanceof com.espertech.esper.client.EventBean) {
+            } else if (entry instanceof eu.uk.ncl.pet5o.esper.client.EventBean) {
                 List<EventBean> list = new ArrayList<EventBean>();
-                list.add((com.espertech.esper.client.EventBean) entry);
+                list.add((eu.uk.ncl.pet5o.esper.client.EventBean) entry);
                 list.add(outgoingEvents[i]);
                 sort.put(orderKeys[i], list);
             } else {
@@ -91,16 +91,16 @@ public class OrderByProcessorUtil {
             }
         }
 
-        com.espertech.esper.client.EventBean[] result = new com.espertech.esper.client.EventBean[outgoingEvents.length];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] result = new eu.uk.ncl.pet5o.esper.client.EventBean[outgoingEvents.length];
         int count = 0;
         for (Object entry : sort.values()) {
             if (entry instanceof List) {
                 List<EventBean> output = (List<EventBean>) entry;
-                for (com.espertech.esper.client.EventBean theEvent : output) {
+                for (eu.uk.ncl.pet5o.esper.client.EventBean theEvent : output) {
                     result[count++] = theEvent;
                 }
             } else {
-                result[count++] = (com.espertech.esper.client.EventBean) entry;
+                result[count++] = (eu.uk.ncl.pet5o.esper.client.EventBean) entry;
             }
         }
         return result;
@@ -113,9 +113,9 @@ public class OrderByProcessorUtil {
      * @param comparator comparator
      * @return min or max
      */
-    public static com.espertech.esper.client.EventBean determineLocalMinMaxWOrderKeys(com.espertech.esper.client.EventBean[] outgoingEvents, Object[] orderKeys, Comparator<Object> comparator) {
+    public static eu.uk.ncl.pet5o.esper.client.EventBean determineLocalMinMaxWOrderKeys(eu.uk.ncl.pet5o.esper.client.EventBean[] outgoingEvents, Object[] orderKeys, Comparator<Object> comparator) {
         Object localMinMax = null;
-        com.espertech.esper.client.EventBean outgoingMinMaxBean = null;
+        eu.uk.ncl.pet5o.esper.client.EventBean outgoingMinMaxBean = null;
 
         for (int i = 0; i < outgoingEvents.length; i++) {
             boolean newMinMax = localMinMax == null || comparator.compare(localMinMax, orderKeys[i]) > 0;
@@ -136,17 +136,17 @@ public class OrderByProcessorUtil {
      * @param rowLimitProcessor row limit
      * @return min or max
      */
-    public static com.espertech.esper.client.EventBean[] sortWOrderKeysWLimit(com.espertech.esper.client.EventBean[] outgoingEvents, Object[] orderKeys, Comparator<Object> comparator, RowLimitProcessor rowLimitProcessor) {
+    public static eu.uk.ncl.pet5o.esper.client.EventBean[] sortWOrderKeysWLimit(eu.uk.ncl.pet5o.esper.client.EventBean[] outgoingEvents, Object[] orderKeys, Comparator<Object> comparator, RowLimitProcessor rowLimitProcessor) {
         rowLimitProcessor.determineCurrentLimit();
 
         if (rowLimitProcessor.getCurrentRowLimit() == 1 &&
                 rowLimitProcessor.getCurrentOffset() == 0 &&
                 outgoingEvents != null && outgoingEvents.length > 1) {
-            com.espertech.esper.client.EventBean minmax = OrderByProcessorUtil.determineLocalMinMaxWOrderKeys(outgoingEvents, orderKeys, comparator);
-            return new com.espertech.esper.client.EventBean[]{minmax};
+            eu.uk.ncl.pet5o.esper.client.EventBean minmax = OrderByProcessorUtil.determineLocalMinMaxWOrderKeys(outgoingEvents, orderKeys, comparator);
+            return new eu.uk.ncl.pet5o.esper.client.EventBean[]{minmax};
         }
 
-        com.espertech.esper.client.EventBean[] sorted = OrderByProcessorUtil.sortWOrderKeys(outgoingEvents, orderKeys, comparator);
+        eu.uk.ncl.pet5o.esper.client.EventBean[] sorted = OrderByProcessorUtil.sortWOrderKeys(outgoingEvents, orderKeys, comparator);
         return rowLimitProcessor.applyLimit(sorted);
     }
 }

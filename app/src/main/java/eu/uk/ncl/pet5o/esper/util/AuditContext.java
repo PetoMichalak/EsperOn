@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.util;
 
-import com.espertech.esper.client.annotation.AuditEnum;
+import eu.uk.ncl.pet5o.esper.client.annotation.AuditEnum;
 
 public class AuditContext {
 

@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.select.eval;
 
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMember;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.epl.core.select.SelectExprProcessor;
-import com.espertech.esper.event.WrapperEventType;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMember;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.epl.core.select.SelectExprProcessor;
+import eu.uk.ncl.pet5o.esper.event.WrapperEventType;
 
 import java.util.Collections;
 
@@ -25,8 +25,8 @@ public class EvalInsertNoWildcardSingleColCoercionObjectArrayWrap extends EvalBa
         super(selectExprForgeContext, wrapper);
     }
 
-    public com.espertech.esper.client.EventBean processFirstCol(Object result) {
-        com.espertech.esper.client.EventBean wrappedEvent = super.getEventAdapterService().adapterForTypedObjectArray((Object[]) result, wrapper.getUnderlyingEventType());
+    public eu.uk.ncl.pet5o.esper.client.EventBean processFirstCol(Object result) {
+        eu.uk.ncl.pet5o.esper.client.EventBean wrappedEvent = super.getEventAdapterService().adapterForTypedObjectArray((Object[]) result, wrapper.getUnderlyingEventType());
         return super.getEventAdapterService().adapterForTypedWrapper(wrappedEvent, Collections.emptyMap(), wrapper);
     }
 

@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.factory;
 
-import com.espertech.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
 
 public interface StatementAgentInstanceFactory {
     public StatementAgentInstanceFactoryResult newContext(AgentInstanceContext agentInstanceContext, boolean isRecoveringResilient);

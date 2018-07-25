@@ -10,14 +10,14 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.table.strategy;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.agg.access.AggregationAccessorSlotPair;
-import com.espertech.esper.epl.agg.service.common.AggregationRowPair;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.table.mgmt.TableMetadataColumn;
-import com.espertech.esper.epl.table.mgmt.TableMetadataColumnAggregation;
-import com.espertech.esper.epl.table.mgmt.TableMetadataColumnPlain;
-import com.espertech.esper.event.ObjectArrayBackedEventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationAccessorSlotPair;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationRowPair;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadataColumn;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadataColumnAggregation;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadataColumnPlain;
+import eu.uk.ncl.pet5o.esper.event.ObjectArrayBackedEventBean;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -34,7 +34,7 @@ public class ExprTableEvalStrategyUtil {
         return (AggregationRowPair) eventBean.getProperties()[0];
     }
 
-    protected static Map<String, Object> evalMap(ObjectArrayBackedEventBean event, AggregationRowPair row, Map<String, TableMetadataColumn> items, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    protected static Map<String, Object> evalMap(ObjectArrayBackedEventBean event, AggregationRowPair row, Map<String, TableMetadataColumn> items, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         HashMap<String, Object> cols = new HashMap<String, Object>();
         for (Map.Entry<String, TableMetadataColumn> entry : items.entrySet()) {
             if (entry.getValue() instanceof TableMetadataColumnPlain) {
@@ -57,7 +57,7 @@ public class ExprTableEvalStrategyUtil {
     protected static Object[] evalTypable(ObjectArrayBackedEventBean event,
                                           AggregationRowPair row,
                                           Map<String, TableMetadataColumn> items,
-                                          com.espertech.esper.client.EventBean[] eventsPerStream,
+                                          eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream,
                                           boolean isNewData,
                                           ExprEvaluatorContext exprEvaluatorContext) {
         Object[] values = new Object[items.size()];
@@ -80,19 +80,19 @@ public class ExprTableEvalStrategyUtil {
         return values;
     }
 
-    protected static Object evalAccessorGetValue(AggregationRowPair row, AggregationAccessorSlotPair pair, com.espertech.esper.client.EventBean[] eventsPerStream, boolean newData, ExprEvaluatorContext context) {
+    protected static Object evalAccessorGetValue(AggregationRowPair row, AggregationAccessorSlotPair pair, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean newData, ExprEvaluatorContext context) {
         return pair.getAccessor().getValue(row.getStates()[pair.getSlot()], eventsPerStream, newData, context);
     }
 
-    protected static Collection<EventBean> evalGetROCollectionEvents(AggregationRowPair row, AggregationAccessorSlotPair pair, com.espertech.esper.client.EventBean[] eventsPerStream, boolean newData, ExprEvaluatorContext context) {
+    protected static Collection<EventBean> evalGetROCollectionEvents(AggregationRowPair row, AggregationAccessorSlotPair pair, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean newData, ExprEvaluatorContext context) {
         return pair.getAccessor().getEnumerableEvents(row.getStates()[pair.getSlot()], eventsPerStream, newData, context);
     }
 
-    protected static com.espertech.esper.client.EventBean evalGetEventBean(AggregationRowPair row, AggregationAccessorSlotPair pair, com.espertech.esper.client.EventBean[] eventsPerStream, boolean newData, ExprEvaluatorContext context) {
+    protected static eu.uk.ncl.pet5o.esper.client.EventBean evalGetEventBean(AggregationRowPair row, AggregationAccessorSlotPair pair, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean newData, ExprEvaluatorContext context) {
         return pair.getAccessor().getEnumerableEvent(row.getStates()[pair.getSlot()], eventsPerStream, newData, context);
     }
 
-    protected static Collection evalGetROCollectionScalar(AggregationRowPair row, AggregationAccessorSlotPair pair, com.espertech.esper.client.EventBean[] eventsPerStream, boolean newData, ExprEvaluatorContext context) {
+    protected static Collection evalGetROCollectionScalar(AggregationRowPair row, AggregationAccessorSlotPair pair, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean newData, ExprEvaluatorContext context) {
         return pair.getAccessor().getEnumerableScalar(row.getStates()[pair.getSlot()], eventsPerStream, newData, context);
     }
 

@@ -10,27 +10,27 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.select.eval;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMember;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.codegen.model.expression.CodegenExpressionRef;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.epl.core.select.SelectExprProcessor;
-import com.espertech.esper.epl.core.select.SelectExprProcessorCodegenSymbol;
-import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.event.DecoratingEventBean;
-import com.espertech.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMember;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRef;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.epl.core.select.SelectExprProcessor;
+import eu.uk.ncl.pet5o.esper.epl.core.select.SelectExprProcessorCodegenSymbol;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.event.DecoratingEventBean;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.member;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.staticMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.member;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.staticMethod;
 
 public class EvalInsertWildcardSSWrapper extends EvalBaseMap implements SelectExprProcessor {
 
@@ -43,7 +43,7 @@ public class EvalInsertWildcardSSWrapper extends EvalBaseMap implements SelectEx
 
     // In case of a wildcard and single stream that is itself a
     // wrapper bean, we also need to add the map properties
-    public com.espertech.esper.client.EventBean processSpecific(Map<String, Object> props, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext exprEvaluatorContext) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean processSpecific(Map<String, Object> props, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext exprEvaluatorContext) {
         return processSelectExprSSWrapper(props, eventsPerStream, evaluators.length == 0, super.getEventAdapterService(), super.resultEventType);
     }
 
@@ -61,8 +61,8 @@ public class EvalInsertWildcardSSWrapper extends EvalBaseMap implements SelectEx
      * @param resultEventType type
      * @return bean
      */
-    public static com.espertech.esper.client.EventBean processSelectExprSSWrapper(Map<String, Object> props, com.espertech.esper.client.EventBean[] eventsPerStream, boolean emptyExpressions, EventAdapterService eventAdapterService, EventType resultEventType) {
-        com.espertech.esper.client.EventBean theEvent = eventsPerStream[0];
+    public static eu.uk.ncl.pet5o.esper.client.EventBean processSelectExprSSWrapper(Map<String, Object> props, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean emptyExpressions, EventAdapterService eventAdapterService, EventType resultEventType) {
+        eu.uk.ncl.pet5o.esper.client.EventBean theEvent = eventsPerStream[0];
         DecoratingEventBean wrapper = (DecoratingEventBean) theEvent;
         if (wrapper != null) {
             Map<String, Object> map = wrapper.getDecoratingProperties();

@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.service.common;
 
-import com.espertech.esper.epl.agg.access.AggregationServicePassThru;
-import com.espertech.esper.epl.agg.access.AggregationState;
-import com.espertech.esper.epl.agg.aggregator.AggregationMethod;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationServicePassThru;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationState;
+import eu.uk.ncl.pet5o.esper.epl.agg.aggregator.AggregationMethod;
 
 public class AggSvcGroupByUtil {
     public static AggregationMethod[] newAggregators(AggregationMethodFactory[] prototypes) {

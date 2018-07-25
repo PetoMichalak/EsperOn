@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.client.EventPropertyGetter;
-import com.espertech.esper.client.PropertyAccessException;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.epl.expression.codegen.ExprNodeCompiler;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.client.PropertyAccessException;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprNodeCompiler;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,8 +36,8 @@ public class ContextControllerHashedGetterHashMultiple implements EventPropertyG
         this.granularity = granularity;
     }
 
-    public Object get(com.espertech.esper.client.EventBean eventBean) throws PropertyAccessException {
-        com.espertech.esper.client.EventBean[] events = new com.espertech.esper.client.EventBean[]{eventBean};
+    public Object get(eu.uk.ncl.pet5o.esper.client.EventBean eventBean) throws PropertyAccessException {
+        eu.uk.ncl.pet5o.esper.client.EventBean[] events = new eu.uk.ncl.pet5o.esper.client.EventBean[]{eventBean};
 
         int hashCode = 0;
         for (int i = 0; i < evaluators.length; i++) {
@@ -58,11 +58,11 @@ public class ContextControllerHashedGetterHashMultiple implements EventPropertyG
         return -hashCode % granularity;
     }
 
-    public boolean isExistsProperty(com.espertech.esper.client.EventBean eventBean) {
+    public boolean isExistsProperty(eu.uk.ncl.pet5o.esper.client.EventBean eventBean) {
         return false;
     }
 
-    public Object getFragment(com.espertech.esper.client.EventBean eventBean) throws PropertyAccessException {
+    public Object getFragment(eu.uk.ncl.pet5o.esper.client.EventBean eventBean) throws PropertyAccessException {
         return null;
     }
 }

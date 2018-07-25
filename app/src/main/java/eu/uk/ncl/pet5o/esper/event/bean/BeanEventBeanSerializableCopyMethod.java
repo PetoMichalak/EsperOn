@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.event.bean;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.event.EventBeanCopyMethod;
-import com.espertech.esper.util.SerializableObjectCopier;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.event.EventBeanCopyMethod;
+import eu.uk.ncl.pet5o.esper.util.SerializableObjectCopier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -39,7 +39,7 @@ public class BeanEventBeanSerializableCopyMethod implements EventBeanCopyMethod 
         this.eventAdapterService = eventAdapterService;
     }
 
-    public com.espertech.esper.client.EventBean copy(com.espertech.esper.client.EventBean theEvent) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean copy(eu.uk.ncl.pet5o.esper.client.EventBean theEvent) {
         Object underlying = theEvent.getUnderlying();
         Object copied;
         try {

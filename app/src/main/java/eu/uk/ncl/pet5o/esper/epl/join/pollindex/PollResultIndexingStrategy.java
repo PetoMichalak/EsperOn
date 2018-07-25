@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.pollindex;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.core.service.StatementContext;
-import com.espertech.esper.epl.join.table.EventTable;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.epl.join.table.EventTable;
 
 import java.util.List;
 

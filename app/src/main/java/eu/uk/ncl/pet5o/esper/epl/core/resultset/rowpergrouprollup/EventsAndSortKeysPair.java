@@ -11,15 +11,15 @@
 package eu.uk.ncl.pet5o.esper.epl.core.resultset.rowpergrouprollup;
 
 public class EventsAndSortKeysPair {
-    private final com.espertech.esper.client.EventBean[] events;
+    private final eu.uk.ncl.pet5o.esper.client.EventBean[] events;
     private final Object[] sortKeys;
 
-    public EventsAndSortKeysPair(com.espertech.esper.client.EventBean[] events, Object[] sortKeys) {
+    public EventsAndSortKeysPair(eu.uk.ncl.pet5o.esper.client.EventBean[] events, Object[] sortKeys) {
         this.events = events;
         this.sortKeys = sortKeys;
     }
 
-    public com.espertech.esper.client.EventBean[] getEvents() {
+    public eu.uk.ncl.pet5o.esper.client.EventBean[] getEvents() {
         return events;
     }
 

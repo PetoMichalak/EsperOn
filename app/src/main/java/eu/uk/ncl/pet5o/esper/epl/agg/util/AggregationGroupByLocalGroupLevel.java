@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.util;
 
-import com.espertech.esper.epl.agg.service.common.AggregationServiceAggExpressionDesc;
-import com.espertech.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationServiceAggExpressionDesc;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
 
 import java.util.List;
 

@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.access;
 
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
 
 public class AggregationStateMinMaxByEverWFilter extends AggregationStateMinMaxByEver {
 
@@ -19,8 +19,8 @@ public class AggregationStateMinMaxByEverWFilter extends AggregationStateMinMaxB
     }
 
     @Override
-    public void applyEnter(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
-        com.espertech.esper.client.EventBean theEvent = eventsPerStream[spec.getStreamId()];
+    public void applyEnter(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
+        eu.uk.ncl.pet5o.esper.client.EventBean theEvent = eventsPerStream[spec.getStreamId()];
         if (theEvent == null) {
             return;
         }

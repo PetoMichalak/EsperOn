@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.access;
 
-import com.espertech.esper.collection.MixedEventBeanAndCollectionIteratorBase;
+import eu.uk.ncl.pet5o.esper.collection.MixedEventBeanAndCollectionIteratorBase;
 
 import java.util.SortedMap;
 import java.util.TreeMap;

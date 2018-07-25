@@ -10,47 +10,47 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.service.table;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMember;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.epl.agg.access.*;
-import com.espertech.esper.epl.agg.aggregator.AggregationMethod;
-import com.espertech.esper.epl.agg.service.common.*;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.table.mgmt.TableColumnMethodPair;
-import com.espertech.esper.epl.table.mgmt.TableStateInstanceUngrouped;
-import com.espertech.esper.epl.table.strategy.ExprTableEvalLockUtil;
-import com.espertech.esper.epl.table.strategy.ExprTableEvalStrategyUtil;
-import com.espertech.esper.event.ObjectArrayBackedEventBean;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMember;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.*;
+import eu.uk.ncl.pet5o.esper.epl.agg.aggregator.AggregationMethod;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.*;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableColumnMethodPair;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableStateInstanceUngrouped;
+import eu.uk.ncl.pet5o.esper.epl.table.strategy.ExprTableEvalLockUtil;
+import eu.uk.ncl.pet5o.esper.epl.table.strategy.ExprTableEvalStrategyUtil;
+import eu.uk.ncl.pet5o.esper.event.ObjectArrayBackedEventBean;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
 
 import java.util.Collection;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.arrayAtIndex;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.arrayLength;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethodChain;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.member;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.op;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.relational;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionRelational.CodegenRelational.LT;
-import static com.espertech.esper.epl.agg.access.AggregationAgentCodegenSymbols.NAME_AGENTSTATE;
-import static com.espertech.esper.epl.agg.codegen.AggregationServiceCodegenNames.REF_COLUMN;
-import static com.espertech.esper.epl.agg.service.table.AggSvcGroupByWTableCodegenUtil.REF_TABLESTATEINSTANCE;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.*;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.NAME_EPS;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.NAME_EXPREVALCONTEXT;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_EPS;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_EXPREVALCONTEXT;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_ISNEWDATA;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.arrayAtIndex;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.arrayLength;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethodChain;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.member;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.op;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.relational;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRelational.CodegenRelational.LT;
+import static eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationAgentCodegenSymbols.NAME_AGENTSTATE;
+import static eu.uk.ncl.pet5o.esper.epl.agg.codegen.AggregationServiceCodegenNames.REF_COLUMN;
+import static eu.uk.ncl.pet5o.esper.epl.agg.service.table.AggSvcGroupByWTableCodegenUtil.REF_TABLESTATEINSTANCE;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.*;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.NAME_EPS;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.NAME_EXPREVALCONTEXT;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_EPS;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_EXPREVALCONTEXT;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_ISNEWDATA;
 
 /**
  * Implementation for handling aggregation without any grouping (no group-by).
@@ -72,7 +72,7 @@ public class AggSvcGroupAllWTableImpl implements AggregationService {
         this.agents = agents;
     }
 
-    public void applyEnter(com.espertech.esper.client.EventBean[] eventsPerStream, Object optionalGroupKeyPerRow, ExprEvaluatorContext exprEvaluatorContext) {
+    public void applyEnter(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, Object optionalGroupKeyPerRow, ExprEvaluatorContext exprEvaluatorContext) {
         // acquire table-level write lock
         ExprTableEvalLockUtil.obtainLockUnless(tableStateInstance.getTableLevelRWLock().writeLock(), exprEvaluatorContext);
 
@@ -112,7 +112,7 @@ public class AggSvcGroupAllWTableImpl implements AggregationService {
         }
     }
 
-    public void applyLeave(com.espertech.esper.client.EventBean[] eventsPerStream, Object optionalGroupKeyPerRow, ExprEvaluatorContext exprEvaluatorContext) {
+    public void applyLeave(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, Object optionalGroupKeyPerRow, ExprEvaluatorContext exprEvaluatorContext) {
         // acquire table-level write lock
         ExprTableEvalLockUtil.obtainLockUnless(tableStateInstance.getTableLevelRWLock().writeLock(), exprEvaluatorContext);
 
@@ -154,7 +154,7 @@ public class AggSvcGroupAllWTableImpl implements AggregationService {
 
     public static CodegenMethodNode applyCodegen(boolean enter, CodegenMethodScope parent, CodegenClassScope classScope, TableColumnMethodPair[] methodPairs, AggregationAgentForge[] agentForges, AggregationAgent[] agents, int[] targetStates) {
         AggregationAgentCodegenSymbols symbols = new AggregationAgentCodegenSymbols(true, true);
-        CodegenMethodNode method = parent.makeChildWithScope(void.class, AggSvcGroupAllWTableImpl.class, symbols, classScope).addParam(com.espertech.esper.client.EventBean[].class, NAME_EPS).addParam(ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT);
+        CodegenMethodNode method = parent.makeChildWithScope(void.class, AggSvcGroupAllWTableImpl.class, symbols, classScope).addParam(eu.uk.ncl.pet5o.esper.client.EventBean[].class, NAME_EPS).addParam(ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT);
 
         method.getBlock().declareVar(ObjectArrayBackedEventBean.class, "event", exprDotMethod(REF_TABLESTATEINSTANCE, "getCreateRowIntoTable", constantNull(), REF_EXPREVALCONTEXT))
                 .declareVar(AggregationRowPair.class, "row", staticMethod(ExprTableEvalStrategyUtil.class, "getRow", ref("event")))
@@ -188,7 +188,7 @@ public class AggSvcGroupAllWTableImpl implements AggregationService {
         // no action needed - this implementation does not group and the current row is the single group
     }
 
-    public Object getValue(int column, int agentInstanceId, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public Object getValue(int column, int agentInstanceId, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         // acquire table-level write lock
         ExprTableEvalLockUtil.obtainLockUnless(tableStateInstance.getTableLevelRWLock().writeLock(), exprEvaluatorContext);
 
@@ -218,7 +218,7 @@ public class AggSvcGroupAllWTableImpl implements AggregationService {
                 .methodReturn(exprDotMethodChain(ref("pair")).add("getAccessor").add(getterType.getAccessorMethod(), arrayAtIndex(exprDotMethod(ref("row"), "getStates"), exprDotMethod(ref("pair"), "getSlot")), REF_EPS, REF_ISNEWDATA, REF_EXPREVALCONTEXT));
     }
 
-    public Collection<EventBean> getCollectionOfEvents(int column, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Collection<EventBean> getCollectionOfEvents(int column, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         // acquire table-level write lock
         ExprTableEvalLockUtil.obtainLockUnless(tableStateInstance.getTableLevelRWLock().writeLock(), context);
 
@@ -236,7 +236,7 @@ public class AggSvcGroupAllWTableImpl implements AggregationService {
         }
     }
 
-    public Collection<Object> getCollectionScalar(int column, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Collection<Object> getCollectionScalar(int column, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         // acquire table-level write lock
         ExprTableEvalLockUtil.obtainLockUnless(tableStateInstance.getTableLevelRWLock().writeLock(), context);
 
@@ -254,7 +254,7 @@ public class AggSvcGroupAllWTableImpl implements AggregationService {
         }
     }
 
-    public com.espertech.esper.client.EventBean getEventBean(int column, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getEventBean(int column, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         // acquire table-level write lock
         ExprTableEvalLockUtil.obtainLockUnless(tableStateInstance.getTableLevelRWLock().writeLock(), context);
 

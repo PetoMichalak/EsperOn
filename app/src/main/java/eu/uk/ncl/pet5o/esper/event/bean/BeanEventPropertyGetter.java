@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.event.bean;
 
-import com.espertech.esper.client.PropertyAccessException;
-import com.espertech.esper.event.EventPropertyGetterSPI;
+import eu.uk.ncl.pet5o.esper.client.PropertyAccessException;
+import eu.uk.ncl.pet5o.esper.event.EventPropertyGetterSPI;
 
 /**
  * Shortcut-evaluator for use with POJO-backed events only.

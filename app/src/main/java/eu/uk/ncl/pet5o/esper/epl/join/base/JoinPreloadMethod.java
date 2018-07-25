@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.base;
 
-import com.espertech.esper.epl.core.resultset.core.ResultSetProcessor;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.view.internal.BufferView;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessor;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.view.internal.BufferView;
 
 /**
  * Method for preloading events for a given stream onto the stream's indexes, from a buffer already associated with a stream.

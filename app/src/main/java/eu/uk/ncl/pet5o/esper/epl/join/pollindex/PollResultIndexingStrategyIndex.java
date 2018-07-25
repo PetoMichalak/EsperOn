@@ -10,14 +10,14 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.pollindex;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.core.service.ExprEvaluatorContextStatement;
-import com.espertech.esper.core.service.StatementContext;
-import com.espertech.esper.epl.join.table.EventTable;
-import com.espertech.esper.epl.join.table.EventTableFactoryTableIdentStmt;
-import com.espertech.esper.epl.join.table.PropertyIndexedEventTableFactory;
-import com.espertech.esper.epl.join.table.UnindexedEventTableList;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.core.service.ExprEvaluatorContextStatement;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.epl.join.table.EventTable;
+import eu.uk.ncl.pet5o.esper.epl.join.table.EventTableFactoryTableIdentStmt;
+import eu.uk.ncl.pet5o.esper.epl.join.table.PropertyIndexedEventTableFactory;
+import eu.uk.ncl.pet5o.esper.epl.join.table.UnindexedEventTableList;
 
 import java.util.Arrays;
 import java.util.List;

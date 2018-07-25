@@ -44,7 +44,7 @@ public class EngineThreadFactory implements java.util.concurrent.ThreadFactory {
     }
 
     public Thread newThread(Runnable runnable) {
-        String name = "com.espertech.esper." + prefix + "-" + engineURI + "-" + currThreadCount;
+        String name = "eu.uk.ncl.pet5o.esper." + prefix + "-" + engineURI + "-" + currThreadCount;
         currThreadCount++;
         Thread t = new Thread(threadGroup, runnable, name);
         t.setDaemon(true);

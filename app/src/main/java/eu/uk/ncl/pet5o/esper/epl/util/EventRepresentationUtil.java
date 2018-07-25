@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.util;
 
-import com.espertech.esper.client.ConfigurationInformation;
-import com.espertech.esper.client.annotation.EventRepresentation;
-import com.espertech.esper.client.util.EventUnderlyingType;
-import com.espertech.esper.epl.annotation.AnnotationUtil;
-import com.espertech.esper.epl.spec.CreateSchemaDesc;
+import eu.uk.ncl.pet5o.esper.client.ConfigurationInformation;
+import eu.uk.ncl.pet5o.esper.client.annotation.EventRepresentation;
+import eu.uk.ncl.pet5o.esper.client.util.EventUnderlyingType;
+import eu.uk.ncl.pet5o.esper.epl.annotation.AnnotationUtil;
+import eu.uk.ncl.pet5o.esper.epl.spec.CreateSchemaDesc;
 
 import java.lang.annotation.Annotation;
 

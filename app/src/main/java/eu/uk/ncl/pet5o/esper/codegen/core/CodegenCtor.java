@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.codegen.core;
 
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.base.CodegenSymbolProviderEmpty;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenSymbolProviderEmpty;
 
 import java.util.List;
 

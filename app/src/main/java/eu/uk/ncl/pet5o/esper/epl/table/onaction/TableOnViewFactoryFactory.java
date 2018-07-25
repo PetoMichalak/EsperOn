@@ -10,19 +10,19 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.table.onaction;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.core.service.InternalEventRouter;
-import com.espertech.esper.core.service.StatementContext;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.epl.metric.StatementMetricHandle;
-import com.espertech.esper.epl.spec.*;
-import com.espertech.esper.epl.table.merge.TableOnMergeHelper;
-import com.espertech.esper.epl.table.mgmt.TableMetadata;
-import com.espertech.esper.epl.table.upd.TableUpdateStrategy;
-import com.espertech.esper.epl.updatehelper.EventBeanUpdateHelper;
-import com.espertech.esper.epl.updatehelper.EventBeanUpdateHelperFactory;
-import com.espertech.esper.event.EventBeanReader;
-import com.espertech.esper.event.EventTypeSPI;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.core.service.InternalEventRouter;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.epl.metric.StatementMetricHandle;
+import eu.uk.ncl.pet5o.esper.epl.spec.*;
+import eu.uk.ncl.pet5o.esper.epl.table.merge.TableOnMergeHelper;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadata;
+import eu.uk.ncl.pet5o.esper.epl.table.upd.TableUpdateStrategy;
+import eu.uk.ncl.pet5o.esper.epl.updatehelper.EventBeanUpdateHelper;
+import eu.uk.ncl.pet5o.esper.epl.updatehelper.EventBeanUpdateHelperFactory;
+import eu.uk.ncl.pet5o.esper.event.EventBeanReader;
+import eu.uk.ncl.pet5o.esper.event.EventTypeSPI;
 
 /**
  * View for the on-delete statement that handles removing events from a named window.

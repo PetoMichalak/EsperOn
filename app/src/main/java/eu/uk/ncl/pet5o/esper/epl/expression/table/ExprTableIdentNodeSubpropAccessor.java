@@ -10,23 +10,23 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.table;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.epl.agg.access.AggregationAccessor;
-import com.espertech.esper.epl.agg.access.AggregationState;
-import com.espertech.esper.epl.agg.service.common.AggregationMethodFactory;
-import com.espertech.esper.epl.agg.service.common.AggregationRowPair;
-import com.espertech.esper.epl.expression.accessagg.ExprAggregateAccessMultiValueNode;
-import com.espertech.esper.epl.expression.codegen.CodegenLegoEvaluateSelf;
-import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
-import com.espertech.esper.epl.expression.core.*;
-import com.espertech.esper.epl.table.mgmt.TableMetadataColumnAggregation;
-import com.espertech.esper.epl.table.strategy.ExprTableEvalStrategyUtil;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.event.ObjectArrayBackedEventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationAccessor;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationState;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationMethodFactory;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationRowPair;
+import eu.uk.ncl.pet5o.esper.epl.expression.accessagg.ExprAggregateAccessMultiValueNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.CodegenLegoEvaluateSelf;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadataColumnAggregation;
+import eu.uk.ncl.pet5o.esper.epl.table.strategy.ExprTableEvalStrategyUtil;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.event.ObjectArrayBackedEventBean;
 
 import java.io.StringWriter;
 import java.util.Collection;
@@ -87,7 +87,7 @@ public class ExprTableIdentNodeSubpropAccessor extends ExprNodeBase implements E
         return CodegenLegoEvaluateSelf.evaluateSelfGetROCollectionEvents(this, codegenMethodScope, exprSymbol, codegenClassScope);
     }
 
-    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         AggregationState state = getState(eventsPerStream);
         if (state == null) {
             return null;
@@ -103,7 +103,7 @@ public class ExprTableIdentNodeSubpropAccessor extends ExprNodeBase implements E
         return ((ExprAggregateAccessMultiValueNode) aggregateAccessMultiValueNode).getEventTypeCollection(eventAdapterService, statementId);
     }
 
-    public Collection<EventBean> evaluateGetROCollectionEvents(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Collection<EventBean> evaluateGetROCollectionEvents(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         AggregationState state = getState(eventsPerStream);
         if (state == null) {
             return null;
@@ -115,7 +115,7 @@ public class ExprTableIdentNodeSubpropAccessor extends ExprNodeBase implements E
         return ((ExprAggregateAccessMultiValueNode) aggregateAccessMultiValueNode).getComponentTypeCollection();
     }
 
-    public Collection evaluateGetROCollectionScalar(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Collection evaluateGetROCollectionScalar(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         AggregationState state = getState(eventsPerStream);
         if (state == null) {
             return null;
@@ -131,7 +131,7 @@ public class ExprTableIdentNodeSubpropAccessor extends ExprNodeBase implements E
         return ((ExprAggregateAccessMultiValueNode) aggregateAccessMultiValueNode).getEventTypeSingle(eventAdapterService, statementId);
     }
 
-    public com.espertech.esper.client.EventBean evaluateGetEventBean(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean evaluateGetEventBean(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         AggregationState state = getState(eventsPerStream);
         if (state == null) {
             return null;
@@ -165,8 +165,8 @@ public class ExprTableIdentNodeSubpropAccessor extends ExprNodeBase implements E
         return false;
     }
 
-    private AggregationState getState(com.espertech.esper.client.EventBean[] eventsPerStream) {
-        com.espertech.esper.client.EventBean event = eventsPerStream[streamNum];
+    private AggregationState getState(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream) {
+        eu.uk.ncl.pet5o.esper.client.EventBean event = eventsPerStream[streamNum];
         if (event == null) {
             return null;
         }

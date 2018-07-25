@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.type;
 
-import com.espertech.esper.collection.MultiKeyUntyped;
+import eu.uk.ncl.pet5o.esper.collection.MultiKeyUntyped;
 
 import java.util.HashMap;
 import java.util.Map;

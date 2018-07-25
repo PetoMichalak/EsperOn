@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service.resource;
 
-import com.espertech.esper.core.context.mgr.ContextStatePathKey;
-import com.espertech.esper.pattern.EvalRootState;
+import eu.uk.ncl.pet5o.esper.core.context.mgr.ContextStatePathKey;
+import eu.uk.ncl.pet5o.esper.pattern.EvalRootState;
 
 import java.util.HashMap;
 import java.util.Map;

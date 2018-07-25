@@ -10,24 +10,24 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.SafeIterator;
-import com.espertech.esper.client.context.*;
-import com.espertech.esper.core.context.factory.StatementAgentInstanceFactoryResult;
-import com.espertech.esper.core.context.stmt.StatementAIResourceRegistryFactory;
-import com.espertech.esper.core.context.util.ContextDescriptor;
-import com.espertech.esper.core.context.util.ContextIteratorHandler;
-import com.espertech.esper.core.context.util.StatementAgentInstanceUtil;
-import com.espertech.esper.core.service.StatementContext;
-import com.espertech.esper.core.service.resource.StatementResourceHolder;
-import com.espertech.esper.core.service.resource.StatementResourceService;
-import com.espertech.esper.epl.expression.core.ExprFilterSpecLookupable;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.event.MappedEventBean;
-import com.espertech.esper.filter.FilterFaultHandler;
-import com.espertech.esper.filterspec.FilterSpecCompiled;
-import com.espertech.esper.filterspec.FilterValueSetParam;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.SafeIterator;
+import eu.uk.ncl.pet5o.esper.client.context.*;
+import eu.uk.ncl.pet5o.esper.core.context.factory.StatementAgentInstanceFactoryResult;
+import eu.uk.ncl.pet5o.esper.core.context.stmt.StatementAIResourceRegistryFactory;
+import eu.uk.ncl.pet5o.esper.core.context.util.ContextDescriptor;
+import eu.uk.ncl.pet5o.esper.core.context.util.ContextIteratorHandler;
+import eu.uk.ncl.pet5o.esper.core.context.util.StatementAgentInstanceUtil;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.core.service.resource.StatementResourceHolder;
+import eu.uk.ncl.pet5o.esper.core.service.resource.StatementResourceService;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprFilterSpecLookupable;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.event.MappedEventBean;
+import eu.uk.ncl.pet5o.esper.filter.FilterFaultHandler;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterSpecCompiled;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterValueSetParam;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -149,7 +149,7 @@ public class ContextManagerImpl extends ContextManagerBase implements ContextMan
             int subPathId,
             Integer importSubpathId,
             ContextController originator,
-            com.espertech.esper.client.EventBean optionalTriggeringEvent,
+            eu.uk.ncl.pet5o.esper.client.EventBean optionalTriggeringEvent,
             Map<String, Object> optionalTriggeringPattern,
             Object partitionKey,
             Map<String, Object> contextProperties,
@@ -261,7 +261,7 @@ public class ContextManagerImpl extends ContextManagerBase implements ContextMan
         return new AgentInstanceArrayIterator(instances);
     }
 
-    public synchronized SafeIterator<com.espertech.esper.client.EventBean> safeIterator(int statementId) {
+    public synchronized SafeIterator<eu.uk.ncl.pet5o.esper.client.EventBean> safeIterator(int statementId) {
         AgentInstance[] instances = getAgentInstancesForStmt(statementId);
         return new AgentInstanceArraySafeIterator(instances);
     }
@@ -271,7 +271,7 @@ public class ContextManagerImpl extends ContextManagerBase implements ContextMan
         return new AgentInstanceArrayIterator(instances);
     }
 
-    public synchronized SafeIterator<com.espertech.esper.client.EventBean> safeIterator(int statementId, ContextPartitionSelector selector) {
+    public synchronized SafeIterator<eu.uk.ncl.pet5o.esper.client.EventBean> safeIterator(int statementId, ContextPartitionSelector selector) {
         AgentInstance[] instances = getAgentInstancesForStmt(statementId, selector);
         return new AgentInstanceArraySafeIterator(instances);
     }
@@ -353,7 +353,7 @@ public class ContextManagerImpl extends ContextManagerBase implements ContextMan
         rootContext.importContextPartitions(state, 0, null, agentInstanceSelector);
     }
 
-    public synchronized boolean handleFilterFault(com.espertech.esper.client.EventBean theEvent, long version) {
+    public synchronized boolean handleFilterFault(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, long version) {
         StatementAgentInstanceUtil.handleFilterFault(theEvent, version, servicesContext, agentInstances);
         return false;
     }

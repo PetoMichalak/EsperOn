@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.service.common;
 
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.util.StopCallback;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.util.StopCallback;
 
 /**
  * Service for maintaining aggregation state. Processes events entering (a window, a join etc,) and
@@ -26,7 +26,7 @@ public interface AggregationService extends AggregationResultFuture, StopCallbac
      *                               or array of keys to use for grouping, each distinct key value results in a new row of aggregation state.
      * @param exprEvaluatorContext   context for expression evaluatiom
      */
-    public void applyEnter(com.espertech.esper.client.EventBean[] eventsPerStream, Object optionalGroupKeyPerRow, ExprEvaluatorContext exprEvaluatorContext);
+    public void applyEnter(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, Object optionalGroupKeyPerRow, ExprEvaluatorContext exprEvaluatorContext);
 
     /**
      * Apply events as leaving a window (old events).
@@ -36,7 +36,7 @@ public interface AggregationService extends AggregationResultFuture, StopCallbac
      *                               or array of keys to use for grouping, each distinct key value results in a new row of aggregation state.
      * @param exprEvaluatorContext   context for expression evaluatiom
      */
-    public void applyLeave(com.espertech.esper.client.EventBean[] eventsPerStream, Object optionalGroupKeyPerRow, ExprEvaluatorContext exprEvaluatorContext);
+    public void applyLeave(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, Object optionalGroupKeyPerRow, ExprEvaluatorContext exprEvaluatorContext);
 
     /**
      * Set the current aggregation state row - for use when evaluation nodes are asked to evaluate.

@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.client.context.ContextPartitionState;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionState;
 
 public class ContextStatePathValue {
     private final Integer optionalContextPartitionId;

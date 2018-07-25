@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.visitor;
 
-import com.espertech.esper.epl.declexpr.ExprDeclaredNode;
-import com.espertech.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.declexpr.ExprDeclaredNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
 
 import java.util.ArrayList;
 import java.util.List;

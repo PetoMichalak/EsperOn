@@ -10,27 +10,27 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.resultset.core;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.codegen.base.CodegenBlock;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.core.CodegenInstanceAux;
-import com.espertech.esper.codegen.core.CodegenNamedParam;
-import com.espertech.esper.codegen.model.expression.CodegenExpressionRef;
-import com.espertech.esper.collection.ArrayEventIterator;
-import com.espertech.esper.collection.MultiKey;
-import com.espertech.esper.collection.UniformPair;
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.epl.agg.service.common.AggregationService;
-import com.espertech.esper.epl.core.orderby.OrderByProcessor;
-import com.espertech.esper.epl.core.select.SelectExprProcessor;
-import com.espertech.esper.epl.expression.codegen.CodegenLegoMethodExpression;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.core.ExprForge;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
-import com.espertech.esper.util.CollectionUtil;
-import com.espertech.esper.view.Viewable;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenBlock;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.core.CodegenInstanceAux;
+import eu.uk.ncl.pet5o.esper.codegen.core.CodegenNamedParam;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRef;
+import eu.uk.ncl.pet5o.esper.collection.ArrayEventIterator;
+import eu.uk.ncl.pet5o.esper.collection.MultiKey;
+import eu.uk.ncl.pet5o.esper.collection.UniformPair;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationService;
+import eu.uk.ncl.pet5o.esper.epl.core.orderby.OrderByProcessor;
+import eu.uk.ncl.pet5o.esper.epl.core.select.SelectExprProcessor;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.CodegenLegoMethodExpression;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprForge;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.util.CollectionUtil;
+import eu.uk.ncl.pet5o.esper.view.Viewable;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -40,53 +40,53 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.Consumer;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.and;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.arrayLength;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.cast;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantFalse;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantTrue;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.equalsIdentity;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.equalsNull;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.newArrayByLength;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.newInstance;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.not;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.notEqualsNull;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.or;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.staticMethod;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.*;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.NAME_ISNEWDATA;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.NAME_ISSYNTHESIZE;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.NAME_ORDERBYPROCESSOR;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.NAME_SELECTEXPRPROCESSOR;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_AGENTINSTANCECONTEXT;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_AGGREGATIONSVC;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_ISNEWDATA;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_ISSYNTHESIZE;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_NEWDATA;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_OLDDATA;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_ORDERBYPROCESSOR;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_SELECTEXPRNONMEMBER;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_SELECTEXPRPROCESSOR;
-import static com.espertech.esper.epl.enummethod.codegen.EnumForgeCodegenNames.REF_EPS;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.*;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.NAME_EPS;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.NAME_EXPREVALCONTEXT;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_EXPREVALCONTEXT;
-import static com.espertech.esper.util.CollectionUtil.*;
-import static com.espertech.esper.util.CollectionUtil.METHOD_SHRINKARRAYEVENTARRAY;
-import static com.espertech.esper.util.CollectionUtil.METHOD_SHRINKARRAYEVENTS;
-import static com.espertech.esper.util.CollectionUtil.METHOD_SHRINKARRAYOBJECTS;
-import static com.espertech.esper.util.CollectionUtil.METHOD_TOARRAYEVENTS;
-import static com.espertech.esper.util.CollectionUtil.METHOD_TOARRAYEVENTSARRAY;
-import static com.espertech.esper.util.CollectionUtil.METHOD_TOARRAYMAYNULL;
-import static com.espertech.esper.util.CollectionUtil.METHOD_TOARRAYNULLFOREMPTYEVENTS;
-import static com.espertech.esper.util.CollectionUtil.METHOD_TOARRAYNULLFOREMPTYOBJECTS;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.and;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.arrayLength;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.cast;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantFalse;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantTrue;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.equalsIdentity;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.equalsNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.newArrayByLength;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.newInstance;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.not;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.notEqualsNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.or;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.staticMethod;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.*;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.NAME_ISNEWDATA;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.NAME_ISSYNTHESIZE;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.NAME_ORDERBYPROCESSOR;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.NAME_SELECTEXPRPROCESSOR;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_AGENTINSTANCECONTEXT;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_AGGREGATIONSVC;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_ISNEWDATA;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_ISSYNTHESIZE;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_NEWDATA;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_OLDDATA;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_ORDERBYPROCESSOR;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_SELECTEXPRNONMEMBER;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_SELECTEXPRPROCESSOR;
+import static eu.uk.ncl.pet5o.esper.epl.enummethod.codegen.EnumForgeCodegenNames.REF_EPS;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.*;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.NAME_EPS;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.NAME_EXPREVALCONTEXT;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_EXPREVALCONTEXT;
+import static eu.uk.ncl.pet5o.esper.util.CollectionUtil.*;
+import static eu.uk.ncl.pet5o.esper.util.CollectionUtil.METHOD_SHRINKARRAYEVENTARRAY;
+import static eu.uk.ncl.pet5o.esper.util.CollectionUtil.METHOD_SHRINKARRAYEVENTS;
+import static eu.uk.ncl.pet5o.esper.util.CollectionUtil.METHOD_SHRINKARRAYOBJECTS;
+import static eu.uk.ncl.pet5o.esper.util.CollectionUtil.METHOD_TOARRAYEVENTS;
+import static eu.uk.ncl.pet5o.esper.util.CollectionUtil.METHOD_TOARRAYEVENTSARRAY;
+import static eu.uk.ncl.pet5o.esper.util.CollectionUtil.METHOD_TOARRAYMAYNULL;
+import static eu.uk.ncl.pet5o.esper.util.CollectionUtil.METHOD_TOARRAYNULLFOREMPTYEVENTS;
+import static eu.uk.ncl.pet5o.esper.util.CollectionUtil.METHOD_TOARRAYNULLFOREMPTYOBJECTS;
 
 public class ResultSetProcessorUtil {
     public final static String METHOD_ITERATORTODEQUE = "iteratorToDeque";
@@ -113,7 +113,7 @@ public class ResultSetProcessorUtil {
             }
         };
         instance.getMethods().addMethod(boolean.class, "evaluateHavingClause",
-                CodegenNamedParam.from(com.espertech.esper.client.EventBean[].class, NAME_EPS, boolean.class, NAME_ISNEWDATA, ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT), ResultSetProcessorUtil.class, classScope, code);
+                CodegenNamedParam.from(eu.uk.ncl.pet5o.esper.client.EventBean[].class, NAME_EPS, boolean.class, NAME_ISNEWDATA, ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT), ResultSetProcessorUtil.class, classScope, code);
     }
 
     /**
@@ -125,7 +125,7 @@ public class ResultSetProcessorUtil {
      * @param oldData              rstream
      * @param eventsPerStream      buf
      */
-    public static void applyAggViewResult(AggregationService aggregationService, ExprEvaluatorContext exprEvaluatorContext, com.espertech.esper.client.EventBean[] newData, com.espertech.esper.client.EventBean[] oldData, com.espertech.esper.client.EventBean[] eventsPerStream) {
+    public static void applyAggViewResult(AggregationService aggregationService, ExprEvaluatorContext exprEvaluatorContext, eu.uk.ncl.pet5o.esper.client.EventBean[] newData, eu.uk.ncl.pet5o.esper.client.EventBean[] oldData, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream) {
         if (newData != null) {
             // apply new data to aggregates
             for (int i = 0; i < newData.length; i++) {
@@ -153,13 +153,13 @@ public class ResultSetProcessorUtil {
     public static void applyAggJoinResult(AggregationService aggregationService, ExprEvaluatorContext exprEvaluatorContext, Set<MultiKey<EventBean>> newEvents, Set<MultiKey<EventBean>> oldEvents) {
         if (newEvents != null) {
             // apply new data to aggregates
-            for (MultiKey<com.espertech.esper.client.EventBean> events : newEvents) {
+            for (MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> events : newEvents) {
                 aggregationService.applyEnter(events.getArray(), null, exprEvaluatorContext);
             }
         }
         if (oldEvents != null) {
             // apply old data to aggregates
-            for (MultiKey<com.espertech.esper.client.EventBean> events : oldEvents) {
+            for (MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> events : oldEvents) {
                 aggregationService.applyLeave(events.getArray(), null, exprEvaluatorContext);
             }
         }
@@ -177,13 +177,13 @@ public class ResultSetProcessorUtil {
      * @param exprEvaluatorContext context for expression evalauation
      * @return output events, one for each input event
      */
-    public static com.espertech.esper.client.EventBean[] getSelectEventsNoHaving(SelectExprProcessor exprProcessor, com.espertech.esper.client.EventBean[] events, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext exprEvaluatorContext) {
+    public static eu.uk.ncl.pet5o.esper.client.EventBean[] getSelectEventsNoHaving(SelectExprProcessor exprProcessor, eu.uk.ncl.pet5o.esper.client.EventBean[] events, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext exprEvaluatorContext) {
         if (events == null) {
             return null;
         }
 
-        com.espertech.esper.client.EventBean[] result = new com.espertech.esper.client.EventBean[events.length];
-        com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[1];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] result = new eu.uk.ncl.pet5o.esper.client.EventBean[events.length];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
         for (int i = 0; i < events.length; i++) {
             eventsPerStream[0] = events[i];
             result[i] = exprProcessor.process(eventsPerStream, isNewData, isSynthesize, exprEvaluatorContext);
@@ -204,19 +204,19 @@ public class ResultSetProcessorUtil {
      * @param exprEvaluatorContext context for expression evalauation
      * @return output events, one for each input event
      */
-    public static com.espertech.esper.client.EventBean[] getSelectEventsNoHavingWithOrderBy(AggregationService aggregationService, SelectExprProcessor exprProcessor, OrderByProcessor orderByProcessor, com.espertech.esper.client.EventBean[] events, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext exprEvaluatorContext) {
+    public static eu.uk.ncl.pet5o.esper.client.EventBean[] getSelectEventsNoHavingWithOrderBy(AggregationService aggregationService, SelectExprProcessor exprProcessor, OrderByProcessor orderByProcessor, eu.uk.ncl.pet5o.esper.client.EventBean[] events, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext exprEvaluatorContext) {
         if (events == null) {
             return null;
         }
 
-        com.espertech.esper.client.EventBean[] result = new com.espertech.esper.client.EventBean[events.length];
-        com.espertech.esper.client.EventBean[][] eventGenerators = new com.espertech.esper.client.EventBean[events.length][];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] result = new eu.uk.ncl.pet5o.esper.client.EventBean[events.length];
+        eu.uk.ncl.pet5o.esper.client.EventBean[][] eventGenerators = new eu.uk.ncl.pet5o.esper.client.EventBean[events.length][];
 
-        com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[1];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
         for (int i = 0; i < events.length; i++) {
             eventsPerStream[0] = events[i];
             result[i] = exprProcessor.process(eventsPerStream, isNewData, isSynthesize, exprEvaluatorContext);
-            eventGenerators[i] = new com.espertech.esper.client.EventBean[]{events[i]};
+            eventGenerators[i] = new eu.uk.ncl.pet5o.esper.client.EventBean[]{events[i]};
         }
 
         return orderByProcessor.sortPlain(result, eventGenerators, isNewData, exprEvaluatorContext, aggregationService);
@@ -238,7 +238,7 @@ public class ResultSetProcessorUtil {
      * @param exprEvaluatorContext context for expression evalauation
      * @return output events, one for each input event
      */
-    public static com.espertech.esper.client.EventBean[] getSelectEventsHavingWithOrderBy(AggregationService aggregationService, SelectExprProcessor exprProcessor, OrderByProcessor orderByProcessor, com.espertech.esper.client.EventBean[] events, ExprEvaluator havingNode, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext exprEvaluatorContext) {
+    public static eu.uk.ncl.pet5o.esper.client.EventBean[] getSelectEventsHavingWithOrderBy(AggregationService aggregationService, SelectExprProcessor exprProcessor, OrderByProcessor orderByProcessor, eu.uk.ncl.pet5o.esper.client.EventBean[] events, ExprEvaluator havingNode, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext exprEvaluatorContext) {
         if (events == null) {
             return null;
         }
@@ -246,8 +246,8 @@ public class ResultSetProcessorUtil {
         ArrayDeque<EventBean> result = null;
         ArrayDeque<EventBean[]> eventGenerators = null;
 
-        com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[1];
-        for (com.espertech.esper.client.EventBean theEvent : events) {
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
+        for (eu.uk.ncl.pet5o.esper.client.EventBean theEvent : events) {
             eventsPerStream[0] = theEvent;
 
             boolean passesHaving = ResultSetProcessorUtil.evaluateHavingClause(havingNode, eventsPerStream, isNewData, exprEvaluatorContext);
@@ -255,14 +255,14 @@ public class ResultSetProcessorUtil {
                 continue;
             }
 
-            com.espertech.esper.client.EventBean generated = exprProcessor.process(eventsPerStream, isNewData, isSynthesize, exprEvaluatorContext);
+            eu.uk.ncl.pet5o.esper.client.EventBean generated = exprProcessor.process(eventsPerStream, isNewData, isSynthesize, exprEvaluatorContext);
             if (generated != null) {
                 if (result == null) {
                     result = new ArrayDeque<>(events.length);
                     eventGenerators = new ArrayDeque<>(events.length);
                 }
                 result.add(generated);
-                eventGenerators.add(new com.espertech.esper.client.EventBean[]{theEvent});
+                eventGenerators.add(new eu.uk.ncl.pet5o.esper.client.EventBean[]{theEvent});
             }
         }
 
@@ -277,32 +277,32 @@ public class ResultSetProcessorUtil {
             methodNode.getBlock().ifRefNullReturnNull("events")
                     .declareVar(ArrayDeque.class, "result", constantNull())
                     .declareVar(ArrayDeque.class, "eventGenerators", constantNull())
-                    .declareVar(com.espertech.esper.client.EventBean[].class, NAME_EPS, newArrayByLength(com.espertech.esper.client.EventBean.class, constant(1)));
+                    .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, NAME_EPS, newArrayByLength(eu.uk.ncl.pet5o.esper.client.EventBean.class, constant(1)));
             {
-                CodegenBlock forEach = methodNode.getBlock().forEach(com.espertech.esper.client.EventBean.class, "theEvent", ref("events"));
+                CodegenBlock forEach = methodNode.getBlock().forEach(eu.uk.ncl.pet5o.esper.client.EventBean.class, "theEvent", ref("events"));
                 forEach.assignArrayElement(NAME_EPS, constant(0), ref("theEvent"));
                 forEach.ifCondition(not(localMethod(instance.getMethods().getMethod("evaluateHavingClause"), REF_EPS, REF_ISNEWDATA, REF_EXPREVALCONTEXT))).blockContinue();
-                forEach.declareVar(com.espertech.esper.client.EventBean.class, "generated", exprDotMethod(REF_SELECTEXPRNONMEMBER, "process", REF_EPS, REF_ISNEWDATA, REF_ISSYNTHESIZE, REF_EXPREVALCONTEXT))
+                forEach.declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "generated", exprDotMethod(REF_SELECTEXPRNONMEMBER, "process", REF_EPS, REF_ISNEWDATA, REF_ISSYNTHESIZE, REF_EXPREVALCONTEXT))
                         .ifCondition(notEqualsNull(ref("generated")))
                         .ifCondition(equalsNull(ref("result")))
                         .assignRef("result", newInstance(ArrayDeque.class, arrayLength(ref("events"))))
                         .assignRef("eventGenerators", newInstance(ArrayDeque.class, arrayLength(ref("events"))))
                         .blockEnd()
                         .exprDotMethod(ref("result"), "add", ref("generated"))
-                        .declareVar(com.espertech.esper.client.EventBean[].class, "tmp", newArrayByLength(com.espertech.esper.client.EventBean.class, constant(0)))
+                        .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "tmp", newArrayByLength(eu.uk.ncl.pet5o.esper.client.EventBean.class, constant(0)))
                         .assignArrayElement("tmp", constant(0), ref("theEvent"))
                         .exprDotMethod(ref("eventGenerators"), "add", ref("tmp"))
                         .blockEnd();
             }
 
             methodNode.getBlock().ifRefNullReturnNull("result")
-                    .declareVar(com.espertech.esper.client.EventBean[].class, "arr", staticMethod(CollectionUtil.class, METHOD_TOARRAYEVENTS, ref("result")))
-                    .declareVar(com.espertech.esper.client.EventBean[][].class, "gen", staticMethod(CollectionUtil.class, METHOD_TOARRAYEVENTSARRAY, ref("eventGenerators")))
+                    .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "arr", staticMethod(CollectionUtil.class, METHOD_TOARRAYEVENTS, ref("result")))
+                    .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[][].class, "gen", staticMethod(CollectionUtil.class, METHOD_TOARRAYEVENTSARRAY, ref("eventGenerators")))
                     .methodReturn(exprDotMethod(REF_ORDERBYPROCESSOR, "sortPlain", ref("arr"), ref("gen"), REF_ISNEWDATA, REF_EXPREVALCONTEXT, REF_AGGREGATIONSVC));
         };
 
-        return instance.getMethods().addMethod(com.espertech.esper.client.EventBean[].class, "getSelectEventsHavingWithOrderBy",
-                CodegenNamedParam.from(AggregationService.class, REF_AGGREGATIONSVC.getRef(), SelectExprProcessor.class, NAME_SELECTEXPRPROCESSOR, OrderByProcessor.class, NAME_ORDERBYPROCESSOR, com.espertech.esper.client.EventBean[].class, "events", boolean.class, NAME_ISNEWDATA, boolean.class, NAME_ISSYNTHESIZE, ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT),
+        return instance.getMethods().addMethod(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "getSelectEventsHavingWithOrderBy",
+                CodegenNamedParam.from(AggregationService.class, REF_AGGREGATIONSVC.getRef(), SelectExprProcessor.class, NAME_SELECTEXPRPROCESSOR, OrderByProcessor.class, NAME_ORDERBYPROCESSOR, eu.uk.ncl.pet5o.esper.client.EventBean[].class, "events", boolean.class, NAME_ISNEWDATA, boolean.class, NAME_ISSYNTHESIZE, ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT),
                 ResultSetProcessorUtil.class, classScope, code);
     }
 
@@ -320,8 +320,8 @@ public class ResultSetProcessorUtil {
      * @param exprEvaluatorContext context for expression evalauation
      * @return output events, one for each input event
      */
-    public static com.espertech.esper.client.EventBean[] getSelectEventsHaving(SelectExprProcessor exprProcessor,
-                                                                               com.espertech.esper.client.EventBean[] events,
+    public static eu.uk.ncl.pet5o.esper.client.EventBean[] getSelectEventsHaving(SelectExprProcessor exprProcessor,
+                                                                               eu.uk.ncl.pet5o.esper.client.EventBean[] events,
                                                                                ExprEvaluator havingNode,
                                                                                boolean isNewData,
                                                                                boolean isSynthesize,
@@ -331,9 +331,9 @@ public class ResultSetProcessorUtil {
         }
 
         ArrayDeque<EventBean> result = null;
-        com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[1];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
 
-        for (com.espertech.esper.client.EventBean theEvent : events) {
+        for (eu.uk.ncl.pet5o.esper.client.EventBean theEvent : events) {
             eventsPerStream[0] = theEvent;
 
             boolean passesHaving = ResultSetProcessorUtil.evaluateHavingClause(havingNode, eventsPerStream, isNewData, exprEvaluatorContext);
@@ -341,7 +341,7 @@ public class ResultSetProcessorUtil {
                 continue;
             }
 
-            com.espertech.esper.client.EventBean generated = exprProcessor.process(eventsPerStream, isNewData, isSynthesize, exprEvaluatorContext);
+            eu.uk.ncl.pet5o.esper.client.EventBean generated = exprProcessor.process(eventsPerStream, isNewData, isSynthesize, exprEvaluatorContext);
             if (generated != null) {
                 if (result == null) {
                     result = new ArrayDeque<>(events.length);
@@ -360,13 +360,13 @@ public class ResultSetProcessorUtil {
             methodNode.getBlock()
                     .ifRefNullReturnNull("events")
                     .declareVar(ArrayDeque.class, "result", constantNull())
-                    .declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStream", newArrayByLength(com.espertech.esper.client.EventBean.class, constant(1)));
+                    .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStream", newArrayByLength(eu.uk.ncl.pet5o.esper.client.EventBean.class, constant(1)));
 
             {
-                CodegenBlock forEach = methodNode.getBlock().forEach(com.espertech.esper.client.EventBean.class, "theEvent", ref("events"));
+                CodegenBlock forEach = methodNode.getBlock().forEach(eu.uk.ncl.pet5o.esper.client.EventBean.class, "theEvent", ref("events"));
                 forEach.assignArrayElement(REF_EPS, constant(0), ref("theEvent"));
                 forEach.ifCondition(not(localMethod(instance.getMethods().getMethod("evaluateHavingClause"), REF_EPS, REF_ISNEWDATA, REF_EXPREVALCONTEXT))).blockContinue();
-                forEach.declareVar(com.espertech.esper.client.EventBean.class, "generated", exprDotMethod(REF_SELECTEXPRNONMEMBER, "process", REF_EPS, REF_ISNEWDATA, REF_ISSYNTHESIZE, REF_EXPREVALCONTEXT))
+                forEach.declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "generated", exprDotMethod(REF_SELECTEXPRNONMEMBER, "process", REF_EPS, REF_ISNEWDATA, REF_ISSYNTHESIZE, REF_EXPREVALCONTEXT))
                         .ifCondition(notEqualsNull(ref("generated")))
                         .ifCondition(equalsNull(ref("result")))
                         .assignRef("result", newInstance(ArrayDeque.class, arrayLength(ref("events")))).blockEnd()
@@ -375,8 +375,8 @@ public class ResultSetProcessorUtil {
             methodNode.getBlock().methodReturn(staticMethod(CollectionUtil.class, METHOD_TOARRAYMAYNULL, ref("result")));
         };
 
-        return instance.getMethods().addMethod(com.espertech.esper.client.EventBean[].class, "getSelectEventsHaving",
-                CodegenNamedParam.from(SelectExprProcessor.class, NAME_SELECTEXPRPROCESSOR, com.espertech.esper.client.EventBean[].class, "events", boolean.class, NAME_ISNEWDATA, boolean.class, NAME_ISSYNTHESIZE, ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT),
+        return instance.getMethods().addMethod(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "getSelectEventsHaving",
+                CodegenNamedParam.from(SelectExprProcessor.class, NAME_SELECTEXPRPROCESSOR, eu.uk.ncl.pet5o.esper.client.EventBean[].class, "events", boolean.class, NAME_ISNEWDATA, boolean.class, NAME_ISSYNTHESIZE, ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT),
                 ResultSetProcessorUtil.class, classScope, code);
     }
 
@@ -393,17 +393,17 @@ public class ResultSetProcessorUtil {
      * @param exprEvaluatorContext context for expression evalauation
      * @return output events, one for each input event
      */
-    public static com.espertech.esper.client.EventBean[] getSelectJoinEventsNoHavingWithOrderBy(AggregationService aggregationService, SelectExprProcessor exprProcessor, OrderByProcessor orderByProcessor, Set<MultiKey<EventBean>> events, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext exprEvaluatorContext) {
+    public static eu.uk.ncl.pet5o.esper.client.EventBean[] getSelectJoinEventsNoHavingWithOrderBy(AggregationService aggregationService, SelectExprProcessor exprProcessor, OrderByProcessor orderByProcessor, Set<MultiKey<EventBean>> events, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext exprEvaluatorContext) {
         if ((events == null) || (events.isEmpty())) {
             return null;
         }
 
-        com.espertech.esper.client.EventBean[] result = new com.espertech.esper.client.EventBean[events.size()];
-        com.espertech.esper.client.EventBean[][] eventGenerators = new com.espertech.esper.client.EventBean[events.size()][];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] result = new eu.uk.ncl.pet5o.esper.client.EventBean[events.size()];
+        eu.uk.ncl.pet5o.esper.client.EventBean[][] eventGenerators = new eu.uk.ncl.pet5o.esper.client.EventBean[events.size()][];
 
         int count = 0;
-        for (MultiKey<com.espertech.esper.client.EventBean> key : events) {
-            com.espertech.esper.client.EventBean[] eventsPerStream = key.getArray();
+        for (MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> key : events) {
+            eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = key.getArray();
             result[count] = exprProcessor.process(eventsPerStream, isNewData, isSynthesize, exprEvaluatorContext);
             eventGenerators[count] = eventsPerStream;
             count++;
@@ -423,16 +423,16 @@ public class ResultSetProcessorUtil {
      * @param exprEvaluatorContext context for expression evalauation
      * @return output events, one for each input event
      */
-    public static com.espertech.esper.client.EventBean[] getSelectJoinEventsNoHaving(SelectExprProcessor exprProcessor, Set<MultiKey<EventBean>> events, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext exprEvaluatorContext) {
+    public static eu.uk.ncl.pet5o.esper.client.EventBean[] getSelectJoinEventsNoHaving(SelectExprProcessor exprProcessor, Set<MultiKey<EventBean>> events, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext exprEvaluatorContext) {
         if ((events == null) || (events.isEmpty())) {
             return null;
         }
 
-        com.espertech.esper.client.EventBean[] result = new com.espertech.esper.client.EventBean[events.size()];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] result = new eu.uk.ncl.pet5o.esper.client.EventBean[events.size()];
         int count = 0;
 
-        for (MultiKey<com.espertech.esper.client.EventBean> key : events) {
-            com.espertech.esper.client.EventBean[] eventsPerStream = key.getArray();
+        for (MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> key : events) {
+            eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = key.getArray();
             result[count] = exprProcessor.process(eventsPerStream, isNewData, isSynthesize, exprEvaluatorContext);
             count++;
         }
@@ -454,22 +454,22 @@ public class ResultSetProcessorUtil {
      * @param exprEvaluatorContext context for expression evalauation
      * @return output events, one for each input event
      */
-    public static com.espertech.esper.client.EventBean[] getSelectJoinEventsHaving(SelectExprProcessor exprProcessor, Set<MultiKey<EventBean>> events, ExprEvaluator havingNode, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext exprEvaluatorContext) {
+    public static eu.uk.ncl.pet5o.esper.client.EventBean[] getSelectJoinEventsHaving(SelectExprProcessor exprProcessor, Set<MultiKey<EventBean>> events, ExprEvaluator havingNode, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext exprEvaluatorContext) {
         if ((events == null) || (events.isEmpty())) {
             return null;
         }
 
         ArrayDeque<EventBean> result = null;
 
-        for (MultiKey<com.espertech.esper.client.EventBean> key : events) {
-            com.espertech.esper.client.EventBean[] eventsPerStream = key.getArray();
+        for (MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> key : events) {
+            eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = key.getArray();
 
             boolean passesHaving = ResultSetProcessorUtil.evaluateHavingClause(havingNode, eventsPerStream, isNewData, exprEvaluatorContext);
             if (!passesHaving) {
                 continue;
             }
 
-            com.espertech.esper.client.EventBean resultEvent = exprProcessor.process(eventsPerStream, isNewData, isSynthesize, exprEvaluatorContext);
+            eu.uk.ncl.pet5o.esper.client.EventBean resultEvent = exprProcessor.process(eventsPerStream, isNewData, isSynthesize, exprEvaluatorContext);
             if (resultEvent != null) {
                 if (result == null) {
                     result = new ArrayDeque<>(events.size());
@@ -491,9 +491,9 @@ public class ResultSetProcessorUtil {
                     .declareVar(ArrayDeque.class, "result", constantNull());
             {
                 CodegenBlock forEach = methodNode.getBlock().forEach(MultiKey.class, "key", ref("events"));
-                forEach.declareVar(com.espertech.esper.client.EventBean[].class, NAME_EPS, cast(com.espertech.esper.client.EventBean[].class, exprDotMethod(ref("key"), "getArray")));
+                forEach.declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, NAME_EPS, cast(eu.uk.ncl.pet5o.esper.client.EventBean[].class, exprDotMethod(ref("key"), "getArray")));
                 forEach.ifCondition(not(localMethod(instance.getMethods().getMethod("evaluateHavingClause"), REF_EPS, REF_ISNEWDATA, REF_EXPREVALCONTEXT))).blockContinue();
-                forEach.declareVar(com.espertech.esper.client.EventBean.class, "generated", exprDotMethod(REF_SELECTEXPRNONMEMBER, "process", REF_EPS, REF_ISNEWDATA, REF_ISSYNTHESIZE, REF_EXPREVALCONTEXT))
+                forEach.declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "generated", exprDotMethod(REF_SELECTEXPRNONMEMBER, "process", REF_EPS, REF_ISNEWDATA, REF_ISSYNTHESIZE, REF_EXPREVALCONTEXT))
                         .ifCondition(notEqualsNull(ref("generated")))
                         .ifCondition(equalsNull(ref("result")))
                         .assignRef("result", newInstance(ArrayDeque.class, exprDotMethod(ref("events"), "size"))).blockEnd()
@@ -502,7 +502,7 @@ public class ResultSetProcessorUtil {
             methodNode.getBlock().methodReturn(staticMethod(CollectionUtil.class, METHOD_TOARRAYMAYNULL, ref("result")));
         };
 
-        return instance.getMethods().addMethod(com.espertech.esper.client.EventBean[].class, "getSelectJoinEventsHaving",
+        return instance.getMethods().addMethod(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "getSelectJoinEventsHaving",
                 CodegenNamedParam.from(SelectExprProcessor.class, NAME_SELECTEXPRPROCESSOR, Set.class, "events", boolean.class, NAME_ISNEWDATA, boolean.class, NAME_ISSYNTHESIZE, ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT),
                 ResultSetProcessorUtil.class, classScope, code);
     }
@@ -523,7 +523,7 @@ public class ResultSetProcessorUtil {
      * @param exprEvaluatorContext context for expression evalauation
      * @return output events, one for each input event
      */
-    public static com.espertech.esper.client.EventBean[] getSelectJoinEventsHavingWithOrderBy(AggregationService aggregationService, SelectExprProcessor exprProcessor, OrderByProcessor orderByProcessor, Set<MultiKey<EventBean>> events, ExprEvaluator havingNode, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext exprEvaluatorContext) {
+    public static eu.uk.ncl.pet5o.esper.client.EventBean[] getSelectJoinEventsHavingWithOrderBy(AggregationService aggregationService, SelectExprProcessor exprProcessor, OrderByProcessor orderByProcessor, Set<MultiKey<EventBean>> events, ExprEvaluator havingNode, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext exprEvaluatorContext) {
         if ((events == null) || (events.isEmpty())) {
             return null;
         }
@@ -531,15 +531,15 @@ public class ResultSetProcessorUtil {
         ArrayDeque<EventBean> result = null;
         ArrayDeque<EventBean[]> eventGenerators = null;
 
-        for (MultiKey<com.espertech.esper.client.EventBean> key : events) {
-            com.espertech.esper.client.EventBean[] eventsPerStream = key.getArray();
+        for (MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> key : events) {
+            eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = key.getArray();
 
             boolean passesHaving = ResultSetProcessorUtil.evaluateHavingClause(havingNode, eventsPerStream, isNewData, exprEvaluatorContext);
             if (!passesHaving) {
                 continue;
             }
 
-            com.espertech.esper.client.EventBean resultEvent = exprProcessor.process(eventsPerStream, isNewData, isSynthesize, exprEvaluatorContext);
+            eu.uk.ncl.pet5o.esper.client.EventBean resultEvent = exprProcessor.process(eventsPerStream, isNewData, isSynthesize, exprEvaluatorContext);
             if (resultEvent != null) {
                 if (result == null) {
                     result = new ArrayDeque<EventBean>(events.size());
@@ -565,9 +565,9 @@ public class ResultSetProcessorUtil {
                     .declareVar(ArrayDeque.class, "eventGenerators", constantNull());
             {
                 CodegenBlock forEach = methodNode.getBlock().forEach(MultiKey.class, "key", ref("events"));
-                forEach.declareVar(com.espertech.esper.client.EventBean[].class, NAME_EPS, cast(com.espertech.esper.client.EventBean[].class, exprDotMethod(ref("key"), "getArray")));
+                forEach.declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, NAME_EPS, cast(eu.uk.ncl.pet5o.esper.client.EventBean[].class, exprDotMethod(ref("key"), "getArray")));
                 forEach.ifCondition(not(localMethod(instance.getMethods().getMethod("evaluateHavingClause"), REF_EPS, REF_ISNEWDATA, REF_EXPREVALCONTEXT))).blockContinue();
-                forEach.declareVar(com.espertech.esper.client.EventBean.class, "resultEvent", exprDotMethod(REF_SELECTEXPRNONMEMBER, "process", REF_EPS, REF_ISNEWDATA, REF_ISSYNTHESIZE, REF_EXPREVALCONTEXT))
+                forEach.declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "resultEvent", exprDotMethod(REF_SELECTEXPRNONMEMBER, "process", REF_EPS, REF_ISNEWDATA, REF_ISSYNTHESIZE, REF_EXPREVALCONTEXT))
                         .ifCondition(notEqualsNull(ref("resultEvent")))
                         .ifCondition(equalsNull(ref("result")))
                         .assignRef("result", newInstance(ArrayDeque.class, exprDotMethod(ref("events"), "size")))
@@ -578,42 +578,42 @@ public class ResultSetProcessorUtil {
                         .blockEnd();
             }
             methodNode.getBlock().ifRefNullReturnNull("result")
-                    .declareVar(com.espertech.esper.client.EventBean[].class, "arr", staticMethod(CollectionUtil.class, METHOD_TOARRAYEVENTS, ref("result")))
-                    .declareVar(com.espertech.esper.client.EventBean[][].class, "gen", staticMethod(CollectionUtil.class, METHOD_TOARRAYEVENTSARRAY, ref("eventGenerators")))
+                    .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "arr", staticMethod(CollectionUtil.class, METHOD_TOARRAYEVENTS, ref("result")))
+                    .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[][].class, "gen", staticMethod(CollectionUtil.class, METHOD_TOARRAYEVENTSARRAY, ref("eventGenerators")))
                     .methodReturn(exprDotMethod(REF_ORDERBYPROCESSOR, "sortPlain", ref("arr"), ref("gen"), REF_ISNEWDATA, REF_EXPREVALCONTEXT, REF_AGGREGATIONSVC));
         };
 
-        return instance.getMethods().addMethod(com.espertech.esper.client.EventBean[].class, "getSelectJoinEventsHavingWithOrderBy",
+        return instance.getMethods().addMethod(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "getSelectJoinEventsHavingWithOrderBy",
                 CodegenNamedParam.from(AggregationService.class, REF_AGGREGATIONSVC.getRef(), SelectExprProcessor.class, NAME_SELECTEXPRPROCESSOR, OrderByProcessor.class, NAME_ORDERBYPROCESSOR, Set.class, "events", boolean.class, NAME_ISNEWDATA, boolean.class, NAME_ISSYNTHESIZE, ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT),
                 ResultSetProcessorUtil.class, classScope, code);
     }
 
-    public static void populateSelectEventsNoHaving(SelectExprProcessor exprProcessor, com.espertech.esper.client.EventBean[] events, boolean isNewData, boolean isSynthesize, Collection<EventBean> result, ExprEvaluatorContext exprEvaluatorContext) {
+    public static void populateSelectEventsNoHaving(SelectExprProcessor exprProcessor, eu.uk.ncl.pet5o.esper.client.EventBean[] events, boolean isNewData, boolean isSynthesize, Collection<EventBean> result, ExprEvaluatorContext exprEvaluatorContext) {
         if (events == null) {
             return;
         }
 
-        com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[1];
-        for (com.espertech.esper.client.EventBean theEvent : events) {
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
+        for (eu.uk.ncl.pet5o.esper.client.EventBean theEvent : events) {
             eventsPerStream[0] = theEvent;
 
-            com.espertech.esper.client.EventBean resultEvent = exprProcessor.process(eventsPerStream, isNewData, isSynthesize, exprEvaluatorContext);
+            eu.uk.ncl.pet5o.esper.client.EventBean resultEvent = exprProcessor.process(eventsPerStream, isNewData, isSynthesize, exprEvaluatorContext);
             if (resultEvent != null) {
                 result.add(resultEvent);
             }
         }
     }
 
-    public static void populateSelectEventsNoHavingWithOrderBy(SelectExprProcessor exprProcessor, OrderByProcessor orderByProcessor, com.espertech.esper.client.EventBean[] events, boolean isNewData, boolean isSynthesize, Collection<EventBean> result, List<Object> sortKeys, ExprEvaluatorContext exprEvaluatorContext) {
+    public static void populateSelectEventsNoHavingWithOrderBy(SelectExprProcessor exprProcessor, OrderByProcessor orderByProcessor, eu.uk.ncl.pet5o.esper.client.EventBean[] events, boolean isNewData, boolean isSynthesize, Collection<EventBean> result, List<Object> sortKeys, ExprEvaluatorContext exprEvaluatorContext) {
         if (events == null) {
             return;
         }
 
-        com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[1];
-        for (com.espertech.esper.client.EventBean theEvent : events) {
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
+        for (eu.uk.ncl.pet5o.esper.client.EventBean theEvent : events) {
             eventsPerStream[0] = theEvent;
 
-            com.espertech.esper.client.EventBean resultEvent = exprProcessor.process(eventsPerStream, isNewData, isSynthesize, exprEvaluatorContext);
+            eu.uk.ncl.pet5o.esper.client.EventBean resultEvent = exprProcessor.process(eventsPerStream, isNewData, isSynthesize, exprEvaluatorContext);
             if (resultEvent != null) {
                 result.add(resultEvent);
                 sortKeys.add(orderByProcessor.getSortKey(eventsPerStream, isNewData, exprEvaluatorContext));
@@ -621,13 +621,13 @@ public class ResultSetProcessorUtil {
         }
     }
 
-    public static void populateSelectEventsHaving(SelectExprProcessor exprProcessor, com.espertech.esper.client.EventBean[] events, ExprEvaluator havingNode, boolean isNewData, boolean isSynthesize, List<EventBean> result, ExprEvaluatorContext exprEvaluatorContext) {
+    public static void populateSelectEventsHaving(SelectExprProcessor exprProcessor, eu.uk.ncl.pet5o.esper.client.EventBean[] events, ExprEvaluator havingNode, boolean isNewData, boolean isSynthesize, List<EventBean> result, ExprEvaluatorContext exprEvaluatorContext) {
         if (events == null) {
             return;
         }
 
-        com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[1];
-        for (com.espertech.esper.client.EventBean theEvent : events) {
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
+        for (eu.uk.ncl.pet5o.esper.client.EventBean theEvent : events) {
             eventsPerStream[0] = theEvent;
 
             boolean passesHaving = ResultSetProcessorUtil.evaluateHavingClause(havingNode, eventsPerStream, isNewData, exprEvaluatorContext);
@@ -635,7 +635,7 @@ public class ResultSetProcessorUtil {
                 continue;
             }
 
-            com.espertech.esper.client.EventBean resultEvent = exprProcessor.process(eventsPerStream, isNewData, isSynthesize, exprEvaluatorContext);
+            eu.uk.ncl.pet5o.esper.client.EventBean resultEvent = exprProcessor.process(eventsPerStream, isNewData, isSynthesize, exprEvaluatorContext);
             if (resultEvent != null) {
                 result.add(resultEvent);
             }
@@ -646,30 +646,30 @@ public class ResultSetProcessorUtil {
         Consumer<CodegenMethodNode> code = methodNode -> {
             methodNode.getBlock()
                     .ifRefNull("events").blockReturnNoValue()
-                    .declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStream", newArrayByLength(com.espertech.esper.client.EventBean.class, constant(1)));
+                    .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStream", newArrayByLength(eu.uk.ncl.pet5o.esper.client.EventBean.class, constant(1)));
 
             {
-                CodegenBlock forEach = methodNode.getBlock().forEach(com.espertech.esper.client.EventBean.class, "theEvent", ref("events"));
+                CodegenBlock forEach = methodNode.getBlock().forEach(eu.uk.ncl.pet5o.esper.client.EventBean.class, "theEvent", ref("events"));
                 forEach.assignArrayElement(REF_EPS, constant(0), ref("theEvent"));
                 forEach.ifCondition(not(localMethod(instance.getMethods().getMethod("evaluateHavingClause"), REF_EPS, REF_ISNEWDATA, REF_EXPREVALCONTEXT))).blockContinue();
-                forEach.declareVar(com.espertech.esper.client.EventBean.class, "resultEvent", exprDotMethod(REF_SELECTEXPRNONMEMBER, "process", REF_EPS, REF_ISNEWDATA, REF_ISSYNTHESIZE, REF_EXPREVALCONTEXT))
+                forEach.declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "resultEvent", exprDotMethod(REF_SELECTEXPRNONMEMBER, "process", REF_EPS, REF_ISNEWDATA, REF_ISSYNTHESIZE, REF_EXPREVALCONTEXT))
                         .ifCondition(notEqualsNull(ref("resultEvent")))
                         .exprDotMethod(ref("result"), "add", ref("resultEvent"));
             }
         };
 
         return instance.getMethods().addMethod(void.class, "populateSelectEventsHaving",
-                CodegenNamedParam.from(SelectExprProcessor.class, NAME_SELECTEXPRPROCESSOR, com.espertech.esper.client.EventBean[].class, "events", boolean.class, NAME_ISNEWDATA, boolean.class, NAME_ISSYNTHESIZE, List.class, "result", ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT),
+                CodegenNamedParam.from(SelectExprProcessor.class, NAME_SELECTEXPRPROCESSOR, eu.uk.ncl.pet5o.esper.client.EventBean[].class, "events", boolean.class, NAME_ISNEWDATA, boolean.class, NAME_ISSYNTHESIZE, List.class, "result", ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT),
                 ResultSetProcessorUtil.class, classScope, code);
     }
 
-    public static void populateSelectEventsHavingWithOrderBy(SelectExprProcessor exprProcessor, OrderByProcessor orderByProcessor, com.espertech.esper.client.EventBean[] events, ExprEvaluator havingNode, boolean isNewData, boolean isSynthesize, List<EventBean> result, List<Object> optSortKeys, ExprEvaluatorContext exprEvaluatorContext) {
+    public static void populateSelectEventsHavingWithOrderBy(SelectExprProcessor exprProcessor, OrderByProcessor orderByProcessor, eu.uk.ncl.pet5o.esper.client.EventBean[] events, ExprEvaluator havingNode, boolean isNewData, boolean isSynthesize, List<EventBean> result, List<Object> optSortKeys, ExprEvaluatorContext exprEvaluatorContext) {
         if (events == null) {
             return;
         }
 
-        com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[1];
-        for (com.espertech.esper.client.EventBean theEvent : events) {
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
+        for (eu.uk.ncl.pet5o.esper.client.EventBean theEvent : events) {
             eventsPerStream[0] = theEvent;
 
             boolean passesHaving = ResultSetProcessorUtil.evaluateHavingClause(havingNode, eventsPerStream, isNewData, exprEvaluatorContext);
@@ -677,7 +677,7 @@ public class ResultSetProcessorUtil {
                 continue;
             }
 
-            com.espertech.esper.client.EventBean resultEvent = exprProcessor.process(eventsPerStream, isNewData, isSynthesize, exprEvaluatorContext);
+            eu.uk.ncl.pet5o.esper.client.EventBean resultEvent = exprProcessor.process(eventsPerStream, isNewData, isSynthesize, exprEvaluatorContext);
             if (resultEvent != null) {
                 result.add(resultEvent);
                 optSortKeys.add(orderByProcessor.getSortKey(eventsPerStream, isNewData, exprEvaluatorContext));
@@ -689,13 +689,13 @@ public class ResultSetProcessorUtil {
         Consumer<CodegenMethodNode> code = methodNode -> {
             methodNode.getBlock()
                     .ifRefNull("events").blockReturnNoValue()
-                    .declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStream", newArrayByLength(com.espertech.esper.client.EventBean.class, constant(1)));
+                    .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStream", newArrayByLength(eu.uk.ncl.pet5o.esper.client.EventBean.class, constant(1)));
 
             {
-                CodegenBlock forEach = methodNode.getBlock().forEach(com.espertech.esper.client.EventBean.class, "theEvent", ref("events"));
+                CodegenBlock forEach = methodNode.getBlock().forEach(eu.uk.ncl.pet5o.esper.client.EventBean.class, "theEvent", ref("events"));
                 forEach.assignArrayElement(REF_EPS, constant(0), ref("theEvent"));
                 forEach.ifCondition(not(localMethod(instance.getMethods().getMethod("evaluateHavingClause"), REF_EPS, REF_ISNEWDATA, REF_EXPREVALCONTEXT))).blockContinue();
-                forEach.declareVar(com.espertech.esper.client.EventBean.class, "resultEvent", exprDotMethod(REF_SELECTEXPRNONMEMBER, "process", REF_EPS, REF_ISNEWDATA, REF_ISSYNTHESIZE, REF_EXPREVALCONTEXT))
+                forEach.declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "resultEvent", exprDotMethod(REF_SELECTEXPRNONMEMBER, "process", REF_EPS, REF_ISNEWDATA, REF_ISSYNTHESIZE, REF_EXPREVALCONTEXT))
                         .ifCondition(notEqualsNull(ref("resultEvent")))
                         .exprDotMethod(ref("result"), "add", ref("resultEvent"))
                         .exprDotMethod(ref("optSortKeys"), "add", exprDotMethod(REF_ORDERBYPROCESSOR, "getSortKey", REF_EPS, REF_ISNEWDATA, REF_EXPREVALCONTEXT));
@@ -703,7 +703,7 @@ public class ResultSetProcessorUtil {
         };
 
         return instance.getMethods().addMethod(void.class, "populateSelectEventsHavingWithOrderBy",
-                CodegenNamedParam.from(SelectExprProcessor.class, NAME_SELECTEXPRPROCESSOR, OrderByProcessor.class, NAME_ORDERBYPROCESSOR, com.espertech.esper.client.EventBean[].class, "events", boolean.class, NAME_ISNEWDATA, boolean.class, NAME_ISSYNTHESIZE, List.class, "result", List.class, "optSortKeys", ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT),
+                CodegenNamedParam.from(SelectExprProcessor.class, NAME_SELECTEXPRPROCESSOR, OrderByProcessor.class, NAME_ORDERBYPROCESSOR, eu.uk.ncl.pet5o.esper.client.EventBean[].class, "events", boolean.class, NAME_ISNEWDATA, boolean.class, NAME_ISSYNTHESIZE, List.class, "result", List.class, "optSortKeys", ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT),
                 ResultSetProcessorUtil.class, classScope, code);
     }
 
@@ -712,15 +712,15 @@ public class ResultSetProcessorUtil {
             return;
         }
 
-        for (MultiKey<com.espertech.esper.client.EventBean> key : events) {
-            com.espertech.esper.client.EventBean[] eventsPerStream = key.getArray();
+        for (MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> key : events) {
+            eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = key.getArray();
 
             boolean passesHaving = ResultSetProcessorUtil.evaluateHavingClause(havingNode, eventsPerStream, isNewData, exprEvaluatorContext);
             if (!passesHaving) {
                 continue;
             }
 
-            com.espertech.esper.client.EventBean resultEvent = exprProcessor.process(eventsPerStream, isNewData, isSynthesize, exprEvaluatorContext);
+            eu.uk.ncl.pet5o.esper.client.EventBean resultEvent = exprProcessor.process(eventsPerStream, isNewData, isSynthesize, exprEvaluatorContext);
             if (resultEvent != null) {
                 result.add(resultEvent);
             }
@@ -733,9 +733,9 @@ public class ResultSetProcessorUtil {
 
             {
                 CodegenBlock forEach = methodNode.getBlock().forEach(MultiKey.class, "key", ref("events"));
-                forEach.declareVar(com.espertech.esper.client.EventBean[].class, NAME_EPS, cast(com.espertech.esper.client.EventBean[].class, exprDotMethod(ref("key"), "getArray")));
+                forEach.declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, NAME_EPS, cast(eu.uk.ncl.pet5o.esper.client.EventBean[].class, exprDotMethod(ref("key"), "getArray")));
                 forEach.ifCondition(not(localMethod(instance.getMethods().getMethod("evaluateHavingClause"), REF_EPS, REF_ISNEWDATA, REF_EXPREVALCONTEXT))).blockContinue();
-                forEach.declareVar(com.espertech.esper.client.EventBean.class, "resultEvent", exprDotMethod(REF_SELECTEXPRNONMEMBER, "process", REF_EPS, REF_ISNEWDATA, REF_ISSYNTHESIZE, REF_EXPREVALCONTEXT))
+                forEach.declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "resultEvent", exprDotMethod(REF_SELECTEXPRNONMEMBER, "process", REF_EPS, REF_ISNEWDATA, REF_ISSYNTHESIZE, REF_EXPREVALCONTEXT))
                         .ifCondition(notEqualsNull(ref("resultEvent")))
                         .exprDotMethod(ref("result"), "add", ref("resultEvent"));
             }
@@ -751,15 +751,15 @@ public class ResultSetProcessorUtil {
             return;
         }
 
-        for (MultiKey<com.espertech.esper.client.EventBean> key : events) {
-            com.espertech.esper.client.EventBean[] eventsPerStream = key.getArray();
+        for (MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> key : events) {
+            eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = key.getArray();
 
             boolean passesHaving = ResultSetProcessorUtil.evaluateHavingClause(havingNode, eventsPerStream, isNewData, exprEvaluatorContext);
             if (!passesHaving) {
                 continue;
             }
 
-            com.espertech.esper.client.EventBean resultEvent = exprProcessor.process(eventsPerStream, isNewData, isSynthesize, exprEvaluatorContext);
+            eu.uk.ncl.pet5o.esper.client.EventBean resultEvent = exprProcessor.process(eventsPerStream, isNewData, isSynthesize, exprEvaluatorContext);
             if (resultEvent != null) {
                 result.add(resultEvent);
                 sortKeys.add(orderByProcessor.getSortKey(eventsPerStream, isNewData, exprEvaluatorContext));
@@ -773,9 +773,9 @@ public class ResultSetProcessorUtil {
 
             {
                 CodegenBlock forEach = methodNode.getBlock().forEach(MultiKey.class, "key", ref("events"));
-                forEach.declareVar(com.espertech.esper.client.EventBean[].class, NAME_EPS, cast(com.espertech.esper.client.EventBean[].class, exprDotMethod(ref("key"), "getArray")));
+                forEach.declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, NAME_EPS, cast(eu.uk.ncl.pet5o.esper.client.EventBean[].class, exprDotMethod(ref("key"), "getArray")));
                 forEach.ifCondition(not(localMethod(instance.getMethods().getMethod("evaluateHavingClause"), REF_EPS, REF_ISNEWDATA, REF_EXPREVALCONTEXT))).blockContinue();
-                forEach.declareVar(com.espertech.esper.client.EventBean.class, "resultEvent", exprDotMethod(REF_SELECTEXPRNONMEMBER, "process", REF_EPS, REF_ISNEWDATA, REF_ISSYNTHESIZE, REF_EXPREVALCONTEXT))
+                forEach.declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "resultEvent", exprDotMethod(REF_SELECTEXPRNONMEMBER, "process", REF_EPS, REF_ISNEWDATA, REF_ISSYNTHESIZE, REF_EXPREVALCONTEXT))
                         .ifCondition(notEqualsNull(ref("resultEvent")))
                         .exprDotMethod(ref("result"), "add", ref("resultEvent"))
                         .exprDotMethod(ref("sortKeys"), "add", exprDotMethod(REF_ORDERBYPROCESSOR, "getSortKey", REF_EPS, REF_ISNEWDATA, REF_EXPREVALCONTEXT));
@@ -793,9 +793,9 @@ public class ResultSetProcessorUtil {
             return;
         }
 
-        for (MultiKey<com.espertech.esper.client.EventBean> key : events) {
-            com.espertech.esper.client.EventBean[] eventsPerStream = key.getArray();
-            com.espertech.esper.client.EventBean resultEvent = exprProcessor.process(eventsPerStream, isNewData, isSynthesize, exprEvaluatorContext);
+        for (MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> key : events) {
+            eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = key.getArray();
+            eu.uk.ncl.pet5o.esper.client.EventBean resultEvent = exprProcessor.process(eventsPerStream, isNewData, isSynthesize, exprEvaluatorContext);
             if (resultEvent != null) {
                 result.add(resultEvent);
             }
@@ -808,9 +808,9 @@ public class ResultSetProcessorUtil {
             return;
         }
 
-        for (MultiKey<com.espertech.esper.client.EventBean> key : events) {
-            com.espertech.esper.client.EventBean[] eventsPerStream = key.getArray();
-            com.espertech.esper.client.EventBean resultEvent = exprProcessor.process(eventsPerStream, isNewData, isSynthesize, exprEvaluatorContext);
+        for (MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> key : events) {
+            eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = key.getArray();
+            eu.uk.ncl.pet5o.esper.client.EventBean resultEvent = exprProcessor.process(eventsPerStream, isNewData, isSynthesize, exprEvaluatorContext);
             if (resultEvent != null) {
                 result.add(resultEvent);
                 optSortKeys.add(orderByProcessor.getSortKey(eventsPerStream, isNewData, exprEvaluatorContext));
@@ -821,7 +821,7 @@ public class ResultSetProcessorUtil {
     public static void clearAndAggregateUngrouped(ExprEvaluatorContext exprEvaluatorContext, AggregationService aggregationService, Viewable parent) {
         aggregationService.clearResults(exprEvaluatorContext);
         Iterator<EventBean> it = parent.iterator();
-        com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[1];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
         for (; it.hasNext(); ) {
             eventsPerStream[0] = it.next();
             aggregationService.applyEnter(eventsPerStream, null, exprEvaluatorContext);
@@ -849,7 +849,7 @@ public class ResultSetProcessorUtil {
      * @param selectOldEvents old events
      * @return pair or null
      */
-    public static UniformPair<com.espertech.esper.client.EventBean[]> toPairNullIfAllNull(com.espertech.esper.client.EventBean[] selectNewEvents, com.espertech.esper.client.EventBean[] selectOldEvents) {
+    public static UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> toPairNullIfAllNull(eu.uk.ncl.pet5o.esper.client.EventBean[] selectNewEvents, eu.uk.ncl.pet5o.esper.client.EventBean[] selectOldEvents) {
         if ((selectNewEvents != null) || (selectOldEvents != null)) {
             return new UniformPair<>(selectNewEvents, selectOldEvents);
         }
@@ -949,9 +949,9 @@ public class ResultSetProcessorUtil {
      * @return ordered events
      */
     public static ArrayEventIterator orderOutgoingGetIterator(List<EventBean> outgoingEvents, List<Object> orderKeys, OrderByProcessor orderByProcessor, ExprEvaluatorContext exprEvaluatorContext) {
-        com.espertech.esper.client.EventBean[] outgoingEventsArr = CollectionUtil.toArrayEvents(outgoingEvents);
+        eu.uk.ncl.pet5o.esper.client.EventBean[] outgoingEventsArr = CollectionUtil.toArrayEvents(outgoingEvents);
         Object[] orderKeysArr = CollectionUtil.toArrayObjects(orderKeys);
-        com.espertech.esper.client.EventBean[] orderedEvents = orderByProcessor.sortWOrderKeys(outgoingEventsArr, orderKeysArr, exprEvaluatorContext);
+        eu.uk.ncl.pet5o.esper.client.EventBean[] orderedEvents = orderByProcessor.sortWOrderKeys(outgoingEventsArr, orderKeysArr, exprEvaluatorContext);
         return new ArrayEventIterator(orderedEvents);
     }
 
@@ -968,7 +968,7 @@ public class ResultSetProcessorUtil {
      * @param aggregationService   aggregation svc
      * @return events for output
      */
-    public static com.espertech.esper.client.EventBean[] outputFromCountMaySort(int count, com.espertech.esper.client.EventBean[] events, Object[] keys, com.espertech.esper.client.EventBean[][] currentGenerators, boolean isNewData, OrderByProcessor orderByProcessor, AgentInstanceContext agentInstanceContext, AggregationService aggregationService) {
+    public static eu.uk.ncl.pet5o.esper.client.EventBean[] outputFromCountMaySort(int count, eu.uk.ncl.pet5o.esper.client.EventBean[] events, Object[] keys, eu.uk.ncl.pet5o.esper.client.EventBean[][] currentGenerators, boolean isNewData, OrderByProcessor orderByProcessor, AgentInstanceContext agentInstanceContext, AggregationService aggregationService) {
         // Resize if some rows were filtered out
         if (count != events.length) {
             if (count == 0) {
@@ -1019,9 +1019,9 @@ public class ResultSetProcessorUtil {
      * @param exprEvaluatorContext ctx
      * @return pair
      */
-    public static UniformPair<com.espertech.esper.client.EventBean[]> finalizeOutputMaySortMayRStream(List<EventBean> newEvents, List<Object> newEventsSortKey, List<EventBean> oldEvents, List<Object> oldEventsSortKey, boolean selectRStream, OrderByProcessor orderByProcessor, ExprEvaluatorContext exprEvaluatorContext) {
-        com.espertech.esper.client.EventBean[] newEventsArr = CollectionUtil.toArrayNullForEmptyEvents(newEvents);
-        com.espertech.esper.client.EventBean[] oldEventsArr = null;
+    public static UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> finalizeOutputMaySortMayRStream(List<EventBean> newEvents, List<Object> newEventsSortKey, List<EventBean> oldEvents, List<Object> oldEventsSortKey, boolean selectRStream, OrderByProcessor orderByProcessor, ExprEvaluatorContext exprEvaluatorContext) {
+        eu.uk.ncl.pet5o.esper.client.EventBean[] newEventsArr = CollectionUtil.toArrayNullForEmptyEvents(newEvents);
+        eu.uk.ncl.pet5o.esper.client.EventBean[] oldEventsArr = null;
         if (selectRStream) {
             oldEventsArr = CollectionUtil.toArrayNullForEmptyEvents(oldEvents);
         }
@@ -1039,8 +1039,8 @@ public class ResultSetProcessorUtil {
     }
 
     public static void finalizeOutputMaySortMayRStreamCodegen(CodegenBlock block, CodegenExpressionRef newEvents, CodegenExpressionRef newEventsSortKey, CodegenExpressionRef oldEvents, CodegenExpressionRef oldEventsSortKey, boolean selectRStream, boolean hasOrderBy) {
-        block.declareVar(com.espertech.esper.client.EventBean[].class, "newEventsArr", staticMethod(CollectionUtil.class, METHOD_TOARRAYNULLFOREMPTYEVENTS, newEvents))
-                .declareVar(com.espertech.esper.client.EventBean[].class, "oldEventsArr", selectRStream ? staticMethod(CollectionUtil.class, METHOD_TOARRAYNULLFOREMPTYEVENTS, oldEvents) : constantNull());
+        block.declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "newEventsArr", staticMethod(CollectionUtil.class, METHOD_TOARRAYNULLFOREMPTYEVENTS, newEvents))
+                .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "oldEventsArr", selectRStream ? staticMethod(CollectionUtil.class, METHOD_TOARRAYNULLFOREMPTYEVENTS, oldEvents) : constantNull());
 
         if (hasOrderBy) {
             block.declareVar(Object[].class, "sortKeysNew", staticMethod(CollectionUtil.class, METHOD_TOARRAYNULLFOREMPTYOBJECTS, newEventsSortKey))
@@ -1072,11 +1072,11 @@ public class ResultSetProcessorUtil {
      * @param rstream rstream event
      * @return pair
      */
-    public static UniformPair<com.espertech.esper.client.EventBean[]> toPairNullIfAllNullSingle(com.espertech.esper.client.EventBean istream, com.espertech.esper.client.EventBean rstream) {
+    public static UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> toPairNullIfAllNullSingle(eu.uk.ncl.pet5o.esper.client.EventBean istream, eu.uk.ncl.pet5o.esper.client.EventBean rstream) {
         if (istream != null) {
-            return new UniformPair<>(new com.espertech.esper.client.EventBean[] {istream}, rstream == null ? null : new com.espertech.esper.client.EventBean[] {rstream});
+            return new UniformPair<>(new eu.uk.ncl.pet5o.esper.client.EventBean[] {istream}, rstream == null ? null : new eu.uk.ncl.pet5o.esper.client.EventBean[] {rstream});
         }
-        return rstream == null ? null : new UniformPair<>(null, new com.espertech.esper.client.EventBean[] {rstream});
+        return rstream == null ? null : new UniformPair<>(null, new eu.uk.ncl.pet5o.esper.client.EventBean[] {rstream});
     }
 
     /**
@@ -1084,11 +1084,11 @@ public class ResultSetProcessorUtil {
      * @param istream istream event
      * @return pair
      */
-    public static UniformPair<com.espertech.esper.client.EventBean[]> toPairNullIfNullIStream(com.espertech.esper.client.EventBean istream) {
-        return istream == null ? null : new UniformPair<>(new com.espertech.esper.client.EventBean[] {istream}, null);
+    public static UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> toPairNullIfNullIStream(eu.uk.ncl.pet5o.esper.client.EventBean istream) {
+        return istream == null ? null : new UniformPair<>(new eu.uk.ncl.pet5o.esper.client.EventBean[] {istream}, null);
     }
 
-    public static boolean evaluateHavingClause(ExprEvaluator havingEval, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public static boolean evaluateHavingClause(ExprEvaluator havingEval, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qHavingClause(eventsPerStream);
         }

@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.accessagg;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.epl.agg.service.common.AggregationMethodFactory;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationMethodFactory;
 
 public class LinearAggregationFactoryDesc {
 

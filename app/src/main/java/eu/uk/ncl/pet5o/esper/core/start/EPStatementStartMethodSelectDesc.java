@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.core.start;
 
-import com.espertech.esper.core.context.factory.StatementAgentInstanceFactorySelect;
-import com.espertech.esper.core.context.subselect.SubSelectStrategyCollection;
-import com.espertech.esper.epl.core.resultset.core.ResultSetProcessorFactoryDesc;
-import com.espertech.esper.epl.core.viewres.ViewResourceDelegateUnverified;
+import eu.uk.ncl.pet5o.esper.core.context.factory.StatementAgentInstanceFactorySelect;
+import eu.uk.ncl.pet5o.esper.core.context.subselect.SubSelectStrategyCollection;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessorFactoryDesc;
+import eu.uk.ncl.pet5o.esper.epl.core.viewres.ViewResourceDelegateUnverified;
 
 /**
  * Starts and provides the stop method for EPL statements.

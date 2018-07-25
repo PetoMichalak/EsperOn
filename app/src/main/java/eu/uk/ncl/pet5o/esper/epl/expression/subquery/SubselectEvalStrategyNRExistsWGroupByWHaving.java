@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.subquery;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.agg.service.common.AggregationService;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.event.EventBeanUtility;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationService;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.event.EventBeanUtility;
 
 import java.util.Collection;
 
@@ -26,13 +26,13 @@ public class SubselectEvalStrategyNRExistsWGroupByWHaving implements SubselectEv
         this.havingEval = havingEval;
     }
 
-    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, Collection<EventBean> matchingEvents, ExprEvaluatorContext exprEvaluatorContext, AggregationService aggregationServiceAnyPartition) {
+    public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, Collection<EventBean> matchingEvents, ExprEvaluatorContext exprEvaluatorContext, AggregationService aggregationServiceAnyPartition) {
         if (matchingEvents == null || matchingEvents.size() == 0) {
             return false;
         }
         AggregationService aggregationService = aggregationServiceAnyPartition.getContextPartitionAggregationService(exprEvaluatorContext.getAgentInstanceId());
         Collection<Object> groupKeys = aggregationService.getGroupKeys(exprEvaluatorContext);
-        com.espertech.esper.client.EventBean[] events = EventBeanUtility.allocatePerStreamShift(eventsPerStream);
+        eu.uk.ncl.pet5o.esper.client.EventBean[] events = EventBeanUtility.allocatePerStreamShift(eventsPerStream);
         for (Object groupKey : groupKeys) {
             aggregationService.setCurrentAccess(groupKey, exprEvaluatorContext.getAgentInstanceId(), null);
 

@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.visitor;
 
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.expression.core.ExprVariableNode;
-import com.espertech.esper.epl.expression.dot.ExprDotNode;
-import com.espertech.esper.epl.variable.VariableService;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprVariableNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.dot.ExprDotNode;
+import eu.uk.ncl.pet5o.esper.epl.variable.VariableService;
 
 import java.util.HashSet;
 import java.util.Set;

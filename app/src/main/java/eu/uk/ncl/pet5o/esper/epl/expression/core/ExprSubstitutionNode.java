@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.core;
 
-import com.espertech.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.client.EPException;
 
 import java.io.StringWriter;
 
@@ -72,7 +72,7 @@ public class ExprSubstitutionNode extends ExprNodeBase {
         throw new IllegalStateException(ERROR_MSG);
     }
 
-    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         throw new EPException(ERROR_MSG);
     }
 

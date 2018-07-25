@@ -10,36 +10,36 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.select.eval;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.codegen.base.CodegenBlock;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMember;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.codegen.model.expression.CodegenExpressionRef;
-import com.espertech.esper.core.service.speccompiled.SelectClauseStreamCompiledSpec;
-import com.espertech.esper.epl.core.select.SelectExprProcessor;
-import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.core.ExprForge;
-import com.espertech.esper.epl.table.mgmt.TableMetadata;
-import com.espertech.esper.epl.table.mgmt.TableMetadataInternalEventToPublic;
-import com.espertech.esper.event.DecoratingEventBean;
-import com.espertech.esper.event.EventPropertyGetterSPI;
-import com.espertech.esper.event.EventTypeSPI;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenBlock;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMember;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRef;
+import eu.uk.ncl.pet5o.esper.core.service.speccompiled.SelectClauseStreamCompiledSpec;
+import eu.uk.ncl.pet5o.esper.epl.core.select.SelectExprProcessor;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprForge;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadata;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadataInternalEventToPublic;
+import eu.uk.ncl.pet5o.esper.event.DecoratingEventBean;
+import eu.uk.ncl.pet5o.esper.event.EventPropertyGetterSPI;
+import eu.uk.ncl.pet5o.esper.event.EventTypeSPI;
 
 import java.util.List;
 import java.util.Map;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.arrayAtIndex;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.cast;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.member;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.arrayAtIndex;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.cast;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.member;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
 
 public class EvalSelectStreamWUnderlying extends EvalSelectStreamBaseMap implements SelectExprProcessor {
 
@@ -75,7 +75,7 @@ public class EvalSelectStreamWUnderlying extends EvalSelectStreamBaseMap impleme
         this.eventTypes = eventTypes;
     }
 
-    public com.espertech.esper.client.EventBean processSpecific(Map<String, Object> props, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean processSpecific(Map<String, Object> props, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         // In case of a wildcard and single stream that is itself a
         // wrapper bean, we also need to add the map properties
         if (singleStreamWrapper) {
@@ -86,10 +86,10 @@ public class EvalSelectStreamWUnderlying extends EvalSelectStreamBaseMap impleme
             }
         }
 
-        com.espertech.esper.client.EventBean theEvent = null;
+        eu.uk.ncl.pet5o.esper.client.EventBean theEvent = null;
         if (underlyingIsFragmentEvent) {
-            com.espertech.esper.client.EventBean eventBean = eventsPerStream[underlyingStreamNumber];
-            theEvent = (com.espertech.esper.client.EventBean) eventBean.getFragment(unnamedStreams.get(0).getStreamSelected().getStreamName());
+            eu.uk.ncl.pet5o.esper.client.EventBean eventBean = eventsPerStream[underlyingStreamNumber];
+            theEvent = (eu.uk.ncl.pet5o.esper.client.EventBean) eventBean.getFragment(unnamedStreams.get(0).getStreamSelected().getStreamName());
         } else if (underlyingPropertyEventGetter != null) {
             Object value = underlyingPropertyEventGetter.get(eventsPerStream[underlyingStreamNumber]);
             if (value != null) {
@@ -113,7 +113,7 @@ public class EvalSelectStreamWUnderlying extends EvalSelectStreamBaseMap impleme
     }
 
     protected CodegenExpression processSpecificCodegen(CodegenMember memberResultEventType, CodegenMember memberEventAdapterService, CodegenExpression props, CodegenMethodScope codegenMethodScope, ExprForgeCodegenSymbol exprSymbol, CodegenClassScope codegenClassScope) {
-        CodegenMethodNode methodNode = codegenMethodScope.makeChild(com.espertech.esper.client.EventBean.class, EvalSelectStreamWUnderlying.class, codegenClassScope).addParam(Map.class, "props");
+        CodegenMethodNode methodNode = codegenMethodScope.makeChild(eu.uk.ncl.pet5o.esper.client.EventBean.class, EvalSelectStreamWUnderlying.class, codegenClassScope).addParam(Map.class, "props");
 
         CodegenExpressionRef refEPS = exprSymbol.getAddEPS(methodNode);
         CodegenExpression refIsNewData = exprSymbol.getAddIsNewData(methodNode);
@@ -129,22 +129,22 @@ public class EvalSelectStreamWUnderlying extends EvalSelectStreamBaseMap impleme
 
         if (underlyingIsFragmentEvent) {
             CodegenExpression fragment = ((EventTypeSPI) eventTypes[underlyingStreamNumber]).getGetterSPI(unnamedStreams.get(0).getStreamSelected().getStreamName()).eventBeanFragmentCodegen(ref("eventBean"), methodNode, codegenClassScope);
-            block.declareVar(com.espertech.esper.client.EventBean.class, "eventBean", arrayAtIndex(refEPS, constant(underlyingStreamNumber)))
-                    .declareVar(com.espertech.esper.client.EventBean.class, "theEvent", cast(com.espertech.esper.client.EventBean.class, fragment));
+            block.declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "eventBean", arrayAtIndex(refEPS, constant(underlyingStreamNumber)))
+                    .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "theEvent", cast(eu.uk.ncl.pet5o.esper.client.EventBean.class, fragment));
         } else if (underlyingPropertyEventGetter != null) {
-            block.declareVar(com.espertech.esper.client.EventBean.class, "theEvent", constantNull())
+            block.declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "theEvent", constantNull())
                     .declareVar(Object.class, "value", underlyingPropertyEventGetter.eventBeanGetCodegen(arrayAtIndex(refEPS, constant(underlyingStreamNumber)), methodNode, codegenClassScope))
                     .ifRefNotNull("value")
                     .assignRef("theEvent", exprDotMethod(member(memberEventAdapterService.getMemberId()), "adapterForBean", ref("value")))
                     .blockEnd();
         } else if (underlyingExprForge != null) {
-            block.declareVar(com.espertech.esper.client.EventBean.class, "theEvent", constantNull())
+            block.declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "theEvent", constantNull())
                     .declareVar(Object.class, "value", underlyingExprForge.evaluateCodegen(Object.class, methodNode, exprSymbol, codegenClassScope))
                     .ifRefNotNull("value")
                     .assignRef("theEvent", exprDotMethod(member(memberEventAdapterService.getMemberId()), "adapterForBean", ref("value")))
                     .blockEnd();
         } else {
-            block.declareVar(com.espertech.esper.client.EventBean.class, "theEvent", arrayAtIndex(refEPS, constant(underlyingStreamNumber)));
+            block.declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "theEvent", arrayAtIndex(refEPS, constant(underlyingStreamNumber)));
             if (tableMetadata != null) {
                 CodegenMember eventToPublic = codegenClassScope.makeAddMember(TableMetadataInternalEventToPublic.class, tableMetadata.getEventToPublic());
                 block.ifRefNotNull("theEvent")

@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.table.upd;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.table.mgmt.TableStateInstance;
-import com.espertech.esper.epl.updatehelper.EventBeanUpdateHelper;
-import com.espertech.esper.event.ObjectArrayBackedEventBean;
-import com.espertech.esper.event.arr.ObjectArrayEventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableStateInstance;
+import eu.uk.ncl.pet5o.esper.epl.updatehelper.EventBeanUpdateHelper;
+import eu.uk.ncl.pet5o.esper.event.ObjectArrayBackedEventBean;
+import eu.uk.ncl.pet5o.esper.event.arr.ObjectArrayEventBean;
 
 import java.util.Collection;
 
@@ -27,9 +27,9 @@ public class TableUpdateStrategyNonIndex implements TableUpdateStrategy {
         this.updateHelper = updateHelper;
     }
 
-    public void updateTable(Collection<EventBean> eventsUnsafeIter, TableStateInstance instance, com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
+    public void updateTable(Collection<EventBean> eventsUnsafeIter, TableStateInstance instance, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
         // update (no-copy unless original values required)
-        for (com.espertech.esper.client.EventBean event : eventsUnsafeIter) {
+        for (eu.uk.ncl.pet5o.esper.client.EventBean event : eventsUnsafeIter) {
             eventsPerStream[0] = event;
             ObjectArrayBackedEventBean updatedEvent = (ObjectArrayBackedEventBean) event;
 

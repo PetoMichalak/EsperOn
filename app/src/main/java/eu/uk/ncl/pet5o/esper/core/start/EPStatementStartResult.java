@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.start;
 
-import com.espertech.esper.view.Viewable;
+import eu.uk.ncl.pet5o.esper.view.Viewable;
 
 /**
  * Result holder returned by @{link EPStatementStartMethod}.

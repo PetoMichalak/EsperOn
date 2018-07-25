@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.collection;
 
-import com.espertech.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
 
 /**
  * Interface that transforms one event into another event, for use with {@link TransformEventIterator}.

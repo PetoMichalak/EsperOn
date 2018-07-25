@@ -10,16 +10,16 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.dot;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprForgeComplexityEnum;
-import com.espertech.esper.epl.join.plan.FilterExprAnalyzerAffector;
-import com.espertech.esper.epl.rettype.EPTypeHelper;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprForgeComplexityEnum;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.FilterExprAnalyzerAffector;
+import eu.uk.ncl.pet5o.esper.epl.rettype.EPTypeHelper;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 public class ExprDotNodeForgeStream extends ExprDotNodeForge {
     private final ExprDotNodeImpl parent;

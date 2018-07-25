@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.filter;
 
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.epl.expression.core.ExprFilterSpecLookupable;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.filterspec.*;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprFilterSpecLookupable;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.filterspec.*;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import java.util.ArrayList;
 import java.util.HashMap;

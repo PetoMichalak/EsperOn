@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.client;
 
-import com.espertech.esper.util.DatabaseTypeEnum;
+import eu.uk.ncl.pet5o.esper.util.DatabaseTypeEnum;
 
 import java.io.Serializable;
 import java.util.Arrays;

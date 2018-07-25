@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.dot;
 
-import com.espertech.esper.epl.expression.core.ExprChainedSpec;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.join.plan.FilterExprAnalyzerAffectorProvider;
-import com.espertech.esper.epl.variable.VariableService;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprChainedSpec;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.FilterExprAnalyzerAffectorProvider;
+import eu.uk.ncl.pet5o.esper.epl.variable.VariableService;
 
 import java.util.List;
 

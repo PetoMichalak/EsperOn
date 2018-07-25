@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.table.strategy;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.expression.core.ExprEnumerationGivenEvent;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.table.ExprTableAccessEvalStrategy;
-import com.espertech.esper.event.ObjectArrayBackedEventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEnumerationGivenEvent;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.table.ExprTableAccessEvalStrategy;
+import eu.uk.ncl.pet5o.esper.event.ObjectArrayBackedEventBean;
 
 import java.util.Collection;
 
@@ -29,7 +29,7 @@ public class ExprTableEvalStrategyUngroupedProp extends ExprTableEvalStrategyUng
         this.optionalEnumEval = optionalEnumEval;
     }
 
-    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         ObjectArrayBackedEventBean event = lockTableReadAndGet(context);
         if (event == null) {
             return null;
@@ -37,7 +37,7 @@ public class ExprTableEvalStrategyUngroupedProp extends ExprTableEvalStrategyUng
         return event.getProperties()[propertyIndex];
     }
 
-    public Collection<EventBean> evaluateGetROCollectionEvents(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Collection<EventBean> evaluateGetROCollectionEvents(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         ObjectArrayBackedEventBean event = lockTableReadAndGet(context);
         if (event == null) {
             return null;
@@ -45,7 +45,7 @@ public class ExprTableEvalStrategyUngroupedProp extends ExprTableEvalStrategyUng
         return optionalEnumEval.evaluateEventGetROCollectionEvents(event, context);
     }
 
-    public com.espertech.esper.client.EventBean evaluateGetEventBean(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean evaluateGetEventBean(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         ObjectArrayBackedEventBean event = lockTableReadAndGet(context);
         if (event == null) {
             return null;
@@ -53,7 +53,7 @@ public class ExprTableEvalStrategyUngroupedProp extends ExprTableEvalStrategyUng
         return optionalEnumEval.evaluateEventGetEventBean(event, context);
     }
 
-    public Collection evaluateGetROCollectionScalar(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Collection evaluateGetROCollectionScalar(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         ObjectArrayBackedEventBean event = lockTableReadAndGet(context);
         if (event == null) {
             return null;
@@ -61,7 +61,7 @@ public class ExprTableEvalStrategyUngroupedProp extends ExprTableEvalStrategyUng
         return optionalEnumEval.evaluateEventGetROCollectionScalar(event, context);
     }
 
-    public Object[] evaluateTypableSingle(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Object[] evaluateTypableSingle(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return null;
     }
 }

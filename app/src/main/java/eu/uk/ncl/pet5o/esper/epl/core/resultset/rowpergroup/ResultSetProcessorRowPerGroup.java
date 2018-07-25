@@ -10,23 +10,23 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.resultset.rowpergroup;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.agg.service.common.AggregationRowRemovedCallback;
-import com.espertech.esper.epl.agg.service.common.AggregationService;
-import com.espertech.esper.epl.core.resultset.core.ResultSetProcessor;
-import com.espertech.esper.epl.core.select.SelectExprProcessor;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationRowRemovedCallback;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationService;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessor;
+import eu.uk.ncl.pet5o.esper.epl.core.select.SelectExprProcessor;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
 
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 public interface ResultSetProcessorRowPerGroup extends ResultSetProcessor, AggregationRowRemovedCallback {
-    Object generateGroupKeySingle(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData);
+    Object generateGroupKeySingle(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData);
 
     boolean hasHavingClause();
 
-    boolean evaluateHavingClause(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext);
+    boolean evaluateHavingClause(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext);
 
     boolean isSelectRStream();
 
@@ -36,7 +36,7 @@ public interface ResultSetProcessorRowPerGroup extends ResultSetProcessor, Aggre
 
     SelectExprProcessor getSelectExprProcessor();
 
-    com.espertech.esper.client.EventBean generateOutputBatchedNoSortWMap(boolean join, Object mk, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, boolean isSynthesize);
+    eu.uk.ncl.pet5o.esper.client.EventBean generateOutputBatchedNoSortWMap(boolean join, Object mk, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, boolean isSynthesize);
 
     void generateOutputBatchedArrFromIterator(boolean join, Iterator<Map.Entry<Object, EventBean[]>> keysAndEvents, boolean isNewData, boolean isSynthesize, List<EventBean> resultEvents, List<Object> optSortKeys);
 }

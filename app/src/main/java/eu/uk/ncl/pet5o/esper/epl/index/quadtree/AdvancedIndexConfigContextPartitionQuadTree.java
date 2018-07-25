@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.index.quadtree;
 
-import com.espertech.esper.epl.lookup.AdvancedIndexConfigContextPartition;
+import eu.uk.ncl.pet5o.esper.epl.lookup.AdvancedIndexConfigContextPartition;
 
 import java.io.StringWriter;
 

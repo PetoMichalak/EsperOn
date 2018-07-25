@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.lookup;
 
-import com.espertech.esper.epl.join.plan.QueryGraphValueEntryCustomKey;
-import com.espertech.esper.epl.join.plan.QueryGraphValueEntryCustomOperation;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.QueryGraphValueEntryCustomKey;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.QueryGraphValueEntryCustomOperation;
 
 import java.io.Serializable;
 import java.util.Collections;

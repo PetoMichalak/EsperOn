@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.filter;
 
-import com.espertech.esper.epl.expression.core.ExprFilterSpecLookupable;
-import com.espertech.esper.filterspec.FilterOperator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprFilterSpecLookupable;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterOperator;
 
 import java.util.concurrent.locks.ReadWriteLock;
 

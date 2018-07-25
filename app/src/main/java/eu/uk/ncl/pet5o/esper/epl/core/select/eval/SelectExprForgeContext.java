@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.select.eval;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.epl.expression.core.ExprForge;
-import com.espertech.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprForge;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
 
 public class SelectExprForgeContext {
     private final ExprForge[] exprForges;

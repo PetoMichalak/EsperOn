@@ -10,23 +10,23 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.client.EventPropertyGetter;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.context.ContextPartitionIdentifier;
-import com.espertech.esper.client.context.ContextPartitionIdentifierHash;
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.core.context.stmt.*;
-import com.espertech.esper.epl.core.engineimport.EngineImportSingleRowDesc;
-import com.espertech.esper.epl.expression.codegen.ExprNodeCompiler;
-import com.espertech.esper.epl.expression.core.*;
-import com.espertech.esper.epl.spec.ContextDetail;
-import com.espertech.esper.epl.spec.ContextDetailHash;
-import com.espertech.esper.epl.spec.ContextDetailHashItem;
-import com.espertech.esper.epl.spec.ContextDetailPartitionItem;
-import com.espertech.esper.epl.util.StatementSpecCompiledAnalyzer;
-import com.espertech.esper.epl.util.StatementSpecCompiledAnalyzerResult;
-import com.espertech.esper.event.EventTypeUtility;
-import com.espertech.esper.filterspec.*;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionIdentifier;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionIdentifierHash;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.core.context.stmt.*;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportSingleRowDesc;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprNodeCompiler;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.epl.spec.ContextDetail;
+import eu.uk.ncl.pet5o.esper.epl.spec.ContextDetailHash;
+import eu.uk.ncl.pet5o.esper.epl.spec.ContextDetailHashItem;
+import eu.uk.ncl.pet5o.esper.epl.spec.ContextDetailPartitionItem;
+import eu.uk.ncl.pet5o.esper.epl.util.StatementSpecCompiledAnalyzer;
+import eu.uk.ncl.pet5o.esper.epl.util.StatementSpecCompiledAnalyzerResult;
+import eu.uk.ncl.pet5o.esper.event.EventTypeUtility;
+import eu.uk.ncl.pet5o.esper.filterspec.*;
 
 import java.io.StringWriter;
 import java.util.ArrayList;

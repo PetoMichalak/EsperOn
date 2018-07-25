@@ -10,26 +10,26 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.resultset.handthru;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.collection.MultiKey;
-import com.espertech.esper.collection.UniformPair;
-import com.espertech.esper.event.EventBeanUtility;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.collection.MultiKey;
+import eu.uk.ncl.pet5o.esper.collection.UniformPair;
+import eu.uk.ncl.pet5o.esper.event.EventBeanUtility;
 
 import java.util.Set;
 
 public class ResultSetProcessorSimpleOutputLastHelperImpl implements ResultSetProcessorSimpleOutputLastHelper {
     private final ResultSetProcessorSimple processor;
 
-    private com.espertech.esper.client.EventBean outputLastIStreamBufView;
-    private com.espertech.esper.client.EventBean outputLastRStreamBufView;
-    private MultiKey<com.espertech.esper.client.EventBean> outputLastIStreamBufJoin;
-    private MultiKey<com.espertech.esper.client.EventBean> outputLastRStreamBufJoin;
+    private eu.uk.ncl.pet5o.esper.client.EventBean outputLastIStreamBufView;
+    private eu.uk.ncl.pet5o.esper.client.EventBean outputLastRStreamBufView;
+    private MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> outputLastIStreamBufJoin;
+    private MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> outputLastRStreamBufJoin;
 
     public ResultSetProcessorSimpleOutputLastHelperImpl(ResultSetProcessorSimple processor) {
         this.processor = processor;
     }
 
-    public void processView(com.espertech.esper.client.EventBean[] newData, com.espertech.esper.client.EventBean[] oldData) {
+    public void processView(eu.uk.ncl.pet5o.esper.client.EventBean[] newData, eu.uk.ncl.pet5o.esper.client.EventBean[] oldData) {
         if (!processor.hasHavingClause()) {
             if (newData != null && newData.length > 0) {
                 outputLastIStreamBufView = newData[newData.length - 1];
@@ -38,9 +38,9 @@ public class ResultSetProcessorSimpleOutputLastHelperImpl implements ResultSetPr
                 outputLastRStreamBufView = oldData[oldData.length - 1];
             }
         } else {
-            com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[1];
+            eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
             if (newData != null && newData.length > 0) {
-                for (com.espertech.esper.client.EventBean theEvent : newData) {
+                for (eu.uk.ncl.pet5o.esper.client.EventBean theEvent : newData) {
                     eventsPerStream[0] = theEvent;
 
                     boolean passesHaving = processor.evaluateHavingClause(eventsPerStream, true, processor.getAgentInstanceContext());
@@ -51,7 +51,7 @@ public class ResultSetProcessorSimpleOutputLastHelperImpl implements ResultSetPr
                 }
             }
             if (oldData != null && oldData.length > 0) {
-                for (com.espertech.esper.client.EventBean theEvent : oldData) {
+                for (eu.uk.ncl.pet5o.esper.client.EventBean theEvent : oldData) {
                     eventsPerStream[0] = theEvent;
 
                     boolean passesHaving = processor.evaluateHavingClause(eventsPerStream, false, processor.getAgentInstanceContext());
@@ -74,7 +74,7 @@ public class ResultSetProcessorSimpleOutputLastHelperImpl implements ResultSetPr
             }
         } else {
             if (newEvents != null && newEvents.size() > 0) {
-                for (MultiKey<com.espertech.esper.client.EventBean> theEvent : newEvents) {
+                for (MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> theEvent : newEvents) {
                     boolean passesHaving = processor.evaluateHavingClause(theEvent.getArray(), true, processor.getAgentInstanceContext());
                     if (!passesHaving) {
                         continue;
@@ -83,7 +83,7 @@ public class ResultSetProcessorSimpleOutputLastHelperImpl implements ResultSetPr
                 }
             }
             if (oldEvents != null && oldEvents.size() > 0) {
-                for (MultiKey<com.espertech.esper.client.EventBean> theEvent : oldEvents) {
+                for (MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> theEvent : oldEvents) {
 
                     boolean passesHaving = processor.evaluateHavingClause(theEvent.getArray(), false, processor.getAgentInstanceContext());
                     if (!passesHaving) {
@@ -95,21 +95,21 @@ public class ResultSetProcessorSimpleOutputLastHelperImpl implements ResultSetPr
         }
     }
 
-    public UniformPair<com.espertech.esper.client.EventBean[]> outputView(boolean isSynthesize) {
+    public UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> outputView(boolean isSynthesize) {
         if (outputLastIStreamBufView == null && outputLastRStreamBufView == null) {
             return null;
         }
-        UniformPair<com.espertech.esper.client.EventBean[]> pair = processor.processViewResult(EventBeanUtility.toArrayIfNotNull(outputLastIStreamBufView), EventBeanUtility.toArrayIfNotNull(outputLastRStreamBufView), isSynthesize);
+        UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> pair = processor.processViewResult(EventBeanUtility.toArrayIfNotNull(outputLastIStreamBufView), EventBeanUtility.toArrayIfNotNull(outputLastRStreamBufView), isSynthesize);
         outputLastIStreamBufView = null;
         outputLastRStreamBufView = null;
         return pair;
     }
 
-    public UniformPair<com.espertech.esper.client.EventBean[]> outputJoin(boolean isSynthesize) {
+    public UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> outputJoin(boolean isSynthesize) {
         if (outputLastIStreamBufJoin == null && outputLastRStreamBufJoin == null) {
             return null;
         }
-        UniformPair<com.espertech.esper.client.EventBean[]> pair = processor.processJoinResult(EventBeanUtility.toSingletonSetIfNotNull(outputLastIStreamBufJoin), EventBeanUtility.toSingletonSetIfNotNull(outputLastRStreamBufJoin), isSynthesize);
+        UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> pair = processor.processJoinResult(EventBeanUtility.toSingletonSetIfNotNull(outputLastIStreamBufJoin), EventBeanUtility.toSingletonSetIfNotNull(outputLastRStreamBufJoin), isSynthesize);
         outputLastIStreamBufJoin = null;
         outputLastRStreamBufJoin = null;
         return pair;

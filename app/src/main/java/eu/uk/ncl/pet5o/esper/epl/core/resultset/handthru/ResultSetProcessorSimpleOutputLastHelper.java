@@ -10,21 +10,21 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.resultset.handthru;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.collection.MultiKey;
-import com.espertech.esper.collection.UniformPair;
-import com.espertech.esper.epl.core.resultset.core.ResultSetProcessorOutputHelper;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.collection.MultiKey;
+import eu.uk.ncl.pet5o.esper.collection.UniformPair;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessorOutputHelper;
 
 import java.util.Set;
 
 public interface ResultSetProcessorSimpleOutputLastHelper extends ResultSetProcessorOutputHelper {
-    void processView(com.espertech.esper.client.EventBean[] newData, com.espertech.esper.client.EventBean[] oldData);
+    void processView(eu.uk.ncl.pet5o.esper.client.EventBean[] newData, eu.uk.ncl.pet5o.esper.client.EventBean[] oldData);
 
     void processJoin(Set<MultiKey<EventBean>> newEvents, Set<MultiKey<EventBean>> oldEvents);
 
-    UniformPair<com.espertech.esper.client.EventBean[]> outputView(boolean isSynthesize);
+    UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> outputView(boolean isSynthesize);
 
-    UniformPair<com.espertech.esper.client.EventBean[]> outputJoin(boolean isSynthesize);
+    UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> outputJoin(boolean isSynthesize);
 
     void destroy();
 }

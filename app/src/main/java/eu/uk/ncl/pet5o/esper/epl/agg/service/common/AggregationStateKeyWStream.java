@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.service.common;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.epl.agg.access.AggregationStateKey;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.expression.core.ExprNodeUtilityCore;
-import com.espertech.esper.event.EventTypeUtility;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationStateKey;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNodeUtilityCore;
+import eu.uk.ncl.pet5o.esper.event.EventTypeUtility;
 
 public class AggregationStateKeyWStream implements AggregationStateKey {
     private final int streamNum;

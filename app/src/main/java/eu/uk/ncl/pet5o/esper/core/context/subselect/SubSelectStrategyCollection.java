@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.subselect;
 
-import com.espertech.esper.epl.expression.subquery.ExprSubselectNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.subquery.ExprSubselectNode;
 
 import java.util.Collections;
 import java.util.HashMap;

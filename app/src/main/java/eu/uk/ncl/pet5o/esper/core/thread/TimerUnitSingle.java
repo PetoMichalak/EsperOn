@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.core.thread;
 
-import com.espertech.esper.core.service.EPRuntimeImpl;
-import com.espertech.esper.core.service.EPServicesContext;
-import com.espertech.esper.core.service.EPStatementHandleCallback;
+import eu.uk.ncl.pet5o.esper.core.service.EPRuntimeImpl;
+import eu.uk.ncl.pet5o.esper.core.service.EPServicesContext;
+import eu.uk.ncl.pet5o.esper.core.service.EPStatementHandleCallback;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

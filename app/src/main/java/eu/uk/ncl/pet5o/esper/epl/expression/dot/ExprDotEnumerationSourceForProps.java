@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.dot;
 
-import com.espertech.esper.epl.expression.core.ExprEnumerationEval;
-import com.espertech.esper.epl.expression.core.ExprEnumerationGivenEvent;
-import com.espertech.esper.epl.rettype.EPType;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEnumerationEval;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEnumerationGivenEvent;
+import eu.uk.ncl.pet5o.esper.epl.rettype.EPType;
 
 public class ExprDotEnumerationSourceForProps extends ExprDotEnumerationSource {
     private final ExprEnumerationGivenEvent enumerationGivenEvent;

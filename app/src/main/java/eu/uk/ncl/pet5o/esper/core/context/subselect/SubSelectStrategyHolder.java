@@ -10,15 +10,15 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.subselect;
 
-import com.espertech.esper.core.context.activator.ViewableActivationResult;
-import com.espertech.esper.core.context.factory.StatementAgentInstancePostLoad;
-import com.espertech.esper.epl.agg.service.common.AggregationService;
-import com.espertech.esper.epl.expression.prev.ExprPreviousEvalStrategy;
-import com.espertech.esper.epl.expression.prev.ExprPreviousNode;
-import com.espertech.esper.epl.expression.prior.ExprPriorEvalStrategy;
-import com.espertech.esper.epl.expression.prior.ExprPriorNode;
-import com.espertech.esper.epl.expression.subquery.ExprSubselectStrategy;
-import com.espertech.esper.view.Viewable;
+import eu.uk.ncl.pet5o.esper.core.context.activator.ViewableActivationResult;
+import eu.uk.ncl.pet5o.esper.core.context.factory.StatementAgentInstancePostLoad;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationService;
+import eu.uk.ncl.pet5o.esper.epl.expression.prev.ExprPreviousEvalStrategy;
+import eu.uk.ncl.pet5o.esper.epl.expression.prev.ExprPreviousNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.prior.ExprPriorEvalStrategy;
+import eu.uk.ncl.pet5o.esper.epl.expression.prior.ExprPriorNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.subquery.ExprSubselectStrategy;
+import eu.uk.ncl.pet5o.esper.view.Viewable;
 
 import java.util.Map;
 

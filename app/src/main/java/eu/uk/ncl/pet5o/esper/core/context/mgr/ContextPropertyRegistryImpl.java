@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.core.context.util.ContextPropertyRegistry;
-import com.espertech.esper.epl.spec.ContextDetailPartitionItem;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.core.context.util.ContextPropertyRegistry;
+import eu.uk.ncl.pet5o.esper.epl.spec.ContextDetailPartitionItem;
 
 import java.util.Collections;
 import java.util.List;

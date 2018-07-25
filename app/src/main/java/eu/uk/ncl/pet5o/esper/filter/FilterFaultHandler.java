@@ -12,6 +12,6 @@ package eu.uk.ncl.pet5o.esper.filter;
 
 public interface FilterFaultHandler {
 
-    public boolean handleFilterFault(com.espertech.esper.client.EventBean theEvent, long version);
+    public boolean handleFilterFault(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, long version);
 
 }

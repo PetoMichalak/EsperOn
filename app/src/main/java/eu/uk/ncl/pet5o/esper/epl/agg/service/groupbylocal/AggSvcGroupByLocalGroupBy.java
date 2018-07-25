@@ -10,16 +10,16 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.service.groupbylocal;
 
-import com.espertech.esper.epl.agg.access.AggregationState;
-import com.espertech.esper.epl.agg.aggregator.AggregationMethod;
-import com.espertech.esper.epl.agg.service.common.AggSvcGroupByUtil;
-import com.espertech.esper.epl.agg.service.common.AggregationGroupByRollupLevel;
-import com.espertech.esper.epl.agg.service.common.AggregationMethodPairRow;
-import com.espertech.esper.epl.agg.util.AggregationLocalGroupByColumn;
-import com.espertech.esper.epl.agg.util.AggregationLocalGroupByLevel;
-import com.espertech.esper.epl.agg.util.AggregationLocalGroupByPlan;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationState;
+import eu.uk.ncl.pet5o.esper.epl.agg.aggregator.AggregationMethod;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggSvcGroupByUtil;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationGroupByRollupLevel;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationMethodPairRow;
+import eu.uk.ncl.pet5o.esper.epl.agg.util.AggregationLocalGroupByColumn;
+import eu.uk.ncl.pet5o.esper.epl.agg.util.AggregationLocalGroupByLevel;
+import eu.uk.ncl.pet5o.esper.epl.agg.util.AggregationLocalGroupByPlan;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
 
 /**
  * Implementation for handling aggregation with grouping by group-keys.
@@ -32,7 +32,7 @@ public class AggSvcGroupByLocalGroupBy extends AggSvcGroupLocalGroupByBase {
         super(isJoin, localGroupByPlan);
     }
 
-    protected Object computeGroupKey(AggregationLocalGroupByLevel level, Object groupKey, ExprEvaluator[] partitionEval, com.espertech.esper.client.EventBean[] eventsPerStream, boolean newData, ExprEvaluatorContext exprEvaluatorContext) {
+    protected Object computeGroupKey(AggregationLocalGroupByLevel level, Object groupKey, ExprEvaluator[] partitionEval, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean newData, ExprEvaluatorContext exprEvaluatorContext) {
         if (level.isDefaultLevel()) {
             return groupKey;
         }
@@ -58,7 +58,7 @@ public class AggSvcGroupByLocalGroupBy extends AggSvcGroupLocalGroupByBase {
         }
     }
 
-    public Object getValue(int column, int agentInstanceId, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public Object getValue(int column, int agentInstanceId, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         AggregationLocalGroupByColumn col = localGroupByPlan.getColumns()[column];
         if (col.isDefaultGroupLevel()) {
             if (col.isMethodAgg()) {

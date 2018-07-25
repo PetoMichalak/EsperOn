@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.factory;
 
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.epl.agg.service.common.AggregationServiceTable;
-import com.espertech.esper.epl.table.mgmt.TableMetadata;
-import com.espertech.esper.epl.table.mgmt.TableStateInstance;
-import com.espertech.esper.epl.table.mgmt.TableStateViewablePublic;
-import com.espertech.esper.util.CollectionUtil;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationServiceTable;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadata;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableStateInstance;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableStateViewablePublic;
+import eu.uk.ncl.pet5o.esper.util.CollectionUtil;
 
 public class StatementAgentInstanceFactoryCreateTable implements StatementAgentInstanceFactory {
     private final TableMetadata tableMetadata;

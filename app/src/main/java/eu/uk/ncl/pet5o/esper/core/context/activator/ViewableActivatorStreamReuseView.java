@@ -10,16 +10,16 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.activator;
 
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.core.service.EPServicesContext;
-import com.espertech.esper.core.service.ExprEvaluatorContextStatement;
-import com.espertech.esper.core.service.StatementAgentInstanceLock;
-import com.espertech.esper.core.service.StatementContext;
-import com.espertech.esper.core.service.speccompiled.StatementSpecCompiled;
-import com.espertech.esper.epl.spec.FilterStreamSpecCompiled;
-import com.espertech.esper.util.StopCallback;
-import com.espertech.esper.view.EventStream;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.core.service.EPServicesContext;
+import eu.uk.ncl.pet5o.esper.core.service.ExprEvaluatorContextStatement;
+import eu.uk.ncl.pet5o.esper.core.service.StatementAgentInstanceLock;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.core.service.speccompiled.StatementSpecCompiled;
+import eu.uk.ncl.pet5o.esper.epl.spec.FilterStreamSpecCompiled;
+import eu.uk.ncl.pet5o.esper.util.StopCallback;
+import eu.uk.ncl.pet5o.esper.view.EventStream;
 
 public class ViewableActivatorStreamReuseView implements ViewableActivator, StopCallback {
 

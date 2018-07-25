@@ -10,37 +10,37 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.resultset.rowpergroup;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.codegen.base.CodegenBlock;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMember;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.core.CodegenInstanceAux;
-import com.espertech.esper.codegen.core.CodegenNamedParam;
-import com.espertech.esper.collection.ArrayEventIterator;
-import com.espertech.esper.collection.MultiKey;
-import com.espertech.esper.collection.MultiKeyUntyped;
-import com.espertech.esper.collection.UniformPair;
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.epl.agg.service.common.AggregationService;
-import com.espertech.esper.epl.core.orderby.OrderByProcessor;
-import com.espertech.esper.epl.core.resultset.core.ResultSetProcessorHelperFactory;
-import com.espertech.esper.epl.core.resultset.core.ResultSetProcessorOutputConditionType;
-import com.espertech.esper.epl.core.resultset.core.ResultSetProcessorOutputHelperVisitor;
-import com.espertech.esper.epl.core.resultset.core.ResultSetProcessorUtil;
-import com.espertech.esper.epl.core.resultset.grouped.ResultSetProcessorGroupedOutputAllGroupReps;
-import com.espertech.esper.epl.core.resultset.grouped.ResultSetProcessorGroupedOutputFirstHelper;
-import com.espertech.esper.epl.core.resultset.grouped.ResultSetProcessorGroupedUtil;
-import com.espertech.esper.epl.core.select.SelectExprProcessor;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.core.ExprForge;
-import com.espertech.esper.epl.spec.OutputLimitLimitType;
-import com.espertech.esper.epl.view.OutputConditionPolled;
-import com.espertech.esper.epl.view.OutputConditionPolledFactory;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
-import com.espertech.esper.view.Viewable;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenBlock;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMember;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.core.CodegenInstanceAux;
+import eu.uk.ncl.pet5o.esper.codegen.core.CodegenNamedParam;
+import eu.uk.ncl.pet5o.esper.collection.ArrayEventIterator;
+import eu.uk.ncl.pet5o.esper.collection.MultiKey;
+import eu.uk.ncl.pet5o.esper.collection.MultiKeyUntyped;
+import eu.uk.ncl.pet5o.esper.collection.UniformPair;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationService;
+import eu.uk.ncl.pet5o.esper.epl.core.orderby.OrderByProcessor;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessorHelperFactory;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessorOutputConditionType;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessorOutputHelperVisitor;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessorUtil;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.grouped.ResultSetProcessorGroupedOutputAllGroupReps;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.grouped.ResultSetProcessorGroupedOutputFirstHelper;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.grouped.ResultSetProcessorGroupedUtil;
+import eu.uk.ncl.pet5o.esper.epl.core.select.SelectExprProcessor;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprForge;
+import eu.uk.ncl.pet5o.esper.epl.spec.OutputLimitLimitType;
+import eu.uk.ncl.pet5o.esper.epl.view.OutputConditionPolled;
+import eu.uk.ncl.pet5o.esper.epl.view.OutputConditionPolledFactory;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.view.Viewable;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -55,61 +55,61 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.function.Consumer;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.and;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.arrayAtIndex;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.arrayLength;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.cast;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantFalse;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantTrue;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.equalsIdentity;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.equalsNull;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethodChain;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.member;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.newArrayByLength;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.newArrayWithInit;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.newInstance;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.not;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.notEqualsNull;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.or;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.staticMethod;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.*;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.NAME_AGENTINSTANCECONTEXT;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.NAME_ISNEWDATA;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.NAME_ISSYNTHESIZE;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.NAME_NEWDATA;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.NAME_OLDDATA;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.NAME_VIEWABLE;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_AGENTINSTANCECONTEXT;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_AGGREGATIONSVC;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_ISNEWDATA;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_ISSYNTHESIZE;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_JOINEVENTSSET;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_JOINSET;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_NEWDATA;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_OLDDATA;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_ORDERBYPROCESSOR;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_RESULTSETVISITOR;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_SELECTEXPRPROCESSOR;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_VIEWABLE;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_VIEWEVENTSLIST;
-import static com.espertech.esper.epl.core.resultset.core.ResultSetProcessorUtil.*;
-import static com.espertech.esper.epl.core.resultset.core.ResultSetProcessorUtil.METHOD_ITERATORTODEQUE;
-import static com.espertech.esper.epl.core.resultset.core.ResultSetProcessorUtil.METHOD_ORDEROUTGOINGGETITERATOR;
-import static com.espertech.esper.epl.core.resultset.core.ResultSetProcessorUtil.METHOD_TOPAIRNULLIFALLNULL;
-import static com.espertech.esper.epl.core.resultset.grouped.ResultSetProcessorGroupedUtil.*;
-import static com.espertech.esper.epl.core.resultset.grouped.ResultSetProcessorGroupedUtil.METHOD_APPLYAGGJOINRESULTKEYEDJOIN;
-import static com.espertech.esper.epl.core.resultset.grouped.ResultSetProcessorGroupedUtil.METHOD_APPLYAGGVIEWRESULTKEYEDVIEW;
-import static com.espertech.esper.epl.core.resultset.grouped.ResultSetProcessorGroupedUtil.generateGroupKeyArrayJoinCodegen;
-import static com.espertech.esper.epl.core.resultset.grouped.ResultSetProcessorGroupedUtil.generateGroupKeyArrayViewCodegen;
-import static com.espertech.esper.epl.core.resultset.grouped.ResultSetProcessorGroupedUtil.generateGroupKeySingleCodegen;
-import static com.espertech.esper.epl.enummethod.codegen.EnumForgeCodegenNames.REF_EPS;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.NAME_EPS;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.and;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.arrayAtIndex;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.arrayLength;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.cast;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantFalse;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantTrue;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.equalsIdentity;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.equalsNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethodChain;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.member;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.newArrayByLength;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.newArrayWithInit;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.newInstance;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.not;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.notEqualsNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.or;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.staticMethod;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.*;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.NAME_AGENTINSTANCECONTEXT;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.NAME_ISNEWDATA;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.NAME_ISSYNTHESIZE;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.NAME_NEWDATA;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.NAME_OLDDATA;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.NAME_VIEWABLE;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_AGENTINSTANCECONTEXT;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_AGGREGATIONSVC;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_ISNEWDATA;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_ISSYNTHESIZE;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_JOINEVENTSSET;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_JOINSET;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_NEWDATA;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_OLDDATA;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_ORDERBYPROCESSOR;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_RESULTSETVISITOR;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_SELECTEXPRPROCESSOR;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_VIEWABLE;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.REF_VIEWEVENTSLIST;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessorUtil.*;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessorUtil.METHOD_ITERATORTODEQUE;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessorUtil.METHOD_ORDEROUTGOINGGETITERATOR;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessorUtil.METHOD_TOPAIRNULLIFALLNULL;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.grouped.ResultSetProcessorGroupedUtil.*;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.grouped.ResultSetProcessorGroupedUtil.METHOD_APPLYAGGJOINRESULTKEYEDJOIN;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.grouped.ResultSetProcessorGroupedUtil.METHOD_APPLYAGGVIEWRESULTKEYEDVIEW;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.grouped.ResultSetProcessorGroupedUtil.generateGroupKeyArrayJoinCodegen;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.grouped.ResultSetProcessorGroupedUtil.generateGroupKeyArrayViewCodegen;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.grouped.ResultSetProcessorGroupedUtil.generateGroupKeySingleCodegen;
+import static eu.uk.ncl.pet5o.esper.epl.enummethod.codegen.EnumForgeCodegenNames.REF_EPS;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.NAME_EPS;
 
 /**
  * Result set processor for the fully-grouped case:
@@ -170,11 +170,11 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         return prototype.getResultEventType();
     }
 
-    public void applyViewResult(com.espertech.esper.client.EventBean[] newData, com.espertech.esper.client.EventBean[] oldData) {
-        com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[1];
+    public void applyViewResult(eu.uk.ncl.pet5o.esper.client.EventBean[] newData, eu.uk.ncl.pet5o.esper.client.EventBean[] oldData) {
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
         if (newData != null) {
             // apply new data to aggregates
-            for (com.espertech.esper.client.EventBean aNewData : newData) {
+            for (eu.uk.ncl.pet5o.esper.client.EventBean aNewData : newData) {
                 eventsPerStream[0] = aNewData;
                 Object mk = generateGroupKeySingle(eventsPerStream, true);
                 aggregationService.applyEnter(eventsPerStream, mk, agentInstanceContext);
@@ -182,7 +182,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         }
         if (oldData != null) {
             // apply old data to aggregates
-            for (com.espertech.esper.client.EventBean anOldData : oldData) {
+            for (eu.uk.ncl.pet5o.esper.client.EventBean anOldData : oldData) {
                 eventsPerStream[0] = anOldData;
                 Object mk = generateGroupKeySingle(eventsPerStream, false);
                 aggregationService.applyLeave(eventsPerStream, mk, agentInstanceContext);
@@ -193,16 +193,16 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
     public static void applyViewResultCodegen(ResultSetProcessorRowPerGroupForge forge, CodegenClassScope classScope, CodegenMethodNode method, CodegenInstanceAux instance) {
         CodegenMethodNode generateGroupKeySingle = generateGroupKeySingleCodegen(forge.getGroupKeyNodeExpressions(), classScope, instance);
 
-        method.getBlock().declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStream", newArrayByLength(com.espertech.esper.client.EventBean.class, constant(1)))
+        method.getBlock().declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStream", newArrayByLength(eu.uk.ncl.pet5o.esper.client.EventBean.class, constant(1)))
                 .ifCondition(notEqualsNull(REF_NEWDATA))
-                .forEach(com.espertech.esper.client.EventBean.class, "aNewData", REF_NEWDATA)
+                .forEach(eu.uk.ncl.pet5o.esper.client.EventBean.class, "aNewData", REF_NEWDATA)
                 .assignArrayElement("eventsPerStream", constant(0), ref("aNewData"))
                 .declareVar(Object.class, "mk", localMethod(generateGroupKeySingle, ref("eventsPerStream"), constantTrue()))
                 .exprDotMethod(REF_AGGREGATIONSVC, "applyEnter", ref("eventsPerStream"), ref("mk"), REF_AGENTINSTANCECONTEXT)
                 .blockEnd()
                 .blockEnd()
                 .ifCondition(notEqualsNull(REF_OLDDATA))
-                .forEach(com.espertech.esper.client.EventBean.class, "anOldData", REF_OLDDATA)
+                .forEach(eu.uk.ncl.pet5o.esper.client.EventBean.class, "anOldData", REF_OLDDATA)
                 .assignArrayElement("eventsPerStream", constant(0), ref("anOldData"))
                 .declareVar(Object.class, "mk", localMethod(generateGroupKeySingle, ref("eventsPerStream"), constantFalse()))
                 .exprDotMethod(REF_AGGREGATIONSVC, "applyLeave", ref("eventsPerStream"), ref("mk"), REF_AGENTINSTANCECONTEXT)
@@ -213,16 +213,16 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
     public void applyJoinResult(Set<MultiKey<EventBean>> newEvents, Set<MultiKey<EventBean>> oldEvents) {
         if (!newEvents.isEmpty()) {
             // apply old data to aggregates
-            for (MultiKey<com.espertech.esper.client.EventBean> aNewEvent : newEvents) {
-                com.espertech.esper.client.EventBean[] eventsPerStream = aNewEvent.getArray();
+            for (MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> aNewEvent : newEvents) {
+                eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = aNewEvent.getArray();
                 Object mk = generateGroupKeySingle(eventsPerStream, true);
                 aggregationService.applyEnter(eventsPerStream, mk, agentInstanceContext);
             }
         }
         if (oldEvents != null && !oldEvents.isEmpty()) {
             // apply old data to aggregates
-            for (MultiKey<com.espertech.esper.client.EventBean> anOldEvent : oldEvents) {
-                com.espertech.esper.client.EventBean[] eventsPerStream = anOldEvent.getArray();
+            for (MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> anOldEvent : oldEvents) {
+                eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = anOldEvent.getArray();
                 Object mk = generateGroupKeySingle(eventsPerStream, false);
                 aggregationService.applyLeave(eventsPerStream, mk, agentInstanceContext);
             }
@@ -235,21 +235,21 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         method.getBlock()
                 .ifCondition(not(exprDotMethod(REF_NEWDATA, "isEmpty")))
                 .forEach(MultiKey.class, "aNewEvent", REF_NEWDATA)
-                .declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStream", cast(com.espertech.esper.client.EventBean[].class, exprDotMethod(ref("aNewEvent"), "getArray")))
+                .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStream", cast(eu.uk.ncl.pet5o.esper.client.EventBean[].class, exprDotMethod(ref("aNewEvent"), "getArray")))
                 .declareVar(Object.class, "mk", localMethod(generateGroupKeySingle, ref("eventsPerStream"), constantTrue()))
                 .exprDotMethod(REF_AGGREGATIONSVC, "applyEnter", ref("eventsPerStream"), ref("mk"), REF_AGENTINSTANCECONTEXT)
                 .blockEnd()
                 .blockEnd()
                 .ifCondition(and(notEqualsNull(REF_OLDDATA), not(exprDotMethod(REF_OLDDATA, "isEmpty"))))
                 .forEach(MultiKey.class, "anOldEvent", REF_OLDDATA)
-                .declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStream", cast(com.espertech.esper.client.EventBean[].class, exprDotMethod(ref("anOldEvent"), "getArray")))
+                .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStream", cast(eu.uk.ncl.pet5o.esper.client.EventBean[].class, exprDotMethod(ref("anOldEvent"), "getArray")))
                 .declareVar(Object.class, "mk", localMethod(generateGroupKeySingle, ref("eventsPerStream"), constantFalse()))
                 .exprDotMethod(REF_AGGREGATIONSVC, "applyLeave", ref("eventsPerStream"), ref("mk"), REF_AGENTINSTANCECONTEXT)
                 .blockEnd()
                 .blockEnd();
     }
 
-    public UniformPair<com.espertech.esper.client.EventBean[]> processJoinResult(Set<MultiKey<EventBean>> newEvents, Set<MultiKey<EventBean>> oldEvents, boolean isSynthesize) {
+    public UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> processJoinResult(Set<MultiKey<EventBean>> newEvents, Set<MultiKey<EventBean>> oldEvents, boolean isSynthesize) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qResultSetProcessGroupedRowPerGroup();
         }
@@ -263,7 +263,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         }
 
         // generate old events
-        com.espertech.esper.client.EventBean[] selectOldEvents = null;
+        eu.uk.ncl.pet5o.esper.client.EventBean[] selectOldEvents = null;
         if (prototype.isSelectRStream()) {
             selectOldEvents = generateOutputEventsJoin(keysAndEvents, false, isSynthesize);
         }
@@ -271,7 +271,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         ResultSetProcessorGroupedUtil.applyAggJoinResultKeyedJoin(aggregationService, agentInstanceContext, newEvents, newDataMultiKey, oldEvents, oldDataMultiKey);
 
         // generate new events using select expressions
-        com.espertech.esper.client.EventBean[] selectNewEvents = generateOutputEventsJoin(keysAndEvents, true, isSynthesize);
+        eu.uk.ncl.pet5o.esper.client.EventBean[] selectNewEvents = generateOutputEventsJoin(keysAndEvents, true, isSynthesize);
 
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().aResultSetProcessGroupedRowPerGroup(selectNewEvents, selectOldEvents);
@@ -291,27 +291,27 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
             method.getBlock().exprDotMethod(ref("this"), "clear");
         }
 
-        method.getBlock().declareVar(com.espertech.esper.client.EventBean[].class, "selectOldEvents", forge.isSelectRStream() ? localMethod(generateOutputEventsJoin, ref("keysAndEvents"), constantFalse(), REF_ISSYNTHESIZE) : constantNull())
+        method.getBlock().declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "selectOldEvents", forge.isSelectRStream() ? localMethod(generateOutputEventsJoin, ref("keysAndEvents"), constantFalse(), REF_ISSYNTHESIZE) : constantNull())
                 .staticMethod(ResultSetProcessorGroupedUtil.class, METHOD_APPLYAGGJOINRESULTKEYEDJOIN, REF_AGGREGATIONSVC, REF_AGENTINSTANCECONTEXT, REF_NEWDATA, ref("newDataMultiKey"), REF_OLDDATA, ref("oldDataMultiKey"))
-                .declareVar(com.espertech.esper.client.EventBean[].class, "selectNewEvents", localMethod(generateOutputEventsJoin, ref("keysAndEvents"), constantTrue(), REF_ISSYNTHESIZE))
+                .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "selectNewEvents", localMethod(generateOutputEventsJoin, ref("keysAndEvents"), constantTrue(), REF_ISSYNTHESIZE))
                 .methodReturn(staticMethod(ResultSetProcessorUtil.class, METHOD_TOPAIRNULLIFALLNULL, ref("selectNewEvents"), ref("selectOldEvents")));
     }
 
-    public UniformPair<com.espertech.esper.client.EventBean[]> processViewResult(com.espertech.esper.client.EventBean[] newData, com.espertech.esper.client.EventBean[] oldData, boolean isSynthesize) {
+    public UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> processViewResult(eu.uk.ncl.pet5o.esper.client.EventBean[] newData, eu.uk.ncl.pet5o.esper.client.EventBean[] oldData, boolean isSynthesize) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qResultSetProcessGroupedRowPerGroup();
         }
 
         if (newData != null && newData.length == 1) {
             if (oldData == null || oldData.length == 0) {
-                UniformPair<com.espertech.esper.client.EventBean[]> pair = processViewResultNewDepthOne(newData, isSynthesize);
+                UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> pair = processViewResultNewDepthOne(newData, isSynthesize);
                 if (InstrumentationHelper.ENABLED) {
                     InstrumentationHelper.get().aResultSetProcessGroupedRowPerGroup(pair);
                 }
                 return pair;
             }
             if (oldData.length == 1 && !prototype.isSelectRStream()) {
-                UniformPair<com.espertech.esper.client.EventBean[]> pair = processViewResultPairDepthOneNoRStream(newData, oldData, isSynthesize);
+                UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> pair = processViewResultPairDepthOneNoRStream(newData, oldData, isSynthesize);
                 if (InstrumentationHelper.ENABLED) {
                     InstrumentationHelper.get().aResultSetProcessGroupedRowPerGroup(pair);
                 }
@@ -320,12 +320,12 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         }
 
         Map<Object, EventBean> keysAndEvents = new HashMap<>();
-        com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[1];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
 
         Object[] newDataMultiKey = generateGroupKeysKeepEvent(newData, keysAndEvents, true, eventsPerStream);
         Object[] oldDataMultiKey = generateGroupKeysKeepEvent(oldData, keysAndEvents, false, eventsPerStream);
 
-        com.espertech.esper.client.EventBean[] selectOldEvents = null;
+        eu.uk.ncl.pet5o.esper.client.EventBean[] selectOldEvents = null;
         if (prototype.isSelectRStream()) {
             selectOldEvents = generateOutputEventsView(keysAndEvents, false, isSynthesize, eventsPerStream);
         }
@@ -333,7 +333,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         ResultSetProcessorGroupedUtil.applyAggViewResultKeyedView(aggregationService, agentInstanceContext, newData, newDataMultiKey, oldData, oldDataMultiKey, eventsPerStream);
 
         // generate new events using select expressions
-        com.espertech.esper.client.EventBean[] selectNewEvents = generateOutputEventsView(keysAndEvents, true, isSynthesize, eventsPerStream);
+        eu.uk.ncl.pet5o.esper.client.EventBean[] selectNewEvents = generateOutputEventsView(keysAndEvents, true, isSynthesize, eventsPerStream);
 
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().aResultSetProcessGroupedRowPerGroup(selectNewEvents, selectOldEvents);
@@ -356,22 +356,22 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
                     .blockReturn(localMethod(processViewResultPairDepthOneNoRStream, REF_NEWDATA, REF_OLDDATA, REF_ISSYNTHESIZE));
         }
         method.getBlock().declareVar(Map.class, "keysAndEvents", newInstance(HashMap.class))
-                .declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStream", newArrayByLength(com.espertech.esper.client.EventBean.class, constant(1)))
+                .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStream", newArrayByLength(eu.uk.ncl.pet5o.esper.client.EventBean.class, constant(1)))
                 .declareVar(Object[].class, "newDataMultiKey", localMethod(generateGroupKeysKeepEvent, REF_NEWDATA, ref("keysAndEvents"), constantTrue(), ref("eventsPerStream")))
                 .declareVar(Object[].class, "oldDataMultiKey", localMethod(generateGroupKeysKeepEvent, REF_OLDDATA, ref("keysAndEvents"), constantFalse(), ref("eventsPerStream")))
-                .declareVar(com.espertech.esper.client.EventBean[].class, "selectOldEvents", forge.isSelectRStream() ? localMethod(generateOutputEventsView, ref("keysAndEvents"), constantFalse(), REF_ISSYNTHESIZE, ref("eventsPerStream")) : constantNull())
+                .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "selectOldEvents", forge.isSelectRStream() ? localMethod(generateOutputEventsView, ref("keysAndEvents"), constantFalse(), REF_ISSYNTHESIZE, ref("eventsPerStream")) : constantNull())
                 .staticMethod(ResultSetProcessorGroupedUtil.class, METHOD_APPLYAGGVIEWRESULTKEYEDVIEW, REF_AGGREGATIONSVC, REF_AGENTINSTANCECONTEXT, REF_NEWDATA, ref("newDataMultiKey"), REF_OLDDATA, ref("oldDataMultiKey"), ref("eventsPerStream"))
-                .declareVar(com.espertech.esper.client.EventBean[].class, "selectNewEvents", localMethod(generateOutputEventsView, ref("keysAndEvents"), constantTrue(), REF_ISSYNTHESIZE, ref("eventsPerStream")))
+                .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "selectNewEvents", localMethod(generateOutputEventsView, ref("keysAndEvents"), constantTrue(), REF_ISSYNTHESIZE, ref("eventsPerStream")))
                 .methodReturn(staticMethod(ResultSetProcessorUtil.class, METHOD_TOPAIRNULLIFALLNULL, ref("selectNewEvents"), ref("selectOldEvents")));
     }
 
-    com.espertech.esper.client.EventBean[] generateOutputEventsView(Map<Object, EventBean> keysAndEvents, boolean isNewData, boolean isSynthesize, com.espertech.esper.client.EventBean[] eventsPerStream) {
-        com.espertech.esper.client.EventBean[] events = new com.espertech.esper.client.EventBean[keysAndEvents.size()];
+    eu.uk.ncl.pet5o.esper.client.EventBean[] generateOutputEventsView(Map<Object, EventBean> keysAndEvents, boolean isNewData, boolean isSynthesize, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream) {
+        eu.uk.ncl.pet5o.esper.client.EventBean[] events = new eu.uk.ncl.pet5o.esper.client.EventBean[keysAndEvents.size()];
         Object[] keys = new Object[keysAndEvents.size()];
 
-        com.espertech.esper.client.EventBean[][] currentGenerators = null;
+        eu.uk.ncl.pet5o.esper.client.EventBean[][] currentGenerators = null;
         if (prototype.isSorting()) {
-            currentGenerators = new com.espertech.esper.client.EventBean[keysAndEvents.size()][];
+            currentGenerators = new eu.uk.ncl.pet5o.esper.client.EventBean[keysAndEvents.size()][];
         }
 
         int count = 0;
@@ -394,7 +394,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
             events[count] = selectExprProcessor.process(eventsPerStream, isNewData, isSynthesize, agentInstanceContext);
             keys[count] = entry.getKey();
             if (prototype.isSorting()) {
-                currentGenerators[count] = new com.espertech.esper.client.EventBean[]{entry.getValue()};
+                currentGenerators[count] = new eu.uk.ncl.pet5o.esper.client.EventBean[]{entry.getValue()};
             }
 
             count++;
@@ -405,11 +405,11 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
 
     static CodegenMethodNode generateOutputEventsViewCodegen(ResultSetProcessorRowPerGroupForge forge, CodegenClassScope classScope, CodegenInstanceAux instance) {
         Consumer<CodegenMethodNode> code = methodNode -> {
-            methodNode.getBlock().declareVar(com.espertech.esper.client.EventBean[].class, "events", newArrayByLength(com.espertech.esper.client.EventBean.class, exprDotMethod(ref("keysAndEvents"), "size")))
+            methodNode.getBlock().declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "events", newArrayByLength(eu.uk.ncl.pet5o.esper.client.EventBean.class, exprDotMethod(ref("keysAndEvents"), "size")))
                     .declareVar(Object[].class, "keys", newArrayByLength(Object.class, exprDotMethod(ref("keysAndEvents"), "size")));
 
             if (forge.isSorting()) {
-                methodNode.getBlock().declareVar(com.espertech.esper.client.EventBean[][].class, "currentGenerators", newArrayByLength(com.espertech.esper.client.EventBean[].class, exprDotMethod(ref("keysAndEvents"), "size")));
+                methodNode.getBlock().declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[][].class, "currentGenerators", newArrayByLength(eu.uk.ncl.pet5o.esper.client.EventBean[].class, exprDotMethod(ref("keysAndEvents"), "size")));
             }
 
             methodNode.getBlock().declareVar(int.class, "count", constant(0))
@@ -418,7 +418,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
             {
                 CodegenBlock forEach = methodNode.getBlock().forEach(Map.Entry.class, "entry", exprDotMethod(ref("keysAndEvents"), "entrySet"));
                 forEach.exprDotMethod(REF_AGGREGATIONSVC, "setCurrentAccess", exprDotMethod(ref("entry"), "getKey"), ref("cpid"), constantNull())
-                        .assignArrayElement(REF_EPS, constant(0), cast(com.espertech.esper.client.EventBean.class, exprDotMethod(ref("entry"), "getValue")));
+                        .assignArrayElement(REF_EPS, constant(0), cast(eu.uk.ncl.pet5o.esper.client.EventBean.class, exprDotMethod(ref("entry"), "getValue")));
 
                 if (forge.getOptionalHavingNode() != null) {
                     forEach.ifCondition(not(localMethod(instance.getMethods().getMethod("evaluateHavingClause"), REF_EPS, REF_ISNEWDATA, REF_AGENTINSTANCECONTEXT))).blockContinue();
@@ -428,7 +428,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
                         .assignArrayElement("keys", ref("count"), exprDotMethod(ref("entry"), "getKey"));
 
                 if (forge.isSorting()) {
-                    forEach.assignArrayElement("currentGenerators", ref("count"), newArrayWithInit(com.espertech.esper.client.EventBean.class, cast(com.espertech.esper.client.EventBean.class, exprDotMethod(ref("entry"), "getValue"))));
+                    forEach.assignArrayElement("currentGenerators", ref("count"), newArrayWithInit(eu.uk.ncl.pet5o.esper.client.EventBean.class, cast(eu.uk.ncl.pet5o.esper.client.EventBean.class, exprDotMethod(ref("entry"), "getValue"))));
                 }
 
                 forEach.increment("count")
@@ -438,13 +438,13 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
             ResultSetProcessorUtil.outputFromCountMaySortCodegen(methodNode.getBlock(), ref("count"), ref("events"), ref("keys"), ref("currentGenerators"), forge.isSorting());
         };
 
-        return instance.getMethods().addMethod(com.espertech.esper.client.EventBean[].class, "generateOutputEventsView",
-                CodegenNamedParam.from(Map.class, "keysAndEvents", boolean.class, NAME_ISNEWDATA, boolean.class, NAME_ISSYNTHESIZE, com.espertech.esper.client.EventBean[].class, NAME_EPS),
+        return instance.getMethods().addMethod(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "generateOutputEventsView",
+                CodegenNamedParam.from(Map.class, "keysAndEvents", boolean.class, NAME_ISNEWDATA, boolean.class, NAME_ISSYNTHESIZE, eu.uk.ncl.pet5o.esper.client.EventBean[].class, NAME_EPS),
                 ResultSetProcessorRowPerGroupImpl.class, classScope, code);
     }
 
     private void generateOutputBatchedRowFromMap(Map<Object, EventBean> keysAndEvents, boolean isNewData, boolean isSynthesize, List<EventBean> resultEvents, List<Object> optSortKeys, AgentInstanceContext agentInstanceContext) {
-        com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[1];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
 
         for (Map.Entry<Object, EventBean> entry : keysAndEvents.entrySet()) {
             // Set the current row of aggregation states
@@ -471,11 +471,11 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
     static CodegenMethodNode generateOutputBatchedRowFromMapCodegen(ResultSetProcessorRowPerGroupForge forge, CodegenClassScope classScope, CodegenInstanceAux instance) {
 
         Consumer<CodegenMethodNode> code = method -> {
-            method.getBlock().declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStream", newArrayByLength(com.espertech.esper.client.EventBean.class, constant(1)));
+            method.getBlock().declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStream", newArrayByLength(eu.uk.ncl.pet5o.esper.client.EventBean.class, constant(1)));
             {
                 CodegenBlock forLoop = method.getBlock().forEach(Map.Entry.class, "entry", exprDotMethod(ref("keysAndEvents"), "entrySet"));
                 forLoop.exprDotMethod(REF_AGGREGATIONSVC, "setCurrentAccess", exprDotMethod(ref("entry"), "getKey"), exprDotMethod(REF_AGENTINSTANCECONTEXT, "getAgentInstanceId"), constantNull())
-                        .assignArrayElement("eventsPerStream", constant(0), cast(com.espertech.esper.client.EventBean.class, exprDotMethod(ref("entry"), "getValue")));
+                        .assignArrayElement("eventsPerStream", constant(0), cast(eu.uk.ncl.pet5o.esper.client.EventBean.class, exprDotMethod(ref("entry"), "getValue")));
 
                 if (forge.getOptionalHavingNode() != null) {
                     forLoop.ifCondition(not(localMethod(instance.getMethods().getMethod("evaluateHavingClause"), ref("eventsPerStream"), REF_ISNEWDATA, REF_AGENTINSTANCECONTEXT))).blockContinue();
@@ -505,13 +505,13 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
 
         Consumer<CodegenMethodNode> code = method -> method.getBlock().whileLoop(exprDotMethod(ref("keysAndEvents"), "hasNext"))
                 .declareVar(Map.Entry.class, "entry", cast(Map.Entry.class, exprDotMethod(ref("keysAndEvents"), "next")))
-                .localMethod(generateOutputBatchedRowAddToList, ref("join"), exprDotMethod(ref("entry"), "getKey"), cast(com.espertech.esper.client.EventBean[].class, exprDotMethod(ref("entry"), "getValue")), REF_ISNEWDATA, REF_ISSYNTHESIZE, ref("resultEvents"), ref("optSortKeys"));
+                .localMethod(generateOutputBatchedRowAddToList, ref("join"), exprDotMethod(ref("entry"), "getKey"), cast(eu.uk.ncl.pet5o.esper.client.EventBean[].class, exprDotMethod(ref("entry"), "getValue")), REF_ISNEWDATA, REF_ISSYNTHESIZE, ref("resultEvents"), ref("optSortKeys"));
 
         return instance.getMethods().addMethod(void.class, "generateOutputBatchedArrFromIterator",
                 CodegenNamedParam.from(boolean.class, "join", Iterator.class, "keysAndEvents", boolean.class, NAME_ISNEWDATA, boolean.class, NAME_ISSYNTHESIZE, List.class, "resultEvents", List.class, "optSortKeys"), ResultSetProcessorRowPerGroupImpl.class, classScope, code);
     }
 
-    private void generateOutputBatchedRowAddToList(boolean join, Object mk, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, boolean isSynthesize, List<EventBean> resultEvents, List<Object> optSortKeys) {
+    private void generateOutputBatchedRowAddToList(boolean join, Object mk, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, boolean isSynthesize, List<EventBean> resultEvents, List<Object> optSortKeys) {
         // Set the current row of aggregation states
         aggregationService.setCurrentAccess(mk, agentInstanceContext.getAgentInstanceId(), null);
 
@@ -547,10 +547,10 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         };
 
         return instance.getMethods().addMethod(void.class, "generateOutputBatchedRowAddToList",
-                CodegenNamedParam.from(boolean.class, "join", Object.class, "mk", com.espertech.esper.client.EventBean[].class, NAME_EPS, boolean.class, NAME_ISNEWDATA, boolean.class, NAME_ISSYNTHESIZE, List.class, "resultEvents", List.class, "optSortKeys"), ResultSetProcessorRowPerGroupImpl.class, classScope, code);
+                CodegenNamedParam.from(boolean.class, "join", Object.class, "mk", eu.uk.ncl.pet5o.esper.client.EventBean[].class, NAME_EPS, boolean.class, NAME_ISNEWDATA, boolean.class, NAME_ISSYNTHESIZE, List.class, "resultEvents", List.class, "optSortKeys"), ResultSetProcessorRowPerGroupImpl.class, classScope, code);
     }
 
-    public com.espertech.esper.client.EventBean generateOutputBatchedNoSortWMap(boolean join, Object mk, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, boolean isSynthesize) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean generateOutputBatchedNoSortWMap(boolean join, Object mk, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, boolean isSynthesize) {
         // Set the current row of aggregation states
         aggregationService.setCurrentAccess(mk, agentInstanceContext.getAgentInstanceId(), null);
 
@@ -576,25 +576,25 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
             methodNode.getBlock().methodReturn(exprDotMethod(REF_SELECTEXPRPROCESSOR, "process", REF_EPS, REF_ISNEWDATA, REF_ISSYNTHESIZE, REF_AGENTINSTANCECONTEXT));
         };
 
-        return instance.getMethods().addMethod(com.espertech.esper.client.EventBean.class, "generateOutputBatchedNoSortWMap",
-                CodegenNamedParam.from(boolean.class, "join", Object.class, "mk", com.espertech.esper.client.EventBean[].class, NAME_EPS, boolean.class, NAME_ISNEWDATA, boolean.class, NAME_ISSYNTHESIZE),
+        return instance.getMethods().addMethod(eu.uk.ncl.pet5o.esper.client.EventBean.class, "generateOutputBatchedNoSortWMap",
+                CodegenNamedParam.from(boolean.class, "join", Object.class, "mk", eu.uk.ncl.pet5o.esper.client.EventBean[].class, NAME_EPS, boolean.class, NAME_ISNEWDATA, boolean.class, NAME_ISSYNTHESIZE),
                 ResultSetProcessorRowPerGroupImpl.class, classScope, code);
     }
 
 
-    private com.espertech.esper.client.EventBean[] generateOutputEventsJoin(Map<Object, EventBean[]> keysAndEvents, boolean isNewData, boolean isSynthesize) {
-        com.espertech.esper.client.EventBean[] events = new com.espertech.esper.client.EventBean[keysAndEvents.size()];
+    private eu.uk.ncl.pet5o.esper.client.EventBean[] generateOutputEventsJoin(Map<Object, EventBean[]> keysAndEvents, boolean isNewData, boolean isSynthesize) {
+        eu.uk.ncl.pet5o.esper.client.EventBean[] events = new eu.uk.ncl.pet5o.esper.client.EventBean[keysAndEvents.size()];
         Object[] keys = new Object[keysAndEvents.size()];
-        com.espertech.esper.client.EventBean[][] currentGenerators = null;
+        eu.uk.ncl.pet5o.esper.client.EventBean[][] currentGenerators = null;
         if (prototype.isSorting()) {
-            currentGenerators = new com.espertech.esper.client.EventBean[keysAndEvents.size()][];
+            currentGenerators = new eu.uk.ncl.pet5o.esper.client.EventBean[keysAndEvents.size()][];
         }
 
         int count = 0;
         int cpid = agentInstanceContext.getAgentInstanceId();
         for (Map.Entry<Object, EventBean[]> entry : keysAndEvents.entrySet()) {
             aggregationService.setCurrentAccess(entry.getKey(), cpid, null);
-            com.espertech.esper.client.EventBean[] eventsPerStream = entry.getValue();
+            eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = entry.getValue();
 
             // Filter the having clause
             if (prototype.getOptionalHavingNode() != null) {
@@ -618,11 +618,11 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
 
     private static CodegenMethodNode generateOutputEventsJoinCodegen(ResultSetProcessorRowPerGroupForge forge, CodegenClassScope classScope, CodegenInstanceAux instance) {
         Consumer<CodegenMethodNode> code = methodNode -> {
-            methodNode.getBlock().declareVar(com.espertech.esper.client.EventBean[].class, "events", newArrayByLength(com.espertech.esper.client.EventBean.class, exprDotMethod(ref("keysAndEvents"), "size")))
+            methodNode.getBlock().declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "events", newArrayByLength(eu.uk.ncl.pet5o.esper.client.EventBean.class, exprDotMethod(ref("keysAndEvents"), "size")))
                     .declareVar(Object[].class, "keys", newArrayByLength(Object.class, exprDotMethod(ref("keysAndEvents"), "size")));
 
             if (forge.isSorting()) {
-                methodNode.getBlock().declareVar(com.espertech.esper.client.EventBean[][].class, "currentGenerators", newArrayByLength(com.espertech.esper.client.EventBean[].class, exprDotMethod(ref("keysAndEvents"), "size")));
+                methodNode.getBlock().declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[][].class, "currentGenerators", newArrayByLength(eu.uk.ncl.pet5o.esper.client.EventBean[].class, exprDotMethod(ref("keysAndEvents"), "size")));
             }
 
             methodNode.getBlock().declareVar(int.class, "count", constant(0))
@@ -631,7 +631,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
             {
                 CodegenBlock forEach = methodNode.getBlock().forEach(Map.Entry.class, "entry", exprDotMethod(ref("keysAndEvents"), "entrySet"));
                 forEach.exprDotMethod(REF_AGGREGATIONSVC, "setCurrentAccess", exprDotMethod(ref("entry"), "getKey"), ref("cpid"), constantNull())
-                        .declareVar(com.espertech.esper.client.EventBean[].class, NAME_EPS, cast(com.espertech.esper.client.EventBean[].class, exprDotMethod(ref("entry"), "getValue")));
+                        .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, NAME_EPS, cast(eu.uk.ncl.pet5o.esper.client.EventBean[].class, exprDotMethod(ref("entry"), "getValue")));
 
                 if (forge.getOptionalHavingNode() != null) {
                     forEach.ifCondition(not(localMethod(instance.getMethods().getMethod("evaluateHavingClause"), REF_EPS, REF_ISNEWDATA, REF_AGENTINSTANCECONTEXT))).blockContinue();
@@ -651,17 +651,17 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
             ResultSetProcessorUtil.outputFromCountMaySortCodegen(methodNode.getBlock(), ref("count"), ref("events"), ref("keys"), ref("currentGenerators"), forge.isSorting());
         };
 
-        return instance.getMethods().addMethod(com.espertech.esper.client.EventBean[].class, "generateOutputEventsJoin",
+        return instance.getMethods().addMethod(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "generateOutputEventsJoin",
                 CodegenNamedParam.from(Map.class, "keysAndEvents", boolean.class, NAME_ISNEWDATA, boolean.class, NAME_ISSYNTHESIZE),
                 ResultSetProcessorRowPerGroupImpl.class, classScope, code);
     }
 
-    private Object[] generateGroupKeyArrayView(com.espertech.esper.client.EventBean[] events, boolean isNewData) {
+    private Object[] generateGroupKeyArrayView(eu.uk.ncl.pet5o.esper.client.EventBean[] events, boolean isNewData) {
         if (events == null) {
             return null;
         }
 
-        com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[1];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
         Object[] keys = new Object[events.length];
 
         for (int i = 0; i < events.length; i++) {
@@ -672,7 +672,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         return keys;
     }
 
-    Object[] generateGroupKeysKeepEvent(com.espertech.esper.client.EventBean[] events, Map<Object, EventBean> eventPerKey, boolean isNewData, com.espertech.esper.client.EventBean[] eventsPerStream) {
+    Object[] generateGroupKeysKeepEvent(eu.uk.ncl.pet5o.esper.client.EventBean[] events, Map<Object, EventBean> eventPerKey, boolean isNewData, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream) {
         if (events == null) {
             return null;
         }
@@ -705,7 +705,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         };
 
         return instance.getMethods().addMethod(Object[].class, "generateGroupKeysKeepEvent",
-                CodegenNamedParam.from(com.espertech.esper.client.EventBean[].class, "events", Map.class, "eventPerKey", boolean.class, NAME_ISNEWDATA, com.espertech.esper.client.EventBean[].class, NAME_EPS), ResultSetProcessorRowPerGroupImpl.class, classScope, code);
+                CodegenNamedParam.from(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "events", Map.class, "eventPerKey", boolean.class, NAME_ISNEWDATA, eu.uk.ncl.pet5o.esper.client.EventBean[].class, NAME_EPS), ResultSetProcessorRowPerGroupImpl.class, classScope, code);
     }
 
     private Object[] generateGroupKeyArrayJoinTakingMap(Set<MultiKey<EventBean>> resultSet, Map<Object, EventBean[]> eventPerKey, boolean isNewData) {
@@ -716,7 +716,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         Object[] keys = new Object[resultSet.size()];
 
         int count = 0;
-        for (MultiKey<com.espertech.esper.client.EventBean> eventsPerStream : resultSet) {
+        for (MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> eventsPerStream : resultSet) {
             keys[count] = generateGroupKeySingle(eventsPerStream.getArray(), isNewData);
             eventPerKey.put(keys[count], eventsPerStream.getArray());
 
@@ -735,7 +735,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
                     .declareVar(int.class, "count", constant(0));
             {
                 methodNode.getBlock().forEach(MultiKey.class, "eventsPerStream", ref("resultSet"))
-                        .declareVar(com.espertech.esper.client.EventBean[].class, "eps", cast(com.espertech.esper.client.EventBean[].class, exprDotMethod(ref("eventsPerStream"), "getArray")))
+                        .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eps", cast(eu.uk.ncl.pet5o.esper.client.EventBean[].class, exprDotMethod(ref("eventsPerStream"), "getArray")))
                         .assignArrayElement("keys", ref("count"), localMethod(key, ref("eps"), REF_ISNEWDATA))
                         .exprDotMethod(ref("eventPerKey"), "put", arrayAtIndex(ref("keys"), ref("count")), ref("eps"))
                         .increment("count")
@@ -773,7 +773,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
 
         aggregationService.clearResults(agentInstanceContext);
         Iterator<EventBean> it = parent.iterator();
-        com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[1];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
         while (it.hasNext()) {
             eventsPerStream[0] = it.next();
             Object groupKey = generateGroupKeySingle(eventsPerStream, true);
@@ -795,11 +795,11 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
 
         method.getBlock().exprDotMethod(REF_AGGREGATIONSVC, "clearResults", REF_AGENTINSTANCECONTEXT)
                 .declareVar(Iterator.class, "it", exprDotMethod(REF_VIEWABLE, "iterator"))
-                .declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStream", newArrayByLength(com.espertech.esper.client.EventBean.class, constant(1)));
+                .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStream", newArrayByLength(eu.uk.ncl.pet5o.esper.client.EventBean.class, constant(1)));
 
         {
             method.getBlock().whileLoop(exprDotMethod(ref("it"), "hasNext"))
-                    .assignArrayElement(ref("eventsPerStream"), constant(0), cast(com.espertech.esper.client.EventBean.class, exprDotMethod(ref("it"), "next")))
+                    .assignArrayElement(ref("eventsPerStream"), constant(0), cast(eu.uk.ncl.pet5o.esper.client.EventBean.class, exprDotMethod(ref("it"), "next")))
                     .declareVar(Object.class, "groupKey", localMethod(generateGroupKeySingle, ref("eventsPerStream"), constantTrue()))
                     .exprDotMethod(REF_AGGREGATIONSVC, "applyEnter", ref("eventsPerStream"), ref("groupKey"), REF_AGENTINSTANCECONTEXT)
                     .blockEnd();
@@ -832,13 +832,13 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
     Iterator<EventBean> getIteratorSorted(Iterator<EventBean> parentIter) {
 
         // Pull all parent events, generate order keys
-        com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[1];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
         List<EventBean> outgoingEvents = new ArrayList<>();
         List<Object> orderKeys = new ArrayList<>();
         Set<Object> priorSeenGroups = new HashSet<>();
 
         while (parentIter.hasNext()) {
-            com.espertech.esper.client.EventBean candidate = parentIter.next();
+            eu.uk.ncl.pet5o.esper.client.EventBean candidate = parentIter.next();
             eventsPerStream[0] = candidate;
 
             Object groupKey = generateGroupKeySingle(eventsPerStream, true);
@@ -869,14 +869,14 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         CodegenMethodNode generateGroupKeyViewSingle = generateGroupKeySingleCodegen(forge.getGroupKeyNodeExpressions(), classScope, instance);
 
         Consumer<CodegenMethodNode> code = method -> {
-            method.getBlock().declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStream", newArrayByLength(com.espertech.esper.client.EventBean.class, constant(1)))
+            method.getBlock().declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStream", newArrayByLength(eu.uk.ncl.pet5o.esper.client.EventBean.class, constant(1)))
                     .declareVar(ArrayList.class, "outgoingEvents", newInstance(ArrayList.class))
                     .declareVar(ArrayList.class, "orderKeys", newInstance(ArrayList.class))
                     .declareVar(Set.class, "priorSeenGroups", newInstance(HashSet.class));
 
             {
                 CodegenBlock whileLoop = method.getBlock().whileLoop(exprDotMethod(ref("parentIter"), "hasNext"));
-                whileLoop.declareVar(com.espertech.esper.client.EventBean.class, "candidate", cast(com.espertech.esper.client.EventBean.class, exprDotMethod(ref("parentIter"), "next")))
+                whileLoop.declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "candidate", cast(eu.uk.ncl.pet5o.esper.client.EventBean.class, exprDotMethod(ref("parentIter"), "next")))
                         .assignArrayElement("eventsPerStream", constant(0), ref("candidate"))
                         .declareVar(Object.class, "groupKey", localMethod(generateGroupKeyViewSingle, ref("eventsPerStream"), constantTrue()))
                         .exprDotMethod(REF_AGGREGATIONSVC, "setCurrentAccess", ref("groupKey"), exprDotMethod(REF_AGENTINSTANCECONTEXT, "getAgentInstanceId"), constantNull());
@@ -900,7 +900,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
     public Iterator<EventBean> getIterator(Set<MultiKey<EventBean>> joinSet) {
         Map<Object, EventBean[]> keysAndEvents = new HashMap<>();
         generateGroupKeyArrayJoinTakingMap(joinSet, keysAndEvents, true);
-        com.espertech.esper.client.EventBean[] selectNewEvents = generateOutputEventsJoin(keysAndEvents, true, true);
+        eu.uk.ncl.pet5o.esper.client.EventBean[] selectNewEvents = generateOutputEventsJoin(keysAndEvents, true, true);
         return new ArrayEventIterator(selectNewEvents);
     }
 
@@ -910,7 +910,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         method.getBlock()
                 .declareVar(Map.class, "keysAndEvents", newInstance(HashMap.class))
                 .expression(localMethod(generateGroupKeyArrayJoin, REF_JOINSET, ref("keysAndEvents"), constantTrue()))
-                .declareVar(com.espertech.esper.client.EventBean[].class, "selectNewEvents", localMethod(generateOutputEventsJoin, ref("keysAndEvents"), constantTrue(), constantTrue()))
+                .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "selectNewEvents", localMethod(generateOutputEventsJoin, ref("keysAndEvents"), constantTrue(), constantTrue()))
                 .methodReturn(newInstance(ArrayEventIterator.class, ref("selectNewEvents")));
     }
 
@@ -922,7 +922,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         method.getBlock().exprDotMethod(REF_AGGREGATIONSVC, "clearResults", REF_AGENTINSTANCECONTEXT);
     }
 
-    public UniformPair<com.espertech.esper.client.EventBean[]> processOutputLimitedJoin(List<UniformPair<Set<MultiKey<EventBean>>>> joinEventsSet, boolean generateSynthetic) {
+    public UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> processOutputLimitedJoin(List<UniformPair<Set<MultiKey<EventBean>>>> joinEventsSet, boolean generateSynthetic) {
         OutputLimitLimitType outputLimitLimitType = prototype.getOutputLimitSpec().getDisplayLimit();
         if (outputLimitLimitType == OutputLimitLimitType.DEFAULT) {
             return processOutputLimitedJoinDefault(joinEventsSet, generateSynthetic);
@@ -954,7 +954,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         throw new IllegalStateException("Unrecognized output limit type " + outputLimitLimitType);
     }
 
-    public UniformPair<com.espertech.esper.client.EventBean[]> processOutputLimitedView(List<UniformPair<EventBean[]>> viewEventsList, boolean generateSynthetic) {
+    public UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> processOutputLimitedView(List<UniformPair<EventBean[]>> viewEventsList, boolean generateSynthetic) {
         OutputLimitLimitType outputLimitLimitType = prototype.getOutputLimitSpec().getDisplayLimit();
         if (outputLimitLimitType == OutputLimitLimitType.DEFAULT) {
             return processOutputLimitedViewDefault(viewEventsList, generateSynthetic);
@@ -1014,7 +1014,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         instance.getMethods().addMethod(void.class, "removedAggregationGroupKey", CodegenNamedParam.from(Object.class, "key"), ResultSetProcessorRowPerGroupImpl.class, classScope, code);
     }
 
-    public Object generateGroupKeySingle(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData) {
+    public Object generateGroupKeySingle(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qResultSetProcessComputeGroupKeys(isNewData, prototype.getGroupKeyNodeExpressions(), eventsPerStream);
             Object keyObject;
@@ -1045,7 +1045,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         }
     }
 
-    public void processOutputLimitedLastAllNonBufferedView(com.espertech.esper.client.EventBean[] newData, com.espertech.esper.client.EventBean[] oldData, boolean isGenerateSynthetic) {
+    public void processOutputLimitedLastAllNonBufferedView(eu.uk.ncl.pet5o.esper.client.EventBean[] newData, eu.uk.ncl.pet5o.esper.client.EventBean[] oldData, boolean isGenerateSynthetic) {
         if (prototype.isOutputAll()) {
             outputAllHelper.processView(newData, oldData, isGenerateSynthetic);
         } else {
@@ -1084,7 +1084,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         processOutputLimitedLastAllNonBufferedCodegen(forge, "processJoin", classScope, method, instance);
     }
 
-    public UniformPair<com.espertech.esper.client.EventBean[]> continueOutputLimitedLastAllNonBufferedView(boolean isSynthesize) {
+    public UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> continueOutputLimitedLastAllNonBufferedView(boolean isSynthesize) {
         if (prototype.isOutputAll()) {
             return outputAllHelper.outputView(isSynthesize);
         }
@@ -1101,7 +1101,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         }
     }
 
-    public UniformPair<com.espertech.esper.client.EventBean[]> continueOutputLimitedLastAllNonBufferedJoin(boolean isSynthesize) {
+    public UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> continueOutputLimitedLastAllNonBufferedJoin(boolean isSynthesize) {
         if (prototype.isOutputAll()) {
             return outputAllHelper.outputJoin(isSynthesize);
         }
@@ -1182,7 +1182,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         }
     }
 
-    private UniformPair<com.espertech.esper.client.EventBean[]> processOutputLimitedJoinLast(List<UniformPair<Set<MultiKey<EventBean>>>> joinEventsSet, boolean generateSynthetic) {
+    private UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> processOutputLimitedJoinLast(List<UniformPair<Set<MultiKey<EventBean>>>> joinEventsSet, boolean generateSynthetic) {
         List<EventBean> newEvents = new LinkedList<>();
         List<EventBean> oldEvents = null;
         if (prototype.isSelectRStream()) {
@@ -1209,8 +1209,8 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
 
             if (newData != null) {
                 // apply new data to aggregates
-                for (MultiKey<com.espertech.esper.client.EventBean> aNewData : newData) {
-                    com.espertech.esper.client.EventBean[] eventsPerStream = aNewData.getArray();
+                for (MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> aNewData : newData) {
+                    eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = aNewData.getArray();
                     Object mk = generateGroupKeySingle(eventsPerStream, true);
 
                     // if this is a newly encountered group, generate the remove stream event
@@ -1224,8 +1224,8 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
             }
             if (oldData != null) {
                 // apply old data to aggregates
-                for (MultiKey<com.espertech.esper.client.EventBean> anOldData : oldData) {
-                    com.espertech.esper.client.EventBean[] eventsPerStream = anOldData.getArray();
+                for (MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> anOldData : oldData) {
+                    eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = anOldData.getArray();
                     Object mk = generateGroupKeySingle(eventsPerStream, true);
 
                     if (groupRepsView.put(mk, eventsPerStream) == null) {
@@ -1265,7 +1265,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
                 CodegenBlock ifNewData = forEach.ifCondition(notEqualsNull(ref("newData")));
                 {
                     CodegenBlock forNew = ifNewData.forEach(MultiKey.class, "aNewData", ref("newData"));
-                    forNew.declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStream", cast(com.espertech.esper.client.EventBean[].class, exprDotMethod(ref("aNewData"), "getArray")))
+                    forNew.declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStream", cast(eu.uk.ncl.pet5o.esper.client.EventBean[].class, exprDotMethod(ref("aNewData"), "getArray")))
                             .declareVar(Object.class, "mk", localMethod(generateGroupKeySingle, ref("eventsPerStream"), constantTrue()));
                     CodegenBlock ifNotFound = forNew.ifCondition(equalsNull(exprDotMethod(ref("groupRepsView"), "put", ref("mk"), ref("eventsPerStream"))));
                     if (forge.isSelectRStream()) {
@@ -1279,7 +1279,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
                 CodegenBlock ifOldData = forEach.ifCondition(notEqualsNull(ref("oldData")));
                 {
                     CodegenBlock forOld = ifOldData.forEach(MultiKey.class, "anOldData", ref("oldData"));
-                    forOld.declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStream", cast(com.espertech.esper.client.EventBean[].class, exprDotMethod(ref("anOldData"), "getArray")))
+                    forOld.declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStream", cast(eu.uk.ncl.pet5o.esper.client.EventBean[].class, exprDotMethod(ref("anOldData"), "getArray")))
                             .declareVar(Object.class, "mk", localMethod(generateGroupKeySingle, ref("eventsPerStream"), constantFalse()));
                     CodegenBlock ifNotFound = forOld.ifCondition(equalsNull(exprDotMethod(ref("groupRepsView"), "put", ref("mk"), ref("eventsPerStream"))));
                     if (forge.isSelectRStream()) {
@@ -1295,7 +1295,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         ResultSetProcessorUtil.finalizeOutputMaySortMayRStreamCodegen(method.getBlock(), ref("newEvents"), ref("newEventsSortKey"), ref("oldEvents"), ref("oldEventsSortKey"), forge.isSelectRStream(), forge.isSorting());
     }
 
-    private UniformPair<com.espertech.esper.client.EventBean[]> processOutputLimitedJoinFirst(List<UniformPair<Set<MultiKey<EventBean>>>> joinEventsSet, boolean generateSynthetic) {
+    private UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> processOutputLimitedJoinFirst(List<UniformPair<Set<MultiKey<EventBean>>>> joinEventsSet, boolean generateSynthetic) {
         List<EventBean> newEvents = new LinkedList<>();
         List<EventBean> oldEvents = null;
         if (prototype.isSelectRStream()) {
@@ -1319,7 +1319,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
 
                 if (newData != null) {
                     // apply new data to aggregates
-                    for (MultiKey<com.espertech.esper.client.EventBean> aNewData : newData) {
+                    for (MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> aNewData : newData) {
                         Object mk = generateGroupKeySingle(aNewData.getArray(), true);
                         OutputConditionPolled outputStateGroup = outputFirstHelper.getOrAllocate(mk, agentInstanceContext, prototype.getOptionalOutputFirstConditionFactory());
                         boolean pass = outputStateGroup.updateOutputCondition(1, 0);
@@ -1336,7 +1336,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
                 }
                 if (oldData != null) {
                     // apply old data to aggregates
-                    for (MultiKey<com.espertech.esper.client.EventBean> anOldData : oldData) {
+                    for (MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> anOldData : oldData) {
                         Object mk = generateGroupKeySingle(anOldData.getArray(), true);
                         OutputConditionPolled outputStateGroup = outputFirstHelper.getOrAllocate(mk, agentInstanceContext, prototype.getOptionalOutputFirstConditionFactory());
                         boolean pass = outputStateGroup.updateOutputCondition(0, 1);
@@ -1366,10 +1366,10 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
                 // evaluate having-clause
                 if (newData != null) {
                     int count = 0;
-                    for (MultiKey<com.espertech.esper.client.EventBean> aNewData : newData) {
+                    for (MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> aNewData : newData) {
                         Object mk = newDataMultiKey[count];
                         aggregationService.setCurrentAccess(mk, agentInstanceContext.getAgentInstanceId(), null);
-                        com.espertech.esper.client.EventBean[] eventsPerStream = aNewData.getArray();
+                        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = aNewData.getArray();
 
                         // Filter the having clause
                         boolean passesHaving = ResultSetProcessorUtil.evaluateHavingClause(prototype.getOptionalHavingNode(), eventsPerStream, true, agentInstanceContext);
@@ -1394,10 +1394,10 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
                 // evaluate having-clause
                 if (oldData != null) {
                     int count = 0;
-                    for (MultiKey<com.espertech.esper.client.EventBean> anOldData : oldData) {
+                    for (MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> anOldData : oldData) {
                         Object mk = oldDataMultiKey[count];
                         aggregationService.setCurrentAccess(mk, agentInstanceContext.getAgentInstanceId(), null);
-                        com.espertech.esper.client.EventBean[] eventsPerStream = anOldData.getArray();
+                        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = anOldData.getArray();
 
                         // Filter the having clause
                         boolean passesHaving = ResultSetProcessorUtil.evaluateHavingClause(prototype.getOptionalHavingNode(), eventsPerStream, false, agentInstanceContext);
@@ -1452,7 +1452,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
                     CodegenBlock ifNewData = forEach.ifCondition(notEqualsNull(ref("newData")));
                     {
                         CodegenBlock forloop = ifNewData.forEach(MultiKey.class, "aNewData", ref("newData"));
-                        forloop.declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStream", cast(com.espertech.esper.client.EventBean[].class, exprDotMethod(ref("aNewData"), "getArray")))
+                        forloop.declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStream", cast(eu.uk.ncl.pet5o.esper.client.EventBean[].class, exprDotMethod(ref("aNewData"), "getArray")))
                                 .declareVar(Object.class, "mk", localMethod(generateGroupKeySingle, ref("eventsPerStream"), constantTrue()))
                                 .declareVar(OutputConditionPolled.class, "outputStateGroup", exprDotMethod(ref(NAME_OUTPUTFIRSTHELPER), "getOrAllocate", ref("mk"), REF_AGENTINSTANCECONTEXT, member(outputFactory.getMemberId())))
                                 .declareVar(boolean.class, "pass", exprDotMethod(ref("outputStateGroup"), "updateOutputCondition", constant(1), constant(0)));
@@ -1468,7 +1468,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
                     CodegenBlock ifOldData = forEach.ifCondition(notEqualsNull(ref("oldData")));
                     {
                         CodegenBlock forloop = ifOldData.forEach(MultiKey.class, "anOldData", ref("oldData"));
-                        forloop.declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStream", cast(com.espertech.esper.client.EventBean[].class, exprDotMethod(ref("anOldData"), "getArray")))
+                        forloop.declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStream", cast(eu.uk.ncl.pet5o.esper.client.EventBean[].class, exprDotMethod(ref("anOldData"), "getArray")))
                                 .declareVar(Object.class, "mk", localMethod(generateGroupKeySingle, ref("eventsPerStream"), constantFalse()))
                                 .declareVar(OutputConditionPolled.class, "outputStateGroup", exprDotMethod(ref(NAME_OUTPUTFIRSTHELPER), "getOrAllocate", ref("mk"), REF_AGENTINSTANCECONTEXT, member(outputFactory.getMemberId())))
                                 .declareVar(boolean.class, "pass", exprDotMethod(ref("outputStateGroup"), "updateOutputCondition", constant(0), constant(1)));
@@ -1498,7 +1498,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
                         CodegenBlock forloop = ifNewData.forEach(MultiKey.class, "aNewData", ref("newData"));
                         forloop.declareVar(Object.class, "mk", arrayAtIndex(ref("newDataMultiKey"), ref("count")))
                                 .exprDotMethod(REF_AGGREGATIONSVC, "setCurrentAccess", ref("mk"), exprDotMethod(REF_AGENTINSTANCECONTEXT, "getAgentInstanceId"), constantNull())
-                                .declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStream", cast(com.espertech.esper.client.EventBean[].class, exprDotMethod(ref("aNewData"), "getArray")))
+                                .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStream", cast(eu.uk.ncl.pet5o.esper.client.EventBean[].class, exprDotMethod(ref("aNewData"), "getArray")))
                                 .ifCondition(not(localMethod(instance.getMethods().getMethod("evaluateHavingClause"), ref("eventsPerStream"), constantTrue(), REF_AGENTINSTANCECONTEXT)))
                                 .increment("count")
                                 .blockContinue();
@@ -1521,7 +1521,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
                         CodegenBlock forloop = ifOldData.forEach(MultiKey.class, "anOldData", ref("oldData"));
                         forloop.declareVar(Object.class, "mk", arrayAtIndex(ref("oldDataMultiKey"), ref("count")))
                                 .exprDotMethod(REF_AGGREGATIONSVC, "setCurrentAccess", ref("mk"), exprDotMethod(REF_AGENTINSTANCECONTEXT, "getAgentInstanceId"), constantNull())
-                                .declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStream", cast(com.espertech.esper.client.EventBean[].class, exprDotMethod(ref("anOldData"), "getArray")))
+                                .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStream", cast(eu.uk.ncl.pet5o.esper.client.EventBean[].class, exprDotMethod(ref("anOldData"), "getArray")))
                                 .ifCondition(not(localMethod(instance.getMethods().getMethod("evaluateHavingClause"), ref("eventsPerStream"), constantFalse(), REF_AGENTINSTANCECONTEXT)))
                                 .increment("count")
                                 .blockContinue();
@@ -1544,7 +1544,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         ResultSetProcessorUtil.finalizeOutputMaySortMayRStreamCodegen(method.getBlock(), ref("newEvents"), ref("newEventsSortKey"), ref("oldEvents"), ref("oldEventsSortKey"), forge.isSelectRStream(), forge.isSorting());
     }
 
-    private UniformPair<com.espertech.esper.client.EventBean[]> processOutputLimitedJoinAll(List<UniformPair<Set<MultiKey<EventBean>>>> joinEventsSet, boolean generateSynthetic) {
+    private UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> processOutputLimitedJoinAll(List<UniformPair<Set<MultiKey<EventBean>>>> joinEventsSet, boolean generateSynthetic) {
         List<EventBean> newEvents = new LinkedList<>();
         List<EventBean> oldEvents = null;
         if (prototype.isSelectRStream()) {
@@ -1574,8 +1574,8 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
 
             if (newData != null) {
                 // apply new data to aggregates
-                for (MultiKey<com.espertech.esper.client.EventBean> aNewData : newData) {
-                    com.espertech.esper.client.EventBean[] eventsPerStream = aNewData.getArray();
+                for (MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> aNewData : newData) {
+                    eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = aNewData.getArray();
                     Object mk = generateGroupKeySingle(eventsPerStream, true);
 
                     // if this is a newly encountered group, generate the remove stream event
@@ -1589,8 +1589,8 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
             }
             if (oldData != null) {
                 // apply old data to aggregates
-                for (MultiKey<com.espertech.esper.client.EventBean> anOldData : oldData) {
-                    com.espertech.esper.client.EventBean[] eventsPerStream = anOldData.getArray();
+                for (MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> anOldData : oldData) {
+                    eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = anOldData.getArray();
                     Object mk = generateGroupKeySingle(eventsPerStream, true);
 
                     if (outputAllGroupReps.put(mk, eventsPerStream) == null) {
@@ -1638,7 +1638,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
                 CodegenBlock ifNewData = forLoop.ifCondition(notEqualsNull(ref("newData")));
                 {
                     CodegenBlock forNew = ifNewData.forEach(MultiKey.class, "aNewData", ref("newData"));
-                    forNew.declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStream", cast(com.espertech.esper.client.EventBean[].class, exprDotMethod(ref("aNewData"), "getArray")))
+                    forNew.declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStream", cast(eu.uk.ncl.pet5o.esper.client.EventBean[].class, exprDotMethod(ref("aNewData"), "getArray")))
                             .declareVar(Object.class, "mk", localMethod(generateGroupKeySingle, ref("eventsPerStream"), constantTrue()));
                     CodegenBlock ifNotFound = forNew.ifCondition(equalsNull(exprDotMethod(ref(NAME_OUTPUTALLGROUPREPS), "put", ref("mk"), ref("eventsPerStream"))));
                     if (forge.isSelectRStream()) {
@@ -1652,7 +1652,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
                 CodegenBlock ifOldData = forLoop.ifCondition(notEqualsNull(ref("oldData")));
                 {
                     CodegenBlock forOld = ifOldData.forEach(MultiKey.class, "anOldData", ref("oldData"));
-                    forOld.declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStream", cast(com.espertech.esper.client.EventBean[].class, exprDotMethod(ref("anOldData"), "getArray")))
+                    forOld.declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStream", cast(eu.uk.ncl.pet5o.esper.client.EventBean[].class, exprDotMethod(ref("anOldData"), "getArray")))
                             .declareVar(Object.class, "mk", localMethod(generateGroupKeySingle, ref("eventsPerStream"), constantFalse()));
                     CodegenBlock ifNotFound = forOld.ifCondition(equalsNull(exprDotMethod(ref(NAME_OUTPUTALLGROUPREPS), "put", ref("mk"), ref("eventsPerStream"))));
                     if (forge.isSelectRStream()) {
@@ -1668,7 +1668,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         ResultSetProcessorUtil.finalizeOutputMaySortMayRStreamCodegen(method.getBlock(), ref("newEvents"), ref("newEventsSortKey"), ref("oldEvents"), ref("oldEventsSortKey"), forge.isSelectRStream(), forge.isSorting());
     }
 
-    private UniformPair<com.espertech.esper.client.EventBean[]> processOutputLimitedJoinDefault(List<UniformPair<Set<MultiKey<EventBean>>>> joinEventsSet, boolean generateSynthetic) {
+    private UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> processOutputLimitedJoinDefault(List<UniformPair<Set<MultiKey<EventBean>>>> joinEventsSet, boolean generateSynthetic) {
         List<EventBean> newEvents = new LinkedList<>();
         List<EventBean> oldEvents = null;
         if (prototype.isSelectRStream()) {
@@ -1744,7 +1744,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         ResultSetProcessorUtil.finalizeOutputMaySortMayRStreamCodegen(method.getBlock(), ref("newEvents"), ref("newEventsSortKey"), ref("oldEvents"), ref("oldEventsSortKey"), forge.isSelectRStream(), forge.isSorting());
     }
 
-    private UniformPair<com.espertech.esper.client.EventBean[]> processOutputLimitedViewLast(List<UniformPair<EventBean[]>> viewEventsList, boolean generateSynthetic) {
+    private UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> processOutputLimitedViewLast(List<UniformPair<EventBean[]>> viewEventsList, boolean generateSynthetic) {
         List<EventBean> newEvents = new LinkedList<>();
         List<EventBean> oldEvents = null;
         if (prototype.isSelectRStream()) {
@@ -1761,14 +1761,14 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         }
 
         Map<Object, EventBean[]> groupRepsView = new LinkedHashMap<>();
-        for (UniformPair<com.espertech.esper.client.EventBean[]> pair : viewEventsList) {
-            com.espertech.esper.client.EventBean[] newData = pair.getFirst();
-            com.espertech.esper.client.EventBean[] oldData = pair.getSecond();
+        for (UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> pair : viewEventsList) {
+            eu.uk.ncl.pet5o.esper.client.EventBean[] newData = pair.getFirst();
+            eu.uk.ncl.pet5o.esper.client.EventBean[] oldData = pair.getSecond();
 
             if (newData != null) {
                 // apply new data to aggregates
-                for (com.espertech.esper.client.EventBean aNewData : newData) {
-                    com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[]{aNewData};
+                for (eu.uk.ncl.pet5o.esper.client.EventBean aNewData : newData) {
+                    eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[]{aNewData};
                     Object mk = generateGroupKeySingle(eventsPerStream, true);
 
                     // if this is a newly encountered group, generate the remove stream event
@@ -1782,8 +1782,8 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
             }
             if (oldData != null) {
                 // apply old data to aggregates
-                for (com.espertech.esper.client.EventBean anOldData : oldData) {
-                    com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[]{anOldData};
+                for (eu.uk.ncl.pet5o.esper.client.EventBean anOldData : oldData) {
+                    eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[]{anOldData};
                     Object mk = generateGroupKeySingle(eventsPerStream, true);
 
                     if (groupRepsView.put(mk, eventsPerStream) == null) {
@@ -1812,14 +1812,14 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         method.getBlock().declareVar(Map.class, "groupRepsView", newInstance(HashMap.class));
         {
             CodegenBlock forEach = method.getBlock().forEach(UniformPair.class, "pair", REF_VIEWEVENTSLIST);
-            forEach.declareVar(com.espertech.esper.client.EventBean[].class, "newData", cast(com.espertech.esper.client.EventBean[].class, exprDotMethod(ref("pair"), "getFirst")))
-                    .declareVar(com.espertech.esper.client.EventBean[].class, "oldData", cast(com.espertech.esper.client.EventBean[].class, exprDotMethod(ref("pair"), "getSecond")));
+            forEach.declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "newData", cast(eu.uk.ncl.pet5o.esper.client.EventBean[].class, exprDotMethod(ref("pair"), "getFirst")))
+                    .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "oldData", cast(eu.uk.ncl.pet5o.esper.client.EventBean[].class, exprDotMethod(ref("pair"), "getSecond")));
 
             {
                 CodegenBlock ifNewData = forEach.ifCondition(notEqualsNull(ref("newData")));
                 {
-                    CodegenBlock forNew = ifNewData.forEach(com.espertech.esper.client.EventBean.class, "aNewData", ref("newData"));
-                    forNew.declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStream", newArrayWithInit(com.espertech.esper.client.EventBean.class, ref("aNewData")))
+                    CodegenBlock forNew = ifNewData.forEach(eu.uk.ncl.pet5o.esper.client.EventBean.class, "aNewData", ref("newData"));
+                    forNew.declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStream", newArrayWithInit(eu.uk.ncl.pet5o.esper.client.EventBean.class, ref("aNewData")))
                             .declareVar(Object.class, "mk", localMethod(generateGroupKeySingle, ref("eventsPerStream"), constantTrue()));
                     CodegenBlock ifNotFound = forNew.ifCondition(equalsNull(exprDotMethod(ref("groupRepsView"), "put", ref("mk"), ref("eventsPerStream"))));
                     if (forge.isSelectRStream()) {
@@ -1832,10 +1832,10 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
             {
                 CodegenBlock ifOldData = forEach.ifCondition(notEqualsNull(ref("oldData")));
                 {
-                    CodegenBlock forOld = ifOldData.forEach(com.espertech.esper.client.EventBean.class, "anOldData", ref("oldData"));
-                    forOld.declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStream", newArrayWithInit(com.espertech.esper.client.EventBean.class, ref("anOldData")))
+                    CodegenBlock forOld = ifOldData.forEach(eu.uk.ncl.pet5o.esper.client.EventBean.class, "anOldData", ref("oldData"));
+                    forOld.declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStream", newArrayWithInit(eu.uk.ncl.pet5o.esper.client.EventBean.class, ref("anOldData")))
                             .declareVar(Object.class, "mk", localMethod(generateGroupKeySingle, ref("eventsPerStream"), constantFalse()));
-                    CodegenBlock ifNotFound = forOld.ifCondition(equalsNull(exprDotMethod(ref("groupRepsView"), "put", ref("mk"), newArrayWithInit(com.espertech.esper.client.EventBean.class, ref("anOldData")))));
+                    CodegenBlock ifNotFound = forOld.ifCondition(equalsNull(exprDotMethod(ref("groupRepsView"), "put", ref("mk"), newArrayWithInit(eu.uk.ncl.pet5o.esper.client.EventBean.class, ref("anOldData")))));
                     if (forge.isSelectRStream()) {
                         ifNotFound.localMethod(generateOutputBatchedRowAddToList, constantFalse(), ref("mk"), ref("eventsPerStream"), constantFalse(), REF_ISSYNTHESIZE, ref("oldEvents"), ref("oldEventsSortKey"));
                     }
@@ -1849,7 +1849,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         ResultSetProcessorUtil.finalizeOutputMaySortMayRStreamCodegen(method.getBlock(), ref("newEvents"), ref("newEventsSortKey"), ref("oldEvents"), ref("oldEventsSortKey"), forge.isSelectRStream(), forge.isSorting());
     }
 
-    private UniformPair<com.espertech.esper.client.EventBean[]> processOutputLimitedViewFirst(List<UniformPair<EventBean[]>> viewEventsList, boolean generateSynthetic) {
+    private UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> processOutputLimitedViewFirst(List<UniformPair<EventBean[]>> viewEventsList, boolean generateSynthetic) {
         List<EventBean> newEvents = new LinkedList<>();
         List<EventBean> oldEvents = null;
         if (prototype.isSelectRStream()) {
@@ -1867,14 +1867,14 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
 
         Map<Object, EventBean[]> groupRepsView = new LinkedHashMap<>();
         if (prototype.getOptionalHavingNode() == null) {
-            for (UniformPair<com.espertech.esper.client.EventBean[]> pair : viewEventsList) {
-                com.espertech.esper.client.EventBean[] newData = pair.getFirst();
-                com.espertech.esper.client.EventBean[] oldData = pair.getSecond();
+            for (UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> pair : viewEventsList) {
+                eu.uk.ncl.pet5o.esper.client.EventBean[] newData = pair.getFirst();
+                eu.uk.ncl.pet5o.esper.client.EventBean[] oldData = pair.getSecond();
 
                 if (newData != null) {
                     // apply new data to aggregates
-                    for (com.espertech.esper.client.EventBean aNewData : newData) {
-                        com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[]{aNewData};
+                    for (eu.uk.ncl.pet5o.esper.client.EventBean aNewData : newData) {
+                        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[]{aNewData};
                         Object mk = generateGroupKeySingle(eventsPerStream, true);
                         OutputConditionPolled outputStateGroup = outputFirstHelper.getOrAllocate(mk, agentInstanceContext, prototype.getOptionalOutputFirstConditionFactory());
                         boolean pass = outputStateGroup.updateOutputCondition(1, 0);
@@ -1891,8 +1891,8 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
                 }
                 if (oldData != null) {
                     // apply old data to aggregates
-                    for (com.espertech.esper.client.EventBean anOldData : oldData) {
-                        com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[]{anOldData};
+                    for (eu.uk.ncl.pet5o.esper.client.EventBean anOldData : oldData) {
+                        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[]{anOldData};
                         Object mk = generateGroupKeySingle(eventsPerStream, false);
                         OutputConditionPolled outputStateGroup = outputFirstHelper.getOrAllocate(mk, agentInstanceContext, prototype.getOptionalOutputFirstConditionFactory());
                         boolean pass = outputStateGroup.updateOutputCondition(0, 1);
@@ -1909,10 +1909,10 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
                 }
             }
         } else { // having clause present, having clause evaluates at the level of individual posts
-            com.espertech.esper.client.EventBean[] eventsPerStreamOneStream = new com.espertech.esper.client.EventBean[1];
-            for (UniformPair<com.espertech.esper.client.EventBean[]> pair : viewEventsList) {
-                com.espertech.esper.client.EventBean[] newData = pair.getFirst();
-                com.espertech.esper.client.EventBean[] oldData = pair.getSecond();
+            eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStreamOneStream = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
+            for (UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> pair : viewEventsList) {
+                eu.uk.ncl.pet5o.esper.client.EventBean[] newData = pair.getFirst();
+                eu.uk.ncl.pet5o.esper.client.EventBean[] oldData = pair.getSecond();
 
                 Object[] newDataMultiKey = generateGroupKeyArrayView(newData, true);
                 Object[] oldDataMultiKey = generateGroupKeyArrayView(oldData, false);
@@ -1935,7 +1935,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
                         OutputConditionPolled outputStateGroup = outputFirstHelper.getOrAllocate(mk, agentInstanceContext, prototype.getOptionalOutputFirstConditionFactory());
                         boolean pass = outputStateGroup.updateOutputCondition(0, 1);
                         if (pass) {
-                            com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[]{newData[i]};
+                            eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[]{newData[i]};
                             if (groupRepsView.put(mk, eventsPerStream) == null) {
                                 if (prototype.isSelectRStream()) {
                                     generateOutputBatchedRowAddToList(false, mk, eventsPerStream, true, generateSynthetic, oldEvents, oldEventsSortKey);
@@ -1961,7 +1961,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
                         OutputConditionPolled outputStateGroup = outputFirstHelper.getOrAllocate(mk, agentInstanceContext, prototype.getOptionalOutputFirstConditionFactory());
                         boolean pass = outputStateGroup.updateOutputCondition(0, 1);
                         if (pass) {
-                            com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[]{oldData[i]};
+                            eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[]{oldData[i]};
                             if (groupRepsView.put(mk, eventsPerStream) == null) {
                                 if (prototype.isSelectRStream()) {
                                     generateOutputBatchedRowAddToList(false, mk, eventsPerStream, false, generateSynthetic, oldEvents, oldEventsSortKey);
@@ -1997,14 +1997,14 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         if (forge.getOptionalHavingNode() == null) {
             {
                 CodegenBlock forEach = method.getBlock().forEach(UniformPair.class, "pair", REF_VIEWEVENTSLIST);
-                forEach.declareVar(com.espertech.esper.client.EventBean[].class, "newData", cast(com.espertech.esper.client.EventBean[].class, exprDotMethod(ref("pair"), "getFirst")))
-                        .declareVar(com.espertech.esper.client.EventBean[].class, "oldData", cast(com.espertech.esper.client.EventBean[].class, exprDotMethod(ref("pair"), "getSecond")));
+                forEach.declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "newData", cast(eu.uk.ncl.pet5o.esper.client.EventBean[].class, exprDotMethod(ref("pair"), "getFirst")))
+                        .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "oldData", cast(eu.uk.ncl.pet5o.esper.client.EventBean[].class, exprDotMethod(ref("pair"), "getSecond")));
 
                 {
                     CodegenBlock ifNewData = forEach.ifCondition(notEqualsNull(ref("newData")));
                     {
-                        CodegenBlock forloop = ifNewData.forEach(com.espertech.esper.client.EventBean.class, "aNewData", ref("newData"));
-                        forloop.declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStream", newArrayWithInit(com.espertech.esper.client.EventBean.class, ref("aNewData")))
+                        CodegenBlock forloop = ifNewData.forEach(eu.uk.ncl.pet5o.esper.client.EventBean.class, "aNewData", ref("newData"));
+                        forloop.declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStream", newArrayWithInit(eu.uk.ncl.pet5o.esper.client.EventBean.class, ref("aNewData")))
                                 .declareVar(Object.class, "mk", localMethod(generateGroupKeySingle, ref("eventsPerStream"), constantTrue()))
                                 .declareVar(OutputConditionPolled.class, "outputStateGroup", exprDotMethod(ref(NAME_OUTPUTFIRSTHELPER), "getOrAllocate", ref("mk"), REF_AGENTINSTANCECONTEXT, member(outputFactory.getMemberId())))
                                 .declareVar(boolean.class, "pass", exprDotMethod(ref("outputStateGroup"), "updateOutputCondition", constant(1), constant(0)));
@@ -2019,8 +2019,8 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
                 {
                     CodegenBlock ifOldData = forEach.ifCondition(notEqualsNull(ref("oldData")));
                     {
-                        CodegenBlock forloop = ifOldData.forEach(com.espertech.esper.client.EventBean.class, "anOldData", ref("oldData"));
-                        forloop.declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStream", newArrayWithInit(com.espertech.esper.client.EventBean.class, ref("anOldData")))
+                        CodegenBlock forloop = ifOldData.forEach(eu.uk.ncl.pet5o.esper.client.EventBean.class, "anOldData", ref("oldData"));
+                        forloop.declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStream", newArrayWithInit(eu.uk.ncl.pet5o.esper.client.EventBean.class, ref("anOldData")))
                                 .declareVar(Object.class, "mk", localMethod(generateGroupKeySingle, ref("eventsPerStream"), constantFalse()))
                                 .declareVar(OutputConditionPolled.class, "outputStateGroup", exprDotMethod(ref(NAME_OUTPUTFIRSTHELPER), "getOrAllocate", ref("mk"), REF_AGENTINSTANCECONTEXT, member(outputFactory.getMemberId())))
                                 .declareVar(boolean.class, "pass", exprDotMethod(ref("outputStateGroup"), "updateOutputCondition", constant(0), constant(1)));
@@ -2035,12 +2035,12 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
             }
         } else {
             // having clause present, having clause evaluates at the level of individual posts
-            method.getBlock().declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStreamOneStream", newArrayByLength(com.espertech.esper.client.EventBean.class, constant(1)));
+            method.getBlock().declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStreamOneStream", newArrayByLength(eu.uk.ncl.pet5o.esper.client.EventBean.class, constant(1)));
 
             {
                 CodegenBlock forEach = method.getBlock().forEach(UniformPair.class, "pair", REF_VIEWEVENTSLIST);
-                forEach.declareVar(com.espertech.esper.client.EventBean[].class, "newData", cast(com.espertech.esper.client.EventBean[].class, exprDotMethod(ref("pair"), "getFirst")))
-                        .declareVar(com.espertech.esper.client.EventBean[].class, "oldData", cast(com.espertech.esper.client.EventBean[].class, exprDotMethod(ref("pair"), "getSecond")))
+                forEach.declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "newData", cast(eu.uk.ncl.pet5o.esper.client.EventBean[].class, exprDotMethod(ref("pair"), "getFirst")))
+                        .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "oldData", cast(eu.uk.ncl.pet5o.esper.client.EventBean[].class, exprDotMethod(ref("pair"), "getSecond")))
                         .declareVar(Object[].class, "newDataMultiKey", localMethod(generateGroupKeyArrayView, ref("newData"), constantTrue()))
                         .declareVar(Object[].class, "oldDataMultiKey", localMethod(generateGroupKeyArrayView, ref("oldData"), constantFalse()))
                         .staticMethod(ResultSetProcessorGroupedUtil.class, METHOD_APPLYAGGVIEWRESULTKEYEDVIEW, REF_AGGREGATIONSVC, REF_AGENTINSTANCECONTEXT, ref("newData"), ref("newDataMultiKey"), ref("oldData"), ref("oldDataMultiKey"), ref("eventsPerStreamOneStream"));
@@ -2057,7 +2057,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
                         forloop.declareVar(OutputConditionPolled.class, "outputStateGroup", exprDotMethod(ref(NAME_OUTPUTFIRSTHELPER), "getOrAllocate", ref("mk"), REF_AGENTINSTANCECONTEXT, member(outputFactory.getMemberId())))
                                 .declareVar(boolean.class, "pass", exprDotMethod(ref("outputStateGroup"), "updateOutputCondition", constant(1), constant(0)));
                         CodegenBlock ifPass = forloop.ifCondition(ref("pass"))
-                                .declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStream", newArrayWithInit(com.espertech.esper.client.EventBean.class, arrayAtIndex(ref("newData"), ref("i"))));
+                                .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStream", newArrayWithInit(eu.uk.ncl.pet5o.esper.client.EventBean.class, arrayAtIndex(ref("newData"), ref("i"))));
                         CodegenBlock ifExists = ifPass.ifCondition(equalsNull(exprDotMethod(ref("groupRepsView"), "put", ref("mk"), ref("eventsPerStream"))));
                         if (forge.isSelectRStream()) {
                             ifExists.localMethod(generateOutputBatchedRowAddToList, constantFalse(), ref("mk"), ref("eventsPerStream"), constantTrue(), REF_ISSYNTHESIZE, ref("oldEvents"), ref("oldEventsSortKey"));
@@ -2077,7 +2077,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
                         forloop.declareVar(OutputConditionPolled.class, "outputStateGroup", exprDotMethod(ref(NAME_OUTPUTFIRSTHELPER), "getOrAllocate", ref("mk"), REF_AGENTINSTANCECONTEXT, member(outputFactory.getMemberId())))
                                 .declareVar(boolean.class, "pass", exprDotMethod(ref("outputStateGroup"), "updateOutputCondition", constant(0), constant(1)));
                         CodegenBlock ifPass = forloop.ifCondition(ref("pass"))
-                                .declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStream", newArrayWithInit(com.espertech.esper.client.EventBean.class, arrayAtIndex(ref("oldData"), ref("i"))));
+                                .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStream", newArrayWithInit(eu.uk.ncl.pet5o.esper.client.EventBean.class, arrayAtIndex(ref("oldData"), ref("i"))));
                         CodegenBlock ifExists = ifPass.ifCondition(equalsNull(exprDotMethod(ref("groupRepsView"), "put", ref("mk"), ref("eventsPerStream"))));
                         if (forge.isSelectRStream()) {
                             ifExists.localMethod(generateOutputBatchedRowAddToList, constantFalse(), ref("mk"), ref("eventsPerStream"), constantFalse(), REF_ISSYNTHESIZE, ref("oldEvents"), ref("oldEventsSortKey"));
@@ -2092,8 +2092,8 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         ResultSetProcessorUtil.finalizeOutputMaySortMayRStreamCodegen(method.getBlock(), ref("newEvents"), ref("newEventsSortKey"), ref("oldEvents"), ref("oldEventsSortKey"), forge.isSelectRStream(), forge.isSorting());
     }
 
-    private UniformPair<com.espertech.esper.client.EventBean[]> processOutputLimitedViewAll(List<UniformPair<EventBean[]>> viewEventsList, boolean generateSynthetic) {
-        com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[1];
+    private UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> processOutputLimitedViewAll(List<UniformPair<EventBean[]>> viewEventsList, boolean generateSynthetic) {
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
 
         List<EventBean> newEvents = new LinkedList<>();
         List<EventBean> oldEvents = null;
@@ -2114,18 +2114,18 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
             generateOutputBatchedArrFromIterator(false, outputAllGroupReps.entryIterator(), false, generateSynthetic, oldEvents, oldEventsSortKey);
         }
 
-        for (UniformPair<com.espertech.esper.client.EventBean[]> pair : viewEventsList) {
-            com.espertech.esper.client.EventBean[] newData = pair.getFirst();
-            com.espertech.esper.client.EventBean[] oldData = pair.getSecond();
+        for (UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> pair : viewEventsList) {
+            eu.uk.ncl.pet5o.esper.client.EventBean[] newData = pair.getFirst();
+            eu.uk.ncl.pet5o.esper.client.EventBean[] oldData = pair.getSecond();
 
             if (newData != null) {
                 // apply new data to aggregates
-                for (com.espertech.esper.client.EventBean aNewData : newData) {
+                for (eu.uk.ncl.pet5o.esper.client.EventBean aNewData : newData) {
                     eventsPerStream[0] = aNewData;
                     Object mk = generateGroupKeySingle(eventsPerStream, true);
 
                     // if this is a newly encountered group, generate the remove stream event
-                    if (outputAllGroupReps.put(mk, new com.espertech.esper.client.EventBean[]{aNewData}) == null) {
+                    if (outputAllGroupReps.put(mk, new eu.uk.ncl.pet5o.esper.client.EventBean[]{aNewData}) == null) {
                         if (prototype.isSelectRStream()) {
                             generateOutputBatchedRowAddToList(false, mk, eventsPerStream, true, generateSynthetic, oldEvents, oldEventsSortKey);
                         }
@@ -2135,11 +2135,11 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
             }
             if (oldData != null) {
                 // apply old data to aggregates
-                for (com.espertech.esper.client.EventBean anOldData : oldData) {
+                for (eu.uk.ncl.pet5o.esper.client.EventBean anOldData : oldData) {
                     eventsPerStream[0] = anOldData;
                     Object mk = generateGroupKeySingle(eventsPerStream, false);
 
-                    if (outputAllGroupReps.put(mk, new com.espertech.esper.client.EventBean[]{anOldData}) == null) {
+                    if (outputAllGroupReps.put(mk, new eu.uk.ncl.pet5o.esper.client.EventBean[]{anOldData}) == null) {
                         if (prototype.isSelectRStream()) {
                             generateOutputBatchedRowAddToList(false, mk, eventsPerStream, false, generateSynthetic, oldEvents, oldEventsSortKey);
                         }
@@ -2166,7 +2166,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         instance.addMember(NAME_OUTPUTALLGROUPREPS, ResultSetProcessorGroupedOutputAllGroupReps.class);
         instance.getServiceCtor().getBlock().assignRef(NAME_OUTPUTALLGROUPREPS, exprDotMethod(member(helperFactory.getMemberId()), "makeRSGroupedOutputAllNoOpt", REF_AGENTINSTANCECONTEXT, member(groupKeyTypes.getMemberId()), constant(forge.getNumStreams())));
 
-        method.getBlock().declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStream", newArrayByLength(com.espertech.esper.client.EventBean.class, constant(1)));
+        method.getBlock().declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStream", newArrayByLength(eu.uk.ncl.pet5o.esper.client.EventBean.class, constant(1)));
         ResultSetProcessorUtil.prefixCodegenNewOldEvents(method.getBlock(), forge.isSorting(), forge.isSelectRStream());
 
         if (forge.isSelectRStream()) {
@@ -2175,16 +2175,16 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
 
         {
             CodegenBlock forLoop = method.getBlock().forEach(UniformPair.class, "pair", REF_VIEWEVENTSLIST);
-            forLoop.declareVar(com.espertech.esper.client.EventBean[].class, "newData", cast(com.espertech.esper.client.EventBean[].class, exprDotMethod(ref("pair"), "getFirst")))
-                    .declareVar(com.espertech.esper.client.EventBean[].class, "oldData", cast(com.espertech.esper.client.EventBean[].class, exprDotMethod(ref("pair"), "getSecond")));
+            forLoop.declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "newData", cast(eu.uk.ncl.pet5o.esper.client.EventBean[].class, exprDotMethod(ref("pair"), "getFirst")))
+                    .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "oldData", cast(eu.uk.ncl.pet5o.esper.client.EventBean[].class, exprDotMethod(ref("pair"), "getSecond")));
 
             {
                 CodegenBlock ifNewData = forLoop.ifCondition(notEqualsNull(ref("newData")));
                 {
-                    CodegenBlock forNew = ifNewData.forEach(com.espertech.esper.client.EventBean.class, "aNewData", ref("newData"));
+                    CodegenBlock forNew = ifNewData.forEach(eu.uk.ncl.pet5o.esper.client.EventBean.class, "aNewData", ref("newData"));
                     forNew.assignArrayElement(ref("eventsPerStream"), constant(0), ref("aNewData"))
                             .declareVar(Object.class, "mk", localMethod(generateGroupKeySingle, ref("eventsPerStream"), constantTrue()));
-                    CodegenBlock ifNotFound = forNew.ifCondition(equalsNull(exprDotMethod(ref(NAME_OUTPUTALLGROUPREPS), "put", ref("mk"), newArrayWithInit(com.espertech.esper.client.EventBean.class, ref("aNewData")))));
+                    CodegenBlock ifNotFound = forNew.ifCondition(equalsNull(exprDotMethod(ref(NAME_OUTPUTALLGROUPREPS), "put", ref("mk"), newArrayWithInit(eu.uk.ncl.pet5o.esper.client.EventBean.class, ref("aNewData")))));
                     if (forge.isSelectRStream()) {
                         ifNotFound.localMethod(generateOutputBatchedRowAddToList, constantFalse(), ref("mk"), ref("eventsPerStream"), constantTrue(), REF_ISSYNTHESIZE, ref("oldEvents"), ref("oldEventsSortKey"));
                     }
@@ -2195,10 +2195,10 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
             {
                 CodegenBlock ifOldData = forLoop.ifCondition(notEqualsNull(ref("oldData")));
                 {
-                    CodegenBlock forOld = ifOldData.forEach(com.espertech.esper.client.EventBean.class, "anOldData", ref("oldData"));
+                    CodegenBlock forOld = ifOldData.forEach(eu.uk.ncl.pet5o.esper.client.EventBean.class, "anOldData", ref("oldData"));
                     forOld.assignArrayElement(ref("eventsPerStream"), constant(0), ref("anOldData"))
                             .declareVar(Object.class, "mk", localMethod(generateGroupKeySingle, ref("eventsPerStream"), constantFalse()));
-                    CodegenBlock ifNotFound = forOld.ifCondition(equalsNull(exprDotMethod(ref(NAME_OUTPUTALLGROUPREPS), "put", ref("mk"), newArrayWithInit(com.espertech.esper.client.EventBean.class, ref("anOldData")))));
+                    CodegenBlock ifNotFound = forOld.ifCondition(equalsNull(exprDotMethod(ref(NAME_OUTPUTALLGROUPREPS), "put", ref("mk"), newArrayWithInit(eu.uk.ncl.pet5o.esper.client.EventBean.class, ref("anOldData")))));
                     if (forge.isSelectRStream()) {
                         ifNotFound.localMethod(generateOutputBatchedRowAddToList, constantFalse(), ref("mk"), ref("eventsPerStream"), constantFalse(), REF_ISSYNTHESIZE, ref("oldEvents"), ref("oldEventsSortKey"));
                     }
@@ -2212,7 +2212,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         ResultSetProcessorUtil.finalizeOutputMaySortMayRStreamCodegen(method.getBlock(), ref("newEvents"), ref("newEventsSortKey"), ref("oldEvents"), ref("oldEventsSortKey"), forge.isSelectRStream(), forge.isSorting());
     }
 
-    private UniformPair<com.espertech.esper.client.EventBean[]> processOutputLimitedViewDefault(List<UniformPair<EventBean[]>> viewEventsList, boolean generateSynthetic) {
+    private UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> processOutputLimitedViewDefault(List<UniformPair<EventBean[]>> viewEventsList, boolean generateSynthetic) {
         List<EventBean> newEvents = new LinkedList<>();
         List<EventBean> oldEvents = null;
         if (prototype.isSelectRStream()) {
@@ -2229,11 +2229,11 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         }
 
         Map<Object, EventBean> keysAndEvents = new HashMap<>();
-        com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[1];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
 
-        for (UniformPair<com.espertech.esper.client.EventBean[]> pair : viewEventsList) {
-            com.espertech.esper.client.EventBean[] newData = pair.getFirst();
-            com.espertech.esper.client.EventBean[] oldData = pair.getSecond();
+        for (UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> pair : viewEventsList) {
+            eu.uk.ncl.pet5o.esper.client.EventBean[] newData = pair.getFirst();
+            eu.uk.ncl.pet5o.esper.client.EventBean[] oldData = pair.getSecond();
 
             Object[] newDataMultiKey = generateGroupKeysKeepEvent(newData, keysAndEvents, true, eventsPerStream);
             Object[] oldDataMultiKey = generateGroupKeysKeepEvent(oldData, keysAndEvents, false, eventsPerStream);
@@ -2257,11 +2257,11 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         ResultSetProcessorUtil.prefixCodegenNewOldEvents(method.getBlock(), forge.isSorting(), forge.isSelectRStream());
 
         method.getBlock().declareVar(Map.class, "keysAndEvents", newInstance(HashMap.class))
-                .declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStream", newArrayByLength(com.espertech.esper.client.EventBean.class, constant(1)));
+                .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStream", newArrayByLength(eu.uk.ncl.pet5o.esper.client.EventBean.class, constant(1)));
         {
             CodegenBlock forEach = method.getBlock().forEach(UniformPair.class, "pair", REF_VIEWEVENTSLIST);
-            forEach.declareVar(com.espertech.esper.client.EventBean[].class, "newData", cast(com.espertech.esper.client.EventBean[].class, exprDotMethod(ref("pair"), "getFirst")))
-                    .declareVar(com.espertech.esper.client.EventBean[].class, "oldData", cast(com.espertech.esper.client.EventBean[].class, exprDotMethod(ref("pair"), "getSecond")))
+            forEach.declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "newData", cast(eu.uk.ncl.pet5o.esper.client.EventBean[].class, exprDotMethod(ref("pair"), "getFirst")))
+                    .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "oldData", cast(eu.uk.ncl.pet5o.esper.client.EventBean[].class, exprDotMethod(ref("pair"), "getSecond")))
                     .declareVar(Object[].class, "newDataMultiKey", localMethod(generateGroupKeysKeepEvent, ref("newData"), ref("keysAndEvents"), constantTrue(), ref("eventsPerStream")))
                     .declareVar(Object[].class, "oldDataMultiKey", localMethod(generateGroupKeysKeepEvent, ref("oldData"), ref("keysAndEvents"), constantFalse(), ref("eventsPerStream")));
 
@@ -2281,7 +2281,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         return prototype.getOptionalHavingNode() != null;
     }
 
-    public boolean evaluateHavingClause(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public boolean evaluateHavingClause(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         return ResultSetProcessorUtil.evaluateHavingClause(prototype.getOptionalHavingNode(), eventsPerStream, isNewData, exprEvaluatorContext);
     }
 
@@ -2301,7 +2301,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         Object[] keys = new Object[resultSet.size()];
 
         int count = 0;
-        for (MultiKey<com.espertech.esper.client.EventBean> eventsPerStream : resultSet) {
+        for (MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> eventsPerStream : resultSet) {
             keys[count] = generateGroupKeySingle(eventsPerStream.getArray(), isNewData);
             count++;
         }
@@ -2309,7 +2309,7 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         return keys;
     }
 
-    com.espertech.esper.client.EventBean shortcutEvalGivenKey(com.espertech.esper.client.EventBean[] eventsPerStream, Object groupKey, boolean isNewData, boolean isSynthesize) {
+    eu.uk.ncl.pet5o.esper.client.EventBean shortcutEvalGivenKey(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, Object groupKey, boolean isNewData, boolean isSynthesize) {
         aggregationService.setCurrentAccess(groupKey, agentInstanceContext.getAgentInstanceId(), null);
 
         if (prototype.getOptionalHavingNode() != null) {
@@ -2330,12 +2330,12 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
             methodNode.getBlock().methodReturn(exprDotMethod(REF_SELECTEXPRPROCESSOR, "process", REF_EPS, REF_ISNEWDATA, REF_ISSYNTHESIZE, REF_AGENTINSTANCECONTEXT));
         };
 
-        return instance.getMethods().addMethod(com.espertech.esper.client.EventBean.class, "shortcutEvalGivenKey",
-                CodegenNamedParam.from(com.espertech.esper.client.EventBean[].class, NAME_EPS, Object.class, "groupKey", boolean.class, NAME_ISNEWDATA, boolean.class, NAME_ISSYNTHESIZE),
+        return instance.getMethods().addMethod(eu.uk.ncl.pet5o.esper.client.EventBean.class, "shortcutEvalGivenKey",
+                CodegenNamedParam.from(eu.uk.ncl.pet5o.esper.client.EventBean[].class, NAME_EPS, Object.class, "groupKey", boolean.class, NAME_ISNEWDATA, boolean.class, NAME_ISSYNTHESIZE),
                 ResultSetProcessorRowPerGroupImpl.class, classScope, code);
     }
 
-    private UniformPair<com.espertech.esper.client.EventBean[]> processViewResultPairDepthOneNoRStream(com.espertech.esper.client.EventBean[] newData, com.espertech.esper.client.EventBean[] oldData, boolean isSynthesize) {
+    private UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> processViewResultPairDepthOneNoRStream(eu.uk.ncl.pet5o.esper.client.EventBean[] newData, eu.uk.ncl.pet5o.esper.client.EventBean[] oldData, boolean isSynthesize) {
         Object newGroupKey = generateGroupKeySingle(newData, true);
         Object oldGroupKey = generateGroupKeySingle(oldData, false);
 
@@ -2343,21 +2343,21 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         aggregationService.applyLeave(oldData, oldGroupKey, agentInstanceContext);
 
         if (Objects.equals(newGroupKey, oldGroupKey)) {
-            com.espertech.esper.client.EventBean istream = shortcutEvalGivenKey(newData, newGroupKey, true, isSynthesize);
+            eu.uk.ncl.pet5o.esper.client.EventBean istream = shortcutEvalGivenKey(newData, newGroupKey, true, isSynthesize);
             return ResultSetProcessorUtil.toPairNullIfNullIStream(istream);
         }
 
-        com.espertech.esper.client.EventBean newKeyEvent = shortcutEvalGivenKey(newData, newGroupKey, true, isSynthesize);
-        com.espertech.esper.client.EventBean oldKeyEvent = shortcutEvalGivenKey(oldData, oldGroupKey, true, isSynthesize);
+        eu.uk.ncl.pet5o.esper.client.EventBean newKeyEvent = shortcutEvalGivenKey(newData, newGroupKey, true, isSynthesize);
+        eu.uk.ncl.pet5o.esper.client.EventBean oldKeyEvent = shortcutEvalGivenKey(oldData, oldGroupKey, true, isSynthesize);
         if (prototype.isSorting()) {
             aggregationService.setCurrentAccess(newGroupKey, agentInstanceContext.getAgentInstanceId(), null);
             Object newSortKey = orderByProcessor.getSortKey(newData, true, agentInstanceContext);
             aggregationService.setCurrentAccess(oldGroupKey, agentInstanceContext.getAgentInstanceId(), null);
             Object oldSortKey = orderByProcessor.getSortKey(oldData, true, agentInstanceContext);
-            com.espertech.esper.client.EventBean[] sorted = orderByProcessor.sortTwoKeys(newKeyEvent, newSortKey, oldKeyEvent, oldSortKey);
+            eu.uk.ncl.pet5o.esper.client.EventBean[] sorted = orderByProcessor.sortTwoKeys(newKeyEvent, newSortKey, oldKeyEvent, oldSortKey);
             return new UniformPair<>(sorted, null);
         }
-        return new UniformPair<>(new com.espertech.esper.client.EventBean[]{newKeyEvent, oldKeyEvent}, null);
+        return new UniformPair<>(new eu.uk.ncl.pet5o.esper.client.EventBean[]{newKeyEvent, oldKeyEvent}, null);
     }
 
     private static CodegenMethodNode processViewResultPairDepthOneNoRStreamCodegen(ResultSetProcessorRowPerGroupForge forge, CodegenClassScope classScope, CodegenInstanceAux instance) {
@@ -2370,31 +2370,31 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
                     .exprDotMethod(REF_AGGREGATIONSVC, "applyEnter", REF_NEWDATA, ref("newGroupKey"), REF_AGENTINSTANCECONTEXT)
                     .exprDotMethod(REF_AGGREGATIONSVC, "applyLeave", REF_OLDDATA, ref("oldGroupKey"), REF_AGENTINSTANCECONTEXT)
                     .ifCondition(staticMethod(Objects.class, "equals", ref("newGroupKey"), ref("oldGroupKey")))
-                    .declareVar(com.espertech.esper.client.EventBean.class, "istream", localMethod(shortcutEvalGivenKey, REF_NEWDATA, ref("newGroupKey"), constantTrue(), REF_ISSYNTHESIZE))
+                    .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "istream", localMethod(shortcutEvalGivenKey, REF_NEWDATA, ref("newGroupKey"), constantTrue(), REF_ISSYNTHESIZE))
                     .blockReturn(staticMethod(ResultSetProcessorUtil.class, "toPairNullIfNullIStream", ref("istream")))
-                    .declareVar(com.espertech.esper.client.EventBean.class, "newKeyEvent", localMethod(shortcutEvalGivenKey, REF_NEWDATA, ref("newGroupKey"), constant(true), REF_ISSYNTHESIZE))
-                    .declareVar(com.espertech.esper.client.EventBean.class, "oldKeyEvent", localMethod(shortcutEvalGivenKey, REF_OLDDATA, ref("oldGroupKey"), constant(true), REF_ISSYNTHESIZE));
+                    .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "newKeyEvent", localMethod(shortcutEvalGivenKey, REF_NEWDATA, ref("newGroupKey"), constant(true), REF_ISSYNTHESIZE))
+                    .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "oldKeyEvent", localMethod(shortcutEvalGivenKey, REF_OLDDATA, ref("oldGroupKey"), constant(true), REF_ISSYNTHESIZE));
 
             if (forge.isSorting()) {
                 methodNode.getBlock().exprDotMethod(REF_AGGREGATIONSVC, "setCurrentAccess", ref("newGroupKey"), exprDotMethod(REF_AGENTINSTANCECONTEXT, "getAgentInstanceId"), constantNull())
                         .declareVar(Object.class, "newSortKey", exprDotMethod(REF_ORDERBYPROCESSOR, "getSortKey", REF_NEWDATA, constantTrue(), REF_AGENTINSTANCECONTEXT))
                         .exprDotMethod(REF_AGGREGATIONSVC, "setCurrentAccess", ref("newGroupKey"), exprDotMethod(REF_AGENTINSTANCECONTEXT, "getAgentInstanceId"), constantNull())
                         .declareVar(Object.class, "oldSortKey", exprDotMethod(REF_ORDERBYPROCESSOR, "getSortKey", REF_OLDDATA, constantTrue(), REF_AGENTINSTANCECONTEXT))
-                        .declareVar(com.espertech.esper.client.EventBean[].class, "sorted", exprDotMethod(REF_ORDERBYPROCESSOR, "sortTwoKeys", ref("newKeyEvent"), ref("newSortKey"), ref("oldKeyEvent"), ref("oldSortKey")))
+                        .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "sorted", exprDotMethod(REF_ORDERBYPROCESSOR, "sortTwoKeys", ref("newKeyEvent"), ref("newSortKey"), ref("oldKeyEvent"), ref("oldSortKey")))
                         .methodReturn(newInstance(UniformPair.class, ref("sorted"), constantNull()));
             } else {
-                methodNode.getBlock().methodReturn(newInstance(UniformPair.class, newArrayWithInit(com.espertech.esper.client.EventBean.class, ref("newKeyEvent"), ref("oldKeyEvent")), constantNull()));
+                methodNode.getBlock().methodReturn(newInstance(UniformPair.class, newArrayWithInit(eu.uk.ncl.pet5o.esper.client.EventBean.class, ref("newKeyEvent"), ref("oldKeyEvent")), constantNull()));
             }
         };
 
-        return instance.getMethods().addMethod(UniformPair.class, "processViewResultPairDepthOneNoRStream", CodegenNamedParam.from(com.espertech.esper.client.EventBean[].class, NAME_NEWDATA, com.espertech.esper.client.EventBean[].class, NAME_OLDDATA, boolean.class, NAME_ISSYNTHESIZE), ResultSetProcessorRowPerGroupImpl.class, classScope, code);
+        return instance.getMethods().addMethod(UniformPair.class, "processViewResultPairDepthOneNoRStream", CodegenNamedParam.from(eu.uk.ncl.pet5o.esper.client.EventBean[].class, NAME_NEWDATA, eu.uk.ncl.pet5o.esper.client.EventBean[].class, NAME_OLDDATA, boolean.class, NAME_ISSYNTHESIZE), ResultSetProcessorRowPerGroupImpl.class, classScope, code);
     }
 
-    private UniformPair<com.espertech.esper.client.EventBean[]> processViewResultNewDepthOne(com.espertech.esper.client.EventBean[] newData, boolean isSynthesize) {
+    private UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> processViewResultNewDepthOne(eu.uk.ncl.pet5o.esper.client.EventBean[] newData, boolean isSynthesize) {
         Object groupKey = generateGroupKeySingle(newData, true);
-        com.espertech.esper.client.EventBean rstream = !prototype.isSelectRStream() ? null : shortcutEvalGivenKey(newData, groupKey, false, isSynthesize);   // using newdata to compute is safe here
+        eu.uk.ncl.pet5o.esper.client.EventBean rstream = !prototype.isSelectRStream() ? null : shortcutEvalGivenKey(newData, groupKey, false, isSynthesize);   // using newdata to compute is safe here
         aggregationService.applyEnter(newData, groupKey, agentInstanceContext);
-        com.espertech.esper.client.EventBean istream = shortcutEvalGivenKey(newData, groupKey, true, isSynthesize);
+        eu.uk.ncl.pet5o.esper.client.EventBean istream = shortcutEvalGivenKey(newData, groupKey, true, isSynthesize);
         return ResultSetProcessorUtil.toPairNullIfAllNullSingle(istream, rstream);
     }
 
@@ -2405,10 +2405,10 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
         Consumer<CodegenMethodNode> code = methodNode -> {
             methodNode.getBlock().declareVar(Object.class, "groupKey", localMethod(generateGroupKeySingle, REF_NEWDATA, constantTrue()));
             if (forge.isSelectRStream()) {
-                methodNode.getBlock().declareVar(com.espertech.esper.client.EventBean.class, "rstream", localMethod(shortcutEvalGivenKey, REF_NEWDATA, ref("groupKey"), constantFalse(), REF_ISSYNTHESIZE));
+                methodNode.getBlock().declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "rstream", localMethod(shortcutEvalGivenKey, REF_NEWDATA, ref("groupKey"), constantFalse(), REF_ISSYNTHESIZE));
             }
             methodNode.getBlock().exprDotMethod(REF_AGGREGATIONSVC, "applyEnter", REF_NEWDATA, ref("groupKey"), REF_AGENTINSTANCECONTEXT)
-                    .declareVar(com.espertech.esper.client.EventBean.class, "istream", localMethod(shortcutEvalGivenKey, REF_NEWDATA, ref("groupKey"), constantTrue(), REF_ISSYNTHESIZE));
+                    .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "istream", localMethod(shortcutEvalGivenKey, REF_NEWDATA, ref("groupKey"), constantTrue(), REF_ISSYNTHESIZE));
             if (forge.isSelectRStream()) {
                 methodNode.getBlock().methodReturn(staticMethod(ResultSetProcessorUtil.class, "toPairNullIfAllNullSingle", ref("istream"), ref("rstream")));
             } else {
@@ -2416,6 +2416,6 @@ public class ResultSetProcessorRowPerGroupImpl implements ResultSetProcessorRowP
             }
         };
 
-        return instance.getMethods().addMethod(UniformPair.class, "processViewResultNewDepthOneCodegen", CodegenNamedParam.from(com.espertech.esper.client.EventBean[].class, NAME_NEWDATA, boolean.class, NAME_ISSYNTHESIZE), ResultSetProcessorRowPerGroupImpl.class, classScope, code);
+        return instance.getMethods().addMethod(UniformPair.class, "processViewResultNewDepthOneCodegen", CodegenNamedParam.from(eu.uk.ncl.pet5o.esper.client.EventBean[].class, NAME_NEWDATA, boolean.class, NAME_ISSYNTHESIZE), ResultSetProcessorRowPerGroupImpl.class, classScope, code);
     }
 }

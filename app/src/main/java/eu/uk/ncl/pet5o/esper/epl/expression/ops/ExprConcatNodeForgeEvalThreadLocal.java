@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.ops;
 
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
 
 public class ExprConcatNodeForgeEvalThreadLocal implements ExprEvaluator {
     private final ExprConcatNodeForge form;
@@ -29,7 +29,7 @@ public class ExprConcatNodeForgeEvalThreadLocal implements ExprEvaluator {
         this.evaluators = evaluators;
     }
 
-    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         StringBuffer buffer = localBuffer.get();
         buffer.delete(0, buffer.length());
         return ExprConcatNodeForgeEvalWNew.evaluate(eventsPerStream, isNewData, context, buffer, evaluators, form);

@@ -10,20 +10,20 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.access;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMembersColumnized;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.base.CodegenSymbolProviderEmpty;
-import com.espertech.esper.codegen.core.CodegenCtor;
-import com.espertech.esper.codegen.core.CodegenNamedMethods;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.codegen.model.expression.CodegenExpressionRef;
-import com.espertech.esper.collection.ArrayEventIterator;
-import com.espertech.esper.epl.agg.factory.AggregationStateLinearForge;
-import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.util.CollectionUtil;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMembersColumnized;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenSymbolProviderEmpty;
+import eu.uk.ncl.pet5o.esper.codegen.core.CodegenCtor;
+import eu.uk.ncl.pet5o.esper.codegen.core.CodegenNamedMethods;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRef;
+import eu.uk.ncl.pet5o.esper.collection.ArrayEventIterator;
+import eu.uk.ncl.pet5o.esper.epl.agg.factory.AggregationStateLinearForge;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.util.CollectionUtil;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -34,26 +34,26 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.arrayAtIndex;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.arrayLength;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.cast;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.equalsIdentity;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.equalsNull;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethodChain;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.newInstance;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.op;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.refCol;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.relational;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionRelational.CodegenRelational.GE;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionRelational.CodegenRelational.LT;
-import static com.espertech.esper.epl.agg.aggregator.AggregatorCodegenUtil.prefixWithFilterCheck;
-import static com.espertech.esper.util.CollectionUtil.METHOD_TOARRAYEVENTS;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.arrayAtIndex;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.arrayLength;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.cast;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.equalsIdentity;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.equalsNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethodChain;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.newInstance;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.op;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.refCol;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.relational;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRelational.CodegenRelational.GE;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRelational.CodegenRelational.LT;
+import static eu.uk.ncl.pet5o.esper.epl.agg.aggregator.AggregatorCodegenUtil.prefixWithFilterCheck;
+import static eu.uk.ncl.pet5o.esper.util.CollectionUtil.METHOD_TOARRAYEVENTS;
 
 /**
  * Implementation of access function for joins.
@@ -61,7 +61,7 @@ import static com.espertech.esper.util.CollectionUtil.METHOD_TOARRAYEVENTS;
 public class AggregationStateLinearJoinImpl implements AggregationStateWithSize, AggregationStateLinear {
     protected int streamId;
     protected LinkedHashMap<EventBean, Integer> refSet = new LinkedHashMap<EventBean, Integer>();
-    private com.espertech.esper.client.EventBean[] array;
+    private eu.uk.ncl.pet5o.esper.client.EventBean[] array;
 
     /**
      * Ctor.
@@ -74,12 +74,12 @@ public class AggregationStateLinearJoinImpl implements AggregationStateWithSize,
 
     public static void rowMemberCodegen(int stateNumber, CodegenCtor ctor, CodegenMembersColumnized membersColumnized) {
         membersColumnized.addMember(stateNumber, LinkedHashMap.class, "refSet");
-        membersColumnized.addMember(stateNumber, com.espertech.esper.client.EventBean[].class, "array");
+        membersColumnized.addMember(stateNumber, eu.uk.ncl.pet5o.esper.client.EventBean[].class, "array");
         ctor.getBlock().assignRef(refCol("refSet", stateNumber), newInstance(LinkedHashMap.class));
     }
 
-    public void applyEnter(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
-        com.espertech.esper.client.EventBean theEvent = eventsPerStream[streamId];
+    public void applyEnter(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
+        eu.uk.ncl.pet5o.esper.client.EventBean theEvent = eventsPerStream[streamId];
         if (theEvent == null) {
             return;
         }
@@ -92,13 +92,13 @@ public class AggregationStateLinearJoinImpl implements AggregationStateWithSize,
         }
         CodegenExpression eps = symbols.getAddEPS(method);
         CodegenMethodNode addEvent = addEventCodegen(stateNumber, method, classScope);
-        method.getBlock().declareVar(com.espertech.esper.client.EventBean.class, "theEvent", arrayAtIndex(eps, constant(forge.getStreamNum())))
+        method.getBlock().declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "theEvent", arrayAtIndex(eps, constant(forge.getStreamNum())))
                 .ifRefNull("theEvent").blockReturnNoValue()
                 .localMethod(addEvent, ref("theEvent"));
     }
 
-    public void applyLeave(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
-        com.espertech.esper.client.EventBean theEvent = eventsPerStream[streamId];
+    public void applyLeave(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
+        eu.uk.ncl.pet5o.esper.client.EventBean theEvent = eventsPerStream[streamId];
         if (theEvent == null) {
             return;
         }
@@ -111,7 +111,7 @@ public class AggregationStateLinearJoinImpl implements AggregationStateWithSize,
         }
         CodegenExpression eps = symbols.getAddEPS(method);
         CodegenMethodNode removeEvent = removeEventCodegen(stateNumber, method, classScope);
-        method.getBlock().declareVar(com.espertech.esper.client.EventBean.class, "theEvent", arrayAtIndex(eps, constant(forge.getStreamNum())))
+        method.getBlock().declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "theEvent", arrayAtIndex(eps, constant(forge.getStreamNum())))
                 .ifRefNull("theEvent").blockReturnNoValue()
                 .localMethod(removeEvent, ref("theEvent"));
     }
@@ -126,7 +126,7 @@ public class AggregationStateLinearJoinImpl implements AggregationStateWithSize,
                 .assignRef(refCol("array", stateNumber), constantNull());
     }
 
-    public com.espertech.esper.client.EventBean getFirstNthValue(int index) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getFirstNthValue(int index) {
         if (index < 0) {
             return null;
         }
@@ -146,7 +146,7 @@ public class AggregationStateLinearJoinImpl implements AggregationStateWithSize,
         CodegenExpressionRef refSet = refCol("refSet", slot);
         CodegenExpressionRef array = refCol("array", slot);
         CodegenMethodNode initArray = initArrayCodegen(slot, namedMethods, classScope);
-        CodegenMethodNode method = parentMethod.makeChildWithScope(com.espertech.esper.client.EventBean.class, AggregationStateLinearJoinImpl.class, CodegenSymbolProviderEmpty.INSTANCE, classScope).addParam(int.class, "index");
+        CodegenMethodNode method = parentMethod.makeChildWithScope(eu.uk.ncl.pet5o.esper.client.EventBean.class, AggregationStateLinearJoinImpl.class, CodegenSymbolProviderEmpty.INSTANCE, classScope).addParam(int.class, "index");
         method.getBlock().ifCondition(relational(ref("index"), LT, constant(0))).blockReturn(constantNull())
                 .ifCondition(exprDotMethod(refSet, "isEmpty")).blockReturn(constantNull())
                 .ifCondition(relational(ref("index"), GE, exprDotMethod(refSet, "size"))).blockReturn(constantNull())
@@ -155,7 +155,7 @@ public class AggregationStateLinearJoinImpl implements AggregationStateWithSize,
         return localMethod(method, index);
     }
 
-    public com.espertech.esper.client.EventBean getLastNthValue(int index) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getLastNthValue(int index) {
         if (index < 0) {
             return null;
         }
@@ -175,7 +175,7 @@ public class AggregationStateLinearJoinImpl implements AggregationStateWithSize,
         CodegenExpressionRef refSet = refCol("refSet", slot);
         CodegenExpressionRef array = refCol("array", slot);
         CodegenMethodNode initArray = initArrayCodegen(slot, namedMethods, classScope);
-        CodegenMethodNode method = parentMethod.makeChildWithScope(com.espertech.esper.client.EventBean.class, AggregationStateLinearJoinImpl.class, CodegenSymbolProviderEmpty.INSTANCE, classScope).addParam(int.class, "index");
+        CodegenMethodNode method = parentMethod.makeChildWithScope(eu.uk.ncl.pet5o.esper.client.EventBean.class, AggregationStateLinearJoinImpl.class, CodegenSymbolProviderEmpty.INSTANCE, classScope).addParam(int.class, "index");
         method.getBlock().ifCondition(relational(ref("index"), LT, constant(0))).blockReturn(constantNull())
                 .ifCondition(exprDotMethod(refSet, "isEmpty")).blockReturn(constantNull())
                 .ifCondition(relational(ref("index"), GE, exprDotMethod(refSet, "size"))).blockReturn(constantNull())
@@ -184,7 +184,7 @@ public class AggregationStateLinearJoinImpl implements AggregationStateWithSize,
         return localMethod(method, index);
     }
 
-    public com.espertech.esper.client.EventBean getFirstValue() {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getFirstValue() {
         if (refSet.isEmpty()) {
             return null;
         }
@@ -193,14 +193,14 @@ public class AggregationStateLinearJoinImpl implements AggregationStateWithSize,
 
     public static CodegenExpression codegenGetFirstValue(int slot, CodegenClassScope classScope, CodegenMethodNode parentMethod) {
         CodegenExpressionRef refSet = refCol("refSet", slot);
-        CodegenMethodNode method = parentMethod.makeChildWithScope(com.espertech.esper.client.EventBean.class, AggregationStateLinearJoinImpl.class, CodegenSymbolProviderEmpty.INSTANCE, classScope);
+        CodegenMethodNode method = parentMethod.makeChildWithScope(eu.uk.ncl.pet5o.esper.client.EventBean.class, AggregationStateLinearJoinImpl.class, CodegenSymbolProviderEmpty.INSTANCE, classScope);
         method.getBlock().ifCondition(exprDotMethod(refSet, "isEmpty")).blockReturn(constantNull())
                 .declareVar(Map.Entry.class, "entry", cast(Map.Entry.class, exprDotMethodChain(refSet).add("entrySet").add("iterator").add("next")))
-                .methodReturn(cast(com.espertech.esper.client.EventBean.class, exprDotMethod(ref("entry"), "getKey")));
+                .methodReturn(cast(eu.uk.ncl.pet5o.esper.client.EventBean.class, exprDotMethod(ref("entry"), "getKey")));
         return localMethod(method);
     }
 
-    public com.espertech.esper.client.EventBean getLastValue() {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getLastValue() {
         if (refSet.isEmpty()) {
             return null;
         }
@@ -214,7 +214,7 @@ public class AggregationStateLinearJoinImpl implements AggregationStateWithSize,
         CodegenExpressionRef refSet = refCol("refSet", slot);
         CodegenExpressionRef array = refCol("array", slot);
         CodegenMethodNode initArray = initArrayCodegen(slot, namedMethods, classScope);
-        CodegenMethodNode method = parentMethod.makeChildWithScope(com.espertech.esper.client.EventBean.class, AggregationStateLinearJoinImpl.class, CodegenSymbolProviderEmpty.INSTANCE, classScope);
+        CodegenMethodNode method = parentMethod.makeChildWithScope(eu.uk.ncl.pet5o.esper.client.EventBean.class, AggregationStateLinearJoinImpl.class, CodegenSymbolProviderEmpty.INSTANCE, classScope);
         method.getBlock().ifCondition(exprDotMethod(refSet, "isEmpty")).blockReturn(constantNull())
                 .ifCondition(equalsNull(array)).localMethod(initArray).blockEnd()
                 .methodReturn(arrayAtIndex(array, op(arrayLength(array), "-", constant(1))));
@@ -267,7 +267,7 @@ public class AggregationStateLinearJoinImpl implements AggregationStateWithSize,
         return refSet;
     }
 
-    protected void addEvent(com.espertech.esper.client.EventBean theEvent) {
+    protected void addEvent(eu.uk.ncl.pet5o.esper.client.EventBean theEvent) {
         array = null;
         Integer value = refSet.get(theEvent);
         if (value == null) {
@@ -281,7 +281,7 @@ public class AggregationStateLinearJoinImpl implements AggregationStateWithSize,
 
     private static CodegenMethodNode addEventCodegen(int stateNumber, CodegenMethodNode parent, CodegenClassScope classScope) {
         CodegenExpressionRef refSet = refCol("refSet", stateNumber);
-        CodegenMethodNode method = parent.makeChildWithScope(void.class, AggregationStateLinearJoinImpl.class, CodegenSymbolProviderEmpty.INSTANCE, classScope).addParam(com.espertech.esper.client.EventBean.class, "theEvent");
+        CodegenMethodNode method = parent.makeChildWithScope(void.class, AggregationStateLinearJoinImpl.class, CodegenSymbolProviderEmpty.INSTANCE, classScope).addParam(eu.uk.ncl.pet5o.esper.client.EventBean.class, "theEvent");
         method.getBlock().assignRef(refCol("array", stateNumber), constantNull())
                 .declareVar(Integer.class, "value", cast(Integer.class, exprDotMethod(refSet, "get", ref("theEvent"))))
                 .ifRefNull("value")
@@ -292,7 +292,7 @@ public class AggregationStateLinearJoinImpl implements AggregationStateWithSize,
         return method;
     }
 
-    protected void removeEvent(com.espertech.esper.client.EventBean theEvent) {
+    protected void removeEvent(eu.uk.ncl.pet5o.esper.client.EventBean theEvent) {
         array = null;
 
         Integer value = refSet.get(theEvent);
@@ -311,7 +311,7 @@ public class AggregationStateLinearJoinImpl implements AggregationStateWithSize,
 
     private static CodegenMethodNode removeEventCodegen(int stateNumber, CodegenMethodNode parent, CodegenClassScope classScope) {
         CodegenExpressionRef refSet = refCol("refSet", stateNumber);
-        CodegenMethodNode method = parent.makeChildWithScope(void.class, AggregationStateLinearJoinImpl.class, CodegenSymbolProviderEmpty.INSTANCE, classScope).addParam(com.espertech.esper.client.EventBean.class, "theEvent");
+        CodegenMethodNode method = parent.makeChildWithScope(void.class, AggregationStateLinearJoinImpl.class, CodegenSymbolProviderEmpty.INSTANCE, classScope).addParam(eu.uk.ncl.pet5o.esper.client.EventBean.class, "theEvent");
         method.getBlock().assignRef(refCol("array", stateNumber), constantNull())
                 .declareVar(Integer.class, "value", cast(Integer.class, exprDotMethod(refSet, "get", ref("theEvent"))))
                 .ifRefNull("value").blockReturnNoValue()
@@ -330,7 +330,7 @@ public class AggregationStateLinearJoinImpl implements AggregationStateWithSize,
 
     private static CodegenMethodNode initArrayCodegen(int slot, CodegenNamedMethods namedMethods, CodegenClassScope classScope) {
         Consumer<CodegenMethodNode> code = method -> {
-            method.getBlock().declareVar(Set.class, com.espertech.esper.client.EventBean.class, "events", exprDotMethod(refCol("refSet", slot), "keySet"))
+            method.getBlock().declareVar(Set.class, eu.uk.ncl.pet5o.esper.client.EventBean.class, "events", exprDotMethod(refCol("refSet", slot), "keySet"))
                     .assignRef(refCol("array", slot), staticMethod(CollectionUtil.class, METHOD_TOARRAYEVENTS, ref("events")));
         };
         return namedMethods.addMethod(void.class, "initArray_" + slot, Collections.emptyList(), AggregationStateLinearJoinImpl.class, classScope, code);

@@ -10,21 +10,21 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.funcs;
 
-import com.espertech.esper.client.ConfigurationPlugInSingleRowFunction;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.epl.core.engineimport.EngineImportSingleRowDesc;
-import com.espertech.esper.epl.enummethod.dot.ExprDotStaticMethodWrap;
-import com.espertech.esper.epl.enummethod.dot.ExprDotStaticMethodWrapFactory;
-import com.espertech.esper.epl.expression.core.*;
-import com.espertech.esper.epl.expression.core.ExprFilterSpecLookupable;
-import com.espertech.esper.epl.expression.dot.*;
-import com.espertech.esper.epl.expression.visitor.ExprNodeContextPropertiesVisitor;
-import com.espertech.esper.epl.expression.visitor.ExprNodeStreamRequiredVisitor;
-import com.espertech.esper.epl.expression.visitor.ExprNodeVisitor;
-import com.espertech.esper.epl.expression.visitor.ExprNodeVisitorWithParent;
-import com.espertech.esper.epl.rettype.EPType;
-import com.espertech.esper.epl.rettype.EPTypeHelper;
-import com.espertech.esper.epl.util.ExprNodeUtilityRich;
+import eu.uk.ncl.pet5o.esper.client.ConfigurationPlugInSingleRowFunction;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportSingleRowDesc;
+import eu.uk.ncl.pet5o.esper.epl.enummethod.dot.ExprDotStaticMethodWrap;
+import eu.uk.ncl.pet5o.esper.epl.enummethod.dot.ExprDotStaticMethodWrapFactory;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprFilterSpecLookupable;
+import eu.uk.ncl.pet5o.esper.epl.expression.dot.*;
+import eu.uk.ncl.pet5o.esper.epl.expression.visitor.ExprNodeContextPropertiesVisitor;
+import eu.uk.ncl.pet5o.esper.epl.expression.visitor.ExprNodeStreamRequiredVisitor;
+import eu.uk.ncl.pet5o.esper.epl.expression.visitor.ExprNodeVisitor;
+import eu.uk.ncl.pet5o.esper.epl.expression.visitor.ExprNodeVisitorWithParent;
+import eu.uk.ncl.pet5o.esper.epl.rettype.EPType;
+import eu.uk.ncl.pet5o.esper.epl.rettype.EPTypeHelper;
+import eu.uk.ncl.pet5o.esper.epl.util.ExprNodeUtilityRich;
 
 import java.io.StringWriter;
 import java.util.ArrayList;

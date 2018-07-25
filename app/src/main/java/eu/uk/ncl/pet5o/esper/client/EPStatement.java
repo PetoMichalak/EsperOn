@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.client;
 
-import com.espertech.esper.client.context.ContextPartitionSelector;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionSelector;
 
 import java.lang.annotation.Annotation;
 import java.util.Iterator;
@@ -182,7 +182,7 @@ public interface EPStatement extends EPListenable, EPIterable {
     /**
      * Returns EPL or pattern statement annotations provided in the statement text, if any.
      * <p>
-     * See the annotation {@link com.espertech.esper.client.annotation} package for
+     * See the annotation {@link eu.uk.ncl.pet5o.esper.client.annotation} package for
      * available annotations.
      *
      * @return annotations or a zero-length array if no annotaions have been specified.

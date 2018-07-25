@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.filter;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.filterspec.FilterValueSet;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterValueSet;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;

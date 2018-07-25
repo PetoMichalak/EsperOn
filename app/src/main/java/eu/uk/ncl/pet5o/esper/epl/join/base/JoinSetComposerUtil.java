@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.base;
 
-import com.espertech.esper.epl.join.plan.TableLookupIndexReqKey;
-import com.espertech.esper.epl.join.table.EventTable;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.TableLookupIndexReqKey;
+import eu.uk.ncl.pet5o.esper.epl.join.table.EventTable;
 
 import java.util.Map;
 

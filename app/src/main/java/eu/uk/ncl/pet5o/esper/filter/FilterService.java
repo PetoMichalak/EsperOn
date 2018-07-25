@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.filter;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.filterspec.FilterSpecCompiled;
-import com.espertech.esper.filterspec.FilterValueSet;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterSpecCompiled;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterValueSet;
 
 import java.util.Collection;
 
@@ -34,7 +34,7 @@ public interface FilterService {
      * @param matches  is a collection that is populated via add method with any handles for matching filters
      * @return filter current version
      */
-    public long evaluate(com.espertech.esper.client.EventBean theEvent, Collection<FilterHandle> matches);
+    public long evaluate(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, Collection<FilterHandle> matches);
 
     /**
      * Finds matching filters to the event passed in and collects their associated callback method, for a particular statement only
@@ -44,7 +44,7 @@ public interface FilterService {
      * @param statementId statement for which to return results for
      * @return filter current version
      */
-    public long evaluate(com.espertech.esper.client.EventBean theEvent, Collection<FilterHandle> matches, int statementId);
+    public long evaluate(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, Collection<FilterHandle> matches, int statementId);
 
     /**
      * Add a filter for events as defined by the filter specification, and register a

@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.event.xml;
 
-import com.espertech.esper.epl.generated.EsperEPL2GrammarParser;
-import com.espertech.esper.epl.parse.ASTUtil;
-import com.espertech.esper.util.ExecutionPathDebugLog;
-import com.espertech.esper.util.StringValue;
+import eu.uk.ncl.pet5o.esper.epl.generated.EsperEPL2GrammarParser;
+import eu.uk.ncl.pet5o.esper.epl.parse.ASTUtil;
+import eu.uk.ncl.pet5o.esper.util.ExecutionPathDebugLog;
+import eu.uk.ncl.pet5o.esper.util.StringValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

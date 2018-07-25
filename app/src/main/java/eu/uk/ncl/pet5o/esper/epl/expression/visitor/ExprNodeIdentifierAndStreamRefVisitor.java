@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.visitor;
 
-import com.espertech.esper.epl.enummethod.dot.ExprLambdaGoesNode;
-import com.espertech.esper.epl.expression.baseagg.ExprAggregateNode;
-import com.espertech.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.epl.enummethod.dot.ExprLambdaGoesNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.baseagg.ExprAggregateNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
 
 import java.util.ArrayList;
 import java.util.Collections;

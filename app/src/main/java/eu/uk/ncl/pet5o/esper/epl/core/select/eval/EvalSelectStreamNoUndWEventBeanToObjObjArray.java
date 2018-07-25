@@ -10,23 +10,23 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.select.eval;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMember;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder;
-import com.espertech.esper.codegen.model.expression.CodegenExpressionRef;
-import com.espertech.esper.core.service.speccompiled.SelectClauseStreamCompiledSpec;
-import com.espertech.esper.epl.core.select.SelectExprProcessor;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.event.arr.ObjectArrayEventType;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMember;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRef;
+import eu.uk.ncl.pet5o.esper.core.service.speccompiled.SelectClauseStreamCompiledSpec;
+import eu.uk.ncl.pet5o.esper.epl.core.select.SelectExprProcessor;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.event.arr.ObjectArrayEventType;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.staticMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.staticMethod;
 
 public class EvalSelectStreamNoUndWEventBeanToObjObjArray extends EvalSelectStreamBaseObjectArray implements SelectExprProcessor {
 
@@ -44,7 +44,7 @@ public class EvalSelectStreamNoUndWEventBeanToObjObjArray extends EvalSelectStre
         }
     }
 
-    public com.espertech.esper.client.EventBean processSpecific(Object[] props, com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean processSpecific(Object[] props, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
         return processSelectExprbeanToObjArray(props, eventBeanToObjectIndexes, context.getEventAdapterService(), super.getResultEventType());
     }
 
@@ -61,11 +61,11 @@ public class EvalSelectStreamNoUndWEventBeanToObjObjArray extends EvalSelectStre
      * @param resultEventType type
      * @return bean
      */
-    public static com.espertech.esper.client.EventBean processSelectExprbeanToObjArray(Object[] props, Set<Integer> eventBeanToObjectIndexes, EventAdapterService eventAdapterService, EventType resultEventType) {
+    public static eu.uk.ncl.pet5o.esper.client.EventBean processSelectExprbeanToObjArray(Object[] props, Set<Integer> eventBeanToObjectIndexes, EventAdapterService eventAdapterService, EventType resultEventType) {
         for (Integer propertyIndex : eventBeanToObjectIndexes) {
             Object value = props[propertyIndex];
-            if (value instanceof com.espertech.esper.client.EventBean) {
-                props[propertyIndex] = ((com.espertech.esper.client.EventBean) value).getUnderlying();
+            if (value instanceof eu.uk.ncl.pet5o.esper.client.EventBean) {
+                props[propertyIndex] = ((eu.uk.ncl.pet5o.esper.client.EventBean) value).getUnderlying();
             }
         }
         return eventAdapterService.adapterForTypedObjectArray(props, resultEventType);

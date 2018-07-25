@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.filter;
 
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.filterspec.FilterSpecParamInValue;
-import com.espertech.esper.filterspec.MatchedEventMap;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterSpecParamInValue;
+import eu.uk.ncl.pet5o.esper.filterspec.MatchedEventMap;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 /**
  * Event property value in a list of values following an in-keyword.
@@ -49,7 +49,7 @@ public class FilterForEvalEventPropMayCoerce implements FilterSpecParamInValue {
     }
 
     public final Object getFilterValue(MatchedEventMap matchedEvents, ExprEvaluatorContext evaluatorContext) {
-        com.espertech.esper.client.EventBean theEvent = matchedEvents.getMatchingEventByTag(resultEventAsName);
+        eu.uk.ncl.pet5o.esper.client.EventBean theEvent = matchedEvents.getMatchingEventByTag(resultEventAsName);
         if (theEvent == null) {
             throw new IllegalStateException("Matching event named " +
                     '\'' + resultEventAsName + "' not found in event result set");

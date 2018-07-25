@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.thread;
 
-import com.espertech.esper.core.service.EPRuntimeEventSender;
+import eu.uk.ncl.pet5o.esper.core.service.EPRuntimeEventSender;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +20,7 @@ import org.slf4j.LoggerFactory;
  */
 public class InboundUnitSendWrapped implements InboundUnitRunnable {
     private static final Logger log = LoggerFactory.getLogger(InboundUnitSendWrapped.class);
-    private final com.espertech.esper.client.EventBean eventBean;
+    private final eu.uk.ncl.pet5o.esper.client.EventBean eventBean;
     private final EPRuntimeEventSender runtime;
 
     /**
@@ -29,7 +29,7 @@ public class InboundUnitSendWrapped implements InboundUnitRunnable {
      * @param theEvent inbound event, wrapped
      * @param runtime  to process
      */
-    public InboundUnitSendWrapped(com.espertech.esper.client.EventBean theEvent, EPRuntimeEventSender runtime) {
+    public InboundUnitSendWrapped(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, EPRuntimeEventSender runtime) {
         this.eventBean = theEvent;
         this.runtime = runtime;
     }

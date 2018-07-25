@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.index.service;
 
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
-import static com.espertech.esper.util.JavaClassHelper.isNumeric;
+import static eu.uk.ncl.pet5o.esper.util.JavaClassHelper.isNumeric;
 
 public class AdvancedIndexValidationHelper {
 

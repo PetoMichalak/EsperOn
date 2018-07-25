@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.core;
 
-import com.espertech.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.EventType;
 
 /**
  * Represents an stream selector that returns the streams underlying event, or null if undefined.

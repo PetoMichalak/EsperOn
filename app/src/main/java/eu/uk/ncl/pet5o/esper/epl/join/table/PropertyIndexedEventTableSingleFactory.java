@@ -10,17 +10,17 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.table;
 
-import com.espertech.esper.client.EventPropertyGetter;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.event.EventBeanUtility;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.event.EventBeanUtility;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
  * Index factory that organizes events by the event property values into hash buckets. Based on a HashMap
- * with {@link com.espertech.esper.collection.MultiKeyUntyped} keys that store the property values.
+ * with {@link eu.uk.ncl.pet5o.esper.collection.MultiKeyUntyped} keys that store the property values.
  */
 public class PropertyIndexedEventTableSingleFactory implements EventTableFactory {
     protected final int streamNum;

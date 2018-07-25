@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.lookup;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.epl.index.service.EventAdvancedIndexProvisionDesc;
-import com.espertech.esper.epl.join.table.EventTableFactory;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.epl.index.service.EventAdvancedIndexProvisionDesc;
+import eu.uk.ncl.pet5o.esper.epl.join.table.EventTableFactory;
 
 public interface EventTableIndexService {
     boolean allowInitIndex(boolean isRecoveringResilient);

@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.event.vaevent;
 
-import com.espertech.esper.client.EventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyGetter;
 
 /**
  * Per-event-type descriptor for fast access to getters for key values and changes properties.

@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.event.util;
 
-import com.espertech.esper.client.EventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyGetter;
 
 /**
  * Value-object for rendering support of a simple property value (non-nested).

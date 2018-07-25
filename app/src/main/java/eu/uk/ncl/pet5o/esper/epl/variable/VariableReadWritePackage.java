@@ -10,18 +10,18 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.variable;
 
-import com.espertech.esper.client.*;
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.core.start.EPStatementStartMethod;
-import com.espertech.esper.epl.expression.codegen.ExprNodeCompiler;
-import com.espertech.esper.epl.expression.core.*;
-import com.espertech.esper.epl.spec.OnTriggerSetAssignment;
-import com.espertech.esper.epl.util.ExprNodeUtilityRich;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.event.EventBeanCopyMethod;
-import com.espertech.esper.event.EventPropertyWriter;
-import com.espertech.esper.event.EventTypeSPI;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.client.*;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.core.start.EPStatementStartMethod;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprNodeCompiler;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.epl.spec.OnTriggerSetAssignment;
+import eu.uk.ncl.pet5o.esper.epl.util.ExprNodeUtilityRich;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.event.EventBeanCopyMethod;
+import eu.uk.ncl.pet5o.esper.event.EventPropertyWriter;
+import eu.uk.ncl.pet5o.esper.event.EventTypeSPI;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,7 +58,7 @@ public class VariableReadWritePackage {
      * @param variableService     variable service
      * @param eventAdapterService event adapters
      * @param statementName statement name
-     * @throws com.espertech.esper.epl.expression.core.ExprValidationException when variables cannot be found
+     * @throws eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException when variables cannot be found
      */
     public VariableReadWritePackage(List<OnTriggerSetAssignment> assignments, VariableService variableService, EventAdapterService eventAdapterService, String statementName)
             throws ExprValidationException {

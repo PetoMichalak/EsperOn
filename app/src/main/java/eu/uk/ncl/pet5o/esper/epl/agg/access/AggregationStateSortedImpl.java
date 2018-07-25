@@ -10,22 +10,22 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.access;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.codegen.base.*;
-import com.espertech.esper.codegen.core.CodegenCtor;
-import com.espertech.esper.codegen.core.CodegenNamedMethods;
-import com.espertech.esper.codegen.core.CodegenNamedParam;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.codegen.model.expression.CodegenExpressionRef;
-import com.espertech.esper.codegen.model.expression.CodegenExpressionRefWCol;
-import com.espertech.esper.collection.HashableMultiKey;
-import com.espertech.esper.epl.agg.aggregator.AggregatorCodegenUtil;
-import com.espertech.esper.epl.agg.factory.AggregationStateSortedForge;
-import com.espertech.esper.epl.expression.codegen.CodegenLegoMethodExpression;
-import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.codegen.base.*;
+import eu.uk.ncl.pet5o.esper.codegen.core.CodegenCtor;
+import eu.uk.ncl.pet5o.esper.codegen.core.CodegenNamedMethods;
+import eu.uk.ncl.pet5o.esper.codegen.core.CodegenNamedParam;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRef;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRefWCol;
+import eu.uk.ncl.pet5o.esper.collection.HashableMultiKey;
+import eu.uk.ncl.pet5o.esper.epl.agg.aggregator.AggregatorCodegenUtil;
+import eu.uk.ncl.pet5o.esper.epl.agg.factory.AggregationStateSortedForge;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.CodegenLegoMethodExpression;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
 
 import java.util.ArrayDeque;
 import java.util.Collection;
@@ -35,28 +35,28 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.function.Consumer;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.arrayAtIndex;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantFalse;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantTrue;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.instanceOf;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.member;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.newArrayByLength;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.newInstance;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.refCol;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.staticMethod;
-import static com.espertech.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.NAME_ISNEWDATA;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.*;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.NAME_EPS;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.NAME_EXPREVALCONTEXT;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_EPS;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_EXPREVALCONTEXT;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_ISNEWDATA;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.arrayAtIndex;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantFalse;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantTrue;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.instanceOf;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.member;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.newArrayByLength;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.newInstance;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.refCol;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.staticMethod;
+import static eu.uk.ncl.pet5o.esper.epl.core.resultset.codegen.ResultSetProcessorCodegenNames.NAME_ISNEWDATA;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.*;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.NAME_EPS;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.NAME_EXPREVALCONTEXT;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_EPS;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_EXPREVALCONTEXT;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_ISNEWDATA;
 
 /**
  * Implementation of access function for single-stream (not joins).
@@ -83,8 +83,8 @@ public class AggregationStateSortedImpl implements AggregationStateWithSize, Agg
         ctor.getBlock().assignRef(new CodegenExpressionRefWCol("sorted", stateNumber), newInstance(TreeMap.class, member(memberComparator.getMemberId())));
     }
 
-    public void applyEnter(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
-        com.espertech.esper.client.EventBean theEvent = eventsPerStream[spec.getStreamId()];
+    public void applyEnter(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
+        eu.uk.ncl.pet5o.esper.client.EventBean theEvent = eventsPerStream[spec.getStreamId()];
         if (theEvent == null) {
             return;
         }
@@ -98,13 +98,13 @@ public class AggregationStateSortedImpl implements AggregationStateWithSize, Agg
         CodegenExpressionRef eps = symbols.getAddEPS(method);
         CodegenExpressionRef ctx = symbols.getAddExprEvalCtx(method);
         CodegenMethodNode referenceAddToColl = referenceAddToCollCodegen(forge, stateNumber, method, namedMethods, classScope);
-        method.getBlock().declareVar(com.espertech.esper.client.EventBean.class, "theEvent", arrayAtIndex(eps, constant(forge.getSpec().getStreamId())))
+        method.getBlock().declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "theEvent", arrayAtIndex(eps, constant(forge.getSpec().getStreamId())))
                 .ifRefNull("theEvent").blockReturnNoValue()
                 .localMethod(referenceAddToColl, ref("theEvent"), eps, ctx);
     }
 
-    public void applyLeave(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
-        com.espertech.esper.client.EventBean theEvent = eventsPerStream[spec.getStreamId()];
+    public void applyLeave(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
+        eu.uk.ncl.pet5o.esper.client.EventBean theEvent = eventsPerStream[spec.getStreamId()];
         if (theEvent == null) {
             return;
         }
@@ -118,7 +118,7 @@ public class AggregationStateSortedImpl implements AggregationStateWithSize, Agg
         CodegenExpressionRef eps = symbols.getAddEPS(method);
         CodegenExpressionRef ctx = symbols.getAddExprEvalCtx(method);
         CodegenMethodNode dereferenceRemove = dereferenceRemoveFromCollCodegen(forge, stateNumber, method, namedMethods, classScope);
-        method.getBlock().declareVar(com.espertech.esper.client.EventBean.class, "theEvent", arrayAtIndex(eps, constant(forge.getSpec().getStreamId())))
+        method.getBlock().declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "theEvent", arrayAtIndex(eps, constant(forge.getSpec().getStreamId())))
                 .ifRefNull("theEvent").blockReturnNoValue()
                 .localMethod(dereferenceRemove, ref("theEvent"), eps, ctx);
     }
@@ -133,17 +133,17 @@ public class AggregationStateSortedImpl implements AggregationStateWithSize, Agg
                 .assignRef(refCol("size", stateNumber), constant(0));
     }
 
-    protected boolean referenceEvent(com.espertech.esper.client.EventBean theEvent) {
+    protected boolean referenceEvent(eu.uk.ncl.pet5o.esper.client.EventBean theEvent) {
         // no action
         return true;
     }
 
-    protected boolean dereferenceEvent(com.espertech.esper.client.EventBean theEvent) {
+    protected boolean dereferenceEvent(eu.uk.ncl.pet5o.esper.client.EventBean theEvent) {
         // no action
         return true;
     }
 
-    public com.espertech.esper.client.EventBean getFirstValue() {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getFirstValue() {
         if (sorted.isEmpty()) {
             return null;
         }
@@ -153,7 +153,7 @@ public class AggregationStateSortedImpl implements AggregationStateWithSize, Agg
 
     public static CodegenExpression getFirstValueCodegen(AggregationStateSortedForge forge, int slot, CodegenClassScope classScope, CodegenMethodNode parent) {
         CodegenExpression sorted = refCol("sorted", slot);
-        CodegenMethodNode method = parent.makeChildWithScope(com.espertech.esper.client.EventBean.class, AggregationStateSortedImpl.class, CodegenSymbolProviderEmpty.INSTANCE, classScope);
+        CodegenMethodNode method = parent.makeChildWithScope(eu.uk.ncl.pet5o.esper.client.EventBean.class, AggregationStateSortedImpl.class, CodegenSymbolProviderEmpty.INSTANCE, classScope);
         method.getBlock().ifCondition(exprDotMethod(sorted, "isEmpty"))
                 .blockReturn(constantNull())
                 .declareVar(Map.Entry.class, "max", exprDotMethod(sorted, "firstEntry"))
@@ -161,7 +161,7 @@ public class AggregationStateSortedImpl implements AggregationStateWithSize, Agg
         return localMethod(method);
     }
 
-    public com.espertech.esper.client.EventBean getLastValue() {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getLastValue() {
         if (sorted.isEmpty()) {
             return null;
         }
@@ -171,7 +171,7 @@ public class AggregationStateSortedImpl implements AggregationStateWithSize, Agg
 
     public static CodegenExpression getLastValueCodegen(AggregationStateSortedForge forge, int slot, CodegenClassScope classScope, CodegenMethodNode parent) {
         CodegenExpression sorted = refCol("sorted", slot);
-        CodegenMethodNode method = parent.makeChildWithScope(com.espertech.esper.client.EventBean.class, AggregationStateSortedImpl.class, CodegenSymbolProviderEmpty.INSTANCE, classScope);
+        CodegenMethodNode method = parent.makeChildWithScope(eu.uk.ncl.pet5o.esper.client.EventBean.class, AggregationStateSortedImpl.class, CodegenSymbolProviderEmpty.INSTANCE, classScope);
         method.getBlock().ifCondition(exprDotMethod(sorted, "isEmpty"))
                 .blockReturn(constantNull())
                 .declareVar(Map.Entry.class, "min", exprDotMethod(sorted, "lastEntry"))
@@ -211,7 +211,7 @@ public class AggregationStateSortedImpl implements AggregationStateWithSize, Agg
         return refCol("size", slot);
     }
 
-    public static Object getComparable(ExprEvaluator[] criteria, com.espertech.esper.client.EventBean[] eventsPerStream, boolean istream, ExprEvaluatorContext exprEvaluatorContext) {
+    public static Object getComparable(ExprEvaluator[] criteria, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean istream, ExprEvaluatorContext exprEvaluatorContext) {
         if (criteria.length == 1) {
             return criteria[0].evaluate(eventsPerStream, istream, exprEvaluatorContext);
         } else {
@@ -243,21 +243,21 @@ public class AggregationStateSortedImpl implements AggregationStateWithSize, Agg
                 method.getBlock().methodReturn(newInstance(HashableMultiKey.class, ref("result")));
             }
         };
-        return namedMethods.addMethod(Object.class, methodName, CodegenNamedParam.from(com.espertech.esper.client.EventBean[].class, NAME_EPS, boolean.class, NAME_ISNEWDATA, ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT), AggregationStateSortedImpl.class, classScope, code);
+        return namedMethods.addMethod(Object.class, methodName, CodegenNamedParam.from(eu.uk.ncl.pet5o.esper.client.EventBean[].class, NAME_EPS, boolean.class, NAME_ISNEWDATA, ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT), AggregationStateSortedImpl.class, classScope, code);
     }
 
-    protected void referenceAdd(com.espertech.esper.client.EventBean theEvent, com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
+    protected void referenceAdd(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
         if (referenceEvent(theEvent)) {
             referenceAddToColl(theEvent, eventsPerStream, exprEvaluatorContext);
         }
     }
 
-    private void referenceAddToColl(com.espertech.esper.client.EventBean theEvent, com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
+    private void referenceAddToColl(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
         Object comparable = getComparable(spec.getCriteria(), eventsPerStream, true, exprEvaluatorContext);
         Object existing = sorted.get(comparable);
         if (existing == null) {
             sorted.put(comparable, theEvent);
-        } else if (existing instanceof com.espertech.esper.client.EventBean) {
+        } else if (existing instanceof eu.uk.ncl.pet5o.esper.client.EventBean) {
             ArrayDeque coll = new ArrayDeque(2);
             coll.add(existing);
             coll.add(theEvent);
@@ -273,12 +273,12 @@ public class AggregationStateSortedImpl implements AggregationStateWithSize, Agg
         CodegenMethodNode getComparable = getComparableCodegen("getComparable_" + stateNumber, forge.getSpec().getCriteria(), namedMethods, classScope);
         CodegenExpressionRef sorted = refCol("sorted", stateNumber);
 
-        CodegenMethodNode method = parent.makeChildWithScope(void.class, AggregationStateSortedImpl.class, CodegenSymbolProviderEmpty.INSTANCE, classScope).addParam(com.espertech.esper.client.EventBean.class, "theEvent").addParam(com.espertech.esper.client.EventBean[].class, NAME_EPS).addParam(ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT);
+        CodegenMethodNode method = parent.makeChildWithScope(void.class, AggregationStateSortedImpl.class, CodegenSymbolProviderEmpty.INSTANCE, classScope).addParam(eu.uk.ncl.pet5o.esper.client.EventBean.class, "theEvent").addParam(eu.uk.ncl.pet5o.esper.client.EventBean[].class, NAME_EPS).addParam(ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT);
         method.getBlock().declareVar(Object.class, "comparable", localMethod(getComparable, REF_EPS, constantTrue(), REF_EXPREVALCONTEXT))
                 .declareVar(Object.class, "existing", exprDotMethod(sorted, "get", ref("comparable")))
                 .ifRefNull("existing")
                     .exprDotMethod(sorted, "put", ref("comparable"), ref("theEvent"))
-                .ifElseIf(instanceOf(ref("existing"), com.espertech.esper.client.EventBean.class))
+                .ifElseIf(instanceOf(ref("existing"), eu.uk.ncl.pet5o.esper.client.EventBean.class))
                     .declareVar(ArrayDeque.class, "coll", newInstance(ArrayDeque.class, constant(2)))
                     .exprDotMethod(ref("coll"), "add", ref("existing"))
                     .exprDotMethod(ref("coll"), "add", ref("theEvent"))
@@ -292,13 +292,13 @@ public class AggregationStateSortedImpl implements AggregationStateWithSize, Agg
         return method;
     }
 
-    protected void dereferenceRemove(com.espertech.esper.client.EventBean theEvent, com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
+    protected void dereferenceRemove(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
         if (dereferenceEvent(theEvent)) {
             dereferenceEventRemoveFromColl(theEvent, eventsPerStream, exprEvaluatorContext);
         }
     }
 
-    private void dereferenceEventRemoveFromColl(com.espertech.esper.client.EventBean theEvent, com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
+    private void dereferenceEventRemoveFromColl(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
         Object comparable = getComparable(spec.getCriteria(), eventsPerStream, false, exprEvaluatorContext);
         Object existing = sorted.get(comparable);
         if (existing == null) {
@@ -321,7 +321,7 @@ public class AggregationStateSortedImpl implements AggregationStateWithSize, Agg
         CodegenMethodNode getComparable = getComparableCodegen("getComparable_" + stateNumber, forge.getSpec().getCriteria(), namedMethods, classScope);
         CodegenExpressionRef sorted = refCol("sorted", stateNumber);
 
-        CodegenMethodNode method = parent.makeChildWithScope(void.class, AggregationStateSortedImpl.class, CodegenSymbolProviderEmpty.INSTANCE, classScope).addParam(com.espertech.esper.client.EventBean.class, "theEvent").addParam(com.espertech.esper.client.EventBean[].class, NAME_EPS).addParam(ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT);
+        CodegenMethodNode method = parent.makeChildWithScope(void.class, AggregationStateSortedImpl.class, CodegenSymbolProviderEmpty.INSTANCE, classScope).addParam(eu.uk.ncl.pet5o.esper.client.EventBean.class, "theEvent").addParam(eu.uk.ncl.pet5o.esper.client.EventBean[].class, NAME_EPS).addParam(ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT);
         method.getBlock().declareVar(Object.class, "comparable", localMethod(getComparable, REF_EPS, constantTrue(), REF_EXPREVALCONTEXT))
                 .declareVar(Object.class, "existing", exprDotMethod(sorted, "get", ref("comparable")))
                 .ifRefNull("existing").blockReturnNoValue()
@@ -344,9 +344,9 @@ public class AggregationStateSortedImpl implements AggregationStateWithSize, Agg
      * @param value payload to check
      * @return bean
      */
-    public final static com.espertech.esper.client.EventBean checkedPayloadMayDeque(Object value) {
-        if (value instanceof com.espertech.esper.client.EventBean) {
-            return (com.espertech.esper.client.EventBean) value;
+    public final static eu.uk.ncl.pet5o.esper.client.EventBean checkedPayloadMayDeque(Object value) {
+        if (value instanceof eu.uk.ncl.pet5o.esper.client.EventBean) {
+            return (eu.uk.ncl.pet5o.esper.client.EventBean) value;
         }
         ArrayDeque<EventBean> q = (ArrayDeque<EventBean>) value;
         return q.getFirst();

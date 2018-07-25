@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.core.support;
 
-import com.espertech.esper.client.util.ClassForNameProviderDefault;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.event.EventAdapterServiceImpl;
-import com.espertech.esper.event.EventTypeIdGeneratorImpl;
-import com.espertech.esper.event.avro.EventAdapterAvroHandler;
-import com.espertech.esper.event.avro.EventAdapterAvroHandlerUnsupported;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.client.util.ClassForNameProviderDefault;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterServiceImpl;
+import eu.uk.ncl.pet5o.esper.event.EventTypeIdGeneratorImpl;
+import eu.uk.ncl.pet5o.esper.event.avro.EventAdapterAvroHandler;
+import eu.uk.ncl.pet5o.esper.event.avro.EventAdapterAvroHandlerUnsupported;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 public class SupportEventAdapterService {
     private static EventAdapterService eventAdapterService;

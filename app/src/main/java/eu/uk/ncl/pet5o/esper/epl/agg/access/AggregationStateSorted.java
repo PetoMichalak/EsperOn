@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.access;
 
-import com.espertech.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -21,14 +21,14 @@ public interface AggregationStateSorted {
      *
      * @return first value
      */
-    public com.espertech.esper.client.EventBean getFirstValue();
+    public eu.uk.ncl.pet5o.esper.client.EventBean getFirstValue();
 
     /**
      * Returns the newest (last) value entered.
      *
      * @return last value
      */
-    public com.espertech.esper.client.EventBean getLastValue();
+    public eu.uk.ncl.pet5o.esper.client.EventBean getLastValue();
 
     /**
      * Returns all events for the group.

@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.util;
 
-import com.espertech.esper.client.util.ClassForNameProvider;
+import eu.uk.ncl.pet5o.esper.client.util.ClassForNameProvider;
 
 import java.math.BigDecimal;
 import java.sql.Types;

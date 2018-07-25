@@ -10,15 +10,15 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.client.context.ContextPartitionIdentifier;
-import com.espertech.esper.client.context.ContextPartitionSelector;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionIdentifier;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionSelector;
 
 import java.util.Map;
 
 public interface ContextController {
     public int getPathId();
 
-    public void activate(com.espertech.esper.client.EventBean optionalTriggeringEvent, Map<String, Object> optionalTriggeringPattern, ContextControllerState states, ContextInternalFilterAddendum filterAddendum, Integer importPathId);
+    public void activate(eu.uk.ncl.pet5o.esper.client.EventBean optionalTriggeringEvent, Map<String, Object> optionalTriggeringPattern, ContextControllerState states, ContextInternalFilterAddendum filterAddendum, Integer importPathId);
 
     public ContextControllerFactory getFactory();
 

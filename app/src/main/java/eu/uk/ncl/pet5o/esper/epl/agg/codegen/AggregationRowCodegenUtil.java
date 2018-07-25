@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.codegen;
 
-import static com.espertech.esper.epl.agg.codegen.AggregationServiceCodegenNames.CLASSNAME_AGGREGATIONROW_LVL;
+import static eu.uk.ncl.pet5o.esper.epl.agg.codegen.AggregationServiceCodegenNames.CLASSNAME_AGGREGATIONROW_LVL;
 
 public class AggregationRowCodegenUtil {
     public static String classnameForLevel(int level) {

@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.filterspec;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.expression.core.ExprNodeUtilityCore;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNodeUtilityCore;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,11 +43,11 @@ public class ExprNodeAdapterBase {
      * @param theEvent is the stream zero event (current event)
      * @return boolean result of the expression
      */
-    public boolean evaluate(com.espertech.esper.client.EventBean theEvent) {
-        return evaluatePerStream(new com.espertech.esper.client.EventBean[]{theEvent});
+    public boolean evaluate(eu.uk.ncl.pet5o.esper.client.EventBean theEvent) {
+        return evaluatePerStream(new eu.uk.ncl.pet5o.esper.client.EventBean[]{theEvent});
     }
 
-    protected boolean evaluatePerStream(com.espertech.esper.client.EventBean[] eventsPerStream) {
+    protected boolean evaluatePerStream(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream) {
         try {
             Boolean result = (Boolean) exprNodeEval.evaluate(eventsPerStream, true, this.evaluatorContext);
             if (result == null) {

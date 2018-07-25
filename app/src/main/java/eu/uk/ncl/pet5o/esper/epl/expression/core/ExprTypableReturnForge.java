@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.core;
 
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
 
 import java.util.LinkedHashMap;
 
@@ -22,7 +22,7 @@ import java.util.LinkedHashMap;
  * such as subqueries and "new" and case+new combined.
  * <p>
  * When returning non-null results from {#getRowProperties},
- * the {@link ExprEvaluator#evaluate(com.espertech.esper.client.EventBean[], boolean, ExprEvaluatorContext)}
+ * the {@link ExprEvaluator#evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[], boolean, ExprEvaluatorContext)}
  * must return an instance of Map&lt;String, Object&gt; (HashMap is fine).
  * </p>
  * <p>

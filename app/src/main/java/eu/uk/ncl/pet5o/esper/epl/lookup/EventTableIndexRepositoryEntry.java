@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.lookup;
 
-import com.espertech.esper.epl.join.table.EventTable;
+import eu.uk.ncl.pet5o.esper.epl.join.table.EventTable;
 
 public class EventTableIndexRepositoryEntry extends EventTableIndexEntryBase {
     private final EventTable table;

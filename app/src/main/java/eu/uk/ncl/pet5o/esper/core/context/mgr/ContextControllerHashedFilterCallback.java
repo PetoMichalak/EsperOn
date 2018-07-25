@@ -10,14 +10,14 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.client.EventPropertyGetter;
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.core.service.EPServicesContext;
-import com.espertech.esper.core.service.EPStatementHandleCallback;
-import com.espertech.esper.epl.spec.ContextDetailHashItem;
-import com.espertech.esper.filter.*;
-import com.espertech.esper.filterspec.FilterValueSet;
-import com.espertech.esper.filterspec.FilterValueSetParam;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.core.service.EPServicesContext;
+import eu.uk.ncl.pet5o.esper.core.service.EPStatementHandleCallback;
+import eu.uk.ncl.pet5o.esper.epl.spec.ContextDetailHashItem;
+import eu.uk.ncl.pet5o.esper.filter.*;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterValueSet;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterValueSetParam;
 
 import java.util.Collection;
 
@@ -43,7 +43,7 @@ public class ContextControllerHashedFilterCallback implements FilterHandleCallba
         agentInstanceContextCreateContext.getEpStatementAgentInstanceHandle().getStatementFilterVersion().setStmtFilterVersion(filtersVersion);
     }
 
-    public void matchFound(com.espertech.esper.client.EventBean theEvent, Collection<FilterHandleCallback> allStmtMatches) {
+    public void matchFound(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, Collection<FilterHandleCallback> allStmtMatches) {
         int value = (Integer) getter.get(theEvent);
         callback.create(value, theEvent);
     }

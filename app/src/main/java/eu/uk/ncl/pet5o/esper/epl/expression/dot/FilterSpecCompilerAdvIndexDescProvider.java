@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.dot;
 
-import com.espertech.esper.filter.FilterSpecCompilerAdvIndexDesc;
+import eu.uk.ncl.pet5o.esper.filter.FilterSpecCompilerAdvIndexDesc;
 
 public interface FilterSpecCompilerAdvIndexDescProvider {
     FilterSpecCompilerAdvIndexDesc getFilterSpecDesc();

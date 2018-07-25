@@ -28,7 +28,7 @@ public interface EPAdministratorIsolated {
      * @param userObject    is the application-defined user object, or null if none provided
      * @param statementName is the statement name or null if not provided or provided via annotation instead
      * @return EPStatement to poll data from or to add listeners to, or null if provided via annotation
-     * @throws com.espertech.esper.client.EPException when the expression was not valid
+     * @throws eu.uk.ncl.pet5o.esper.client.EPException when the expression was not valid
      */
     public EPStatement createEPL(String eplStatement, String statementName, Object userObject) throws EPException;
 

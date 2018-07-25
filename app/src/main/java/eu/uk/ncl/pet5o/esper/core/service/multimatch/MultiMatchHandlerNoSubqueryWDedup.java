@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service.multimatch;
 
-import com.espertech.esper.filter.FilterHandleCallback;
+import eu.uk.ncl.pet5o.esper.filter.FilterHandleCallback;
 
 import java.util.Collection;
 import java.util.LinkedHashSet;
@@ -27,7 +27,7 @@ public class MultiMatchHandlerNoSubqueryWDedup implements MultiMatchHandler {
         }
     };
 
-    public void handle(Collection<FilterHandleCallback> callbacks, com.espertech.esper.client.EventBean theEvent) {
+    public void handle(Collection<FilterHandleCallback> callbacks, eu.uk.ncl.pet5o.esper.client.EventBean theEvent) {
 
         if (callbacks.size() >= 8) {
             LinkedHashSet<FilterHandleCallback> dedup = DEDUPS.get();

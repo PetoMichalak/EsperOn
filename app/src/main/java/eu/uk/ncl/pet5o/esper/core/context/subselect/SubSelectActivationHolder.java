@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.subselect;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.core.context.activator.ViewableActivator;
-import com.espertech.esper.epl.spec.StreamSpecCompiled;
-import com.espertech.esper.view.ViewFactoryChain;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.core.context.activator.ViewableActivator;
+import eu.uk.ncl.pet5o.esper.epl.spec.StreamSpecCompiled;
+import eu.uk.ncl.pet5o.esper.view.ViewFactoryChain;
 
 /**
  * Entry holding lookup resource references for use by {@link SubSelectActivationCollection}.

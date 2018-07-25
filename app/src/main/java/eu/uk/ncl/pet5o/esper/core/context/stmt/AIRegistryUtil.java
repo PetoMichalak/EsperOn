@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.stmt;
 
-import com.espertech.esper.collection.ArrayWrap;
+import eu.uk.ncl.pet5o.esper.collection.ArrayWrap;
 
 public class AIRegistryUtil {
     public static void checkExpand(int serviceId, ArrayWrap services) {

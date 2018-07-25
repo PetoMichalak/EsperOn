@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.filter;
 
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.filterspec.FilterSpecParamFilterForEvalDouble;
-import com.espertech.esper.filterspec.MatchedEventMap;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterSpecParamFilterForEvalDouble;
+import eu.uk.ncl.pet5o.esper.filterspec.MatchedEventMap;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,7 +44,7 @@ public class FilterForEvalEventPropIndexedDouble implements FilterSpecParamFilte
     }
 
     public final Double getFilterValue(MatchedEventMap matchedEvents, ExprEvaluatorContext exprEvaluatorContext) {
-        com.espertech.esper.client.EventBean[] events = (com.espertech.esper.client.EventBean[]) matchedEvents.getMatchingEventAsObjectByTag(resultEventAsName);
+        eu.uk.ncl.pet5o.esper.client.EventBean[] events = (eu.uk.ncl.pet5o.esper.client.EventBean[]) matchedEvents.getMatchingEventAsObjectByTag(resultEventAsName);
 
         Number value;
         if (events == null) {

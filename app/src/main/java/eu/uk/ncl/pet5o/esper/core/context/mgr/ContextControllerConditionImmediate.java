@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.filterspec.MatchedEventMap;
+import eu.uk.ncl.pet5o.esper.filterspec.MatchedEventMap;
 
 /**
  * Context condition used for Non-Overlapping contexts only, when @Now is specified.
@@ -19,7 +19,7 @@ import com.espertech.esper.filterspec.MatchedEventMap;
  */
 public class ContextControllerConditionImmediate implements ContextControllerCondition {
 
-    public void activate(com.espertech.esper.client.EventBean optionalTriggerEvent, MatchedEventMap priorMatches, long timeOffset, boolean isRecoveringResilient) {
+    public void activate(eu.uk.ncl.pet5o.esper.client.EventBean optionalTriggerEvent, MatchedEventMap priorMatches, long timeOffset, boolean isRecoveringResilient) {
     }
 
     public void deactivate() {

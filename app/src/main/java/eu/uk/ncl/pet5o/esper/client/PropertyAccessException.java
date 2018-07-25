@@ -11,7 +11,7 @@
 package eu.uk.ncl.pet5o.esper.client;
 
 /**
- * This exception is thrown to indicate a problem with a accessing a property of an {@link com.espertech.esper.client.EventBean}.
+ * This exception is thrown to indicate a problem with a accessing a property of an {@link eu.uk.ncl.pet5o.esper.client.EventBean}.
  */
 public final class PropertyAccessException extends RuntimeException {
     private String expression;

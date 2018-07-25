@@ -25,7 +25,7 @@ public interface EPRuntimeIsolated {
      * to avoid the possibility of a stack overflow due to nested calls to sendEvent.
      *
      * @param object is the event to sent to the runtime
-     * @throws com.espertech.esper.client.EPException is thrown when the processing of the event lead to an error
+     * @throws eu.uk.ncl.pet5o.esper.client.EPException is thrown when the processing of the event lead to an error
      */
     public void sendEvent(Object object) throws EPException;
 
@@ -38,7 +38,7 @@ public interface EPRuntimeIsolated {
      * @param map           - map that contains event property values. Keys are expected to be of type String while values
      *                      can be of any type. Keys and values should match those declared via Configuration for the given eventTypeName.
      * @param eventTypeName - the name for the Map event type that was previously configured
-     * @throws com.espertech.esper.client.EPException - when the processing of the event leads to an error
+     * @throws eu.uk.ncl.pet5o.esper.client.EPException - when the processing of the event leads to an error
      */
     public void sendEvent(Map map, String eventTypeName) throws EPException;
 
@@ -62,7 +62,7 @@ public interface EPRuntimeIsolated {
      * to avoid the possibility of a stack overflow due to nested calls to sendEvent.
      *
      * @param node is the DOM node as an event
-     * @throws com.espertech.esper.client.EPException is thrown when the processing of the event lead to an error
+     * @throws eu.uk.ncl.pet5o.esper.client.EPException is thrown when the processing of the event lead to an error
      */
     public void sendEvent(org.w3c.dom.Node node) throws EPException;
 

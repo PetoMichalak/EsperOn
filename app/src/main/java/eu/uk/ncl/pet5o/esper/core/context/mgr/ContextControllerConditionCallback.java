@@ -13,5 +13,5 @@ package eu.uk.ncl.pet5o.esper.core.context.mgr;
 import java.util.Map;
 
 public interface ContextControllerConditionCallback {
-    public void rangeNotification(Map<String, Object> builtinProperties, ContextControllerCondition originEndpoint, com.espertech.esper.client.EventBean optionalTriggeringEvent, Map<String, Object> optionalTriggeringPattern, com.espertech.esper.client.EventBean optionalTriggeringEventPattern, ContextInternalFilterAddendum filterAddendum);
+    public void rangeNotification(Map<String, Object> builtinProperties, ContextControllerCondition originEndpoint, eu.uk.ncl.pet5o.esper.client.EventBean optionalTriggeringEvent, Map<String, Object> optionalTriggeringPattern, eu.uk.ncl.pet5o.esper.client.EventBean optionalTriggeringEventPattern, ContextInternalFilterAddendum filterAddendum);
 }

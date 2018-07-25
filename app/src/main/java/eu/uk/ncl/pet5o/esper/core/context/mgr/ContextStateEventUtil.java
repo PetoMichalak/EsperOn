@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.client.context.ContextPartitionStateListener;
-import com.espertech.esper.client.context.ContextStateListener;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionStateListener;
+import eu.uk.ncl.pet5o.esper.client.context.ContextStateListener;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.BiConsumer;

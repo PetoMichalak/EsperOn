@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.filter;
 
-import com.espertech.esper.epl.expression.core.ExprFilterSpecLookupable;
-import com.espertech.esper.epl.index.quadtree.EngineImportApplicationDotMethodPointInsideRectange;
-import com.espertech.esper.epl.index.quadtree.EngineImportApplicationDotMethodRectangeIntersectsRectangle;
-import com.espertech.esper.filterspec.FilterOperator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprFilterSpecLookupable;
+import eu.uk.ncl.pet5o.esper.epl.index.quadtree.EngineImportApplicationDotMethodPointInsideRectange;
+import eu.uk.ncl.pet5o.esper.epl.index.quadtree.EngineImportApplicationDotMethodRectangeIntersectsRectangle;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterOperator;
 
 /**
  * Factory for {@link FilterParamIndexBase} instances based on event property name and filter operator type.

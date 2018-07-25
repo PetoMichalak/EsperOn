@@ -10,14 +10,14 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service.resource;
 
-import com.espertech.esper.core.context.factory.StatementAgentInstancePostLoad;
-import com.espertech.esper.core.context.subselect.SubSelectStrategyHolder;
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.epl.agg.service.common.AggregationService;
-import com.espertech.esper.epl.expression.subquery.ExprSubselectNode;
-import com.espertech.esper.epl.named.NamedWindowProcessorInstance;
-import com.espertech.esper.pattern.EvalRootState;
-import com.espertech.esper.view.Viewable;
+import eu.uk.ncl.pet5o.esper.core.context.factory.StatementAgentInstancePostLoad;
+import eu.uk.ncl.pet5o.esper.core.context.subselect.SubSelectStrategyHolder;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationService;
+import eu.uk.ncl.pet5o.esper.epl.expression.subquery.ExprSubselectNode;
+import eu.uk.ncl.pet5o.esper.epl.named.NamedWindowProcessorInstance;
+import eu.uk.ncl.pet5o.esper.pattern.EvalRootState;
+import eu.uk.ncl.pet5o.esper.view.Viewable;
 
 import java.util.Collections;
 import java.util.Map;

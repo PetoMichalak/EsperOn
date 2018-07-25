@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.plan;
 
-import com.espertech.esper.filterspec.FilterOperator;
-import com.espertech.esper.type.RelationalOpEnum;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterOperator;
+import eu.uk.ncl.pet5o.esper.type.RelationalOpEnum;
 
 public enum QueryGraphRangeEnum {
     /**

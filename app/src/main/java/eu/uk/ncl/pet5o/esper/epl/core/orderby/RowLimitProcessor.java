@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.orderby;
 
-import com.espertech.esper.epl.variable.VariableReader;
+import eu.uk.ncl.pet5o.esper.epl.variable.VariableReader;
 
 /**
  * An limit-processor for use with "limit" and "offset".
@@ -43,7 +43,7 @@ public class RowLimitProcessor {
      * @param outgoingEvents unlimited
      * @return limited
      */
-    public com.espertech.esper.client.EventBean[] determineLimitAndApply(com.espertech.esper.client.EventBean[] outgoingEvents) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean[] determineLimitAndApply(eu.uk.ncl.pet5o.esper.client.EventBean[] outgoingEvents) {
         if (outgoingEvents == null) {
             return null;
         }
@@ -77,7 +77,7 @@ public class RowLimitProcessor {
         }
     }
 
-    public com.espertech.esper.client.EventBean[] applyLimit(com.espertech.esper.client.EventBean[] outgoingEvents) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean[] applyLimit(eu.uk.ncl.pet5o.esper.client.EventBean[] outgoingEvents) {
 
         // no offset
         if (currentOffset == 0) {
@@ -89,7 +89,7 @@ public class RowLimitProcessor {
                 return null;
             }
 
-            com.espertech.esper.client.EventBean[] limited = new com.espertech.esper.client.EventBean[currentRowLimit];
+            eu.uk.ncl.pet5o.esper.client.EventBean[] limited = new eu.uk.ncl.pet5o.esper.client.EventBean[currentRowLimit];
             System.arraycopy(outgoingEvents, 0, limited, 0, currentRowLimit);
             return limited;
         } else {
@@ -101,7 +101,7 @@ public class RowLimitProcessor {
 
             // more rows then requested
             if (outgoingEvents.length > maxInterested) {
-                com.espertech.esper.client.EventBean[] limited = new com.espertech.esper.client.EventBean[currentRowLimit];
+                eu.uk.ncl.pet5o.esper.client.EventBean[] limited = new eu.uk.ncl.pet5o.esper.client.EventBean[currentRowLimit];
                 System.arraycopy(outgoingEvents, currentOffset, limited, 0, currentRowLimit);
                 return limited;
             }
@@ -112,20 +112,20 @@ public class RowLimitProcessor {
             }
 
             int size = outgoingEvents.length - currentOffset;
-            com.espertech.esper.client.EventBean[] limited = new com.espertech.esper.client.EventBean[size];
+            eu.uk.ncl.pet5o.esper.client.EventBean[] limited = new eu.uk.ncl.pet5o.esper.client.EventBean[size];
             System.arraycopy(outgoingEvents, currentOffset, limited, 0, size);
             return limited;
         }
     }
 
-    public com.espertech.esper.client.EventBean[] determineApplyLimit2Events(com.espertech.esper.client.EventBean first, com.espertech.esper.client.EventBean second) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean[] determineApplyLimit2Events(eu.uk.ncl.pet5o.esper.client.EventBean first, eu.uk.ncl.pet5o.esper.client.EventBean second) {
         determineCurrentLimit();
         if (getCurrentRowLimit() == 0) {
             return null;
         }
         if (getCurrentRowLimit() == 1) {
-            return new com.espertech.esper.client.EventBean[] {first};
+            return new eu.uk.ncl.pet5o.esper.client.EventBean[] {first};
         }
-        return new com.espertech.esper.client.EventBean[] {first, second};
+        return new eu.uk.ncl.pet5o.esper.client.EventBean[] {first, second};
     }
 }

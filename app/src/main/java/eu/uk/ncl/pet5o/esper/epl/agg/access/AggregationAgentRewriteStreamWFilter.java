@@ -10,22 +10,22 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.access;
 
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.codegen.model.expression.CodegenExpressionRef;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRef;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.arrayAtIndex;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.newArrayWithInit;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.not;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.arrayAtIndex;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.newArrayWithInit;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.not;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
 
 public class AggregationAgentRewriteStreamWFilter implements AggregationAgent {
 
@@ -37,18 +37,18 @@ public class AggregationAgentRewriteStreamWFilter implements AggregationAgent {
         this.filterEval = filterEval;
     }
 
-    public void applyEnter(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext, AggregationState aggregationState) {
+    public void applyEnter(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext, AggregationState aggregationState) {
         Boolean pass = (Boolean) filterEval.evaluate(eventsPerStream, true, exprEvaluatorContext);
         if (pass != null && pass) {
-            com.espertech.esper.client.EventBean[] rewrite = new com.espertech.esper.client.EventBean[]{eventsPerStream[streamNum]};
+            eu.uk.ncl.pet5o.esper.client.EventBean[] rewrite = new eu.uk.ncl.pet5o.esper.client.EventBean[]{eventsPerStream[streamNum]};
             aggregationState.applyEnter(rewrite, exprEvaluatorContext);
         }
     }
 
-    public void applyLeave(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext, AggregationState aggregationState) {
+    public void applyLeave(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext, AggregationState aggregationState) {
         Boolean pass = (Boolean) filterEval.evaluate(eventsPerStream, false, exprEvaluatorContext);
         if (pass != null && pass) {
-            com.espertech.esper.client.EventBean[] rewrite = new com.espertech.esper.client.EventBean[]{eventsPerStream[streamNum]};
+            eu.uk.ncl.pet5o.esper.client.EventBean[] rewrite = new eu.uk.ncl.pet5o.esper.client.EventBean[]{eventsPerStream[streamNum]};
             aggregationState.applyLeave(rewrite, exprEvaluatorContext);
         }
     }
@@ -71,7 +71,7 @@ public class AggregationAgentRewriteStreamWFilter implements AggregationAgent {
         method.getBlock().ifCondition(not(ref("pass"))).blockReturnNoValue();
         CodegenExpressionRef state = symbols.getAddState(method);
         method.getBlock()
-                .declareVar(com.espertech.esper.client.EventBean[].class, "rewrite", newArrayWithInit(com.espertech.esper.client.EventBean.class, arrayAtIndex(symbols.getAddEPS(method), constant(forge.getStreamNum()))))
+                .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "rewrite", newArrayWithInit(eu.uk.ncl.pet5o.esper.client.EventBean.class, arrayAtIndex(symbols.getAddEPS(method), constant(forge.getStreamNum()))))
                 .expression(exprDotMethod(state, enter ? "applyEnter" : "applyLeave", ref("rewrite"), symbols.getAddExprEvalCtx(method)));
         return localMethod(method);
     }

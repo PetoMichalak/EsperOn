@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.plan;
 
-import com.espertech.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
 
 public class QueryGraphValueEntryHashKeyedProp extends QueryGraphValueEntryHashKeyed {
     private static final long serialVersionUID = -3745044093486590108L;

@@ -10,21 +10,21 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.resultset.agggrouped;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.epl.agg.service.common.AggregationService;
-import com.espertech.esper.epl.core.orderby.OrderByProcessor;
-import com.espertech.esper.epl.core.resultset.core.ResultSetProcessor;
-import com.espertech.esper.epl.core.resultset.core.ResultSetProcessorFactory;
-import com.espertech.esper.epl.core.resultset.core.ResultSetProcessorHelperFactory;
-import com.espertech.esper.epl.core.resultset.core.ResultSetProcessorOutputConditionType;
-import com.espertech.esper.epl.core.select.SelectExprProcessor;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.expression.core.ExprNodeUtilityCore;
-import com.espertech.esper.epl.spec.OutputLimitLimitType;
-import com.espertech.esper.epl.spec.OutputLimitSpec;
-import com.espertech.esper.epl.view.OutputConditionPolledFactory;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationService;
+import eu.uk.ncl.pet5o.esper.epl.core.orderby.OrderByProcessor;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessor;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessorFactory;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessorHelperFactory;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessorOutputConditionType;
+import eu.uk.ncl.pet5o.esper.epl.core.select.SelectExprProcessor;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNodeUtilityCore;
+import eu.uk.ncl.pet5o.esper.epl.spec.OutputLimitLimitType;
+import eu.uk.ncl.pet5o.esper.epl.spec.OutputLimitSpec;
+import eu.uk.ncl.pet5o.esper.epl.view.OutputConditionPolledFactory;
 
 /**
  * Result-set processor prototype for the aggregate-grouped case:

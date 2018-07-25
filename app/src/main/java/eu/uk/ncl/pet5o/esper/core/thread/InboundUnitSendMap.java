@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.core.thread;
 
-import com.espertech.esper.core.service.EPRuntimeImpl;
-import com.espertech.esper.core.service.EPServicesContext;
+import eu.uk.ncl.pet5o.esper.core.service.EPRuntimeImpl;
+import eu.uk.ncl.pet5o.esper.core.service.EPServicesContext;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,7 +45,7 @@ public class InboundUnitSendMap implements InboundUnitRunnable {
 
     public void run() {
         try {
-            com.espertech.esper.client.EventBean eventBean = services.getEventAdapterService().adapterForMap(map, eventTypeName);
+            eu.uk.ncl.pet5o.esper.client.EventBean eventBean = services.getEventAdapterService().adapterForMap(map, eventTypeName);
             runtime.processWrappedEvent(eventBean);
         } catch (RuntimeException e) {
             log.error("Unexpected error processing Map event: " + e.getMessage(), e);

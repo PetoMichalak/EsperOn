@@ -10,50 +10,50 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.util;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.hook.AggregationFunctionFactory;
-import com.espertech.esper.client.hook.EPLMethodInvocationContext;
-import com.espertech.esper.client.util.TimePeriod;
-import com.espertech.esper.codegen.base.CodegenBlock;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.core.context.util.ContextPropertyRegistry;
-import com.espertech.esper.epl.core.engineimport.*;
-import com.espertech.esper.epl.core.select.BindProcessorEvaluatorStreamTable;
-import com.espertech.esper.epl.core.streamtype.StreamTypeService;
-import com.espertech.esper.epl.declexpr.ExprDeclaredNode;
-import com.espertech.esper.epl.enummethod.dot.EnumMethodEnum;
-import com.espertech.esper.epl.enummethod.dot.ExprDeclaredOrLambdaNode;
-import com.espertech.esper.epl.enummethod.dot.ExprLambdaGoesNode;
-import com.espertech.esper.epl.expression.baseagg.ExprAggregateNode;
-import com.espertech.esper.epl.expression.baseagg.ExprAggregateNodeUtil;
-import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
-import com.espertech.esper.epl.expression.codegen.ExprNodeCompiler;
-import com.espertech.esper.epl.expression.core.*;
-import com.espertech.esper.epl.expression.dot.ExprDotNodeImpl;
-import com.espertech.esper.epl.expression.funcs.ExprPlugInSingleRowNode;
-import com.espertech.esper.epl.expression.methodagg.ExprPlugInAggNode;
-import com.espertech.esper.epl.expression.ops.ExprAndNode;
-import com.espertech.esper.epl.expression.ops.ExprAndNodeImpl;
-import com.espertech.esper.epl.expression.ops.ExprEqualsNode;
-import com.espertech.esper.epl.expression.subquery.ExprSubselectNode;
-import com.espertech.esper.epl.expression.table.ExprTableAccessNode;
-import com.espertech.esper.epl.expression.time.ExprTimePeriod;
-import com.espertech.esper.epl.expression.visitor.*;
-import com.espertech.esper.epl.spec.ExpressionScriptProvided;
-import com.espertech.esper.epl.spec.FilterStreamSpecRaw;
-import com.espertech.esper.epl.spec.OnTriggerSetAssignment;
-import com.espertech.esper.epl.spec.StreamSpecRaw;
-import com.espertech.esper.epl.table.mgmt.TableMetadata;
-import com.espertech.esper.epl.table.mgmt.TableService;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.util.CollectionUtil;
-import com.espertech.esper.util.JavaClassHelper;
-import com.espertech.esper.util.SimpleNumberCoercer;
-import com.espertech.esper.util.SimpleNumberCoercerFactory;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.hook.AggregationFunctionFactory;
+import eu.uk.ncl.pet5o.esper.client.hook.EPLMethodInvocationContext;
+import eu.uk.ncl.pet5o.esper.client.util.TimePeriod;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenBlock;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.core.context.util.ContextPropertyRegistry;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.*;
+import eu.uk.ncl.pet5o.esper.epl.core.select.BindProcessorEvaluatorStreamTable;
+import eu.uk.ncl.pet5o.esper.epl.core.streamtype.StreamTypeService;
+import eu.uk.ncl.pet5o.esper.epl.declexpr.ExprDeclaredNode;
+import eu.uk.ncl.pet5o.esper.epl.enummethod.dot.EnumMethodEnum;
+import eu.uk.ncl.pet5o.esper.epl.enummethod.dot.ExprDeclaredOrLambdaNode;
+import eu.uk.ncl.pet5o.esper.epl.enummethod.dot.ExprLambdaGoesNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.baseagg.ExprAggregateNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.baseagg.ExprAggregateNodeUtil;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprNodeCompiler;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.epl.expression.dot.ExprDotNodeImpl;
+import eu.uk.ncl.pet5o.esper.epl.expression.funcs.ExprPlugInSingleRowNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.methodagg.ExprPlugInAggNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.ops.ExprAndNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.ops.ExprAndNodeImpl;
+import eu.uk.ncl.pet5o.esper.epl.expression.ops.ExprEqualsNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.subquery.ExprSubselectNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.table.ExprTableAccessNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.time.ExprTimePeriod;
+import eu.uk.ncl.pet5o.esper.epl.expression.visitor.*;
+import eu.uk.ncl.pet5o.esper.epl.spec.ExpressionScriptProvided;
+import eu.uk.ncl.pet5o.esper.epl.spec.FilterStreamSpecRaw;
+import eu.uk.ncl.pet5o.esper.epl.spec.OnTriggerSetAssignment;
+import eu.uk.ncl.pet5o.esper.epl.spec.StreamSpecRaw;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadata;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableService;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.util.CollectionUtil;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.util.SimpleNumberCoercer;
+import eu.uk.ncl.pet5o.esper.util.SimpleNumberCoercerFactory;
 
 import net.sf.cglib.reflect.FastClass;
 import net.sf.cglib.reflect.FastMethod;
@@ -76,15 +76,15 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.newArrayByLength;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
-import static com.espertech.esper.epl.expression.core.ExprNodeUtilityCore.*;
-import static com.espertech.esper.epl.expression.core.ExprNodeUtilityCore.getEvaluatorsNoCompile;
-import static com.espertech.esper.epl.expression.core.ExprNodeUtilityCore.toExpressionStringIncludeParen;
-import static com.espertech.esper.epl.expression.core.ExprNodeUtilityCore.toExpressionStringMinPrecedenceSafe;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.newArrayByLength;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNodeUtilityCore.*;
+import static eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNodeUtilityCore.getEvaluatorsNoCompile;
+import static eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNodeUtilityCore.toExpressionStringIncludeParen;
+import static eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNodeUtilityCore.toExpressionStringMinPrecedenceSafe;
 
 public class ExprNodeUtilityRich {
 
@@ -648,7 +648,7 @@ public class ExprNodeUtilityRich {
         // rewrite those evaluator that should return the event itself
         if (CollectionUtil.isAnySet(allowEventBeanType)) {
             for (int i = 0; i < parameters.size(); i++) {
-                if (allowEventBeanType[i] && method.getParameterTypes()[i] == com.espertech.esper.client.EventBean.class) {
+                if (allowEventBeanType[i] && method.getParameterTypes()[i] == eu.uk.ncl.pet5o.esper.client.EventBean.class) {
                     childForges[i] = childEvalsEventBeanReturnTypesForges[i];
                 }
             }
@@ -1025,7 +1025,7 @@ public class ExprNodeUtilityRich {
 
     public static ExprEvaluator getEvaluatorMultiValue(ExprEvaluator[] evaluators) {
         return new ExprEvaluator() {
-            public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+            public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
                 Object[] values = new Object[evaluators.length];
                 for (int i = 0; i < evaluators.length; i++) {
                     values[i] = evaluators[i].evaluate(eventsPerStream, isNewData, exprEvaluatorContext);
@@ -1319,7 +1319,7 @@ public class ExprNodeUtilityRich {
             this.evals = evals;
         }
 
-        public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+        public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
             Object array = Array.newInstance(forge.varargClass, evals.length);
             for (int i = 0; i < evals.length; i++) {
                 Object value = evals[i].evaluate(eventsPerStream, isNewData, context);
@@ -1339,7 +1339,7 @@ public class ExprNodeUtilityRich {
             this.evals = evals;
         }
 
-        public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+        public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
             Object array = Array.newInstance(forge.varargClass, evals.length);
             for (int i = 0; i < evals.length; i++) {
                 Object value = evals[i].evaluate(eventsPerStream, isNewData, context);

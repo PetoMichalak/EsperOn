@@ -10,27 +10,27 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.access;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.core.CodegenNamedMethods;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.epl.agg.factory.AggregationStateLinearForge;
-import com.espertech.esper.epl.expression.codegen.CodegenLegoMethodExpression;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.util.SimpleNumberCoercerFactory;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.core.CodegenNamedMethods;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.epl.agg.factory.AggregationStateLinearForge;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.CodegenLegoMethodExpression;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.util.SimpleNumberCoercerFactory;
 
 import java.util.Collection;
 import java.util.Collections;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantTrue;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.newArrayByLength;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantTrue;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.newArrayByLength;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
 
 /**
  * Represents the aggregation accessor that provides the result for the "first" and "last" aggregation function with index.
@@ -59,12 +59,12 @@ public class AggregationAccessorFirstLastIndexWEval implements AggregationAccess
         this.isFirst = isFirst;
     }
 
-    public Object getValue(AggregationState state, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
-        com.espertech.esper.client.EventBean bean = getBeanFirstLastIndex(state);
+    public Object getValue(AggregationState state, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+        eu.uk.ncl.pet5o.esper.client.EventBean bean = getBeanFirstLastIndex(state);
         if (bean == null) {
             return null;
         }
-        com.espertech.esper.client.EventBean[] eventsPerStreamBuf = new com.espertech.esper.client.EventBean[streamNum + 1];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStreamBuf = new eu.uk.ncl.pet5o.esper.client.EventBean[streamNum + 1];
         eventsPerStreamBuf[streamNum] = bean;
         return childNode.evaluate(eventsPerStreamBuf, true, null);
     }
@@ -72,15 +72,15 @@ public class AggregationAccessorFirstLastIndexWEval implements AggregationAccess
     public static void getValueCodegen(AggregationAccessorFirstLastIndexWEvalForge forge, AggregationAccessorForgeGetCodegenContext context) {
         AggregationStateLinearForge stateForge = (AggregationStateLinearForge) context.getAccessStateForge();
         CodegenMethodNode getBeanFirstLastIndex = getBeanFirstLastIndexCodegen(forge, context.getColumn(), context.getClassScope(), stateForge, context.getMethod(), context.getNamedMethods());
-        context.getMethod().getBlock().declareVar(com.espertech.esper.client.EventBean.class, "bean", localMethod(getBeanFirstLastIndex))
+        context.getMethod().getBlock().declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "bean", localMethod(getBeanFirstLastIndex))
                 .ifRefNullReturnNull("bean")
-                .declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStreamBuf", newArrayByLength(com.espertech.esper.client.EventBean.class, constant(forge.getStreamNum() + 1)))
+                .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStreamBuf", newArrayByLength(eu.uk.ncl.pet5o.esper.client.EventBean.class, constant(forge.getStreamNum() + 1)))
                 .assignArrayElement("eventsPerStreamBuf", constant(forge.getStreamNum()), ref("bean"))
                 .methodReturn(localMethod(CodegenLegoMethodExpression.codegenExpression(forge.getChildNode(), context.getMethod(), context.getClassScope()), ref("eventsPerStreamBuf"), constantTrue(), constantNull()));
     }
 
-    public Collection<EventBean> getEnumerableEvents(AggregationState state, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
-        com.espertech.esper.client.EventBean bean = getBeanFirstLastIndex(state);
+    public Collection<EventBean> getEnumerableEvents(AggregationState state, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+        eu.uk.ncl.pet5o.esper.client.EventBean bean = getBeanFirstLastIndex(state);
         if (bean == null) {
             return null;
         }
@@ -90,12 +90,12 @@ public class AggregationAccessorFirstLastIndexWEval implements AggregationAccess
     public static void getEnumerableEventsCodegen(AggregationAccessorFirstLastIndexWEvalForge forge, AggregationAccessorForgeGetCodegenContext context) {
         AggregationStateLinearForge stateForge = (AggregationStateLinearForge) context.getAccessStateForge();
         CodegenMethodNode getBeanFirstLastIndex = getBeanFirstLastIndexCodegen(forge, context.getColumn(), context.getClassScope(), stateForge, context.getMethod(), context.getNamedMethods());
-        context.getMethod().getBlock().declareVar(com.espertech.esper.client.EventBean.class, "bean", localMethod(getBeanFirstLastIndex))
+        context.getMethod().getBlock().declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "bean", localMethod(getBeanFirstLastIndex))
                 .ifRefNullReturnNull("bean")
                 .methodReturn(staticMethod(Collections.class, "singletonList", ref("bean")));
     }
 
-    public Collection<Object> getEnumerableScalar(AggregationState state, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public Collection<Object> getEnumerableScalar(AggregationState state, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         Object value = getValue(state, eventsPerStream, isNewData, exprEvaluatorContext);
         if (value == null) {
             return null;
@@ -106,16 +106,16 @@ public class AggregationAccessorFirstLastIndexWEval implements AggregationAccess
     public static void getEnumerableScalarCodegen(AggregationAccessorFirstLastIndexWEvalForge forge, AggregationAccessorForgeGetCodegenContext context) {
         AggregationStateLinearForge stateForge = (AggregationStateLinearForge) context.getAccessStateForge();
         CodegenMethodNode getBeanFirstLastIndex = getBeanFirstLastIndexCodegen(forge, context.getColumn(), context.getClassScope(), stateForge, context.getMethod(), context.getNamedMethods());
-        context.getMethod().getBlock().declareVar(com.espertech.esper.client.EventBean.class, "bean", localMethod(getBeanFirstLastIndex))
+        context.getMethod().getBlock().declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "bean", localMethod(getBeanFirstLastIndex))
                 .ifRefNullReturnNull("bean")
-                .declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStreamBuf", newArrayByLength(com.espertech.esper.client.EventBean.class, constant(forge.getStreamNum() + 1)))
+                .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStreamBuf", newArrayByLength(eu.uk.ncl.pet5o.esper.client.EventBean.class, constant(forge.getStreamNum() + 1)))
                 .assignArrayElement("eventsPerStreamBuf", constant(forge.getStreamNum()), ref("bean"))
                 .declareVar(Object.class, "value", localMethod(CodegenLegoMethodExpression.codegenExpression(forge.getChildNode(), context.getMethod(), context.getClassScope()), ref("eventsPerStreamBuf"), constantTrue(), constantNull()))
                 .ifRefNullReturnNull("value")
                 .methodReturn(staticMethod(Collections.class, "singletonList", ref("value")));
     }
 
-    public com.espertech.esper.client.EventBean getEnumerableEvent(AggregationState state, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getEnumerableEvent(AggregationState state, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         return getBeanFirstLastIndex(state);
     }
 
@@ -125,7 +125,7 @@ public class AggregationAccessorFirstLastIndexWEval implements AggregationAccess
         context.getMethod().getBlock().methodReturn(localMethod(getBeanFirstLastIndex));
     }
 
-    private com.espertech.esper.client.EventBean getBeanFirstLastIndex(AggregationState state) {
+    private eu.uk.ncl.pet5o.esper.client.EventBean getBeanFirstLastIndex(AggregationState state) {
         int index = constant;
         if (index == -1) {
             Object result = indexNode.evaluate(null, true, null);
@@ -142,7 +142,7 @@ public class AggregationAccessorFirstLastIndexWEval implements AggregationAccess
     }
 
     private static CodegenMethodNode getBeanFirstLastIndexCodegen(AggregationAccessorFirstLastIndexWEvalForge forge, int column, CodegenClassScope classScope, AggregationStateLinearForge stateForge, CodegenMethodNode parent, CodegenNamedMethods namedMethods) {
-        CodegenMethodNode method = parent.makeChild(com.espertech.esper.client.EventBean.class, AggregationAccessorFirstLastIndexWEval.class, classScope);
+        CodegenMethodNode method = parent.makeChild(eu.uk.ncl.pet5o.esper.client.EventBean.class, AggregationAccessorFirstLastIndexWEval.class, classScope);
         if (forge.getConstant() == -1) {
             Class evalType = forge.getIndexNode().getEvaluationType();
             method.getBlock().declareVar(evalType, "indexResult", localMethod(CodegenLegoMethodExpression.codegenExpression(forge.getIndexNode(), method, classScope), constantNull(), constantTrue(), constantNull()));

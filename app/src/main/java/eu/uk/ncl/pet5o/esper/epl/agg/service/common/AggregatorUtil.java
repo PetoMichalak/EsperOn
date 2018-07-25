@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.service.common;
 
-import com.espertech.esper.core.service.StatementContext;
-import com.espertech.esper.epl.agg.access.*;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.*;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
 
 public class AggregatorUtil {
     public final static ExprEvaluator[] METHODAGG_EMPTYEVALUATORS = new ExprEvaluator[0];

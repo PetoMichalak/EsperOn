@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.lookup;
 
-import com.espertech.esper.epl.join.exec.composite.CompositeIndexQuery;
-import com.espertech.esper.epl.join.exec.composite.CompositeIndexQueryFactory;
-import com.espertech.esper.epl.join.table.EventTable;
-import com.espertech.esper.epl.join.table.PropertyCompositeEventTable;
-import com.espertech.esper.epl.virtualdw.VirtualDWView;
+import eu.uk.ncl.pet5o.esper.epl.join.exec.composite.CompositeIndexQuery;
+import eu.uk.ncl.pet5o.esper.epl.join.exec.composite.CompositeIndexQueryFactory;
+import eu.uk.ncl.pet5o.esper.epl.join.table.EventTable;
+import eu.uk.ncl.pet5o.esper.epl.join.table.PropertyCompositeEventTable;
+import eu.uk.ncl.pet5o.esper.epl.virtualdw.VirtualDWView;
 
 import java.util.ArrayList;
 import java.util.Collection;

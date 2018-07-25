@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
 
 public class ContextControllerFactoryServiceImpl implements ContextControllerFactoryService {
 

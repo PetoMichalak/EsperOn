@@ -10,27 +10,27 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.core;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.codegen.base.CodegenBlock;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.codegen.model.expression.CodegenExpressionRef;
-import com.espertech.esper.epl.expression.codegen.CodegenLegoCast;
-import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
-import com.espertech.esper.event.EventPropertyGetterSPI;
-import com.espertech.esper.event.WrapperEventType;
-import com.espertech.esper.event.vaevent.RevisionEventType;
-import com.espertech.esper.event.vaevent.VariantEventType;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenBlock;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRef;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.CodegenLegoCast;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
+import eu.uk.ncl.pet5o.esper.event.EventPropertyGetterSPI;
+import eu.uk.ncl.pet5o.esper.event.WrapperEventType;
+import eu.uk.ncl.pet5o.esper.event.vaevent.RevisionEventType;
+import eu.uk.ncl.pet5o.esper.event.vaevent.VariantEventType;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.arrayAtIndex;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.arrayAtIndex;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
 
 public class ExprIdentNodeEvaluatorImpl implements ExprIdentNodeEvaluator {
     private final int streamNum;
@@ -49,11 +49,11 @@ public class ExprIdentNodeEvaluatorImpl implements ExprIdentNodeEvaluator {
         this.optionalEvent = optionalEvent;
     }
 
-    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qExprIdent(identNode.getFullUnresolvedName());
         }
-        com.espertech.esper.client.EventBean event = eventsPerStream[streamNum];
+        eu.uk.ncl.pet5o.esper.client.EventBean event = eventsPerStream[streamNum];
         if (event == null) {
             if (InstrumentationHelper.ENABLED) {
                 InstrumentationHelper.get().aExprIdent(null);
@@ -94,7 +94,7 @@ public class ExprIdentNodeEvaluatorImpl implements ExprIdentNodeEvaluator {
                   .methodReturn(CodegenLegoCast.castSafeFromObjectType(castTargetType, propertyGetter.underlyingGetCodegen(underlying, method, codegenClassScope)));
         } else {
             CodegenExpressionRef refEPS = exprSymbol.getAddEPS(method);
-            method.getBlock().declareVar(com.espertech.esper.client.EventBean.class, "event", arrayAtIndex(refEPS, constant(streamNum)));
+            method.getBlock().declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "event", arrayAtIndex(refEPS, constant(streamNum)));
             if (optionalEvent) {
                 block.ifRefNullReturnNull("event");
             }
@@ -119,8 +119,8 @@ public class ExprIdentNodeEvaluatorImpl implements ExprIdentNodeEvaluator {
      * @param isNewData       if the stream represents insert or remove stream
      * @return true if the property exists, false if not
      */
-    public boolean evaluatePropertyExists(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData) {
-        com.espertech.esper.client.EventBean theEvent = eventsPerStream[streamNum];
+    public boolean evaluatePropertyExists(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData) {
+        eu.uk.ncl.pet5o.esper.client.EventBean theEvent = eventsPerStream[streamNum];
         if (theEvent == null) {
             return false;
         }

@@ -32,7 +32,7 @@
  */
 package eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.core;
 
-import com.espertech.esper.metrics.codahale_metrics.metrics.stats.EWMA;
+import eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.stats.EWMA;
 
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;

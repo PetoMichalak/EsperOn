@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.resultset.core;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.epl.agg.service.common.AggregationServiceFactoryDesc;
-import com.espertech.esper.epl.core.orderby.OrderByProcessorFactory;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationServiceFactoryDesc;
+import eu.uk.ncl.pet5o.esper.epl.core.orderby.OrderByProcessorFactory;
 
 /**
  * Processor prototype for result sets for instances that apply the select-clause, group-by-clause and having-clauses

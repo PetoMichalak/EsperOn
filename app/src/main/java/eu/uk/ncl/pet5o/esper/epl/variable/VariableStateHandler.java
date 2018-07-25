@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.variable;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.core.service.StatementExtensionSvcContext;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.core.service.StatementExtensionSvcContext;
 
 import java.util.Set;
 

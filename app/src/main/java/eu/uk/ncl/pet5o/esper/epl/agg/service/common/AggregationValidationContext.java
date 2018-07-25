@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.service.common;
 
-import com.espertech.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
 
 import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
- * Context for use with plug-in custom aggregation functions that implement {@link com.espertech.esper.client.hook.AggregationFunctionFactory}.
+ * Context for use with plug-in custom aggregation functions that implement {@link eu.uk.ncl.pet5o.esper.client.hook.AggregationFunctionFactory}.
  * <p>
  * This context object provides access to the parameter expressions themselves as well
  * as information compiled from the parameter expressions for your convenience.

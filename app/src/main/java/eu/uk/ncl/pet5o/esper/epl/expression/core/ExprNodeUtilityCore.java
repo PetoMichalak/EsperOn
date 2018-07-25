@@ -10,14 +10,14 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.core;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.epl.expression.visitor.ExprNodeVisitor;
-import com.espertech.esper.epl.expression.visitor.ExprNodeVisitorWithParent;
-import com.espertech.esper.event.EventBeanUtility;
-import com.espertech.esper.util.*;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.epl.expression.visitor.ExprNodeVisitor;
+import eu.uk.ncl.pet5o.esper.epl.expression.visitor.ExprNodeVisitorWithParent;
+import eu.uk.ncl.pet5o.esper.event.EventBeanUtility;
+import eu.uk.ncl.pet5o.esper.util.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -168,8 +168,8 @@ public class ExprNodeUtilityCore {
 
     public static void applyFilterExpressionsIterable(Iterable<EventBean> iterable, List<ExprNode> filterExpressions, ExprEvaluatorContext exprEvaluatorContext, Collection<EventBean> eventsInWindow) {
         ExprEvaluator[] evaluators = getEvaluatorsNoCompile(filterExpressions);
-        com.espertech.esper.client.EventBean[] events = new com.espertech.esper.client.EventBean[1];
-        for (com.espertech.esper.client.EventBean theEvent : iterable) {
+        eu.uk.ncl.pet5o.esper.client.EventBean[] events = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
+        for (eu.uk.ncl.pet5o.esper.client.EventBean theEvent : iterable) {
             events[0] = theEvent;
             boolean add = true;
             for (ExprEvaluator filter : evaluators) {
@@ -186,7 +186,7 @@ public class ExprNodeUtilityCore {
     }
 
     public static void applyFilterExpressionIterable(Iterator<EventBean> iterator, ExprEvaluator filterExpression, ExprEvaluatorContext exprEvaluatorContext, Collection<EventBean> eventsInWindow) {
-        com.espertech.esper.client.EventBean[] events = new com.espertech.esper.client.EventBean[1];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] events = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
         for (; iterator.hasNext(); ) {
             events[0] = iterator.next();
             Object result = filterExpression.evaluate(events, true, exprEvaluatorContext);
@@ -306,14 +306,14 @@ public class ExprNodeUtilityCore {
      * @param exprEvaluatorContext context for expression evaluation
      * @return filtered stream one events
      */
-    public static com.espertech.esper.client.EventBean[] applyFilterExpression(ExprEvaluator filter, com.espertech.esper.client.EventBean streamZeroEvent, com.espertech.esper.client.EventBean[] streamOneEvents, ExprEvaluatorContext exprEvaluatorContext) {
-        com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[2];
+    public static eu.uk.ncl.pet5o.esper.client.EventBean[] applyFilterExpression(ExprEvaluator filter, eu.uk.ncl.pet5o.esper.client.EventBean streamZeroEvent, eu.uk.ncl.pet5o.esper.client.EventBean[] streamOneEvents, ExprEvaluatorContext exprEvaluatorContext) {
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[2];
         eventsPerStream[0] = streamZeroEvent;
 
-        com.espertech.esper.client.EventBean[] filtered = new com.espertech.esper.client.EventBean[streamOneEvents.length];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] filtered = new eu.uk.ncl.pet5o.esper.client.EventBean[streamOneEvents.length];
         int countPass = 0;
 
-        for (com.espertech.esper.client.EventBean eventBean : streamOneEvents) {
+        for (eu.uk.ncl.pet5o.esper.client.EventBean eventBean : streamOneEvents) {
             eventsPerStream[1] = eventBean;
 
             Boolean result = (Boolean) filter.evaluate(eventsPerStream, true, exprEvaluatorContext);
@@ -337,7 +337,7 @@ public class ExprNodeUtilityCore {
      * @param exprEvaluatorContext context for expression evaluation
      * @return pass indicator
      */
-    public static boolean applyFilterExpression(ExprEvaluator filter, com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
+    public static boolean applyFilterExpression(ExprEvaluator filter, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
         Boolean result = (Boolean) filter.evaluate(eventsPerStream, true, exprEvaluatorContext);
         return (result != null) && result;
     }

@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.util;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -24,9 +24,9 @@ import java.util.NoSuchElementException;
 public class FilteredEventIterator implements Iterator<EventBean> {
     private final Iterator<EventBean> parent;
     private final ExprEvaluator[] filterList;
-    private final com.espertech.esper.client.EventBean[] eventPerStream = new com.espertech.esper.client.EventBean[1];
+    private final eu.uk.ncl.pet5o.esper.client.EventBean[] eventPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
     private final ExprEvaluatorContext exprEvaluatorContext;
-    private com.espertech.esper.client.EventBean next;
+    private eu.uk.ncl.pet5o.esper.client.EventBean next;
 
     /**
      * Ctor.
@@ -46,12 +46,12 @@ public class FilteredEventIterator implements Iterator<EventBean> {
         return next != null;
     }
 
-    public com.espertech.esper.client.EventBean next() {
+    public eu.uk.ncl.pet5o.esper.client.EventBean next() {
         if (next == null) {
             throw new NoSuchElementException();
         }
 
-        com.espertech.esper.client.EventBean result = next;
+        eu.uk.ncl.pet5o.esper.client.EventBean result = next;
         getNext();
         return result;
     }

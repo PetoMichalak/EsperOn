@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.util;
 
-import com.espertech.esper.collection.HashableMultiKey;
+import eu.uk.ncl.pet5o.esper.collection.HashableMultiKey;
 
 import java.io.Serializable;
 import java.util.Comparator;

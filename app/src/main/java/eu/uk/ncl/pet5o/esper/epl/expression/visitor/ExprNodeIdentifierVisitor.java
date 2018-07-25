@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.visitor;
 
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.epl.enummethod.dot.ExprLambdaGoesNode;
-import com.espertech.esper.epl.expression.baseagg.ExprAggregateNode;
-import com.espertech.esper.epl.expression.core.ExprIdentNode;
-import com.espertech.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.epl.enummethod.dot.ExprLambdaGoesNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.baseagg.ExprAggregateNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprIdentNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
 
 import java.util.LinkedList;
 import java.util.List;

@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.resultset.agggrouped;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.collection.MultiKey;
-import com.espertech.esper.collection.UniformPair;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.collection.MultiKey;
+import eu.uk.ncl.pet5o.esper.collection.UniformPair;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -31,15 +31,15 @@ public class ResultSetProcessorAggregateGroupedOutputLastHelperImpl implements R
         outputLastUnordGroupOld = new LinkedHashMap<>();
     }
 
-    public void processView(com.espertech.esper.client.EventBean[] newData, com.espertech.esper.client.EventBean[] oldData, boolean isGenerateSynthetic) {
+    public void processView(eu.uk.ncl.pet5o.esper.client.EventBean[] newData, eu.uk.ncl.pet5o.esper.client.EventBean[] oldData, boolean isGenerateSynthetic) {
         Object[] newDataMultiKey = processor.generateGroupKeyArrayView(newData, true);
         Object[] oldDataMultiKey = processor.generateGroupKeyArrayView(oldData, false);
-        com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[1];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
 
         if (newData != null) {
             // apply new data to aggregates
             int count = 0;
-            for (com.espertech.esper.client.EventBean aNewData : newData) {
+            for (eu.uk.ncl.pet5o.esper.client.EventBean aNewData : newData) {
                 Object mk = newDataMultiKey[count];
                 eventsPerStream[0] = aNewData;
                 processor.getAggregationService().applyEnter(eventsPerStream, mk, processor.getAgentInstanceContext());
@@ -49,7 +49,7 @@ public class ResultSetProcessorAggregateGroupedOutputLastHelperImpl implements R
         if (oldData != null) {
             // apply old data to aggregates
             int count = 0;
-            for (com.espertech.esper.client.EventBean anOldData : oldData) {
+            for (eu.uk.ncl.pet5o.esper.client.EventBean anOldData : oldData) {
                 eventsPerStream[0] = anOldData;
                 processor.getAggregationService().applyLeave(eventsPerStream, oldDataMultiKey[count], processor.getAgentInstanceContext());
                 count++;
@@ -69,7 +69,7 @@ public class ResultSetProcessorAggregateGroupedOutputLastHelperImpl implements R
         if (newData != null) {
             // apply new data to aggregates
             int count = 0;
-            for (MultiKey<com.espertech.esper.client.EventBean> aNewData : newData) {
+            for (MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> aNewData : newData) {
                 Object mk = newDataMultiKey[count];
                 processor.getAggregationService().applyEnter(aNewData.getArray(), mk, processor.getAgentInstanceContext());
                 count++;
@@ -78,7 +78,7 @@ public class ResultSetProcessorAggregateGroupedOutputLastHelperImpl implements R
         if (oldData != null) {
             // apply old data to aggregates
             int count = 0;
-            for (MultiKey<com.espertech.esper.client.EventBean> anOldData : oldData) {
+            for (MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> anOldData : oldData) {
                 processor.getAggregationService().applyLeave(anOldData.getArray(), oldDataMultiKey[count], processor.getAgentInstanceContext());
                 count++;
             }
@@ -90,11 +90,11 @@ public class ResultSetProcessorAggregateGroupedOutputLastHelperImpl implements R
         processor.generateOutputBatchedJoinPerKey(newData, newDataMultiKey, false, isGenerateSynthetic, outputLastUnordGroupNew, null);
     }
 
-    public UniformPair<com.espertech.esper.client.EventBean[]> outputView(boolean isSynthesize) {
+    public UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> outputView(boolean isSynthesize) {
         return continueOutputLimitedLastNonBuffered();
     }
 
-    public UniformPair<com.espertech.esper.client.EventBean[]> outputJoin(boolean isSynthesize) {
+    public UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> outputJoin(boolean isSynthesize) {
         return continueOutputLimitedLastNonBuffered();
     }
 
@@ -106,11 +106,11 @@ public class ResultSetProcessorAggregateGroupedOutputLastHelperImpl implements R
         // no action required
     }
 
-    private UniformPair<com.espertech.esper.client.EventBean[]> continueOutputLimitedLastNonBuffered() {
-        com.espertech.esper.client.EventBean[] newEventsArr = (outputLastUnordGroupNew.isEmpty()) ? null : outputLastUnordGroupNew.values().toArray(new com.espertech.esper.client.EventBean[outputLastUnordGroupNew.size()]);
-        com.espertech.esper.client.EventBean[] oldEventsArr = null;
+    private UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> continueOutputLimitedLastNonBuffered() {
+        eu.uk.ncl.pet5o.esper.client.EventBean[] newEventsArr = (outputLastUnordGroupNew.isEmpty()) ? null : outputLastUnordGroupNew.values().toArray(new eu.uk.ncl.pet5o.esper.client.EventBean[outputLastUnordGroupNew.size()]);
+        eu.uk.ncl.pet5o.esper.client.EventBean[] oldEventsArr = null;
         if (processor.isSelectRStream()) {
-            oldEventsArr = (outputLastUnordGroupOld.isEmpty()) ? null : outputLastUnordGroupOld.values().toArray(new com.espertech.esper.client.EventBean[outputLastUnordGroupOld.size()]);
+            oldEventsArr = (outputLastUnordGroupOld.isEmpty()) ? null : outputLastUnordGroupOld.values().toArray(new eu.uk.ncl.pet5o.esper.client.EventBean[outputLastUnordGroupOld.size()]);
         }
         if ((newEventsArr == null) && (oldEventsArr == null)) {
             return null;

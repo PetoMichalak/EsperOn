@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.subquery;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventPropertyGetter;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.core.ExprIdentNode;
-import com.espertech.esper.epl.expression.core.ExprIdentNodeEvaluator;
-import com.espertech.esper.event.EventBeanUtility;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprIdentNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprIdentNodeEvaluator;
+import eu.uk.ncl.pet5o.esper.event.EventBeanUtility;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,14 +32,14 @@ public class SubselectEvalStrategyRowUnfilteredSelected implements SubselectEval
     private static final Logger log = LoggerFactory.getLogger(SubselectEvalStrategyRowUnfilteredSelected.class);
 
     // No filter and with select clause
-    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean newData, Collection<EventBean> matchingEvents, ExprEvaluatorContext exprEvaluatorContext,
+    public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean newData, Collection<EventBean> matchingEvents, ExprEvaluatorContext exprEvaluatorContext,
                            ExprSubselectRowNode parent) {
         if (matchingEvents.size() > 1) {
             log.warn(parent.getMultirowMessage());
             return null;
         }
 
-        com.espertech.esper.client.EventBean[] events = EventBeanUtility.allocatePerStreamShift(eventsPerStream);
+        eu.uk.ncl.pet5o.esper.client.EventBean[] events = EventBeanUtility.allocatePerStreamShift(eventsPerStream);
         events[0] = EventBeanUtility.getNonemptyFirstEvent(matchingEvents);
 
         Object result;
@@ -53,7 +53,7 @@ public class SubselectEvalStrategyRowUnfilteredSelected implements SubselectEval
     }
 
     // No filter and with select clause
-    public Collection<EventBean> evaluateGetCollEvents(com.espertech.esper.client.EventBean[] eventsPerStream, boolean newData, Collection<EventBean> matchingEvents, ExprEvaluatorContext context, ExprSubselectRowNode parent) {
+    public Collection<EventBean> evaluateGetCollEvents(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean newData, Collection<EventBean> matchingEvents, ExprEvaluatorContext context, ExprSubselectRowNode parent) {
         if (matchingEvents.size() == 0) {
             return Collections.emptyList();
         }
@@ -63,33 +63,33 @@ public class SubselectEvalStrategyRowUnfilteredSelected implements SubselectEval
             Collection<EventBean> events = new ArrayDeque<EventBean>(matchingEvents.size());
             ExprIdentNodeEvaluator eval = ((ExprIdentNode) parent.selectClause[0]).getExprEvaluatorIdent();
             EventPropertyGetter getter = eval.getGetter();
-            for (com.espertech.esper.client.EventBean subselectEvent : matchingEvents) {
+            for (eu.uk.ncl.pet5o.esper.client.EventBean subselectEvent : matchingEvents) {
                 Object fragment = getter.getFragment(subselectEvent);
                 if (fragment == null) {
                     continue;
                 }
-                events.add((com.espertech.esper.client.EventBean) fragment);
+                events.add((eu.uk.ncl.pet5o.esper.client.EventBean) fragment);
             }
             return events;
         }
 
         // when selecting a combined output row that contains multiple fields
         Collection<EventBean> events = new ArrayDeque<EventBean>(matchingEvents.size());
-        com.espertech.esper.client.EventBean[] eventsPerStreamEval = EventBeanUtility.allocatePerStreamShift(eventsPerStream);
-        for (com.espertech.esper.client.EventBean subselectEvent : matchingEvents) {
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStreamEval = EventBeanUtility.allocatePerStreamShift(eventsPerStream);
+        for (eu.uk.ncl.pet5o.esper.client.EventBean subselectEvent : matchingEvents) {
             eventsPerStreamEval[0] = subselectEvent;
             Map<String, Object> row = parent.evaluateRow(eventsPerStreamEval, true, context);
-            com.espertech.esper.client.EventBean event = parent.subselectMultirowType.getEventAdapterService().adapterForTypedMap(row, parent.subselectMultirowType.getEventType());
+            eu.uk.ncl.pet5o.esper.client.EventBean event = parent.subselectMultirowType.getEventAdapterService().adapterForTypedMap(row, parent.subselectMultirowType.getEventType());
             events.add(event);
         }
         return events;
     }
 
     // No filter and with select clause
-    public Collection evaluateGetCollScalar(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, Collection<EventBean> matchingEvents, ExprEvaluatorContext context, ExprSubselectRowNode parent) {
+    public Collection evaluateGetCollScalar(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, Collection<EventBean> matchingEvents, ExprEvaluatorContext context, ExprSubselectRowNode parent) {
         List<Object> result = new ArrayList<Object>();
-        com.espertech.esper.client.EventBean[] events = EventBeanUtility.allocatePerStreamShift(eventsPerStream);
-        for (com.espertech.esper.client.EventBean subselectEvent : matchingEvents) {
+        eu.uk.ncl.pet5o.esper.client.EventBean[] events = EventBeanUtility.allocatePerStreamShift(eventsPerStream);
+        for (eu.uk.ncl.pet5o.esper.client.EventBean subselectEvent : matchingEvents) {
             events[0] = subselectEvent;
             result.add(parent.selectClauseEvaluator[0].evaluate(events, isNewData, context));
         }
@@ -97,9 +97,9 @@ public class SubselectEvalStrategyRowUnfilteredSelected implements SubselectEval
     }
 
     // No filter and with select clause
-    public Object[] typableEvaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, Collection<EventBean> matchingEvents, ExprEvaluatorContext exprEvaluatorContext, ExprSubselectRowNode parent) {
+    public Object[] typableEvaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, Collection<EventBean> matchingEvents, ExprEvaluatorContext exprEvaluatorContext, ExprSubselectRowNode parent) {
         // take the first match only
-        com.espertech.esper.client.EventBean[] events = EventBeanUtility.allocatePerStreamShift(eventsPerStream);
+        eu.uk.ncl.pet5o.esper.client.EventBean[] events = EventBeanUtility.allocatePerStreamShift(eventsPerStream);
         events[0] = EventBeanUtility.getNonemptyFirstEvent(matchingEvents);
         Object[] results = new Object[parent.selectClauseEvaluator.length];
         for (int i = 0; i < results.length; i++) {
@@ -109,11 +109,11 @@ public class SubselectEvalStrategyRowUnfilteredSelected implements SubselectEval
     }
 
     // No filter and with select clause
-    public Object[][] typableEvaluateMultirow(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, Collection<EventBean> matchingEvents, ExprEvaluatorContext exprEvaluatorContext, ExprSubselectRowNode parent) {
+    public Object[][] typableEvaluateMultirow(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, Collection<EventBean> matchingEvents, ExprEvaluatorContext exprEvaluatorContext, ExprSubselectRowNode parent) {
         Object[][] rows = new Object[matchingEvents.size()][];
         int index = -1;
-        com.espertech.esper.client.EventBean[] events = EventBeanUtility.allocatePerStreamShift(eventsPerStream);
-        for (com.espertech.esper.client.EventBean matchingEvent : matchingEvents) {
+        eu.uk.ncl.pet5o.esper.client.EventBean[] events = EventBeanUtility.allocatePerStreamShift(eventsPerStream);
+        for (eu.uk.ncl.pet5o.esper.client.EventBean matchingEvent : matchingEvents) {
             index++;
             events[0] = matchingEvent;
             Object[] results = new Object[parent.selectClauseEvaluator.length];
@@ -126,8 +126,8 @@ public class SubselectEvalStrategyRowUnfilteredSelected implements SubselectEval
     }
 
     // No filter and with select clause
-    public com.espertech.esper.client.EventBean evaluateGetEventBean(com.espertech.esper.client.EventBean[] eventsPerStream, boolean newData, Collection<EventBean> matchingEvents, ExprEvaluatorContext context, ExprSubselectRowNode parent) {
-        com.espertech.esper.client.EventBean[] events = EventBeanUtility.allocatePerStreamShift(eventsPerStream);
+    public eu.uk.ncl.pet5o.esper.client.EventBean evaluateGetEventBean(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean newData, Collection<EventBean> matchingEvents, ExprEvaluatorContext context, ExprSubselectRowNode parent) {
+        eu.uk.ncl.pet5o.esper.client.EventBean[] events = EventBeanUtility.allocatePerStreamShift(eventsPerStream);
         events[0] = EventBeanUtility.getNonemptyFirstEvent(matchingEvents);
         Map<String, Object> row = parent.evaluateRow(events, true, context);
         return parent.subselectMultirowType.getEventAdapterService().adapterForTypedMap(row, parent.subselectMultirowType.getEventType());

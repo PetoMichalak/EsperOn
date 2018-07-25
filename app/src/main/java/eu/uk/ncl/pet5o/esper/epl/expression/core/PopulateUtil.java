@@ -10,18 +10,18 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.core;
 
-import com.espertech.esper.client.dataflow.EPDataFlowOperatorParameterProvider;
-import com.espertech.esper.client.dataflow.EPDataFlowOperatorParameterProviderContext;
-import com.espertech.esper.dataflow.annotations.DataFlowOpParameter;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.epl.util.ExprNodeUtilityRich;
-import com.espertech.esper.event.WriteablePropertyDescriptor;
-import com.espertech.esper.event.bean.PropertyHelper;
-import com.espertech.esper.event.property.MappedProperty;
-import com.espertech.esper.event.property.Property;
-import com.espertech.esper.event.property.PropertyParser;
-import com.espertech.esper.util.JavaClassHelper;
-import com.espertech.esper.util.URIUtil;
+import eu.uk.ncl.pet5o.esper.client.dataflow.EPDataFlowOperatorParameterProvider;
+import eu.uk.ncl.pet5o.esper.client.dataflow.EPDataFlowOperatorParameterProviderContext;
+import eu.uk.ncl.pet5o.esper.dataflow.annotations.DataFlowOpParameter;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.epl.util.ExprNodeUtilityRich;
+import eu.uk.ncl.pet5o.esper.event.WriteablePropertyDescriptor;
+import eu.uk.ncl.pet5o.esper.event.bean.PropertyHelper;
+import eu.uk.ncl.pet5o.esper.event.property.MappedProperty;
+import eu.uk.ncl.pet5o.esper.event.property.Property;
+import eu.uk.ncl.pet5o.esper.event.property.PropertyParser;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.util.URIUtil;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.util;
 
-import com.espertech.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.EventType;
 
 public class ContextMergeViewForwarding extends ContextMergeView {
 
@@ -19,7 +19,7 @@ public class ContextMergeViewForwarding extends ContextMergeView {
     }
 
     @Override
-    public void update(com.espertech.esper.client.EventBean[] newData, com.espertech.esper.client.EventBean[] oldData) {
+    public void update(eu.uk.ncl.pet5o.esper.client.EventBean[] newData, eu.uk.ncl.pet5o.esper.client.EventBean[] oldData) {
         updateChildren(newData, oldData);
     }
 }

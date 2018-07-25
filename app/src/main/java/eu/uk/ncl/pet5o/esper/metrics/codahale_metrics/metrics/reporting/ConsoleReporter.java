@@ -23,9 +23,9 @@
 
 package eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.reporting;
 
-import com.espertech.esper.metrics.codahale_metrics.metrics.Metrics;
-import com.espertech.esper.metrics.codahale_metrics.metrics.core.*;
-import com.espertech.esper.metrics.codahale_metrics.metrics.stats.Snapshot;
+import eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.Metrics;
+import eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.core.*;
+import eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.stats.Snapshot;
 
 import java.io.PrintStream;
 import java.text.DateFormat;

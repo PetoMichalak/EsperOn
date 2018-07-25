@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.variable;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.collection.SingleEventIterator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.view.ViewSupport;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.collection.SingleEventIterator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.view.ViewSupport;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -30,14 +30,14 @@ public class OnSetVariableView extends ViewSupport {
     private final OnSetVariableViewFactory factory;
     private final ExprEvaluatorContext exprEvaluatorContext;
 
-    private final com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[1];
+    private final eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
 
     public OnSetVariableView(OnSetVariableViewFactory factory, ExprEvaluatorContext exprEvaluatorContext) {
         this.factory = factory;
         this.exprEvaluatorContext = exprEvaluatorContext;
     }
 
-    public void update(com.espertech.esper.client.EventBean[] newData, com.espertech.esper.client.EventBean[] oldData) {
+    public void update(eu.uk.ncl.pet5o.esper.client.EventBean[] newData, eu.uk.ncl.pet5o.esper.client.EventBean[] oldData) {
         if ((newData == null) || (newData.length == 0)) {
             return;
         }
@@ -53,7 +53,7 @@ public class OnSetVariableView extends ViewSupport {
         factory.getVariableReadWritePackage().writeVariables(factory.getVariableService(), eventsPerStream, values, exprEvaluatorContext);
 
         if (values != null) {
-            com.espertech.esper.client.EventBean[] newDataOut = new com.espertech.esper.client.EventBean[1];
+            eu.uk.ncl.pet5o.esper.client.EventBean[] newDataOut = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
             newDataOut[0] = factory.getEventAdapterService().adapterForTypedMap(values, factory.getEventType());
             this.updateChildren(newDataOut, null);
         }
@@ -65,7 +65,7 @@ public class OnSetVariableView extends ViewSupport {
 
     public Iterator<EventBean> iterator() {
         Map<String, Object> values = factory.getVariableReadWritePackage().iterate(exprEvaluatorContext.getAgentInstanceId());
-        com.espertech.esper.client.EventBean theEvent = factory.getEventAdapterService().adapterForTypedMap(values, factory.getEventType());
+        eu.uk.ncl.pet5o.esper.client.EventBean theEvent = factory.getEventAdapterService().adapterForTypedMap(values, factory.getEventType());
         return new SingleEventIterator(theEvent);
     }
 }

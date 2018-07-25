@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.resultset.handthru;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.collection.MultiKey;
-import com.espertech.esper.epl.core.select.SelectExprProcessor;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.collection.MultiKey;
+import eu.uk.ncl.pet5o.esper.epl.core.select.SelectExprProcessor;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
 
 import java.util.Set;
 
@@ -33,13 +33,13 @@ public class ResultSetProcessorHandThroughUtil {
      * @param agentInstanceContext context
      * @return output events, one for each input event
      */
-    public static com.espertech.esper.client.EventBean[] getSelectEventsNoHavingHandThruView(SelectExprProcessor exprProcessor, com.espertech.esper.client.EventBean[] events, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext agentInstanceContext) {
+    public static eu.uk.ncl.pet5o.esper.client.EventBean[] getSelectEventsNoHavingHandThruView(SelectExprProcessor exprProcessor, eu.uk.ncl.pet5o.esper.client.EventBean[] events, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext agentInstanceContext) {
         if (events == null) {
             return null;
         }
 
-        com.espertech.esper.client.EventBean[] result = new com.espertech.esper.client.EventBean[events.length];
-        com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[1];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] result = new eu.uk.ncl.pet5o.esper.client.EventBean[events.length];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
         for (int i = 0; i < events.length; i++) {
             eventsPerStream[0] = events[i];
             result[i] = exprProcessor.process(eventsPerStream, isNewData, isSynthesize, agentInstanceContext);
@@ -60,16 +60,16 @@ public class ResultSetProcessorHandThroughUtil {
      * @param agentInstanceContext context
      * @return output events, one for each input event
      */
-    public static com.espertech.esper.client.EventBean[] getSelectEventsNoHavingHandThruJoin(SelectExprProcessor exprProcessor, Set<MultiKey<EventBean>> events, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext agentInstanceContext) {
+    public static eu.uk.ncl.pet5o.esper.client.EventBean[] getSelectEventsNoHavingHandThruJoin(SelectExprProcessor exprProcessor, Set<MultiKey<EventBean>> events, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext agentInstanceContext) {
         int length = events.size();
         if (length == 0) {
             return null;
         }
 
-        com.espertech.esper.client.EventBean[] result = new com.espertech.esper.client.EventBean[length];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] result = new eu.uk.ncl.pet5o.esper.client.EventBean[length];
         int count = 0;
-        for (MultiKey<com.espertech.esper.client.EventBean> key : events) {
-            com.espertech.esper.client.EventBean[] eventsPerStream = key.getArray();
+        for (MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> key : events) {
+            eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = key.getArray();
             result[count] = exprProcessor.process(eventsPerStream, isNewData, isSynthesize, agentInstanceContext);
             count++;
         }

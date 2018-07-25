@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.accessagg;
 
-import com.espertech.esper.epl.agg.access.AggregationStateKey;
-import com.espertech.esper.epl.agg.aggregator.AggregationMethod;
-import com.espertech.esper.epl.agg.service.common.AggregationMethodFactory;
-import com.espertech.esper.epl.expression.baseagg.ExprAggregateNodeBase;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationStateKey;
+import eu.uk.ncl.pet5o.esper.epl.agg.aggregator.AggregationMethod;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationMethodFactory;
+import eu.uk.ncl.pet5o.esper.epl.expression.baseagg.ExprAggregateNodeBase;
 
 public abstract class ExprAggCountMinSketchNodeFactoryBase implements AggregationMethodFactory {
     protected final ExprAggCountMinSketchNode parent;

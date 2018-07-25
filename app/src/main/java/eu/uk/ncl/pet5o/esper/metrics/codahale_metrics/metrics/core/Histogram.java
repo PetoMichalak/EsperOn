@@ -33,10 +33,10 @@
 package eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.core;
 
 
-import com.espertech.esper.metrics.codahale_metrics.metrics.stats.ExponentiallyDecayingSample;
-import com.espertech.esper.metrics.codahale_metrics.metrics.stats.Sample;
-import com.espertech.esper.metrics.codahale_metrics.metrics.stats.Snapshot;
-import com.espertech.esper.metrics.codahale_metrics.metrics.stats.UniformSample;
+import eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.stats.ExponentiallyDecayingSample;
+import eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.stats.Sample;
+import eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.stats.Snapshot;
+import eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.stats.UniformSample;
 
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.AtomicReference;

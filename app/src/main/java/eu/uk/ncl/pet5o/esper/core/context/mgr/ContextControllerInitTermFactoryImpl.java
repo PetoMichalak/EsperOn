@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.spec.ContextDetailInitiatedTerminated;
-import com.espertech.esper.epl.util.ExprNodeUtilityRich;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.spec.ContextDetailInitiatedTerminated;
+import eu.uk.ncl.pet5o.esper.epl.util.ExprNodeUtilityRich;
 
 public class ContextControllerInitTermFactoryImpl extends ContextControllerInitTermFactoryBase implements ContextControllerFactory {
 

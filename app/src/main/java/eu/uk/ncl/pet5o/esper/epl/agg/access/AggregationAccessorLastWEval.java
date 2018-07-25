@@ -10,22 +10,22 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.access;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.epl.agg.factory.AggregationStateLinearForge;
-import com.espertech.esper.epl.expression.codegen.CodegenLegoMethodExpression;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.epl.agg.factory.AggregationStateLinearForge;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.CodegenLegoMethodExpression;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
 
 import java.util.Collection;
 import java.util.Collections;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.newArrayByLength;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.newArrayByLength;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
 
 /**
  * Represents the aggregation accessor that provides the result for the "last" aggregation function without index.
@@ -45,27 +45,27 @@ public class AggregationAccessorLastWEval implements AggregationAccessor {
         this.childNode = childNode;
     }
 
-    public Object getValue(AggregationState state, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
-        com.espertech.esper.client.EventBean bean = ((AggregationStateLinear) state).getLastValue();
+    public Object getValue(AggregationState state, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+        eu.uk.ncl.pet5o.esper.client.EventBean bean = ((AggregationStateLinear) state).getLastValue();
         if (bean == null) {
             return null;
         }
-        com.espertech.esper.client.EventBean[] eventsPerStreamBuf = new com.espertech.esper.client.EventBean[streamNum + 1];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStreamBuf = new eu.uk.ncl.pet5o.esper.client.EventBean[streamNum + 1];
         eventsPerStreamBuf[streamNum] = bean;
         return childNode.evaluate(eventsPerStreamBuf, true, null);
     }
 
     public static void getValueCodegen(AggregationAccessorLastWEvalForge forge, AggregationStateLinearForge factoryLinear, AggregationAccessorForgeGetCodegenContext context) {
         CodegenMethodNode childExpr = CodegenLegoMethodExpression.codegenExpression(forge.getChildNode(), context.getMethod(), context.getClassScope());
-        context.getMethod().getBlock().declareVar(com.espertech.esper.client.EventBean.class, "bean", factoryLinear.getLastValueCodegen(context.getColumn(), context.getClassScope(), context.getMethod(), context.getNamedMethods()))
+        context.getMethod().getBlock().declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "bean", factoryLinear.getLastValueCodegen(context.getColumn(), context.getClassScope(), context.getMethod(), context.getNamedMethods()))
                 .ifRefNullReturnNull("bean")
-                .declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStreamBuf", newArrayByLength(com.espertech.esper.client.EventBean.class, constant(forge.getStreamNum() + 1)))
+                .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStreamBuf", newArrayByLength(eu.uk.ncl.pet5o.esper.client.EventBean.class, constant(forge.getStreamNum() + 1)))
                 .assignArrayElement("eventsPerStreamBuf", constant(forge.getStreamNum()), ref("bean"))
                 .methodReturn(localMethod(childExpr, ref("eventsPerStreamBuf"), constant(true), constantNull()));
     }
 
-    public Collection<EventBean> getEnumerableEvents(AggregationState state, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
-        com.espertech.esper.client.EventBean bean = ((AggregationStateLinear) state).getLastValue();
+    public Collection<EventBean> getEnumerableEvents(AggregationState state, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+        eu.uk.ncl.pet5o.esper.client.EventBean bean = ((AggregationStateLinear) state).getLastValue();
         if (bean == null) {
             return null;
         }
@@ -73,12 +73,12 @@ public class AggregationAccessorLastWEval implements AggregationAccessor {
     }
 
     public static void getEnumerableEventsCodegen(AggregationAccessorLastWEvalForge forge, AggregationStateLinearForge factoryLinear, AggregationAccessorForgeGetCodegenContext context) {
-        context.getMethod().getBlock().declareVar(com.espertech.esper.client.EventBean.class, "bean", factoryLinear.getLastValueCodegen(context.getColumn(), context.getClassScope(), context.getMethod(), context.getNamedMethods()))
+        context.getMethod().getBlock().declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "bean", factoryLinear.getLastValueCodegen(context.getColumn(), context.getClassScope(), context.getMethod(), context.getNamedMethods()))
                 .ifRefNullReturnNull("bean")
                 .methodReturn(staticMethod(Collections.class, "singletonList", ref("bean")));
     }
 
-    public Collection<Object> getEnumerableScalar(AggregationState state, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public Collection<Object> getEnumerableScalar(AggregationState state, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         Object value = getValue(state, eventsPerStream, isNewData, exprEvaluatorContext);
         if (value == null) {
             return null;
@@ -88,16 +88,16 @@ public class AggregationAccessorLastWEval implements AggregationAccessor {
 
     public static void getEnumerableScalarCodegen(AggregationAccessorLastWEvalForge forge, AggregationStateLinearForge stateForge, AggregationAccessorForgeGetCodegenContext context) {
         CodegenMethodNode childExpr = CodegenLegoMethodExpression.codegenExpression(forge.getChildNode(), context.getMethod(), context.getClassScope());
-        context.getMethod().getBlock().declareVar(com.espertech.esper.client.EventBean.class, "bean", stateForge.getLastValueCodegen(context.getColumn(), context.getClassScope(), context.getMethod(), context.getNamedMethods()))
+        context.getMethod().getBlock().declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "bean", stateForge.getLastValueCodegen(context.getColumn(), context.getClassScope(), context.getMethod(), context.getNamedMethods()))
                 .ifRefNullReturnNull("bean")
-                .declareVar(com.espertech.esper.client.EventBean[].class, "eventsPerStreamBuf", newArrayByLength(com.espertech.esper.client.EventBean.class, constant(forge.getStreamNum() + 1)))
+                .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "eventsPerStreamBuf", newArrayByLength(eu.uk.ncl.pet5o.esper.client.EventBean.class, constant(forge.getStreamNum() + 1)))
                 .assignArrayElement("eventsPerStreamBuf", constant(forge.getStreamNum()), ref("bean"))
                 .declareVar(Object.class, "value", localMethod(childExpr, ref("eventsPerStreamBuf"), constant(true), constantNull()))
                 .ifRefNullReturnNull("value")
                 .methodReturn(staticMethod(Collections.class, "singletonList", ref("value")));
     }
 
-    public com.espertech.esper.client.EventBean getEnumerableEvent(AggregationState state, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getEnumerableEvent(AggregationState state, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         return ((AggregationStateLinear) state).getLastValue();
     }
 

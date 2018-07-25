@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.client.util;
 
-import com.espertech.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
 
 /**
  * Renderer for an event into the JSON textual format.

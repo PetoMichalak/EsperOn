@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.service.common;
 
-import com.espertech.esper.epl.agg.access.AggregationAccessorSlotPairForge;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationAccessorSlotPairForge;
 
 public class AggregationMultiFunctionAnalysisResult {
     private final AggregationAccessorSlotPairForge[] accessorPairsForge;

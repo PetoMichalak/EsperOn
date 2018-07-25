@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.stmt;
 
-import com.espertech.esper.epl.expression.prev.ExprPreviousNode;
-import com.espertech.esper.epl.expression.prior.ExprPriorNode;
-import com.espertech.esper.epl.expression.subquery.ExprSubselectNode;
-import com.espertech.esper.epl.expression.table.ExprTableAccessNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.prev.ExprPreviousNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.prior.ExprPriorNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.subquery.ExprSubselectNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.table.ExprTableAccessNode;
 
 public interface AIRegistryExpr {
 

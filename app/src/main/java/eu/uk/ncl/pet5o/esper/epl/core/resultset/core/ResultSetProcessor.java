@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.resultset.core;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.collection.MultiKey;
-import com.espertech.esper.collection.UniformPair;
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.util.StopCallback;
-import com.espertech.esper.view.Viewable;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.collection.MultiKey;
+import eu.uk.ncl.pet5o.esper.collection.UniformPair;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.util.StopCallback;
+import eu.uk.ncl.pet5o.esper.view.Viewable;
 
 import java.util.Iterator;
 import java.util.List;
@@ -45,7 +45,7 @@ public interface ResultSetProcessor extends StopCallback {
      * @param isSynthesize - set to true to indicate that synthetic events are required for an iterator result set
      * @return pair of new events and old events
      */
-    public UniformPair<com.espertech.esper.client.EventBean[]> processViewResult(com.espertech.esper.client.EventBean[] newData, com.espertech.esper.client.EventBean[] oldData, boolean isSynthesize);
+    public UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> processViewResult(eu.uk.ncl.pet5o.esper.client.EventBean[] newData, eu.uk.ncl.pet5o.esper.client.EventBean[] oldData, boolean isSynthesize);
 
     /**
      * For use by joins posting their result, process the event rows that are entered and removed (new and old events).
@@ -57,7 +57,7 @@ public interface ResultSetProcessor extends StopCallback {
      * @param isSynthesize - set to true to indicate that synthetic events are required for an iterator result set
      * @return pair of new events and old events
      */
-    public UniformPair<com.espertech.esper.client.EventBean[]> processJoinResult(Set<MultiKey<EventBean>> newEvents, Set<MultiKey<EventBean>> oldEvents, boolean isSynthesize);
+    public UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> processJoinResult(Set<MultiKey<EventBean>> newEvents, Set<MultiKey<EventBean>> oldEvents, boolean isSynthesize);
 
     /**
      * Returns the iterator implementing the group-by and aggregation and order-by logic
@@ -88,7 +88,7 @@ public interface ResultSetProcessor extends StopCallback {
      * @param generateSynthetic flag to indicate whether synthetic events must be generated
      * @return results for dispatch
      */
-    public UniformPair<com.espertech.esper.client.EventBean[]> processOutputLimitedJoin(List<UniformPair<Set<MultiKey<EventBean>>>> joinEventsSet, boolean generateSynthetic);
+    public UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> processOutputLimitedJoin(List<UniformPair<Set<MultiKey<EventBean>>>> joinEventsSet, boolean generateSynthetic);
 
     /**
      * Processes batched events in case of output-rate limiting.
@@ -97,21 +97,21 @@ public interface ResultSetProcessor extends StopCallback {
      * @param generateSynthetic flag to indicate whether synthetic events must be generated
      * @return results for dispatch
      */
-    public UniformPair<com.espertech.esper.client.EventBean[]> processOutputLimitedView(List<UniformPair<EventBean[]>> viewEventsList, boolean generateSynthetic);
+    public UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> processOutputLimitedView(List<UniformPair<EventBean[]>> viewEventsList, boolean generateSynthetic);
 
     public void setAgentInstanceContext(AgentInstanceContext context);
 
-    public void applyViewResult(com.espertech.esper.client.EventBean[] newData, com.espertech.esper.client.EventBean[] oldData);
+    public void applyViewResult(eu.uk.ncl.pet5o.esper.client.EventBean[] newData, eu.uk.ncl.pet5o.esper.client.EventBean[] oldData);
 
     public void applyJoinResult(Set<MultiKey<EventBean>> newEvents, Set<MultiKey<EventBean>> oldEvents);
 
-    public void processOutputLimitedLastAllNonBufferedView(com.espertech.esper.client.EventBean[] newData, com.espertech.esper.client.EventBean[] oldData, boolean isGenerateSynthetic);
+    public void processOutputLimitedLastAllNonBufferedView(eu.uk.ncl.pet5o.esper.client.EventBean[] newData, eu.uk.ncl.pet5o.esper.client.EventBean[] oldData, boolean isGenerateSynthetic);
 
     public void processOutputLimitedLastAllNonBufferedJoin(Set<MultiKey<EventBean>> newEvents, Set<MultiKey<EventBean>> oldEvents, boolean isGenerateSynthetic);
 
-    public UniformPair<com.espertech.esper.client.EventBean[]> continueOutputLimitedLastAllNonBufferedView(boolean isSynthesize);
+    public UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> continueOutputLimitedLastAllNonBufferedView(boolean isSynthesize);
 
-    public UniformPair<com.espertech.esper.client.EventBean[]> continueOutputLimitedLastAllNonBufferedJoin(boolean isSynthesize);
+    public UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> continueOutputLimitedLastAllNonBufferedJoin(boolean isSynthesize);
 
     public void acceptHelperVisitor(ResultSetProcessorOutputHelperVisitor visitor);
 }

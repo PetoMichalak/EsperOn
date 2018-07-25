@@ -10,15 +10,15 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.context.ContextPartitionIdentifier;
-import com.espertech.esper.core.context.stmt.StatementAIResourceRegistryFactory;
-import com.espertech.esper.epl.expression.core.ExprFilterSpecLookupable;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.epl.spec.ContextDetail;
-import com.espertech.esper.epl.spec.ContextDetailPartitionItem;
-import com.espertech.esper.filterspec.FilterSpecCompiled;
-import com.espertech.esper.filterspec.FilterValueSetParam;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionIdentifier;
+import eu.uk.ncl.pet5o.esper.core.context.stmt.StatementAIResourceRegistryFactory;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprFilterSpecLookupable;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.epl.spec.ContextDetail;
+import eu.uk.ncl.pet5o.esper.epl.spec.ContextDetailPartitionItem;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterSpecCompiled;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterValueSetParam;
 
 import java.util.IdentityHashMap;
 import java.util.List;

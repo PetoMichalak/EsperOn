@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.table.upd;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.table.mgmt.TableStateInstance;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableStateInstance;
 
 import java.util.Collection;
 
 public interface TableUpdateStrategy {
-    public void updateTable(Collection<EventBean> events, TableStateInstance instance, com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext);
+    public void updateTable(Collection<EventBean> events, TableStateInstance instance, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext);
 }

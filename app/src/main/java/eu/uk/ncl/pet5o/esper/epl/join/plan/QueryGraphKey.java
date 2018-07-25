@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.plan;
 
-import com.espertech.esper.collection.UniformPair;
+import eu.uk.ncl.pet5o.esper.collection.UniformPair;
 
 /**
  * Key consisting of 2 integer stream numbers, for use by {@link QueryGraph}.

@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.table.onaction;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.lookup.SubordWMatchExprLookupStrategy;
-import com.espertech.esper.epl.spec.OnTriggerType;
-import com.espertech.esper.epl.table.mgmt.TableMetadata;
-import com.espertech.esper.epl.table.mgmt.TableStateInstance;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.lookup.SubordWMatchExprLookupStrategy;
+import eu.uk.ncl.pet5o.esper.epl.spec.OnTriggerType;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadata;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableStateInstance;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
 
 /**
  * View for the on-delete statement that handles removing events from a named window.
@@ -30,19 +30,19 @@ public class TableOnDeleteView extends TableOnViewBase {
         this.parent = parent;
     }
 
-    public void handleMatching(com.espertech.esper.client.EventBean[] triggerEvents, com.espertech.esper.client.EventBean[] matchingEvents) {
+    public void handleMatching(eu.uk.ncl.pet5o.esper.client.EventBean[] triggerEvents, eu.uk.ncl.pet5o.esper.client.EventBean[] matchingEvents) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qInfraOnAction(OnTriggerType.ON_DELETE, triggerEvents, matchingEvents);
         }
 
         if ((matchingEvents != null) && (matchingEvents.length > 0)) {
-            for (com.espertech.esper.client.EventBean event : matchingEvents) {
+            for (eu.uk.ncl.pet5o.esper.client.EventBean event : matchingEvents) {
                 tableStateInstance.deleteEvent(event);
             }
 
             // The on-delete listeners receive the events deleted, but only if there is interest
             if (parent.getStatementResultService().isMakeNatural() || parent.getStatementResultService().isMakeSynthetic()) {
-                com.espertech.esper.client.EventBean[] posted = TableOnViewUtil.toPublic(matchingEvents, parent.getTableMetadata(), triggerEvents, true, super.getExprEvaluatorContext());
+                eu.uk.ncl.pet5o.esper.client.EventBean[] posted = TableOnViewUtil.toPublic(matchingEvents, parent.getTableMetadata(), triggerEvents, true, super.getExprEvaluatorContext());
                 updateChildren(posted, null);
             }
         }

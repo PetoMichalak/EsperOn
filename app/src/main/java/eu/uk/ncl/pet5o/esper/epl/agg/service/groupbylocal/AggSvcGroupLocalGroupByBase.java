@@ -10,18 +10,18 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.service.groupbylocal;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.collection.MultiKeyUntyped;
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.epl.agg.access.AggregationState;
-import com.espertech.esper.epl.agg.aggregator.AggregationMethod;
-import com.espertech.esper.epl.agg.service.common.*;
-import com.espertech.esper.epl.agg.util.AggregationLocalGroupByColumn;
-import com.espertech.esper.epl.agg.util.AggregationLocalGroupByLevel;
-import com.espertech.esper.epl.agg.util.AggregationLocalGroupByPlan;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.collection.MultiKeyUntyped;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationState;
+import eu.uk.ncl.pet5o.esper.epl.agg.aggregator.AggregationMethod;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.*;
+import eu.uk.ncl.pet5o.esper.epl.agg.util.AggregationLocalGroupByColumn;
+import eu.uk.ncl.pet5o.esper.epl.agg.util.AggregationLocalGroupByLevel;
+import eu.uk.ncl.pet5o.esper.epl.agg.util.AggregationLocalGroupByPlan;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -42,7 +42,7 @@ public abstract class AggSvcGroupLocalGroupByBase implements AggregationService 
     protected Map<Object, AggregationMethodPairRow>[] aggregatorsPerLevelAndGroup;
     protected List<Pair<Integer, Object>> removedKeys;
 
-    protected abstract Object computeGroupKey(AggregationLocalGroupByLevel level, Object groupKey, ExprEvaluator[] partitionEval, com.espertech.esper.client.EventBean[] eventsPerStream, boolean newData, ExprEvaluatorContext exprEvaluatorContext);
+    protected abstract Object computeGroupKey(AggregationLocalGroupByLevel level, Object groupKey, ExprEvaluator[] partitionEval, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean newData, ExprEvaluatorContext exprEvaluatorContext);
 
     public AggSvcGroupLocalGroupByBase(boolean isJoin,
                                        AggregationLocalGroupByPlan localGroupByPlan) {
@@ -60,7 +60,7 @@ public abstract class AggSvcGroupLocalGroupByBase implements AggregationService 
         clearResults(aggregatorsPerLevelAndGroup, aggregatorsTopLevel, statesTopLevel);
     }
 
-    public void applyEnter(com.espertech.esper.client.EventBean[] eventsPerStream, Object groupByKeyProvided, ExprEvaluatorContext exprEvaluatorContext) {
+    public void applyEnter(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, Object groupByKeyProvided, ExprEvaluatorContext exprEvaluatorContext) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qAggregationGroupedApplyEnterLeave(true, localGroupByPlan.getNumMethods(), localGroupByPlan.getNumAccess(), groupByKeyProvided);
         }
@@ -97,7 +97,7 @@ public abstract class AggSvcGroupLocalGroupByBase implements AggregationService 
         }
     }
 
-    public void applyLeave(com.espertech.esper.client.EventBean[] eventsPerStream, Object groupByKeyProvided, ExprEvaluatorContext exprEvaluatorContext) {
+    public void applyLeave(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, Object groupByKeyProvided, ExprEvaluatorContext exprEvaluatorContext) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qAggregationGroupedApplyEnterLeave(false, localGroupByPlan.getNumMethods(), localGroupByPlan.getNumAccess(), groupByKeyProvided);
         }
@@ -134,7 +134,7 @@ public abstract class AggSvcGroupLocalGroupByBase implements AggregationService 
         }
     }
 
-    public Collection<EventBean> getCollectionOfEvents(int column, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Collection<EventBean> getCollectionOfEvents(int column, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         AggregationLocalGroupByColumn col = localGroupByPlan.getColumns()[column];
         if (col.getPartitionEvaluators().length == 0) {
             return col.getPair().getAccessor().getEnumerableEvents(statesTopLevel[col.getPair().getSlot()], eventsPerStream, isNewData, context);
@@ -144,7 +144,7 @@ public abstract class AggSvcGroupLocalGroupByBase implements AggregationService 
         return col.getPair().getAccessor().getEnumerableEvents(row.getStates()[col.getPair().getSlot()], eventsPerStream, isNewData, context);
     }
 
-    public Collection<Object> getCollectionScalar(int column, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Collection<Object> getCollectionScalar(int column, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         AggregationLocalGroupByColumn col = localGroupByPlan.getColumns()[column];
         if (col.getPartitionEvaluators().length == 0) {
             return col.getPair().getAccessor().getEnumerableScalar(statesTopLevel[col.getPair().getSlot()], eventsPerStream, isNewData, context);
@@ -154,7 +154,7 @@ public abstract class AggSvcGroupLocalGroupByBase implements AggregationService 
         return col.getPair().getAccessor().getEnumerableScalar(row.getStates()[col.getPair().getSlot()], eventsPerStream, isNewData, context);
     }
 
-    public com.espertech.esper.client.EventBean getEventBean(int column, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getEventBean(int column, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         AggregationLocalGroupByColumn col = localGroupByPlan.getColumns()[column];
         if (col.getPartitionEvaluators().length == 0) {
             return col.getPair().getAccessor().getEnumerableEvent(statesTopLevel[col.getPair().getSlot()], eventsPerStream, isNewData, context);
@@ -219,7 +219,7 @@ public abstract class AggSvcGroupLocalGroupByBase implements AggregationService 
         throw new UnsupportedOperationException();
     }
 
-    public static Object computeGroupKey(ExprEvaluator[] partitionEval, com.espertech.esper.client.EventBean[] eventsPerStream, boolean b, ExprEvaluatorContext exprEvaluatorContext) {
+    public static Object computeGroupKey(ExprEvaluator[] partitionEval, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean b, ExprEvaluatorContext exprEvaluatorContext) {
         if (partitionEval.length == 1) {
             return partitionEval[0].evaluate(eventsPerStream, true, exprEvaluatorContext);
         }
@@ -230,7 +230,7 @@ public abstract class AggSvcGroupLocalGroupByBase implements AggregationService 
         return new MultiKeyUntyped(keys);
     }
 
-    public static void aggregateIntoEnter(AggregationLocalGroupByLevel level, AggregationMethod[] methods, AggregationState[] states, com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
+    public static void aggregateIntoEnter(AggregationLocalGroupByLevel level, AggregationMethod[] methods, AggregationState[] states, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
         for (int i = 0; i < level.getMethodEvaluators().length; i++) {
             if (InstrumentationHelper.ENABLED) {
                 InstrumentationHelper.get().qAggNoAccessEnterLeave(true, i, methods[i], level.getMethodFactories()[i].getAggregationExpression());
@@ -252,7 +252,7 @@ public abstract class AggSvcGroupLocalGroupByBase implements AggregationService 
         }
     }
 
-    public static void aggregateIntoLeave(AggregationLocalGroupByLevel level, AggregationMethod[] methods, AggregationState[] states, com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
+    public static void aggregateIntoLeave(AggregationLocalGroupByLevel level, AggregationMethod[] methods, AggregationState[] states, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
         for (int i = 0; i < level.getMethodEvaluators().length; i++) {
             if (InstrumentationHelper.ENABLED) {
                 InstrumentationHelper.get().qAggNoAccessEnterLeave(false, i, methods[i], level.getMethodFactories()[i].getAggregationExpression());

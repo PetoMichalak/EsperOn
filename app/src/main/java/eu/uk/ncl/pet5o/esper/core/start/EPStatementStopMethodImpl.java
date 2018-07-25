@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.core.start;
 
-import com.espertech.esper.core.context.util.StatementAgentInstanceUtil;
-import com.espertech.esper.core.service.StatementContext;
-import com.espertech.esper.util.StopCallback;
+import eu.uk.ncl.pet5o.esper.core.context.util.StatementAgentInstanceUtil;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.util.StopCallback;
 
 import java.util.List;
 

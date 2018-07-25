@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.filter;
 
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.table.mgmt.TableService;
-import com.espertech.esper.filterspec.ExprNodeAdapterBase;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableService;
+import eu.uk.ncl.pet5o.esper.filterspec.ExprNodeAdapterBase;
 
 import java.lang.annotation.Annotation;
 
@@ -30,7 +30,7 @@ public class ExprNodeAdapterBaseWTableAccess extends ExprNodeAdapterBase {
     }
 
     @Override
-    public boolean evaluate(com.espertech.esper.client.EventBean theEvent) {
+    public boolean evaluate(eu.uk.ncl.pet5o.esper.client.EventBean theEvent) {
         try {
             return evalBase.evaluate(theEvent);
         } finally {

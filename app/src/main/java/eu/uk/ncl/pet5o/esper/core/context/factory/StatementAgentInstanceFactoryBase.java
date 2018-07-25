@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.factory;
 
-import com.espertech.esper.client.annotation.AuditEnum;
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.util.AuditPath;
-import com.espertech.esper.util.StopCallback;
+import eu.uk.ncl.pet5o.esper.client.annotation.AuditEnum;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.util.AuditPath;
+import eu.uk.ncl.pet5o.esper.util.StopCallback;
 
 import java.lang.annotation.Annotation;
 

@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.filter;
 
-import com.espertech.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.EventType;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -86,7 +86,7 @@ public class EventTypeIndex implements EventEvaluator {
         return result;
     }
 
-    public void matchEvent(com.espertech.esper.client.EventBean theEvent, Collection<FilterHandle> matches) {
+    public void matchEvent(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, Collection<FilterHandle> matches) {
         EventType eventType = theEvent.getEventType();
 
         // Attempt to match exact type
@@ -129,7 +129,7 @@ public class EventTypeIndex implements EventEvaluator {
         return count;
     }
 
-    private void matchType(EventType eventType, com.espertech.esper.client.EventBean eventBean, Collection<FilterHandle> matches) {
+    private void matchType(EventType eventType, eu.uk.ncl.pet5o.esper.client.EventBean eventBean, Collection<FilterHandle> matches) {
         eventTypesRWLock.readLock().lock();
         FilterHandleSetNode rootNode = null;
         try {

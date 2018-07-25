@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.aggregator;
 
-import com.espertech.esper.schedule.TimeProvider;
+import eu.uk.ncl.pet5o.esper.schedule.TimeProvider;
 
 public class AggregatorRateEverFilter extends AggregatorRateEver {
 

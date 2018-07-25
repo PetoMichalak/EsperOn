@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.baseagg;
 
-import com.espertech.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
 
 public class ExprAggregateLocalGroupByDesc {
     private ExprNode[] partitionExpressions;

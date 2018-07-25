@@ -10,14 +10,14 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.table.merge;
 
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.epl.expression.codegen.ExprNodeCompiler;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.table.mgmt.TableStateInstance;
-import com.espertech.esper.epl.table.onaction.TableOnMergeViewChangeHandler;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprNodeCompiler;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableStateInstance;
+import eu.uk.ncl.pet5o.esper.epl.table.onaction.TableOnMergeViewChangeHandler;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
 
 import java.util.List;
 
@@ -30,7 +30,7 @@ public class TableOnMergeMatch {
         this.actions = actions;
     }
 
-    public boolean isApplies(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext context) {
+    public boolean isApplies(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext context) {
         if (optionalCond == null) {
             return true;
         }
@@ -39,8 +39,8 @@ public class TableOnMergeMatch {
         return result != null && (Boolean) result;
     }
 
-    public void apply(com.espertech.esper.client.EventBean matchingEvent,
-                      com.espertech.esper.client.EventBean[] eventsPerStream,
+    public void apply(eu.uk.ncl.pet5o.esper.client.EventBean matchingEvent,
+                      eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream,
                       TableStateInstance stateInstance,
                       TableOnMergeViewChangeHandler changeHandlerAdded,
                       TableOnMergeViewChangeHandler changeHandlerRemoved,

@@ -25,7 +25,7 @@ public class ContextControllerPartitionedState implements Serializable {
         this.initEvents = initEvents;
     }
 
-    public ContextControllerPartitionedState(Object[] partitionKey, String initConditionAsName, com.espertech.esper.client.EventBean theEvent) {
+    public ContextControllerPartitionedState(Object[] partitionKey, String initConditionAsName, eu.uk.ncl.pet5o.esper.client.EventBean theEvent) {
         this.partitionKey = partitionKey;
         initEvents = initConditionAsName != null ? Collections.singletonMap(initConditionAsName, theEvent) : Collections.emptyMap();
     }

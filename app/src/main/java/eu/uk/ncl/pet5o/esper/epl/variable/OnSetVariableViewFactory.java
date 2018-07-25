@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.variable;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.core.service.StatementResultService;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.epl.spec.OnTriggerSetDesc;
-import com.espertech.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.core.service.StatementResultService;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.epl.spec.OnTriggerSetDesc;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,7 +40,7 @@ public class OnSetVariableViewFactory {
      * @param statementResultService for coordinating on whether insert and remove stream events should be posted
      * @param exprEvaluatorContext   context for expression evalauation
      * @param statementId            statement id
-     * @throws com.espertech.esper.epl.expression.core.ExprValidationException if the assignment expressions are invalid
+     * @throws eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException if the assignment expressions are invalid
      */
     public OnSetVariableViewFactory(int statementId, OnTriggerSetDesc desc, EventAdapterService eventAdapterService, VariableService variableService, StatementResultService statementResultService, ExprEvaluatorContext exprEvaluatorContext)
             throws ExprValidationException {

@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.access;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -28,23 +28,23 @@ public class AggregationAccessorFirstLastIndexNoEval implements AggregationAcces
         isFirst = first;
     }
 
-    public Object getValue(AggregationState state, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
-        com.espertech.esper.client.EventBean bean = getBean(state);
+    public Object getValue(AggregationState state, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+        eu.uk.ncl.pet5o.esper.client.EventBean bean = getBean(state);
         if (bean == null) {
             return null;
         }
         return bean.getUnderlying();
     }
 
-    public Collection<EventBean> getEnumerableEvents(AggregationState state, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
-        com.espertech.esper.client.EventBean bean = getBean(state);
+    public Collection<EventBean> getEnumerableEvents(AggregationState state, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+        eu.uk.ncl.pet5o.esper.client.EventBean bean = getBean(state);
         if (bean == null) {
             return null;
         }
         return Collections.singletonList(bean);
     }
 
-    public Collection<Object> getEnumerableScalar(AggregationState state, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public Collection<Object> getEnumerableScalar(AggregationState state, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         Object value = getValue(state, eventsPerStream, isNewData, exprEvaluatorContext);
         if (value == null) {
             return null;
@@ -52,12 +52,12 @@ public class AggregationAccessorFirstLastIndexNoEval implements AggregationAcces
         return Collections.singletonList(value);
     }
 
-    public com.espertech.esper.client.EventBean getEnumerableEvent(AggregationState state, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getEnumerableEvent(AggregationState state, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         return getBean(state);
     }
 
-    private com.espertech.esper.client.EventBean getBean(AggregationState state) {
-        com.espertech.esper.client.EventBean bean;
+    private eu.uk.ncl.pet5o.esper.client.EventBean getBean(AggregationState state) {
+        eu.uk.ncl.pet5o.esper.client.EventBean bean;
         int index = constant;
         if (index == -1) {
             Object result = indexNode.evaluate(null, true, null);

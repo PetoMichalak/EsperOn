@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.table.strategy;
 
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
 
 public class ExprTableEvalStrategyGroupByMethodSingle extends ExprTableEvalStrategyGroupByMethodBase {
 
@@ -22,7 +22,7 @@ public class ExprTableEvalStrategyGroupByMethodSingle extends ExprTableEvalStrat
         this.groupExpr = groupExpr;
     }
 
-    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         Object groupKey = groupExpr.evaluate(eventsPerStream, isNewData, exprEvaluatorContext);
         return evaluateInternal(groupKey, exprEvaluatorContext);
     }

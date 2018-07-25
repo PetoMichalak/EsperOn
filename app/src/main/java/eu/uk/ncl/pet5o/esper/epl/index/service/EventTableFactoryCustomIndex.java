@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.index.service;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.core.ExprNodeUtilityCore;
-import com.espertech.esper.epl.join.table.*;
-import com.espertech.esper.epl.lookup.AdvancedIndexConfigContextPartition;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNodeUtilityCore;
+import eu.uk.ncl.pet5o.esper.epl.join.table.*;
+import eu.uk.ncl.pet5o.esper.epl.lookup.AdvancedIndexConfigContextPartition;
 
 public class EventTableFactoryCustomIndex implements EventTableFactory {
     protected final EventType eventType;

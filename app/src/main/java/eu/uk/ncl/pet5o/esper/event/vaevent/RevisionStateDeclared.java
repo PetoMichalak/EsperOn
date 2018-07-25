@@ -10,14 +10,14 @@
  */
 package eu.uk.ncl.pet5o.esper.event.vaevent;
 
-import com.espertech.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
 
 /**
  * State for the overlay (non-merge) strategy.
  */
 public class RevisionStateDeclared {
     private long revisionNumber;
-    private com.espertech.esper.client.EventBean baseEventUnderlying;
+    private eu.uk.ncl.pet5o.esper.client.EventBean baseEventUnderlying;
     private RevisionBeanHolder[] holders;
     private RevisionEventBeanDeclared lastEvent;
 
@@ -28,7 +28,7 @@ public class RevisionStateDeclared {
      * @param holders             revisions
      * @param lastEvent           prior event
      */
-    public RevisionStateDeclared(com.espertech.esper.client.EventBean baseEventUnderlying, RevisionBeanHolder[] holders, RevisionEventBeanDeclared lastEvent) {
+    public RevisionStateDeclared(eu.uk.ncl.pet5o.esper.client.EventBean baseEventUnderlying, RevisionBeanHolder[] holders, RevisionEventBeanDeclared lastEvent) {
         this.baseEventUnderlying = baseEventUnderlying;
         this.holders = holders;
         this.lastEvent = lastEvent;
@@ -57,7 +57,7 @@ public class RevisionStateDeclared {
      *
      * @return base event
      */
-    public com.espertech.esper.client.EventBean getBaseEventUnderlying() {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getBaseEventUnderlying() {
         return baseEventUnderlying;
     }
 
@@ -66,7 +66,7 @@ public class RevisionStateDeclared {
      *
      * @param baseEventUnderlying to set
      */
-    public void setBaseEventUnderlying(com.espertech.esper.client.EventBean baseEventUnderlying) {
+    public void setBaseEventUnderlying(eu.uk.ncl.pet5o.esper.client.EventBean baseEventUnderlying) {
         this.baseEventUnderlying = baseEventUnderlying;
     }
 

@@ -23,7 +23,7 @@
 
 package eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.util;
 
-import com.espertech.esper.metrics.codahale_metrics.metrics.core.Gauge;
+import eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.core.Gauge;
 
 import static java.lang.Double.isInfinite;
 import static java.lang.Double.isNaN;

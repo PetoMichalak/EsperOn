@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.ops;
 
-import com.espertech.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
 
 /**
  * Represents an equals (=, !=, &lt;&gt;, is, is not) comparator in a filter expressiun tree.

@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.util;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.annotation.AuditEnum;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.annotation.AuditEnum;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,17 +31,17 @@ public class AuditPath {
     /**
      * Logger destination for the query plan logging.
      */
-    public static final String QUERYPLAN_LOG = "com.espertech.esper.queryplan";
+    public static final String QUERYPLAN_LOG = "eu.uk.ncl.pet5o.esper.queryplan";
 
     /**
      * Logger destination for the JDBC logging.
      */
-    public static final String JDBC_LOG = "com.espertech.esper.jdbc";
+    public static final String JDBC_LOG = "eu.uk.ncl.pet5o.esper.jdbc";
 
     /**
      * Logger destination for the audit logging.
      */
-    public static final String AUDIT_LOG = "com.espertech.esper.audit";
+    public static final String AUDIT_LOG = "eu.uk.ncl.pet5o.esper.audit";
 
     /**
      * Public access.

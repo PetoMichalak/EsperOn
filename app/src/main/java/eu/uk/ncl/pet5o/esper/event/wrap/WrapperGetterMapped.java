@@ -10,19 +10,19 @@
  */
 package eu.uk.ncl.pet5o.esper.event.wrap;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.PropertyAccessException;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.event.DecoratingEventBean;
-import com.espertech.esper.event.EventPropertyGetterMappedSPI;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.PropertyAccessException;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.event.DecoratingEventBean;
+import eu.uk.ncl.pet5o.esper.event.EventPropertyGetterMappedSPI;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethodBuild;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.localMethodBuild;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
 
 public class WrapperGetterMapped implements EventPropertyGetterMappedSPI {
 
@@ -32,12 +32,12 @@ public class WrapperGetterMapped implements EventPropertyGetterMappedSPI {
         this.undMapped = undMapped;
     }
 
-    public Object get(com.espertech.esper.client.EventBean event, String key) throws PropertyAccessException {
+    public Object get(eu.uk.ncl.pet5o.esper.client.EventBean event, String key) throws PropertyAccessException {
         if (!(event instanceof DecoratingEventBean)) {
             throw new PropertyAccessException("Mismatched property getter to EventBean type");
         }
         DecoratingEventBean wrapper = (DecoratingEventBean) event;
-        com.espertech.esper.client.EventBean wrapped = wrapper.getUnderlyingEvent();
+        eu.uk.ncl.pet5o.esper.client.EventBean wrapped = wrapper.getUnderlyingEvent();
         if (wrapped == null) {
             return null;
         }
@@ -45,9 +45,9 @@ public class WrapperGetterMapped implements EventPropertyGetterMappedSPI {
     }
 
     public CodegenExpression eventBeanGetMappedCodegen(CodegenMethodScope codegenMethodScope, CodegenClassScope codegenClassScope, CodegenExpression beanExpression, CodegenExpression key) {
-        CodegenMethodNode method = codegenMethodScope.makeChild(Object.class, WrapperGetterMapped.class, codegenClassScope).addParam(com.espertech.esper.client.EventBean.class, "event").addParam(String.class, "key").getBlock()
+        CodegenMethodNode method = codegenMethodScope.makeChild(Object.class, WrapperGetterMapped.class, codegenClassScope).addParam(eu.uk.ncl.pet5o.esper.client.EventBean.class, "event").addParam(String.class, "key").getBlock()
                 .declareVar(DecoratingEventBean.class, "wrapper", cast(DecoratingEventBean.class, ref("event")))
-                .declareVar(com.espertech.esper.client.EventBean.class, "wrapped", exprDotMethod(ref("wrapper"), "getUnderlyingEvent"))
+                .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "wrapped", exprDotMethod(ref("wrapper"), "getUnderlyingEvent"))
                 .ifRefNullReturnNull("wrapped")
                 .methodReturn(undMapped.eventBeanGetMappedCodegen(codegenMethodScope, codegenClassScope, ref("wrapped"), ref("key")));
         return localMethodBuild(method).pass(beanExpression).pass(key).call();

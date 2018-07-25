@@ -10,22 +10,22 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.core;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.PropertyAccessException;
-import com.espertech.esper.client.annotation.Audit;
-import com.espertech.esper.client.annotation.AuditEnum;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.epl.core.streamtype.PropertyResolutionDescriptor;
-import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
-import com.espertech.esper.epl.expression.table.ExprTableIdentNode;
-import com.espertech.esper.epl.parse.ASTUtil;
-import com.espertech.esper.event.EventPropertyGetterSPI;
-import com.espertech.esper.event.EventTypeSPI;
-import com.espertech.esper.event.property.PropertyParser;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.PropertyAccessException;
+import eu.uk.ncl.pet5o.esper.client.annotation.Audit;
+import eu.uk.ncl.pet5o.esper.client.annotation.AuditEnum;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.epl.core.streamtype.PropertyResolutionDescriptor;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
+import eu.uk.ncl.pet5o.esper.epl.expression.table.ExprTableIdentNode;
+import eu.uk.ncl.pet5o.esper.epl.parse.ASTUtil;
+import eu.uk.ncl.pet5o.esper.event.EventPropertyGetterSPI;
+import eu.uk.ncl.pet5o.esper.event.EventTypeSPI;
+import eu.uk.ncl.pet5o.esper.event.property.PropertyParser;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import java.io.StringWriter;
 

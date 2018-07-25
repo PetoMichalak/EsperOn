@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.resultset.handthru;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.collection.MultiKey;
-import com.espertech.esper.collection.UniformPair;
-import com.espertech.esper.event.EventBeanUtility;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.collection.MultiKey;
+import eu.uk.ncl.pet5o.esper.collection.UniformPair;
+import eu.uk.ncl.pet5o.esper.event.EventBeanUtility;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -31,15 +31,15 @@ public class ResultSetProcessorSimpleOutputAllHelperImpl implements ResultSetPro
         this.processor = processor;
     }
 
-    public void processView(com.espertech.esper.client.EventBean[] newData, com.espertech.esper.client.EventBean[] oldData) {
+    public void processView(eu.uk.ncl.pet5o.esper.client.EventBean[] newData, eu.uk.ncl.pet5o.esper.client.EventBean[] oldData) {
         if (!processor.hasHavingClause()) {
             addToView(newData, oldData);
             return;
         }
 
-        com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[1];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
         if (newData != null && newData.length > 0) {
-            for (com.espertech.esper.client.EventBean theEvent : newData) {
+            for (eu.uk.ncl.pet5o.esper.client.EventBean theEvent : newData) {
                 eventsPerStream[0] = theEvent;
 
                 boolean passesHaving = processor.evaluateHavingClause(eventsPerStream, true, processor.getAgentInstanceContext());
@@ -50,7 +50,7 @@ public class ResultSetProcessorSimpleOutputAllHelperImpl implements ResultSetPro
             }
         }
         if (oldData != null && oldData.length > 0) {
-            for (com.espertech.esper.client.EventBean theEvent : oldData) {
+            for (eu.uk.ncl.pet5o.esper.client.EventBean theEvent : oldData) {
                 eventsPerStream[0] = theEvent;
 
                 boolean passesHaving = processor.evaluateHavingClause(eventsPerStream, false, processor.getAgentInstanceContext());
@@ -69,7 +69,7 @@ public class ResultSetProcessorSimpleOutputAllHelperImpl implements ResultSetPro
         }
 
         if (newEvents != null && newEvents.size() > 0) {
-            for (MultiKey<com.espertech.esper.client.EventBean> theEvent : newEvents) {
+            for (MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> theEvent : newEvents) {
                 boolean passesHaving = processor.evaluateHavingClause(theEvent.getArray(), true, processor.getAgentInstanceContext());
                 if (!passesHaving) {
                     continue;
@@ -78,7 +78,7 @@ public class ResultSetProcessorSimpleOutputAllHelperImpl implements ResultSetPro
             }
         }
         if (oldEvents != null && oldEvents.size() > 0) {
-            for (MultiKey<com.espertech.esper.client.EventBean> theEvent : oldEvents) {
+            for (MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> theEvent : oldEvents) {
                 boolean passesHaving = processor.evaluateHavingClause(theEvent.getArray(), false, processor.getAgentInstanceContext());
                 if (!passesHaving) {
                     continue;
@@ -88,15 +88,15 @@ public class ResultSetProcessorSimpleOutputAllHelperImpl implements ResultSetPro
         }
     }
 
-    public UniformPair<com.espertech.esper.client.EventBean[]> outputView(boolean isSynthesize) {
-        UniformPair<com.espertech.esper.client.EventBean[]> pair = processor.processViewResult(EventBeanUtility.toArrayNullIfEmpty(eventsNewView), EventBeanUtility.toArrayNullIfEmpty(eventsOldView), isSynthesize);
+    public UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> outputView(boolean isSynthesize) {
+        UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> pair = processor.processViewResult(EventBeanUtility.toArrayNullIfEmpty(eventsNewView), EventBeanUtility.toArrayNullIfEmpty(eventsOldView), isSynthesize);
         eventsNewView.clear();
         eventsOldView.clear();
         return pair;
     }
 
-    public UniformPair<com.espertech.esper.client.EventBean[]> outputJoin(boolean isSynthesize) {
-        UniformPair<com.espertech.esper.client.EventBean[]> pair = processor.processJoinResult(EventBeanUtility.toLinkedHashSetNullIfEmpty(eventsNewJoin), EventBeanUtility.toLinkedHashSetNullIfEmpty(eventsOldJoin), isSynthesize);
+    public UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> outputJoin(boolean isSynthesize) {
+        UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> pair = processor.processJoinResult(EventBeanUtility.toLinkedHashSetNullIfEmpty(eventsNewJoin), EventBeanUtility.toLinkedHashSetNullIfEmpty(eventsOldJoin), isSynthesize);
         eventsNewJoin.clear();
         eventsOldJoin.clear();
         return pair;
@@ -106,7 +106,7 @@ public class ResultSetProcessorSimpleOutputAllHelperImpl implements ResultSetPro
         // no action required
     }
 
-    private void addToView(com.espertech.esper.client.EventBean[] newData, com.espertech.esper.client.EventBean[] oldData) {
+    private void addToView(eu.uk.ncl.pet5o.esper.client.EventBean[] newData, eu.uk.ncl.pet5o.esper.client.EventBean[] oldData) {
         EventBeanUtility.addToCollection(newData, eventsNewView);
         EventBeanUtility.addToCollection(oldData, eventsOldView);
     }

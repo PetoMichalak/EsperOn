@@ -10,20 +10,20 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.table.onaction;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.collection.MultiKey;
-import com.espertech.esper.collection.UniformPair;
-import com.espertech.esper.epl.core.resultset.core.ResultSetProcessor;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.lookup.SubordWMatchExprLookupStrategy;
-import com.espertech.esper.epl.named.NamedWindowOnSelectView;
-import com.espertech.esper.epl.spec.OnTriggerType;
-import com.espertech.esper.epl.table.mgmt.TableMetadata;
-import com.espertech.esper.epl.table.mgmt.TableStateInstance;
-import com.espertech.esper.event.EventBeanUtility;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
-import com.espertech.esper.util.AuditPath;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.collection.MultiKey;
+import eu.uk.ncl.pet5o.esper.collection.UniformPair;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessor;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.lookup.SubordWMatchExprLookupStrategy;
+import eu.uk.ncl.pet5o.esper.epl.named.NamedWindowOnSelectView;
+import eu.uk.ncl.pet5o.esper.epl.spec.OnTriggerType;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadata;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableStateInstance;
+import eu.uk.ncl.pet5o.esper.event.EventBeanUtility;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.util.AuditPath;
 
 import java.util.Collections;
 import java.util.Set;
@@ -44,12 +44,12 @@ public class TableOnSelectView extends TableOnViewBase {
         this.deleteAndSelect = deleteAndSelect;
     }
 
-    public void handleMatching(com.espertech.esper.client.EventBean[] triggerEvents, com.espertech.esper.client.EventBean[] matchingEvents) {
+    public void handleMatching(eu.uk.ncl.pet5o.esper.client.EventBean[] triggerEvents, eu.uk.ncl.pet5o.esper.client.EventBean[] matchingEvents) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qInfraOnAction(OnTriggerType.ON_SELECT, triggerEvents, matchingEvents);
         }
 
-        com.espertech.esper.client.EventBean[] newData;
+        eu.uk.ncl.pet5o.esper.client.EventBean[] newData;
 
         // clear state from prior results
         resultSetProcessor.clear();
@@ -59,7 +59,7 @@ public class TableOnSelectView extends TableOnViewBase {
         Set<MultiKey<EventBean>> newEvents = NamedWindowOnSelectView.buildJoinResult(triggerEvents, matchingEvents);
 
         // process matches
-        UniformPair<com.espertech.esper.client.EventBean[]> pair = resultSetProcessor.processJoinResult(newEvents, Collections.<MultiKey<com.espertech.esper.client.EventBean>>emptySet(), false);
+        UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> pair = resultSetProcessor.processJoinResult(newEvents, Collections.<MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean>>emptySet(), false);
         newData = pair != null ? pair.getFirst() : null;
 
         if (parent.isDistinct()) {
@@ -90,7 +90,7 @@ public class TableOnSelectView extends TableOnViewBase {
 
         // Events to delete are indicated via old data
         if (deleteAndSelect) {
-            for (com.espertech.esper.client.EventBean event : matchingEvents) {
+            for (eu.uk.ncl.pet5o.esper.client.EventBean event : matchingEvents) {
                 tableStateInstance.deleteEvent(event);
             }
         }

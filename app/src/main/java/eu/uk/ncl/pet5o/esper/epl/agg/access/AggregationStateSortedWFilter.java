@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.access;
 
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
 
 public class AggregationStateSortedWFilter extends AggregationStateSortedImpl {
     public AggregationStateSortedWFilter(AggregationStateSortedSpec spec) {
@@ -18,8 +18,8 @@ public class AggregationStateSortedWFilter extends AggregationStateSortedImpl {
     }
 
     @Override
-    public void applyEnter(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
-        com.espertech.esper.client.EventBean theEvent = eventsPerStream[spec.getStreamId()];
+    public void applyEnter(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
+        eu.uk.ncl.pet5o.esper.client.EventBean theEvent = eventsPerStream[spec.getStreamId()];
         if (theEvent == null) {
             return;
         }
@@ -29,18 +29,18 @@ public class AggregationStateSortedWFilter extends AggregationStateSortedImpl {
         }
     }
 
-    protected boolean referenceEvent(com.espertech.esper.client.EventBean theEvent) {
+    protected boolean referenceEvent(eu.uk.ncl.pet5o.esper.client.EventBean theEvent) {
         // no action
         return true;
     }
 
-    protected boolean dereferenceEvent(com.espertech.esper.client.EventBean theEvent) {
+    protected boolean dereferenceEvent(eu.uk.ncl.pet5o.esper.client.EventBean theEvent) {
         // no action
         return true;
     }
 
-    public void applyLeave(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
-        com.espertech.esper.client.EventBean theEvent = eventsPerStream[spec.getStreamId()];
+    public void applyLeave(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
+        eu.uk.ncl.pet5o.esper.client.EventBean theEvent = eventsPerStream[spec.getStreamId()];
         if (theEvent == null) {
             return;
         }

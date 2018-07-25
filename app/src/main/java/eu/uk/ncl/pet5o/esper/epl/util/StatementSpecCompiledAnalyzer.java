@@ -10,14 +10,14 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.util;
 
-import com.espertech.esper.core.service.speccompiled.StatementSpecCompiled;
-import com.espertech.esper.epl.expression.subquery.ExprSubselectNode;
-import com.espertech.esper.epl.spec.*;
-import com.espertech.esper.epl.spec.PatternStreamSpecCompiled;
-import com.espertech.esper.filterspec.FilterSpecCompiled;
-import com.espertech.esper.pattern.EvalFilterFactoryNode;
-import com.espertech.esper.pattern.EvalNodeAnalysisResult;
-import com.espertech.esper.pattern.EvalNodeUtil;
+import eu.uk.ncl.pet5o.esper.core.service.speccompiled.StatementSpecCompiled;
+import eu.uk.ncl.pet5o.esper.epl.expression.subquery.ExprSubselectNode;
+import eu.uk.ncl.pet5o.esper.epl.spec.*;
+import eu.uk.ncl.pet5o.esper.epl.spec.PatternStreamSpecCompiled;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterSpecCompiled;
+import eu.uk.ncl.pet5o.esper.pattern.EvalFilterFactoryNode;
+import eu.uk.ncl.pet5o.esper.pattern.EvalNodeAnalysisResult;
+import eu.uk.ncl.pet5o.esper.pattern.EvalNodeUtil;
 
 import java.util.ArrayList;
 import java.util.List;

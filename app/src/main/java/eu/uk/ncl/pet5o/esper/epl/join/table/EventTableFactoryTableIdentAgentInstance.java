@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.table;
 
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
 
 public class EventTableFactoryTableIdentAgentInstance implements EventTableFactoryTableIdent {
     private final AgentInstanceContext agentInstanceContext;

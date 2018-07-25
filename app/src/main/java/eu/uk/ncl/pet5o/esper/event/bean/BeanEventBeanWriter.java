@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.event.bean;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.event.EventBeanWriter;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.event.EventBeanWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,7 +32,7 @@ public class BeanEventBeanWriter implements EventBeanWriter {
         this.writers = writers;
     }
 
-    public void write(Object[] values, com.espertech.esper.client.EventBean theEvent) {
+    public void write(Object[] values, eu.uk.ncl.pet5o.esper.client.EventBean theEvent) {
         for (int i = 0; i < values.length; i++) {
             writers[i].write(values[i], theEvent);
         }

@@ -10,19 +10,19 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.table;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventPropertyGetter;
-import com.espertech.esper.collection.MultiKeyUntyped;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.event.EventBeanUtility;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.collection.MultiKeyUntyped;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.event.EventBeanUtility;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
 
 import java.util.Arrays;
 import java.util.Set;
 
 /**
  * Index that organizes events by the event property values into hash buckets. Based on a HashMap
- * with {@link com.espertech.esper.collection.MultiKeyUntyped} keys that store the property values.
+ * with {@link eu.uk.ncl.pet5o.esper.collection.MultiKeyUntyped} keys that store the property values.
  * <p>
  * Takes a list of property names as parameter. Doesn't care which event type the events have as long as the properties
  * exist. If the same event is added twice, the class throws an exception on add.

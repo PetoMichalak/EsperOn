@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.prev;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.view.window.RandomAccessByIndex;
-import com.espertech.esper.view.window.RandomAccessByIndexGetter;
-import com.espertech.esper.view.window.RelativeAccessByEventNIndex;
-import com.espertech.esper.view.window.RelativeAccessByEventNIndexGetter;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.view.window.RandomAccessByIndex;
+import eu.uk.ncl.pet5o.esper.view.window.RandomAccessByIndexGetter;
+import eu.uk.ncl.pet5o.esper.view.window.RelativeAccessByEventNIndex;
+import eu.uk.ncl.pet5o.esper.view.window.RelativeAccessByEventNIndexGetter;
 
 import java.lang.reflect.Array;
 import java.util.ArrayDeque;
@@ -40,7 +40,7 @@ public class ExprPreviousEvalStrategyWindow implements ExprPreviousEvalStrategy 
         this.relativeAccessGetter = relativeAccessGetter;
     }
 
-    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
+    public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
         Iterator<EventBean> events;
         int size;
         if (randomAccessGetter != null) {
@@ -48,7 +48,7 @@ public class ExprPreviousEvalStrategyWindow implements ExprPreviousEvalStrategy 
             events = randomAccess.getWindowIterator();
             size = (int) randomAccess.getWindowCount();
         } else {
-            com.espertech.esper.client.EventBean evalEvent = eventsPerStream[streamNumber];
+            eu.uk.ncl.pet5o.esper.client.EventBean evalEvent = eventsPerStream[streamNumber];
             RelativeAccessByEventNIndex relativeAccess = relativeAccessGetter.getAccessor(evalEvent);
             if (relativeAccess == null) {
                 return null;
@@ -61,7 +61,7 @@ public class ExprPreviousEvalStrategyWindow implements ExprPreviousEvalStrategy 
             return null;
         }
 
-        com.espertech.esper.client.EventBean originalEvent = eventsPerStream[streamNumber];
+        eu.uk.ncl.pet5o.esper.client.EventBean originalEvent = eventsPerStream[streamNumber];
         Object[] result = (Object[]) Array.newInstance(componentType, size);
 
         for (int i = 0; i < size; i++) {
@@ -74,13 +74,13 @@ public class ExprPreviousEvalStrategyWindow implements ExprPreviousEvalStrategy 
         return result;
     }
 
-    public Collection<EventBean> evaluateGetCollEvents(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext context) {
+    public Collection<EventBean> evaluateGetCollEvents(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext context) {
         Collection<EventBean> events;
         if (randomAccessGetter != null) {
             RandomAccessByIndex randomAccess = randomAccessGetter.getAccessor();
             events = randomAccess.getWindowCollectionReadOnly();
         } else {
-            com.espertech.esper.client.EventBean evalEvent = eventsPerStream[streamNumber];
+            eu.uk.ncl.pet5o.esper.client.EventBean evalEvent = eventsPerStream[streamNumber];
             RelativeAccessByEventNIndex relativeAccess = relativeAccessGetter.getAccessor(evalEvent);
             if (relativeAccess == null) {
                 return null;
@@ -90,7 +90,7 @@ public class ExprPreviousEvalStrategyWindow implements ExprPreviousEvalStrategy 
         return events;
     }
 
-    public Collection evaluateGetCollScalar(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext context) {
+    public Collection evaluateGetCollScalar(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext context) {
         Iterator<EventBean> events;
         int size;
         if (randomAccessGetter != null) {
@@ -98,7 +98,7 @@ public class ExprPreviousEvalStrategyWindow implements ExprPreviousEvalStrategy 
             events = randomAccess.getWindowIterator();
             size = (int) randomAccess.getWindowCount();
         } else {
-            com.espertech.esper.client.EventBean evalEvent = eventsPerStream[streamNumber];
+            eu.uk.ncl.pet5o.esper.client.EventBean evalEvent = eventsPerStream[streamNumber];
             RelativeAccessByEventNIndex relativeAccess = relativeAccessGetter.getAccessor(evalEvent);
             if (relativeAccess == null) {
                 return null;
@@ -111,7 +111,7 @@ public class ExprPreviousEvalStrategyWindow implements ExprPreviousEvalStrategy 
             return Collections.emptyList();
         }
 
-        com.espertech.esper.client.EventBean originalEvent = eventsPerStream[streamNumber];
+        eu.uk.ncl.pet5o.esper.client.EventBean originalEvent = eventsPerStream[streamNumber];
         Deque deque = new ArrayDeque(size);
         for (int i = 0; i < size; i++) {
             eventsPerStream[streamNumber] = events.next();
@@ -122,7 +122,7 @@ public class ExprPreviousEvalStrategyWindow implements ExprPreviousEvalStrategy 
         return deque;
     }
 
-    public com.espertech.esper.client.EventBean evaluateGetEventBean(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext context) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean evaluateGetEventBean(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext context) {
         return null;
     }
 }

@@ -10,15 +10,15 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.resultset.grouped;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.core.resultset.core.ResultSetProcessorOutputHelper;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessorOutputHelper;
 
 import java.util.Iterator;
 import java.util.Map;
 
 public interface ResultSetProcessorGroupedOutputAllGroupReps extends ResultSetProcessorOutputHelper {
 
-    Object put(Object mk, com.espertech.esper.client.EventBean[] array);
+    Object put(Object mk, eu.uk.ncl.pet5o.esper.client.EventBean[] array);
 
     void remove(Object key);
 

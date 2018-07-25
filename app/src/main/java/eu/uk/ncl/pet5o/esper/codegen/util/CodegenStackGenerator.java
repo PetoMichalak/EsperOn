@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.codegen.util;
 
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.core.*;
-import com.espertech.esper.codegen.model.expression.CodegenExpressionRef;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.core.*;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRef;
 
 import java.util.ArrayList;
 import java.util.HashMap;

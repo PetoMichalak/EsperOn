@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.event.bean;
 
-import com.espertech.esper.client.Configuration;
+import eu.uk.ncl.pet5o.esper.client.Configuration;
 
 /**
  * Interface for a factory for obtaining {@link BeanEventType} instances.

@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.funcs;
 
-import com.espertech.esper.collection.UniformPair;
-import com.espertech.esper.epl.expression.core.*;
-import com.espertech.esper.event.map.MapEventType;
-import com.espertech.esper.util.CoercionException;
-import com.espertech.esper.util.JavaClassHelper;
-import com.espertech.esper.util.SimpleNumberCoercer;
-import com.espertech.esper.util.SimpleNumberCoercerFactory;
+import eu.uk.ncl.pet5o.esper.collection.UniformPair;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.event.map.MapEventType;
+import eu.uk.ncl.pet5o.esper.util.CoercionException;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.util.SimpleNumberCoercer;
+import eu.uk.ncl.pet5o.esper.util.SimpleNumberCoercerFactory;
 
 import java.io.StringWriter;
 import java.util.LinkedHashMap;

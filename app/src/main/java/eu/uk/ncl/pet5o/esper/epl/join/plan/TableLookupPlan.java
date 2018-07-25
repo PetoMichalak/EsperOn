@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.plan;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.epl.join.exec.base.JoinExecTableLookupStrategy;
-import com.espertech.esper.epl.join.table.EventTable;
-import com.espertech.esper.epl.virtualdw.VirtualDWView;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.epl.join.exec.base.JoinExecTableLookupStrategy;
+import eu.uk.ncl.pet5o.esper.epl.join.table.EventTable;
+import eu.uk.ncl.pet5o.esper.epl.virtualdw.VirtualDWView;
 
 import java.lang.annotation.Annotation;
 import java.util.Arrays;

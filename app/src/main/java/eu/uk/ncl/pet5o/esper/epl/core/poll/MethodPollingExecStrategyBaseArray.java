@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.poll;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.epl.variable.VariableReader;
-import com.espertech.esper.epl.variable.VariableService;
-import com.espertech.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.epl.variable.VariableReader;
+import eu.uk.ncl.pet5o.esper.epl.variable.VariableService;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
 
 import net.sf.cglib.reflect.FastMethod;
 
@@ -28,7 +28,7 @@ public abstract class MethodPollingExecStrategyBaseArray extends MethodPollingEx
         super(eventAdapterService, method, eventType, invocationTarget, strategy, variableReader, variableName, variableService);
     }
 
-    protected abstract com.espertech.esper.client.EventBean getEventBean(Object value);
+    protected abstract eu.uk.ncl.pet5o.esper.client.EventBean getEventBean(Object value);
 
     protected List<EventBean> handleResult(Object invocationResult) {
         int length = Array.getLength(invocationResult);
@@ -38,7 +38,7 @@ public abstract class MethodPollingExecStrategyBaseArray extends MethodPollingEx
         if (length == 1) {
             Object value = Array.get(invocationResult, 0);
             if (checkNonNullArrayValue(value)) {
-                com.espertech.esper.client.EventBean event = getEventBean(value);
+                eu.uk.ncl.pet5o.esper.client.EventBean event = getEventBean(value);
                 return Collections.singletonList(event);
             }
             return Collections.emptyList();
@@ -47,7 +47,7 @@ public abstract class MethodPollingExecStrategyBaseArray extends MethodPollingEx
         for (int i = 0; i < length; i++) {
             Object value = Array.get(invocationResult, i);
             if (checkNonNullArrayValue(value)) {
-                com.espertech.esper.client.EventBean event = getEventBean(value);
+                eu.uk.ncl.pet5o.esper.client.EventBean event = getEventBean(value);
                 rowResult.add(event);
             }
         }

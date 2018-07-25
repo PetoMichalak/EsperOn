@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.stmt;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.agg.service.common.*;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.*;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -37,11 +37,11 @@ public class AIRegistryAggregationMap implements AIRegistryAggregation {
         return services.size();
     }
 
-    public void applyEnter(com.espertech.esper.client.EventBean[] eventsPerStream, Object optionalGroupKeyPerRow, ExprEvaluatorContext exprEvaluatorContext) {
+    public void applyEnter(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, Object optionalGroupKeyPerRow, ExprEvaluatorContext exprEvaluatorContext) {
         services.get(exprEvaluatorContext.getAgentInstanceId()).applyEnter(eventsPerStream, optionalGroupKeyPerRow, exprEvaluatorContext);
     }
 
-    public void applyLeave(com.espertech.esper.client.EventBean[] eventsPerStream, Object optionalGroupKeyPerRow, ExprEvaluatorContext exprEvaluatorContext) {
+    public void applyLeave(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, Object optionalGroupKeyPerRow, ExprEvaluatorContext exprEvaluatorContext) {
         services.get(exprEvaluatorContext.getAgentInstanceId()).applyLeave(eventsPerStream, optionalGroupKeyPerRow, exprEvaluatorContext);
     }
 
@@ -57,19 +57,19 @@ public class AIRegistryAggregationMap implements AIRegistryAggregation {
         services.get(exprEvaluatorContext.getAgentInstanceId()).clearResults(exprEvaluatorContext);
     }
 
-    public Object getValue(int column, int agentInstanceId, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public Object getValue(int column, int agentInstanceId, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         return services.get(agentInstanceId).getValue(column, agentInstanceId, eventsPerStream, isNewData, exprEvaluatorContext);
     }
 
-    public Collection<EventBean> getCollectionOfEvents(int column, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Collection<EventBean> getCollectionOfEvents(int column, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return services.get(context.getAgentInstanceId()).getCollectionOfEvents(column, eventsPerStream, isNewData, context);
     }
 
-    public Collection<Object> getCollectionScalar(int column, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Collection<Object> getCollectionScalar(int column, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return services.get(context.getAgentInstanceId()).getCollectionScalar(column, eventsPerStream, isNewData, context);
     }
 
-    public com.espertech.esper.client.EventBean getEventBean(int column, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getEventBean(int column, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return services.get(context.getAgentInstanceId()).getEventBean(column, eventsPerStream, isNewData, context);
     }
 

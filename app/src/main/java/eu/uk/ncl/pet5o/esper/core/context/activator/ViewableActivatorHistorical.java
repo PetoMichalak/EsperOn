@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.activator;
 
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.util.CollectionUtil;
-import com.espertech.esper.view.HistoricalEventViewable;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.util.CollectionUtil;
+import eu.uk.ncl.pet5o.esper.view.HistoricalEventViewable;
 
 public class ViewableActivatorHistorical implements ViewableActivator {
 

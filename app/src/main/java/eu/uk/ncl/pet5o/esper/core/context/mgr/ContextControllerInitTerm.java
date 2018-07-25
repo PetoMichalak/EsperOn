@@ -10,23 +10,23 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.context.*;
-import com.espertech.esper.collection.MultiKeyUntyped;
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.core.context.util.ContextControllerSelectorUtil;
-import com.espertech.esper.core.context.util.StatementAgentInstanceUtil;
-import com.espertech.esper.core.service.StatementAgentInstanceLock;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.spec.ContextDetailCondition;
-import com.espertech.esper.epl.spec.ContextDetailConditionCrontab;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.filter.FilterFaultHandler;
-import com.espertech.esper.filterspec.MatchedEventMap;
-import com.espertech.esper.filterspec.MatchedEventMapImpl;
-import com.espertech.esper.schedule.ScheduleComputeHelper;
-import com.espertech.esper.schedule.ScheduleSpec;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.context.*;
+import eu.uk.ncl.pet5o.esper.collection.MultiKeyUntyped;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.core.context.util.ContextControllerSelectorUtil;
+import eu.uk.ncl.pet5o.esper.core.context.util.StatementAgentInstanceUtil;
+import eu.uk.ncl.pet5o.esper.core.service.StatementAgentInstanceLock;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.spec.ContextDetailCondition;
+import eu.uk.ncl.pet5o.esper.epl.spec.ContextDetailConditionCrontab;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.filter.FilterFaultHandler;
+import eu.uk.ncl.pet5o.esper.filterspec.MatchedEventMap;
+import eu.uk.ncl.pet5o.esper.filterspec.MatchedEventMapImpl;
+import eu.uk.ncl.pet5o.esper.schedule.ScheduleComputeHelper;
+import eu.uk.ncl.pet5o.esper.schedule.ScheduleSpec;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -45,8 +45,8 @@ public class ContextControllerInitTerm implements ContextController, ContextCont
 
     protected ContextControllerCondition startCondition;
     private Map<Object, EventBean> distinctContexts;
-    private com.espertech.esper.client.EventBean nonDistinctLastTrigger;
-    private com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[1];
+    private eu.uk.ncl.pet5o.esper.client.EventBean nonDistinctLastTrigger;
+    private eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
 
     protected Map<ContextControllerCondition, ContextControllerInitTermInstance> endConditions = new LinkedHashMap<ContextControllerCondition, ContextControllerInitTermInstance>();
 
@@ -78,7 +78,7 @@ public class ContextControllerInitTerm implements ContextController, ContextCont
         }
     }
 
-    public void activate(com.espertech.esper.client.EventBean optionalTriggeringEvent, Map<String, Object> optionalTriggeringPattern, ContextControllerState controllerState, ContextInternalFilterAddendum filterAddendum, Integer importPathId) {
+    public void activate(eu.uk.ncl.pet5o.esper.client.EventBean optionalTriggeringEvent, Map<String, Object> optionalTriggeringPattern, ContextControllerState controllerState, ContextInternalFilterAddendum filterAddendum, Integer importPathId) {
 
         if (factory.getFactoryContext().getNestingLevel() == 1) {
             controllerState = ContextControllerStateUtil.getRecoveryStates(factory.getFactoryContext().getStateCache(), factory.getFactoryContext().getOutermostContextName());
@@ -170,7 +170,7 @@ public class ContextControllerInitTerm implements ContextController, ContextCont
         throw ContextControllerSelectorUtil.getInvalidSelector(new Class[0], contextPartitionSelector);
     }
 
-    public void rangeNotification(Map<String, Object> builtinProperties, ContextControllerCondition originCondition, com.espertech.esper.client.EventBean optionalTriggeringEvent, Map<String, Object> optionalTriggeringPattern, com.espertech.esper.client.EventBean optionalTriggeringEventPattern, ContextInternalFilterAddendum filterAddendum) {
+    public void rangeNotification(Map<String, Object> builtinProperties, ContextControllerCondition originCondition, eu.uk.ncl.pet5o.esper.client.EventBean optionalTriggeringEvent, Map<String, Object> optionalTriggeringPattern, eu.uk.ncl.pet5o.esper.client.EventBean optionalTriggeringEventPattern, ContextInternalFilterAddendum filterAddendum) {
         boolean endConditionNotification = originCondition != startCondition;
         boolean startNow = startCondition instanceof ContextControllerConditionImmediate;
         List<AgentInstance> agentInstancesLocksHeld = null;
@@ -351,7 +351,7 @@ public class ContextControllerInitTerm implements ContextController, ContextCont
         return props;
     }
 
-    private void initializeFromState(com.espertech.esper.client.EventBean optionalTriggeringEvent,
+    private void initializeFromState(eu.uk.ncl.pet5o.esper.client.EventBean optionalTriggeringEvent,
                                      Map<String, Object> optionalTriggeringPattern,
                                      ContextInternalFilterAddendum filterAddendum,
                                      ContextControllerState controllerState,
@@ -369,7 +369,7 @@ public class ContextControllerInitTerm implements ContextController, ContextCont
 
             if (distinctContexts != null) {
                 ContextControllerConditionFilter filter = (ContextControllerConditionFilter) startCondition;
-                com.espertech.esper.client.EventBean event = (com.espertech.esper.client.EventBean) state.getPatternData().get(filter.getEndpointFilterSpec().getOptionalFilterAsName());
+                eu.uk.ncl.pet5o.esper.client.EventBean event = (eu.uk.ncl.pet5o.esper.client.EventBean) state.getPatternData().get(filter.getEndpointFilterSpec().getOptionalFilterAsName());
                 addDistinctKey(event);
             }
 
@@ -440,8 +440,8 @@ public class ContextControllerInitTerm implements ContextController, ContextCont
             if (existingValue.equals(savedValue)) {
                 continue;
             }
-            if (existingValue instanceof com.espertech.esper.client.EventBean && savedValue instanceof com.espertech.esper.client.EventBean) {
-                if (((com.espertech.esper.client.EventBean) existingValue).getUnderlying().equals(((com.espertech.esper.client.EventBean) savedValue).getUnderlying())) {
+            if (existingValue instanceof eu.uk.ncl.pet5o.esper.client.EventBean && savedValue instanceof eu.uk.ncl.pet5o.esper.client.EventBean) {
+                if (((eu.uk.ncl.pet5o.esper.client.EventBean) existingValue).getUnderlying().equals(((eu.uk.ncl.pet5o.esper.client.EventBean) savedValue).getUnderlying())) {
                     continue;
                 }
             }
@@ -450,7 +450,7 @@ public class ContextControllerInitTerm implements ContextController, ContextCont
         return true;
     }
 
-    private boolean addDistinctKey(com.espertech.esper.client.EventBean optionalTriggeringEvent) {
+    private boolean addDistinctKey(eu.uk.ncl.pet5o.esper.client.EventBean optionalTriggeringEvent) {
         Object key = getDistinctKey(optionalTriggeringEvent);
         if (distinctContexts.containsKey(key)) {
             return false;
@@ -464,12 +464,12 @@ public class ContextControllerInitTerm implements ContextController, ContextCont
             return;
         }
         ContextControllerConditionFilter filter = (ContextControllerConditionFilter) startCondition;
-        com.espertech.esper.client.EventBean event = (com.espertech.esper.client.EventBean) value.getStartProperties().get(filter.getEndpointFilterSpec().getOptionalFilterAsName());
+        eu.uk.ncl.pet5o.esper.client.EventBean event = (eu.uk.ncl.pet5o.esper.client.EventBean) value.getStartProperties().get(filter.getEndpointFilterSpec().getOptionalFilterAsName());
         Object key = getDistinctKey(event);
         distinctContexts.remove(key);
     }
 
-    private Object getDistinctKey(com.espertech.esper.client.EventBean optionalTriggeringEvent) {
+    private Object getDistinctKey(eu.uk.ncl.pet5o.esper.client.EventBean optionalTriggeringEvent) {
         eventsPerStream[0] = optionalTriggeringEvent;
         ExprEvaluator[] distinctEvaluators = factory.getDistinctEvaluators();
         if (distinctEvaluators.length == 1) {
@@ -492,7 +492,7 @@ public class ContextControllerInitTerm implements ContextController, ContextCont
             this.contextControllerInitTerm = contextControllerInitTerm;
         }
 
-        public boolean handleFilterFault(com.espertech.esper.client.EventBean theEvent, long version) {
+        public boolean handleFilterFault(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, long version) {
 
             /**
              * Handle filter faults such as
@@ -511,7 +511,7 @@ public class ContextControllerInitTerm implements ContextController, ContextCont
             lock.acquireWriteLock();
             try {
                 Object key = contextControllerInitTerm.getDistinctKey(theEvent);
-                com.espertech.esper.client.EventBean trigger = contextControllerInitTerm.distinctContexts.get(key);
+                eu.uk.ncl.pet5o.esper.client.EventBean trigger = contextControllerInitTerm.distinctContexts.get(key);
 
                 // see if we find that context partition
                 if (trigger != null) {
@@ -538,7 +538,7 @@ public class ContextControllerInitTerm implements ContextController, ContextCont
             this.contextControllerInitTerm = contextControllerInitTerm;
         }
 
-        public boolean handleFilterFault(com.espertech.esper.client.EventBean theEvent, long version) {
+        public boolean handleFilterFault(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, long version) {
 
             /**
              * Handle filter faults such as
@@ -550,7 +550,7 @@ public class ContextControllerInitTerm implements ContextController, ContextCont
             StatementAgentInstanceLock lock = aiCreate.getEpStatementAgentInstanceHandle().getStatementAgentInstanceLock();
             lock.acquireWriteLock();
             try {
-                com.espertech.esper.client.EventBean trigger = contextControllerInitTerm.nonDistinctLastTrigger;
+                eu.uk.ncl.pet5o.esper.client.EventBean trigger = contextControllerInitTerm.nonDistinctLastTrigger;
                 if (theEvent != trigger) {
                     StatementAgentInstanceUtil.evaluateEventForStatement(contextControllerInitTerm.getFactory().getFactoryContext().getServicesContext(),
                             theEvent, null, Collections.singletonList(new AgentInstance(null, aiCreate, null)));

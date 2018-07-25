@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.event.bean;
 
-import com.espertech.esper.client.EventPropertyGetter;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.PropertyAccessException;
-import com.espertech.esper.event.EventBeanSPI;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.PropertyAccessException;
+import eu.uk.ncl.pet5o.esper.event.EventBeanSPI;
 
 /**
  * Wrapper for Java bean (POJO or regular) Java objects the represent events.

@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.type;
 
-import com.espertech.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
 
 import java.util.List;
 

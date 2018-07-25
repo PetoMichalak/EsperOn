@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.table;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
 
 /**
  * Index that organizes events by the event property values into hash buckets. Based on a HashMap
- * with {@link com.espertech.esper.collection.MultiKeyUntyped} keys that store the property values.
+ * with {@link eu.uk.ncl.pet5o.esper.collection.MultiKeyUntyped} keys that store the property values.
  * <p>
  * Performs coercion of the index keys before storing the keys, and coercion of the lookup keys before lookup.
  * <p>

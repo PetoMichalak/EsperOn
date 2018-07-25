@@ -10,16 +10,16 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.time;
 
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.schedule.TimeProvider;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.schedule.TimeProvider;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
 
 public class ExprTimePeriodEvalDeltaNonConstMsec implements ExprTimePeriodEvalDeltaNonConst {
     private final ExprTimePeriodForge forge;
@@ -28,7 +28,7 @@ public class ExprTimePeriodEvalDeltaNonConstMsec implements ExprTimePeriodEvalDe
         this.forge = forge;
     }
 
-    public long deltaAdd(long currentTime, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public long deltaAdd(long currentTime, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         double d = forge.evaluateAsSeconds(eventsPerStream, isNewData, context);
         return forge.getTimeAbacus().deltaForSecondsDouble(d);
     }
@@ -42,15 +42,15 @@ public class ExprTimePeriodEvalDeltaNonConstMsec implements ExprTimePeriodEvalDe
         return localMethod(methodNode, reference);
     }
 
-    public long deltaSubtract(long currentTime, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public long deltaSubtract(long currentTime, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return deltaAdd(currentTime, eventsPerStream, isNewData, context);
     }
 
-    public long deltaUseEngineTime(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext, TimeProvider timeProvider) {
+    public long deltaUseEngineTime(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext, TimeProvider timeProvider) {
         return deltaAdd(0, eventsPerStream, true, exprEvaluatorContext);
     }
 
-    public ExprTimePeriodEvalDeltaResult deltaAddWReference(long current, long reference, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public ExprTimePeriodEvalDeltaResult deltaAddWReference(long current, long reference, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         long msec = deltaAdd(current, eventsPerStream, isNewData, context);
         return new ExprTimePeriodEvalDeltaResult(ExprTimePeriodEvalDeltaConstGivenDelta.deltaAddWReference(current, reference, msec), reference);
     }

@@ -12,7 +12,7 @@ package eu.uk.ncl.pet5o.esper.client;
 
 /**
  * Get property values from an event instance for a given indexed event property by passing the array index.
- * Instances that implement this interface are usually bound to a particular {@link com.espertech.esper.client.EventType} and cannot
+ * Instances that implement this interface are usually bound to a particular {@link eu.uk.ncl.pet5o.esper.client.EventType} and cannot
  * be used to access {@link EventBean} instances of a different type.
  */
 public interface EventPropertyGetterIndexed {

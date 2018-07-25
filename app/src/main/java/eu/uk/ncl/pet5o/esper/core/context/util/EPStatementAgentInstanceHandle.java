@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.util;
 
-import com.espertech.esper.core.service.EPStatementDispatch;
-import com.espertech.esper.core.service.EPStatementHandle;
-import com.espertech.esper.core.service.StatementAgentInstanceFilterVersion;
-import com.espertech.esper.core.service.StatementAgentInstanceLock;
-import com.espertech.esper.core.service.multimatch.MultiMatchHandler;
-import com.espertech.esper.filter.FilterFaultHandler;
-import com.espertech.esper.filter.FilterFaultHandlerFactory;
+import eu.uk.ncl.pet5o.esper.core.service.EPStatementDispatch;
+import eu.uk.ncl.pet5o.esper.core.service.EPStatementHandle;
+import eu.uk.ncl.pet5o.esper.core.service.StatementAgentInstanceFilterVersion;
+import eu.uk.ncl.pet5o.esper.core.service.StatementAgentInstanceLock;
+import eu.uk.ncl.pet5o.esper.core.service.multimatch.MultiMatchHandler;
+import eu.uk.ncl.pet5o.esper.filter.FilterFaultHandler;
+import eu.uk.ncl.pet5o.esper.filter.FilterFaultHandlerFactory;
 
 public class EPStatementAgentInstanceHandle {
     private final EPStatementHandle statementHandle;
@@ -123,7 +123,7 @@ public class EPStatementAgentInstanceHandle {
     }
 
     /**
-     * Invoked by {@link com.espertech.esper.client.EPRuntime} to indicate that a statements's
+     * Invoked by {@link eu.uk.ncl.pet5o.esper.client.EPRuntime} to indicate that a statements's
      * filer and schedule processing is done, and now it's time to process join results.
      */
     public void internalDispatch() {

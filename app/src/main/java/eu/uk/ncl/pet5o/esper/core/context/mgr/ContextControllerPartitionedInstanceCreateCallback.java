@@ -12,5 +12,5 @@ package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
 public interface ContextControllerPartitionedInstanceCreateCallback {
 
-    public void create(Object key, com.espertech.esper.client.EventBean theEvent);
+    public void create(Object key, eu.uk.ncl.pet5o.esper.client.EventBean theEvent);
 }

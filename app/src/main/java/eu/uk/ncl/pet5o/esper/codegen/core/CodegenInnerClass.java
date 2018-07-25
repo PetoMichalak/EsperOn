@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.codegen.core;
 
-import com.espertech.esper.codegen.base.CodegenMember;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMember;
 
 import java.util.List;
 import java.util.Map;

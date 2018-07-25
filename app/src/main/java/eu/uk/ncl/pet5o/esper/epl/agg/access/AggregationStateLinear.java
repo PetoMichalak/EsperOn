@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.access;
 
-import com.espertech.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -21,14 +21,14 @@ public interface AggregationStateLinear {
      *
      * @return first value
      */
-    public com.espertech.esper.client.EventBean getFirstValue();
+    public eu.uk.ncl.pet5o.esper.client.EventBean getFirstValue();
 
     /**
      * Returns the newest (last) value entered.
      *
      * @return last value
      */
-    public com.espertech.esper.client.EventBean getLastValue();
+    public eu.uk.ncl.pet5o.esper.client.EventBean getLastValue();
 
     /**
      * Counting from the first element to the last, returns the oldest (first) value entered for index zero
@@ -37,7 +37,7 @@ public interface AggregationStateLinear {
      * @param index index
      * @return last value
      */
-    public com.espertech.esper.client.EventBean getFirstNthValue(int index);
+    public eu.uk.ncl.pet5o.esper.client.EventBean getFirstNthValue(int index);
 
     /**
      * Counting from the last element to the first, returns the newest (last) value entered for index zero
@@ -46,7 +46,7 @@ public interface AggregationStateLinear {
      * @param index index
      * @return last value
      */
-    public com.espertech.esper.client.EventBean getLastNthValue(int index);
+    public eu.uk.ncl.pet5o.esper.client.EventBean getLastNthValue(int index);
 
     /**
      * Returns all events for the group.

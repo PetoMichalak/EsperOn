@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.service.groupby;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.agg.access.AggregationAccessorSlotPair;
-import com.espertech.esper.epl.agg.access.AggregationState;
-import com.espertech.esper.epl.agg.service.common.*;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationAccessorSlotPair;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationState;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.*;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -49,7 +49,7 @@ public class AggSvcGroupByNoReclaimAccessOnlyImpl implements AggregationService,
         this.isJoin = isJoin;
     }
 
-    public void applyEnter(com.espertech.esper.client.EventBean[] eventsPerStream, Object groupKey, ExprEvaluatorContext exprEvaluatorContext) {
+    public void applyEnter(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, Object groupKey, ExprEvaluatorContext exprEvaluatorContext) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qAggregationGroupedApplyEnterLeave(true, 0, accessAggSpecs.length, groupKey);
         }
@@ -68,7 +68,7 @@ public class AggSvcGroupByNoReclaimAccessOnlyImpl implements AggregationService,
         }
     }
 
-    public void applyLeave(com.espertech.esper.client.EventBean[] eventsPerStream, Object groupKey, ExprEvaluatorContext exprEvaluatorContext) {
+    public void applyLeave(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, Object groupKey, ExprEvaluatorContext exprEvaluatorContext) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qAggregationGroupedApplyEnterLeave(false, 0, accessAggSpecs.length, groupKey);
         }
@@ -92,22 +92,22 @@ public class AggSvcGroupByNoReclaimAccessOnlyImpl implements AggregationService,
         currentGroupKey = groupKey;
     }
 
-    public Object getValue(int column, int agentInstanceId, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public Object getValue(int column, int agentInstanceId, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         AggregationAccessorSlotPair pair = accessors[column];
         return pair.getAccessor().getValue(currentAccesses[pair.getSlot()], eventsPerStream, isNewData, exprEvaluatorContext);
     }
 
-    public Collection<EventBean> getCollectionOfEvents(int column, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Collection<EventBean> getCollectionOfEvents(int column, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         AggregationAccessorSlotPair pair = accessors[column];
         return pair.getAccessor().getEnumerableEvents(currentAccesses[pair.getSlot()], eventsPerStream, isNewData, context);
     }
 
-    public Collection<Object> getCollectionScalar(int column, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Collection<Object> getCollectionScalar(int column, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         AggregationAccessorSlotPair pair = accessors[column];
         return pair.getAccessor().getEnumerableScalar(currentAccesses[pair.getSlot()], eventsPerStream, isNewData, context);
     }
 
-    public com.espertech.esper.client.EventBean getEventBean(int column, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getEventBean(int column, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         AggregationAccessorSlotPair pair = accessors[column];
         return pair.getAccessor().getEnumerableEvent(currentAccesses[pair.getSlot()], eventsPerStream, isNewData, context);
     }

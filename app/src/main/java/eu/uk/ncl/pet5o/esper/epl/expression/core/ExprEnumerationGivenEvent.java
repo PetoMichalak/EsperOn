@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.core;
 
-import com.espertech.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
 
 import java.util.Collection;
 
@@ -18,9 +18,9 @@ import java.util.Collection;
  * Interface for evaluating of an event re. enumeration.
  */
 public interface ExprEnumerationGivenEvent {
-    public Collection<EventBean> evaluateEventGetROCollectionEvents(com.espertech.esper.client.EventBean event, ExprEvaluatorContext context);
+    public Collection<EventBean> evaluateEventGetROCollectionEvents(eu.uk.ncl.pet5o.esper.client.EventBean event, ExprEvaluatorContext context);
 
-    public Collection evaluateEventGetROCollectionScalar(com.espertech.esper.client.EventBean event, ExprEvaluatorContext context);
+    public Collection evaluateEventGetROCollectionScalar(eu.uk.ncl.pet5o.esper.client.EventBean event, ExprEvaluatorContext context);
 
-    public com.espertech.esper.client.EventBean evaluateEventGetEventBean(com.espertech.esper.client.EventBean event, ExprEvaluatorContext context);
+    public eu.uk.ncl.pet5o.esper.client.EventBean evaluateEventGetEventBean(eu.uk.ncl.pet5o.esper.client.EventBean event, ExprEvaluatorContext context);
 }

@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.subquery;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.agg.service.common.AggregationService;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.event.EventBeanUtility;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationService;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.event.EventBeanUtility;
 
 import java.util.Collection;
 
@@ -27,7 +27,7 @@ public class SubselectEvalStrategyNRExistsDefault implements SubselectEvalStrate
         this.havingEval = havingEval;
     }
 
-    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, Collection<EventBean> matchingEvents, ExprEvaluatorContext exprEvaluatorContext, AggregationService aggregationService) {
+    public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, Collection<EventBean> matchingEvents, ExprEvaluatorContext exprEvaluatorContext, AggregationService aggregationService) {
         if (matchingEvents == null || matchingEvents.size() == 0) {
             return false;
         }
@@ -35,12 +35,12 @@ public class SubselectEvalStrategyNRExistsDefault implements SubselectEvalStrate
             return true;
         }
 
-        com.espertech.esper.client.EventBean[] events = EventBeanUtility.allocatePerStreamShift(eventsPerStream);
+        eu.uk.ncl.pet5o.esper.client.EventBean[] events = EventBeanUtility.allocatePerStreamShift(eventsPerStream);
         if (havingEval != null) {
             Boolean pass = (Boolean) havingEval.evaluate(events, true, exprEvaluatorContext);
             return (pass != null) && pass;
         } else if (filterEval != null) {
-            for (com.espertech.esper.client.EventBean subselectEvent : matchingEvents) {
+            for (eu.uk.ncl.pet5o.esper.client.EventBean subselectEvent : matchingEvents) {
                 // Prepare filter expression event list
                 events[0] = subselectEvent;
 

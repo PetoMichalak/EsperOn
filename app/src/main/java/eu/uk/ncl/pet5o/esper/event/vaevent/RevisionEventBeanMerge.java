@@ -10,21 +10,21 @@
  */
 package eu.uk.ncl.pet5o.esper.event.vaevent;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventPropertyGetter;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.PropertyAccessException;
-import com.espertech.esper.util.NullableObject;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.PropertyAccessException;
+import eu.uk.ncl.pet5o.esper.util.NullableObject;
 
 /**
  * Merge-event for event revisions.
  */
-public class RevisionEventBeanMerge implements com.espertech.esper.client.EventBean {
+public class RevisionEventBeanMerge implements eu.uk.ncl.pet5o.esper.client.EventBean {
     private final RevisionEventType revisionEventType;
-    private final com.espertech.esper.client.EventBean underlyingFullOrDelta;
+    private final eu.uk.ncl.pet5o.esper.client.EventBean underlyingFullOrDelta;
 
     private NullableObject<Object>[] overlay;
-    private com.espertech.esper.client.EventBean lastBaseEvent;
+    private eu.uk.ncl.pet5o.esper.client.EventBean lastBaseEvent;
     private Object key;
     private boolean latest;
 
@@ -34,7 +34,7 @@ public class RevisionEventBeanMerge implements com.espertech.esper.client.EventB
      * @param revisionEventType type
      * @param underlyingFull    event wrapped
      */
-    public RevisionEventBeanMerge(RevisionEventType revisionEventType, com.espertech.esper.client.EventBean underlyingFull) {
+    public RevisionEventBeanMerge(RevisionEventType revisionEventType, eu.uk.ncl.pet5o.esper.client.EventBean underlyingFull) {
         this.revisionEventType = revisionEventType;
         this.underlyingFullOrDelta = underlyingFull;
     }
@@ -98,7 +98,7 @@ public class RevisionEventBeanMerge implements com.espertech.esper.client.EventB
      *
      * @return base event
      */
-    public com.espertech.esper.client.EventBean getLastBaseEvent() {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getLastBaseEvent() {
         return lastBaseEvent;
     }
 
@@ -107,7 +107,7 @@ public class RevisionEventBeanMerge implements com.espertech.esper.client.EventB
      *
      * @param lastBaseEvent to set
      */
-    public void setLastBaseEvent(com.espertech.esper.client.EventBean lastBaseEvent) {
+    public void setLastBaseEvent(eu.uk.ncl.pet5o.esper.client.EventBean lastBaseEvent) {
         this.lastBaseEvent = lastBaseEvent;
     }
 
@@ -132,7 +132,7 @@ public class RevisionEventBeanMerge implements com.espertech.esper.client.EventB
      *
      * @return event
      */
-    public com.espertech.esper.client.EventBean getUnderlyingFullOrDelta() {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getUnderlyingFullOrDelta() {
         return underlyingFullOrDelta;
     }
 

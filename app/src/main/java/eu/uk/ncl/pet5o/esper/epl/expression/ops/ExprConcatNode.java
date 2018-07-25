@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.ops;
 
-import com.espertech.esper.client.ConfigurationEngineDefaults;
-import com.espertech.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.client.ConfigurationEngineDefaults;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
 
 import java.io.StringWriter;
 

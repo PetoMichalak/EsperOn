@@ -18,7 +18,7 @@ public interface PluginLoader {
      * Initializes the adapter loader.
      * <p>
      * Invoked before the engine instance is fully initialized. Thereby this is not the place to
-     * look up an engine instance from {@link com.espertech.esper.client.EPServiceProviderManager}
+     * look up an engine instance from {@link eu.uk.ncl.pet5o.esper.client.EPServiceProviderManager}
      * and use it. Use the {@link #postInitialize} method instead.
      *
      * @param context the plug in context
@@ -27,7 +27,7 @@ public interface PluginLoader {
 
     /**
      * Called after an engine instances has fully initialized and is already
-     * registered with {@link com.espertech.esper.client.EPServiceProviderManager}.
+     * registered with {@link eu.uk.ncl.pet5o.esper.client.EPServiceProviderManager}.
      *
      * @since 3.3.0
      */
@@ -36,7 +36,7 @@ public interface PluginLoader {
     /**
      * Destroys adapter loader and adapters loaded.
      * <p>
-     * Invoked upon {@link com.espertech.esper.client.EPServiceProvider#destroy} before the engine instance is actually destroyed.
+     * Invoked upon {@link eu.uk.ncl.pet5o.esper.client.EPServiceProvider#destroy} before the engine instance is actually destroyed.
      * <p>
      * Implementations may block to ensure dependent threads are stopped or other resources released.
      */

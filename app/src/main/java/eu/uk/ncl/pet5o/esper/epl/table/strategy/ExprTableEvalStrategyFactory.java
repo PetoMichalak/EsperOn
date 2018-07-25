@@ -10,14 +10,14 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.table.strategy;
 
-import com.espertech.esper.epl.agg.access.AggregationAccessorSlotPair;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.expression.table.*;
-import com.espertech.esper.epl.table.mgmt.TableMetadata;
-import com.espertech.esper.epl.table.mgmt.TableMetadataColumn;
-import com.espertech.esper.epl.table.mgmt.TableMetadataColumnAggregation;
-import com.espertech.esper.epl.table.mgmt.TableMetadataColumnPlain;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationAccessorSlotPair;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.table.*;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadata;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadataColumn;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadataColumnAggregation;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadataColumnPlain;
 
 public class ExprTableEvalStrategyFactory {
 

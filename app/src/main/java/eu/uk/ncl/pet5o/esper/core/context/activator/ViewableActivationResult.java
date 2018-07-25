@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.activator;
 
-import com.espertech.esper.core.service.StatementAgentInstanceLock;
-import com.espertech.esper.pattern.EvalRootMatchRemover;
-import com.espertech.esper.pattern.EvalRootState;
-import com.espertech.esper.util.StopCallback;
-import com.espertech.esper.view.Viewable;
+import eu.uk.ncl.pet5o.esper.core.service.StatementAgentInstanceLock;
+import eu.uk.ncl.pet5o.esper.pattern.EvalRootMatchRemover;
+import eu.uk.ncl.pet5o.esper.pattern.EvalRootState;
+import eu.uk.ncl.pet5o.esper.util.StopCallback;
+import eu.uk.ncl.pet5o.esper.view.Viewable;
 
 public class ViewableActivationResult {
     private final Viewable viewable;

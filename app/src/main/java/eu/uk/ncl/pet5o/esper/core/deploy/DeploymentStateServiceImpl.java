@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.core.deploy;
 
-import com.espertech.esper.client.deploy.DeploymentInformation;
-import com.espertech.esper.util.UuidGenerator;
+import eu.uk.ncl.pet5o.esper.client.deploy.DeploymentInformation;
+import eu.uk.ncl.pet5o.esper.util.UuidGenerator;
 
 import java.util.Collection;
 import java.util.Map;

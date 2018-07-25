@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.core;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.core.service.ExpressionResultCacheService;
-import com.espertech.esper.core.service.StatementAgentInstanceLock;
-import com.espertech.esper.core.service.StatementType;
-import com.espertech.esper.epl.script.AgentInstanceScriptContext;
-import com.espertech.esper.epl.table.mgmt.TableExprEvaluatorContext;
-import com.espertech.esper.schedule.TimeProvider;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.core.service.ExpressionResultCacheService;
+import eu.uk.ncl.pet5o.esper.core.service.StatementAgentInstanceLock;
+import eu.uk.ncl.pet5o.esper.core.service.StatementType;
+import eu.uk.ncl.pet5o.esper.epl.script.AgentInstanceScriptContext;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.schedule.TimeProvider;
 
 /**
  * Represents a minimal engine-level context for expression evaluation, not allowing for agents instances and result cache.
@@ -47,7 +47,7 @@ public class ExprEvaluatorContextTimeOnly implements ExprEvaluatorContext {
         return -1;
     }
 
-    public com.espertech.esper.client.EventBean getContextProperties() {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getContextProperties() {
         return null;
     }
 

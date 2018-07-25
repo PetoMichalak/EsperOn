@@ -10,19 +10,19 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.factory;
 
-import com.espertech.esper.core.context.activator.ViewableActivator;
-import com.espertech.esper.core.context.subselect.SubSelectStrategyCollection;
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.core.service.EPServicesContext;
-import com.espertech.esper.core.service.StatementContext;
-import com.espertech.esper.core.service.speccompiled.StatementSpecCompiled;
-import com.espertech.esper.epl.core.resultset.core.ResultSetProcessor;
-import com.espertech.esper.epl.core.resultset.core.ResultSetProcessorFactoryDesc;
-import com.espertech.esper.epl.variable.OnSetVariableView;
-import com.espertech.esper.epl.variable.OnSetVariableViewFactory;
-import com.espertech.esper.epl.view.OutputProcessViewFactory;
-import com.espertech.esper.util.StopCallback;
-import com.espertech.esper.view.View;
+import eu.uk.ncl.pet5o.esper.core.context.activator.ViewableActivator;
+import eu.uk.ncl.pet5o.esper.core.context.subselect.SubSelectStrategyCollection;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.core.service.EPServicesContext;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.core.service.speccompiled.StatementSpecCompiled;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessor;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessorFactoryDesc;
+import eu.uk.ncl.pet5o.esper.epl.variable.OnSetVariableView;
+import eu.uk.ncl.pet5o.esper.epl.variable.OnSetVariableViewFactory;
+import eu.uk.ncl.pet5o.esper.epl.view.OutputProcessViewFactory;
+import eu.uk.ncl.pet5o.esper.util.StopCallback;
+import eu.uk.ncl.pet5o.esper.view.View;
 
 import java.util.List;
 

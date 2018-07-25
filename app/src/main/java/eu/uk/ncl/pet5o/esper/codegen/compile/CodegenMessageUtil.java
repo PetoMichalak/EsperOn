@@ -13,7 +13,7 @@ package eu.uk.ncl.pet5o.esper.codegen.compile;
 import java.io.StringWriter;
 import java.util.function.Supplier;
 
-import static com.espertech.esper.codegen.compile.CodeGenerationUtil.codeWithLineNum;
+import static eu.uk.ncl.pet5o.esper.codegen.compile.CodeGenerationUtil.codeWithLineNum;
 
 public class CodegenMessageUtil {
     public static String getFailedCompileLogMessageWithCode(Throwable t, Supplier<String> debugInformationProvider, boolean enableFallback) {

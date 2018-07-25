@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.activator;
 
-import com.espertech.esper.core.service.EPStatementHandleCallback;
-import com.espertech.esper.filter.FilterServiceEntry;
-import com.espertech.esper.util.StopCallback;
+import eu.uk.ncl.pet5o.esper.core.service.EPStatementHandleCallback;
+import eu.uk.ncl.pet5o.esper.filter.FilterServiceEntry;
+import eu.uk.ncl.pet5o.esper.util.StopCallback;
 
 public class ViewableActivatorFilterProxyStopCallback implements StopCallback {
 

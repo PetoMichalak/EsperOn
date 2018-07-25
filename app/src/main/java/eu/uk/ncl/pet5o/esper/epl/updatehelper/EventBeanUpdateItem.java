@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.updatehelper;
 
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.event.EventPropertyWriter;
-import com.espertech.esper.util.TypeWidener;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.event.EventPropertyWriter;
+import eu.uk.ncl.pet5o.esper.util.TypeWidener;
 
 public class EventBeanUpdateItem {
     private final ExprEvaluator expression;

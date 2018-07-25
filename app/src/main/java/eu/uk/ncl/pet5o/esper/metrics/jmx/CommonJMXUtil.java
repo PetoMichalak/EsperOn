@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.metrics.jmx;
 
-import com.espertech.esper.metrics.codahale_metrics.metrics.core.MetricName;
+import eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.core.MetricName;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -10,18 +10,18 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.dot.inner;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
-import com.espertech.esper.epl.expression.core.ExprForge;
-import com.espertech.esper.epl.expression.dot.ExprDotEvalRootChildInnerEval;
-import com.espertech.esper.epl.expression.dot.ExprDotEvalRootChildInnerForge;
-import com.espertech.esper.epl.rettype.EPType;
-import com.espertech.esper.epl.rettype.EPTypeHelper;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprForge;
+import eu.uk.ncl.pet5o.esper.epl.expression.dot.ExprDotEvalRootChildInnerEval;
+import eu.uk.ncl.pet5o.esper.epl.expression.dot.ExprDotEvalRootChildInnerForge;
+import eu.uk.ncl.pet5o.esper.epl.rettype.EPType;
+import eu.uk.ncl.pet5o.esper.epl.rettype.EPTypeHelper;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
 
 public class InnerDotArrObjectToCollForge implements ExprDotEvalRootChildInnerForge {
 

@@ -10,15 +10,15 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.factory;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.expression.core.ExprNodeUtilityCore;
-import com.espertech.esper.epl.join.base.JoinSetComposerDesc;
-import com.espertech.esper.epl.join.plan.QueryGraph;
-import com.espertech.esper.epl.named.NamedWindowTailViewInstance;
-import com.espertech.esper.view.HistoricalEventViewable;
-import com.espertech.esper.view.Viewable;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNodeUtilityCore;
+import eu.uk.ncl.pet5o.esper.epl.join.base.JoinSetComposerDesc;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.QueryGraph;
+import eu.uk.ncl.pet5o.esper.epl.named.NamedWindowTailViewInstance;
+import eu.uk.ncl.pet5o.esper.view.HistoricalEventViewable;
+import eu.uk.ncl.pet5o.esper.view.Viewable;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayDeque;
@@ -49,7 +49,7 @@ public class StatementAgentInstancePostLoadSelect implements StatementAgentInsta
         if (joinSetComposer == null || !joinSetComposer.getJoinSetComposer().allowsInit()) {
             return;
         }
-        com.espertech.esper.client.EventBean[][] events = new com.espertech.esper.client.EventBean[streamViews.length][];
+        eu.uk.ncl.pet5o.esper.client.EventBean[][] events = new eu.uk.ncl.pet5o.esper.client.EventBean[streamViews.length][];
         for (int stream = 0; stream < streamViews.length; stream++) {
             Viewable streamView = streamViews[stream];
             if (streamView instanceof HistoricalEventViewable) {
@@ -71,11 +71,11 @@ public class StatementAgentInstancePostLoadSelect implements StatementAgentInsta
                 ExprNodeUtilityCore.applyFilterExpressionsIterable(streamViews[stream], namedWindowFilters[stream], exprEvaluatorContext, eventsInWindow);
             } else {
                 eventsInWindow = new ArrayDeque<EventBean>();
-                for (com.espertech.esper.client.EventBean aConsumerView : streamViews[stream]) {
+                for (eu.uk.ncl.pet5o.esper.client.EventBean aConsumerView : streamViews[stream]) {
                     eventsInWindow.add(aConsumerView);
                 }
             }
-            events[stream] = eventsInWindow.toArray(new com.espertech.esper.client.EventBean[eventsInWindow.size()]);
+            events[stream] = eventsInWindow.toArray(new eu.uk.ncl.pet5o.esper.client.EventBean[eventsInWindow.size()]);
         }
         joinSetComposer.getJoinSetComposer().init(events, exprEvaluatorContext);
     }

@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service.speccompiled;
 
-import com.espertech.esper.epl.spec.SelectClauseElementCompiled;
-import com.espertech.esper.epl.spec.SelectClauseStreamRawSpec;
-import com.espertech.esper.epl.table.mgmt.TableMetadata;
+import eu.uk.ncl.pet5o.esper.epl.spec.SelectClauseElementCompiled;
+import eu.uk.ncl.pet5o.esper.epl.spec.SelectClauseStreamRawSpec;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadata;
 
 /**
  * Mirror class to {@link SelectClauseStreamRawSpec} but added the stream number for the name.

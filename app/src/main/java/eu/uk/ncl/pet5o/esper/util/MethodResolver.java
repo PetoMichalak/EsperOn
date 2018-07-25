@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.util;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.hook.EPLMethodInvocationContext;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.hook.EPLMethodInvocationContext;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

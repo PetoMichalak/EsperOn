@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.assemble;
 
-import com.espertech.esper.epl.join.plan.NStreamOuterQueryPlanBuilder;
-import com.espertech.esper.util.IndentWriter;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.NStreamOuterQueryPlanBuilder;
+import eu.uk.ncl.pet5o.esper.util.IndentWriter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

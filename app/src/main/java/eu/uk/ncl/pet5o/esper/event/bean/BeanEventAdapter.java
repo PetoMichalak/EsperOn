@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.event.bean;
 
-import com.espertech.esper.client.Configuration;
-import com.espertech.esper.client.ConfigurationEventTypeLegacy;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.event.EventTypeIdGenerator;
-import com.espertech.esper.event.EventTypeMetadata;
+import eu.uk.ncl.pet5o.esper.client.Configuration;
+import eu.uk.ncl.pet5o.esper.client.ConfigurationEventTypeLegacy;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.event.EventTypeIdGenerator;
+import eu.uk.ncl.pet5o.esper.event.EventTypeMetadata;
 
 import java.util.Collection;
 import java.util.HashMap;

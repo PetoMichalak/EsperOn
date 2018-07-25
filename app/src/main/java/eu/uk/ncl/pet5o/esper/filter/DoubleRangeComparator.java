@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.filter;
 
-import com.espertech.esper.filterspec.DoubleRange;
+import eu.uk.ncl.pet5o.esper.filterspec.DoubleRange;
 
 import java.io.Serializable;
 import java.util.Comparator;

@@ -10,21 +10,21 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.index.quadtree;
 
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.epl.core.engineimport.EngineImportApplicationDotMethod;
-import com.espertech.esper.epl.core.engineimport.EngineImportException;
-import com.espertech.esper.epl.declexpr.ExprDeclaredNode;
-import com.espertech.esper.epl.expression.core.*;
-import com.espertech.esper.epl.expression.dot.ExprDotNode;
-import com.espertech.esper.epl.expression.dot.ExprDotNodeImpl;
-import com.espertech.esper.epl.expression.visitor.ExprNodeIdentifierAndStreamRefVisitor;
-import com.espertech.esper.epl.index.service.AdvancedIndexFactoryProvider;
-import com.espertech.esper.epl.index.service.FilterExprAnalyzerAffectorIndexProvision;
-import com.espertech.esper.epl.join.plan.FilterExprAnalyzerAffector;
-import com.espertech.esper.epl.lookup.AdvancedIndexConfigContextPartition;
-import com.espertech.esper.epl.util.ExprNodeUtilityRich;
-import com.espertech.esper.filter.FilterSpecCompilerAdvIndexDesc;
-import com.espertech.esper.util.CollectionUtil;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportApplicationDotMethod;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportException;
+import eu.uk.ncl.pet5o.esper.epl.declexpr.ExprDeclaredNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.epl.expression.dot.ExprDotNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.dot.ExprDotNodeImpl;
+import eu.uk.ncl.pet5o.esper.epl.expression.visitor.ExprNodeIdentifierAndStreamRefVisitor;
+import eu.uk.ncl.pet5o.esper.epl.index.service.AdvancedIndexFactoryProvider;
+import eu.uk.ncl.pet5o.esper.epl.index.service.FilterExprAnalyzerAffectorIndexProvision;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.FilterExprAnalyzerAffector;
+import eu.uk.ncl.pet5o.esper.epl.lookup.AdvancedIndexConfigContextPartition;
+import eu.uk.ncl.pet5o.esper.epl.util.ExprNodeUtilityRich;
+import eu.uk.ncl.pet5o.esper.filter.FilterSpecCompilerAdvIndexDesc;
+import eu.uk.ncl.pet5o.esper.util.CollectionUtil;
 
 import java.util.ArrayList;
 import java.util.HashSet;

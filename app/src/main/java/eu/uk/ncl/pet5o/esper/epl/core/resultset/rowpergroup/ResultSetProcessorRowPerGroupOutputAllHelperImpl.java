@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.resultset.rowpergroup;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.collection.MultiKey;
-import com.espertech.esper.collection.UniformPair;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.collection.MultiKey;
+import eu.uk.ncl.pet5o.esper.collection.UniformPair;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -33,17 +33,17 @@ public class ResultSetProcessorRowPerGroupOutputAllHelperImpl implements ResultS
         this.processor = processor;
     }
 
-    public void processView(com.espertech.esper.client.EventBean[] newData, com.espertech.esper.client.EventBean[] oldData, boolean isGenerateSynthetic) {
+    public void processView(eu.uk.ncl.pet5o.esper.client.EventBean[] newData, eu.uk.ncl.pet5o.esper.client.EventBean[] oldData, boolean isGenerateSynthetic) {
         generateRemoveStreamJustOnce(isGenerateSynthetic, false);
 
         if (newData != null) {
-            for (com.espertech.esper.client.EventBean aNewData : newData) {
-                com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[]{aNewData};
+            for (eu.uk.ncl.pet5o.esper.client.EventBean aNewData : newData) {
+                eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[]{aNewData};
                 Object mk = processor.generateGroupKeySingle(eventsPerStream, true);
                 groupReps.put(mk, eventsPerStream);
 
                 if (processor.isSelectRStream() && !groupRepsOutputLastUnordRStream.containsKey(mk)) {
-                    com.espertech.esper.client.EventBean event = processor.generateOutputBatchedNoSortWMap(false, mk, eventsPerStream, true, isGenerateSynthetic);
+                    eu.uk.ncl.pet5o.esper.client.EventBean event = processor.generateOutputBatchedNoSortWMap(false, mk, eventsPerStream, true, isGenerateSynthetic);
                     if (event != null) {
                         groupRepsOutputLastUnordRStream.put(mk, event);
                     }
@@ -52,12 +52,12 @@ public class ResultSetProcessorRowPerGroupOutputAllHelperImpl implements ResultS
             }
         }
         if (oldData != null) {
-            for (com.espertech.esper.client.EventBean anOldData : oldData) {
-                com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[]{anOldData};
+            for (eu.uk.ncl.pet5o.esper.client.EventBean anOldData : oldData) {
+                eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[]{anOldData};
                 Object mk = processor.generateGroupKeySingle(eventsPerStream, true);
 
                 if (processor.isSelectRStream() && !groupRepsOutputLastUnordRStream.containsKey(mk)) {
-                    com.espertech.esper.client.EventBean event = processor.generateOutputBatchedNoSortWMap(false, mk, eventsPerStream, false, isGenerateSynthetic);
+                    eu.uk.ncl.pet5o.esper.client.EventBean event = processor.generateOutputBatchedNoSortWMap(false, mk, eventsPerStream, false, isGenerateSynthetic);
                     if (event != null) {
                         groupRepsOutputLastUnordRStream.put(mk, event);
                     }
@@ -71,12 +71,12 @@ public class ResultSetProcessorRowPerGroupOutputAllHelperImpl implements ResultS
         generateRemoveStreamJustOnce(isGenerateSynthetic, true);
 
         if (newData != null) {
-            for (MultiKey<com.espertech.esper.client.EventBean> aNewData : newData) {
+            for (MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> aNewData : newData) {
                 Object mk = processor.generateGroupKeySingle(aNewData.getArray(), true);
                 groupReps.put(mk, aNewData.getArray());
 
                 if (processor.isSelectRStream() && !groupRepsOutputLastUnordRStream.containsKey(mk)) {
-                    com.espertech.esper.client.EventBean event = processor.generateOutputBatchedNoSortWMap(true, mk, aNewData.getArray(), true, isGenerateSynthetic);
+                    eu.uk.ncl.pet5o.esper.client.EventBean event = processor.generateOutputBatchedNoSortWMap(true, mk, aNewData.getArray(), true, isGenerateSynthetic);
                     if (event != null) {
                         groupRepsOutputLastUnordRStream.put(mk, event);
                     }
@@ -85,10 +85,10 @@ public class ResultSetProcessorRowPerGroupOutputAllHelperImpl implements ResultS
             }
         }
         if (oldData != null) {
-            for (MultiKey<com.espertech.esper.client.EventBean> anOldData : oldData) {
+            for (MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> anOldData : oldData) {
                 Object mk = processor.generateGroupKeySingle(anOldData.getArray(), false);
                 if (processor.isSelectRStream() && !groupRepsOutputLastUnordRStream.containsKey(mk)) {
-                    com.espertech.esper.client.EventBean event = processor.generateOutputBatchedNoSortWMap(true, mk, anOldData.getArray(), false, isGenerateSynthetic);
+                    eu.uk.ncl.pet5o.esper.client.EventBean event = processor.generateOutputBatchedNoSortWMap(true, mk, anOldData.getArray(), false, isGenerateSynthetic);
                     if (event != null) {
                         groupRepsOutputLastUnordRStream.put(mk, event);
                     }
@@ -98,12 +98,12 @@ public class ResultSetProcessorRowPerGroupOutputAllHelperImpl implements ResultS
         }
     }
 
-    public UniformPair<com.espertech.esper.client.EventBean[]> outputView(boolean isSynthesize) {
+    public UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> outputView(boolean isSynthesize) {
         generateRemoveStreamJustOnce(isSynthesize, false);
         return output(isSynthesize, false);
     }
 
-    public UniformPair<com.espertech.esper.client.EventBean[]> outputJoin(boolean isSynthesize) {
+    public UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> outputJoin(boolean isSynthesize) {
         generateRemoveStreamJustOnce(isSynthesize, true);
         return output(isSynthesize, true);
     }
@@ -112,17 +112,17 @@ public class ResultSetProcessorRowPerGroupOutputAllHelperImpl implements ResultS
         // no action required
     }
 
-    private UniformPair<com.espertech.esper.client.EventBean[]> output(boolean isSynthesize, boolean join) {
+    private UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> output(boolean isSynthesize, boolean join) {
         // generate latest new-events from group representatives
         List<EventBean> newEvents = new ArrayList<>(4);
         processor.generateOutputBatchedArrFromIterator(join, groupReps.entrySet().iterator(), true, isSynthesize, newEvents, null);
-        com.espertech.esper.client.EventBean[] newEventsArr = (newEvents.isEmpty()) ? null : newEvents.toArray(new com.espertech.esper.client.EventBean[newEvents.size()]);
+        eu.uk.ncl.pet5o.esper.client.EventBean[] newEventsArr = (newEvents.isEmpty()) ? null : newEvents.toArray(new eu.uk.ncl.pet5o.esper.client.EventBean[newEvents.size()]);
 
         // use old-events as retained, if any
-        com.espertech.esper.client.EventBean[] oldEventsArr = null;
+        eu.uk.ncl.pet5o.esper.client.EventBean[] oldEventsArr = null;
         if (!groupRepsOutputLastUnordRStream.isEmpty()) {
             Collection<EventBean> oldEvents = groupRepsOutputLastUnordRStream.values();
-            oldEventsArr = oldEvents.toArray(new com.espertech.esper.client.EventBean[oldEvents.size()]);
+            oldEventsArr = oldEvents.toArray(new eu.uk.ncl.pet5o.esper.client.EventBean[oldEvents.size()]);
             groupRepsOutputLastUnordRStream.clear();
         }
         first = true;
@@ -137,7 +137,7 @@ public class ResultSetProcessorRowPerGroupOutputAllHelperImpl implements ResultS
         if (first && processor.isSelectRStream()) {
             for (Map.Entry<Object, EventBean[]> groupRep : groupReps.entrySet()) {
                 Object mk = processor.generateGroupKeySingle(groupRep.getValue(), false);
-                com.espertech.esper.client.EventBean event = processor.generateOutputBatchedNoSortWMap(join, mk, groupRep.getValue(), false, isSynthesize);
+                eu.uk.ncl.pet5o.esper.client.EventBean event = processor.generateOutputBatchedNoSortWMap(join, mk, groupRep.getValue(), false, isSynthesize);
                 if (event != null) {
                     groupRepsOutputLastUnordRStream.put(mk, event);
                 }

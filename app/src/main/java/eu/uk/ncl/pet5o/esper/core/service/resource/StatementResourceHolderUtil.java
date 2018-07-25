@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service.resource;
 
-import com.espertech.esper.core.context.factory.*;
-import com.espertech.esper.pattern.EvalRootState;
-import com.espertech.esper.view.Viewable;
+import eu.uk.ncl.pet5o.esper.core.context.factory.*;
+import eu.uk.ncl.pet5o.esper.pattern.EvalRootState;
+import eu.uk.ncl.pet5o.esper.view.Viewable;
 
 public class StatementResourceHolderUtil {
     public static StatementResourceHolder populateHolder(StatementAgentInstanceFactoryResult startResult) {

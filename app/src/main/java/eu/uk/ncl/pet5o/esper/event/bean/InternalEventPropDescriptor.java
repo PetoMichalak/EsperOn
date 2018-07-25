@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.event.bean;
 
-import com.espertech.esper.event.EventPropertyType;
-import com.espertech.esper.event.property.GenericPropertyDesc;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.event.EventPropertyType;
+import eu.uk.ncl.pet5o.esper.event.property.GenericPropertyDesc;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.plan;
 
-import com.espertech.esper.collection.InterchangeablePair;
-import com.espertech.esper.epl.spec.OuterJoinDesc;
-import com.espertech.esper.type.OuterJoinType;
+import eu.uk.ncl.pet5o.esper.collection.InterchangeablePair;
+import eu.uk.ncl.pet5o.esper.epl.spec.OuterJoinDesc;
+import eu.uk.ncl.pet5o.esper.type.OuterJoinType;
 
 import java.util.HashSet;
 import java.util.Set;

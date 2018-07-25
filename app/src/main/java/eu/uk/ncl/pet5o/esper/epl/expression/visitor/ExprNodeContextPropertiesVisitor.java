@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.visitor;
 
-import com.espertech.esper.epl.expression.core.ExprContextPropertyNode;
-import com.espertech.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprContextPropertyNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
 
 /**
  * Visitor that early-exists when it finds a context partition property.

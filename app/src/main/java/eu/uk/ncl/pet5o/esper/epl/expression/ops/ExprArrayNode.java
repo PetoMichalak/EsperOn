@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.ops;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.epl.expression.core.*;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.util.*;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.util.*;
 
 import java.io.StringWriter;
 import java.lang.reflect.Array;

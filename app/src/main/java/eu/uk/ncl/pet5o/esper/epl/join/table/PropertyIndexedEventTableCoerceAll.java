@@ -10,17 +10,17 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.table;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventPropertyGetter;
-import com.espertech.esper.collection.MultiKeyUntyped;
-import com.espertech.esper.util.JavaClassHelper;
-import com.espertech.esper.util.SimpleNumberCoercer;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.collection.MultiKeyUntyped;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.util.SimpleNumberCoercer;
 
 import java.util.Set;
 
 /**
  * Index that organizes events by the event property values into hash buckets. Based on a HashMap
- * with {@link com.espertech.esper.collection.MultiKeyUntyped} keys that store the property values.
+ * with {@link eu.uk.ncl.pet5o.esper.collection.MultiKeyUntyped} keys that store the property values.
  * <p>
  * Performs coercion of the index keys before storing the keys, and coercion of the lookup keys before lookup.
  * <p>

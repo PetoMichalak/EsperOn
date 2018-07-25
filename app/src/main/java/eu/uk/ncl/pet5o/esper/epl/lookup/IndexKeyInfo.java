@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.lookup;
 
-import com.espertech.esper.epl.join.plan.CoercionDesc;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.CoercionDesc;
 
 import java.util.List;
 

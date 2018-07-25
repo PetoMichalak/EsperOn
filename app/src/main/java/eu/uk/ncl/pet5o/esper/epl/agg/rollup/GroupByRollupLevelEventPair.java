@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.rollup;
 
-import com.espertech.esper.epl.agg.service.common.AggregationGroupByRollupLevel;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationGroupByRollupLevel;
 
 public class GroupByRollupLevelEventPair {
     private final AggregationGroupByRollupLevel level;
-    private final com.espertech.esper.client.EventBean event;
+    private final eu.uk.ncl.pet5o.esper.client.EventBean event;
 
-    public GroupByRollupLevelEventPair(AggregationGroupByRollupLevel level, com.espertech.esper.client.EventBean event) {
+    public GroupByRollupLevelEventPair(AggregationGroupByRollupLevel level, eu.uk.ncl.pet5o.esper.client.EventBean event) {
         this.level = level;
         this.event = event;
     }
@@ -25,7 +25,7 @@ public class GroupByRollupLevelEventPair {
         return level;
     }
 
-    public com.espertech.esper.client.EventBean getEvent() {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getEvent() {
         return event;
     }
 }

@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.client.context.ContextPartitionStateListener;
-import com.espertech.esper.core.service.EPServicesContext;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionStateListener;
+import eu.uk.ncl.pet5o.esper.core.service.EPServicesContext;
 
 import java.util.Collections;
 import java.util.Iterator;

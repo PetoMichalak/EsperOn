@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.lookup;
 
-import com.espertech.esper.client.EventPropertyGetter;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.epl.join.table.EventTable;
-import com.espertech.esper.epl.join.table.PropertyIndexedEventTable;
-import com.espertech.esper.epl.virtualdw.VirtualDWView;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.epl.join.table.EventTable;
+import eu.uk.ncl.pet5o.esper.epl.join.table.PropertyIndexedEventTable;
+import eu.uk.ncl.pet5o.esper.epl.virtualdw.VirtualDWView;
 
 import java.util.Arrays;
 

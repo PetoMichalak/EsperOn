@@ -10,19 +10,19 @@
  */
 package eu.uk.ncl.pet5o.esper.event.property;
 
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.event.EventPropertyGetterSPI;
-import com.espertech.esper.event.arr.ObjectArrayDynamicPropertyGetter;
-import com.espertech.esper.event.arr.ObjectArrayEventPropertyGetter;
-import com.espertech.esper.event.arr.ObjectArrayPropertyGetterDefaultObjectArray;
-import com.espertech.esper.event.bean.BeanEventType;
-import com.espertech.esper.event.bean.DynamicSimplePropertyGetter;
-import com.espertech.esper.event.map.MapDynamicPropertyGetter;
-import com.espertech.esper.event.map.MapEventPropertyGetter;
-import com.espertech.esper.event.xml.BaseXMLEventType;
-import com.espertech.esper.event.xml.DOMAttributeAndElementGetter;
-import com.espertech.esper.event.xml.SchemaElementComplex;
-import com.espertech.esper.event.xml.SchemaItem;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.event.EventPropertyGetterSPI;
+import eu.uk.ncl.pet5o.esper.event.arr.ObjectArrayDynamicPropertyGetter;
+import eu.uk.ncl.pet5o.esper.event.arr.ObjectArrayEventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.event.arr.ObjectArrayPropertyGetterDefaultObjectArray;
+import eu.uk.ncl.pet5o.esper.event.bean.BeanEventType;
+import eu.uk.ncl.pet5o.esper.event.bean.DynamicSimplePropertyGetter;
+import eu.uk.ncl.pet5o.esper.event.map.MapDynamicPropertyGetter;
+import eu.uk.ncl.pet5o.esper.event.map.MapEventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.event.xml.BaseXMLEventType;
+import eu.uk.ncl.pet5o.esper.event.xml.DOMAttributeAndElementGetter;
+import eu.uk.ncl.pet5o.esper.event.xml.SchemaElementComplex;
+import eu.uk.ncl.pet5o.esper.event.xml.SchemaItem;
 
 import java.io.StringWriter;
 import java.util.Map;

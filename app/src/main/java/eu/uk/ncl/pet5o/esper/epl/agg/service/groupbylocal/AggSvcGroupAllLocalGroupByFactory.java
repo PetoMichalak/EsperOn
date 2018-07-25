@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.service.groupbylocal;
 
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.epl.agg.service.common.AggregationService;
-import com.espertech.esper.epl.agg.service.common.AggregationServiceFactory;
-import com.espertech.esper.epl.agg.util.AggregationLocalGroupByPlan;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationService;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationServiceFactory;
+import eu.uk.ncl.pet5o.esper.epl.agg.util.AggregationLocalGroupByPlan;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
 
 /**
  * Implementation for handling aggregation with grouping by group-keys.

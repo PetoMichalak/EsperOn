@@ -10,15 +10,15 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.visitor;
 
-import com.espertech.esper.epl.declexpr.ExprDeclaredNode;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.expression.subquery.ExprSubselectNode;
+import eu.uk.ncl.pet5o.esper.epl.declexpr.ExprDeclaredNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.subquery.ExprSubselectNode;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Visitor that collects {@link com.espertech.esper.epl.expression.subquery.ExprSubselectNode} instances only
+ * Visitor that collects {@link eu.uk.ncl.pet5o.esper.epl.expression.subquery.ExprSubselectNode} instances only
  * directly under alias expressions, and declared expressions, stopping at nested declared expressions.
  */
 public class ExprNodeSubselectDeclaredNoTraverseVisitor implements ExprNodeVisitorWithParent {

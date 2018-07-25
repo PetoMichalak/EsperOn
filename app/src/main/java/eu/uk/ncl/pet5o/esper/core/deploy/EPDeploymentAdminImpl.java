@@ -10,18 +10,18 @@
  */
 package eu.uk.ncl.pet5o.esper.core.deploy;
 
-import com.espertech.esper.client.ConfigurationEngineDefaults;
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.client.EPServiceProviderIsolated;
-import com.espertech.esper.client.EPStatement;
-import com.espertech.esper.client.deploy.*;
-import com.espertech.esper.core.service.EPAdministratorSPI;
-import com.espertech.esper.core.service.StatementEventTypeRef;
-import com.espertech.esper.core.service.StatementIsolationService;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.filter.FilterService;
-import com.espertech.esper.util.DependencyGraph;
-import com.espertech.esper.util.ManagedReadWriteLock;
+import eu.uk.ncl.pet5o.esper.client.ConfigurationEngineDefaults;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.client.EPServiceProviderIsolated;
+import eu.uk.ncl.pet5o.esper.client.EPStatement;
+import eu.uk.ncl.pet5o.esper.client.deploy.*;
+import eu.uk.ncl.pet5o.esper.core.service.EPAdministratorSPI;
+import eu.uk.ncl.pet5o.esper.core.service.StatementEventTypeRef;
+import eu.uk.ncl.pet5o.esper.core.service.StatementIsolationService;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.filter.FilterService;
+import eu.uk.ncl.pet5o.esper.util.DependencyGraph;
+import eu.uk.ncl.pet5o.esper.util.ManagedReadWriteLock;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

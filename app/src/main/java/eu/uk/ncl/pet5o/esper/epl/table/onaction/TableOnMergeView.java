@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.table.onaction;
 
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.lookup.SubordWMatchExprLookupStrategy;
-import com.espertech.esper.epl.spec.OnTriggerType;
-import com.espertech.esper.epl.table.merge.TableOnMergeMatch;
-import com.espertech.esper.epl.table.mgmt.TableMetadata;
-import com.espertech.esper.epl.table.mgmt.TableStateInstance;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.lookup.SubordWMatchExprLookupStrategy;
+import eu.uk.ncl.pet5o.esper.epl.spec.OnTriggerType;
+import eu.uk.ncl.pet5o.esper.epl.table.merge.TableOnMergeMatch;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadata;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableStateInstance;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
 
 import java.util.List;
 
@@ -28,12 +28,12 @@ public class TableOnMergeView extends TableOnViewBase {
         this.parent = parent;
     }
 
-    public void handleMatching(com.espertech.esper.client.EventBean[] triggerEvents, com.espertech.esper.client.EventBean[] matchingEvents) {
+    public void handleMatching(eu.uk.ncl.pet5o.esper.client.EventBean[] triggerEvents, eu.uk.ncl.pet5o.esper.client.EventBean[] matchingEvents) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qInfraOnAction(OnTriggerType.ON_MERGE, triggerEvents, matchingEvents);
         }
 
-        com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[3]; // first:table, second: trigger, third:before-update (optional)
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[3]; // first:table, second: trigger, third:before-update (optional)
 
         boolean postResultsToListeners = parent.getStatementResultService().isMakeNatural() || parent.getStatementResultService().isMakeSynthetic();
         TableOnMergeViewChangeHandler changeHandlerRemoved = null;
@@ -47,7 +47,7 @@ public class TableOnMergeView extends TableOnViewBase {
 
             List<TableOnMergeMatch> unmatched = parent.getOnMergeHelper().getUnmatched();
 
-            for (com.espertech.esper.client.EventBean triggerEvent : triggerEvents) {
+            for (eu.uk.ncl.pet5o.esper.client.EventBean triggerEvent : triggerEvents) {
                 eventsPerStream[1] = triggerEvent;
                 if (InstrumentationHelper.ENABLED) {
                     InstrumentationHelper.get().qInfraMergeWhenThens(false, triggerEvent, unmatched.size());
@@ -80,13 +80,13 @@ public class TableOnMergeView extends TableOnViewBase {
 
             List<TableOnMergeMatch> matched = parent.getOnMergeHelper().getMatched();
 
-            for (com.espertech.esper.client.EventBean triggerEvent : triggerEvents) {
+            for (eu.uk.ncl.pet5o.esper.client.EventBean triggerEvent : triggerEvents) {
                 eventsPerStream[1] = triggerEvent;
                 if (InstrumentationHelper.ENABLED) {
                     InstrumentationHelper.get().qInfraMergeWhenThens(true, triggerEvent, matched.size());
                 }
 
-                for (com.espertech.esper.client.EventBean matchingEvent : matchingEvents) {
+                for (eu.uk.ncl.pet5o.esper.client.EventBean matchingEvent : matchingEvents) {
                     eventsPerStream[0] = matchingEvent;
 
                     int count = -1;
@@ -117,8 +117,8 @@ public class TableOnMergeView extends TableOnViewBase {
 
         // The on-delete listeners receive the events deleted, but only if there is interest
         if (postResultsToListeners) {
-            com.espertech.esper.client.EventBean[] postedNew = changeHandlerAdded.getEvents();
-            com.espertech.esper.client.EventBean[] postedOld = changeHandlerRemoved.getEvents();
+            eu.uk.ncl.pet5o.esper.client.EventBean[] postedNew = changeHandlerAdded.getEvents();
+            eu.uk.ncl.pet5o.esper.client.EventBean[] postedOld = changeHandlerRemoved.getEvents();
             if (postedNew != null || postedOld != null) {
                 updateChildren(postedNew, postedOld);
             }

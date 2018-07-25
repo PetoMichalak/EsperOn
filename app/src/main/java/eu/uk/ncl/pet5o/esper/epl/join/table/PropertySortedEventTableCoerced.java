@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.table;
 
-import com.espertech.esper.client.EventPropertyGetter;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 public class PropertySortedEventTableCoerced extends PropertySortedEventTableImpl {
     private Class coercionType;

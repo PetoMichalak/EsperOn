@@ -10,16 +10,16 @@
  */
 package eu.uk.ncl.pet5o.esper.core.start;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.client.context.ContextPartitionSelector;
-import com.espertech.esper.client.context.ContextPartitionSelectorAll;
-import com.espertech.esper.core.context.mgr.ContextManagementService;
-import com.espertech.esper.core.context.mgr.ContextManager;
-import com.espertech.esper.core.service.speccompiled.StatementSpecCompiled;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.epl.spec.NamedWindowConsumerStreamSpec;
-import com.espertech.esper.epl.spec.StreamSpecCompiled;
-import com.espertech.esper.epl.spec.TableQueryStreamSpec;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionSelector;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionSelectorAll;
+import eu.uk.ncl.pet5o.esper.core.context.mgr.ContextManagementService;
+import eu.uk.ncl.pet5o.esper.core.context.mgr.ContextManager;
+import eu.uk.ncl.pet5o.esper.core.service.speccompiled.StatementSpecCompiled;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.epl.spec.NamedWindowConsumerStreamSpec;
+import eu.uk.ncl.pet5o.esper.epl.spec.StreamSpecCompiled;
+import eu.uk.ncl.pet5o.esper.epl.spec.TableQueryStreamSpec;
 
 import java.util.Collection;
 

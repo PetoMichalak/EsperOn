@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.select.eval;
 
-import com.espertech.esper.event.WrapperEventType;
+import eu.uk.ncl.pet5o.esper.event.WrapperEventType;
 
 public abstract class EvalBaseFirstPropFromWrap extends EvalBaseFirstProp {
 

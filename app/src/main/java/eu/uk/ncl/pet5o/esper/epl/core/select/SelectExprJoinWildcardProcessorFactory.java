@@ -10,22 +10,22 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.select;
 
-import com.espertech.esper.client.ConfigurationInformation;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.util.EventUnderlyingType;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.epl.spec.CreateSchemaDesc;
-import com.espertech.esper.epl.spec.InsertIntoDesc;
-import com.espertech.esper.epl.table.mgmt.TableService;
-import com.espertech.esper.epl.table.mgmt.TableServiceUtil;
-import com.espertech.esper.epl.util.EventRepresentationUtil;
-import com.espertech.esper.event.EventAdapterException;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.event.arr.ObjectArrayEventType;
-import com.espertech.esper.event.avro.AvroSchemaEventType;
-import com.espertech.esper.event.map.MapEventType;
-import com.espertech.esper.util.CollectionUtil;
+import eu.uk.ncl.pet5o.esper.client.ConfigurationInformation;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.util.EventUnderlyingType;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.epl.spec.CreateSchemaDesc;
+import eu.uk.ncl.pet5o.esper.epl.spec.InsertIntoDesc;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableService;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableServiceUtil;
+import eu.uk.ncl.pet5o.esper.epl.util.EventRepresentationUtil;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterException;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.event.arr.ObjectArrayEventType;
+import eu.uk.ncl.pet5o.esper.event.avro.AvroSchemaEventType;
+import eu.uk.ncl.pet5o.esper.event.map.MapEventType;
+import eu.uk.ncl.pet5o.esper.util.CollectionUtil;
 
 import java.lang.annotation.Annotation;
 import java.util.Collection;

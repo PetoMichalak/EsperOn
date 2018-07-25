@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.filter;
 
-import com.espertech.esper.client.EventPropertyGetter;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.filterspec.FilterSpecParamFilterForEvalDouble;
-import com.espertech.esper.filterspec.MatchedEventMap;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterSpecParamFilterForEvalDouble;
+import eu.uk.ncl.pet5o.esper.filterspec.MatchedEventMap;
 
 public class FilterForEvalContextPropDouble implements FilterSpecParamFilterForEvalDouble {
 

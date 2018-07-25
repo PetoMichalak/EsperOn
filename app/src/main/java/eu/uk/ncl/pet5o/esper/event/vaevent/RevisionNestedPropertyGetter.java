@@ -10,22 +10,22 @@
  */
 package eu.uk.ncl.pet5o.esper.event.vaevent;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventPropertyGetter;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMember;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.event.EventPropertyGetterSPI;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMember;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.event.EventPropertyGetterSPI;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantTrue;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.member;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
-import static com.espertech.esper.event.vaevent.VAERevisionEventPropertyGetterDeclaredGetVersioned.revisionImplementationNotProvided;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantTrue;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.member;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.event.vaevent.VAERevisionEventPropertyGetterDeclaredGetVersioned.revisionImplementationNotProvided;
 
 /**
  * A getter that works on POJO events residing within a Map as an event property.
@@ -48,32 +48,32 @@ public class RevisionNestedPropertyGetter implements EventPropertyGetterSPI {
         this.nestedGetter = nestedGetter;
     }
 
-    public Object get(com.espertech.esper.client.EventBean obj) {
+    public Object get(eu.uk.ncl.pet5o.esper.client.EventBean obj) {
         Object result = revisionGetter.get(obj);
         if (result == null) {
             return result;
         }
 
         // Object within the map
-        com.espertech.esper.client.EventBean theEvent = eventAdapterService.adapterForBean(result);
+        eu.uk.ncl.pet5o.esper.client.EventBean theEvent = eventAdapterService.adapterForBean(result);
         return nestedGetter.get(theEvent);
     }
 
     private CodegenMethodNode getCodegen(CodegenMethodScope codegenMethodScope, CodegenClassScope codegenClassScope) {
         CodegenMember mgetter = codegenClassScope.makeAddMember(EventPropertyGetter.class, nestedGetter);
         CodegenMember msvc = codegenClassScope.makeAddMember(EventAdapterService.class, eventAdapterService);
-        return codegenMethodScope.makeChild(Object.class, this.getClass(), codegenClassScope).addParam(com.espertech.esper.client.EventBean.class, "obj").getBlock()
+        return codegenMethodScope.makeChild(Object.class, this.getClass(), codegenClassScope).addParam(eu.uk.ncl.pet5o.esper.client.EventBean.class, "obj").getBlock()
                 .declareVar(Object.class, "result", revisionGetter.eventBeanGetCodegen(ref("obj"), codegenMethodScope, codegenClassScope))
                 .ifRefNullReturnNull("result")
-                .declareVar(com.espertech.esper.client.EventBean.class, "theEvent", exprDotMethod(member(msvc.getMemberId()), "adapterForBean", ref("result")))
+                .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "theEvent", exprDotMethod(member(msvc.getMemberId()), "adapterForBean", ref("result")))
                 .methodReturn(exprDotMethod(member(mgetter.getMemberId()), "get", ref("theEvent")));
     }
 
-    public boolean isExistsProperty(com.espertech.esper.client.EventBean eventBean) {
+    public boolean isExistsProperty(eu.uk.ncl.pet5o.esper.client.EventBean eventBean) {
         return true; // Property exists as the property is not dynamic (unchecked)
     }
 
-    public Object getFragment(com.espertech.esper.client.EventBean eventBean) {
+    public Object getFragment(eu.uk.ncl.pet5o.esper.client.EventBean eventBean) {
         return null; // no fragments provided by revision events
     }
 

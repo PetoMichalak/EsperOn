@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.util;
 
-import com.espertech.esper.epl.agg.access.AggregationAccessorSlotPairForge;
-import com.espertech.esper.epl.expression.core.ExprForge;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationAccessorSlotPairForge;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprForge;
 
 public class AggregationLocalGroupByColumnForge {
     private final boolean defaultGroupLevel;

@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.stmt;
 
-import com.espertech.esper.rowregex.RegexExprPreviousEvalStrategy;
+import eu.uk.ncl.pet5o.esper.rowregex.RegexExprPreviousEvalStrategy;
 
 public interface AIRegistryMatchRecognizePrevious extends RegexExprPreviousEvalStrategy {
     public void assignService(int num, RegexExprPreviousEvalStrategy value);

@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.util;
 
-import com.espertech.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.client.EPException;
 
 /**
  * Exception to represent an error instantiating a class from a class name.

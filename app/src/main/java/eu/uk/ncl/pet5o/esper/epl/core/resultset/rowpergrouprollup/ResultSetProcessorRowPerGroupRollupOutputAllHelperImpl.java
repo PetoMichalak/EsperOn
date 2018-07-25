@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.resultset.rowpergrouprollup;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.collection.MultiKey;
-import com.espertech.esper.collection.UniformPair;
-import com.espertech.esper.epl.agg.service.common.AggregationGroupByRollupLevel;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.collection.MultiKey;
+import eu.uk.ncl.pet5o.esper.collection.UniformPair;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationGroupByRollupLevel;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -46,15 +46,15 @@ public class ResultSetProcessorRowPerGroupRollupOutputAllHelperImpl implements R
         }
     }
 
-    public void processView(com.espertech.esper.client.EventBean[] newData, com.espertech.esper.client.EventBean[] oldData, boolean isGenerateSynthetic) {
+    public void processView(eu.uk.ncl.pet5o.esper.client.EventBean[] newData, eu.uk.ncl.pet5o.esper.client.EventBean[] oldData, boolean isGenerateSynthetic) {
         generateRemoveStreamJustOnce(isGenerateSynthetic, false);
 
         // apply to aggregates
         Object[] groupKeysPerLevel = new Object[processor.getGroupByRollupDesc().getLevels().length];
-        com.espertech.esper.client.EventBean[] eventsPerStream;
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream;
         if (newData != null) {
-            for (com.espertech.esper.client.EventBean aNewData : newData) {
-                eventsPerStream = new com.espertech.esper.client.EventBean[]{aNewData};
+            for (eu.uk.ncl.pet5o.esper.client.EventBean aNewData : newData) {
+                eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[]{aNewData};
                 Object groupKeyComplete = processor.generateGroupKeySingle(eventsPerStream, true);
                 for (AggregationGroupByRollupLevel level : processor.getGroupByRollupDesc().getLevels()) {
                     Object groupKey = level.computeSubkey(groupKeyComplete);
@@ -69,8 +69,8 @@ public class ResultSetProcessorRowPerGroupRollupOutputAllHelperImpl implements R
             }
         }
         if (oldData != null) {
-            for (com.espertech.esper.client.EventBean anOldData : oldData) {
-                eventsPerStream = new com.espertech.esper.client.EventBean[]{anOldData};
+            for (eu.uk.ncl.pet5o.esper.client.EventBean anOldData : oldData) {
+                eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[]{anOldData};
                 Object groupKeyComplete = processor.generateGroupKeySingle(eventsPerStream, false);
                 for (AggregationGroupByRollupLevel level : processor.getGroupByRollupDesc().getLevels()) {
                     Object groupKey = level.computeSubkey(groupKeyComplete);
@@ -92,8 +92,8 @@ public class ResultSetProcessorRowPerGroupRollupOutputAllHelperImpl implements R
         // apply to aggregates
         Object[] groupKeysPerLevel = new Object[processor.getGroupByRollupDesc().getLevels().length];
         if (newEvents != null) {
-            for (MultiKey<com.espertech.esper.client.EventBean> newEvent : newEvents) {
-                com.espertech.esper.client.EventBean[] aNewData = newEvent.getArray();
+            for (MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> newEvent : newEvents) {
+                eu.uk.ncl.pet5o.esper.client.EventBean[] aNewData = newEvent.getArray();
                 Object groupKeyComplete = processor.generateGroupKeySingle(aNewData, true);
                 for (AggregationGroupByRollupLevel level : processor.getGroupByRollupDesc().getLevels()) {
                     Object groupKey = level.computeSubkey(groupKeyComplete);
@@ -108,8 +108,8 @@ public class ResultSetProcessorRowPerGroupRollupOutputAllHelperImpl implements R
             }
         }
         if (oldEvents != null) {
-            for (MultiKey<com.espertech.esper.client.EventBean> oldEvent : oldEvents) {
-                com.espertech.esper.client.EventBean[] aOldData = oldEvent.getArray();
+            for (MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> oldEvent : oldEvents) {
+                eu.uk.ncl.pet5o.esper.client.EventBean[] aOldData = oldEvent.getArray();
                 Object groupKeyComplete = processor.generateGroupKeySingle(aOldData, false);
                 for (AggregationGroupByRollupLevel level : processor.getGroupByRollupDesc().getLevels()) {
                     Object groupKey = level.computeSubkey(groupKeyComplete);
@@ -125,12 +125,12 @@ public class ResultSetProcessorRowPerGroupRollupOutputAllHelperImpl implements R
         }
     }
 
-    public UniformPair<com.espertech.esper.client.EventBean[]> outputView(boolean isSynthesize) {
+    public UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> outputView(boolean isSynthesize) {
         generateRemoveStreamJustOnce(isSynthesize, false);
         return output(isSynthesize, false);
     }
 
-    public UniformPair<com.espertech.esper.client.EventBean[]> outputJoin(boolean isSynthesize) {
+    public UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> outputJoin(boolean isSynthesize) {
         generateRemoveStreamJustOnce(isSynthesize, true);
         return output(isSynthesize, true);
     }
@@ -139,7 +139,7 @@ public class ResultSetProcessorRowPerGroupRollupOutputAllHelperImpl implements R
         // no action required
     }
 
-    private UniformPair<com.espertech.esper.client.EventBean[]> output(boolean isSynthesize, boolean isJoin) {
+    private UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> output(boolean isSynthesize, boolean isJoin) {
 
         List<EventBean> newEvents = new ArrayList<>(4);
         for (AggregationGroupByRollupLevel level : processor.getGroupByRollupDesc().getLevels()) {
@@ -148,9 +148,9 @@ public class ResultSetProcessorRowPerGroupRollupOutputAllHelperImpl implements R
                 processor.generateOutputBatched(entry.getKey(), level, entry.getValue(), true, isSynthesize, newEvents, null);
             }
         }
-        com.espertech.esper.client.EventBean[] newEventsArr = (newEvents.isEmpty()) ? null : newEvents.toArray(new com.espertech.esper.client.EventBean[newEvents.size()]);
+        eu.uk.ncl.pet5o.esper.client.EventBean[] newEventsArr = (newEvents.isEmpty()) ? null : newEvents.toArray(new eu.uk.ncl.pet5o.esper.client.EventBean[newEvents.size()]);
 
-        com.espertech.esper.client.EventBean[] oldEventsArr = null;
+        eu.uk.ncl.pet5o.esper.client.EventBean[] oldEventsArr = null;
         if (processor.isSelectRStream()) {
             List<EventBean> oldEventList = new ArrayList<>(4);
             for (Map<Object, EventBean> entry : groupRepsOutputLastUnordRStream) {
@@ -158,7 +158,7 @@ public class ResultSetProcessorRowPerGroupRollupOutputAllHelperImpl implements R
                 entry.clear();
             }
             if (!oldEventList.isEmpty()) {
-                oldEventsArr = oldEventList.toArray(new com.espertech.esper.client.EventBean[oldEventList.size()]);
+                oldEventsArr = oldEventList.toArray(new eu.uk.ncl.pet5o.esper.client.EventBean[oldEventList.size()]);
             }
         }
 

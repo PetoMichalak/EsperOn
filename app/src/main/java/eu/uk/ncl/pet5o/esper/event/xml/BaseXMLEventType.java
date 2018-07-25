@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.event.xml;
 
-import com.espertech.esper.client.*;
-import com.espertech.esper.client.util.ClassForNameProviderDefault;
-import com.espertech.esper.event.*;
-import com.espertech.esper.util.ClassInstantiationException;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.client.*;
+import eu.uk.ncl.pet5o.esper.client.util.ClassForNameProviderDefault;
+import eu.uk.ncl.pet5o.esper.event.*;
+import eu.uk.ncl.pet5o.esper.util.ClassInstantiationException;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Node;

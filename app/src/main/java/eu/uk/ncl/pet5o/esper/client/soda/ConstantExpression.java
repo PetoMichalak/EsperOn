@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.client.soda;
 
-import com.espertech.esper.util.StringValue;
+import eu.uk.ncl.pet5o.esper.util.StringValue;
 
 import java.io.StringWriter;
 import java.util.Iterator;

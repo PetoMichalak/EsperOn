@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.client;
 
-import com.espertech.esper.client.util.ClassForNameProviderDefault;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.client.util.ClassForNameProviderDefault;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import java.io.Serializable;
 import java.lang.reflect.Array;

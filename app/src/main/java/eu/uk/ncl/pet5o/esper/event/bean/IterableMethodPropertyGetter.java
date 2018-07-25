@@ -10,29 +10,29 @@
  */
 package eu.uk.ncl.pet5o.esper.event.bean;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.PropertyAccessException;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.event.EventPropertyGetterAndIndexed;
-import com.espertech.esper.event.vaevent.PropertyUtility;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.PropertyAccessException;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.event.EventPropertyGetterAndIndexed;
+import eu.uk.ncl.pet5o.esper.event.vaevent.PropertyUtility;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Iterator;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.cast;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.castUnderlying;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.staticMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.cast;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.castUnderlying;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.staticMethod;
 
 /**
  * Getter for an iterable property identified by a given index, using vanilla reflection.
@@ -98,7 +98,7 @@ public class IterableMethodPropertyGetter extends BaseNativePropertyGetter imple
         return getBeanPropInternal(object, index);
     }
 
-    public Object get(com.espertech.esper.client.EventBean eventBean, int index) throws PropertyAccessException {
+    public Object get(eu.uk.ncl.pet5o.esper.client.EventBean eventBean, int index) throws PropertyAccessException {
         return getBeanPropInternal(eventBean.getUnderlying(), index);
     }
 
@@ -127,7 +127,7 @@ public class IterableMethodPropertyGetter extends BaseNativePropertyGetter imple
         return true; // Property exists as the property is not dynamic (unchecked)
     }
 
-    public final Object get(com.espertech.esper.client.EventBean obj) throws PropertyAccessException {
+    public final Object get(eu.uk.ncl.pet5o.esper.client.EventBean obj) throws PropertyAccessException {
         Object underlying = obj.getUnderlying();
         return getBeanProp(underlying);
     }
@@ -138,7 +138,7 @@ public class IterableMethodPropertyGetter extends BaseNativePropertyGetter imple
                 " index=" + index;
     }
 
-    public boolean isExistsProperty(com.espertech.esper.client.EventBean eventBean) {
+    public boolean isExistsProperty(eu.uk.ncl.pet5o.esper.client.EventBean eventBean) {
         return true; // Property exists as the property is not dynamic (unchecked)
     }
 

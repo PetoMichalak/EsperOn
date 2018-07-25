@@ -11,5 +11,5 @@
 package eu.uk.ncl.pet5o.esper.epl.core.select;
 
 public interface SelectExprProcessorDeliveryCallback {
-    public com.espertech.esper.client.EventBean selected(Object[] result);
+    public eu.uk.ncl.pet5o.esper.client.EventBean selected(Object[] result);
 }

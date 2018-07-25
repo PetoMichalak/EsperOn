@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.service.groupby;
 
-import com.espertech.esper.epl.agg.service.common.AggregationRowStateForgeDesc;
-import com.espertech.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationRowStateForgeDesc;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
 
 public class AggGroupByDesc {
     private final AggregationRowStateForgeDesc rowStateForgeDescs;

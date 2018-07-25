@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.lookup;
 
-import com.espertech.esper.epl.expression.core.ExprNodeUtilityCore;
-import com.espertech.esper.epl.join.exec.sorted.SortedAccessStrategy;
-import com.espertech.esper.epl.join.exec.sorted.SortedAccessStrategyFactory;
-import com.espertech.esper.epl.join.table.EventTable;
-import com.espertech.esper.epl.join.table.PropertySortedEventTable;
-import com.espertech.esper.epl.virtualdw.VirtualDWView;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNodeUtilityCore;
+import eu.uk.ncl.pet5o.esper.epl.join.exec.sorted.SortedAccessStrategy;
+import eu.uk.ncl.pet5o.esper.epl.join.exec.sorted.SortedAccessStrategyFactory;
+import eu.uk.ncl.pet5o.esper.epl.join.table.EventTable;
+import eu.uk.ncl.pet5o.esper.epl.join.table.PropertySortedEventTable;
+import eu.uk.ncl.pet5o.esper.epl.virtualdw.VirtualDWView;
 
 /**
  * Index lookup strategy for subqueries.

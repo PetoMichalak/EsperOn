@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.exec.sorted;
 
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.join.plan.QueryGraphRangeEnum;
-import com.espertech.esper.epl.join.plan.QueryGraphValueEntryRange;
-import com.espertech.esper.epl.join.plan.QueryGraphValueEntryRangeIn;
-import com.espertech.esper.epl.join.plan.QueryGraphValueEntryRangeRelOp;
-import com.espertech.esper.epl.lookup.SubordPropRangeKey;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.QueryGraphRangeEnum;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.QueryGraphValueEntryRange;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.QueryGraphValueEntryRangeIn;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.QueryGraphValueEntryRangeRelOp;
+import eu.uk.ncl.pet5o.esper.epl.lookup.SubordPropRangeKey;
 
 public class SortedAccessStrategyFactory {
 

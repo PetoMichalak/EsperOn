@@ -10,15 +10,15 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.prev;
 
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.epl.expression.codegen.CodegenLegoEvaluateSelf;
-import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
-import com.espertech.esper.epl.expression.core.*;
-import com.espertech.esper.rowregex.RegexExprPreviousEvalStrategy;
-import com.espertech.esper.rowregex.RegexPartitionStateRandomAccess;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.CodegenLegoEvaluateSelf;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.rowregex.RegexExprPreviousEvalStrategy;
+import eu.uk.ncl.pet5o.esper.rowregex.RegexPartitionStateRandomAccess;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import java.io.StringWriter;
 
@@ -99,16 +99,16 @@ public class ExprPreviousMatchRecognizeNode extends ExprNodeBase implements Expr
         return false;
     }
 
-    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         RegexPartitionStateRandomAccess access = strategy.getAccess(exprEvaluatorContext);
-        com.espertech.esper.client.EventBean substituteEvent = access.getPreviousEvent(assignedIndex);
+        eu.uk.ncl.pet5o.esper.client.EventBean substituteEvent = access.getPreviousEvent(assignedIndex);
 
         if (substituteEvent == null) {
             return null;
         }
 
         // Substitute original event with prior event, evaluate inner expression
-        com.espertech.esper.client.EventBean originalEvent = eventsPerStream[streamNumber];
+        eu.uk.ncl.pet5o.esper.client.EventBean originalEvent = eventsPerStream[streamNumber];
         eventsPerStream[streamNumber] = substituteEvent;
         Object evalResult = evaluator.evaluate(eventsPerStream, isNewData, exprEvaluatorContext);
         eventsPerStream[streamNumber] = originalEvent;

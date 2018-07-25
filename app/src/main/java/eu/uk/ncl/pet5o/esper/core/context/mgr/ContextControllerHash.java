@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.client.context.*;
-import com.espertech.esper.core.context.util.ContextControllerSelectorUtil;
-import com.espertech.esper.core.context.util.StatementAgentInstanceUtil;
-import com.espertech.esper.epl.spec.ContextDetailHashItem;
+import eu.uk.ncl.pet5o.esper.client.context.*;
+import eu.uk.ncl.pet5o.esper.core.context.util.ContextControllerSelectorUtil;
+import eu.uk.ncl.pet5o.esper.core.context.util.StatementAgentInstanceUtil;
+import eu.uk.ncl.pet5o.esper.epl.spec.ContextDetailHashItem;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -96,7 +96,7 @@ public class ContextControllerHash implements ContextController, ContextControll
         throw ContextControllerSelectorUtil.getInvalidSelector(new Class[]{ContextPartitionSelectorHash.class}, contextPartitionSelector);
     }
 
-    public void activate(com.espertech.esper.client.EventBean optionalTriggeringEvent, Map<String, Object> optionalTriggeringPattern, ContextControllerState controllerState, ContextInternalFilterAddendum activationFilterAddendum, Integer importPathId) {
+    public void activate(eu.uk.ncl.pet5o.esper.client.EventBean optionalTriggeringEvent, Map<String, Object> optionalTriggeringPattern, ContextControllerState controllerState, ContextInternalFilterAddendum activationFilterAddendum, Integer importPathId) {
         ContextControllerFactoryContext factoryContext = factory.getFactoryContext();
         this.activationFilterAddendum = activationFilterAddendum;
 
@@ -143,7 +143,7 @@ public class ContextControllerHash implements ContextController, ContextControll
         }
     }
 
-    protected void activateFilters(com.espertech.esper.client.EventBean optionalTriggeringEvent) {
+    protected void activateFilters(eu.uk.ncl.pet5o.esper.client.EventBean optionalTriggeringEvent) {
         ContextControllerFactoryContext factoryContext = factory.getFactoryContext();
         for (ContextDetailHashItem item : factory.getHashedSpec().getItems()) {
             ContextControllerHashedFilterCallback callback = new ContextControllerHashedFilterCallback(factoryContext.getServicesContext(), factoryContext.getAgentInstanceContextCreate(), item, this, activationFilterAddendum);
@@ -159,7 +159,7 @@ public class ContextControllerHash implements ContextController, ContextControll
         }
     }
 
-    public synchronized void create(int id, com.espertech.esper.client.EventBean theEvent) {
+    public synchronized void create(int id, eu.uk.ncl.pet5o.esper.client.EventBean theEvent) {
         ContextControllerFactoryContext factoryContext = factory.getFactoryContext();
         if (partitionKeys.containsKey(id)) {
             return;
@@ -203,7 +203,7 @@ public class ContextControllerHash implements ContextController, ContextControll
         factory.getFactoryContext().getStateCache().removeContextParentPath(factoryContext.getOutermostContextName(), factoryContext.getNestingLevel(), pathId);
     }
 
-    private void initializeFromState(com.espertech.esper.client.EventBean optionalTriggeringEvent,
+    private void initializeFromState(eu.uk.ncl.pet5o.esper.client.EventBean optionalTriggeringEvent,
                                      Map<String, Object> optionalTriggeringPattern,
                                      ContextControllerState controllerState,
                                      int pathIdToUse,

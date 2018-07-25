@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.rep;
 
-import com.espertech.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
 
 /**
- * This class supplies position information for {@link com.espertech.esper.epl.join.exec.base.LookupInstructionExec}
+ * This class supplies position information for {@link eu.uk.ncl.pet5o.esper.epl.join.exec.base.LookupInstructionExec}
  * to use for iterating over events for lookup.
  */
 public class Cursor {

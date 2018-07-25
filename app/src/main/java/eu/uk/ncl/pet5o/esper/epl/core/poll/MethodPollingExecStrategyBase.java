@@ -10,14 +10,14 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.poll;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.epl.db.PollExecStrategy;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.variable.VariableReader;
-import com.espertech.esper.epl.variable.VariableService;
-import com.espertech.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.epl.db.PollExecStrategy;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.variable.VariableReader;
+import eu.uk.ncl.pet5o.esper.epl.variable.VariableService;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
 
 import net.sf.cglib.reflect.FastMethod;
 
@@ -94,8 +94,8 @@ public abstract class MethodPollingExecStrategyBase implements PollExecStrategy 
         if (target == null) {
             return null;
         }
-        if (target instanceof com.espertech.esper.client.EventBean) {
-            target = ((com.espertech.esper.client.EventBean) target).getUnderlying();
+        if (target instanceof eu.uk.ncl.pet5o.esper.client.EventBean) {
+            target = ((eu.uk.ncl.pet5o.esper.client.EventBean) target).getUnderlying();
         }
         return invokeInternal(lookupValues, target);
     }

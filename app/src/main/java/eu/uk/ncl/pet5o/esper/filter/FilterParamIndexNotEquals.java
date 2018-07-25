@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.filter;
 
-import com.espertech.esper.epl.expression.core.ExprFilterSpecLookupable;
-import com.espertech.esper.filterspec.FilterOperator;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprFilterSpecLookupable;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterOperator;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +30,7 @@ public final class FilterParamIndexNotEquals extends FilterParamIndexNotEqualsBa
         super(lookupable, readWriteLock, FilterOperator.NOT_EQUAL);
     }
 
-    public final void matchEvent(com.espertech.esper.client.EventBean theEvent, Collection<FilterHandle> matches) {
+    public final void matchEvent(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, Collection<FilterHandle> matches) {
         Object attributeValue = lookupable.getGetter().get(theEvent);
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qFilterReverseIndex(this, attributeValue);

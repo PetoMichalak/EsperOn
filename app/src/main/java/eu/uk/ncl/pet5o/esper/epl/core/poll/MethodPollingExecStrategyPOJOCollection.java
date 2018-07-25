@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.poll;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.epl.variable.VariableReader;
-import com.espertech.esper.epl.variable.VariableService;
-import com.espertech.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.epl.variable.VariableReader;
+import eu.uk.ncl.pet5o.esper.epl.variable.VariableService;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
 
 import net.sf.cglib.reflect.FastMethod;
 
@@ -22,7 +22,7 @@ public class MethodPollingExecStrategyPOJOCollection extends MethodPollingExecSt
         super(eventAdapterService, method, eventType, invocationTarget, strategy, variableReader, variableName, variableService);
     }
 
-    protected com.espertech.esper.client.EventBean getEventBean(Object value) {
+    protected eu.uk.ncl.pet5o.esper.client.EventBean getEventBean(Object value) {
         return eventAdapterService.adapterForBean(value);
     }
 }

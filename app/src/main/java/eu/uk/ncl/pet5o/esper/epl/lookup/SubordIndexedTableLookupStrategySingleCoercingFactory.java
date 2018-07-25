@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.lookup;
 
-import com.espertech.esper.epl.join.table.EventTable;
-import com.espertech.esper.epl.join.table.PropertyIndexedEventTableSingle;
-import com.espertech.esper.epl.virtualdw.VirtualDWView;
+import eu.uk.ncl.pet5o.esper.epl.join.table.EventTable;
+import eu.uk.ncl.pet5o.esper.epl.join.table.PropertyIndexedEventTableSingle;
+import eu.uk.ncl.pet5o.esper.epl.virtualdw.VirtualDWView;
 
 /**
  * Index lookup strategy that coerces the key values before performing a lookup.

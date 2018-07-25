@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.factory;
 
-import com.espertech.esper.epl.join.base.JoinSetComposer;
+import eu.uk.ncl.pet5o.esper.epl.join.base.JoinSetComposer;
 
 public class StatementAgentInstancePostLoadIndexVisiting implements StatementAgentInstancePostLoad {
     private final JoinSetComposer joinSetComposer;

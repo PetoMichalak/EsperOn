@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.lookup;
 
-import com.espertech.esper.epl.join.table.EventTable;
-import com.espertech.esper.epl.virtualdw.VirtualDWView;
+import eu.uk.ncl.pet5o.esper.epl.join.table.EventTable;
+import eu.uk.ncl.pet5o.esper.epl.virtualdw.VirtualDWView;
 
 /**
  * Strategy for looking up, in some sort of table or index, or a set of events, potentially based on the

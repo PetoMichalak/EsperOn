@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.plan;
 
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.util.UuidGenerator;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.util.UuidGenerator;
 
 import java.util.Arrays;
 import java.util.HashMap;

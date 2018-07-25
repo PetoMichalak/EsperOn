@@ -10,29 +10,29 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.factory;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.core.context.activator.ViewableActivationResult;
-import com.espertech.esper.core.context.activator.ViewableActivator;
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.core.context.util.AgentInstanceViewFactoryChainContext;
-import com.espertech.esper.core.context.util.StatementAgentInstanceUtil;
-import com.espertech.esper.core.service.EPServicesContext;
-import com.espertech.esper.core.service.StatementContext;
-import com.espertech.esper.core.service.speccompiled.StatementSpecCompiled;
-import com.espertech.esper.core.start.EPStatementStartMethodCreateWindow;
-import com.espertech.esper.core.start.EPStatementStartMethodHelperAssignExpr;
-import com.espertech.esper.epl.core.resultset.core.ResultSetProcessor;
-import com.espertech.esper.epl.core.resultset.core.ResultSetProcessorFactoryDesc;
-import com.espertech.esper.epl.expression.codegen.ExprNodeCompiler;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.named.NamedWindowProcessor;
-import com.espertech.esper.epl.named.NamedWindowProcessorInstance;
-import com.espertech.esper.epl.named.NamedWindowTailViewInstance;
-import com.espertech.esper.epl.view.OutputProcessViewFactory;
-import com.espertech.esper.epl.virtualdw.VirtualDWView;
-import com.espertech.esper.util.StopCallback;
-import com.espertech.esper.view.*;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.core.context.activator.ViewableActivationResult;
+import eu.uk.ncl.pet5o.esper.core.context.activator.ViewableActivator;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceViewFactoryChainContext;
+import eu.uk.ncl.pet5o.esper.core.context.util.StatementAgentInstanceUtil;
+import eu.uk.ncl.pet5o.esper.core.service.EPServicesContext;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.core.service.speccompiled.StatementSpecCompiled;
+import eu.uk.ncl.pet5o.esper.core.start.EPStatementStartMethodCreateWindow;
+import eu.uk.ncl.pet5o.esper.core.start.EPStatementStartMethodHelperAssignExpr;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessor;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessorFactoryDesc;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprNodeCompiler;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.named.NamedWindowProcessor;
+import eu.uk.ncl.pet5o.esper.epl.named.NamedWindowProcessorInstance;
+import eu.uk.ncl.pet5o.esper.epl.named.NamedWindowTailViewInstance;
+import eu.uk.ncl.pet5o.esper.epl.view.OutputProcessViewFactory;
+import eu.uk.ncl.pet5o.esper.epl.virtualdw.VirtualDWView;
+import eu.uk.ncl.pet5o.esper.util.StopCallback;
+import eu.uk.ncl.pet5o.esper.view.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -183,9 +183,9 @@ public class StatementAgentInstanceFactoryCreateWindow extends StatementAgentIns
                 NamedWindowProcessorInstance sourceWindowInstances = namedWindowProcessor.getProcessorInstance(agentInstanceContext);
                 List<EventBean> events = new ArrayList<EventBean>();
                 if (createWindowInsertFilter != null) {
-                    com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[1];
+                    eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
                     for (Iterator<EventBean> it = sourceWindowInstances.getTailViewInstance().iterator(); it.hasNext(); ) {
-                        com.espertech.esper.client.EventBean candidate = it.next();
+                        eu.uk.ncl.pet5o.esper.client.EventBean candidate = it.next();
                         eventsPerStream[0] = candidate;
                         Boolean result = (Boolean) createWindowInsertFilter.evaluate(eventsPerStream, true, agentInstanceContext);
                         if ((result == null) || (!result)) {
@@ -200,7 +200,7 @@ public class StatementAgentInstanceFactoryCreateWindow extends StatementAgentIns
                 }
                 if (events.size() > 0) {
                     EventType rootViewType = rootView.getEventType();
-                    com.espertech.esper.client.EventBean[] convertedEvents = services.getEventAdapterService().typeCast(events, rootViewType);
+                    eu.uk.ncl.pet5o.esper.client.EventBean[] convertedEvents = services.getEventAdapterService().typeCast(events, rootViewType);
                     rootView.update(convertedEvents, null);
                 }
             }

@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.service.common;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.epl.expression.baseagg.ExprAggregateNode;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.event.EventTypeUtility;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.epl.expression.baseagg.ExprAggregateNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.event.EventTypeUtility;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import java.util.Locale;
 

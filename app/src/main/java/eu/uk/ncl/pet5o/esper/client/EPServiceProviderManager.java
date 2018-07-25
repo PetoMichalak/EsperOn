@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.client;
 
-import com.espertech.esper.core.service.EPServiceProviderImpl;
-import com.espertech.esper.core.service.EPServiceProviderSPI;
-import com.espertech.esper.util.EPServiceProviderName;
+import eu.uk.ncl.pet5o.esper.core.service.EPServiceProviderImpl;
+import eu.uk.ncl.pet5o.esper.core.service.EPServiceProviderSPI;
+import eu.uk.ncl.pet5o.esper.util.EPServiceProviderName;
 
 import java.util.Map;
 import java.util.Set;

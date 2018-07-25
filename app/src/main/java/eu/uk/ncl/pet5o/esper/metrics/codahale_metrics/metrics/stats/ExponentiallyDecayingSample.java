@@ -23,7 +23,7 @@
 
 package eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.stats;
 
-import com.espertech.esper.metrics.codahale_metrics.metrics.core.Clock;
+import eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.core.Clock;
 
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentSkipListMap;

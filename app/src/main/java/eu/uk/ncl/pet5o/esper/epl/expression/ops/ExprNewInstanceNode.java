@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.ops;
 
-import com.espertech.esper.epl.core.engineimport.EngineImportException;
-import com.espertech.esper.epl.expression.core.*;
-import com.espertech.esper.event.bean.InstanceManufacturerFactory;
-import com.espertech.esper.event.bean.InstanceManufacturerFactoryFactory;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportException;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.event.bean.InstanceManufacturerFactory;
+import eu.uk.ncl.pet5o.esper.event.bean.InstanceManufacturerFactoryFactory;
 
 import java.io.StringWriter;
 

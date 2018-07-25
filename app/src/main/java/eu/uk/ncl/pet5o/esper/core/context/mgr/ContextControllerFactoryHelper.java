@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.core.context.util.ContextDetailUtil;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.epl.spec.ContextDetail;
-import com.espertech.esper.epl.spec.ContextDetailNested;
-import com.espertech.esper.epl.spec.CreateContextDesc;
-import com.espertech.esper.filterspec.FilterSpecCompiled;
+import eu.uk.ncl.pet5o.esper.core.context.util.ContextDetailUtil;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.epl.spec.ContextDetail;
+import eu.uk.ncl.pet5o.esper.epl.spec.ContextDetailNested;
+import eu.uk.ncl.pet5o.esper.epl.spec.CreateContextDesc;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterSpecCompiled;
 
 import java.util.HashMap;
 import java.util.HashSet;

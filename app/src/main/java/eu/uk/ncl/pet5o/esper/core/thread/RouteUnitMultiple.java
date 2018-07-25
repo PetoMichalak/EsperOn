@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.core.thread;
 
-import com.espertech.esper.core.context.util.EPStatementAgentInstanceHandle;
-import com.espertech.esper.core.service.EPRuntimeImpl;
+import eu.uk.ncl.pet5o.esper.core.context.util.EPStatementAgentInstanceHandle;
+import eu.uk.ncl.pet5o.esper.core.service.EPRuntimeImpl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +23,7 @@ public class RouteUnitMultiple implements RouteUnitRunnable {
     private static final Logger log = LoggerFactory.getLogger(RouteUnitMultiple.class);
 
     private final EPRuntimeImpl epRuntime;
-    private final com.espertech.esper.client.EventBean theEvent;
+    private final eu.uk.ncl.pet5o.esper.client.EventBean theEvent;
     private Object callbackList;
     private EPStatementAgentInstanceHandle handle;
     private final long filterVersion;
@@ -37,7 +37,7 @@ public class RouteUnitMultiple implements RouteUnitRunnable {
      * @param handle        statement handle
      * @param filterVersion version of filter
      */
-    public RouteUnitMultiple(EPRuntimeImpl epRuntime, Object callbackList, com.espertech.esper.client.EventBean theEvent, EPStatementAgentInstanceHandle handle, long filterVersion) {
+    public RouteUnitMultiple(EPRuntimeImpl epRuntime, Object callbackList, eu.uk.ncl.pet5o.esper.client.EventBean theEvent, EPStatementAgentInstanceHandle handle, long filterVersion) {
         this.epRuntime = epRuntime;
         this.callbackList = callbackList;
         this.theEvent = theEvent;

@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.client;
 
-import com.espertech.esper.client.context.EPContextPartitionAdmin;
-import com.espertech.esper.client.deploy.EPDeploymentAdmin;
-import com.espertech.esper.client.soda.EPStatementObjectModel;
+import eu.uk.ncl.pet5o.esper.client.context.EPContextPartitionAdmin;
+import eu.uk.ncl.pet5o.esper.client.deploy.EPDeploymentAdmin;
+import eu.uk.ncl.pet5o.esper.client.soda.EPStatementObjectModel;
 
 /**
  * Administrative interface to the event stream processing engine. Includes methods to create patterns and EPL statements.

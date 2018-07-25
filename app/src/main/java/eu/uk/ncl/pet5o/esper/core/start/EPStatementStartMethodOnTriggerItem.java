@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.core.start;
 
-import com.espertech.esper.epl.core.resultset.core.ResultSetProcessorFactoryDesc;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.filterspec.PropertyEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessorFactoryDesc;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.filterspec.PropertyEvaluator;
 
 public class EPStatementStartMethodOnTriggerItem {
     private final ExprNode whereClause;

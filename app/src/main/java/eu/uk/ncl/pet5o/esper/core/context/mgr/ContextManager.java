@@ -10,14 +10,14 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.context.ContextPartitionDescriptor;
-import com.espertech.esper.client.context.ContextPartitionSelector;
-import com.espertech.esper.client.context.ContextPartitionStateListener;
-import com.espertech.esper.core.context.util.ContextDescriptor;
-import com.espertech.esper.epl.expression.core.ExprFilterSpecLookupable;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.filter.FilterFaultHandler;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionDescriptor;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionSelector;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionStateListener;
+import eu.uk.ncl.pet5o.esper.core.context.util.ContextDescriptor;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprFilterSpecLookupable;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.filter.FilterFaultHandler;
 
 import java.util.Collection;
 import java.util.Iterator;

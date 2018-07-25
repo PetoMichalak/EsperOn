@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.table;
 
-import com.espertech.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
 
 public interface EventTableFactoryTableIdent {
     StatementContext getStatementContext();

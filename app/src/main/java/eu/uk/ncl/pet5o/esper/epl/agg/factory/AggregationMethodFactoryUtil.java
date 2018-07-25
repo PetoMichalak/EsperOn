@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.factory;
 
-import com.espertech.esper.epl.agg.aggregator.*;
+import eu.uk.ncl.pet5o.esper.epl.agg.aggregator.*;
 
 public class AggregationMethodFactoryUtil {
     public static AggregationMethod makeDistinctAggregator(AggregationMethod aggregationMethod, boolean hasFilter) {

@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.client;
 
-import com.espertech.esper.client.context.ContextPartitionSelector;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionSelector;
 
 /**
  * Interface for a prepared on-demand query that can be executed multiple times.

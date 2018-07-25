@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.variable;
 
-import com.espertech.esper.core.service.StatementExtensionSvcContext;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.core.service.StatementExtensionSvcContext;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

@@ -13,7 +13,7 @@ package eu.uk.ncl.pet5o.esper.client;
 /**
  * Get property values from an event instance for a given mapped event property by passing the map string key.
  * Instances that implement this interface are usually bound to a particular {@link EventType} and cannot
- * be used to access {@link com.espertech.esper.client.EventBean} instances of a different type.
+ * be used to access {@link eu.uk.ncl.pet5o.esper.client.EventBean} instances of a different type.
  */
 public interface EventPropertyGetterMapped {
     /**
@@ -24,7 +24,7 @@ public interface EventPropertyGetterMapped {
      * @param eventBean is the event to get the value of a property from
      * @param mapKey    the map key value
      * @return value of property in event
-     * @throws com.espertech.esper.client.PropertyAccessException to indicate that property access failed
+     * @throws eu.uk.ncl.pet5o.esper.client.PropertyAccessException to indicate that property access failed
      */
     public Object get(EventBean eventBean, String mapKey) throws PropertyAccessException;
 }

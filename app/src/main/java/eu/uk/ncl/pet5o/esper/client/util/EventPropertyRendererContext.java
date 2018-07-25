@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.client.util;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.event.util.OutputValueRenderer;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.event.util.OutputValueRenderer;
 
 /**
  * Context for use with the {@link EventPropertyRenderer} interface for use with the JSON or XML event renderes to handle custom event property rendering.

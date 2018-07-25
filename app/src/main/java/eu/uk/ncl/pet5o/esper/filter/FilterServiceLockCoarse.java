@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.filter;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.filterspec.FilterValueSet;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterValueSet;
 
 import java.util.Collection;
 import java.util.Set;
@@ -50,7 +50,7 @@ public final class FilterServiceLockCoarse extends FilterServiceBase {
         }
     }
 
-    public long evaluate(com.espertech.esper.client.EventBean theEvent, Collection<FilterHandle> matches) {
+    public long evaluate(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, Collection<FilterHandle> matches) {
         lock.readLock().lock();
         try {
             return super.evaluateInternal(theEvent, matches);
@@ -59,7 +59,7 @@ public final class FilterServiceLockCoarse extends FilterServiceBase {
         }
     }
 
-    public long evaluate(com.espertech.esper.client.EventBean theEvent, Collection<FilterHandle> matches, int statementId) {
+    public long evaluate(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, Collection<FilterHandle> matches, int statementId) {
         lock.readLock().lock();
         try {
             return super.evaluateInternal(theEvent, matches, statementId);

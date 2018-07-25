@@ -22,7 +22,7 @@
  */
 package eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.reporting;
 
-import com.espertech.esper.metrics.codahale_metrics.metrics.core.*;
+import eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.core.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -73,9 +73,9 @@ public class JmxReporter extends AbstractReporter implements MetricsRegistryList
 
 
     private static class Gauge extends AbstractBean implements GaugeMBean {
-        private final com.espertech.esper.metrics.codahale_metrics.metrics.core.Gauge<?> metric;
+        private final eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.core.Gauge<?> metric;
 
-        private Gauge(com.espertech.esper.metrics.codahale_metrics.metrics.core.Gauge<?> metric, ObjectName objectName) {
+        private Gauge(eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.core.Gauge<?> metric, ObjectName objectName) {
             super(objectName);
             this.metric = metric;
         }
@@ -95,9 +95,9 @@ public class JmxReporter extends AbstractReporter implements MetricsRegistryList
 
 
     private static class Counter extends AbstractBean implements CounterMBean {
-        private final com.espertech.esper.metrics.codahale_metrics.metrics.core.Counter metric;
+        private final eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.core.Counter metric;
 
-        private Counter(com.espertech.esper.metrics.codahale_metrics.metrics.core.Counter metric, ObjectName objectName) {
+        private Counter(eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.core.Counter metric, ObjectName objectName) {
             super(objectName);
             this.metric = metric;
         }
@@ -202,9 +202,9 @@ public class JmxReporter extends AbstractReporter implements MetricsRegistryList
 
     private static class Histogram implements HistogramMBean {
         private final ObjectName objectName;
-        private final com.espertech.esper.metrics.codahale_metrics.metrics.core.Histogram metric;
+        private final eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.core.Histogram metric;
 
-        private Histogram(com.espertech.esper.metrics.codahale_metrics.metrics.core.Histogram metric, ObjectName objectName) {
+        private Histogram(eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.core.Histogram metric, ObjectName objectName) {
             this.metric = metric;
             this.objectName = objectName;
         }
@@ -436,14 +436,14 @@ public class JmxReporter extends AbstractReporter implements MetricsRegistryList
     }
 
     @Override
-    public void processCounter(MetricName name, com.espertech.esper.metrics.codahale_metrics.metrics.core.Counter counter, Context context) throws Exception {
+    public void processCounter(MetricName name, eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.core.Counter counter, Context context) throws Exception {
         registerBean(context.getMetricName(),
                 new Counter(counter, context.getObjectName()),
                 context.getObjectName());
     }
 
     @Override
-    public void processHistogram(MetricName name, com.espertech.esper.metrics.codahale_metrics.metrics.core.Histogram histogram, Context context) throws Exception {
+    public void processHistogram(MetricName name, eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.core.Histogram histogram, Context context) throws Exception {
         registerBean(context.getMetricName(),
                 new Histogram(histogram, context.getObjectName()),
                 context.getObjectName());
@@ -456,7 +456,7 @@ public class JmxReporter extends AbstractReporter implements MetricsRegistryList
     }
 
     @Override
-    public void processGauge(MetricName name, com.espertech.esper.metrics.codahale_metrics.metrics.core.Gauge gauge, Context context) throws Exception {
+    public void processGauge(MetricName name, eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.core.Gauge gauge, Context context) throws Exception {
         registerBean(context.getMetricName(), new Gauge(gauge, context.getObjectName()),
                 context.getObjectName());
     }

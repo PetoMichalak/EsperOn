@@ -22,8 +22,8 @@
  */
 package eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.util;
 
-import com.espertech.esper.metrics.codahale_metrics.metrics.core.HealthCheck;
-import com.espertech.esper.metrics.codahale_metrics.metrics.core.VirtualMachineMetrics;
+import eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.core.HealthCheck;
+import eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.core.VirtualMachineMetrics;
 
 import java.util.Set;
 

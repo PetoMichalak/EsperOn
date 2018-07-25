@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.lookup;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.epl.join.table.EventTable;
-import com.espertech.esper.epl.virtualdw.VirtualDWView;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.epl.join.table.EventTable;
+import eu.uk.ncl.pet5o.esper.epl.virtualdw.VirtualDWView;
 
 public class SubordWMatchExprLookupStrategyFactoryIndexedUnfiltered implements SubordWMatchExprLookupStrategyFactory {
     private final SubordTableLookupStrategyFactory lookupStrategyFactory;

@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.metrics.instrumentation;
 
-import com.espertech.esper.client.EPServiceProvider;
-import com.espertech.esper.core.service.EPServiceProviderSPI;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.client.EPServiceProvider;
+import eu.uk.ncl.pet5o.esper.core.service.EPServiceProviderSPI;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import java.util.Locale;
 

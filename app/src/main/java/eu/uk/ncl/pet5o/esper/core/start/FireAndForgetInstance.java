@@ -10,21 +10,21 @@
  */
 package eu.uk.ncl.pet5o.esper.core.start;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.epl.join.plan.QueryGraph;
-import com.espertech.esper.epl.virtualdw.VirtualDWView;
-import com.espertech.esper.view.Viewable;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.QueryGraph;
+import eu.uk.ncl.pet5o.esper.epl.virtualdw.VirtualDWView;
+import eu.uk.ncl.pet5o.esper.view.Viewable;
 
 import java.lang.annotation.Annotation;
 import java.util.Collection;
 
 public abstract class FireAndForgetInstance {
-    public abstract com.espertech.esper.client.EventBean[] processInsert(EPPreparedExecuteIUDSingleStreamExecInsert insert);
+    public abstract eu.uk.ncl.pet5o.esper.client.EventBean[] processInsert(EPPreparedExecuteIUDSingleStreamExecInsert insert);
 
-    public abstract com.espertech.esper.client.EventBean[] processDelete(EPPreparedExecuteIUDSingleStreamExecDelete delete);
+    public abstract eu.uk.ncl.pet5o.esper.client.EventBean[] processDelete(EPPreparedExecuteIUDSingleStreamExecDelete delete);
 
-    public abstract com.espertech.esper.client.EventBean[] processUpdate(EPPreparedExecuteIUDSingleStreamExecUpdate update);
+    public abstract eu.uk.ncl.pet5o.esper.client.EventBean[] processUpdate(EPPreparedExecuteIUDSingleStreamExecUpdate update);
 
     public abstract Collection<EventBean> snapshotBestEffort(EPPreparedExecuteMethodQuery epPreparedExecuteMethodQuery, QueryGraph queryGraph, Annotation[] annotations);
 

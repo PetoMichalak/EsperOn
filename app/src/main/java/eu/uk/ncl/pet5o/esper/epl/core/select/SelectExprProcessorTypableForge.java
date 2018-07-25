@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.select;
 
-import com.espertech.esper.epl.expression.core.ExprForge;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprForge;
 
 public interface SelectExprProcessorTypableForge extends ExprForge {
     public Class getUnderlyingEvaluationType();

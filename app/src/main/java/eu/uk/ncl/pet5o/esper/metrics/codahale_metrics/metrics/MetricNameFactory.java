@@ -22,10 +22,10 @@
  */
 package eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics;
 
-import com.espertech.esper.metrics.codahale_metrics.metrics.core.MetricName;
+import eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.core.MetricName;
 
 public class MetricNameFactory {
-    public final static String JMX_GROUP_NAME = "com.espertech.esper";
+    public final static String JMX_GROUP_NAME = "eu.uk.ncl.pet5o.esper";
 
     public static MetricName name(String engineURI, String type, Class clazz) {
         return new MetricName(JMX_GROUP_NAME + "-" + engineURI, type, clazz.getSimpleName());

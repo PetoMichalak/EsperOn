@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.exec.composite;
 
-import com.espertech.esper.epl.expression.core.ExprNodeUtilityCore;
-import com.espertech.esper.epl.join.plan.QueryGraphValueEntryHashKeyed;
-import com.espertech.esper.epl.join.plan.QueryGraphValueEntryRange;
-import com.espertech.esper.epl.lookup.SubordPropHashKey;
-import com.espertech.esper.epl.lookup.SubordPropRangeKey;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNodeUtilityCore;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.QueryGraphValueEntryHashKeyed;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.QueryGraphValueEntryRange;
+import eu.uk.ncl.pet5o.esper.epl.lookup.SubordPropHashKey;
+import eu.uk.ncl.pet5o.esper.epl.lookup.SubordPropRangeKey;
 
 import java.util.ArrayList;
 import java.util.Collection;

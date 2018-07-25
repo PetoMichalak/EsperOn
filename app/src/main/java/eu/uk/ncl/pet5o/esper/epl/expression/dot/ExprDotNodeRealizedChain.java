@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.dot;
 
-import com.espertech.esper.epl.join.plan.FilterExprAnalyzerAffector;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.FilterExprAnalyzerAffector;
 
 public class ExprDotNodeRealizedChain {
     private final ExprDotForge[] chain;

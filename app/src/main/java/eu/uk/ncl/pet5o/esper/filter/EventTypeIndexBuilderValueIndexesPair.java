@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.filter;
 
-import com.espertech.esper.filterspec.FilterValueSet;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterValueSet;
 
 public class EventTypeIndexBuilderValueIndexesPair implements FilterServiceEntry {
     private final FilterValueSet filterValueSet;

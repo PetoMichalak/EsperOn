@@ -10,14 +10,14 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.util;
 
-import com.espertech.esper.core.service.StatementContext;
-import com.espertech.esper.epl.agg.access.AggregationAccessorSlotPair;
-import com.espertech.esper.epl.agg.service.common.AggregationStateFactory;
-import com.espertech.esper.epl.agg.service.common.AggregatorUtil;
-import com.espertech.esper.epl.agg.service.groupbylocal.AggSvcLocalGroupByForge;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprNodeUtilityCore;
-import com.espertech.esper.epl.util.ExprNodeUtilityRich;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationAccessorSlotPair;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationStateFactory;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregatorUtil;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.groupbylocal.AggSvcLocalGroupByForge;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNodeUtilityCore;
+import eu.uk.ncl.pet5o.esper.epl.util.ExprNodeUtilityRich;
 
 public class AggregationLocalGroupByPlanForge {
 

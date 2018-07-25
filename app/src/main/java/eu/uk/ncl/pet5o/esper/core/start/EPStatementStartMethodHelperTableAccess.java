@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.core.start;
 
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.core.service.EPServicesContext;
-import com.espertech.esper.epl.expression.table.ExprTableAccessEvalStrategy;
-import com.espertech.esper.epl.expression.table.ExprTableAccessNode;
-import com.espertech.esper.epl.table.mgmt.TableMetadata;
-import com.espertech.esper.epl.table.strategy.ExprTableEvalStrategyFactory;
-import com.espertech.esper.epl.table.strategy.TableAndLockProvider;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.core.service.EPServicesContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.table.ExprTableAccessEvalStrategy;
+import eu.uk.ncl.pet5o.esper.epl.expression.table.ExprTableAccessNode;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadata;
+import eu.uk.ncl.pet5o.esper.epl.table.strategy.ExprTableEvalStrategyFactory;
+import eu.uk.ncl.pet5o.esper.epl.table.strategy.TableAndLockProvider;
 
 import java.util.Collections;
 import java.util.HashMap;

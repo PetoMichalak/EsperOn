@@ -10,16 +10,16 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.resultset.handthru;
 
-import com.espertech.esper.collection.TransformEventMethod;
-import com.espertech.esper.collection.UniformPair;
-import com.espertech.esper.epl.core.resultset.core.ResultSetProcessor;
+import eu.uk.ncl.pet5o.esper.collection.TransformEventMethod;
+import eu.uk.ncl.pet5o.esper.collection.UniformPair;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessor;
 
 /**
  * Method to transform an event based on the select expression.
  */
 public class ResultSetProcessorHandtruTransform implements TransformEventMethod {
     private final ResultSetProcessor resultSetProcessor;
-    private final com.espertech.esper.client.EventBean[] newData;
+    private final eu.uk.ncl.pet5o.esper.client.EventBean[] newData;
 
     /**
      * Ctor.
@@ -28,12 +28,12 @@ public class ResultSetProcessorHandtruTransform implements TransformEventMethod 
      */
     public ResultSetProcessorHandtruTransform(ResultSetProcessor resultSetProcessor) {
         this.resultSetProcessor = resultSetProcessor;
-        newData = new com.espertech.esper.client.EventBean[1];
+        newData = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
     }
 
-    public com.espertech.esper.client.EventBean transform(com.espertech.esper.client.EventBean theEvent) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean transform(eu.uk.ncl.pet5o.esper.client.EventBean theEvent) {
         newData[0] = theEvent;
-        UniformPair<com.espertech.esper.client.EventBean[]> pair = resultSetProcessor.processViewResult(newData, null, true);
+        UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> pair = resultSetProcessor.processViewResult(newData, null, true);
         return pair == null ? null : (pair.getFirst() == null ? null : pair.getFirst()[0]);
     }
 }

@@ -22,8 +22,8 @@
  */
 package eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics;
 
-import com.espertech.esper.metrics.codahale_metrics.metrics.core.*;
-import com.espertech.esper.metrics.codahale_metrics.metrics.reporting.JmxReporter;
+import eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.core.*;
+import eu.uk.ncl.pet5o.esper.metrics.codahale_metrics.metrics.reporting.JmxReporter;
 
 import java.util.concurrent.TimeUnit;
 

@@ -10,18 +10,18 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.updatehelper;
 
-import com.espertech.esper.client.EventPropertyDescriptor;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.FragmentEventType;
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.epl.expression.codegen.ExprNodeCompiler;
-import com.espertech.esper.epl.expression.core.*;
-import com.espertech.esper.epl.expression.ops.ExprEqualsNode;
-import com.espertech.esper.epl.expression.visitor.ExprNodeIdentifierCollectVisitor;
-import com.espertech.esper.epl.spec.OnTriggerSetAssignment;
-import com.espertech.esper.epl.util.ExprNodeUtilityRich;
-import com.espertech.esper.event.*;
-import com.espertech.esper.util.*;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyDescriptor;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.FragmentEventType;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprNodeCompiler;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.epl.expression.ops.ExprEqualsNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.visitor.ExprNodeIdentifierCollectVisitor;
+import eu.uk.ncl.pet5o.esper.epl.spec.OnTriggerSetAssignment;
+import eu.uk.ncl.pet5o.esper.epl.util.ExprNodeUtilityRich;
+import eu.uk.ncl.pet5o.esper.event.*;
+import eu.uk.ncl.pet5o.esper.util.*;
 
 import java.util.ArrayList;
 import java.util.HashSet;

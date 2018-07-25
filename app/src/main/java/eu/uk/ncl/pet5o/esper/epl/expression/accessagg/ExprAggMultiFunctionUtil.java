@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.accessagg;
 
-import com.espertech.esper.epl.core.streamtype.StreamTypeService;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.expression.core.ExprStreamUnderlyingNode;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.epl.core.streamtype.StreamTypeService;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprStreamUnderlyingNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
 
 public class ExprAggMultiFunctionUtil {
     public static int validateStreamWildcardGetStreamNum(ExprNode node)

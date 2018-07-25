@@ -10,14 +10,14 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.resultset.rowpergrouprollup;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.epl.agg.service.common.AggregationGroupByRollupDesc;
-import com.espertech.esper.epl.agg.service.common.AggregationGroupByRollupLevel;
-import com.espertech.esper.epl.core.orderby.OrderByProcessor;
-import com.espertech.esper.epl.core.resultset.core.ResultSetProcessorHelperFactory;
-import com.espertech.esper.epl.core.resultset.grouped.ResultSetProcessorGroupedOutputFirstHelper;
-import com.espertech.esper.epl.view.OutputConditionPolledFactory;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationGroupByRollupDesc;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationGroupByRollupLevel;
+import eu.uk.ncl.pet5o.esper.epl.core.orderby.OrderByProcessor;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessorHelperFactory;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.grouped.ResultSetProcessorGroupedOutputFirstHelper;
+import eu.uk.ncl.pet5o.esper.epl.view.OutputConditionPolledFactory;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -31,7 +31,7 @@ public class ResultSetProcessorRowPerGroupRollupUtil {
     final static String METHOD_GETOLDEVENTSSORTKEYS = "getOldEventsSortKeys";
 
     public static EventsAndSortKeysPair getOldEventsSortKeys(int oldEventCount, EventArrayAndSortKeyArray rstreamEventSortArrayBuf, OrderByProcessor orderByProcessor, AggregationGroupByRollupDesc rollupDesc) {
-        com.espertech.esper.client.EventBean[] oldEventsArr = new com.espertech.esper.client.EventBean[oldEventCount];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] oldEventsArr = new eu.uk.ncl.pet5o.esper.client.EventBean[oldEventCount];
         Object[] oldEventsSortKeys = null;
         if (orderByProcessor != null) {
             oldEventsSortKeys = new Object[oldEventCount];
@@ -40,7 +40,7 @@ public class ResultSetProcessorRowPerGroupRollupUtil {
         int countSortKeys = 0;
         for (AggregationGroupByRollupLevel level : rollupDesc.getLevels()) {
             List<EventBean> events = rstreamEventSortArrayBuf.getEventsPerLevel()[level.getLevelNumber()];
-            for (com.espertech.esper.client.EventBean event : events) {
+            for (eu.uk.ncl.pet5o.esper.client.EventBean event : events) {
                 oldEventsArr[countEvents++] = event;
             }
             if (orderByProcessor != null) {

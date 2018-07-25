@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.core.start;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.context.ContextPartitionSelector;
-import com.espertech.esper.core.service.EPPreparedQueryResult;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionSelector;
+import eu.uk.ncl.pet5o.esper.core.service.EPPreparedQueryResult;
 
 /**
  * Starts and provides the stop method for EPL statements.

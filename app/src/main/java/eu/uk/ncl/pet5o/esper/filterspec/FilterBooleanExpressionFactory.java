@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.filterspec;
 
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
 
 import java.lang.annotation.Annotation;
 
 public interface FilterBooleanExpressionFactory {
 
-    ExprNodeAdapterBase make(FilterSpecParamExprNode filterSpecParamExprNode, com.espertech.esper.client.EventBean[] events, ExprEvaluatorContext exprEvaluatorContext, int agentInstanceId, EngineImportService engineImportService, Annotation[] annotations);
+    ExprNodeAdapterBase make(FilterSpecParamExprNode filterSpecParamExprNode, eu.uk.ncl.pet5o.esper.client.EventBean[] events, ExprEvaluatorContext exprEvaluatorContext, int agentInstanceId, EngineImportService engineImportService, Annotation[] annotations);
 }

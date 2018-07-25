@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.codegen.compile;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.codegen.base.CodegenMember;
-import com.espertech.esper.codegen.core.*;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMember;
+import eu.uk.ncl.pet5o.esper.codegen.core.*;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
 
 import java.util.HashMap;
 import java.util.LinkedHashSet;
@@ -22,12 +22,12 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Supplier;
 
-import static com.espertech.esper.codegen.compile.CodeGenerationUtil.*;
-import static com.espertech.esper.codegen.compile.CodeGenerationUtil.classimplements;
-import static com.espertech.esper.codegen.compile.CodeGenerationUtil.importsdecl;
-import static com.espertech.esper.codegen.compile.CodeGenerationUtil.packagedecl;
-import static com.espertech.esper.codegen.core.CodeGenerationHelper.appendClassName;
-import static com.espertech.esper.codegen.util.CodegenClassUtil.getComponentTypeOutermost;
+import static eu.uk.ncl.pet5o.esper.codegen.compile.CodeGenerationUtil.*;
+import static eu.uk.ncl.pet5o.esper.codegen.compile.CodeGenerationUtil.classimplements;
+import static eu.uk.ncl.pet5o.esper.codegen.compile.CodeGenerationUtil.importsdecl;
+import static eu.uk.ncl.pet5o.esper.codegen.compile.CodeGenerationUtil.packagedecl;
+import static eu.uk.ncl.pet5o.esper.codegen.core.CodeGenerationHelper.appendClassName;
+import static eu.uk.ncl.pet5o.esper.codegen.util.CodegenClassUtil.getComponentTypeOutermost;
 
 public class CodegenClassGenerator {
 

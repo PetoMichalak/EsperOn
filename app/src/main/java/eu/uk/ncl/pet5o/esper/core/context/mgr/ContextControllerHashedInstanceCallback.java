@@ -12,5 +12,5 @@ package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
 public interface ContextControllerHashedInstanceCallback {
 
-    public void create(int id, com.espertech.esper.client.EventBean theEvent);
+    public void create(int id, eu.uk.ncl.pet5o.esper.client.EventBean theEvent);
 }

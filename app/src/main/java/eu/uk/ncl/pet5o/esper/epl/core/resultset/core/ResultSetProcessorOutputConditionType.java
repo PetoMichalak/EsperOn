@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.resultset.core;
 
-import com.espertech.esper.client.ConfigurationInformation;
-import com.espertech.esper.client.annotation.HintEnum;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.epl.spec.OutputLimitLimitType;
+import eu.uk.ncl.pet5o.esper.client.ConfigurationInformation;
+import eu.uk.ncl.pet5o.esper.client.annotation.HintEnum;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.epl.spec.OutputLimitLimitType;
 
 import java.lang.annotation.Annotation;
 

@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.table;
 
-import com.espertech.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
 
 import java.util.Iterator;
 import java.util.Map;
@@ -18,7 +18,7 @@ import java.util.NoSuchElementException;
 import java.util.Set;
 
 /**
- * Iterator for use by {@link com.espertech.esper.epl.join.table.PropertyIndexedEventTableUnadorned}.
+ * Iterator for use by {@link eu.uk.ncl.pet5o.esper.epl.join.table.PropertyIndexedEventTableUnadorned}.
  */
 public final class PropertyIndexedEventTableIterator<T> implements Iterator<EventBean> {
     private final Map<T, Set<EventBean>> window;

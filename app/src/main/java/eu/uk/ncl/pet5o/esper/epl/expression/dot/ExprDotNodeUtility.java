@@ -10,28 +10,28 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.dot;
 
-import com.espertech.esper.client.EventPropertyDescriptor;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.FragmentEventType;
-import com.espertech.esper.codegen.base.CodegenBlock;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.epl.core.streamtype.StreamTypeService;
-import com.espertech.esper.epl.datetime.eval.DatetimeMethodEnum;
-import com.espertech.esper.epl.datetime.eval.ExprDotDTFactory;
-import com.espertech.esper.epl.datetime.eval.ExprDotDTMethodDesc;
-import com.espertech.esper.epl.enummethod.dot.*;
-import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
-import com.espertech.esper.epl.expression.core.*;
-import com.espertech.esper.epl.join.plan.FilterExprAnalyzerAffector;
-import com.espertech.esper.epl.rettype.*;
-import com.espertech.esper.epl.table.mgmt.TableMetadata;
-import com.espertech.esper.epl.util.ExprNodeUtilityRich;
-import com.espertech.esper.event.*;
-import com.espertech.esper.event.arr.ObjectArrayEventType;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyDescriptor;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.FragmentEventType;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenBlock;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.epl.core.streamtype.StreamTypeService;
+import eu.uk.ncl.pet5o.esper.epl.datetime.eval.DatetimeMethodEnum;
+import eu.uk.ncl.pet5o.esper.epl.datetime.eval.ExprDotDTFactory;
+import eu.uk.ncl.pet5o.esper.epl.datetime.eval.ExprDotDTMethodDesc;
+import eu.uk.ncl.pet5o.esper.epl.enummethod.dot.*;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.FilterExprAnalyzerAffector;
+import eu.uk.ncl.pet5o.esper.epl.rettype.*;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadata;
+import eu.uk.ncl.pet5o.esper.epl.util.ExprNodeUtilityRich;
+import eu.uk.ncl.pet5o.esper.event.*;
+import eu.uk.ncl.pet5o.esper.event.arr.ObjectArrayEventType;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import net.sf.cglib.reflect.FastMethod;
 
@@ -46,8 +46,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
 
 public class ExprDotNodeUtility {
     public static boolean isDatetimeOrEnumMethod(String name) {
@@ -243,7 +243,7 @@ public class ExprDotNodeUtility {
         }
     }
 
-    public static Object evaluateChain(ExprDotForge[] forges, ExprDotEval[] evaluators, Object inner, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public static Object evaluateChain(ExprDotForge[] forges, ExprDotEval[] evaluators, Object inner, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         if (InstrumentationHelper.ENABLED) {
             int i = -1;
             for (ExprDotEval methodEval : evaluators) {
@@ -317,7 +317,7 @@ public class ExprDotNodeUtility {
                                                Class resultType,
                                                ExprDotEval[] chainEval,
                                                ExprDotForge[] chainForges,
-                                               com.espertech.esper.client.EventBean[] eventsPerStream,
+                                               eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream,
                                                boolean newData,
                                                ExprEvaluatorContext exprEvaluatorContext) {
         if (result == null) {

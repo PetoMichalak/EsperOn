@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.activator;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.core.service.StatementContext;
-import com.espertech.esper.pattern.*;
-import com.espertech.esper.view.EventStream;
-import com.espertech.esper.view.ZeroDepthStreamIterable;
-import com.espertech.esper.view.ZeroDepthStreamNoIterate;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.pattern.*;
+import eu.uk.ncl.pet5o.esper.view.EventStream;
+import eu.uk.ncl.pet5o.esper.view.ZeroDepthStreamIterable;
+import eu.uk.ncl.pet5o.esper.view.ZeroDepthStreamNoIterate;
 
 import java.util.Map;
 
@@ -47,8 +47,8 @@ public class ViewableActivatorPattern implements ViewableActivator {
         final EventStream sourceEventStream = isCanIterate ? new ZeroDepthStreamIterable(eventType) : new ZeroDepthStreamNoIterate(eventType);
         final StatementContext statementContext = patternContext.getStatementContext();
         final PatternMatchCallback callback = new PatternMatchCallback() {
-            public void matchFound(Map<String, Object> matchEvent, com.espertech.esper.client.EventBean optionalTriggeringEvent) {
-                com.espertech.esper.client.EventBean compositeEvent = statementContext.getEventAdapterService().adapterForTypedMap(matchEvent, eventType);
+            public void matchFound(Map<String, Object> matchEvent, eu.uk.ncl.pet5o.esper.client.EventBean optionalTriggeringEvent) {
+                eu.uk.ncl.pet5o.esper.client.EventBean compositeEvent = statementContext.getEventAdapterService().adapterForTypedMap(matchEvent, eventType);
                 sourceEventStream.insert(compositeEvent);
             }
         };

@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.filterspec.MatchedEventMap;
+import eu.uk.ncl.pet5o.esper.filterspec.MatchedEventMap;
 
 public interface ContextControllerCondition {
 
-    public void activate(com.espertech.esper.client.EventBean optionalTriggeringEvent, MatchedEventMap priorMatches, long timeOffset, boolean isRecoveringReslient);
+    public void activate(eu.uk.ncl.pet5o.esper.client.EventBean optionalTriggeringEvent, MatchedEventMap priorMatches, long timeOffset, boolean isRecoveringReslient);
 
     public void deactivate();
 

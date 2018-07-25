@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.stmt;
 
-import com.espertech.esper.epl.expression.prior.ExprPriorEvalStrategy;
+import eu.uk.ncl.pet5o.esper.epl.expression.prior.ExprPriorEvalStrategy;
 
 public interface AIRegistryPrior extends ExprPriorEvalStrategy {
     public void assignService(int num, ExprPriorEvalStrategy value);

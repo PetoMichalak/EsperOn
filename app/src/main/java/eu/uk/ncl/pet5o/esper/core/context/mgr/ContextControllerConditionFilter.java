@@ -10,16 +10,16 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.core.context.util.StatementAgentInstanceUtil;
-import com.espertech.esper.core.service.EPServicesContext;
-import com.espertech.esper.core.service.EPStatementHandleCallback;
-import com.espertech.esper.epl.spec.ContextDetailConditionFilter;
-import com.espertech.esper.filter.FilterHandleCallback;
-import com.espertech.esper.filter.FilterServiceEntry;
-import com.espertech.esper.filterspec.FilterValueSet;
-import com.espertech.esper.filterspec.FilterValueSetParam;
-import com.espertech.esper.filterspec.MatchedEventMap;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.core.context.util.StatementAgentInstanceUtil;
+import eu.uk.ncl.pet5o.esper.core.service.EPServicesContext;
+import eu.uk.ncl.pet5o.esper.core.service.EPStatementHandleCallback;
+import eu.uk.ncl.pet5o.esper.epl.spec.ContextDetailConditionFilter;
+import eu.uk.ncl.pet5o.esper.filter.FilterHandleCallback;
+import eu.uk.ncl.pet5o.esper.filter.FilterServiceEntry;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterValueSet;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterValueSetParam;
+import eu.uk.ncl.pet5o.esper.filterspec.MatchedEventMap;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -35,7 +35,7 @@ public class ContextControllerConditionFilter implements ContextControllerCondit
 
     private EPStatementHandleCallback filterHandle;
     private FilterServiceEntry filterServiceEntry;
-    private com.espertech.esper.client.EventBean lastEvent;
+    private eu.uk.ncl.pet5o.esper.client.EventBean lastEvent;
 
     public ContextControllerConditionFilter(EPServicesContext servicesContext, AgentInstanceContext agentInstanceContext, ContextDetailConditionFilter endpointFilterSpec, ContextControllerConditionCallback callback, ContextInternalFilterAddendum filterAddendum) {
         this.servicesContext = servicesContext;
@@ -45,13 +45,13 @@ public class ContextControllerConditionFilter implements ContextControllerCondit
         this.filterAddendum = filterAddendum;
     }
 
-    public void activate(com.espertech.esper.client.EventBean optionalTriggeringEvent, MatchedEventMap priorMatches, long timeOffset, boolean isRecoveringResilient) {
+    public void activate(eu.uk.ncl.pet5o.esper.client.EventBean optionalTriggeringEvent, MatchedEventMap priorMatches, long timeOffset, boolean isRecoveringResilient) {
         FilterHandleCallback filterCallback = new FilterHandleCallback() {
             public int getStatementId() {
                 return agentInstanceContext.getStatementContext().getStatementId();
             }
 
-            public void matchFound(com.espertech.esper.client.EventBean theEvent, Collection<FilterHandleCallback> allStmtMatches) {
+            public void matchFound(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, Collection<FilterHandleCallback> allStmtMatches) {
                 filterMatchFound(theEvent);
             }
 
@@ -81,7 +81,7 @@ public class ContextControllerConditionFilter implements ContextControllerCondit
         }
     }
 
-    private void filterMatchFound(com.espertech.esper.client.EventBean theEvent) {
+    private void filterMatchFound(eu.uk.ncl.pet5o.esper.client.EventBean theEvent) {
         // For OR-type filters we de-duplicate here by keeping the last event instance
         if (endpointFilterSpec.getFilterSpecCompiled().getParameters().length > 1) {
             if (theEvent == lastEvent) {

@@ -10,50 +10,50 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.access;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMember;
-import com.espertech.esper.codegen.base.CodegenMembersColumnized;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.core.CodegenNamedMethods;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.codegen.model.expression.CodegenExpressionRef;
-import com.espertech.esper.epl.agg.aggregator.AggregatorCodegenUtil;
-import com.espertech.esper.epl.agg.factory.AggregationStateMinMaxByEverForge;
-import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMember;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMembersColumnized;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.core.CodegenNamedMethods;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRef;
+import eu.uk.ncl.pet5o.esper.epl.agg.aggregator.AggregatorCodegenUtil;
+import eu.uk.ncl.pet5o.esper.epl.agg.factory.AggregationStateMinMaxByEverForge;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.arrayAtIndex;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantTrue;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.equalsNull;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.member;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.refCol;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.relational;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionRelational.CodegenRelational.GT;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionRelational.CodegenRelational.LT;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.*;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.NAME_EPS;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.NAME_EXPREVALCONTEXT;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_EPS;
-import static com.espertech.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_EXPREVALCONTEXT;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.arrayAtIndex;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantTrue;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.equalsNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.member;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.refCol;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.relational;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRelational.CodegenRelational.GT;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRelational.CodegenRelational.LT;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.*;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.NAME_EPS;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.NAME_EXPREVALCONTEXT;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_EPS;
+import static eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenNames.REF_EXPREVALCONTEXT;
 
 /**
  * Implementation of access function for single-stream (not joins).
  */
 public class AggregationStateMinMaxByEver implements AggregationState, AggregationStateSorted {
     protected final AggregationStateMinMaxByEverSpec spec;
-    protected com.espertech.esper.client.EventBean currentMinMaxBean;
+    protected eu.uk.ncl.pet5o.esper.client.EventBean currentMinMaxBean;
     protected Object currentMinMax;
 
     public AggregationStateMinMaxByEver(AggregationStateMinMaxByEverSpec spec) {
@@ -61,12 +61,12 @@ public class AggregationStateMinMaxByEver implements AggregationState, Aggregati
     }
 
     public static void rowMemberCodegen(int stateNumber, CodegenMembersColumnized membersColumnized) {
-        membersColumnized.addMember(stateNumber, com.espertech.esper.client.EventBean.class, "currentMinMaxBean");
+        membersColumnized.addMember(stateNumber, eu.uk.ncl.pet5o.esper.client.EventBean.class, "currentMinMaxBean");
         membersColumnized.addMember(stateNumber, Object.class, "currentMinMax");
     }
 
-    public void applyEnter(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
-        com.espertech.esper.client.EventBean theEvent = eventsPerStream[spec.getStreamId()];
+    public void applyEnter(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
+        eu.uk.ncl.pet5o.esper.client.EventBean theEvent = eventsPerStream[spec.getStreamId()];
         if (theEvent == null) {
             return;
         }
@@ -79,12 +79,12 @@ public class AggregationStateMinMaxByEver implements AggregationState, Aggregati
         }
         CodegenExpression eps = symbols.getAddEPS(method);
         CodegenExpression ctx = symbols.getAddExprEvalCtx(method);
-        method.getBlock().declareVar(com.espertech.esper.client.EventBean.class, "theEvent", arrayAtIndex(eps, constant(forge.getSpec().getStreamId())))
+        method.getBlock().declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "theEvent", arrayAtIndex(eps, constant(forge.getSpec().getStreamId())))
                 .ifCondition(equalsNull(ref("theEvent"))).blockReturnNoValue()
                 .localMethod(addEventCodegen(forge, stateNumber, method, namedMethods, classScope), ref("theEvent"), eps, ctx);
     }
 
-    public void applyLeave(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
+    public void applyLeave(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
         // this is an ever-type aggregation
     }
 
@@ -98,7 +98,7 @@ public class AggregationStateMinMaxByEver implements AggregationState, Aggregati
                 .assignRef(refCol("currentMinMax", stateNumber), constantNull());
     }
 
-    public com.espertech.esper.client.EventBean getFirstValue() {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getFirstValue() {
         if (spec.isMax()) {
             throw new UnsupportedOperationException("Only accepts max-value queries");
         }
@@ -112,7 +112,7 @@ public class AggregationStateMinMaxByEver implements AggregationState, Aggregati
         return refCol("currentMinMaxBean", slot);
     }
 
-    public com.espertech.esper.client.EventBean getLastValue() {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getLastValue() {
         if (!spec.isMax()) {
             throw new UnsupportedOperationException("Only accepts min-value queries");
         }
@@ -149,7 +149,7 @@ public class AggregationStateMinMaxByEver implements AggregationState, Aggregati
         return spec;
     }
 
-    public com.espertech.esper.client.EventBean getCurrentMinMaxBean() {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getCurrentMinMaxBean() {
         return currentMinMaxBean;
     }
 
@@ -157,7 +157,7 @@ public class AggregationStateMinMaxByEver implements AggregationState, Aggregati
         return currentMinMax;
     }
 
-    public void setCurrentMinMaxBean(com.espertech.esper.client.EventBean currentMinMaxBean) {
+    public void setCurrentMinMaxBean(eu.uk.ncl.pet5o.esper.client.EventBean currentMinMaxBean) {
         this.currentMinMaxBean = currentMinMaxBean;
     }
 
@@ -165,7 +165,7 @@ public class AggregationStateMinMaxByEver implements AggregationState, Aggregati
         this.currentMinMax = currentMinMax;
     }
 
-    protected void addEvent(com.espertech.esper.client.EventBean theEvent, com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
+    protected void addEvent(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
         Object comparable = AggregationStateSortedImpl.getComparable(spec.getCriteria(), eventsPerStream, true, exprEvaluatorContext);
         if (currentMinMax == null) {
             currentMinMax = comparable;
@@ -192,7 +192,7 @@ public class AggregationStateMinMaxByEver implements AggregationState, Aggregati
         CodegenExpressionRef currentMinMaxBean = refCol("currentMinMaxBean", stateNumber);
         CodegenMember memberComparator = classScope.makeAddMember(Comparator.class, forge.getSpec().getComparator());
 
-        CodegenMethodNode methodNode = parent.makeChild(void.class, AggregationStateMinMaxByEver.class, classScope).addParam(com.espertech.esper.client.EventBean.class, "theEvent").addParam(com.espertech.esper.client.EventBean[].class, NAME_EPS).addParam(ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT);
+        CodegenMethodNode methodNode = parent.makeChild(void.class, AggregationStateMinMaxByEver.class, classScope).addParam(eu.uk.ncl.pet5o.esper.client.EventBean.class, "theEvent").addParam(eu.uk.ncl.pet5o.esper.client.EventBean[].class, NAME_EPS).addParam(ExprEvaluatorContext.class, NAME_EXPREVALCONTEXT);
         methodNode.getBlock().declareVar(Object.class, "comparable", localMethod(comparable, REF_EPS, constantTrue(), REF_EXPREVALCONTEXT))
                 .ifCondition(equalsNull(currentMinMax))
                     .assignRef(currentMinMax, ref("comparable"))

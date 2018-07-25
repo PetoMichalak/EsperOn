@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.resultset.rowforall;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.collection.MultiKey;
-import com.espertech.esper.collection.UniformPair;
-import com.espertech.esper.epl.core.resultset.core.ResultSetProcessorUtil;
-import com.espertech.esper.event.EventBeanUtility;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.collection.MultiKey;
+import eu.uk.ncl.pet5o.esper.collection.UniformPair;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessorUtil;
+import eu.uk.ncl.pet5o.esper.event.EventBeanUtility;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -29,36 +29,36 @@ public class ResultSetProcessorRowForAllOutputAllHelperImpl implements ResultSet
         this.processor = processor;
     }
 
-    public void processView(com.espertech.esper.client.EventBean[] newData, com.espertech.esper.client.EventBean[] oldData, boolean isGenerateSynthetic) {
+    public void processView(eu.uk.ncl.pet5o.esper.client.EventBean[] newData, eu.uk.ncl.pet5o.esper.client.EventBean[] oldData, boolean isGenerateSynthetic) {
         if (processor.isSelectRStream()) {
-            com.espertech.esper.client.EventBean[] events = processor.getSelectListEventsAsArray(false, isGenerateSynthetic, false);
+            eu.uk.ncl.pet5o.esper.client.EventBean[] events = processor.getSelectListEventsAsArray(false, isGenerateSynthetic, false);
             EventBeanUtility.addToCollection(events, eventsOld);
         }
 
-        com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[1];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
         ResultSetProcessorUtil.applyAggViewResult(processor.getAggregationService(), processor.getExprEvaluatorContext(), newData, oldData, eventsPerStream);
 
-        com.espertech.esper.client.EventBean[] events = processor.getSelectListEventsAsArray(true, isGenerateSynthetic, false);
+        eu.uk.ncl.pet5o.esper.client.EventBean[] events = processor.getSelectListEventsAsArray(true, isGenerateSynthetic, false);
         EventBeanUtility.addToCollection(events, eventsNew);
     }
 
     public void processJoin(Set<MultiKey<EventBean>> newEvents, Set<MultiKey<EventBean>> oldEvents, boolean isGenerateSynthetic) {
         if (processor.isSelectRStream()) {
-            com.espertech.esper.client.EventBean[] events = processor.getSelectListEventsAsArray(false, isGenerateSynthetic, true);
+            eu.uk.ncl.pet5o.esper.client.EventBean[] events = processor.getSelectListEventsAsArray(false, isGenerateSynthetic, true);
             EventBeanUtility.addToCollection(events, eventsOld);
         }
 
         ResultSetProcessorUtil.applyAggJoinResult(processor.getAggregationService(), processor.getExprEvaluatorContext(), newEvents, oldEvents);
 
-        com.espertech.esper.client.EventBean[] events = processor.getSelectListEventsAsArray(true, isGenerateSynthetic, true);
+        eu.uk.ncl.pet5o.esper.client.EventBean[] events = processor.getSelectListEventsAsArray(true, isGenerateSynthetic, true);
         EventBeanUtility.addToCollection(events, eventsNew);
     }
 
-    public UniformPair<com.espertech.esper.client.EventBean[]> outputView(boolean isGenerateSynthetic) {
+    public UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> outputView(boolean isGenerateSynthetic) {
         return output(isGenerateSynthetic, false);
     }
 
-    public UniformPair<com.espertech.esper.client.EventBean[]> outputJoin(boolean isGenerateSynthetic) {
+    public UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> outputJoin(boolean isGenerateSynthetic) {
         return output(isGenerateSynthetic, true);
     }
 
@@ -66,9 +66,9 @@ public class ResultSetProcessorRowForAllOutputAllHelperImpl implements ResultSet
         // no action required
     }
 
-    private UniformPair<com.espertech.esper.client.EventBean[]> output(boolean isGenerateSynthetic, boolean isJoin) {
-        com.espertech.esper.client.EventBean[] oldEvents = EventBeanUtility.toArrayNullIfEmpty(eventsOld);
-        com.espertech.esper.client.EventBean[] newEvents = EventBeanUtility.toArrayNullIfEmpty(eventsNew);
+    private UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> output(boolean isGenerateSynthetic, boolean isJoin) {
+        eu.uk.ncl.pet5o.esper.client.EventBean[] oldEvents = EventBeanUtility.toArrayNullIfEmpty(eventsOld);
+        eu.uk.ncl.pet5o.esper.client.EventBean[] newEvents = EventBeanUtility.toArrayNullIfEmpty(eventsNew);
 
         if (newEvents == null) {
             newEvents = processor.getSelectListEventsAsArray(true, isGenerateSynthetic, isJoin);
@@ -77,7 +77,7 @@ public class ResultSetProcessorRowForAllOutputAllHelperImpl implements ResultSet
             oldEvents = processor.getSelectListEventsAsArray(false, isGenerateSynthetic, isJoin);
         }
 
-        UniformPair<com.espertech.esper.client.EventBean[]> result = null;
+        UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> result = null;
         if (oldEvents != null || newEvents != null) {
             result = new UniformPair<>(newEvents, oldEvents);
         }

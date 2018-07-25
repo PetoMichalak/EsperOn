@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.resultset.grouped;
 
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.epl.view.OutputConditionPolled;
-import com.espertech.esper.epl.view.OutputConditionPolledFactory;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.epl.view.OutputConditionPolled;
+import eu.uk.ncl.pet5o.esper.epl.view.OutputConditionPolledFactory;
 
 import java.util.HashMap;
 import java.util.Map;

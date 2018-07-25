@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.codegen.compile;
 
-import com.espertech.esper.client.ConfigurationException;
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.codegen.util.IdentifierUtil;
+import eu.uk.ncl.pet5o.esper.client.ConfigurationException;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.codegen.util.IdentifierUtil;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +26,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.function.Supplier;
 
-import static com.espertech.esper.codegen.compile.CodeGenerationUtil.codeWithLineNum;
+import static eu.uk.ncl.pet5o.esper.codegen.compile.CodeGenerationUtil.codeWithLineNum;
 
 /**
  * Janino Usage Notes
@@ -58,7 +58,7 @@ public class CodegenCompilerJanino implements CodegenCompiler {
         this.logging = logging;
         this.includeDebugSymbols = includeDebugSymbols;
         setupJanino();
-        this.packageName = "com.espertech.esper.generated.uri_" + IdentifierUtil.getIdentifierMayStartNumeric(engineURI);
+        this.packageName = "eu.uk.ncl.pet5o.esper.generated.uri_" + IdentifierUtil.getIdentifierMayStartNumeric(engineURI);
     }
 
     public String getPackageName() {

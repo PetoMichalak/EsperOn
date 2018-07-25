@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.baseagg;
 
-import com.espertech.esper.epl.declexpr.ExprDeclaredNode;
-import com.espertech.esper.epl.expression.core.ExprNamedParameterNode;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.expression.core.ExprNodeInnerNodeProvider;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.epl.declexpr.ExprDeclaredNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNamedParameterNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNodeInnerNodeProvider;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import java.util.LinkedList;
 import java.util.List;

@@ -10,31 +10,31 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.select;
 
-import com.espertech.esper.client.ConfigurationInformation;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.soda.ForClauseKeyword;
-import com.espertech.esper.core.context.util.ContextDescriptor;
-import com.espertech.esper.core.service.StatementExtensionSvcContext;
-import com.espertech.esper.core.service.StatementResultService;
-import com.espertech.esper.core.service.speccompiled.SelectClauseStreamCompiledSpec;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.epl.core.resultset.core.GroupByRollupInfo;
-import com.espertech.esper.epl.core.select.eval.SelectExprStreamDesc;
-import com.espertech.esper.epl.core.streamtype.StreamTypeService;
-import com.espertech.esper.epl.core.streamtype.StreamTypeServiceImpl;
-import com.espertech.esper.epl.expression.core.*;
-import com.espertech.esper.epl.expression.dot.ExprDotNode;
-import com.espertech.esper.epl.named.NamedWindowMgmtService;
-import com.espertech.esper.epl.spec.*;
-import com.espertech.esper.epl.table.mgmt.TableService;
-import com.espertech.esper.epl.table.mgmt.TableServiceUtil;
-import com.espertech.esper.epl.util.ExprNodeUtilityRich;
-import com.espertech.esper.epl.variable.VariableService;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.event.EventTypeMetadata;
-import com.espertech.esper.event.EventTypeSPI;
-import com.espertech.esper.event.vaevent.ValueAddEventService;
-import com.espertech.esper.schedule.TimeProvider;
+import eu.uk.ncl.pet5o.esper.client.ConfigurationInformation;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.soda.ForClauseKeyword;
+import eu.uk.ncl.pet5o.esper.core.context.util.ContextDescriptor;
+import eu.uk.ncl.pet5o.esper.core.service.StatementExtensionSvcContext;
+import eu.uk.ncl.pet5o.esper.core.service.StatementResultService;
+import eu.uk.ncl.pet5o.esper.core.service.speccompiled.SelectClauseStreamCompiledSpec;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.core.GroupByRollupInfo;
+import eu.uk.ncl.pet5o.esper.epl.core.select.eval.SelectExprStreamDesc;
+import eu.uk.ncl.pet5o.esper.epl.core.streamtype.StreamTypeService;
+import eu.uk.ncl.pet5o.esper.epl.core.streamtype.StreamTypeServiceImpl;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.epl.expression.dot.ExprDotNode;
+import eu.uk.ncl.pet5o.esper.epl.named.NamedWindowMgmtService;
+import eu.uk.ncl.pet5o.esper.epl.spec.*;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableService;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableServiceUtil;
+import eu.uk.ncl.pet5o.esper.epl.util.ExprNodeUtilityRich;
+import eu.uk.ncl.pet5o.esper.epl.variable.VariableService;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.event.EventTypeMetadata;
+import eu.uk.ncl.pet5o.esper.event.EventTypeSPI;
+import eu.uk.ncl.pet5o.esper.event.vaevent.ValueAddEventService;
+import eu.uk.ncl.pet5o.esper.schedule.TimeProvider;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -205,7 +205,7 @@ public class SelectExprProcessorFactory {
      * Verify that each given name occurs exactly one.
      *
      * @param selectionList is the list of select items to verify names
-     * @throws com.espertech.esper.epl.expression.core.ExprValidationException thrown if a name occured more then once
+     * @throws eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException thrown if a name occured more then once
      */
     protected static void verifyNameUniqueness(SelectClauseElementCompiled[] selectionList) throws ExprValidationException {
         Set<String> names = new HashSet<String>();

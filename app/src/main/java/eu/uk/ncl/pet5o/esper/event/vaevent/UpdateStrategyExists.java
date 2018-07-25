@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.event.vaevent;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventPropertyGetter;
-import com.espertech.esper.util.NullableObject;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.util.NullableObject;
 
 /**
  * Strategy for merging update properties using only existing property's values.
@@ -31,7 +31,7 @@ public class UpdateStrategyExists extends UpdateStrategyBase {
                              RevisionStateMerge revisionState,
                              RevisionEventBeanMerge revisionEvent,
                              RevisionTypeDesc typesDesc) {
-        com.espertech.esper.client.EventBean underlyingEvent = revisionEvent.getUnderlyingFullOrDelta();
+        eu.uk.ncl.pet5o.esper.client.EventBean underlyingEvent = revisionEvent.getUnderlyingFullOrDelta();
 
         NullableObject<Object>[] changeSetValues = revisionState.getOverlays();
         if (changeSetValues == null) {

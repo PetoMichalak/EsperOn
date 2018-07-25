@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.plan;
 
-import com.espertech.esper.epl.index.service.EventAdvancedIndexProvisionDesc;
-import com.espertech.esper.epl.lookup.IndexMultiKey;
-import com.espertech.esper.epl.lookup.IndexedPropDesc;
-import com.espertech.esper.util.CollectionUtil;
+import eu.uk.ncl.pet5o.esper.epl.index.service.EventAdvancedIndexProvisionDesc;
+import eu.uk.ncl.pet5o.esper.epl.lookup.IndexMultiKey;
+import eu.uk.ncl.pet5o.esper.epl.lookup.IndexedPropDesc;
+import eu.uk.ncl.pet5o.esper.util.CollectionUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.rollup;
 
-import com.espertech.esper.collection.NumberAscCombinationEnumeration;
-import com.espertech.esper.util.CollectionUtil;
+import eu.uk.ncl.pet5o.esper.collection.NumberAscCombinationEnumeration;
+import eu.uk.ncl.pet5o.esper.util.CollectionUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;

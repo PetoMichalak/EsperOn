@@ -10,17 +10,17 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.context.ContextStateEventContextCreated;
-import com.espertech.esper.client.context.ContextStateEventContextDestroyed;
-import com.espertech.esper.client.context.ContextStateListener;
-import com.espertech.esper.client.hook.ExceptionHandlerExceptionType;
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.core.context.util.ContextDescriptor;
-import com.espertech.esper.core.service.EPServicesContext;
-import com.espertech.esper.core.service.ExceptionHandlingService;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.epl.spec.CreateContextDesc;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.context.ContextStateEventContextCreated;
+import eu.uk.ncl.pet5o.esper.client.context.ContextStateEventContextDestroyed;
+import eu.uk.ncl.pet5o.esper.client.context.ContextStateListener;
+import eu.uk.ncl.pet5o.esper.client.hook.ExceptionHandlerExceptionType;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.core.context.util.ContextDescriptor;
+import eu.uk.ncl.pet5o.esper.core.service.EPServicesContext;
+import eu.uk.ncl.pet5o.esper.core.service.ExceptionHandlingService;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.epl.spec.CreateContextDesc;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

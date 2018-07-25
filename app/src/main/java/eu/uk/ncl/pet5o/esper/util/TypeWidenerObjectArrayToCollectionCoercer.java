@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.util;
 
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
 
 import java.util.Arrays;
 
-import static com.espertech.esper.util.TypeWidenerFactory.codegenWidenArrayAsListMayNull;
+import static eu.uk.ncl.pet5o.esper.util.TypeWidenerFactory.codegenWidenArrayAsListMayNull;
 
 /**
  * Type widner that coerces from String to char if required.

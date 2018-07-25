@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.util;
 
-import com.espertech.esper.epl.join.plan.QueryPlan;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.QueryPlan;
 
 public interface QueryPlanIndexHook {
     public void subquery(QueryPlanIndexDescSubquery subquery);

@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.filter.FilterHandleCallback;
+import eu.uk.ncl.pet5o.esper.filter.FilterHandleCallback;
 
 import java.util.Collection;
 
 public interface ContextControllerPartitionedInstanceManageCallback {
 
-    public void createKey(Object key, com.espertech.esper.client.EventBean theEvent, Collection<FilterHandleCallback> allStmtMatches, String initConditionAsName);
+    public void createKey(Object key, eu.uk.ncl.pet5o.esper.client.EventBean theEvent, Collection<FilterHandleCallback> allStmtMatches, String initConditionAsName);
 }

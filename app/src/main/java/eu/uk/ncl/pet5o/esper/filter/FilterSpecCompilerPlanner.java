@@ -10,25 +10,25 @@
  */
 package eu.uk.ncl.pet5o.esper.filter;
 
-import com.espertech.esper.client.annotation.Hint;
-import com.espertech.esper.client.annotation.HintEnum;
-import com.espertech.esper.collection.CombinationEnumeration;
-import com.espertech.esper.epl.expression.baseagg.ExprAggregateNode;
-import com.espertech.esper.epl.expression.baseagg.ExprAggregateNodeUtil;
-import com.espertech.esper.epl.expression.core.ExprFilterSpecLookupable;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.expression.core.ExprValidationContext;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.epl.expression.ops.ExprAndNode;
-import com.espertech.esper.epl.expression.ops.ExprOrNode;
-import com.espertech.esper.epl.expression.subquery.ExprSubselectNode;
-import com.espertech.esper.epl.expression.visitor.ExprNodeSubselectDeclaredDotVisitor;
-import com.espertech.esper.epl.expression.visitor.ExprNodeTableAccessFinderVisitor;
-import com.espertech.esper.epl.expression.visitor.ExprNodeVariableVisitor;
-import com.espertech.esper.epl.util.ExprNodeUtilityRich;
-import com.espertech.esper.filterspec.FilterOperator;
-import com.espertech.esper.filterspec.FilterSpecParam;
-import com.espertech.esper.filterspec.FilterSpecParamExprNode;
+import eu.uk.ncl.pet5o.esper.client.annotation.Hint;
+import eu.uk.ncl.pet5o.esper.client.annotation.HintEnum;
+import eu.uk.ncl.pet5o.esper.collection.CombinationEnumeration;
+import eu.uk.ncl.pet5o.esper.epl.expression.baseagg.ExprAggregateNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.baseagg.ExprAggregateNodeUtil;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprFilterSpecLookupable;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.epl.expression.ops.ExprAndNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.ops.ExprOrNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.subquery.ExprSubselectNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.visitor.ExprNodeSubselectDeclaredDotVisitor;
+import eu.uk.ncl.pet5o.esper.epl.expression.visitor.ExprNodeTableAccessFinderVisitor;
+import eu.uk.ncl.pet5o.esper.epl.expression.visitor.ExprNodeVariableVisitor;
+import eu.uk.ncl.pet5o.esper.epl.util.ExprNodeUtilityRich;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterOperator;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterSpecParam;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterSpecParamExprNode;
 
 import java.util.ArrayList;
 import java.util.Collections;

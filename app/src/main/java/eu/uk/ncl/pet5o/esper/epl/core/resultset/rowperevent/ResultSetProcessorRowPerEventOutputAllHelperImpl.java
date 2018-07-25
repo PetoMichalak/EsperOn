@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.resultset.rowperevent;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.collection.MultiKey;
-import com.espertech.esper.collection.UniformPair;
-import com.espertech.esper.event.EventBeanUtility;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.collection.MultiKey;
+import eu.uk.ncl.pet5o.esper.collection.UniformPair;
+import eu.uk.ncl.pet5o.esper.event.EventBeanUtility;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -28,21 +28,21 @@ public class ResultSetProcessorRowPerEventOutputAllHelperImpl implements ResultS
         this.processor = processor;
     }
 
-    public void processView(com.espertech.esper.client.EventBean[] newData, com.espertech.esper.client.EventBean[] oldData, boolean isGenerateSynthetic) {
-        UniformPair<com.espertech.esper.client.EventBean[]> pair = processor.processViewResult(newData, oldData, isGenerateSynthetic);
+    public void processView(eu.uk.ncl.pet5o.esper.client.EventBean[] newData, eu.uk.ncl.pet5o.esper.client.EventBean[] oldData, boolean isGenerateSynthetic) {
+        UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> pair = processor.processViewResult(newData, oldData, isGenerateSynthetic);
         apply(pair);
     }
 
     public void processJoin(Set<MultiKey<EventBean>> newEvents, Set<MultiKey<EventBean>> oldEvents, boolean isGenerateSynthetic) {
-        UniformPair<com.espertech.esper.client.EventBean[]> pair = processor.processJoinResult(newEvents, oldEvents, isGenerateSynthetic);
+        UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> pair = processor.processJoinResult(newEvents, oldEvents, isGenerateSynthetic);
         apply(pair);
     }
 
-    public UniformPair<com.espertech.esper.client.EventBean[]> output() {
-        com.espertech.esper.client.EventBean[] oldEvents = EventBeanUtility.toArrayNullIfEmpty(eventsOld);
-        com.espertech.esper.client.EventBean[] newEvents = EventBeanUtility.toArrayNullIfEmpty(eventsNew);
+    public UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> output() {
+        eu.uk.ncl.pet5o.esper.client.EventBean[] oldEvents = EventBeanUtility.toArrayNullIfEmpty(eventsOld);
+        eu.uk.ncl.pet5o.esper.client.EventBean[] newEvents = EventBeanUtility.toArrayNullIfEmpty(eventsNew);
 
-        UniformPair<com.espertech.esper.client.EventBean[]> result = null;
+        UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> result = null;
         if (oldEvents != null || newEvents != null) {
             result = new UniformPair<>(newEvents, oldEvents);
         }
@@ -56,7 +56,7 @@ public class ResultSetProcessorRowPerEventOutputAllHelperImpl implements ResultS
         // no action required
     }
 
-    private void apply(UniformPair<com.espertech.esper.client.EventBean[]> pair) {
+    private void apply(UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> pair) {
         if (pair == null) {
             return;
         }

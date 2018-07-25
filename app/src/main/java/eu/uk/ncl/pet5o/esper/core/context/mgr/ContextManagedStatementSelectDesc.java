@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.core.context.factory.StatementAgentInstanceFactory;
-import com.espertech.esper.core.context.subselect.SubSelectStrategyCollection;
-import com.espertech.esper.core.context.util.ContextMergeView;
-import com.espertech.esper.core.service.StatementContext;
-import com.espertech.esper.core.service.speccompiled.StatementSpecCompiled;
-import com.espertech.esper.epl.agg.service.common.AggregationServiceAggExpressionDesc;
+import eu.uk.ncl.pet5o.esper.core.context.factory.StatementAgentInstanceFactory;
+import eu.uk.ncl.pet5o.esper.core.context.subselect.SubSelectStrategyCollection;
+import eu.uk.ncl.pet5o.esper.core.context.util.ContextMergeView;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.core.service.speccompiled.StatementSpecCompiled;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationServiceAggExpressionDesc;
 
 import java.util.List;
 

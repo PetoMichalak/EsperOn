@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.variable;
 
-import com.espertech.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.EventType;
 
 public class VariableMetaData {
     private final String variableName;

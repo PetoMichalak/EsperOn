@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.core.start;
 
-import com.espertech.esper.core.service.EPServicesContext;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.expression.table.ExprTableAccessNode;
-import com.espertech.esper.epl.join.plan.QueryGraph;
+import eu.uk.ncl.pet5o.esper.core.service.EPServicesContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.table.ExprTableAccessNode;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.QueryGraph;
 
 import java.lang.annotation.Annotation;
 
@@ -32,7 +32,7 @@ public class EPPreparedExecuteIUDSingleStreamExecDelete implements EPPreparedExe
         this.services = services;
     }
 
-    public com.espertech.esper.client.EventBean[] execute(FireAndForgetInstance fireAndForgetProcessorInstance) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean[] execute(FireAndForgetInstance fireAndForgetProcessorInstance) {
         return fireAndForgetProcessorInstance.processDelete(this);
     }
 

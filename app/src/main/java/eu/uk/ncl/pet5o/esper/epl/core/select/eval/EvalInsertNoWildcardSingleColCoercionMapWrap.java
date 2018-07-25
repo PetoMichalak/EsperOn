@@ -10,21 +10,21 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.select.eval;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMember;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.epl.core.select.SelectExprProcessor;
-import com.espertech.esper.event.WrapperEventType;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMember;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.epl.core.select.SelectExprProcessor;
+import eu.uk.ncl.pet5o.esper.event.WrapperEventType;
 
 import java.util.Collections;
 import java.util.Map;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.member;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.staticMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.member;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.staticMethod;
 
 public class EvalInsertNoWildcardSingleColCoercionMapWrap extends EvalBaseFirstPropFromWrap implements SelectExprProcessor {
 
@@ -32,8 +32,8 @@ public class EvalInsertNoWildcardSingleColCoercionMapWrap extends EvalBaseFirstP
         super(selectExprForgeContext, wrapper);
     }
 
-    public com.espertech.esper.client.EventBean processFirstCol(Object result) {
-        com.espertech.esper.client.EventBean wrappedEvent = super.getEventAdapterService().adapterForTypedMap((Map) result, wrapper.getUnderlyingEventType());
+    public eu.uk.ncl.pet5o.esper.client.EventBean processFirstCol(Object result) {
+        eu.uk.ncl.pet5o.esper.client.EventBean wrappedEvent = super.getEventAdapterService().adapterForTypedMap((Map) result, wrapper.getUnderlyingEventType());
         return super.getEventAdapterService().adapterForTypedWrapper(wrappedEvent, Collections.emptyMap(), wrapper);
     }
 

@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.deploy;
 
-import com.espertech.esper.client.deploy.EPDeploymentAdmin;
+import eu.uk.ncl.pet5o.esper.client.deploy.EPDeploymentAdmin;
 
 public interface EPDeploymentAdminSPI extends EPDeploymentAdmin {
 

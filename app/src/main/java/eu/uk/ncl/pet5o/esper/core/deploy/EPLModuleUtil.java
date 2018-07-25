@@ -10,19 +10,19 @@
  */
 package eu.uk.ncl.pet5o.esper.core.deploy;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.deploy.Module;
-import com.espertech.esper.client.deploy.ModuleItem;
-import com.espertech.esper.client.deploy.ParseException;
-import com.espertech.esper.core.service.StatementEventTypeRef;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.epl.generated.EsperEPL2GrammarLexer;
-import com.espertech.esper.epl.generated.EsperEPL2GrammarParser;
-import com.espertech.esper.epl.parse.CaseInsensitiveInputStream;
-import com.espertech.esper.epl.parse.ParseHelper;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.event.EventTypeSPI;
-import com.espertech.esper.filter.FilterService;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.deploy.Module;
+import eu.uk.ncl.pet5o.esper.client.deploy.ModuleItem;
+import eu.uk.ncl.pet5o.esper.client.deploy.ParseException;
+import eu.uk.ncl.pet5o.esper.core.service.StatementEventTypeRef;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.epl.generated.EsperEPL2GrammarLexer;
+import eu.uk.ncl.pet5o.esper.epl.generated.EsperEPL2GrammarParser;
+import eu.uk.ncl.pet5o.esper.epl.parse.CaseInsensitiveInputStream;
+import eu.uk.ncl.pet5o.esper.epl.parse.ParseHelper;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.event.EventTypeSPI;
+import eu.uk.ncl.pet5o.esper.filter.FilterService;
 
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CommonTokenStream;

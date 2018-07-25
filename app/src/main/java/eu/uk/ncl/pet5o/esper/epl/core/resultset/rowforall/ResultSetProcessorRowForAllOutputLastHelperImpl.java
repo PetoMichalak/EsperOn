@@ -10,27 +10,27 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.resultset.rowforall;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.collection.MultiKey;
-import com.espertech.esper.collection.UniformPair;
-import com.espertech.esper.epl.core.resultset.core.ResultSetProcessorUtil;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.collection.MultiKey;
+import eu.uk.ncl.pet5o.esper.collection.UniformPair;
+import eu.uk.ncl.pet5o.esper.epl.core.resultset.core.ResultSetProcessorUtil;
 
 import java.util.Set;
 
 public class ResultSetProcessorRowForAllOutputLastHelperImpl implements ResultSetProcessorRowForAllOutputLastHelper {
     private final ResultSetProcessorRowForAll processor;
-    private com.espertech.esper.client.EventBean[] lastEventRStreamForOutputLast;
+    private eu.uk.ncl.pet5o.esper.client.EventBean[] lastEventRStreamForOutputLast;
 
     public ResultSetProcessorRowForAllOutputLastHelperImpl(ResultSetProcessorRowForAll processor) {
         this.processor = processor;
     }
 
-    public void processView(com.espertech.esper.client.EventBean[] newData, com.espertech.esper.client.EventBean[] oldData, boolean isGenerateSynthetic) {
+    public void processView(eu.uk.ncl.pet5o.esper.client.EventBean[] newData, eu.uk.ncl.pet5o.esper.client.EventBean[] oldData, boolean isGenerateSynthetic) {
         if (processor.isSelectRStream() && lastEventRStreamForOutputLast == null) {
             lastEventRStreamForOutputLast = processor.getSelectListEventsAsArray(false, isGenerateSynthetic, false);
         }
 
-        com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[1];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
         ResultSetProcessorUtil.applyAggViewResult(processor.getAggregationService(), processor.getExprEvaluatorContext(), newData, oldData, eventsPerStream);
     }
 
@@ -42,11 +42,11 @@ public class ResultSetProcessorRowForAllOutputLastHelperImpl implements ResultSe
         ResultSetProcessorUtil.applyAggJoinResult(processor.getAggregationService(), processor.getExprEvaluatorContext(), newEvents, oldEvents);
     }
 
-    public UniformPair<com.espertech.esper.client.EventBean[]> outputView(boolean isSynthesize) {
+    public UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> outputView(boolean isSynthesize) {
         return continueOutputLimitedLastNonBuffered(isSynthesize);
     }
 
-    public UniformPair<com.espertech.esper.client.EventBean[]> outputJoin(boolean isSynthesize) {
+    public UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> outputJoin(boolean isSynthesize) {
         return continueOutputLimitedLastNonBuffered(isSynthesize);
     }
 
@@ -54,9 +54,9 @@ public class ResultSetProcessorRowForAllOutputLastHelperImpl implements ResultSe
         // no action required
     }
 
-    private UniformPair<com.espertech.esper.client.EventBean[]> continueOutputLimitedLastNonBuffered(boolean isSynthesize) {
-        com.espertech.esper.client.EventBean[] events = processor.getSelectListEventsAsArray(true, isSynthesize, false);
-        UniformPair<com.espertech.esper.client.EventBean[]> result = new UniformPair<>(events, null);
+    private UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> continueOutputLimitedLastNonBuffered(boolean isSynthesize) {
+        eu.uk.ncl.pet5o.esper.client.EventBean[] events = processor.getSelectListEventsAsArray(true, isSynthesize, false);
+        UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> result = new UniformPair<>(events, null);
 
         if (processor.isSelectRStream() && lastEventRStreamForOutputLast == null) {
             lastEventRStreamForOutputLast = processor.getSelectListEventsAsArray(false, isSynthesize, false);

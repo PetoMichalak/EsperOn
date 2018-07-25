@@ -10,64 +10,64 @@
  */
 package eu.uk.ncl.pet5o.esper.core.start;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.annotation.HintEnum;
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.core.context.activator.ViewableActivationResult;
-import com.espertech.esper.core.context.activator.ViewableActivator;
-import com.espertech.esper.core.context.subselect.*;
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.core.context.util.ContextPropertyRegistry;
-import com.espertech.esper.core.service.EPServicesContext;
-import com.espertech.esper.core.service.ExprEvaluatorContextStatement;
-import com.espertech.esper.core.service.StatementContext;
-import com.espertech.esper.core.service.speccompiled.SelectClauseStreamCompiledSpec;
-import com.espertech.esper.core.service.speccompiled.StatementSpecCompiled;
-import com.espertech.esper.epl.agg.codegen.AggregationServiceFactoryCompiler;
-import com.espertech.esper.epl.agg.service.common.*;
-import com.espertech.esper.epl.core.streamtype.StreamTypeService;
-import com.espertech.esper.epl.core.streamtype.StreamTypeServiceImpl;
-import com.espertech.esper.epl.core.viewres.ViewResourceDelegateUnverified;
-import com.espertech.esper.epl.core.viewres.ViewResourceDelegateVerified;
-import com.espertech.esper.epl.declexpr.ExprDeclaredNode;
-import com.espertech.esper.epl.expression.baseagg.ExprAggregateNode;
-import com.espertech.esper.epl.expression.baseagg.ExprAggregateNodeGroupKey;
-import com.espertech.esper.epl.expression.baseagg.ExprAggregateNodeUtil;
-import com.espertech.esper.epl.expression.codegen.ExprNodeCompiler;
-import com.espertech.esper.epl.expression.core.*;
-import com.espertech.esper.epl.expression.prev.ExprPreviousNode;
-import com.espertech.esper.epl.expression.prior.ExprPriorNode;
-import com.espertech.esper.epl.expression.subquery.ExprSubselectNode;
-import com.espertech.esper.epl.expression.subquery.ExprSubselectStrategy;
-import com.espertech.esper.epl.expression.visitor.ExprNodeIdentifierVisitor;
-import com.espertech.esper.epl.expression.visitor.ExprNodeSubselectDeclaredNoTraverseVisitor;
-import com.espertech.esper.epl.join.hint.ExcludePlanHint;
-import com.espertech.esper.epl.join.hint.IndexHint;
-import com.espertech.esper.epl.join.plan.CoercionDesc;
-import com.espertech.esper.epl.join.plan.CoercionUtil;
-import com.espertech.esper.epl.join.plan.QueryPlanIndexBuilder;
-import com.espertech.esper.epl.join.table.EventTableFactory;
-import com.espertech.esper.epl.join.util.IndexNameAndDescPair;
-import com.espertech.esper.epl.join.util.QueryPlanIndexDescSubquery;
-import com.espertech.esper.epl.join.util.QueryPlanIndexHook;
-import com.espertech.esper.epl.join.util.QueryPlanIndexHookUtil;
-import com.espertech.esper.epl.lookup.*;
-import com.espertech.esper.epl.named.NamedWindowProcessor;
-import com.espertech.esper.epl.spec.*;
-import com.espertech.esper.epl.subquery.SubselectAggregationPreprocessorBase;
-import com.espertech.esper.epl.table.mgmt.TableMetadata;
-import com.espertech.esper.epl.util.ExprNodeUtilityRich;
-import com.espertech.esper.metrics.instrumentation.InstrumentationAgent;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
-import com.espertech.esper.util.AuditPath;
-import com.espertech.esper.util.CollectionUtil;
-import com.espertech.esper.util.JavaClassHelper;
-import com.espertech.esper.util.StopCallback;
-import com.espertech.esper.view.StoppableView;
-import com.espertech.esper.view.ViewFactoryChain;
-import com.espertech.esper.view.ViewProcessingException;
-import com.espertech.esper.view.ViewServiceHelper;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.annotation.HintEnum;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.core.context.activator.ViewableActivationResult;
+import eu.uk.ncl.pet5o.esper.core.context.activator.ViewableActivator;
+import eu.uk.ncl.pet5o.esper.core.context.subselect.*;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.core.context.util.ContextPropertyRegistry;
+import eu.uk.ncl.pet5o.esper.core.service.EPServicesContext;
+import eu.uk.ncl.pet5o.esper.core.service.ExprEvaluatorContextStatement;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.core.service.speccompiled.SelectClauseStreamCompiledSpec;
+import eu.uk.ncl.pet5o.esper.core.service.speccompiled.StatementSpecCompiled;
+import eu.uk.ncl.pet5o.esper.epl.agg.codegen.AggregationServiceFactoryCompiler;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.*;
+import eu.uk.ncl.pet5o.esper.epl.core.streamtype.StreamTypeService;
+import eu.uk.ncl.pet5o.esper.epl.core.streamtype.StreamTypeServiceImpl;
+import eu.uk.ncl.pet5o.esper.epl.core.viewres.ViewResourceDelegateUnverified;
+import eu.uk.ncl.pet5o.esper.epl.core.viewres.ViewResourceDelegateVerified;
+import eu.uk.ncl.pet5o.esper.epl.declexpr.ExprDeclaredNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.baseagg.ExprAggregateNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.baseagg.ExprAggregateNodeGroupKey;
+import eu.uk.ncl.pet5o.esper.epl.expression.baseagg.ExprAggregateNodeUtil;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprNodeCompiler;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.epl.expression.prev.ExprPreviousNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.prior.ExprPriorNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.subquery.ExprSubselectNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.subquery.ExprSubselectStrategy;
+import eu.uk.ncl.pet5o.esper.epl.expression.visitor.ExprNodeIdentifierVisitor;
+import eu.uk.ncl.pet5o.esper.epl.expression.visitor.ExprNodeSubselectDeclaredNoTraverseVisitor;
+import eu.uk.ncl.pet5o.esper.epl.join.hint.ExcludePlanHint;
+import eu.uk.ncl.pet5o.esper.epl.join.hint.IndexHint;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.CoercionDesc;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.CoercionUtil;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.QueryPlanIndexBuilder;
+import eu.uk.ncl.pet5o.esper.epl.join.table.EventTableFactory;
+import eu.uk.ncl.pet5o.esper.epl.join.util.IndexNameAndDescPair;
+import eu.uk.ncl.pet5o.esper.epl.join.util.QueryPlanIndexDescSubquery;
+import eu.uk.ncl.pet5o.esper.epl.join.util.QueryPlanIndexHook;
+import eu.uk.ncl.pet5o.esper.epl.join.util.QueryPlanIndexHookUtil;
+import eu.uk.ncl.pet5o.esper.epl.lookup.*;
+import eu.uk.ncl.pet5o.esper.epl.named.NamedWindowProcessor;
+import eu.uk.ncl.pet5o.esper.epl.spec.*;
+import eu.uk.ncl.pet5o.esper.epl.subquery.SubselectAggregationPreprocessorBase;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadata;
+import eu.uk.ncl.pet5o.esper.epl.util.ExprNodeUtilityRich;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationAgent;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.util.AuditPath;
+import eu.uk.ncl.pet5o.esper.util.CollectionUtil;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.util.StopCallback;
+import eu.uk.ncl.pet5o.esper.view.StoppableView;
+import eu.uk.ncl.pet5o.esper.view.ViewFactoryChain;
+import eu.uk.ncl.pet5o.esper.view.ViewProcessingException;
+import eu.uk.ncl.pet5o.esper.view.ViewServiceHelper;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -84,7 +84,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static com.espertech.esper.epl.util.ExprNodeUtilityRich.getSubqueryInfoText;
+import static eu.uk.ncl.pet5o.esper.epl.util.ExprNodeUtilityRich.getSubqueryInfoText;
 
 public class EPStatementStartMethodHelperSubselect {
     private static final Logger QUERY_PLAN_LOG = LoggerFactory.getLogger(AuditPath.QUERYPLAN_LOG);
@@ -250,7 +250,7 @@ public class EPStatementStartMethodHelperSubselect {
             ExprSubselectStrategy strategy;
             if (aggregationPreprocessor != null) {
                 strategy = new ExprSubselectStrategy() {
-                    public Collection<EventBean> evaluateMatching(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
+                    public Collection<EventBean> evaluateMatching(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
                         Collection<EventBean> matchingEvents = lookupStrategy.lookup(eventsPerStream, exprEvaluatorContext);
                         aggregationPreprocessor.evaluate(eventsPerStream, matchingEvents, exprEvaluatorContext);
                         return CollectionUtil.SINGLE_NULL_ROW_EVENT_SET;
@@ -258,7 +258,7 @@ public class EPStatementStartMethodHelperSubselect {
                 };
             } else {
                 strategy = new ExprSubselectStrategy() {
-                    public Collection<EventBean> evaluateMatching(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
+                    public Collection<EventBean> evaluateMatching(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext) {
                         return lookupStrategy.lookup(eventsPerStream, exprEvaluatorContext);
                     }
                 };

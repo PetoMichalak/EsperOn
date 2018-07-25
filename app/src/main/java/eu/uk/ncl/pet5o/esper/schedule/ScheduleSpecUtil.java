@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.schedule;
 
-import com.espertech.esper.type.CronParameter;
-import com.espertech.esper.type.NumberSetParameter;
-import com.espertech.esper.type.ScheduleUnit;
-import com.espertech.esper.type.WildcardParameter;
+import eu.uk.ncl.pet5o.esper.type.CronParameter;
+import eu.uk.ncl.pet5o.esper.type.NumberSetParameter;
+import eu.uk.ncl.pet5o.esper.type.ScheduleUnit;
+import eu.uk.ncl.pet5o.esper.type.WildcardParameter;
 
 import java.util.EnumMap;
 import java.util.Set;

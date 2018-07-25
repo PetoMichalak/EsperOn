@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.table.strategy;
 
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.table.mgmt.TableStateInstanceGrouped;
-import com.espertech.esper.event.ObjectArrayBackedEventBean;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableStateInstanceGrouped;
+import eu.uk.ncl.pet5o.esper.event.ObjectArrayBackedEventBean;
 
 public abstract class ExprTableEvalStrategyGroupByBase {
 

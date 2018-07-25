@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.core.thread;
 
-import com.espertech.esper.core.service.EPRuntimeImpl;
-import com.espertech.esper.core.service.EPStatementHandleCallback;
+import eu.uk.ncl.pet5o.esper.core.service.EPRuntimeImpl;
+import eu.uk.ncl.pet5o.esper.core.service.EPStatementHandleCallback;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +24,7 @@ public class RouteUnitSingle implements RouteUnitRunnable {
 
     private final EPRuntimeImpl epRuntime;
     private EPStatementHandleCallback handleCallback;
-    private final com.espertech.esper.client.EventBean theEvent;
+    private final eu.uk.ncl.pet5o.esper.client.EventBean theEvent;
     private final long filterVersion;
 
     /**
@@ -35,7 +35,7 @@ public class RouteUnitSingle implements RouteUnitRunnable {
      * @param theEvent       event
      * @param filterVersion  version of filter
      */
-    public RouteUnitSingle(EPRuntimeImpl epRuntime, EPStatementHandleCallback handleCallback, com.espertech.esper.client.EventBean theEvent, long filterVersion) {
+    public RouteUnitSingle(EPRuntimeImpl epRuntime, EPStatementHandleCallback handleCallback, eu.uk.ncl.pet5o.esper.client.EventBean theEvent, long filterVersion) {
         this.epRuntime = epRuntime;
         this.theEvent = theEvent;
         this.handleCallback = handleCallback;

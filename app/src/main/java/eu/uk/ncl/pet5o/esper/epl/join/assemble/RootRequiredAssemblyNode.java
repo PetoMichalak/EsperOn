@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.assemble;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.join.rep.Node;
-import com.espertech.esper.util.IndentWriter;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.join.rep.Node;
+import eu.uk.ncl.pet5o.esper.util.IndentWriter;
 
 import java.util.Collection;
 import java.util.List;

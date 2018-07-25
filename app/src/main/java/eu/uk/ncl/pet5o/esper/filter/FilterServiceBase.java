@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.filter;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.filterspec.FilterValueSet;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
-import com.espertech.esper.metrics.jmx.JmxGetter;
-import com.espertech.esper.metrics.jmx.JmxOperation;
-import com.espertech.esper.util.AuditPath;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterValueSet;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.metrics.jmx.JmxGetter;
+import eu.uk.ncl.pet5o.esper.metrics.jmx.JmxOperation;
+import eu.uk.ncl.pet5o.esper.util.AuditPath;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -72,7 +72,7 @@ public abstract class FilterServiceBase implements FilterServiceSPI {
         filtersVersion++;
     }
 
-    protected long evaluateInternal(com.espertech.esper.client.EventBean theEvent, Collection<FilterHandle> matches) {
+    protected long evaluateInternal(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, Collection<FilterHandle> matches) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qFilter(theEvent);
         }
@@ -96,7 +96,7 @@ public abstract class FilterServiceBase implements FilterServiceSPI {
         return version;
     }
 
-    protected long evaluateInternal(com.espertech.esper.client.EventBean theEvent, Collection<FilterHandle> matches, int statementId) {
+    protected long evaluateInternal(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, Collection<FilterHandle> matches, int statementId) {
         long version = filtersVersion;
         numEventsEvaluated.incrementAndGet();
 
@@ -167,7 +167,7 @@ public abstract class FilterServiceBase implements FilterServiceSPI {
         eventTypeIndex.removeType(type);
     }
 
-    private void retryableMatchEvent(com.espertech.esper.client.EventBean theEvent, Collection<FilterHandle> matches) {
+    private void retryableMatchEvent(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, Collection<FilterHandle> matches) {
         // Install lock backoff exception handler that retries the evaluation.
         try {
             eventTypeIndex.matchEvent(theEvent, matches);

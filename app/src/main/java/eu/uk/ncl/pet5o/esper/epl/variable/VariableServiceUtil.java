@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.variable;
 
-import com.espertech.esper.core.context.util.ContextDescriptor;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.epl.table.mgmt.TableService;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.core.context.util.ContextDescriptor;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableService;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 public class VariableServiceUtil {
 

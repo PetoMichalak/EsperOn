@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.filter;
 
-import com.espertech.esper.client.EventPropertyGetter;
-import com.espertech.esper.epl.expression.core.ExprFilterSpecLookupable;
-import com.espertech.esper.epl.index.quadtree.AdvancedIndexConfigContextPartitionQuadTree;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprFilterSpecLookupable;
+import eu.uk.ncl.pet5o.esper.epl.index.quadtree.AdvancedIndexConfigContextPartitionQuadTree;
 
 public class FilterSpecLookupableAdvancedIndex extends ExprFilterSpecLookupable {
     private static final long serialVersionUID = 8315068953665699193L;

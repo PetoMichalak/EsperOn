@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.epl.spec.ContextDetailPartitioned;
-import com.espertech.esper.filterspec.FilterSpecCompiled;
+import eu.uk.ncl.pet5o.esper.epl.spec.ContextDetailPartitioned;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterSpecCompiled;
 
 import java.util.List;
 

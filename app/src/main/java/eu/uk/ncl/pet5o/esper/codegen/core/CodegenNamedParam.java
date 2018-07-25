@@ -10,14 +10,14 @@
  */
 package eu.uk.ncl.pet5o.esper.codegen.core;
 
-import com.espertech.esper.codegen.model.expression.CodegenExpressionRef;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRef;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static com.espertech.esper.codegen.core.CodeGenerationHelper.appendClassName;
+import static eu.uk.ncl.pet5o.esper.codegen.core.CodeGenerationHelper.appendClassName;
 
 public class CodegenNamedParam {
     private final Class type;

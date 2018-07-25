@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.lookup;
 
-import com.espertech.esper.epl.join.plan.QueryGraphValueEntryRange;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.QueryGraphValueEntryRange;
 
 import java.io.Serializable;
 import java.io.StringWriter;

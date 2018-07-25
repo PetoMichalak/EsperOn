@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.event.bean;
 
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.event.vaevent.PropertyUtility;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.event.vaevent.PropertyUtility;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;

@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.core.context.mgr;
 
-import com.espertech.esper.core.context.factory.StatementAgentInstanceFactory;
-import com.espertech.esper.core.context.util.ContextMergeView;
-import com.espertech.esper.core.service.StatementContext;
-import com.espertech.esper.core.service.speccompiled.StatementSpecCompiled;
+import eu.uk.ncl.pet5o.esper.core.context.factory.StatementAgentInstanceFactory;
+import eu.uk.ncl.pet5o.esper.core.context.util.ContextMergeView;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.core.service.speccompiled.StatementSpecCompiled;
 
 public class ContextManagedStatementCreateIndexDesc extends ContextControllerStatementBase {
 

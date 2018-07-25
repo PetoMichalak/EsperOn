@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.exec.composite;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.collection.MultiKeyUntyped;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.join.plan.QueryGraphValueEntryHashKeyed;
-import com.espertech.esper.event.EventBeanUtility;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.collection.MultiKeyUntyped;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.QueryGraphValueEntryHashKeyed;
+import eu.uk.ncl.pet5o.esper.event.EventBeanUtility;
 
 import java.util.ArrayList;
 import java.util.Collection;

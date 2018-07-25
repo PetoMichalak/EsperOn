@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.agg.codegen;
 
-import com.espertech.esper.epl.agg.service.common.AggregationRowStateForgeDesc;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationRowStateForgeDesc;
 
 public class AggregationCodegenRowLevelDesc {
     public final static AggregationCodegenRowLevelDesc EMPTY = new AggregationCodegenRowLevelDesc(null, null);

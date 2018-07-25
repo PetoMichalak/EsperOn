@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.filter;
 
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
 
 import java.util.Collection;
 import java.util.LinkedHashSet;
@@ -86,7 +86,7 @@ public final class FilterHandleSetNode implements EventEvaluator {
      * @param theEvent is the event wrapper supplying the event property values
      * @param matches  is the list of callbacks to add to for any matches found
      */
-    public final void matchEvent(com.espertech.esper.client.EventBean theEvent, Collection<FilterHandle> matches) {
+    public final void matchEvent(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, Collection<FilterHandle> matches) {
         nodeRWLock.readLock().lock();
         try {
             if (InstrumentationHelper.ENABLED) {

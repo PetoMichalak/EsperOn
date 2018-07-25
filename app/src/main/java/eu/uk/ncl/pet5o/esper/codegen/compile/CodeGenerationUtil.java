@@ -10,14 +10,14 @@
  */
 package eu.uk.ncl.pet5o.esper.codegen.compile;
 
-import com.espertech.esper.util.FileUtil;
+import eu.uk.ncl.pet5o.esper.util.FileUtil;
 
 import java.io.StringReader;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import static com.espertech.esper.codegen.core.CodeGenerationHelper.appendClassName;
+import static eu.uk.ncl.pet5o.esper.codegen.core.CodeGenerationHelper.appendClassName;
 
 public class CodeGenerationUtil {
     static void packagedecl(StringBuilder builder, String packageName) {

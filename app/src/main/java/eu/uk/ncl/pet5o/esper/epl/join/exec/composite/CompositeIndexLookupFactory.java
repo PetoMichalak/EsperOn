@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.join.exec.composite;
 
-import com.espertech.esper.epl.join.exec.base.RangeIndexLookupValue;
+import eu.uk.ncl.pet5o.esper.epl.join.exec.base.RangeIndexLookupValue;
 
 import java.util.ArrayList;
 import java.util.List;

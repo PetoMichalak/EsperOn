@@ -10,28 +10,28 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.select;
 
-import com.espertech.esper.client.EventPropertyDescriptor;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.codegen.base.*;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.codegen.model.expression.CodegenExpressionRef;
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.epl.core.streamtype.StreamTypeService;
-import com.espertech.esper.epl.expression.codegen.CodegenLegoMayVoid;
-import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
-import com.espertech.esper.epl.expression.codegen.ExprNodeCompiler;
-import com.espertech.esper.epl.expression.core.*;
-import com.espertech.esper.epl.spec.InsertIntoDesc;
-import com.espertech.esper.epl.util.ExprNodeUtilityRich;
-import com.espertech.esper.event.*;
-import com.espertech.esper.event.arr.ObjectArrayEventType;
-import com.espertech.esper.event.avro.AvroSchemaEventType;
-import com.espertech.esper.event.bean.BeanEventType;
-import com.espertech.esper.event.bean.EventBeanManufacturerCtor;
-import com.espertech.esper.event.bean.InstanceManufacturerUtil;
-import com.espertech.esper.event.map.MapEventType;
-import com.espertech.esper.util.*;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyDescriptor;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.codegen.base.*;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRef;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.epl.core.streamtype.StreamTypeService;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.CodegenLegoMayVoid;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprNodeCompiler;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.epl.spec.InsertIntoDesc;
+import eu.uk.ncl.pet5o.esper.epl.util.ExprNodeUtilityRich;
+import eu.uk.ncl.pet5o.esper.event.*;
+import eu.uk.ncl.pet5o.esper.event.arr.ObjectArrayEventType;
+import eu.uk.ncl.pet5o.esper.event.avro.AvroSchemaEventType;
+import eu.uk.ncl.pet5o.esper.event.bean.BeanEventType;
+import eu.uk.ncl.pet5o.esper.event.bean.EventBeanManufacturerCtor;
+import eu.uk.ncl.pet5o.esper.event.bean.InstanceManufacturerUtil;
+import eu.uk.ncl.pet5o.esper.event.map.MapEventType;
+import eu.uk.ncl.pet5o.esper.util.*;
 
 import net.sf.cglib.reflect.FastConstructor;
 
@@ -42,21 +42,21 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.arrayAtIndex;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.arrayLength;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.cast;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotUnderlying;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.instanceOf;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethodBuild;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.member;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.newArrayByLength;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.publicConstValue;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.arrayAtIndex;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.arrayLength;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.cast;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotUnderlying;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.instanceOf;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.localMethodBuild;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.member;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.newArrayByLength;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.publicConstValue;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
 
 public class SelectExprInsertEventBeanFactory {
     public static SelectExprProcessorForge getInsertUnderlyingNonJoin(EventAdapterService eventAdapterService,
@@ -221,16 +221,16 @@ public class SelectExprInsertEventBeanFactory {
                         selectedWritable = desc;
                         widener = new TypeWidener() {
                             public Object widen(Object input) {
-                                if (input instanceof com.espertech.esper.client.EventBean) {
-                                    return ((com.espertech.esper.client.EventBean) input).getUnderlying();
+                                if (input instanceof eu.uk.ncl.pet5o.esper.client.EventBean) {
+                                    return ((eu.uk.ncl.pet5o.esper.client.EventBean) input).getUnderlying();
                                 }
                                 return input;
                             }
 
                             public CodegenExpression widenCodegen(CodegenExpression expression, CodegenMethodScope codegenMethodScope, CodegenClassScope codegenClassScope) {
                                 CodegenMethodNode method = codegenMethodScope.makeChild(Object.class, TypeWidener.class, codegenClassScope).addParam(Object.class, "input").getBlock()
-                                        .ifCondition(instanceOf(ref("input"), com.espertech.esper.client.EventBean.class))
-                                        .blockReturn(exprDotMethod(cast(com.espertech.esper.client.EventBean.class, ref("input")), "getUnderlying"))
+                                        .ifCondition(instanceOf(ref("input"), eu.uk.ncl.pet5o.esper.client.EventBean.class))
+                                        .blockReturn(exprDotMethod(cast(eu.uk.ncl.pet5o.esper.client.EventBean.class, ref("input")), "getUnderlying"))
                                         .methodReturn(ref("input"));
                                 return localMethodBuild(method).pass(expression).call();
                             }
@@ -446,7 +446,7 @@ public class SelectExprInsertEventBeanFactory {
             super(eventType, exprForge, eventAdapterService);
         }
 
-        public com.espertech.esper.client.EventBean process(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext exprEvaluatorContext) {
+        public eu.uk.ncl.pet5o.esper.client.EventBean process(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext exprEvaluatorContext) {
             Object result = evaluator.evaluate(eventsPerStream, isNewData, exprEvaluatorContext);
             if (result == null) {
                 return null;
@@ -455,7 +455,7 @@ public class SelectExprInsertEventBeanFactory {
         }
 
         public CodegenMethodNode processCodegen(CodegenMember memberResultEventType, CodegenMember memberEventAdapterService, CodegenMethodScope codegenMethodScope, SelectExprProcessorCodegenSymbol selectSymbol, ExprForgeCodegenSymbol exprSymbol, CodegenClassScope codegenClassScope) {
-            CodegenMethodNode methodNode = codegenMethodScope.makeChild(com.espertech.esper.client.EventBean.class, this.getClass(), codegenClassScope);
+            CodegenMethodNode methodNode = codegenMethodScope.makeChild(eu.uk.ncl.pet5o.esper.client.EventBean.class, this.getClass(), codegenClassScope);
             CodegenExpression expr = exprForge.evaluateCodegen(Map.class, methodNode, exprSymbol, codegenClassScope);
             if (!JavaClassHelper.isSubclassOrImplementsInterface(exprForge.getEvaluationType(), Map.class)) {
                 expr = cast(Map.class, expr);
@@ -472,7 +472,7 @@ public class SelectExprInsertEventBeanFactory {
             super(eventType, exprForge, eventAdapterService);
         }
 
-        public com.espertech.esper.client.EventBean process(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext exprEvaluatorContext) {
+        public eu.uk.ncl.pet5o.esper.client.EventBean process(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext exprEvaluatorContext) {
             Object result = evaluator.evaluate(eventsPerStream, isNewData, exprEvaluatorContext);
             if (result == null) {
                 return null;
@@ -481,7 +481,7 @@ public class SelectExprInsertEventBeanFactory {
         }
 
         public CodegenMethodNode processCodegen(CodegenMember memberResultEventType, CodegenMember memberEventAdapterService, CodegenMethodScope codegenMethodScope, SelectExprProcessorCodegenSymbol selectSymbol, ExprForgeCodegenSymbol exprSymbol, CodegenClassScope codegenClassScope) {
-            CodegenMethodNode methodNode = codegenMethodScope.makeChild(com.espertech.esper.client.EventBean.class, this.getClass(), codegenClassScope);
+            CodegenMethodNode methodNode = codegenMethodScope.makeChild(eu.uk.ncl.pet5o.esper.client.EventBean.class, this.getClass(), codegenClassScope);
             methodNode.getBlock()
                     .declareVar(Object.class, "result", exprForge.evaluateCodegen(Object.class, methodNode, exprSymbol, codegenClassScope))
                     .ifRefNullReturnNull("result")
@@ -495,7 +495,7 @@ public class SelectExprInsertEventBeanFactory {
             super(eventType, exprForge, eventAdapterService);
         }
 
-        public com.espertech.esper.client.EventBean process(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext exprEvaluatorContext) {
+        public eu.uk.ncl.pet5o.esper.client.EventBean process(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext exprEvaluatorContext) {
             Object result = evaluator.evaluate(eventsPerStream, isNewData, exprEvaluatorContext);
             if (result == null) {
                 return null;
@@ -504,7 +504,7 @@ public class SelectExprInsertEventBeanFactory {
         }
 
         public CodegenMethodNode processCodegen(CodegenMember memberResultEventType, CodegenMember memberEventAdapterService, CodegenMethodScope codegenMethodScope, SelectExprProcessorCodegenSymbol selectSymbol, ExprForgeCodegenSymbol exprSymbol, CodegenClassScope codegenClassScope) {
-            CodegenMethodNode methodNode = codegenMethodScope.makeChild(com.espertech.esper.client.EventBean.class, this.getClass(), codegenClassScope);
+            CodegenMethodNode methodNode = codegenMethodScope.makeChild(eu.uk.ncl.pet5o.esper.client.EventBean.class, this.getClass(), codegenClassScope);
             methodNode.getBlock()
                     .declareVar(Object[].class, "result", exprForge.evaluateCodegen(Object[].class, methodNode, exprSymbol, codegenClassScope))
                     .ifRefNullReturnNull("result")
@@ -518,7 +518,7 @@ public class SelectExprInsertEventBeanFactory {
             super(eventType, exprForge, eventAdapterService);
         }
 
-        public com.espertech.esper.client.EventBean process(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext exprEvaluatorContext) {
+        public eu.uk.ncl.pet5o.esper.client.EventBean process(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext exprEvaluatorContext) {
             Object result = evaluator.evaluate(eventsPerStream, isNewData, exprEvaluatorContext);
             if (result == null) {
                 return null;
@@ -527,7 +527,7 @@ public class SelectExprInsertEventBeanFactory {
         }
 
         public CodegenMethodNode processCodegen(CodegenMember memberResultEventType, CodegenMember memberEventAdapterService, CodegenMethodScope codegenMethodScope, SelectExprProcessorCodegenSymbol selectSymbol, ExprForgeCodegenSymbol exprSymbol, CodegenClassScope codegenClassScope) {
-            CodegenMethodNode methodNode = codegenMethodScope.makeChild(com.espertech.esper.client.EventBean.class, this.getClass(), codegenClassScope);
+            CodegenMethodNode methodNode = codegenMethodScope.makeChild(eu.uk.ncl.pet5o.esper.client.EventBean.class, this.getClass(), codegenClassScope);
             methodNode.getBlock()
                     .declareVar(Object.class, "result", exprForge.evaluateCodegen(Object.class, methodNode, exprSymbol, codegenClassScope))
                     .ifRefNullReturnNull("result")
@@ -572,7 +572,7 @@ public class SelectExprInsertEventBeanFactory {
             this.wideners = wideners;
         }
 
-        public com.espertech.esper.client.EventBean process(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext exprEvaluatorContext) {
+        public eu.uk.ncl.pet5o.esper.client.EventBean process(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext exprEvaluatorContext) {
             Object[] values = new Object[exprEvaluators.length];
 
             for (int i = 0; i < exprEvaluators.length; i++) {
@@ -588,7 +588,7 @@ public class SelectExprInsertEventBeanFactory {
 
         public CodegenMethodNode processCodegen(CodegenMember memberResultEventType, CodegenMember memberEventAdapterService, CodegenMethodScope codegenMethodScope, SelectExprProcessorCodegenSymbol selectSymbol, ExprForgeCodegenSymbol exprSymbol, CodegenClassScope codegenClassScope) {
             CodegenMember manufacturer = codegenClassScope.makeAddMember(EventBeanManufacturer.class, eventManufacturer);
-            CodegenMethodNode methodNode = codegenMethodScope.makeChild(com.espertech.esper.client.EventBean.class, this.getClass(), codegenClassScope);
+            CodegenMethodNode methodNode = codegenMethodScope.makeChild(eu.uk.ncl.pet5o.esper.client.EventBean.class, this.getClass(), codegenClassScope);
             CodegenBlock block = methodNode.getBlock()
                     .declareVar(Object[].class, "values", newArrayByLength(Object.class, constant(exprForges.length)));
             for (int i = 0; i < exprForges.length; i++) {
@@ -618,7 +618,7 @@ public class SelectExprInsertEventBeanFactory {
             super(eventType, eventManufacturer, exprForges, exprEvaluators);
         }
 
-        public com.espertech.esper.client.EventBean process(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext exprEvaluatorContext) {
+        public eu.uk.ncl.pet5o.esper.client.EventBean process(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext exprEvaluatorContext) {
             Object[] values = new Object[exprEvaluators.length];
 
             for (int i = 0; i < exprEvaluators.length; i++) {
@@ -631,7 +631,7 @@ public class SelectExprInsertEventBeanFactory {
 
         public CodegenMethodNode processCodegen(CodegenMember memberResultEventType, CodegenMember memberEventAdapterService, CodegenMethodScope codegenMethodScope, SelectExprProcessorCodegenSymbol selectSymbol, ExprForgeCodegenSymbol exprSymbol, CodegenClassScope codegenClassScope) {
             CodegenMember manufacturer = codegenClassScope.makeAddMember(EventBeanManufacturer.class, eventManufacturer);
-            CodegenMethodNode methodNode = codegenMethodScope.makeChild(com.espertech.esper.client.EventBean.class, this.getClass(), codegenClassScope);
+            CodegenMethodNode methodNode = codegenMethodScope.makeChild(eu.uk.ncl.pet5o.esper.client.EventBean.class, this.getClass(), codegenClassScope);
             CodegenBlock block = methodNode.getBlock()
                     .declareVar(Object[].class, "values", newArrayByLength(Object.class, constant(exprForges.length)));
             for (int i = 0; i < exprForges.length; i++) {
@@ -653,7 +653,7 @@ public class SelectExprInsertEventBeanFactory {
             this.eventManufacturer = eventManufacturer;
         }
 
-        public com.espertech.esper.client.EventBean process(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext exprEvaluatorContext) {
+        public eu.uk.ncl.pet5o.esper.client.EventBean process(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, boolean isSynthesize, ExprEvaluatorContext exprEvaluatorContext) {
             return eventManufacturer.make(CollectionUtil.OBJECTARRAY_EMPTY);
         }
 
@@ -666,7 +666,7 @@ public class SelectExprInsertEventBeanFactory {
         }
 
         public CodegenMethodNode processCodegen(CodegenMember memberResultEventType, CodegenMember memberEventAdapterService, CodegenMethodScope codegenMethodScope, SelectExprProcessorCodegenSymbol selectSymbol, ExprForgeCodegenSymbol exprSymbol, CodegenClassScope codegenClassScope) {
-            CodegenMethodNode methodNode = codegenMethodScope.makeChild(com.espertech.esper.client.EventBean.class, this.getClass(), codegenClassScope);
+            CodegenMethodNode methodNode = codegenMethodScope.makeChild(eu.uk.ncl.pet5o.esper.client.EventBean.class, this.getClass(), codegenClassScope);
             CodegenMember member = codegenClassScope.makeAddMember(EventBeanManufacturer.class, eventManufacturer);
             methodNode.getBlock().methodReturn(exprDotMethod(member(member.getMemberId()), "make", publicConstValue(CollectionUtil.class, "OBJECTARRAY_EMPTY")));
             return methodNode;
@@ -682,8 +682,8 @@ public class SelectExprInsertEventBeanFactory {
             this.returnType = returnType;
         }
 
-        public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
-            com.espertech.esper.client.EventBean bean = eventsPerStream[streamNum];
+        public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+            eu.uk.ncl.pet5o.esper.client.EventBean bean = eventsPerStream[streamNum];
             if (bean == null) {
                 return null;
             }
@@ -702,7 +702,7 @@ public class SelectExprInsertEventBeanFactory {
             CodegenMethodNode methodNode = codegenMethodScope.makeChild(returnType, ExprForgeJoinWildcard.class, codegenClassScope);
             CodegenExpressionRef refEPS = exprSymbol.getAddEPS(methodNode);
             methodNode.getBlock()
-                    .declareVar(com.espertech.esper.client.EventBean.class, "bean", arrayAtIndex(refEPS, constant(streamNum)))
+                    .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "bean", arrayAtIndex(refEPS, constant(streamNum)))
                     .ifRefNullReturnNull("bean")
                     .methodReturn(cast(returnType, exprDotUnderlying(ref("bean"))));
             return localMethod(methodNode);
@@ -735,8 +735,8 @@ public class SelectExprInsertEventBeanFactory {
             return this;
         }
 
-        public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
-            com.espertech.esper.client.EventBean theEvent = eventsPerStream[streamNumEval];
+        public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+            eu.uk.ncl.pet5o.esper.client.EventBean theEvent = eventsPerStream[streamNumEval];
             if (theEvent != null) {
                 return theEvent.getUnderlying();
             }
@@ -748,7 +748,7 @@ public class SelectExprInsertEventBeanFactory {
 
             CodegenExpressionRef refEPS = exprSymbol.getAddEPS(methodNode);
             methodNode.getBlock()
-                    .declareVar(com.espertech.esper.client.EventBean.class, "theEvent", arrayAtIndex(refEPS, constant(streamNumEval)))
+                    .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "theEvent", arrayAtIndex(refEPS, constant(streamNumEval)))
                     .ifRefNullReturnNull("theEvent")
                     .methodReturn(cast(returnType, exprDotUnderlying(ref("theEvent"))));
             return localMethod(methodNode);
@@ -783,12 +783,12 @@ public class SelectExprInsertEventBeanFactory {
             this.innerEvaluator = inner.getExprEvaluator();
         }
 
-        public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+        public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
             Object result = innerEvaluator.evaluate(eventsPerStream, isNewData, exprEvaluatorContext);
-            if (!(result instanceof com.espertech.esper.client.EventBean[])) {
+            if (!(result instanceof eu.uk.ncl.pet5o.esper.client.EventBean[])) {
                 return null;
             }
-            com.espertech.esper.client.EventBean[] events = (com.espertech.esper.client.EventBean[]) result;
+            eu.uk.ncl.pet5o.esper.client.EventBean[] events = (eu.uk.ncl.pet5o.esper.client.EventBean[]) result;
             Object values = Array.newInstance(componentReturnType, events.length);
             for (int i = 0; i < events.length; i++) {
                 Array.set(values, i, events[i].getUnderlying());
@@ -810,7 +810,7 @@ public class SelectExprInsertEventBeanFactory {
 
 
             methodNode.getBlock()
-                    .declareVar(com.espertech.esper.client.EventBean[].class, "events", cast(com.espertech.esper.client.EventBean[].class, inner.evaluateCodegen(requiredType, methodNode, exprSymbol, codegenClassScope)))
+                    .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "events", cast(eu.uk.ncl.pet5o.esper.client.EventBean[].class, inner.evaluateCodegen(requiredType, methodNode, exprSymbol, codegenClassScope)))
                     .ifRefNullReturnNull("events")
                     .declareVar(arrayType, "values", newArrayByLength(componentReturnType, arrayLength(ref("events"))))
                     .forLoopIntSimple("i", arrayLength(ref("events")))
@@ -841,8 +841,8 @@ public class SelectExprInsertEventBeanFactory {
             this.getter = getter;
         }
 
-        public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
-            com.espertech.esper.client.EventBean theEvent = eventsPerStream[0];
+        public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+            eu.uk.ncl.pet5o.esper.client.EventBean theEvent = eventsPerStream[0];
             if (theEvent != null) {
                 return getter.get(theEvent);
             }
@@ -853,7 +853,7 @@ public class SelectExprInsertEventBeanFactory {
             CodegenMethodNode methodNode = codegenMethodScope.makeChild(Object.class, ExprForgeStreamWithGetter.class, codegenClassScope);
             CodegenExpressionRef refEPS = exprSymbol.getAddEPS(methodNode);
             methodNode.getBlock()
-                    .declareVar(com.espertech.esper.client.EventBean.class, "theEvent", arrayAtIndex(refEPS, constant(0)))
+                    .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "theEvent", arrayAtIndex(refEPS, constant(0)))
                     .ifRefNotNull("theEvent")
                     .blockReturn(getter.eventBeanGetCodegen(ref("theEvent"), methodNode, codegenClassScope))
                     .methodReturn(constantNull());

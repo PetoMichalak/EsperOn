@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.expression.ops;
 
-import com.espertech.esper.epl.expression.core.*;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
 
 /**
  * Represents the in-clause (set check) function in an expression tree.
@@ -25,7 +25,7 @@ public class ExprInNodeForgeEvalNoColl implements ExprEvaluator {
         this.evaluators = evaluators;
     }
 
-    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public Object evaluate(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qExprIn(forge.getForgeRenderable());
         }
@@ -36,7 +36,7 @@ public class ExprInNodeForgeEvalNoColl implements ExprEvaluator {
         return result;
     }
 
-    private Boolean evaluateInternal(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    private Boolean evaluateInternal(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         Object inPropResult = evaluators[0].evaluate(eventsPerStream, isNewData, exprEvaluatorContext);
 
         boolean isNotIn = forge.getForgeRenderable().isNotIn();
