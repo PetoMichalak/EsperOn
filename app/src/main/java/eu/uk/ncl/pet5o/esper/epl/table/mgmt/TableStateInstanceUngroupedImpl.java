@@ -10,21 +10,21 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.table.mgmt;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.collection.SingleEventIterable;
-import com.espertech.esper.collection.SingleEventIterator;
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.epl.agg.access.AggregationServicePassThru;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.epl.join.plan.QueryPlanIndexItem;
-import com.espertech.esper.epl.join.table.EventTable;
-import com.espertech.esper.epl.join.table.EventTableOrganization;
-import com.espertech.esper.epl.join.table.EventTableOrganizationType;
-import com.espertech.esper.epl.join.table.SingleReferenceEventTable;
-import com.espertech.esper.event.ObjectArrayBackedEventBean;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.collection.SingleEventIterable;
+import eu.uk.ncl.pet5o.esper.collection.SingleEventIterator;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationServicePassThru;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.QueryPlanIndexItem;
+import eu.uk.ncl.pet5o.esper.epl.join.table.EventTable;
+import eu.uk.ncl.pet5o.esper.epl.join.table.EventTableOrganization;
+import eu.uk.ncl.pet5o.esper.epl.join.table.EventTableOrganizationType;
+import eu.uk.ncl.pet5o.esper.epl.join.table.SingleReferenceEventTable;
+import eu.uk.ncl.pet5o.esper.event.ObjectArrayBackedEventBean;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -43,7 +43,7 @@ public class TableStateInstanceUngroupedImpl extends TableStateInstance implemen
         return new SingleEventIterable((AtomicReference<EventBean>) (AtomicReference<?>) eventReference);
     }
 
-    public void addEvent(com.espertech.esper.client.EventBean theEvent) {
+    public void addEvent(eu.uk.ncl.pet5o.esper.client.EventBean theEvent) {
         if (eventReference.get() != null) {
             throw new EPException("Unique index violation, table '" + tableMetadata.getTableName() + "' " +
                     "is a declared to hold a single un-keyed row");
@@ -57,7 +57,7 @@ public class TableStateInstanceUngroupedImpl extends TableStateInstance implemen
         }
     }
 
-    public void deleteEvent(com.espertech.esper.client.EventBean matchingEvent) {
+    public void deleteEvent(eu.uk.ncl.pet5o.esper.client.EventBean matchingEvent) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qTableDeleteEvent(matchingEvent);
         }
@@ -105,7 +105,7 @@ public class TableStateInstanceUngroupedImpl extends TableStateInstance implemen
     }
 
     public Collection<EventBean> getEventCollection() {
-        com.espertech.esper.client.EventBean event = eventReference.get();
+        eu.uk.ncl.pet5o.esper.client.EventBean event = eventReference.get();
         if (event == null) {
             return Collections.emptyList();
         }

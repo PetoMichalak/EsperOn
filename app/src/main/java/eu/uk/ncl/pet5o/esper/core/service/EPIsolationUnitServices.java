@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.filter.FilterServiceSPI;
-import com.espertech.esper.schedule.SchedulingServiceSPI;
+import eu.uk.ncl.pet5o.esper.filter.FilterServiceSPI;
+import eu.uk.ncl.pet5o.esper.schedule.SchedulingServiceSPI;
 
 /**
  * Context for all services that provide the isolated runtime.

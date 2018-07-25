@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.expression.core.ExprNodeUtilityCore;
-import com.espertech.esper.event.EventBeanWriter;
-import com.espertech.esper.util.TypeWidener;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNodeUtilityCore;
+import eu.uk.ncl.pet5o.esper.event.EventBeanWriter;
+import eu.uk.ncl.pet5o.esper.util.TypeWidener;
 
 /**
  * Pre-Processing entry for routing an event internally.

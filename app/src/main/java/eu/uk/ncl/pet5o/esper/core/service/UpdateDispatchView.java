@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.collection.UniformPair;
-import com.espertech.esper.view.View;
+import eu.uk.ncl.pet5o.esper.collection.UniformPair;
+import eu.uk.ncl.pet5o.esper.view.View;
 
 /**
  * Update dispatch view to indicate statement results to listeners.
@@ -23,5 +23,5 @@ public interface UpdateDispatchView extends View {
      *
      * @param result is new data (insert stream) and old data (remove stream)
      */
-    public void newResult(UniformPair<com.espertech.esper.client.EventBean[]> result);
+    public void newResult(UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> result);
 }

@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
 
 import java.lang.ref.SoftReference;
 import java.util.Collection;
@@ -20,7 +20,7 @@ public class ExpressionResultCacheForPropUnwrapImpl implements ExpressionResultC
 
     private final HashMap<String, SoftReference<ExpressionResultCacheEntryBeanAndCollBean>> collPropertyCache = new HashMap<>();
 
-    public ExpressionResultCacheEntryBeanAndCollBean getPropertyColl(String propertyNameFullyQualified, com.espertech.esper.client.EventBean reference) {
+    public ExpressionResultCacheEntryBeanAndCollBean getPropertyColl(String propertyNameFullyQualified, eu.uk.ncl.pet5o.esper.client.EventBean reference) {
         SoftReference<ExpressionResultCacheEntryBeanAndCollBean> cacheRef = collPropertyCache.get(propertyNameFullyQualified);
         if (cacheRef == null) {
             return null;
@@ -35,7 +35,7 @@ public class ExpressionResultCacheForPropUnwrapImpl implements ExpressionResultC
         return entry;
     }
 
-    public void savePropertyColl(String propertyNameFullyQualified, com.espertech.esper.client.EventBean reference, Collection<EventBean> events) {
+    public void savePropertyColl(String propertyNameFullyQualified, eu.uk.ncl.pet5o.esper.client.EventBean reference, Collection<EventBean> events) {
         ExpressionResultCacheEntryBeanAndCollBean entry = new ExpressionResultCacheEntryBeanAndCollBean(reference, events);
         collPropertyCache.put(propertyNameFullyQualified, new SoftReference<>(entry));
     }

@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-import com.espertech.esper.client.EventPropertyDescriptor;
-import com.espertech.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyDescriptor;
+import eu.uk.ncl.pet5o.esper.client.EventType;
 
 /**
  * Service provider interface for internal use for event types.

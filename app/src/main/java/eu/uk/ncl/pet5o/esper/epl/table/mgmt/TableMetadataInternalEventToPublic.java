@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.table.mgmt;
 
-import com.espertech.esper.epl.agg.service.common.AggregationRowPair;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.table.strategy.ExprTableEvalStrategyUtil;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.event.ObjectArrayBackedEventBean;
-import com.espertech.esper.event.arr.ObjectArrayEventType;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationRowPair;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.table.strategy.ExprTableEvalStrategyUtil;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.event.ObjectArrayBackedEventBean;
+import eu.uk.ncl.pet5o.esper.event.arr.ObjectArrayEventType;
 
 public class TableMetadataInternalEventToPublic {
 
@@ -35,12 +35,12 @@ public class TableMetadataInternalEventToPublic {
         this.numColumns = publicEventType.getPropertyDescriptors().length;
     }
 
-    public com.espertech.esper.client.EventBean convert(com.espertech.esper.client.EventBean event, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean convert(eu.uk.ncl.pet5o.esper.client.EventBean event, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         Object[] data = convertToUnd(event, eventsPerStream, isNewData, context);
         return eventAdapterService.adapterForType(data, publicEventType);
     }
 
-    public Object[] convertToUnd(com.espertech.esper.client.EventBean event, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Object[] convertToUnd(eu.uk.ncl.pet5o.esper.client.EventBean event, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         ObjectArrayBackedEventBean bean = (ObjectArrayBackedEventBean) event;
         AggregationRowPair row = ExprTableEvalStrategyUtil.getRow(bean);
         Object[] data = new Object[numColumns];

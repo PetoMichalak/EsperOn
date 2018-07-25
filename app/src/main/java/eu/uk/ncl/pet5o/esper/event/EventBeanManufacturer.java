@@ -20,7 +20,7 @@ public interface EventBeanManufacturer {
      * @param properties values to populate
      * @return event object
      */
-    public com.espertech.esper.client.EventBean make(Object[] properties);
+    public eu.uk.ncl.pet5o.esper.client.EventBean make(Object[] properties);
 
     public Object makeUnderlying(Object[] properties);
 }

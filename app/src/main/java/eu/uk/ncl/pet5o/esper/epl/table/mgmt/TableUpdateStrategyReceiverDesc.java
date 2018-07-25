@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.table.mgmt;
 
-import com.espertech.esper.epl.table.upd.TableUpdateStrategyReceiver;
-import com.espertech.esper.epl.updatehelper.EventBeanUpdateHelper;
+import eu.uk.ncl.pet5o.esper.epl.table.upd.TableUpdateStrategyReceiver;
+import eu.uk.ncl.pet5o.esper.epl.updatehelper.EventBeanUpdateHelper;
 
 public class TableUpdateStrategyReceiverDesc {
 

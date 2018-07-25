@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.SafeIterator;
+import eu.uk.ncl.pet5o.esper.client.SafeIterator;
 
 import java.util.Iterator;
 

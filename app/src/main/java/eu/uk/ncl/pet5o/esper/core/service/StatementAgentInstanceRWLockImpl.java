@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.util.ThreadLogUtil;
+import eu.uk.ncl.pet5o.esper.util.ThreadLogUtil;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;

@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.EPServiceProviderIsolated;
+import eu.uk.ncl.pet5o.esper.client.EPServiceProviderIsolated;
 
 /**
  * SPU for isolated service provider.

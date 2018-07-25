@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.client.EPOnDemandPreparedQueryParameterized;
-import com.espertech.esper.client.EPPreparedStatement;
-import com.espertech.esper.client.soda.EPStatementObjectModel;
-import com.espertech.esper.epl.spec.SubstitutionParameterExpressionBase;
-import com.espertech.esper.epl.spec.SubstitutionParameterExpressionIndexed;
-import com.espertech.esper.epl.spec.SubstitutionParameterExpressionNamed;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.client.EPOnDemandPreparedQueryParameterized;
+import eu.uk.ncl.pet5o.esper.client.EPPreparedStatement;
+import eu.uk.ncl.pet5o.esper.client.soda.EPStatementObjectModel;
+import eu.uk.ncl.pet5o.esper.epl.spec.SubstitutionParameterExpressionBase;
+import eu.uk.ncl.pet5o.esper.epl.spec.SubstitutionParameterExpressionIndexed;
+import eu.uk.ncl.pet5o.esper.epl.spec.SubstitutionParameterExpressionNamed;
 
 import java.io.Serializable;
 import java.util.List;

@@ -10,16 +10,16 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.core.service.speccompiled.SelectClauseStreamCompiledSpec;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.epl.expression.visitor.ExprNodeSubselectDeclaredDotVisitor;
-import com.espertech.esper.epl.spec.*;
-import com.espertech.esper.epl.table.mgmt.TableService;
-import com.espertech.esper.filterspec.FilterSpecCompiled;
-import com.espertech.esper.filterspec.FilterSpecParam;
-import com.espertech.esper.filterspec.FilterSpecParamExprNode;
-import com.espertech.esper.pattern.*;
+import eu.uk.ncl.pet5o.esper.core.service.speccompiled.SelectClauseStreamCompiledSpec;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.epl.expression.visitor.ExprNodeSubselectDeclaredDotVisitor;
+import eu.uk.ncl.pet5o.esper.epl.spec.*;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableService;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterSpecCompiled;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterSpecParam;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterSpecParamExprNode;
+import eu.uk.ncl.pet5o.esper.pattern.*;
 
 import java.util.ArrayList;
 import java.util.List;

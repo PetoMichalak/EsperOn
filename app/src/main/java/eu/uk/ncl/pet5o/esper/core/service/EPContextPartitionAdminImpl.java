@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.context.*;
-import com.espertech.esper.core.context.mgr.*;
-import com.espertech.esper.core.context.util.ContextPartitionImportCallback;
+import eu.uk.ncl.pet5o.esper.client.context.*;
+import eu.uk.ncl.pet5o.esper.core.context.mgr.*;
+import eu.uk.ncl.pet5o.esper.core.context.util.ContextPartitionImportCallback;
 
 import java.util.Collections;
 import java.util.HashMap;

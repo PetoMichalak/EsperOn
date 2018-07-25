@@ -10,16 +10,16 @@
  */
 package eu.uk.ncl.pet5o.esper.client.hook;
 
-import com.espertech.esper.client.EventBeanFactory;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.core.service.StatementContext;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.view.ViewFactoryContext;
+import eu.uk.ncl.pet5o.esper.client.EventBeanFactory;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.view.ViewFactoryContext;
 
 import java.io.Serializable;
 
 /**
- * Context for use with virtual data window factory {@link com.espertech.esper.client.hook.VirtualDataWindowFactory} provides
+ * Context for use with virtual data window factory {@link eu.uk.ncl.pet5o.esper.client.hook.VirtualDataWindowFactory} provides
  * contextual information about the named window and the type of events held,
  * handle for posting insert and remove streams and factory for event bean instances.
  */

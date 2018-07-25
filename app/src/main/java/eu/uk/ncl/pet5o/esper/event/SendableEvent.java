@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-import com.espertech.esper.client.EPRuntime;
+import eu.uk.ncl.pet5o.esper.client.EPRuntime;
 
 public interface SendableEvent {
     public void send(EPRuntime runtime);

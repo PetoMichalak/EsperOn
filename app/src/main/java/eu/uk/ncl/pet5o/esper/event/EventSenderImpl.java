@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.client.EventSender;
-import com.espertech.esper.core.service.EPRuntimeEventSender;
-import com.espertech.esper.core.thread.InboundUnitSendWrapped;
-import com.espertech.esper.core.thread.ThreadingOption;
-import com.espertech.esper.core.thread.ThreadingService;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.client.EventSender;
+import eu.uk.ncl.pet5o.esper.core.service.EPRuntimeEventSender;
+import eu.uk.ncl.pet5o.esper.core.thread.InboundUnitSendWrapped;
+import eu.uk.ncl.pet5o.esper.core.thread.ThreadingOption;
+import eu.uk.ncl.pet5o.esper.core.thread.ThreadingService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,7 +59,7 @@ public class EventSenderImpl implements EventSender {
     private void sendIn(Object theEvent, boolean isRoute) throws EPException {
         // Ask each factory in turn to take care of it
         for (EventSenderURIDesc entry : handlingFactories) {
-            com.espertech.esper.client.EventBean eventBean = null;
+            eu.uk.ncl.pet5o.esper.client.EventBean eventBean = null;
 
             try {
                 eventBean = entry.getBeanFactory().create(theEvent, entry.getResolutionURI());

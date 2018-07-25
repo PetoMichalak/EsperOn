@@ -10,16 +10,16 @@
  */
 package eu.uk.ncl.pet5o.esper.event.map;
 
-import com.espertech.esper.client.EventPropertyGetter;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.event.*;
-import com.espertech.esper.event.arr.ObjectArrayEventPropertyGetter;
-import com.espertech.esper.event.arr.ObjectArrayEventType;
-import com.espertech.esper.event.bean.BeanEventPropertyGetter;
-import com.espertech.esper.event.bean.BeanEventType;
-import com.espertech.esper.event.property.IndexedProperty;
-import com.espertech.esper.event.property.MappedProperty;
-import com.espertech.esper.event.property.Property;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.event.*;
+import eu.uk.ncl.pet5o.esper.event.arr.ObjectArrayEventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.event.arr.ObjectArrayEventType;
+import eu.uk.ncl.pet5o.esper.event.bean.BeanEventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.event.bean.BeanEventType;
+import eu.uk.ncl.pet5o.esper.event.property.IndexedProperty;
+import eu.uk.ncl.pet5o.esper.event.property.MappedProperty;
+import eu.uk.ncl.pet5o.esper.event.property.Property;
 
 import java.util.Map;
 

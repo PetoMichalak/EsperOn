@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.client.EPStatement;
-import com.espertech.esper.collection.UniformPair;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.event.NaturalEventBean;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.client.EPStatement;
+import eu.uk.ncl.pet5o.esper.collection.UniformPair;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.event.NaturalEventBean;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import net.sf.cglib.reflect.FastClass;
 import net.sf.cglib.reflect.FastMethod;
@@ -86,7 +86,7 @@ public class ResultDeliveryStrategyImpl implements ResultDeliveryStrategy {
         }
     }
 
-    public void execute(UniformPair<com.espertech.esper.client.EventBean[]> result) {
+    public void execute(UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> result) {
         if (startMethodFast != null) {
             int countNew = 0;
             int countOld = 0;
@@ -110,8 +110,8 @@ public class ResultDeliveryStrategyImpl implements ResultDeliveryStrategy {
             }
         }
 
-        com.espertech.esper.client.EventBean[] newData = null;
-        com.espertech.esper.client.EventBean[] oldData = null;
+        eu.uk.ncl.pet5o.esper.client.EventBean[] newData = null;
+        eu.uk.ncl.pet5o.esper.client.EventBean[] oldData = null;
         if (result != null) {
             newData = result.getFirst();
             oldData = result.getSecond();
@@ -119,7 +119,7 @@ public class ResultDeliveryStrategyImpl implements ResultDeliveryStrategy {
 
         if ((newData != null) && (newData.length > 0)) {
             for (int i = 0; i < newData.length; i++) {
-                com.espertech.esper.client.EventBean theEvent = newData[i];
+                eu.uk.ncl.pet5o.esper.client.EventBean theEvent = newData[i];
                 if (theEvent instanceof NaturalEventBean) {
                     NaturalEventBean natural = (NaturalEventBean) theEvent;
                     Object[] parameters = deliveryConvertor.convertRow(natural.getNatural());
@@ -136,7 +136,7 @@ public class ResultDeliveryStrategyImpl implements ResultDeliveryStrategy {
 
         if ((updateRStreamMethodFast != null) && (oldData != null) && (oldData.length > 0)) {
             for (int i = 0; i < oldData.length; i++) {
-                com.espertech.esper.client.EventBean theEvent = oldData[i];
+                eu.uk.ncl.pet5o.esper.client.EventBean theEvent = oldData[i];
                 if (theEvent instanceof NaturalEventBean) {
                     NaturalEventBean natural = (NaturalEventBean) theEvent;
                     Object[] parameters = deliveryConvertor.convertRow(natural.getNatural());
@@ -197,13 +197,13 @@ public class ResultDeliveryStrategyImpl implements ResultDeliveryStrategy {
         logger.error(message, t);
     }
 
-    private int count(com.espertech.esper.client.EventBean[] events) {
+    private int count(eu.uk.ncl.pet5o.esper.client.EventBean[] events) {
         if (events == null) {
             return 0;
         }
         int count = 0;
         for (int i = 0; i < events.length; i++) {
-            com.espertech.esper.client.EventBean theEvent = events[i];
+            eu.uk.ncl.pet5o.esper.client.EventBean theEvent = events[i];
             if (theEvent instanceof NaturalEventBean) {
                 count++;
             }

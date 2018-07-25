@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
 
 import java.util.Collection;
 
@@ -22,7 +22,7 @@ import java.util.Collection;
  */
 public interface ExpressionResultCacheForPropUnwrap {
 
-    ExpressionResultCacheEntryBeanAndCollBean getPropertyColl(String propertyNameFullyQualified, com.espertech.esper.client.EventBean reference);
+    ExpressionResultCacheEntryBeanAndCollBean getPropertyColl(String propertyNameFullyQualified, eu.uk.ncl.pet5o.esper.client.EventBean reference);
 
-    void savePropertyColl(String propertyNameFullyQualified, com.espertech.esper.client.EventBean reference, Collection<EventBean> events);
+    void savePropertyColl(String propertyNameFullyQualified, eu.uk.ncl.pet5o.esper.client.EventBean reference, Collection<EventBean> events);
 }

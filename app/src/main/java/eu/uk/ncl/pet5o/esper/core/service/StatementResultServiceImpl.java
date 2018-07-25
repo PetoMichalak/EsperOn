@@ -10,26 +10,26 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.StatementAwareUpdateListener;
-import com.espertech.esper.client.UpdateListener;
-import com.espertech.esper.collection.MultiKeyUntyped;
-import com.espertech.esper.collection.UniformPair;
-import com.espertech.esper.core.thread.OutboundUnitRunnable;
-import com.espertech.esper.core.thread.ThreadingOption;
-import com.espertech.esper.core.thread.ThreadingService;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.metric.MetricReportingPath;
-import com.espertech.esper.epl.metric.MetricReportingService;
-import com.espertech.esper.epl.metric.MetricReportingServiceSPI;
-import com.espertech.esper.epl.metric.StatementMetricHandle;
-import com.espertech.esper.event.EventBeanUtility;
-import com.espertech.esper.event.NaturalEventBean;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
-import com.espertech.esper.util.AuditPath;
-import com.espertech.esper.util.ExecutionPathDebugLog;
-import com.espertech.esper.view.ViewSupport;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.StatementAwareUpdateListener;
+import eu.uk.ncl.pet5o.esper.client.UpdateListener;
+import eu.uk.ncl.pet5o.esper.collection.MultiKeyUntyped;
+import eu.uk.ncl.pet5o.esper.collection.UniformPair;
+import eu.uk.ncl.pet5o.esper.core.thread.OutboundUnitRunnable;
+import eu.uk.ncl.pet5o.esper.core.thread.ThreadingOption;
+import eu.uk.ncl.pet5o.esper.core.thread.ThreadingService;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.metric.MetricReportingPath;
+import eu.uk.ncl.pet5o.esper.epl.metric.MetricReportingService;
+import eu.uk.ncl.pet5o.esper.epl.metric.MetricReportingServiceSPI;
+import eu.uk.ncl.pet5o.esper.epl.metric.StatementMetricHandle;
+import eu.uk.ncl.pet5o.esper.event.EventBeanUtility;
+import eu.uk.ncl.pet5o.esper.event.NaturalEventBean;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.util.AuditPath;
+import eu.uk.ncl.pet5o.esper.util.ExecutionPathDebugLog;
+import eu.uk.ncl.pet5o.esper.view.ViewSupport;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -186,7 +186,7 @@ public class StatementResultServiceImpl implements StatementResultService {
     }
 
     // Called by OutputProcessView
-    public void indicate(UniformPair<com.espertech.esper.client.EventBean[]> results) {
+    public void indicate(UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> results) {
         if (results != null) {
             if ((MetricReportingPath.isMetricsEnabled) && (statementMetricHandle.isEnabled())) {
                 int numIStream = (results.getFirst() != null) ? results.getFirst().length : 0;
@@ -205,7 +205,7 @@ public class StatementResultServiceImpl implements StatementResultService {
     public void execute() {
         ArrayDeque<UniformPair<EventBean[]>> dispatches = lastResults.get();
 
-        UniformPair<com.espertech.esper.client.EventBean[]> events = EventBeanUtility.flattenList(dispatches);
+        UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> events = EventBeanUtility.flattenList(dispatches);
 
         if (ExecutionPathDebugLog.isDebugEnabled && log.isDebugEnabled()) {
             ViewSupport.dumpUpdateParams(".execute", events);
@@ -229,7 +229,7 @@ public class StatementResultServiceImpl implements StatementResultService {
      *
      * @param events to indicate
      */
-    public void processDispatch(UniformPair<com.espertech.esper.client.EventBean[]> events) {
+    public void processDispatch(UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> events) {
         // Plain all-events delivery
         if (!forClauseDelivery) {
             dispatchInternal(events);
@@ -238,18 +238,18 @@ public class StatementResultServiceImpl implements StatementResultService {
 
         // Discrete delivery
         if ((groupDeliveryExpressions == null) || (groupDeliveryExpressions.length == 0)) {
-            UniformPair<com.espertech.esper.client.EventBean[]> todeliver = new UniformPair<com.espertech.esper.client.EventBean[]>(null, null);
+            UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> todeliver = new UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]>(null, null);
             if (events != null) {
                 if (events.getFirst() != null) {
-                    for (com.espertech.esper.client.EventBean theEvent : events.getFirst()) {
-                        todeliver.setFirst(new com.espertech.esper.client.EventBean[]{theEvent});
+                    for (eu.uk.ncl.pet5o.esper.client.EventBean theEvent : events.getFirst()) {
+                        todeliver.setFirst(new eu.uk.ncl.pet5o.esper.client.EventBean[]{theEvent});
                         dispatchInternal(todeliver);
                     }
                     todeliver.setFirst(null);
                 }
                 if (events.getSecond() != null) {
-                    for (com.espertech.esper.client.EventBean theEvent : events.getSecond()) {
-                        todeliver.setSecond(new com.espertech.esper.client.EventBean[]{theEvent});
+                    for (eu.uk.ncl.pet5o.esper.client.EventBean theEvent : events.getSecond()) {
+                        todeliver.setSecond(new eu.uk.ncl.pet5o.esper.client.EventBean[]{theEvent});
                         dispatchInternal(todeliver);
                     }
                     todeliver.setSecond(null);
@@ -274,25 +274,25 @@ public class StatementResultServiceImpl implements StatementResultService {
         }
     }
 
-    private Map<Object, UniformPair<EventBean[]>> getGroupedResults(UniformPair<com.espertech.esper.client.EventBean[]> events) {
+    private Map<Object, UniformPair<EventBean[]>> getGroupedResults(UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> events) {
         if (events == null) {
             return Collections.emptyMap();
         }
         Map<Object, UniformPair<EventBean[]>> groups = new LinkedHashMap<Object, UniformPair<EventBean[]>>();
-        com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[1];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
         getGroupedResults(groups, events.getFirst(), true, eventsPerStream);
         getGroupedResults(groups, events.getSecond(), false, eventsPerStream);
         return groups;
     }
 
-    private void getGroupedResults(Map<Object, UniformPair<EventBean[]>> groups, com.espertech.esper.client.EventBean[] events, boolean insertStream, com.espertech.esper.client.EventBean[] eventsPerStream) {
+    private void getGroupedResults(Map<Object, UniformPair<EventBean[]>> groups, eu.uk.ncl.pet5o.esper.client.EventBean[] events, boolean insertStream, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream) {
         if (events == null) {
             return;
         }
 
-        for (com.espertech.esper.client.EventBean theEvent : events) {
+        for (eu.uk.ncl.pet5o.esper.client.EventBean theEvent : events) {
 
-            com.espertech.esper.client.EventBean evalEvent = theEvent;
+            eu.uk.ncl.pet5o.esper.client.EventBean evalEvent = theEvent;
             if (evalEvent instanceof NaturalEventBean) {
                 evalEvent = ((NaturalEventBean) evalEvent).getOptionalSynthetic();
             }
@@ -309,24 +309,24 @@ public class StatementResultServiceImpl implements StatementResultService {
                 key = new MultiKeyUntyped(keys);
             }
 
-            UniformPair<com.espertech.esper.client.EventBean[]> groupEntry = groups.get(key);
+            UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> groupEntry = groups.get(key);
             if (groupEntry == null) {
                 if (insertStream) {
-                    groupEntry = new UniformPair<com.espertech.esper.client.EventBean[]>(new com.espertech.esper.client.EventBean[]{theEvent}, null);
+                    groupEntry = new UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]>(new eu.uk.ncl.pet5o.esper.client.EventBean[]{theEvent}, null);
                 } else {
-                    groupEntry = new UniformPair<com.espertech.esper.client.EventBean[]>(null, new com.espertech.esper.client.EventBean[]{theEvent});
+                    groupEntry = new UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]>(null, new eu.uk.ncl.pet5o.esper.client.EventBean[]{theEvent});
                 }
                 groups.put(key, groupEntry);
             } else {
                 if (insertStream) {
                     if (groupEntry.getFirst() == null) {
-                        groupEntry.setFirst(new com.espertech.esper.client.EventBean[]{theEvent});
+                        groupEntry.setFirst(new eu.uk.ncl.pet5o.esper.client.EventBean[]{theEvent});
                     } else {
                         groupEntry.setFirst(EventBeanUtility.addToArray(groupEntry.getFirst(), theEvent));
                     }
                 } else {
                     if (groupEntry.getSecond() == null) {
-                        groupEntry.setSecond(new com.espertech.esper.client.EventBean[]{theEvent});
+                        groupEntry.setSecond(new eu.uk.ncl.pet5o.esper.client.EventBean[]{theEvent});
                     } else {
                         groupEntry.setSecond(EventBeanUtility.addToArray(groupEntry.getSecond(), theEvent));
                     }
@@ -335,13 +335,13 @@ public class StatementResultServiceImpl implements StatementResultService {
         }
     }
 
-    private void dispatchInternal(UniformPair<com.espertech.esper.client.EventBean[]> events) {
+    private void dispatchInternal(UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> events) {
         if (statementResultNaturalStrategy != null) {
             statementResultNaturalStrategy.execute(events);
         }
 
-        com.espertech.esper.client.EventBean[] newEventArr = events != null ? events.getFirst() : null;
-        com.espertech.esper.client.EventBean[] oldEventArr = events != null ? events.getSecond() : null;
+        eu.uk.ncl.pet5o.esper.client.EventBean[] newEventArr = events != null ? events.getFirst() : null;
+        eu.uk.ncl.pet5o.esper.client.EventBean[] oldEventArr = events != null ? events.getSecond() : null;
 
         for (UpdateListener listener : statementListenerSet.getListeners()) {
             try {

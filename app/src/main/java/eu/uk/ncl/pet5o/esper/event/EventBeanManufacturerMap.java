@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-import com.espertech.esper.event.map.MapEventType;
+import eu.uk.ncl.pet5o.esper.event.map.MapEventType;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,7 +36,7 @@ public class EventBeanManufacturerMap implements EventBeanManufacturer {
         this.writables = properties;
     }
 
-    public com.espertech.esper.client.EventBean make(Object[] properties) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean make(Object[] properties) {
         Map<String, Object> values = makeUnderlying(properties);
         return eventAdapterService.adapterForTypedMap(values, mapEventType);
     }

@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.hook.*;
-import com.espertech.esper.core.context.util.EPStatementAgentInstanceHandle;
+import eu.uk.ncl.pet5o.esper.client.hook.*;
+import eu.uk.ncl.pet5o.esper.core.context.util.EPStatementAgentInstanceHandle;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,7 +45,7 @@ public class ExceptionHandlingService {
         }
     }
 
-    public void handleException(RuntimeException ex, EPStatementAgentInstanceHandle handle, ExceptionHandlerExceptionType type, com.espertech.esper.client.EventBean optionalCurrentEvent) {
+    public void handleException(RuntimeException ex, EPStatementAgentInstanceHandle handle, ExceptionHandlerExceptionType type, eu.uk.ncl.pet5o.esper.client.EventBean optionalCurrentEvent) {
         handleException(ex, handle.getStatementHandle().getStatementName(), handle.getStatementHandle().getEPL(), type, optionalCurrentEvent);
     }
 
@@ -53,7 +53,7 @@ public class ExceptionHandlingService {
         return engineURI;
     }
 
-    public void handleException(RuntimeException ex, String statementName, String epl, ExceptionHandlerExceptionType type, com.espertech.esper.client.EventBean optionalCurrentEvent) {
+    public void handleException(RuntimeException ex, String statementName, String epl, ExceptionHandlerExceptionType type, eu.uk.ncl.pet5o.esper.client.EventBean optionalCurrentEvent) {
         if (exceptionHandlers.isEmpty()) {
             StringWriter writer = new StringWriter();
             if (type == ExceptionHandlerExceptionType.PROCESS) {

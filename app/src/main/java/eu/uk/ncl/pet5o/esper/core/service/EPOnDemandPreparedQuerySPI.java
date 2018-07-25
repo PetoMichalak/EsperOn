@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.EPOnDemandPreparedQuery;
-import com.espertech.esper.core.start.EPPreparedExecuteMethod;
+import eu.uk.ncl.pet5o.esper.client.EPOnDemandPreparedQuery;
+import eu.uk.ncl.pet5o.esper.core.start.EPPreparedExecuteMethod;
 
 public interface EPOnDemandPreparedQuerySPI extends EPOnDemandPreparedQuery {
     public EPPreparedExecuteMethod getExecuteMethod();

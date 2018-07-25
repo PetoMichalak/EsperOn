@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-import com.espertech.esper.event.arr.ObjectArrayEventType;
+import eu.uk.ncl.pet5o.esper.event.arr.ObjectArrayEventType;
 
 import java.util.Map;
 
@@ -51,7 +51,7 @@ public class EventBeanManufacturerObjectArray implements EventBeanManufacturer {
         oneToOne = oneToOneMapping && properties.length == eventType.getPropertyNames().length;
     }
 
-    public com.espertech.esper.client.EventBean make(Object[] properties) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean make(Object[] properties) {
         Object[] cols = makeUnderlying(properties);
         return eventAdapterService.adapterForTypedObjectArray(cols, eventType);
     }

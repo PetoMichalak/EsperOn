@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.EPServiceProvider;
-import com.espertech.esper.client.EPStatementStateListener;
+import eu.uk.ncl.pet5o.esper.client.EPServiceProvider;
+import eu.uk.ncl.pet5o.esper.client.EPStatementStateListener;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

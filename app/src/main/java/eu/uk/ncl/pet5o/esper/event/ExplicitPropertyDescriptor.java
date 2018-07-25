@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-import com.espertech.esper.client.EventPropertyDescriptor;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyDescriptor;
 
 /**
  * Descriptor for explicit properties for use with {@link BaseConfigurableEventType}.

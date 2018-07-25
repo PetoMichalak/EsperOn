@@ -23,9 +23,9 @@ package eu.uk.ncl.pet5o.esper.client.hook;
  * An application may throw a runtime exception in the @handle method to cancel further processing
  * of an event against statements.
  * <p>
- * Registering an exception handler does not mean that the {{@link com.espertech.esper.client.EPRuntime#sendEvent}}
+ * Registering an exception handler does not mean that the {{@link eu.uk.ncl.pet5o.esper.client.EPRuntime#sendEvent}}
  * does not throw any exceptions, as exception unassociated to a specific statement are still thrown
- * from {{@link com.espertech.esper.client.EPRuntime#sendEvent}}.
+ * from {{@link eu.uk.ncl.pet5o.esper.client.EPRuntime#sendEvent}}.
  * For inbound pools use {@link ExceptionHandlerInboundPool}.
  */
 public interface ExceptionHandler {

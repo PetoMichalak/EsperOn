@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.script.AgentInstanceScriptContext;
-import com.espertech.esper.epl.table.mgmt.TableExprEvaluatorContext;
-import com.espertech.esper.schedule.TimeProvider;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.script.AgentInstanceScriptContext;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.schedule.TimeProvider;
 
 /**
  * Represents a statement-level-only context for expression evaluation, not allowing for agents instances and result cache.
@@ -22,7 +22,7 @@ import com.espertech.esper.schedule.TimeProvider;
 public class ExprEvaluatorContextStatement implements ExprEvaluatorContext {
     protected final StatementContext statementContext;
     private final boolean allowTableAccess;
-    private com.espertech.esper.client.EventBean contextProperties;
+    private eu.uk.ncl.pet5o.esper.client.EventBean contextProperties;
 
     public ExprEvaluatorContextStatement(StatementContext statementContext, boolean allowTableAccess) {
         this.statementContext = statementContext;
@@ -46,7 +46,7 @@ public class ExprEvaluatorContextStatement implements ExprEvaluatorContext {
         return -1;
     }
 
-    public com.espertech.esper.client.EventBean getContextProperties() {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getContextProperties() {
         return contextProperties;
     }
 
@@ -85,7 +85,7 @@ public class ExprEvaluatorContextStatement implements ExprEvaluatorContext {
         return statementContext.getStatementUserObject();
     }
 
-    public void setContextProperties(com.espertech.esper.client.EventBean contextProperties) {
+    public void setContextProperties(eu.uk.ncl.pet5o.esper.client.EventBean contextProperties) {
         this.contextProperties = contextProperties;
     }
 }

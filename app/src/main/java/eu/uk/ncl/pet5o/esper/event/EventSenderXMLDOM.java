@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.client.EventSender;
-import com.espertech.esper.core.service.EPRuntimeEventSender;
-import com.espertech.esper.core.thread.InboundUnitSendWrapped;
-import com.espertech.esper.core.thread.ThreadingOption;
-import com.espertech.esper.core.thread.ThreadingService;
-import com.espertech.esper.event.xml.BaseXMLEventType;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.client.EventSender;
+import eu.uk.ncl.pet5o.esper.core.service.EPRuntimeEventSender;
+import eu.uk.ncl.pet5o.esper.core.thread.InboundUnitSendWrapped;
+import eu.uk.ncl.pet5o.esper.core.thread.ThreadingOption;
+import eu.uk.ncl.pet5o.esper.core.thread.ThreadingService;
+import eu.uk.ncl.pet5o.esper.event.xml.BaseXMLEventType;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -80,7 +80,7 @@ public class EventSenderXMLDOM implements EventSender {
             }
         }
 
-        com.espertech.esper.client.EventBean theEvent = eventAdapterService.adapterForTypedDOM(namedNode, baseXMLEventType);
+        eu.uk.ncl.pet5o.esper.client.EventBean theEvent = eventAdapterService.adapterForTypedDOM(namedNode, baseXMLEventType);
         if (isRoute) {
             runtimeEventSender.routeEventBean(theEvent);
         } else {

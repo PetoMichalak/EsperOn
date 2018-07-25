@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.collection.UniformPair;
-import com.espertech.esper.dispatch.DispatchService;
-import com.espertech.esper.util.MutableBoolean;
+import eu.uk.ncl.pet5o.esper.collection.UniformPair;
+import eu.uk.ncl.pet5o.esper.dispatch.DispatchService;
+import eu.uk.ncl.pet5o.esper.util.MutableBoolean;
 
 /**
  * Convenience view for dispatching view updates received from a parent view to update listeners
@@ -35,11 +35,11 @@ public class UpdateDispatchViewBlockingWait extends UpdateDispatchViewBase {
         this.msecTimeout = msecTimeout;
     }
 
-    public void update(com.espertech.esper.client.EventBean[] newData, com.espertech.esper.client.EventBean[] oldData) {
+    public void update(eu.uk.ncl.pet5o.esper.client.EventBean[] newData, eu.uk.ncl.pet5o.esper.client.EventBean[] oldData) {
         newResult(new UniformPair<>(newData, oldData));
     }
 
-    public void newResult(UniformPair<com.espertech.esper.client.EventBean[]> results) {
+    public void newResult(UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> results) {
         statementResultService.indicate(results);
         MutableBoolean waiting = isDispatchWaiting.get();
         if (!waiting.isValue()) {

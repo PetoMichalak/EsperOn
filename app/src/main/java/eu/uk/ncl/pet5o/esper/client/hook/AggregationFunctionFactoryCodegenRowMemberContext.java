@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.client.hook;
 
-import com.espertech.esper.codegen.base.CodegenMembersColumnized;
-import com.espertech.esper.codegen.core.CodegenCtor;
-import com.espertech.esper.epl.expression.methodagg.ExprPlugInAggNode;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMembersColumnized;
+import eu.uk.ncl.pet5o.esper.codegen.core.CodegenCtor;
+import eu.uk.ncl.pet5o.esper.epl.expression.methodagg.ExprPlugInAggNode;
 
 /**
  * Context for row-member code generation

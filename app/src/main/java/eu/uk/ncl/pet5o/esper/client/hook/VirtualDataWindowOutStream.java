@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.client.hook;
 
-import com.espertech.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
 
 /**
  * For use with virtual data windows, handles any insert stream and remove stream events that a

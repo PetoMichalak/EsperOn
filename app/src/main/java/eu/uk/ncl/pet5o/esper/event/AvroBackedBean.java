@@ -10,6 +10,6 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-public interface AvroBackedBean extends com.espertech.esper.client.EventBean {
+public interface AvroBackedBean extends eu.uk.ncl.pet5o.esper.client.EventBean {
     Object getGenericRecordDotData();
 }

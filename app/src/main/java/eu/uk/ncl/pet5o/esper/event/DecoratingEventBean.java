@@ -28,5 +28,5 @@ public interface DecoratingEventBean {
      *
      * @return underlying
      */
-    public com.espertech.esper.client.EventBean getUnderlyingEvent();
+    public eu.uk.ncl.pet5o.esper.client.EventBean getUnderlyingEvent();
 }

@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.EPServiceProviderIsolated;
-import com.espertech.esper.client.EPStatement;
-import com.espertech.esper.filter.FilterServiceProvider;
-import com.espertech.esper.filter.FilterServiceSPI;
-import com.espertech.esper.schedule.SchedulingServiceImpl;
-import com.espertech.esper.schedule.SchedulingServiceSPI;
+import eu.uk.ncl.pet5o.esper.client.EPServiceProviderIsolated;
+import eu.uk.ncl.pet5o.esper.client.EPStatement;
+import eu.uk.ncl.pet5o.esper.filter.FilterServiceProvider;
+import eu.uk.ncl.pet5o.esper.filter.FilterServiceSPI;
+import eu.uk.ncl.pet5o.esper.schedule.SchedulingServiceImpl;
+import eu.uk.ncl.pet5o.esper.schedule.SchedulingServiceSPI;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

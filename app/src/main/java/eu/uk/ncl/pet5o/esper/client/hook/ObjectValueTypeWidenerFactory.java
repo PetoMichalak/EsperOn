@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.client.hook;
 
-import com.espertech.esper.util.TypeWidener;
+import eu.uk.ncl.pet5o.esper.util.TypeWidener;
 
 /**
  * For Avro use widener or transformer of object values to Avro record values

@@ -10,16 +10,16 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.client.EventSender;
-import com.espertech.esper.client.time.CurrentTimeEvent;
-import com.espertech.esper.core.service.EPRuntimeEventSender;
-import com.espertech.esper.core.thread.InboundUnitSendWrapped;
-import com.espertech.esper.core.thread.ThreadingOption;
-import com.espertech.esper.core.thread.ThreadingService;
-import com.espertech.esper.event.bean.BeanEventType;
-import com.espertech.esper.util.ExecutionPathDebugLog;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.client.EventSender;
+import eu.uk.ncl.pet5o.esper.client.time.CurrentTimeEvent;
+import eu.uk.ncl.pet5o.esper.core.service.EPRuntimeEventSender;
+import eu.uk.ncl.pet5o.esper.core.thread.InboundUnitSendWrapped;
+import eu.uk.ncl.pet5o.esper.core.thread.ThreadingOption;
+import eu.uk.ncl.pet5o.esper.core.thread.ThreadingService;
+import eu.uk.ncl.pet5o.esper.event.bean.BeanEventType;
+import eu.uk.ncl.pet5o.esper.util.ExecutionPathDebugLog;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -68,7 +68,7 @@ public class EventSenderBean implements EventSender {
             }
         }
 
-        com.espertech.esper.client.EventBean eventBean = getEventBean(theEvent);
+        eu.uk.ncl.pet5o.esper.client.EventBean eventBean = getEventBean(theEvent);
 
         // Process event
         if ((ThreadingOption.isThreadingEnabled) && (threadingService.isInboundThreading())) {
@@ -79,11 +79,11 @@ public class EventSenderBean implements EventSender {
     }
 
     public void route(Object theEvent) throws EPException {
-        com.espertech.esper.client.EventBean eventBean = getEventBean(theEvent);
+        eu.uk.ncl.pet5o.esper.client.EventBean eventBean = getEventBean(theEvent);
         runtime.routeEventBean(eventBean);
     }
 
-    private com.espertech.esper.client.EventBean getEventBean(Object theEvent) {
+    private eu.uk.ncl.pet5o.esper.client.EventBean getEventBean(Object theEvent) {
         // type check
         if (theEvent.getClass() != beanEventType.getUnderlyingType()) {
             synchronized (this) {

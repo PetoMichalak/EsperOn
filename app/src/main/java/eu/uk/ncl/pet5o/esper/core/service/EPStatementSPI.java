@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.EPStatement;
-import com.espertech.esper.client.EPStatementState;
-import com.espertech.esper.view.Viewable;
+import eu.uk.ncl.pet5o.esper.client.EPStatement;
+import eu.uk.ncl.pet5o.esper.client.EPStatementState;
+import eu.uk.ncl.pet5o.esper.view.Viewable;
 
 /**
  * Statement SPI for statements operations for state transitions and internal management.

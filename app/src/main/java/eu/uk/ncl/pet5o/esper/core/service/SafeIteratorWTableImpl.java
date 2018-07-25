@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.epl.table.mgmt.TableExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableExprEvaluatorContext;
 
 import java.util.Iterator;
 

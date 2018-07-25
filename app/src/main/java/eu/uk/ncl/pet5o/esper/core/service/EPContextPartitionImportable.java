@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.core.context.mgr.ContextStatePathKey;
-import com.espertech.esper.core.context.mgr.ContextStatePathValue;
+import eu.uk.ncl.pet5o.esper.core.context.mgr.ContextStatePathKey;
+import eu.uk.ncl.pet5o.esper.core.context.mgr.ContextStatePathValue;
 
 import java.io.Serializable;
 import java.util.TreeMap;

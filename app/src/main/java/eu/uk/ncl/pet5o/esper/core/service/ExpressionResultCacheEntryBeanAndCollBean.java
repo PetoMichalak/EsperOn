@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
 
 import java.util.Collection;
 
@@ -18,19 +18,19 @@ import java.util.Collection;
  * Cache entry bean-to-collection-of-bean.
  */
 public class ExpressionResultCacheEntryBeanAndCollBean {
-    private com.espertech.esper.client.EventBean reference;
+    private eu.uk.ncl.pet5o.esper.client.EventBean reference;
     private Collection<EventBean> result;
 
-    public ExpressionResultCacheEntryBeanAndCollBean(com.espertech.esper.client.EventBean reference, Collection<EventBean> result) {
+    public ExpressionResultCacheEntryBeanAndCollBean(eu.uk.ncl.pet5o.esper.client.EventBean reference, Collection<EventBean> result) {
         this.reference = reference;
         this.result = result;
     }
 
-    public com.espertech.esper.client.EventBean getReference() {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getReference() {
         return reference;
     }
 
-    public void setReference(com.espertech.esper.client.EventBean reference) {
+    public void setReference(eu.uk.ncl.pet5o.esper.client.EventBean reference) {
         this.reference = reference;
     }
 

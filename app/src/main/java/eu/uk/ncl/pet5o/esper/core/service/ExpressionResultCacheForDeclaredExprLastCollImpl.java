@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.event.EventBeanUtility;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.event.EventBeanUtility;
 
 import java.lang.ref.SoftReference;
 import java.util.Collection;
@@ -22,7 +22,7 @@ public class ExpressionResultCacheForDeclaredExprLastCollImpl implements Express
     private final IdentityHashMap<Object, SoftReference<ExpressionResultCacheEntryEventBeanArrayAndCollBean>> exprDeclCacheCollection
             = new IdentityHashMap<Object, SoftReference<ExpressionResultCacheEntryEventBeanArrayAndCollBean>>();
 
-    public ExpressionResultCacheEntryEventBeanArrayAndCollBean getDeclaredExpressionLastColl(Object node, com.espertech.esper.client.EventBean[] eventsPerStream) {
+    public ExpressionResultCacheEntryEventBeanArrayAndCollBean getDeclaredExpressionLastColl(Object node, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream) {
         SoftReference<ExpressionResultCacheEntryEventBeanArrayAndCollBean> cacheRef = exprDeclCacheCollection.get(node);
         if (cacheRef == null) {
             return null;
@@ -34,8 +34,8 @@ public class ExpressionResultCacheForDeclaredExprLastCollImpl implements Express
         return EventBeanUtility.compareEventReferences(entry.getReference(), eventsPerStream) ? entry : null;
     }
 
-    public void saveDeclaredExpressionLastColl(Object node, com.espertech.esper.client.EventBean[] eventsPerStream, Collection<EventBean> result) {
-        com.espertech.esper.client.EventBean[] copy = EventBeanUtility.copyArray(eventsPerStream);
+    public void saveDeclaredExpressionLastColl(Object node, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, Collection<EventBean> result) {
+        eu.uk.ncl.pet5o.esper.client.EventBean[] copy = EventBeanUtility.copyArray(eventsPerStream);
         ExpressionResultCacheEntryEventBeanArrayAndCollBean entry = new ExpressionResultCacheEntryEventBeanArrayAndCollBean(copy, result);
         exprDeclCacheCollection.put(node, new SoftReference<ExpressionResultCacheEntryEventBeanArrayAndCollBean>(entry));
     }

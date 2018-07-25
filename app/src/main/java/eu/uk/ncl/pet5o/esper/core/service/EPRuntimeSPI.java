@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.client.EPRuntime;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.client.EPRuntime;
 
 import java.util.Map;
 
@@ -60,9 +60,9 @@ public interface EPRuntimeSPI extends EPRuntime {
      *
      * @param object is the event to sent to the runtime
      * @return returns object wrapped as event bean
-     * @throws com.espertech.esper.client.EPException is thrown when the processing of the event lead to an error
+     * @throws eu.uk.ncl.pet5o.esper.client.EPException is thrown when the processing of the event lead to an error
      */
-    public com.espertech.esper.client.EventBean wrapEvent(Object object);
+    public eu.uk.ncl.pet5o.esper.client.EventBean wrapEvent(Object object);
 
     /**
      * Send a map containing event property values to the event stream processing runtime.
@@ -76,7 +76,7 @@ public interface EPRuntimeSPI extends EPRuntime {
      * @return returns map wrapped as event bean
      * @throws EPException - when the processing of the event leads to an error
      */
-    public com.espertech.esper.client.EventBean wrapEvent(Map map, String eventTypeName);
+    public eu.uk.ncl.pet5o.esper.client.EventBean wrapEvent(Map map, String eventTypeName);
 
     /**
      * Send an event represented by a DOM node to the event stream processing runtime.
@@ -88,7 +88,7 @@ public interface EPRuntimeSPI extends EPRuntime {
      * @return returns node wrapped as event bean
      * @throws EPException is thrown when the processing of the event lead to an error
      */
-    public com.espertech.esper.client.EventBean wrapEvent(org.w3c.dom.Node node);
+    public eu.uk.ncl.pet5o.esper.client.EventBean wrapEvent(org.w3c.dom.Node node);
 
     public void processThreadWorkQueue();
 
@@ -96,7 +96,7 @@ public interface EPRuntimeSPI extends EPRuntime {
 
     public void initialize();
 
-    public void processWrappedEvent(com.espertech.esper.client.EventBean eventBean);
+    public void processWrappedEvent(eu.uk.ncl.pet5o.esper.client.EventBean eventBean);
 
     public String getEngineURI();
 

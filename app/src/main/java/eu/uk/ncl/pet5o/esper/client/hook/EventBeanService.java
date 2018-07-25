@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.client.hook;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
 
 import org.w3c.dom.Node;
 

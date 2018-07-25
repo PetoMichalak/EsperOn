@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.streamtype;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.FragmentEventType;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.FragmentEventType;
 
 /**
  * Encapsulates the result of resolving a property and optional stream name against a supplied list of streams

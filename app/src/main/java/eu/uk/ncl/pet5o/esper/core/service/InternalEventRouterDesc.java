@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.epl.expression.codegen.ExprNodeCompiler;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.spec.UpdateDesc;
-import com.espertech.esper.event.EventBeanCopyMethod;
-import com.espertech.esper.util.TypeWidener;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprNodeCompiler;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.spec.UpdateDesc;
+import eu.uk.ncl.pet5o.esper.event.EventBeanCopyMethod;
+import eu.uk.ncl.pet5o.esper.util.TypeWidener;
 
 import java.lang.annotation.Annotation;
 

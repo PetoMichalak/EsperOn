@@ -10,26 +10,26 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-import com.espertech.esper.client.*;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMember;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.event.map.MapEventType;
-import com.espertech.esper.event.wrap.WrapperGetterIndexed;
-import com.espertech.esper.event.wrap.WrapperGetterMapped;
-import com.espertech.esper.event.wrap.WrapperMapPropertyGetter;
-import com.espertech.esper.event.wrap.WrapperUnderlyingPropertyGetter;
+import eu.uk.ncl.pet5o.esper.client.*;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMember;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.event.map.MapEventType;
+import eu.uk.ncl.pet5o.esper.event.wrap.WrapperGetterIndexed;
+import eu.uk.ncl.pet5o.esper.event.wrap.WrapperGetterMapped;
+import eu.uk.ncl.pet5o.esper.event.wrap.WrapperMapPropertyGetter;
+import eu.uk.ncl.pet5o.esper.event.wrap.WrapperUnderlyingPropertyGetter;
 
 import java.util.*;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethodBuild;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.member;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.localMethodBuild;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.member;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
 
 /**
  * An event type that adds zero or more fields to an existing event type.
@@ -40,7 +40,7 @@ import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuil
  * If this event type is to add information to another wrapper event type (wrapper to wrapper), then it is the
  * responsibility of the creating logic to use the existing event type and add to it.
  * <p>
- * Uses a the map event type {@link com.espertech.esper.event.map.MapEventType} to represent the mapped properties. This is because the additional properties
+ * Uses a the map event type {@link eu.uk.ncl.pet5o.esper.event.map.MapEventType} to represent the mapped properties. This is because the additional properties
  * can also be beans or complex types and the Map event type handles these nicely.
  */
 public class WrapperEventType implements EventTypeSPI {

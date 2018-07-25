@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
 
 import java.util.Map;
 

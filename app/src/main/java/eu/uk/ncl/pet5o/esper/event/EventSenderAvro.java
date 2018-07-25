@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.client.EventSender;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.core.service.EPRuntimeEventSender;
-import com.espertech.esper.core.thread.InboundUnitSendWrapped;
-import com.espertech.esper.core.thread.ThreadingOption;
-import com.espertech.esper.core.thread.ThreadingService;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.client.EventSender;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.core.service.EPRuntimeEventSender;
+import eu.uk.ncl.pet5o.esper.core.thread.InboundUnitSendWrapped;
+import eu.uk.ncl.pet5o.esper.core.thread.ThreadingOption;
+import eu.uk.ncl.pet5o.esper.core.thread.ThreadingService;
 
 /**
  * Event sender for avro-backed events.
@@ -45,7 +45,7 @@ public class EventSenderAvro implements EventSender {
     }
 
     public void sendEvent(Object theEvent) {
-        com.espertech.esper.client.EventBean eventBean = eventAdapterService.adapterForTypedAvro(theEvent, eventType);
+        eu.uk.ncl.pet5o.esper.client.EventBean eventBean = eventAdapterService.adapterForTypedAvro(theEvent, eventType);
 
         if ((ThreadingOption.isThreadingEnabled) && (threadingService.isInboundThreading())) {
             threadingService.submitInbound(new InboundUnitSendWrapped(eventBean, runtimeEventSender));
@@ -58,7 +58,7 @@ public class EventSenderAvro implements EventSender {
         if (!(theEvent.getClass().isArray())) {
             throw new EPException("Unexpected event object of type " + theEvent.getClass().getName() + ", expected Object[]");
         }
-        com.espertech.esper.client.EventBean eventBean = eventAdapterService.adapterForTypedAvro(theEvent, eventType);
+        eu.uk.ncl.pet5o.esper.client.EventBean eventBean = eventAdapterService.adapterForTypedAvro(theEvent, eventType);
         runtimeEventSender.routeEventBean(eventBean);
     }
 }

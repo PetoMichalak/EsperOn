@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.script.AgentInstanceScriptContext;
-import com.espertech.esper.epl.table.mgmt.TableExprEvaluatorContext;
-import com.espertech.esper.epl.table.mgmt.TableService;
-import com.espertech.esper.schedule.TimeProvider;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.script.AgentInstanceScriptContext;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableService;
+import eu.uk.ncl.pet5o.esper.schedule.TimeProvider;
 
 public class ExprEvaluatorContextWTableAccess implements ExprEvaluatorContext {
     private final ExprEvaluatorContext context;
@@ -53,7 +53,7 @@ public class ExprEvaluatorContextWTableAccess implements ExprEvaluatorContext {
         return context.getAgentInstanceId();
     }
 
-    public com.espertech.esper.client.EventBean getContextProperties() {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getContextProperties() {
         return context.getContextProperties();
     }
 

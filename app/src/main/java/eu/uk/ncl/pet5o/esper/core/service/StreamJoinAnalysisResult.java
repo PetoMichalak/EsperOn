@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.epl.table.mgmt.TableMetadata;
-import com.espertech.esper.epl.virtualdw.VirtualDWViewProviderForAgentInstance;
-import com.espertech.esper.view.ViewFactoryChain;
-import com.espertech.esper.view.ViewServiceHelper;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableMetadata;
+import eu.uk.ncl.pet5o.esper.epl.virtualdw.VirtualDWViewProviderForAgentInstance;
+import eu.uk.ncl.pet5o.esper.view.ViewFactoryChain;
+import eu.uk.ncl.pet5o.esper.view.ViewServiceHelper;
 
 import java.lang.annotation.Annotation;
 import java.util.Set;

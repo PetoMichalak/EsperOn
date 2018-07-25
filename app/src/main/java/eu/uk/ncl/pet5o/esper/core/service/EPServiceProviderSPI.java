@@ -10,24 +10,24 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.Configuration;
-import com.espertech.esper.client.ConfigurationInformation;
-import com.espertech.esper.client.EPServiceProvider;
-import com.espertech.esper.core.context.mgr.ContextManagementService;
-import com.espertech.esper.core.deploy.DeploymentStateService;
-import com.espertech.esper.core.thread.ThreadingService;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.epl.metric.MetricReportingService;
-import com.espertech.esper.epl.named.NamedWindowMgmtService;
-import com.espertech.esper.epl.table.mgmt.TableService;
-import com.espertech.esper.epl.variable.VariableService;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.event.vaevent.ValueAddEventService;
-import com.espertech.esper.filter.FilterService;
-import com.espertech.esper.schedule.SchedulingMgmtService;
-import com.espertech.esper.schedule.SchedulingService;
-import com.espertech.esper.schedule.TimeProvider;
-import com.espertech.esper.timer.TimerService;
+import eu.uk.ncl.pet5o.esper.client.Configuration;
+import eu.uk.ncl.pet5o.esper.client.ConfigurationInformation;
+import eu.uk.ncl.pet5o.esper.client.EPServiceProvider;
+import eu.uk.ncl.pet5o.esper.core.context.mgr.ContextManagementService;
+import eu.uk.ncl.pet5o.esper.core.deploy.DeploymentStateService;
+import eu.uk.ncl.pet5o.esper.core.thread.ThreadingService;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.epl.metric.MetricReportingService;
+import eu.uk.ncl.pet5o.esper.epl.named.NamedWindowMgmtService;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableService;
+import eu.uk.ncl.pet5o.esper.epl.variable.VariableService;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.event.vaevent.ValueAddEventService;
+import eu.uk.ncl.pet5o.esper.filter.FilterService;
+import eu.uk.ncl.pet5o.esper.schedule.SchedulingMgmtService;
+import eu.uk.ncl.pet5o.esper.schedule.SchedulingService;
+import eu.uk.ncl.pet5o.esper.schedule.TimeProvider;
+import eu.uk.ncl.pet5o.esper.timer.TimerService;
 
 import javax.naming.Context;
 

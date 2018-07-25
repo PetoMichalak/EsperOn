@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.dispatch.DispatchService;
-import com.espertech.esper.dispatch.Dispatchable;
-import com.espertech.esper.util.MutableBoolean;
-import com.espertech.esper.view.ViewSupport;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.dispatch.DispatchService;
+import eu.uk.ncl.pet5o.esper.dispatch.Dispatchable;
+import eu.uk.ncl.pet5o.esper.util.MutableBoolean;
+import eu.uk.ncl.pet5o.esper.view.ViewSupport;
 
 import java.util.Iterator;
 
@@ -37,7 +37,7 @@ public abstract class UpdateDispatchViewBase extends ViewSupport implements Disp
     /**
      * For iteration with patterns.
      */
-    protected com.espertech.esper.client.EventBean lastIterableEvent;
+    protected eu.uk.ncl.pet5o.esper.client.EventBean lastIterableEvent;
 
     /**
      * Flag to indicate we have registered a dispatch.

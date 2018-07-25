@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-import com.espertech.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
 
 import java.util.Map;
 
@@ -29,7 +29,7 @@ public class WrapperEventBeanMapWriter implements EventBeanWriter {
         this.properties = properties;
     }
 
-    public void write(Object[] values, com.espertech.esper.client.EventBean theEvent) {
+    public void write(Object[] values, eu.uk.ncl.pet5o.esper.client.EventBean theEvent) {
         DecoratingEventBean mappedEvent = (DecoratingEventBean) theEvent;
         Map<String, Object> map = mappedEvent.getDecoratingProperties();
 

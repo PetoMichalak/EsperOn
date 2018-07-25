@@ -10,17 +10,17 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-import com.espertech.esper.client.*;
-import com.espertech.esper.client.hook.EventBeanService;
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.core.service.EPRuntimeEventSender;
-import com.espertech.esper.core.thread.ThreadingService;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.event.avro.EventAdapterAvroHandler;
-import com.espertech.esper.event.bean.BeanEventTypeFactory;
-import com.espertech.esper.event.xml.SchemaModel;
-import com.espertech.esper.plugin.PlugInEventRepresentation;
-import com.espertech.esper.util.TypeWidenerCustomizer;
+import eu.uk.ncl.pet5o.esper.client.*;
+import eu.uk.ncl.pet5o.esper.client.hook.EventBeanService;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.core.service.EPRuntimeEventSender;
+import eu.uk.ncl.pet5o.esper.core.thread.ThreadingService;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.event.avro.EventAdapterAvroHandler;
+import eu.uk.ncl.pet5o.esper.event.bean.BeanEventTypeFactory;
+import eu.uk.ncl.pet5o.esper.event.xml.SchemaModel;
+import eu.uk.ncl.pet5o.esper.plugin.PlugInEventRepresentation;
+import eu.uk.ncl.pet5o.esper.util.TypeWidenerCustomizer;
 
 import org.w3c.dom.Node;
 
@@ -101,7 +101,7 @@ public interface EventAdapterService extends EventBeanService {
      * <p>
      * If the name already exists with different event property information, throws an exception.
      * <p>
-     * If the name does not already exists, adds the name and constructs a new {@link com.espertech.esper.event.map.MapEventType}.
+     * If the name does not already exists, adds the name and constructs a new {@link eu.uk.ncl.pet5o.esper.event.map.MapEventType}.
      *
      * @param eventTypeName         is the name for the event type
      * @param propertyTypes         is the names and types of event properties
@@ -163,7 +163,7 @@ public interface EventAdapterService extends EventBeanService {
      * <p>
      * If the name already exists with different class name, throws an exception.
      * <p>
-     * If the name does not already exists, adds the name and constructs a new {@link com.espertech.esper.event.bean.BeanEventType}.
+     * If the name does not already exists, adds the name and constructs a new {@link eu.uk.ncl.pet5o.esper.event.bean.BeanEventType}.
      * <p>
      * Takes into account all event-type-auto-package names supplied and
      * attempts to resolve the class name via the packages if the direct resolution failed.
@@ -186,7 +186,7 @@ public interface EventAdapterService extends EventBeanService {
      * <p>
      * If the name already exists with different Class name, throws an exception.
      * <p>
-     * If the name does not already exists, adds the name and constructs a new {@link com.espertech.esper.event.bean.BeanEventType}.
+     * If the name does not already exists, adds the name and constructs a new {@link eu.uk.ncl.pet5o.esper.event.bean.BeanEventType}.
      *
      * @param eventTypeName         is the name for the event type
      * @param clazz                 is the fully Java class

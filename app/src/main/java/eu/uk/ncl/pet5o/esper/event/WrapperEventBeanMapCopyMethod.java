@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-import com.espertech.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,9 +33,9 @@ public class WrapperEventBeanMapCopyMethod implements EventBeanCopyMethod {
         this.eventAdapterService = eventAdapterService;
     }
 
-    public com.espertech.esper.client.EventBean copy(com.espertech.esper.client.EventBean theEvent) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean copy(eu.uk.ncl.pet5o.esper.client.EventBean theEvent) {
         DecoratingEventBean decorated = (DecoratingEventBean) theEvent;
-        com.espertech.esper.client.EventBean decoratedUnderlying = decorated.getUnderlyingEvent();
+        eu.uk.ncl.pet5o.esper.client.EventBean decoratedUnderlying = decorated.getUnderlyingEvent();
         Map<String, Object> copiedMap = new HashMap<String, Object>(decorated.getDecoratingProperties());
         return eventAdapterService.adapterForTypedWrapper(decoratedUnderlying, copiedMap, wrapperEventType);
     }

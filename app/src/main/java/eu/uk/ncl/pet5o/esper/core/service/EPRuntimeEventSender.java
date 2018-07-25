@@ -11,7 +11,7 @@
 package eu.uk.ncl.pet5o.esper.core.service;
 
 /**
- * For use by {@link com.espertech.esper.client.EventSender} for direct feed of wrapped events for processing.
+ * For use by {@link eu.uk.ncl.pet5o.esper.client.EventSender} for direct feed of wrapped events for processing.
  */
 public interface EPRuntimeEventSender {
     /**
@@ -19,12 +19,12 @@ public interface EPRuntimeEventSender {
      *
      * @param eventBean is the event object wrapped by an event bean providing the event metadata
      */
-    public void processWrappedEvent(com.espertech.esper.client.EventBean eventBean);
+    public void processWrappedEvent(eu.uk.ncl.pet5o.esper.client.EventBean eventBean);
 
     /**
      * For processing a routed event.
      *
      * @param theEvent routed event
      */
-    public void routeEventBean(com.espertech.esper.client.EventBean theEvent);
+    public void routeEventBean(eu.uk.ncl.pet5o.esper.client.EventBean theEvent);
 }

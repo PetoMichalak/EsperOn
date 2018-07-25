@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-import com.espertech.esper.client.EventPropertyDescriptor;
-import com.espertech.esper.client.FragmentEventType;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyDescriptor;
+import eu.uk.ncl.pet5o.esper.client.FragmentEventType;
 
 /**
  * Descriptor of a property item.

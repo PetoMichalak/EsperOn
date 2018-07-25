@@ -10,15 +10,15 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.table.mgmt;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.epl.core.streamtype.StreamTypeServiceImpl;
-import com.espertech.esper.epl.lookup.IndexMultiKey;
-import com.espertech.esper.epl.lookup.IndexedPropDesc;
-import com.espertech.esper.event.EventTypeMetadata;
-import com.espertech.esper.event.EventTypeSPI;
-import com.espertech.esper.event.arr.ObjectArrayEventType;
-import com.espertech.esper.util.CollectionUtil;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.epl.core.streamtype.StreamTypeServiceImpl;
+import eu.uk.ncl.pet5o.esper.epl.lookup.IndexMultiKey;
+import eu.uk.ncl.pet5o.esper.epl.lookup.IndexedPropDesc;
+import eu.uk.ncl.pet5o.esper.event.EventTypeMetadata;
+import eu.uk.ncl.pet5o.esper.event.EventTypeSPI;
+import eu.uk.ncl.pet5o.esper.event.arr.ObjectArrayEventType;
+import eu.uk.ncl.pet5o.esper.util.CollectionUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;

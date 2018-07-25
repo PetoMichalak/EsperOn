@@ -20,5 +20,5 @@ public interface EventPropertyWriter {
      * @param value  value to write
      * @param target property to write to
      */
-    public void write(Object value, com.espertech.esper.client.EventBean target);
+    public void write(Object value, eu.uk.ncl.pet5o.esper.client.EventBean target);
 }

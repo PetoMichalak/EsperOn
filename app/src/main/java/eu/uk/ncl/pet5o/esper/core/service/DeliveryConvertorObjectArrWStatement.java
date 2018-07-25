@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.EPStatement;
+import eu.uk.ncl.pet5o.esper.client.EPStatement;
 
 /**
  * Implementation of a convertor for column results that renders the result as an object array itself.

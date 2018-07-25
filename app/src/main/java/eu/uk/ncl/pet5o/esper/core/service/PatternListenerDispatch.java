@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.UpdateListener;
-import com.espertech.esper.dispatch.Dispatchable;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.UpdateListener;
+import eu.uk.ncl.pet5o.esper.dispatch.Dispatchable;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +27,7 @@ public class PatternListenerDispatch implements Dispatchable {
     private final static Logger log = LoggerFactory.getLogger(PatternListenerDispatch.class);
     private final Set<UpdateListener> listeners;
 
-    private com.espertech.esper.client.EventBean singleEvent;
+    private eu.uk.ncl.pet5o.esper.client.EventBean singleEvent;
     private ArrayList<EventBean> eventList;
 
     /**
@@ -44,7 +44,7 @@ public class PatternListenerDispatch implements Dispatchable {
      *
      * @param theEvent to add
      */
-    public void add(com.espertech.esper.client.EventBean theEvent) {
+    public void add(eu.uk.ncl.pet5o.esper.client.EventBean theEvent) {
         if (singleEvent == null) {
             singleEvent = theEvent;
         } else {
@@ -57,14 +57,14 @@ public class PatternListenerDispatch implements Dispatchable {
     }
 
     public void execute() {
-        com.espertech.esper.client.EventBean[] eventArray;
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventArray;
 
         if (eventList != null) {
-            eventArray = eventList.toArray(new com.espertech.esper.client.EventBean[eventList.size()]);
+            eventArray = eventList.toArray(new eu.uk.ncl.pet5o.esper.client.EventBean[eventList.size()]);
             eventList = null;
             singleEvent = null;
         } else {
-            eventArray = new com.espertech.esper.client.EventBean[]{singleEvent};
+            eventArray = new eu.uk.ncl.pet5o.esper.client.EventBean[]{singleEvent};
             singleEvent = null;
         }
 

@@ -10,51 +10,51 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-import com.espertech.esper.client.EventPropertyGetter;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.PropertyAccessException;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.epl.expression.codegen.CodegenLegoPropertyBeanOrUnd;
-import com.espertech.esper.event.arr.ObjectArrayEventPropertyGetter;
-import com.espertech.esper.event.bean.BeanEventPropertyGetter;
-import com.espertech.esper.event.bean.BeanEventType;
-import com.espertech.esper.event.map.MapEventPropertyGetter;
-import com.espertech.esper.event.map.MapEventType;
-import com.espertech.esper.event.property.IndexedProperty;
-import com.espertech.esper.event.property.MappedProperty;
-import com.espertech.esper.event.property.Property;
-import com.espertech.esper.event.property.PropertyParser;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.PropertyAccessException;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.CodegenLegoPropertyBeanOrUnd;
+import eu.uk.ncl.pet5o.esper.event.arr.ObjectArrayEventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.event.bean.BeanEventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.event.bean.BeanEventType;
+import eu.uk.ncl.pet5o.esper.event.map.MapEventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.event.map.MapEventType;
+import eu.uk.ncl.pet5o.esper.event.property.IndexedProperty;
+import eu.uk.ncl.pet5o.esper.event.property.MappedProperty;
+import eu.uk.ncl.pet5o.esper.event.property.Property;
+import eu.uk.ncl.pet5o.esper.event.property.PropertyParser;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import java.lang.reflect.Array;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.arrayAtIndex;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.arrayLength;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.cast;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethodChain;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.newArrayByLength;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.not;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.relational;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.staticMethod;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionRelational.CodegenRelational.LE;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.arrayAtIndex;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.arrayLength;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.cast;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethodChain;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.newArrayByLength;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.not;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.relational;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.staticMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionRelational.CodegenRelational.LE;
 
 public class BaseNestableEventUtil {
-    public static Map<String, Object> checkedCastUnderlyingMap(com.espertech.esper.client.EventBean theEvent) throws PropertyAccessException {
+    public static Map<String, Object> checkedCastUnderlyingMap(eu.uk.ncl.pet5o.esper.client.EventBean theEvent) throws PropertyAccessException {
         return (Map<String, Object>) theEvent.getUnderlying();
     }
 
-    public static Object[] checkedCastUnderlyingObjectArray(com.espertech.esper.client.EventBean theEvent) throws PropertyAccessException {
+    public static Object[] checkedCastUnderlyingObjectArray(eu.uk.ncl.pet5o.esper.client.EventBean theEvent) throws PropertyAccessException {
         return (Object[]) theEvent.getUnderlying();
     }
 
@@ -96,7 +96,7 @@ public class BaseNestableEventUtil {
      */
     public static Object handleBNCreateFragmentMap(Object value, EventType fragmentEventType, EventAdapterService eventAdapterService) {
         if (!(value instanceof Map)) {
-            if (value instanceof com.espertech.esper.client.EventBean) {
+            if (value instanceof eu.uk.ncl.pet5o.esper.client.EventBean) {
                 return value;
             }
             return null;
@@ -116,15 +116,15 @@ public class BaseNestableEventUtil {
         if (result == null) {
             return null;
         }
-        if (result instanceof com.espertech.esper.client.EventBean[]) {
+        if (result instanceof eu.uk.ncl.pet5o.esper.client.EventBean[]) {
             return result;
         }
-        if (result instanceof com.espertech.esper.client.EventBean) {
+        if (result instanceof eu.uk.ncl.pet5o.esper.client.EventBean) {
             return result;
         }
         if (result.getClass().isArray()) {
             int len = Array.getLength(result);
-            com.espertech.esper.client.EventBean[] events = new com.espertech.esper.client.EventBean[len];
+            eu.uk.ncl.pet5o.esper.client.EventBean[] events = new eu.uk.ncl.pet5o.esper.client.EventBean[len];
             for (int i = 0; i < events.length; i++) {
                 events[i] = eventAdapterService.adapterForTypedBean(Array.get(result, i), eventType);
             }
@@ -142,7 +142,7 @@ public class BaseNestableEventUtil {
      */
     public static Object handleBNCreateFragmentObjectArray(Object value, EventType fragmentEventType, EventAdapterService eventAdapterService) {
         if (!(value instanceof Object[])) {
-            if (value instanceof com.espertech.esper.client.EventBean) {
+            if (value instanceof eu.uk.ncl.pet5o.esper.client.EventBean) {
                 return value;
             }
             return null;
@@ -155,8 +155,8 @@ public class BaseNestableEventUtil {
     public static Object handleNestedValueArrayWithMap(Object value, int index, MapEventPropertyGetter getter) {
         Object valueMap = getBNArrayValueAtIndex(value, index);
         if (!(valueMap instanceof Map)) {
-            if (valueMap instanceof com.espertech.esper.client.EventBean) {
-                return getter.get((com.espertech.esper.client.EventBean) valueMap);
+            if (valueMap instanceof eu.uk.ncl.pet5o.esper.client.EventBean) {
+                return getter.get((eu.uk.ncl.pet5o.esper.client.EventBean) valueMap);
             }
             return null;
         }
@@ -171,14 +171,14 @@ public class BaseNestableEventUtil {
     public static Object handleBNNestedValueArrayWithMapFragment(Object value, int index, MapEventPropertyGetter getter, EventAdapterService eventAdapterService, EventType fragmentType) {
         Object valueMap = getBNArrayValueAtIndex(value, index);
         if (!(valueMap instanceof Map)) {
-            if (value instanceof com.espertech.esper.client.EventBean) {
-                return getter.getFragment((com.espertech.esper.client.EventBean) value);
+            if (value instanceof eu.uk.ncl.pet5o.esper.client.EventBean) {
+                return getter.getFragment((eu.uk.ncl.pet5o.esper.client.EventBean) value);
             }
             return null;
         }
 
         // If the map does not contain the key, this is allowed and represented as null
-        com.espertech.esper.client.EventBean eventBean = eventAdapterService.adapterForTypedMap((Map<String, Object>) valueMap, fragmentType);
+        eu.uk.ncl.pet5o.esper.client.EventBean eventBean = eventAdapterService.adapterForTypedMap((Map<String, Object>) valueMap, fragmentType);
         return getter.getFragment(eventBean);
     }
 
@@ -190,8 +190,8 @@ public class BaseNestableEventUtil {
     public static boolean handleNestedValueArrayWithMapExists(Object value, int index, MapEventPropertyGetter getter) {
         Object valueMap = getBNArrayValueAtIndex(value, index);
         if (!(valueMap instanceof Map)) {
-            if (valueMap instanceof com.espertech.esper.client.EventBean) {
-                return getter.isExistsProperty((com.espertech.esper.client.EventBean) valueMap);
+            if (valueMap instanceof eu.uk.ncl.pet5o.esper.client.EventBean) {
+                return getter.isExistsProperty((eu.uk.ncl.pet5o.esper.client.EventBean) valueMap);
             }
             return false;
         }
@@ -206,8 +206,8 @@ public class BaseNestableEventUtil {
     public static Object handleNestedValueArrayWithObjectArray(Object value, int index, ObjectArrayEventPropertyGetter getter) {
         Object valueArray = getBNArrayValueAtIndex(value, index);
         if (!(valueArray instanceof Object[])) {
-            if (valueArray instanceof com.espertech.esper.client.EventBean) {
-                return getter.get((com.espertech.esper.client.EventBean) valueArray);
+            if (valueArray instanceof eu.uk.ncl.pet5o.esper.client.EventBean) {
+                return getter.get((eu.uk.ncl.pet5o.esper.client.EventBean) valueArray);
             }
             return null;
         }
@@ -222,8 +222,8 @@ public class BaseNestableEventUtil {
     public static boolean handleNestedValueArrayWithObjectArrayExists(Object value, int index, ObjectArrayEventPropertyGetter getter) {
         Object valueArray = getBNArrayValueAtIndex(value, index);
         if (!(valueArray instanceof Object[])) {
-            if (valueArray instanceof com.espertech.esper.client.EventBean) {
-                return getter.isExistsProperty((com.espertech.esper.client.EventBean) valueArray);
+            if (valueArray instanceof eu.uk.ncl.pet5o.esper.client.EventBean) {
+                return getter.isExistsProperty((eu.uk.ncl.pet5o.esper.client.EventBean) valueArray);
             }
             return false;
         }
@@ -238,14 +238,14 @@ public class BaseNestableEventUtil {
     public static Object handleNestedValueArrayWithObjectArrayFragment(Object value, int index, ObjectArrayEventPropertyGetter getter, EventType fragmentType, EventAdapterService eventAdapterService) {
         Object valueArray = getBNArrayValueAtIndex(value, index);
         if (!(valueArray instanceof Object[])) {
-            if (value instanceof com.espertech.esper.client.EventBean) {
-                return getter.getFragment((com.espertech.esper.client.EventBean) value);
+            if (value instanceof eu.uk.ncl.pet5o.esper.client.EventBean) {
+                return getter.getFragment((eu.uk.ncl.pet5o.esper.client.EventBean) value);
             }
             return null;
         }
 
         // If the map does not contain the key, this is allowed and represented as null
-        com.espertech.esper.client.EventBean eventBean = eventAdapterService.adapterForTypedObjectArray((Object[]) valueArray, fragmentType);
+        eu.uk.ncl.pet5o.esper.client.EventBean eventBean = eventAdapterService.adapterForTypedObjectArray((Object[]) valueArray, fragmentType);
         return getter.getFragment(eventBean);
     }
 
@@ -313,7 +313,7 @@ public class BaseNestableEventUtil {
      * @param eventAdapterService svc
      * @return bean
      */
-    public static com.espertech.esper.client.EventBean getBNFragmentNonPojo(Object fragmentUnderlying, EventType fragmentEventType, EventAdapterService eventAdapterService) {
+    public static eu.uk.ncl.pet5o.esper.client.EventBean getBNFragmentNonPojo(Object fragmentUnderlying, EventType fragmentEventType, EventAdapterService eventAdapterService) {
         if (fragmentUnderlying == null) {
             return null;
         }
@@ -341,7 +341,7 @@ public class BaseNestableEventUtil {
                 }
             }
 
-            com.espertech.esper.client.EventBean[] outEvents = new com.espertech.esper.client.EventBean[countNull];
+            eu.uk.ncl.pet5o.esper.client.EventBean[] outEvents = new eu.uk.ncl.pet5o.esper.client.EventBean[countNull];
             int count = 0;
             for (Object item : subEvents) {
                 if (item != null) {
@@ -364,7 +364,7 @@ public class BaseNestableEventUtil {
             }
         }
 
-        com.espertech.esper.client.EventBean[] mapEvents = new com.espertech.esper.client.EventBean[countNull];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] mapEvents = new eu.uk.ncl.pet5o.esper.client.EventBean[countNull];
         int count = 0;
         for (Map map : mapTypedSubEvents) {
             if (map != null) {
@@ -404,41 +404,41 @@ public class BaseNestableEventUtil {
                 .methodReturn(nestedGetter.underlyingGetCodegen(cast(nestedGetter.getTargetType(), ref("arrayItem")), codegenMethodScope, codegenClassScope));
     }
 
-    public static Object getArrayPropertyValue(com.espertech.esper.client.EventBean[] wrapper, int index, EventPropertyGetter nestedGetter) {
+    public static Object getArrayPropertyValue(eu.uk.ncl.pet5o.esper.client.EventBean[] wrapper, int index, EventPropertyGetter nestedGetter) {
         if (wrapper == null) {
             return null;
         }
         if (wrapper.length <= index) {
             return null;
         }
-        com.espertech.esper.client.EventBean innerArrayEvent = wrapper[index];
+        eu.uk.ncl.pet5o.esper.client.EventBean innerArrayEvent = wrapper[index];
         return nestedGetter.get(innerArrayEvent);
     }
 
     public static CodegenMethodNode getArrayPropertyValueCodegen(CodegenMethodScope codegenMethodScope, CodegenClassScope codegenClassScope, int index, EventPropertyGetterSPI nestedGetter) {
-        return codegenMethodScope.makeChild(Object.class, BaseNestableEventUtil.class, codegenClassScope).addParam(com.espertech.esper.client.EventBean[].class, "wrapper").getBlock()
+        return codegenMethodScope.makeChild(Object.class, BaseNestableEventUtil.class, codegenClassScope).addParam(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "wrapper").getBlock()
                 .ifRefNullReturnNull("wrapper")
                 .ifConditionReturnConst(relational(arrayLength(ref("wrapper")), LE, constant(index)), null)
-                .declareVar(com.espertech.esper.client.EventBean.class, "inner", arrayAtIndex(ref("wrapper"), constant(index)))
+                .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "inner", arrayAtIndex(ref("wrapper"), constant(index)))
                 .methodReturn(nestedGetter.eventBeanGetCodegen(ref("inner"), codegenMethodScope, codegenClassScope));
     }
 
-    public static Object getArrayPropertyFragment(com.espertech.esper.client.EventBean[] wrapper, int index, EventPropertyGetter nestedGetter) {
+    public static Object getArrayPropertyFragment(eu.uk.ncl.pet5o.esper.client.EventBean[] wrapper, int index, EventPropertyGetter nestedGetter) {
         if (wrapper == null) {
             return null;
         }
         if (wrapper.length <= index) {
             return null;
         }
-        com.espertech.esper.client.EventBean innerArrayEvent = wrapper[index];
+        eu.uk.ncl.pet5o.esper.client.EventBean innerArrayEvent = wrapper[index];
         return nestedGetter.getFragment(innerArrayEvent);
     }
 
     public static CodegenMethodNode getArrayPropertyFragmentCodegen(CodegenMethodScope codegenMethodScope, CodegenClassScope codegenClassScope, int index, EventPropertyGetterSPI nestedGetter) {
-        return codegenMethodScope.makeChild(Object.class, BaseNestableEventUtil.class, codegenClassScope).addParam(com.espertech.esper.client.EventBean[].class, "wrapper").getBlock()
+        return codegenMethodScope.makeChild(Object.class, BaseNestableEventUtil.class, codegenClassScope).addParam(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "wrapper").getBlock()
                 .ifRefNullReturnNull("wrapper")
                 .ifConditionReturnConst(relational(arrayLength(ref("wrapper")), LE, constant(index)), null)
-                .declareVar(com.espertech.esper.client.EventBean.class, "inner", arrayAtIndex(ref("wrapper"), constant(index)))
+                .declareVar(eu.uk.ncl.pet5o.esper.client.EventBean.class, "inner", arrayAtIndex(ref("wrapper"), constant(index)))
                 .methodReturn(nestedGetter.eventBeanFragmentCodegen(ref("inner"), codegenMethodScope, codegenClassScope));
     }
 
@@ -448,7 +448,7 @@ public class BaseNestableEventUtil {
      * @param index index
      * @return underlying
      */
-    public static Object getBNArrayPropertyUnderlying(com.espertech.esper.client.EventBean[] wrapper, int index) {
+    public static Object getBNArrayPropertyUnderlying(eu.uk.ncl.pet5o.esper.client.EventBean[] wrapper, int index) {
         if (wrapper == null) {
             return null;
         }
@@ -465,7 +465,7 @@ public class BaseNestableEventUtil {
      * @param index index
      * @return fragment
      */
-    public static Object getBNArrayPropertyBean(com.espertech.esper.client.EventBean[] wrapper, int index) {
+    public static Object getBNArrayPropertyBean(eu.uk.ncl.pet5o.esper.client.EventBean[] wrapper, int index) {
         if (wrapper == null) {
             return null;
         }
@@ -476,7 +476,7 @@ public class BaseNestableEventUtil {
         return wrapper[index];
     }
 
-    public static Object getArrayPropertyAsUnderlyingsArray(Class underlyingType, com.espertech.esper.client.EventBean[] wrapper) {
+    public static Object getArrayPropertyAsUnderlyingsArray(Class underlyingType, eu.uk.ncl.pet5o.esper.client.EventBean[] wrapper) {
         if (wrapper != null) {
             Object array = Array.newInstance(underlyingType, wrapper.length);
             for (int i = 0; i < wrapper.length; i++) {
@@ -489,7 +489,7 @@ public class BaseNestableEventUtil {
     }
 
     public static CodegenMethodNode getArrayPropertyAsUnderlyingsArrayCodegen(Class underlyingType, CodegenMethodScope codegenMethodScope, CodegenClassScope codegenClassScope) {
-        return codegenMethodScope.makeChild(Object.class, BaseNestableEventUtil.class, codegenClassScope).addParam(com.espertech.esper.client.EventBean[].class, "wrapper").getBlock()
+        return codegenMethodScope.makeChild(Object.class, BaseNestableEventUtil.class, codegenClassScope).addParam(eu.uk.ncl.pet5o.esper.client.EventBean[].class, "wrapper").getBlock()
                 .ifRefNullReturnNull("wrapper")
                 .declareVar(JavaClassHelper.getArrayType(underlyingType), "array", newArrayByLength(underlyingType, arrayLength(ref("wrapper"))))
                 .forLoopIntSimple("i", arrayLength(ref("wrapper")))

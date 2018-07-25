@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.util.CollectionUtil;
-import com.espertech.esper.util.ManagedReadWriteLock;
+import eu.uk.ncl.pet5o.esper.util.CollectionUtil;
+import eu.uk.ncl.pet5o.esper.util.ManagedReadWriteLock;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.EPAdministratorIsolated;
-import com.espertech.esper.client.EPRuntimeIsolated;
+import eu.uk.ncl.pet5o.esper.client.EPAdministratorIsolated;
+import eu.uk.ncl.pet5o.esper.client.EPRuntimeIsolated;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

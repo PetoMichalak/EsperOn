@@ -20,5 +20,5 @@ public interface EventBeanReader {
      * @param theEvent to read
      * @return property values
      */
-    public Object[] read(com.espertech.esper.client.EventBean theEvent);
+    public Object[] read(eu.uk.ncl.pet5o.esper.client.EventBean theEvent);
 }

@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
 
 import java.util.Collection;
 
@@ -23,7 +23,7 @@ import java.util.Collection;
  */
 public interface ExpressionResultCacheForDeclaredExprLastColl {
 
-    ExpressionResultCacheEntryEventBeanArrayAndCollBean getDeclaredExpressionLastColl(Object node, com.espertech.esper.client.EventBean[] eventsPerStream);
+    ExpressionResultCacheEntryEventBeanArrayAndCollBean getDeclaredExpressionLastColl(Object node, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream);
 
-    void saveDeclaredExpressionLastColl(Object node, com.espertech.esper.client.EventBean[] eventsPerStream, Collection<EventBean> result);
+    void saveDeclaredExpressionLastColl(Object node, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, Collection<EventBean> result);
 }

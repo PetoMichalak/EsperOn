@@ -10,17 +10,17 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.table.mgmt;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.epl.agg.access.AggregationServicePassThru;
-import com.espertech.esper.epl.agg.service.common.AggregationRowPair;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.epl.join.plan.QueryPlanIndexItem;
-import com.espertech.esper.epl.join.table.EventTable;
-import com.espertech.esper.epl.lookup.EventTableIndexRepository;
-import com.espertech.esper.event.ObjectArrayBackedEventBean;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationServicePassThru;
+import eu.uk.ncl.pet5o.esper.epl.agg.service.common.AggregationRowPair;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.QueryPlanIndexItem;
+import eu.uk.ncl.pet5o.esper.epl.join.table.EventTable;
+import eu.uk.ncl.pet5o.esper.epl.lookup.EventTableIndexRepository;
+import eu.uk.ncl.pet5o.esper.event.ObjectArrayBackedEventBean;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
 
 import java.util.Collection;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
@@ -34,9 +34,9 @@ public abstract class TableStateInstance {
 
     public abstract Iterable<EventBean> getIterableTableScan();
 
-    public abstract void addEvent(com.espertech.esper.client.EventBean theEvent);
+    public abstract void addEvent(eu.uk.ncl.pet5o.esper.client.EventBean theEvent);
 
-    public abstract void deleteEvent(com.espertech.esper.client.EventBean matchingEvent);
+    public abstract void deleteEvent(eu.uk.ncl.pet5o.esper.client.EventBean matchingEvent);
 
     public abstract void clearInstance();
 
@@ -62,7 +62,7 @@ public abstract class TableStateInstance {
         }
     }
 
-    public void addEventUnadorned(com.espertech.esper.client.EventBean event) {
+    public void addEventUnadorned(eu.uk.ncl.pet5o.esper.client.EventBean event) {
         ObjectArrayBackedEventBean oa = (ObjectArrayBackedEventBean) event;
         AggregationRowPair aggs = tableMetadata.getRowFactory().makeAggs(agentInstanceContext.getAgentInstanceId(), null, null, getAggregationServicePassThru());
         oa.getProperties()[0] = aggs;

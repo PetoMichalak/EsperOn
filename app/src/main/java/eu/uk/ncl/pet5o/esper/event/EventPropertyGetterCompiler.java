@@ -10,37 +10,37 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-import com.espertech.esper.client.EventPropertyGetter;
-import com.espertech.esper.client.EventPropertyGetterIndexed;
-import com.espertech.esper.client.EventPropertyGetterMapped;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.codegen.base.CodegenSymbolProviderEmpty;
-import com.espertech.esper.codegen.compile.CodegenClassGenerator;
-import com.espertech.esper.codegen.compile.CodegenCompilerException;
-import com.espertech.esper.codegen.core.CodeGenerationIDGenerator;
-import com.espertech.esper.codegen.core.CodegenClass;
-import com.espertech.esper.codegen.core.CodegenClassMethods;
-import com.espertech.esper.codegen.util.CodegenStackGenerator;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyGetterIndexed;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyGetterMapped;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenSymbolProviderEmpty;
+import eu.uk.ncl.pet5o.esper.codegen.compile.CodegenClassGenerator;
+import eu.uk.ncl.pet5o.esper.codegen.compile.CodegenCompilerException;
+import eu.uk.ncl.pet5o.esper.codegen.core.CodeGenerationIDGenerator;
+import eu.uk.ncl.pet5o.esper.codegen.core.CodegenClass;
+import eu.uk.ncl.pet5o.esper.codegen.core.CodegenClassMethods;
+import eu.uk.ncl.pet5o.esper.codegen.util.CodegenStackGenerator;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
 
 import java.util.Collections;
 import java.util.function.Supplier;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
 
 public class EventPropertyGetterCompiler {
     
     public static EventPropertyGetter compile(EngineImportService engineImportService, EventPropertyGetterSPI getterSPI, Supplier<String> debugInfoSupplier, boolean includeCodeComments) throws CodegenCompilerException {
         CodegenClassScope codegenClassScope = new CodegenClassScope(includeCodeComments);
 
-        CodegenMethodNode getMethod = CodegenMethodNode.makeParentNode(Object.class, getterSPI.getClass(), CodegenSymbolProviderEmpty.INSTANCE, codegenClassScope).addParam(com.espertech.esper.client.EventBean.class, "bean");
+        CodegenMethodNode getMethod = CodegenMethodNode.makeParentNode(Object.class, getterSPI.getClass(), CodegenSymbolProviderEmpty.INSTANCE, codegenClassScope).addParam(eu.uk.ncl.pet5o.esper.client.EventBean.class, "bean");
         getMethod.getBlock().methodReturn(getterSPI.eventBeanGetCodegen(ref("bean"), getMethod, codegenClassScope));
 
-        CodegenMethodNode existsMethod = CodegenMethodNode.makeParentNode(boolean.class, getterSPI.getClass(), CodegenSymbolProviderEmpty.INSTANCE, codegenClassScope).addParam(com.espertech.esper.client.EventBean.class, "bean");
+        CodegenMethodNode existsMethod = CodegenMethodNode.makeParentNode(boolean.class, getterSPI.getClass(), CodegenSymbolProviderEmpty.INSTANCE, codegenClassScope).addParam(eu.uk.ncl.pet5o.esper.client.EventBean.class, "bean");
         existsMethod.getBlock().methodReturn(getterSPI.eventBeanExistsCodegen(ref("bean"), existsMethod, codegenClassScope));
 
-        CodegenMethodNode fragmentMethod = CodegenMethodNode.makeParentNode(Object.class, getterSPI.getClass(), CodegenSymbolProviderEmpty.INSTANCE, codegenClassScope).addParam(com.espertech.esper.client.EventBean.class, "bean");
+        CodegenMethodNode fragmentMethod = CodegenMethodNode.makeParentNode(Object.class, getterSPI.getClass(), CodegenSymbolProviderEmpty.INSTANCE, codegenClassScope).addParam(eu.uk.ncl.pet5o.esper.client.EventBean.class, "bean");
         fragmentMethod.getBlock().methodReturn(getterSPI.eventBeanFragmentCodegen(ref("bean"), fragmentMethod, codegenClassScope));
 
         CodegenClassMethods methods = new CodegenClassMethods();
@@ -56,7 +56,7 @@ public class EventPropertyGetterCompiler {
     public static EventPropertyGetterIndexed compile(EngineImportService engineImportService, EventPropertyGetterIndexedSPI getterSPI, Supplier<String> debugInfoSupplier, boolean includeCodeComments) throws CodegenCompilerException {
         CodegenClassScope codegenClassScope = new CodegenClassScope(includeCodeComments);
 
-        CodegenMethodNode getMethod = CodegenMethodNode.makeParentNode(Object.class, getterSPI.getClass(), CodegenSymbolProviderEmpty.INSTANCE, codegenClassScope).addParam(com.espertech.esper.client.EventBean.class, "bean").addParam(int.class, "index");
+        CodegenMethodNode getMethod = CodegenMethodNode.makeParentNode(Object.class, getterSPI.getClass(), CodegenSymbolProviderEmpty.INSTANCE, codegenClassScope).addParam(eu.uk.ncl.pet5o.esper.client.EventBean.class, "bean").addParam(int.class, "index");
         getMethod.getBlock().methodReturn(getterSPI.eventBeanGetIndexedCodegen(getMethod, codegenClassScope, ref("bean"), ref("index")));
 
         CodegenClassMethods methods = new CodegenClassMethods();
@@ -70,7 +70,7 @@ public class EventPropertyGetterCompiler {
     public static EventPropertyGetterMapped compile(EngineImportService engineImportService, EventPropertyGetterMappedSPI getterSPI, Supplier<String> debugInfoSupplier, boolean includeCodeComments) throws CodegenCompilerException {
         CodegenClassScope codegenClassScope = new CodegenClassScope(includeCodeComments);
 
-        CodegenMethodNode getMethod = CodegenMethodNode.makeParentNode(Object.class, getterSPI.getClass(), CodegenSymbolProviderEmpty.INSTANCE, codegenClassScope).addParam(com.espertech.esper.client.EventBean.class, "bean").addParam(String.class, "key");
+        CodegenMethodNode getMethod = CodegenMethodNode.makeParentNode(Object.class, getterSPI.getClass(), CodegenSymbolProviderEmpty.INSTANCE, codegenClassScope).addParam(eu.uk.ncl.pet5o.esper.client.EventBean.class, "bean").addParam(String.class, "key");
         getMethod.getBlock().methodReturn(getterSPI.eventBeanGetMappedCodegen(getMethod, codegenClassScope, ref("bean"), ref("key")));
 
         CodegenClassMethods methods = new CodegenClassMethods();

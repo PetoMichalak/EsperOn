@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.ConfigurationOperations;
-import com.espertech.esper.epl.spec.SelectClauseStreamSelectorEnum;
+import eu.uk.ncl.pet5o.esper.client.ConfigurationOperations;
+import eu.uk.ncl.pet5o.esper.epl.spec.SelectClauseStreamSelectorEnum;
 
 /**
  * Context for administrative services.

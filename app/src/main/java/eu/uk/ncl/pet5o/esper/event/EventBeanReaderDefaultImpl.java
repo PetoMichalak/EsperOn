@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventPropertyGetter;
-import com.espertech.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.client.EventType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +41,7 @@ public class EventBeanReaderDefaultImpl implements EventBeanReader {
         gettersArray = getters.toArray(new EventPropertyGetter[getters.size()]);
     }
 
-    public Object[] read(com.espertech.esper.client.EventBean theEvent) {
+    public Object[] read(eu.uk.ncl.pet5o.esper.client.EventBean theEvent) {
         Object[] values = new Object[gettersArray.length];
         for (int i = 0; i < gettersArray.length; i++) {
             values[i] = gettersArray[i].get(theEvent);

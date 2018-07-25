@@ -10,23 +10,23 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.table.mgmt;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventPropertyGetter;
-import com.espertech.esper.collection.MultiKeyUntyped;
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.epl.agg.access.AggregationServicePassThru;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.epl.join.plan.QueryPlanIndexItem;
-import com.espertech.esper.epl.join.table.*;
-import com.espertech.esper.epl.lookup.EventTableIndexRepository;
-import com.espertech.esper.epl.lookup.EventTableIndexRepositoryEntry;
-import com.espertech.esper.epl.lookup.IndexMultiKey;
-import com.espertech.esper.event.ObjectArrayBackedEventBean;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
-import com.espertech.esper.util.CollectionUtil;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.collection.MultiKeyUntyped;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationServicePassThru;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.epl.join.plan.QueryPlanIndexItem;
+import eu.uk.ncl.pet5o.esper.epl.join.table.*;
+import eu.uk.ncl.pet5o.esper.epl.lookup.EventTableIndexRepository;
+import eu.uk.ncl.pet5o.esper.epl.lookup.EventTableIndexRepositoryEntry;
+import eu.uk.ncl.pet5o.esper.epl.lookup.IndexMultiKey;
+import eu.uk.ncl.pet5o.esper.event.ObjectArrayBackedEventBean;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.util.CollectionUtil;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -82,7 +82,7 @@ public class TableStateInstanceGroupedImpl extends TableStateInstance implements
         return rows;
     }
 
-    public void addEvent(com.espertech.esper.client.EventBean theEvent) {
+    public void addEvent(eu.uk.ncl.pet5o.esper.client.EventBean theEvent) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qTableAddEvent(theEvent);
         }
@@ -102,7 +102,7 @@ public class TableStateInstanceGroupedImpl extends TableStateInstance implements
         }
     }
 
-    public void deleteEvent(com.espertech.esper.client.EventBean matchingEvent) {
+    public void deleteEvent(eu.uk.ncl.pet5o.esper.client.EventBean matchingEvent) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qTableDeleteEvent(matchingEvent);
         }

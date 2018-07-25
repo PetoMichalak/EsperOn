@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.client.hook;
 
-import com.espertech.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.EventType;
 
 /**
  * For Avro types for widening objects to Avro record values, see {@link ObjectValueTypeWidenerFactory}

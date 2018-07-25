@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.core.service.multimatch.MultiMatchHandler;
-import com.espertech.esper.epl.metric.StatementMetricHandle;
+import eu.uk.ncl.pet5o.esper.core.service.multimatch.MultiMatchHandler;
+import eu.uk.ncl.pet5o.esper.epl.metric.StatementMetricHandle;
 
 import java.io.Serializable;
 

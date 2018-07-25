@@ -10,18 +10,18 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventPropertyGetter;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.FragmentEventType;
-import com.espertech.esper.collection.MultiKey;
-import com.espertech.esper.collection.MultiKeyUntyped;
-import com.espertech.esper.collection.MultiKeyUntypedEventPair;
-import com.espertech.esper.collection.UniformPair;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.util.EventBeanSummarizer;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.FragmentEventType;
+import eu.uk.ncl.pet5o.esper.collection.MultiKey;
+import eu.uk.ncl.pet5o.esper.collection.MultiKeyUntyped;
+import eu.uk.ncl.pet5o.esper.collection.MultiKeyUntypedEventPair;
+import eu.uk.ncl.pet5o.esper.collection.UniformPair;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.util.EventBeanSummarizer;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -35,14 +35,14 @@ public class EventBeanUtility {
     public final static String METHOD_FLATTENBATCHJOIN = "flattenBatchJoin";
     public final static String METHOD_FLATTENBATCHSTREAM = "flattenBatchStream";
 
-    public static com.espertech.esper.client.EventBean[] allocatePerStreamShift(com.espertech.esper.client.EventBean[] eventsPerStream) {
-        com.espertech.esper.client.EventBean[] evalEvents = new com.espertech.esper.client.EventBean[eventsPerStream.length + 1];
+    public static eu.uk.ncl.pet5o.esper.client.EventBean[] allocatePerStreamShift(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream) {
+        eu.uk.ncl.pet5o.esper.client.EventBean[] evalEvents = new eu.uk.ncl.pet5o.esper.client.EventBean[eventsPerStream.length + 1];
         System.arraycopy(eventsPerStream, 0, evalEvents, 1, eventsPerStream.length);
         return evalEvents;
     }
 
     public static Object getNonemptyFirstEventUnderlying(Collection<EventBean> matchingEvents) {
-        com.espertech.esper.client.EventBean event = getNonemptyFirstEvent(matchingEvents);
+        eu.uk.ncl.pet5o.esper.client.EventBean event = getNonemptyFirstEvent(matchingEvents);
         return event.getUnderlying();
     }
 
@@ -51,7 +51,7 @@ public class EventBeanUtility {
      * @param matchingEvents events
      * @return event
      */
-    public static com.espertech.esper.client.EventBean getNonemptyFirstEvent(Collection<EventBean> matchingEvents) {
+    public static eu.uk.ncl.pet5o.esper.client.EventBean getNonemptyFirstEvent(Collection<EventBean> matchingEvents) {
         if (matchingEvents instanceof List) {
             return ((List<EventBean>) matchingEvents).get(0);
         }
@@ -82,14 +82,14 @@ public class EventBeanUtility {
      * @param newSize  new array size
      * @return resized array
      */
-    public static com.espertech.esper.client.EventBean[] resizeArray(com.espertech.esper.client.EventBean[] oldArray, int newSize) {
+    public static eu.uk.ncl.pet5o.esper.client.EventBean[] resizeArray(eu.uk.ncl.pet5o.esper.client.EventBean[] oldArray, int newSize) {
         if (oldArray == null) {
             return null;
         }
         if (oldArray.length == newSize) {
             return oldArray;
         }
-        com.espertech.esper.client.EventBean[] newArray = new com.espertech.esper.client.EventBean[newSize];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] newArray = new eu.uk.ncl.pet5o.esper.client.EventBean[newSize];
         int preserveLength = Math.min(oldArray.length, newSize);
         if (preserveLength > 0) {
             System.arraycopy(oldArray, 0, newArray, 0, preserveLength);
@@ -104,7 +104,7 @@ public class EventBeanUtility {
      * @param eventVector vector
      * @return array with all events
      */
-    public static UniformPair<com.espertech.esper.client.EventBean[]> flattenList(ArrayDeque<UniformPair<EventBean[]>> eventVector) {
+    public static UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> flattenList(ArrayDeque<UniformPair<EventBean[]>> eventVector) {
         if (eventVector.isEmpty()) {
             return null;
         }
@@ -115,7 +115,7 @@ public class EventBeanUtility {
 
         int totalNew = 0;
         int totalOld = 0;
-        for (UniformPair<com.espertech.esper.client.EventBean[]> pair : eventVector) {
+        for (UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> pair : eventVector) {
             if (pair != null) {
                 if (pair.getFirst() != null) {
                     totalNew += pair.getFirst().length;
@@ -130,19 +130,19 @@ public class EventBeanUtility {
             return null;
         }
 
-        com.espertech.esper.client.EventBean[] resultNew = null;
+        eu.uk.ncl.pet5o.esper.client.EventBean[] resultNew = null;
         if (totalNew > 0) {
-            resultNew = new com.espertech.esper.client.EventBean[totalNew];
+            resultNew = new eu.uk.ncl.pet5o.esper.client.EventBean[totalNew];
         }
 
-        com.espertech.esper.client.EventBean[] resultOld = null;
+        eu.uk.ncl.pet5o.esper.client.EventBean[] resultOld = null;
         if (totalOld > 0) {
-            resultOld = new com.espertech.esper.client.EventBean[totalOld];
+            resultOld = new eu.uk.ncl.pet5o.esper.client.EventBean[totalOld];
         }
 
         int destPosNew = 0;
         int destPosOld = 0;
-        for (UniformPair<com.espertech.esper.client.EventBean[]> pair : eventVector) {
+        for (UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> pair : eventVector) {
             if (pair != null) {
                 if (pair.getFirst() != null) {
                     System.arraycopy(pair.getFirst(), 0, resultNew, destPosNew, pair.getFirst().length);
@@ -155,7 +155,7 @@ public class EventBeanUtility {
             }
         }
 
-        return new UniformPair<com.espertech.esper.client.EventBean[]>(resultNew, resultOld);
+        return new UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]>(resultNew, resultOld);
     }
 
     /**
@@ -165,7 +165,7 @@ public class EventBeanUtility {
      * @param eventVector vector
      * @return array with all events
      */
-    public static com.espertech.esper.client.EventBean[] flatten(ArrayDeque<EventBean[]> eventVector) {
+    public static eu.uk.ncl.pet5o.esper.client.EventBean[] flatten(ArrayDeque<EventBean[]> eventVector) {
         if (eventVector.isEmpty()) {
             return null;
         }
@@ -175,7 +175,7 @@ public class EventBeanUtility {
         }
 
         int totalElements = 0;
-        for (com.espertech.esper.client.EventBean[] arr : eventVector) {
+        for (eu.uk.ncl.pet5o.esper.client.EventBean[] arr : eventVector) {
             if (arr != null) {
                 totalElements += arr.length;
             }
@@ -185,9 +185,9 @@ public class EventBeanUtility {
             return null;
         }
 
-        com.espertech.esper.client.EventBean[] result = new com.espertech.esper.client.EventBean[totalElements];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] result = new eu.uk.ncl.pet5o.esper.client.EventBean[totalElements];
         int destPos = 0;
-        for (com.espertech.esper.client.EventBean[] arr : eventVector) {
+        for (eu.uk.ncl.pet5o.esper.client.EventBean[] arr : eventVector) {
             if (arr != null) {
                 System.arraycopy(arr, 0, result, destPos, arr.length);
                 destPos += arr.length;
@@ -205,18 +205,18 @@ public class EventBeanUtility {
      * @param updateVector is a list of updates of old and new events
      * @return array with all events
      */
-    public static UniformPair<com.espertech.esper.client.EventBean[]> flattenBatchStream(List<UniformPair<EventBean[]>> updateVector) {
+    public static UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> flattenBatchStream(List<UniformPair<EventBean[]>> updateVector) {
         if (updateVector.isEmpty()) {
-            return new UniformPair<com.espertech.esper.client.EventBean[]>(null, null);
+            return new UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]>(null, null);
         }
 
         if (updateVector.size() == 1) {
-            return new UniformPair<com.espertech.esper.client.EventBean[]>(updateVector.get(0).getFirst(), updateVector.get(0).getSecond());
+            return new UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]>(updateVector.get(0).getFirst(), updateVector.get(0).getSecond());
         }
 
         int totalNewEvents = 0;
         int totalOldEvents = 0;
-        for (UniformPair<com.espertech.esper.client.EventBean[]> pair : updateVector) {
+        for (UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> pair : updateVector) {
             if (pair.getFirst() != null) {
                 totalNewEvents += pair.getFirst().length;
             }
@@ -226,23 +226,23 @@ public class EventBeanUtility {
         }
 
         if ((totalNewEvents == 0) && (totalOldEvents == 0)) {
-            return new UniformPair<com.espertech.esper.client.EventBean[]>(null, null);
+            return new UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]>(null, null);
         }
 
-        com.espertech.esper.client.EventBean[] newEvents = null;
-        com.espertech.esper.client.EventBean[] oldEvents = null;
+        eu.uk.ncl.pet5o.esper.client.EventBean[] newEvents = null;
+        eu.uk.ncl.pet5o.esper.client.EventBean[] oldEvents = null;
         if (totalNewEvents != 0) {
-            newEvents = new com.espertech.esper.client.EventBean[totalNewEvents];
+            newEvents = new eu.uk.ncl.pet5o.esper.client.EventBean[totalNewEvents];
         }
         if (totalOldEvents != 0) {
-            oldEvents = new com.espertech.esper.client.EventBean[totalOldEvents];
+            oldEvents = new eu.uk.ncl.pet5o.esper.client.EventBean[totalOldEvents];
         }
 
         int destPosNew = 0;
         int destPosOld = 0;
-        for (UniformPair<com.espertech.esper.client.EventBean[]> pair : updateVector) {
-            com.espertech.esper.client.EventBean[] newData = pair.getFirst();
-            com.espertech.esper.client.EventBean[] oldData = pair.getSecond();
+        for (UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> pair : updateVector) {
+            eu.uk.ncl.pet5o.esper.client.EventBean[] newData = pair.getFirst();
+            eu.uk.ncl.pet5o.esper.client.EventBean[] oldData = pair.getSecond();
 
             if (newData != null) {
                 int newDataLen = newData.length;
@@ -256,7 +256,7 @@ public class EventBeanUtility {
             }
         }
 
-        return new UniformPair<com.espertech.esper.client.EventBean[]>(newEvents, oldEvents);
+        return new UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]>(newEvents, oldEvents);
     }
 
     /**
@@ -266,8 +266,8 @@ public class EventBeanUtility {
      * @param append array
      * @return appended array
      */
-    protected static com.espertech.esper.client.EventBean[] append(com.espertech.esper.client.EventBean[] source, com.espertech.esper.client.EventBean[] append) {
-        com.espertech.esper.client.EventBean[] result = new com.espertech.esper.client.EventBean[source.length + append.length];
+    protected static eu.uk.ncl.pet5o.esper.client.EventBean[] append(eu.uk.ncl.pet5o.esper.client.EventBean[] source, eu.uk.ncl.pet5o.esper.client.EventBean[] append) {
+        eu.uk.ncl.pet5o.esper.client.EventBean[] result = new eu.uk.ncl.pet5o.esper.client.EventBean[source.length + append.length];
         System.arraycopy(source, 0, result, 0, source.length);
         System.arraycopy(append, 0, result, source.length, append.length);
         return result;
@@ -279,11 +279,11 @@ public class EventBeanUtility {
      * @param eventList is a list of events to convert
      * @return array of events
      */
-    public static com.espertech.esper.client.EventBean[] toArray(Collection<EventBean> eventList) {
+    public static eu.uk.ncl.pet5o.esper.client.EventBean[] toArray(Collection<EventBean> eventList) {
         if ((eventList == null) || (eventList.isEmpty())) {
             return null;
         }
-        return eventList.toArray(new com.espertech.esper.client.EventBean[eventList.size()]);
+        return eventList.toArray(new eu.uk.ncl.pet5o.esper.client.EventBean[eventList.size()]);
     }
 
     /**
@@ -294,7 +294,7 @@ public class EventBeanUtility {
      * @param propertyGetters - getters to use for getting property values
      * @return object array with property values
      */
-    public static Object[] getPropertyArray(com.espertech.esper.client.EventBean theEvent, EventPropertyGetter[] propertyGetters) {
+    public static Object[] getPropertyArray(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, EventPropertyGetter[] propertyGetters) {
         Object[] keyValues = new Object[propertyGetters.length];
         for (int i = 0; i < propertyGetters.length; i++) {
             keyValues[i] = propertyGetters[i].get(theEvent);
@@ -302,7 +302,7 @@ public class EventBeanUtility {
         return keyValues;
     }
 
-    public static Object[] getPropertyArray(com.espertech.esper.client.EventBean[] eventsPerStream, EventPropertyGetter[] propertyGetters, int[] streamNums) {
+    public static Object[] getPropertyArray(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, EventPropertyGetter[] propertyGetters, int[] streamNums) {
         Object[] keyValues = new Object[propertyGetters.length];
         for (int i = 0; i < propertyGetters.length; i++) {
             keyValues[i] = propertyGetters[i].get(eventsPerStream[streamNums[i]]);
@@ -317,12 +317,12 @@ public class EventBeanUtility {
      * @param propertyGetters - getters for access to properties
      * @return MultiKey with property values
      */
-    public static MultiKeyUntyped getMultiKey(com.espertech.esper.client.EventBean theEvent, EventPropertyGetter[] propertyGetters) {
+    public static MultiKeyUntyped getMultiKey(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, EventPropertyGetter[] propertyGetters) {
         Object[] keyValues = getPropertyArray(theEvent, propertyGetters);
         return new MultiKeyUntyped(keyValues);
     }
 
-    public static MultiKeyUntyped getMultiKey(com.espertech.esper.client.EventBean theEvent, EventPropertyGetter[] propertyGetters, Class[] coercionTypes) {
+    public static MultiKeyUntyped getMultiKey(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, EventPropertyGetter[] propertyGetters, Class[] coercionTypes) {
         Object[] keyValues = getPropertyArray(theEvent, propertyGetters);
         if (coercionTypes == null) {
             return new MultiKeyUntyped(keyValues);
@@ -339,7 +339,7 @@ public class EventBeanUtility {
         return new MultiKeyUntyped(keyValues);
     }
 
-    public static MultiKeyUntyped getMultiKey(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluator[] evaluators, ExprEvaluatorContext context, Class[] coercionTypes) {
+    public static MultiKeyUntyped getMultiKey(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluator[] evaluators, ExprEvaluatorContext context, Class[] coercionTypes) {
         Object[] keyValues = getPropertyArray(eventsPerStream, evaluators, context);
         if (coercionTypes == null) {
             return new MultiKeyUntyped(keyValues);
@@ -356,7 +356,7 @@ public class EventBeanUtility {
         return new MultiKeyUntyped(keyValues);
     }
 
-    private static Object[] getPropertyArray(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluator[] evaluators, ExprEvaluatorContext context) {
+    private static Object[] getPropertyArray(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, ExprEvaluator[] evaluators, ExprEvaluatorContext context) {
         Object[] keys = new Object[evaluators.length];
         for (int i = 0; i < keys.length; i++) {
             keys[i] = evaluators[i].evaluate(eventsPerStream, true, context);
@@ -382,18 +382,18 @@ public class EventBeanUtility {
      * @param theEvent is the event to format.
      * @return string representation of event
      */
-    public static String printEvent(com.espertech.esper.client.EventBean theEvent) {
+    public static String printEvent(eu.uk.ncl.pet5o.esper.client.EventBean theEvent) {
         StringWriter writer = new StringWriter();
         PrintWriter buf = new PrintWriter(writer);
         printEvent(buf, theEvent);
         return writer.toString();
     }
 
-    public static String printEvents(com.espertech.esper.client.EventBean[] events) {
+    public static String printEvents(eu.uk.ncl.pet5o.esper.client.EventBean[] events) {
         StringWriter writer = new StringWriter();
         PrintWriter buf = new PrintWriter(writer);
         int count = 0;
-        for (com.espertech.esper.client.EventBean theEvent : events) {
+        for (eu.uk.ncl.pet5o.esper.client.EventBean theEvent : events) {
             count++;
             buf.println("Event " + String.format("%6d:", count));
             printEvent(buf, theEvent);
@@ -401,7 +401,7 @@ public class EventBeanUtility {
         return writer.toString();
     }
 
-    private static void printEvent(PrintWriter writer, com.espertech.esper.client.EventBean theEvent) {
+    private static void printEvent(PrintWriter writer, eu.uk.ncl.pet5o.esper.client.EventBean theEvent) {
         String[] properties = theEvent.getEventType().getPropertyNames();
         for (int i = 0; i < properties.length; i++) {
             String propName = properties[i];
@@ -428,7 +428,7 @@ public class EventBeanUtility {
         return Arrays.toString(objects);
     }
 
-    public static void appendEvent(StringWriter writer, com.espertech.esper.client.EventBean theEvent) {
+    public static void appendEvent(StringWriter writer, eu.uk.ncl.pet5o.esper.client.EventBean theEvent) {
         String[] properties = theEvent.getEventType().getPropertyNames();
         String delimiter = "";
         for (int i = 0; i < properties.length; i++) {
@@ -491,8 +491,8 @@ public class EventBeanUtility {
      * @param eventToAdd element to add
      * @return resized array
      */
-    public static com.espertech.esper.client.EventBean[] addToArray(com.espertech.esper.client.EventBean[] array, com.espertech.esper.client.EventBean eventToAdd) {
-        com.espertech.esper.client.EventBean[] newArray = new com.espertech.esper.client.EventBean[array.length + 1];
+    public static eu.uk.ncl.pet5o.esper.client.EventBean[] addToArray(eu.uk.ncl.pet5o.esper.client.EventBean[] array, eu.uk.ncl.pet5o.esper.client.EventBean eventToAdd) {
+        eu.uk.ncl.pet5o.esper.client.EventBean[] newArray = new eu.uk.ncl.pet5o.esper.client.EventBean[array.length + 1];
         System.arraycopy(array, 0, newArray, 0, array.length);
         newArray[newArray.length - 1] = eventToAdd;
         return newArray;
@@ -505,12 +505,12 @@ public class EventBeanUtility {
      * @param eventsToAdd elements to add
      * @return resized array
      */
-    public static com.espertech.esper.client.EventBean[] addToArray(com.espertech.esper.client.EventBean[] array, Collection<EventBean> eventsToAdd) {
-        com.espertech.esper.client.EventBean[] newArray = new com.espertech.esper.client.EventBean[array.length + eventsToAdd.size()];
+    public static eu.uk.ncl.pet5o.esper.client.EventBean[] addToArray(eu.uk.ncl.pet5o.esper.client.EventBean[] array, Collection<EventBean> eventsToAdd) {
+        eu.uk.ncl.pet5o.esper.client.EventBean[] newArray = new eu.uk.ncl.pet5o.esper.client.EventBean[array.length + eventsToAdd.size()];
         System.arraycopy(array, 0, newArray, 0, array.length);
 
         int counter = array.length;
-        for (com.espertech.esper.client.EventBean eventToAdd : eventsToAdd) {
+        for (eu.uk.ncl.pet5o.esper.client.EventBean eventToAdd : eventsToAdd) {
             newArray[counter++] = eventToAdd;
         }
         return newArray;
@@ -553,31 +553,31 @@ public class EventBeanUtility {
      * @param reader for retrieving properties
      * @return distinct events
      */
-    public static com.espertech.esper.client.EventBean[] getDistinctByProp(ArrayDeque<EventBean> events, EventBeanReader reader) {
+    public static eu.uk.ncl.pet5o.esper.client.EventBean[] getDistinctByProp(ArrayDeque<EventBean> events, EventBeanReader reader) {
         if (events == null || events.isEmpty()) {
-            return new com.espertech.esper.client.EventBean[0];
+            return new eu.uk.ncl.pet5o.esper.client.EventBean[0];
         }
         if (events.size() < 2) {
-            return events.toArray(new com.espertech.esper.client.EventBean[events.size()]);
+            return events.toArray(new eu.uk.ncl.pet5o.esper.client.EventBean[events.size()]);
         }
 
         Set<MultiKeyUntypedEventPair> set = new LinkedHashSet<MultiKeyUntypedEventPair>();
         if (events.getFirst() instanceof NaturalEventBean) {
-            for (com.espertech.esper.client.EventBean theEvent : events) {
-                com.espertech.esper.client.EventBean inner = ((NaturalEventBean) theEvent).getOptionalSynthetic();
+            for (eu.uk.ncl.pet5o.esper.client.EventBean theEvent : events) {
+                eu.uk.ncl.pet5o.esper.client.EventBean inner = ((NaturalEventBean) theEvent).getOptionalSynthetic();
                 Object[] keys = reader.read(inner);
                 MultiKeyUntypedEventPair pair = new MultiKeyUntypedEventPair(keys, theEvent);
                 set.add(pair);
             }
         } else {
-            for (com.espertech.esper.client.EventBean theEvent : events) {
+            for (eu.uk.ncl.pet5o.esper.client.EventBean theEvent : events) {
                 Object[] keys = reader.read(theEvent);
                 MultiKeyUntypedEventPair pair = new MultiKeyUntypedEventPair(keys, theEvent);
                 set.add(pair);
             }
         }
 
-        com.espertech.esper.client.EventBean[] result = new com.espertech.esper.client.EventBean[set.size()];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] result = new eu.uk.ncl.pet5o.esper.client.EventBean[set.size()];
         int count = 0;
         for (MultiKeyUntypedEventPair row : set) {
             result[count++] = row.getEventBean();
@@ -592,28 +592,28 @@ public class EventBeanUtility {
      * @param reader for retrieving properties
      * @return distinct events
      */
-    public static com.espertech.esper.client.EventBean[] getDistinctByProp(com.espertech.esper.client.EventBean[] events, EventBeanReader reader) {
+    public static eu.uk.ncl.pet5o.esper.client.EventBean[] getDistinctByProp(eu.uk.ncl.pet5o.esper.client.EventBean[] events, EventBeanReader reader) {
         if ((events == null) || (events.length < 2)) {
             return events;
         }
 
         Set<MultiKeyUntypedEventPair> set = new LinkedHashSet<MultiKeyUntypedEventPair>();
         if (events[0] instanceof NaturalEventBean) {
-            for (com.espertech.esper.client.EventBean theEvent : events) {
-                com.espertech.esper.client.EventBean inner = ((NaturalEventBean) theEvent).getOptionalSynthetic();
+            for (eu.uk.ncl.pet5o.esper.client.EventBean theEvent : events) {
+                eu.uk.ncl.pet5o.esper.client.EventBean inner = ((NaturalEventBean) theEvent).getOptionalSynthetic();
                 Object[] keys = reader.read(inner);
                 MultiKeyUntypedEventPair pair = new MultiKeyUntypedEventPair(keys, theEvent);
                 set.add(pair);
             }
         } else {
-            for (com.espertech.esper.client.EventBean theEvent : events) {
+            for (eu.uk.ncl.pet5o.esper.client.EventBean theEvent : events) {
                 Object[] keys = reader.read(theEvent);
                 MultiKeyUntypedEventPair pair = new MultiKeyUntypedEventPair(keys, theEvent);
                 set.add(pair);
             }
         }
 
-        com.espertech.esper.client.EventBean[] result = new com.espertech.esper.client.EventBean[set.size()];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] result = new eu.uk.ncl.pet5o.esper.client.EventBean[set.size()];
         int count = 0;
         for (MultiKeyUntypedEventPair row : set) {
             result[count++] = row.getEventBean();
@@ -621,7 +621,7 @@ public class EventBeanUtility {
         return result;
     }
 
-    public static com.espertech.esper.client.EventBean[] denaturalize(com.espertech.esper.client.EventBean[] naturals) {
+    public static eu.uk.ncl.pet5o.esper.client.EventBean[] denaturalize(eu.uk.ncl.pet5o.esper.client.EventBean[] naturals) {
         if (naturals == null || naturals.length == 0) {
             return null;
         }
@@ -629,16 +629,16 @@ public class EventBeanUtility {
             return naturals;
         }
         if (naturals.length == 1) {
-            return new com.espertech.esper.client.EventBean[]{((NaturalEventBean) naturals[0]).getOptionalSynthetic()};
+            return new eu.uk.ncl.pet5o.esper.client.EventBean[]{((NaturalEventBean) naturals[0]).getOptionalSynthetic()};
         }
-        com.espertech.esper.client.EventBean[] result = new com.espertech.esper.client.EventBean[naturals.length];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] result = new eu.uk.ncl.pet5o.esper.client.EventBean[naturals.length];
         for (int i = 0; i < naturals.length; i++) {
             result[i] = ((NaturalEventBean) naturals[i]).getOptionalSynthetic();
         }
         return result;
     }
 
-    public static boolean eventsAreEqualsAllowNull(com.espertech.esper.client.EventBean first, com.espertech.esper.client.EventBean second) {
+    public static boolean eventsAreEqualsAllowNull(eu.uk.ncl.pet5o.esper.client.EventBean first, eu.uk.ncl.pet5o.esper.client.EventBean second) {
         if (first == null) {
             return second == null;
         }
@@ -646,7 +646,7 @@ public class EventBeanUtility {
     }
 
 
-    public static void safeArrayCopy(com.espertech.esper.client.EventBean[] eventsPerStream, com.espertech.esper.client.EventBean[] eventsLambda) {
+    public static void safeArrayCopy(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsLambda) {
         if (eventsPerStream.length <= eventsLambda.length) {
             System.arraycopy(eventsPerStream, 0, eventsLambda, 0, eventsPerStream.length);
         } else {
@@ -654,7 +654,7 @@ public class EventBeanUtility {
         }
     }
 
-    public static com.espertech.esper.client.EventBean[] getNewDataNonRemoved(com.espertech.esper.client.EventBean[] newData, HashSet<EventBean> removedEvents) {
+    public static eu.uk.ncl.pet5o.esper.client.EventBean[] getNewDataNonRemoved(eu.uk.ncl.pet5o.esper.client.EventBean[] newData, HashSet<EventBean> removedEvents) {
         boolean filter = false;
         for (int i = 0; i < newData.length; i++) {
             if (removedEvents.contains(newData[i])) {
@@ -676,10 +676,10 @@ public class EventBeanUtility {
         if (events.isEmpty()) {
             return null;
         }
-        return events.toArray(new com.espertech.esper.client.EventBean[events.size()]);
+        return events.toArray(new eu.uk.ncl.pet5o.esper.client.EventBean[events.size()]);
     }
 
-    public static com.espertech.esper.client.EventBean[] getNewDataNonRemoved(com.espertech.esper.client.EventBean[] newData, HashSet<EventBean> removedEvents, com.espertech.esper.client.EventBean[][] newEventsPerView) {
+    public static eu.uk.ncl.pet5o.esper.client.EventBean[] getNewDataNonRemoved(eu.uk.ncl.pet5o.esper.client.EventBean[] newData, HashSet<EventBean> removedEvents, eu.uk.ncl.pet5o.esper.client.EventBean[][] newEventsPerView) {
         if (newData == null || newData.length == 0) {
             return null;
         }
@@ -702,7 +702,7 @@ public class EventBeanUtility {
         if (events.isEmpty()) {
             return null;
         }
-        return events.toArray(new com.espertech.esper.client.EventBean[events.size()]);
+        return events.toArray(new eu.uk.ncl.pet5o.esper.client.EventBean[events.size()]);
     }
 
     /**
@@ -724,10 +724,10 @@ public class EventBeanUtility {
             buf.append(delimiter);
             buf.append(entry.getKey());
             buf.append("=");
-            if (entry.getValue() instanceof com.espertech.esper.client.EventBean) {
-                buf.append(EventBeanSummarizer.summarize((com.espertech.esper.client.EventBean) entry.getValue()));
-            } else if (entry.getValue() instanceof com.espertech.esper.client.EventBean[]) {
-                buf.append(EventBeanSummarizer.summarize((com.espertech.esper.client.EventBean[]) entry.getValue()));
+            if (entry.getValue() instanceof eu.uk.ncl.pet5o.esper.client.EventBean) {
+                buf.append(EventBeanSummarizer.summarize((eu.uk.ncl.pet5o.esper.client.EventBean) entry.getValue()));
+            } else if (entry.getValue() instanceof eu.uk.ncl.pet5o.esper.client.EventBean[]) {
+                buf.append(EventBeanSummarizer.summarize((eu.uk.ncl.pet5o.esper.client.EventBean[]) entry.getValue()));
             } else if (entry.getValue() == null) {
                 buf.append("null");
             } else {
@@ -738,7 +738,7 @@ public class EventBeanUtility {
         return buf.toString();
     }
 
-    public static void addToCollection(com.espertech.esper.client.EventBean[] toAdd, Collection<EventBean> events) {
+    public static void addToCollection(eu.uk.ncl.pet5o.esper.client.EventBean[] toAdd, Collection<EventBean> events) {
         if (toAdd == null) {
             return;
         }
@@ -752,11 +752,11 @@ public class EventBeanUtility {
         events.addAll(toAdd);
     }
 
-    public static com.espertech.esper.client.EventBean[] toArrayNullIfEmpty(Collection<EventBean> events) {
+    public static eu.uk.ncl.pet5o.esper.client.EventBean[] toArrayNullIfEmpty(Collection<EventBean> events) {
         if (events == null || events.isEmpty()) {
             return null;
         }
-        return events.toArray(new com.espertech.esper.client.EventBean[events.size()]);
+        return events.toArray(new eu.uk.ncl.pet5o.esper.client.EventBean[events.size()]);
     }
 
     public static Set<MultiKey<EventBean>> toLinkedHashSetNullIfEmpty(Collection<MultiKey<EventBean>> events) {
@@ -766,19 +766,19 @@ public class EventBeanUtility {
         return new LinkedHashSet<MultiKey<EventBean>>(events);
     }
 
-    public static Set<MultiKey<EventBean>> toSingletonSetIfNotNull(MultiKey<com.espertech.esper.client.EventBean> row) {
+    public static Set<MultiKey<EventBean>> toSingletonSetIfNotNull(MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> row) {
         if (row == null) {
             return null;
         }
         return Collections.singleton(row);
     }
 
-    public static MultiKey<com.espertech.esper.client.EventBean> getLastInSet(Set<MultiKey<EventBean>> events) {
+    public static MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> getLastInSet(Set<MultiKey<EventBean>> events) {
         if (events.isEmpty()) {
             return null;
         }
         int count = 0;
-        for (MultiKey<com.espertech.esper.client.EventBean> row : events) {
+        for (MultiKey<eu.uk.ncl.pet5o.esper.client.EventBean> row : events) {
             count++;
             if (count == events.size()) {
                 return row;
@@ -787,14 +787,14 @@ public class EventBeanUtility {
         throw new IllegalStateException("Cannot get last on empty collection");
     }
 
-    public static com.espertech.esper.client.EventBean[] toArrayIfNotNull(com.espertech.esper.client.EventBean optionalEvent) {
+    public static eu.uk.ncl.pet5o.esper.client.EventBean[] toArrayIfNotNull(eu.uk.ncl.pet5o.esper.client.EventBean optionalEvent) {
         if (optionalEvent == null) {
             return null;
         }
-        return new com.espertech.esper.client.EventBean[]{optionalEvent};
+        return new eu.uk.ncl.pet5o.esper.client.EventBean[]{optionalEvent};
     }
 
-    public static boolean compareEventReferences(com.espertech.esper.client.EventBean[] firstNonNull, com.espertech.esper.client.EventBean[] secondNonNull) {
+    public static boolean compareEventReferences(eu.uk.ncl.pet5o.esper.client.EventBean[] firstNonNull, eu.uk.ncl.pet5o.esper.client.EventBean[] secondNonNull) {
         if (firstNonNull.length != secondNonNull.length) {
             return false;
         }
@@ -806,13 +806,13 @@ public class EventBeanUtility {
         return true;
     }
 
-    public static com.espertech.esper.client.EventBean[] copyArray(com.espertech.esper.client.EventBean[] events) {
-        com.espertech.esper.client.EventBean[] copy = new com.espertech.esper.client.EventBean[events.length];
+    public static eu.uk.ncl.pet5o.esper.client.EventBean[] copyArray(eu.uk.ncl.pet5o.esper.client.EventBean[] events) {
+        eu.uk.ncl.pet5o.esper.client.EventBean[] copy = new eu.uk.ncl.pet5o.esper.client.EventBean[events.length];
         System.arraycopy(events, 0, copy, 0, copy.length);
         return copy;
     }
 
-    private static boolean findEvent(com.espertech.esper.client.EventBean theEvent, com.espertech.esper.client.EventBean[][] eventsPerView) {
+    private static boolean findEvent(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, eu.uk.ncl.pet5o.esper.client.EventBean[][] eventsPerView) {
         for (int i = 0; i < eventsPerView.length; i++) {
             if (eventsPerView[i] == null) {
                 continue;

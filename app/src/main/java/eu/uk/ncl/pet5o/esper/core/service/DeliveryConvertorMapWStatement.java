@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.EPStatement;
+import eu.uk.ncl.pet5o.esper.client.EPStatement;
 
 import java.util.HashMap;
 import java.util.Map;

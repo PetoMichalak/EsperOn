@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.epl.expression.subquery.ExprSubselectNode;
-import com.espertech.esper.epl.spec.FilterStreamSpecRaw;
-import com.espertech.esper.epl.spec.StatementSpecRaw;
-import com.espertech.esper.epl.spec.StreamSpecRaw;
-import com.espertech.esper.epl.table.mgmt.TableService;
+import eu.uk.ncl.pet5o.esper.epl.expression.subquery.ExprSubselectNode;
+import eu.uk.ncl.pet5o.esper.epl.spec.FilterStreamSpecRaw;
+import eu.uk.ncl.pet5o.esper.epl.spec.StatementSpecRaw;
+import eu.uk.ncl.pet5o.esper.epl.spec.StreamSpecRaw;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableService;
 
 import java.util.List;
 

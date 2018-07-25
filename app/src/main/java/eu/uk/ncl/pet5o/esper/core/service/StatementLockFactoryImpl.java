@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.annotation.NoLock;
-import com.espertech.esper.epl.annotation.AnnotationUtil;
+import eu.uk.ncl.pet5o.esper.client.annotation.NoLock;
+import eu.uk.ncl.pet5o.esper.epl.annotation.AnnotationUtil;
 
 import java.lang.annotation.Annotation;
 

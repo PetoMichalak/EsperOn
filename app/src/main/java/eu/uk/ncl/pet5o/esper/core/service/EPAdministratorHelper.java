@@ -10,21 +10,21 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.ConfigurationInformation;
-import com.espertech.esper.client.EPStatementException;
-import com.espertech.esper.client.EPStatementSyntaxException;
-import com.espertech.esper.core.context.mgr.ContextManagementService;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.epl.declexpr.ExprDeclaredService;
-import com.espertech.esper.epl.generated.EsperEPL2GrammarParser;
-import com.espertech.esper.epl.parse.*;
-import com.espertech.esper.epl.spec.PatternStreamSpecRaw;
-import com.espertech.esper.epl.spec.SelectClauseElementWildcard;
-import com.espertech.esper.epl.spec.SelectClauseStreamSelectorEnum;
-import com.espertech.esper.epl.spec.StatementSpecRaw;
-import com.espertech.esper.epl.table.mgmt.TableService;
-import com.espertech.esper.epl.variable.VariableService;
-import com.espertech.esper.pattern.PatternNodeFactory;
+import eu.uk.ncl.pet5o.esper.client.ConfigurationInformation;
+import eu.uk.ncl.pet5o.esper.client.EPStatementException;
+import eu.uk.ncl.pet5o.esper.client.EPStatementSyntaxException;
+import eu.uk.ncl.pet5o.esper.core.context.mgr.ContextManagementService;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.epl.declexpr.ExprDeclaredService;
+import eu.uk.ncl.pet5o.esper.epl.generated.EsperEPL2GrammarParser;
+import eu.uk.ncl.pet5o.esper.epl.parse.*;
+import eu.uk.ncl.pet5o.esper.epl.spec.PatternStreamSpecRaw;
+import eu.uk.ncl.pet5o.esper.epl.spec.SelectClauseElementWildcard;
+import eu.uk.ncl.pet5o.esper.epl.spec.SelectClauseStreamSelectorEnum;
+import eu.uk.ncl.pet5o.esper.epl.spec.StatementSpecRaw;
+import eu.uk.ncl.pet5o.esper.epl.table.mgmt.TableService;
+import eu.uk.ncl.pet5o.esper.epl.variable.VariableService;
+import eu.uk.ncl.pet5o.esper.pattern.PatternNodeFactory;
 
 import org.antlr.v4.runtime.RecognitionException;
 import org.antlr.v4.runtime.tree.Tree;

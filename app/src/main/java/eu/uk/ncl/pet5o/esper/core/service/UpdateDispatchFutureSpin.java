@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.dispatch.Dispatchable;
-import com.espertech.esper.timer.TimeSourceService;
+import eu.uk.ncl.pet5o.esper.dispatch.Dispatchable;
+import eu.uk.ncl.pet5o.esper.timer.TimeSourceService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

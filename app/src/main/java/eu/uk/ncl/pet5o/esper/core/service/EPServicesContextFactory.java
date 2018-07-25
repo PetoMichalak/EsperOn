@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.ConfigurationInformation;
-import com.espertech.esper.client.EPServiceProvider;
+import eu.uk.ncl.pet5o.esper.client.ConfigurationInformation;
+import eu.uk.ncl.pet5o.esper.client.EPServiceProvider;
 
 /**
  * Interface for a factory class to provide services in a services context for an engine instance.

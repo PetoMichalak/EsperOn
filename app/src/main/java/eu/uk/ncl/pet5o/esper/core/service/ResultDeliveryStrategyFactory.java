@@ -10,14 +10,14 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.client.EPStatement;
-import com.espertech.esper.client.EPSubscriberException;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.util.JavaClassHelper;
-import com.espertech.esper.util.TypeWidener;
-import com.espertech.esper.util.TypeWidenerException;
-import com.espertech.esper.util.TypeWidenerFactory;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.client.EPStatement;
+import eu.uk.ncl.pet5o.esper.client.EPSubscriberException;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.util.TypeWidener;
+import eu.uk.ncl.pet5o.esper.util.TypeWidenerException;
+import eu.uk.ncl.pet5o.esper.util.TypeWidenerFactory;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;

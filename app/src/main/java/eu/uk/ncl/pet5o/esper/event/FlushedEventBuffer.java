@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-import com.espertech.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
 
 import java.util.ArrayDeque;
 
@@ -25,7 +25,7 @@ public class FlushedEventBuffer {
      *
      * @param events to add
      */
-    public void add(com.espertech.esper.client.EventBean[] events) {
+    public void add(eu.uk.ncl.pet5o.esper.client.EventBean[] events) {
         if (events != null) {
             remainEvents.add(events);
         }
@@ -36,8 +36,8 @@ public class FlushedEventBuffer {
      *
      * @return array of events in buffer or null if empty
      */
-    public com.espertech.esper.client.EventBean[] getAndFlush() {
-        com.espertech.esper.client.EventBean[] flattened = EventBeanUtility.flatten(remainEvents);
+    public eu.uk.ncl.pet5o.esper.client.EventBean[] getAndFlush() {
+        eu.uk.ncl.pet5o.esper.client.EventBean[] flattened = EventBeanUtility.flatten(remainEvents);
         remainEvents.clear();
         return flattened;
     }

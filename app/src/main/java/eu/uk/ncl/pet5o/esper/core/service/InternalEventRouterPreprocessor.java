@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.event.EventBeanCopyMethod;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.event.EventBeanCopyMethod;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -66,7 +66,7 @@ public class InternalEventRouterPreprocessor {
      * @param exprEvaluatorContext expression evaluation context
      * @return processed event
      */
-    public com.espertech.esper.client.EventBean process(com.espertech.esper.client.EventBean theEvent, ExprEvaluatorContext exprEvaluatorContext) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean process(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, ExprEvaluatorContext exprEvaluatorContext) {
         if (empty) {
             return theEvent;
         }
@@ -75,9 +75,9 @@ public class InternalEventRouterPreprocessor {
             InstrumentationHelper.get().qUpdateIStream(entries);
         }
 
-        com.espertech.esper.client.EventBean oldEvent = theEvent;
+        eu.uk.ncl.pet5o.esper.client.EventBean oldEvent = theEvent;
         boolean haveCloned = false;
-        com.espertech.esper.client.EventBean[] eventsPerStream = new com.espertech.esper.client.EventBean[1];
+        eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream = new eu.uk.ncl.pet5o.esper.client.EventBean[1];
         eventsPerStream[0] = theEvent;
         InternalEventRouterEntry lastEntry = null;
 
@@ -115,7 +115,7 @@ public class InternalEventRouterPreprocessor {
             if (lastEntry != null) {
                 InternalRoutePreprocessView view = lastEntry.getOutputView();
                 if (view.isIndicate()) {
-                    com.espertech.esper.client.EventBean copied = copyMethod.copy(theEvent);
+                    eu.uk.ncl.pet5o.esper.client.EventBean copied = copyMethod.copy(theEvent);
                     view.indicate(copied, oldEvent);
                     oldEvent = copied;
                 } else {
@@ -127,7 +127,7 @@ public class InternalEventRouterPreprocessor {
 
             // copy event for the first update that applies
             if (!haveCloned) {
-                com.espertech.esper.client.EventBean copiedEvent = copyMethod.copy(theEvent);
+                eu.uk.ncl.pet5o.esper.client.EventBean copiedEvent = copyMethod.copy(theEvent);
                 if (copiedEvent == null) {
                     log.warn("Event of type " + theEvent.getEventType().getName() + " could not be copied");
                     if (InstrumentationHelper.ENABLED) {
@@ -160,7 +160,7 @@ public class InternalEventRouterPreprocessor {
         return theEvent;
     }
 
-    private void apply(com.espertech.esper.client.EventBean theEvent, com.espertech.esper.client.EventBean[] eventsPerStream, InternalEventRouterEntry entry, ExprEvaluatorContext exprEvaluatorContext) {
+    private void apply(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, InternalEventRouterEntry entry, ExprEvaluatorContext exprEvaluatorContext) {
         // evaluate
         Object[] values;
         if (entry.isHasSubselect()) {
@@ -178,7 +178,7 @@ public class InternalEventRouterPreprocessor {
         entry.getWriter().write(values, theEvent);
     }
 
-    private Object[] obtainValues(com.espertech.esper.client.EventBean[] eventsPerStream, InternalEventRouterEntry entry, ExprEvaluatorContext exprEvaluatorContext) {
+    private Object[] obtainValues(eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, InternalEventRouterEntry entry, ExprEvaluatorContext exprEvaluatorContext) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qUpdateIStreamApplyAssignments(entry);
         }

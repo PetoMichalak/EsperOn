@@ -21,7 +21,7 @@ public interface ExpressionResultCacheForDeclaredExprLastValue {
 
     boolean cacheEnabled();
 
-    ExpressionResultCacheEntryEventBeanArrayAndObj getDeclaredExpressionLastValue(Object node, com.espertech.esper.client.EventBean[] eventsPerStream);
+    ExpressionResultCacheEntryEventBeanArrayAndObj getDeclaredExpressionLastValue(Object node, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream);
 
-    void saveDeclaredExpressionLastValue(Object node, com.espertech.esper.client.EventBean[] eventsPerStream, Object result);
+    void saveDeclaredExpressionLastValue(Object node, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, Object result);
 }

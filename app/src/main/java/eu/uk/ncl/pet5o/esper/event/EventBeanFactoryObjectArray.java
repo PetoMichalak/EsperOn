@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-import com.espertech.esper.client.EventBeanFactory;
-import com.espertech.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.EventBeanFactory;
+import eu.uk.ncl.pet5o.esper.client.EventType;
 
 public class EventBeanFactoryObjectArray implements EventBeanFactory {
     private final EventType type;
@@ -22,7 +22,7 @@ public class EventBeanFactoryObjectArray implements EventBeanFactory {
         this.eventAdapterService = eventAdapterService;
     }
 
-    public com.espertech.esper.client.EventBean wrap(Object underlying) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean wrap(Object underlying) {
         return eventAdapterService.adapterForTypedObjectArray((Object[]) underlying, type);
     }
 

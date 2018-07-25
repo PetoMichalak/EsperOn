@@ -16,10 +16,10 @@ public class ExpressionResultCacheForDeclaredExprLastValueNone implements Expres
         return false;
     }
 
-    public ExpressionResultCacheEntryEventBeanArrayAndObj getDeclaredExpressionLastValue(Object node, com.espertech.esper.client.EventBean[] eventsPerStream) {
+    public ExpressionResultCacheEntryEventBeanArrayAndObj getDeclaredExpressionLastValue(Object node, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream) {
         return null;
     }
 
-    public void saveDeclaredExpressionLastValue(Object node, com.espertech.esper.client.EventBean[] eventsPerStream, Object result) {
+    public void saveDeclaredExpressionLastValue(Object node, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, Object result) {
     }
 }

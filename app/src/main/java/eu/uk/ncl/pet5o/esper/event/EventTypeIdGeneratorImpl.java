@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-import com.espertech.esper.event.bean.BeanEventType;
+import eu.uk.ncl.pet5o.esper.event.bean.BeanEventType;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

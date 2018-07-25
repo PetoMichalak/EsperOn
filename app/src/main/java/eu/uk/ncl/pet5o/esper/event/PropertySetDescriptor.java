@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-import com.espertech.esper.client.EventPropertyDescriptor;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyDescriptor;
 
 import java.util.List;
 import java.util.Map;

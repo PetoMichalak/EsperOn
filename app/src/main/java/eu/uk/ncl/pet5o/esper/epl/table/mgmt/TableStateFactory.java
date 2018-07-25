@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.table.mgmt;
 
-import com.espertech.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
 
 public interface TableStateFactory {
     public TableStateInstance makeTableState(AgentInstanceContext agentInstanceContext);

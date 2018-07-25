@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.core.context.factory.StatementAgentInstanceFactoryResult;
-import com.espertech.esper.core.service.resource.StatementResourceHolder;
-import com.espertech.esper.core.service.resource.StatementResourceService;
-import com.espertech.esper.core.start.EPStatementStartMethodSelectDesc;
-import com.espertech.esper.util.StopCallback;
+import eu.uk.ncl.pet5o.esper.core.context.factory.StatementAgentInstanceFactoryResult;
+import eu.uk.ncl.pet5o.esper.core.service.resource.StatementResourceHolder;
+import eu.uk.ncl.pet5o.esper.core.service.resource.StatementResourceService;
+import eu.uk.ncl.pet5o.esper.core.start.EPStatementStartMethodSelectDesc;
+import eu.uk.ncl.pet5o.esper.util.StopCallback;
 
 import java.util.List;
 

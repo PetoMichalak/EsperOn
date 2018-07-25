@@ -10,21 +10,21 @@
  */
 package eu.uk.ncl.pet5o.esper.event.arr;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.PropertyAccessException;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.event.BaseNestableEventUtil;
-import com.espertech.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.PropertyAccessException;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.event.BaseNestableEventUtil;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.arrayAtIndex;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.castUnderlying;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.arrayAtIndex;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.castUnderlying;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
 
 public abstract class ObjectArrayNestedEntryPropertyGetterBase implements ObjectArrayEventPropertyGetter {
 
@@ -64,7 +64,7 @@ public abstract class ObjectArrayNestedEntryPropertyGetterBase implements Object
         return true; // Property exists as the property is not dynamic (unchecked)
     }
 
-    public Object get(com.espertech.esper.client.EventBean obj) {
+    public Object get(eu.uk.ncl.pet5o.esper.client.EventBean obj) {
         return getObjectArray(BaseNestableEventUtil.checkedCastUnderlyingObjectArray(obj));
     }
 
@@ -75,7 +75,7 @@ public abstract class ObjectArrayNestedEntryPropertyGetterBase implements Object
                 .methodReturn(handleNestedValueCodegen(ref("value"), codegenMethodScope, codegenClassScope));
     }
 
-    public boolean isExistsProperty(com.espertech.esper.client.EventBean eventBean) {
+    public boolean isExistsProperty(eu.uk.ncl.pet5o.esper.client.EventBean eventBean) {
         Object[] array = BaseNestableEventUtil.checkedCastUnderlyingObjectArray(eventBean);
         Object value = array[propertyIndex];
         if (value == null) {
@@ -91,7 +91,7 @@ public abstract class ObjectArrayNestedEntryPropertyGetterBase implements Object
                 .methodReturn(handleNestedValueExistsCodegen(ref("value"), codegenMethodScope, codegenClassScope));
     }
 
-    public Object getFragment(com.espertech.esper.client.EventBean obj) {
+    public Object getFragment(eu.uk.ncl.pet5o.esper.client.EventBean obj) {
         Object[] array = BaseNestableEventUtil.checkedCastUnderlyingObjectArray(obj);
         Object value = array[propertyIndex];
         if (value == null) {

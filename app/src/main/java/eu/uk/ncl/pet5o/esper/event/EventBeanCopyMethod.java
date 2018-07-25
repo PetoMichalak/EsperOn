@@ -20,5 +20,5 @@ public interface EventBeanCopyMethod {
      * @param theEvent to copy
      * @return shallow copy
      */
-    public com.espertech.esper.client.EventBean copy(com.espertech.esper.client.EventBean theEvent);
+    public eu.uk.ncl.pet5o.esper.client.EventBean copy(eu.uk.ncl.pet5o.esper.client.EventBean theEvent);
 }

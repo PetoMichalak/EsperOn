@@ -10,15 +10,15 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.streamtype;
 
-import com.espertech.esper.client.EventPropertyDescriptor;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.FragmentEventType;
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.event.EventTypeMetadata;
-import com.espertech.esper.event.EventTypeSPI;
-import com.espertech.esper.util.EPServiceProviderName;
-import com.espertech.esper.util.LevenshteinDistance;
-import com.espertech.esper.util.StringValue;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyDescriptor;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.FragmentEventType;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.event.EventTypeMetadata;
+import eu.uk.ncl.pet5o.esper.event.EventTypeSPI;
+import eu.uk.ncl.pet5o.esper.util.EPServiceProviderName;
+import eu.uk.ncl.pet5o.esper.util.LevenshteinDistance;
+import eu.uk.ncl.pet5o.esper.util.StringValue;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.client.annotation;
 
-import com.espertech.esper.client.util.EventUnderlyingType;
+import eu.uk.ncl.pet5o.esper.client.util.EventUnderlyingType;
 
 /**
  * Annotation that can be attached to specify which underlying event representation to use for events.

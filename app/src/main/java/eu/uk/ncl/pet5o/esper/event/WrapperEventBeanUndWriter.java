@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-import com.espertech.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
 
 /**
  * Writer for values to a wrapper event.
@@ -27,9 +27,9 @@ public class WrapperEventBeanUndWriter implements EventBeanWriter {
         this.undWriter = undWriter;
     }
 
-    public void write(Object[] values, com.espertech.esper.client.EventBean theEvent) {
+    public void write(Object[] values, eu.uk.ncl.pet5o.esper.client.EventBean theEvent) {
         DecoratingEventBean wrappedEvent = (DecoratingEventBean) theEvent;
-        com.espertech.esper.client.EventBean eventWrapped = wrappedEvent.getUnderlyingEvent();
+        eu.uk.ncl.pet5o.esper.client.EventBean eventWrapped = wrappedEvent.getUnderlyingEvent();
         undWriter.write(values, eventWrapped);
     }
 }

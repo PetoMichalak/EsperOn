@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.table.mgmt;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.epl.expression.baseagg.ExprAggregateNode;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.epl.expression.baseagg.ExprAggregateNode;
 
 public class TableColumnDescAgg extends TableColumnDesc {
     private final ExprAggregateNode aggregation;

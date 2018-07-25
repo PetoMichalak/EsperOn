@@ -14,19 +14,19 @@ package eu.uk.ncl.pet5o.esper.core.service;
  * Cache entry bean-to-collection-of-bean.
  */
 public class ExpressionResultCacheEntryEventBeanArrayAndObj {
-    private com.espertech.esper.client.EventBean[] reference;
+    private eu.uk.ncl.pet5o.esper.client.EventBean[] reference;
     private Object result;
 
-    public ExpressionResultCacheEntryEventBeanArrayAndObj(com.espertech.esper.client.EventBean[] reference, Object result) {
+    public ExpressionResultCacheEntryEventBeanArrayAndObj(eu.uk.ncl.pet5o.esper.client.EventBean[] reference, Object result) {
         this.reference = reference;
         this.result = result;
     }
 
-    public com.espertech.esper.client.EventBean[] getReference() {
+    public eu.uk.ncl.pet5o.esper.client.EventBean[] getReference() {
         return reference;
     }
 
-    public void setReference(com.espertech.esper.client.EventBean[] reference) {
+    public void setReference(eu.uk.ncl.pet5o.esper.client.EventBean[] reference) {
         this.reference = reference;
     }
 

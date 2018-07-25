@@ -23,5 +23,5 @@ public interface StatementResultListener {
      * @param statement         stmt
      * @param epServiceProvider engine
      */
-    public void update(com.espertech.esper.client.EventBean[] newEvents, com.espertech.esper.client.EventBean[] oldEvents, String statementName, EPStatementSPI statement, EPServiceProviderSPI epServiceProvider);
+    public void update(eu.uk.ncl.pet5o.esper.client.EventBean[] newEvents, eu.uk.ncl.pet5o.esper.client.EventBean[] oldEvents, String statementName, EPStatementSPI statement, EPServiceProviderSPI epServiceProvider);
 }

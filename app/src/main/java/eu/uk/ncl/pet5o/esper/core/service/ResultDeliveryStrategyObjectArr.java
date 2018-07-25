@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.EPStatement;
-import com.espertech.esper.collection.UniformPair;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
-import com.espertech.esper.event.NaturalEventBean;
+import eu.uk.ncl.pet5o.esper.client.EPStatement;
+import eu.uk.ncl.pet5o.esper.collection.UniformPair;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.event.NaturalEventBean;
 
 import net.sf.cglib.reflect.FastClass;
 import net.sf.cglib.reflect.FastMethod;
@@ -48,7 +48,7 @@ public class ResultDeliveryStrategyObjectArr implements ResultDeliveryStrategy {
         this.fastMethod = fastClass.getMethod(method);
     }
 
-    public void execute(UniformPair<com.espertech.esper.client.EventBean[]> result) {
+    public void execute(UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> result) {
         Object[][] newData;
         Object[][] oldData;
 
@@ -68,7 +68,7 @@ public class ResultDeliveryStrategyObjectArr implements ResultDeliveryStrategy {
         }
     }
 
-    protected Object[][] convert(com.espertech.esper.client.EventBean[] events) {
+    protected Object[][] convert(eu.uk.ncl.pet5o.esper.client.EventBean[] events) {
         if ((events == null) || (events.length == 0)) {
             return null;
         }

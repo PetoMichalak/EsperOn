@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.EPOnDemandQueryResult;
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.collection.ArrayEventIterator;
+import eu.uk.ncl.pet5o.esper.client.EPOnDemandQueryResult;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.collection.ArrayEventIterator;
 
 import java.util.Iterator;
 
@@ -36,7 +36,7 @@ public class EPQueryResultImpl implements EPOnDemandQueryResult {
         return new ArrayEventIterator(queryResult.getResult());
     }
 
-    public com.espertech.esper.client.EventBean[] getArray() {
+    public eu.uk.ncl.pet5o.esper.client.EventBean[] getArray() {
         return queryResult.getResult();
     }
 

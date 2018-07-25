@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.epl.spec.UpdateDesc;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.epl.spec.UpdateDesc;
 
 import java.lang.annotation.Annotation;
 
@@ -43,11 +43,11 @@ public interface InternalEventRouter {
      * @param routeDest            routing destination
      * @param addToFront           indicator whether to add to front queue
      */
-    public void route(com.espertech.esper.client.EventBean theEvent, EPStatementHandle statementHandle, InternalEventRouteDest routeDest, ExprEvaluatorContext exprEvaluatorContext, boolean addToFront);
+    public void route(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, EPStatementHandle statementHandle, InternalEventRouteDest routeDest, ExprEvaluatorContext exprEvaluatorContext, boolean addToFront);
 
     public boolean isHasPreprocessing();
 
-    public com.espertech.esper.client.EventBean preprocess(com.espertech.esper.client.EventBean theEvent, ExprEvaluatorContext engineFilterAndDispatchTimeContext);
+    public eu.uk.ncl.pet5o.esper.client.EventBean preprocess(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, ExprEvaluatorContext engineFilterAndDispatchTimeContext);
 
     public void setInsertIntoListener(InsertIntoListener insertIntoListener);
 }

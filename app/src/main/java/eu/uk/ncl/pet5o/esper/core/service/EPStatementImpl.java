@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.*;
-import com.espertech.esper.client.context.ContextPartitionSelector;
-import com.espertech.esper.dispatch.DispatchService;
-import com.espertech.esper.timer.TimeSourceService;
-import com.espertech.esper.view.Viewable;
+import eu.uk.ncl.pet5o.esper.client.*;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionSelector;
+import eu.uk.ncl.pet5o.esper.dispatch.DispatchService;
+import eu.uk.ncl.pet5o.esper.timer.TimeSourceService;
+import eu.uk.ncl.pet5o.esper.view.Viewable;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

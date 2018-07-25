@@ -10,28 +10,28 @@
  */
 package eu.uk.ncl.pet5o.esper.event.map;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.PropertyAccessException;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMember;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
-import com.espertech.esper.event.BaseNestableEventUtil;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.event.bean.BeanEventType;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.PropertyAccessException;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMember;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodNode;
+import eu.uk.ncl.pet5o.esper.event.BaseNestableEventUtil;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.event.bean.BeanEventType;
 
 import java.util.Map;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.castUnderlying;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantTrue;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotUnderlying;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.member;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.staticMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.castUnderlying;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.constantTrue;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotUnderlying;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.member;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.staticMethod;
 
 /**
  * A getter for use with Map-based events simply returns the value for the key.
@@ -57,8 +57,8 @@ public class MapEntryPropertyGetter implements MapEventPropertyGetter {
     public Object getMap(Map<String, Object> map) throws PropertyAccessException {
         // If the map does not contain the key, this is allowed and represented as null
         Object value = map.get(propertyName);
-        if (value instanceof com.espertech.esper.client.EventBean) {
-            return ((com.espertech.esper.client.EventBean) value).getUnderlying();
+        if (value instanceof eu.uk.ncl.pet5o.esper.client.EventBean) {
+            return ((eu.uk.ncl.pet5o.esper.client.EventBean) value).getUnderlying();
         }
         return value;
     }
@@ -66,8 +66,8 @@ public class MapEntryPropertyGetter implements MapEventPropertyGetter {
     private CodegenExpression getMapCodegen(CodegenExpression underlyingExpression, CodegenMethodScope codegenMethodScope, CodegenClassScope codegenClassScope) {
         CodegenMethodNode method = codegenMethodScope.makeChild(Object.class, MapEntryPropertyGetter.class, codegenClassScope).addParam(Map.class, "map").getBlock()
                 .declareVar(Object.class, "value", exprDotMethod(ref("map"), "get", constant(propertyName)))
-                .ifInstanceOf("value", com.espertech.esper.client.EventBean.class)
-                    .blockReturn(exprDotUnderlying(cast(com.espertech.esper.client.EventBean.class, ref("value"))))
+                .ifInstanceOf("value", eu.uk.ncl.pet5o.esper.client.EventBean.class)
+                    .blockReturn(exprDotUnderlying(cast(eu.uk.ncl.pet5o.esper.client.EventBean.class, ref("value"))))
                 .methodReturn(ref("value"));
         return localMethod(method, underlyingExpression);
     }
@@ -76,15 +76,15 @@ public class MapEntryPropertyGetter implements MapEventPropertyGetter {
         return true; // Property exists as the property is not dynamic (unchecked)
     }
 
-    public Object get(com.espertech.esper.client.EventBean obj) {
+    public Object get(eu.uk.ncl.pet5o.esper.client.EventBean obj) {
         return getMap(BaseNestableEventUtil.checkedCastUnderlyingMap(obj));
     }
 
-    public boolean isExistsProperty(com.espertech.esper.client.EventBean eventBean) {
+    public boolean isExistsProperty(eu.uk.ncl.pet5o.esper.client.EventBean eventBean) {
         return true; // Property exists as the property is not dynamic (unchecked)
     }
 
-    public Object getFragment(com.espertech.esper.client.EventBean eventBean) {
+    public Object getFragment(eu.uk.ncl.pet5o.esper.client.EventBean eventBean) {
         if (eventType == null) {
             return null;
         }

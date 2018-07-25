@@ -12,5 +12,5 @@ package eu.uk.ncl.pet5o.esper.event;
 
 public interface EventBeanAdapterFactory {
 
-    public com.espertech.esper.client.EventBean makeAdapter(Object underlying);
+    public eu.uk.ncl.pet5o.esper.client.EventBean makeAdapter(Object underlying);
 }

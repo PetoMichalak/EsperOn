@@ -10,6 +10,6 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-public interface EventBeanSPI extends com.espertech.esper.client.EventBean {
+public interface EventBeanSPI extends eu.uk.ncl.pet5o.esper.client.EventBean {
     public void setUnderlying(Object underlying);
 }

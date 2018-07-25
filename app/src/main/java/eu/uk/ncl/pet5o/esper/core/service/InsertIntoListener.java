@@ -11,5 +11,5 @@
 package eu.uk.ncl.pet5o.esper.core.service;
 
 public interface InsertIntoListener {
-    public boolean inserted(com.espertech.esper.client.EventBean theEvent, EPStatementHandle statementHandle);
+    public boolean inserted(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, EPStatementHandle statementHandle);
 }

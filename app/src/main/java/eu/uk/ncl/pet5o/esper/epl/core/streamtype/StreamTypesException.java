@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.core.streamtype;
 
-import com.espertech.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
 
 /**
  * Base class for stream and property name resolution errors.

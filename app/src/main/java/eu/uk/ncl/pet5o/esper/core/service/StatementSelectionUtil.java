@@ -10,18 +10,18 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.client.EPServiceProvider;
-import com.espertech.esper.client.EPStatement;
-import com.espertech.esper.client.annotation.*;
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.core.support.SupportEventAdapterService;
-import com.espertech.esper.epl.core.streamtype.StreamTypeService;
-import com.espertech.esper.epl.core.streamtype.StreamTypeServiceImpl;
-import com.espertech.esper.epl.expression.core.*;
-import com.espertech.esper.epl.util.ExprNodeUtilityRich;
-import com.espertech.esper.event.bean.BeanEventType;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.client.EPServiceProvider;
+import eu.uk.ncl.pet5o.esper.client.EPStatement;
+import eu.uk.ncl.pet5o.esper.client.annotation.*;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.core.support.SupportEventAdapterService;
+import eu.uk.ncl.pet5o.esper.epl.core.streamtype.StreamTypeService;
+import eu.uk.ncl.pet5o.esper.epl.core.streamtype.StreamTypeServiceImpl;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.epl.util.ExprNodeUtilityRich;
+import eu.uk.ncl.pet5o.esper.event.bean.BeanEventType;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -107,9 +107,9 @@ public class StatementSelectionUtil {
 
         try {
             StatementRow row = getRow(stmt);
-            com.espertech.esper.client.EventBean rowBean = SupportEventAdapterService.getService().adapterForTypedBean(row, STATEMENT_META_EVENT_TYPE);
+            eu.uk.ncl.pet5o.esper.client.EventBean rowBean = SupportEventAdapterService.getService().adapterForTypedBean(row, STATEMENT_META_EVENT_TYPE);
 
-            Boolean pass = (Boolean) evaluator.evaluate(new com.espertech.esper.client.EventBean[]{rowBean}, true, null);
+            Boolean pass = (Boolean) evaluator.evaluate(new eu.uk.ncl.pet5o.esper.client.EventBean[]{rowBean}, true, null);
             return !((pass == null) || (!pass));
         } catch (Exception ex) {
             log.error("Unexpected exception filtering statements by expression, skipping statement: " + ex.getMessage(), ex);

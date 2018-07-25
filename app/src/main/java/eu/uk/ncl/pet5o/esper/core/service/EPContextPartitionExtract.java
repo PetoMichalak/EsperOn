@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.context.ContextPartitionCollection;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionCollection;
 
 import java.io.Serializable;
 

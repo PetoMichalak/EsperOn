@@ -10,15 +10,15 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-import com.espertech.esper.client.*;
-import com.espertech.esper.epl.parse.ASTUtil;
-import com.espertech.esper.event.property.IndexedProperty;
-import com.espertech.esper.event.property.MappedProperty;
-import com.espertech.esper.event.property.Property;
-import com.espertech.esper.event.property.PropertyParser;
-import com.espertech.esper.util.GraphUtil;
-import com.espertech.esper.util.JavaClassHelper;
-import com.espertech.esper.util.StringValue;
+import eu.uk.ncl.pet5o.esper.client.*;
+import eu.uk.ncl.pet5o.esper.epl.parse.ASTUtil;
+import eu.uk.ncl.pet5o.esper.event.property.IndexedProperty;
+import eu.uk.ncl.pet5o.esper.event.property.MappedProperty;
+import eu.uk.ncl.pet5o.esper.event.property.Property;
+import eu.uk.ncl.pet5o.esper.event.property.PropertyParser;
+import eu.uk.ncl.pet5o.esper.util.GraphUtil;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.util.StringValue;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,7 +29,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Implementation of the {@link com.espertech.esper.client.EventType} interface for handling name value pairs.
+ * Implementation of the {@link eu.uk.ncl.pet5o.esper.client.EventType} interface for handling name value pairs.
  */
 public abstract class BaseNestableEventType implements EventTypeSPI {
     protected final EventTypeMetadata metadata;

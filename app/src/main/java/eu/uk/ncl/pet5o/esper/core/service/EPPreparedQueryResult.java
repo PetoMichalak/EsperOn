@@ -10,14 +10,14 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.EventType;
 
 /**
  * The result of executing a prepared query.
  */
 public class EPPreparedQueryResult {
     private final EventType eventType;
-    private final com.espertech.esper.client.EventBean[] result;
+    private final eu.uk.ncl.pet5o.esper.client.EventBean[] result;
 
     /**
      * Ctor.
@@ -25,7 +25,7 @@ public class EPPreparedQueryResult {
      * @param eventType is the type of event produced by the query
      * @param result    the result rows
      */
-    public EPPreparedQueryResult(EventType eventType, com.espertech.esper.client.EventBean[] result) {
+    public EPPreparedQueryResult(EventType eventType, eu.uk.ncl.pet5o.esper.client.EventBean[] result) {
         this.eventType = eventType;
         this.result = result;
     }
@@ -44,7 +44,7 @@ public class EPPreparedQueryResult {
      *
      * @return result rows
      */
-    public com.espertech.esper.client.EventBean[] getResult() {
+    public eu.uk.ncl.pet5o.esper.client.EventBean[] getResult() {
         return result;
     }
 }

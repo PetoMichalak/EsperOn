@@ -10,16 +10,16 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.client.EPServiceIsolationException;
-import com.espertech.esper.client.EPStatement;
-import com.espertech.esper.core.service.resource.StatementResourceHolder;
-import com.espertech.esper.core.service.resource.StatementResourceService;
-import com.espertech.esper.epl.spec.SelectClauseStreamSelectorEnum;
-import com.espertech.esper.epl.spec.StatementSpecRaw;
-import com.espertech.esper.epl.specmapper.StatementSpecMapper;
-import com.espertech.esper.filter.FilterSet;
-import com.espertech.esper.schedule.ScheduleSet;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.client.EPServiceIsolationException;
+import eu.uk.ncl.pet5o.esper.client.EPStatement;
+import eu.uk.ncl.pet5o.esper.core.service.resource.StatementResourceHolder;
+import eu.uk.ncl.pet5o.esper.core.service.resource.StatementResourceService;
+import eu.uk.ncl.pet5o.esper.epl.spec.SelectClauseStreamSelectorEnum;
+import eu.uk.ncl.pet5o.esper.epl.spec.StatementSpecRaw;
+import eu.uk.ncl.pet5o.esper.epl.specmapper.StatementSpecMapper;
+import eu.uk.ncl.pet5o.esper.filter.FilterSet;
+import eu.uk.ncl.pet5o.esper.schedule.ScheduleSet;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

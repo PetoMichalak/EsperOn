@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.table.mgmt;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.view.ViewSupport;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.view.ViewSupport;
 
 import java.util.Iterator;
 
@@ -26,7 +26,7 @@ public class TableStateViewablePublic extends ViewSupport {
         this.tableStateInstance = tableStateInstance;
     }
 
-    public void update(com.espertech.esper.client.EventBean[] newData, com.espertech.esper.client.EventBean[] oldData) {
+    public void update(eu.uk.ncl.pet5o.esper.client.EventBean[] newData, eu.uk.ncl.pet5o.esper.client.EventBean[] oldData) {
         // no action required
     }
 
@@ -53,8 +53,8 @@ public class TableStateViewablePublic extends ViewSupport {
             return iterator.hasNext();
         }
 
-        public com.espertech.esper.client.EventBean next() {
-            com.espertech.esper.client.EventBean event = iterator.next();
+        public eu.uk.ncl.pet5o.esper.client.EventBean next() {
+            eu.uk.ncl.pet5o.esper.client.EventBean event = iterator.next();
             return eventToPublic.convert(event, null, true, tableStateInstance.getAgentInstanceContext());
         }
 

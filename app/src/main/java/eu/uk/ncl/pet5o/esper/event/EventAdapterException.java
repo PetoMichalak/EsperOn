@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-import com.espertech.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.client.EPException;
 
 /**
  * This exception is thrown to indicate a problem resolving an event type by name.

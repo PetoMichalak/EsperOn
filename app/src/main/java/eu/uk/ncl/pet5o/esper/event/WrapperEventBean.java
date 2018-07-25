@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-import com.espertech.esper.client.EventPropertyGetter;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.PropertyAccessException;
-import com.espertech.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.PropertyAccessException;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
 
 import java.util.Map;
 
@@ -25,8 +25,8 @@ import java.util.Map;
  * The event type of such events is always {@link WrapperEventType}. Additional properties are stored in a
  * Map.
  */
-public class WrapperEventBean implements com.espertech.esper.client.EventBean, DecoratingEventBean {
-    private final com.espertech.esper.client.EventBean theEvent;
+public class WrapperEventBean implements eu.uk.ncl.pet5o.esper.client.EventBean, DecoratingEventBean {
+    private final eu.uk.ncl.pet5o.esper.client.EventBean theEvent;
     private final Map<String, Object> map;
     private final EventType eventType;
 
@@ -37,7 +37,7 @@ public class WrapperEventBean implements com.espertech.esper.client.EventBean, D
      * @param properties is zero or more property values that embellish the wrapped event
      * @param eventType  is the {@link WrapperEventType}.
      */
-    public WrapperEventBean(com.espertech.esper.client.EventBean theEvent, Map<String, Object> properties, EventType eventType) {
+    public WrapperEventBean(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, Map<String, Object> properties, EventType eventType) {
         this.theEvent = theEvent;
         this.map = properties;
         this.eventType = eventType;
@@ -77,7 +77,7 @@ public class WrapperEventBean implements com.espertech.esper.client.EventBean, D
         return map;
     }
 
-    public com.espertech.esper.client.EventBean getUnderlyingEvent() {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getUnderlyingEvent() {
         return theEvent;
     }
 

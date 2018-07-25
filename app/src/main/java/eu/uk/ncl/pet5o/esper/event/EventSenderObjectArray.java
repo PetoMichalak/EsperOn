@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.client.EventSender;
-import com.espertech.esper.core.service.EPRuntimeEventSender;
-import com.espertech.esper.core.thread.InboundUnitSendWrapped;
-import com.espertech.esper.core.thread.ThreadingOption;
-import com.espertech.esper.core.thread.ThreadingService;
-import com.espertech.esper.event.arr.ObjectArrayEventType;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.client.EventSender;
+import eu.uk.ncl.pet5o.esper.core.service.EPRuntimeEventSender;
+import eu.uk.ncl.pet5o.esper.core.thread.InboundUnitSendWrapped;
+import eu.uk.ncl.pet5o.esper.core.thread.ThreadingOption;
+import eu.uk.ncl.pet5o.esper.core.thread.ThreadingService;
+import eu.uk.ncl.pet5o.esper.event.arr.ObjectArrayEventType;
 
 /**
  * Event sender for map-backed events.
@@ -50,7 +50,7 @@ public class EventSenderObjectArray implements EventSender {
         }
 
         Object[] arr = (Object[]) theEvent;
-        com.espertech.esper.client.EventBean objectArrayEvent = eventAdapterService.adapterForTypedObjectArray(arr, objectArrayEventType);
+        eu.uk.ncl.pet5o.esper.client.EventBean objectArrayEvent = eventAdapterService.adapterForTypedObjectArray(arr, objectArrayEventType);
 
         if ((ThreadingOption.isThreadingEnabled) && (threadingService.isInboundThreading())) {
             threadingService.submitInbound(new InboundUnitSendWrapped(objectArrayEvent, runtimeEventSender));
@@ -64,7 +64,7 @@ public class EventSenderObjectArray implements EventSender {
             throw new EPException("Unexpected event object of type " + theEvent.getClass().getName() + ", expected Object[]");
         }
         Object[] arr = (Object[]) theEvent;
-        com.espertech.esper.client.EventBean objectArrayEvent = eventAdapterService.adapterForTypedObjectArray(arr, objectArrayEventType);
+        eu.uk.ncl.pet5o.esper.client.EventBean objectArrayEvent = eventAdapterService.adapterForTypedObjectArray(arr, objectArrayEventType);
         runtimeEventSender.routeEventBean(objectArrayEvent);
     }
 }

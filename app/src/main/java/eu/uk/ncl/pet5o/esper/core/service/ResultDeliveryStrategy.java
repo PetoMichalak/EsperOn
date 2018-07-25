@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.collection.UniformPair;
+import eu.uk.ncl.pet5o.esper.collection.UniformPair;
 
 /**
  * Strategy for use with {@link StatementResultService} to dispatch to a statement's subscriber
@@ -22,5 +22,5 @@ public interface ResultDeliveryStrategy {
      *
      * @param result is the insert and remove stream to indicate
      */
-    public void execute(UniformPair<com.espertech.esper.client.EventBean[]> result);
+    public void execute(UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> result);
 }

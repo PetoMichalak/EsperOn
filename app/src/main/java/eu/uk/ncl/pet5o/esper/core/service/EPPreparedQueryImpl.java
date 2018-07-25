@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.EPOnDemandQueryResult;
-import com.espertech.esper.client.EPStatementException;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.context.ContextPartitionSelector;
-import com.espertech.esper.core.start.EPPreparedExecuteMethod;
+import eu.uk.ncl.pet5o.esper.client.EPOnDemandQueryResult;
+import eu.uk.ncl.pet5o.esper.client.EPStatementException;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionSelector;
+import eu.uk.ncl.pet5o.esper.core.start.EPPreparedExecuteMethod;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

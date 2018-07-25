@@ -21,7 +21,7 @@ public interface InternalEventRouteDest {
      * @param statementHandle provides statement resources
      * @param addToFront      whether to add to the front of the work queue
      */
-    public void route(com.espertech.esper.client.EventBean theEvent, EPStatementHandle statementHandle, boolean addToFront);
+    public void route(eu.uk.ncl.pet5o.esper.client.EventBean theEvent, EPStatementHandle statementHandle, boolean addToFront);
 
     public void setInternalEventRouter(InternalEventRouter internalEventRouter);
 

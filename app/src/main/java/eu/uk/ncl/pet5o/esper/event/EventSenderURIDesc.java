@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-import com.espertech.esper.plugin.PlugInEventBeanFactory;
+import eu.uk.ncl.pet5o.esper.plugin.PlugInEventBeanFactory;
 
 import java.net.URI;
 

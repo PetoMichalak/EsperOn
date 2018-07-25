@@ -10,21 +10,21 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.PropertyAccessException;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.PropertyAccessException;
 
 import java.util.Map;
 
 /**
  * An event that is carries multiple representations of event properties:
- * A synthetic representation that is designed for delivery as {@link com.espertech.esper.client.EventBean} to client {@link com.espertech.esper.client.UpdateListener} code,
+ * A synthetic representation that is designed for delivery as {@link eu.uk.ncl.pet5o.esper.client.EventBean} to client {@link eu.uk.ncl.pet5o.esper.client.UpdateListener} code,
  * and a natural representation as a bunch of Object-type properties for fast delivery to client
  * subscriber objects via method call.
  */
-public class NaturalEventBean implements com.espertech.esper.client.EventBean, DecoratingEventBean {
+public class NaturalEventBean implements eu.uk.ncl.pet5o.esper.client.EventBean, DecoratingEventBean {
     private final EventType eventBeanType;
     private final Object[] natural;
-    private final com.espertech.esper.client.EventBean optionalSynthetic;
+    private final eu.uk.ncl.pet5o.esper.client.EventBean optionalSynthetic;
 
     /**
      * Ctor.
@@ -33,7 +33,7 @@ public class NaturalEventBean implements com.espertech.esper.client.EventBean, D
      * @param natural           the properties of the event
      * @param optionalSynthetic the event bean that is the synthetic event, or null if no synthetic is packed in
      */
-    public NaturalEventBean(EventType eventBeanType, Object[] natural, com.espertech.esper.client.EventBean optionalSynthetic) {
+    public NaturalEventBean(EventType eventBeanType, Object[] natural, eu.uk.ncl.pet5o.esper.client.EventBean optionalSynthetic) {
         this.eventBeanType = eventBeanType;
         this.natural = natural;
         this.optionalSynthetic = optionalSynthetic;
@@ -57,7 +57,7 @@ public class NaturalEventBean implements com.espertech.esper.client.EventBean, D
         return natural;
     }
 
-    public com.espertech.esper.client.EventBean getUnderlyingEvent() {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getUnderlyingEvent() {
         return ((DecoratingEventBean) optionalSynthetic).getUnderlyingEvent();
     }
 
@@ -79,7 +79,7 @@ public class NaturalEventBean implements com.espertech.esper.client.EventBean, D
      *
      * @return synthetic if attached, or null if none attached
      */
-    public com.espertech.esper.client.EventBean getOptionalSynthetic() {
+    public eu.uk.ncl.pet5o.esper.client.EventBean getOptionalSynthetic() {
         return optionalSynthetic;
     }
 

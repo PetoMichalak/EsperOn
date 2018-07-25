@@ -15,7 +15,7 @@ import java.util.Map;
 /**
  * For events that are maps of properties.
  */
-public interface MappedEventBean extends com.espertech.esper.client.EventBean {
+public interface MappedEventBean extends eu.uk.ncl.pet5o.esper.client.EventBean {
     /**
      * Returns property map.
      *

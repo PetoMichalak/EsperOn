@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.epl.spec.OnTriggerType;
-import com.espertech.esper.epl.spec.StatementSpecRaw;
+import eu.uk.ncl.pet5o.esper.epl.spec.OnTriggerType;
+import eu.uk.ncl.pet5o.esper.epl.spec.StatementSpecRaw;
 
 /**
  * Statement metadata.

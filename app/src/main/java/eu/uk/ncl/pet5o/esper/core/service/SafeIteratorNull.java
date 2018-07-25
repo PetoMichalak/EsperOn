@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.SafeIterator;
+import eu.uk.ncl.pet5o.esper.client.SafeIterator;
 
 import java.util.NoSuchElementException;
 
 public class SafeIteratorNull<E> implements SafeIterator<E> {
-    public static final SafeIterator<com.espertech.esper.client.EventBean> NULL_EVENT_ITER = new SafeIteratorNull<com.espertech.esper.client.EventBean>();
+    public static final SafeIterator<eu.uk.ncl.pet5o.esper.client.EventBean> NULL_EVENT_ITER = new SafeIteratorNull<eu.uk.ncl.pet5o.esper.client.EventBean>();
 
     /**
      * Ctor.

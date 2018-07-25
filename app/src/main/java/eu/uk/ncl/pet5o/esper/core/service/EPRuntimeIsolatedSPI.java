@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.EPRuntimeIsolated;
+import eu.uk.ncl.pet5o.esper.client.EPRuntimeIsolated;
 
 import java.util.Map;
 

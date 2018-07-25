@@ -23,5 +23,5 @@ public interface TaggedCompositeEventBean {
      * @param property is the tag name
      * @return event
      */
-    public com.espertech.esper.client.EventBean getEventBean(String property);
+    public eu.uk.ncl.pet5o.esper.client.EventBean getEventBean(String property);
 }

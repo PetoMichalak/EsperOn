@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-import com.espertech.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
 
 /**
  * Copy method for underlying events.
@@ -33,10 +33,10 @@ public class WrapperEventBeanUndCopyMethod implements EventBeanCopyMethod {
         this.underlyingCopyMethod = underlyingCopyMethod;
     }
 
-    public com.espertech.esper.client.EventBean copy(com.espertech.esper.client.EventBean theEvent) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean copy(eu.uk.ncl.pet5o.esper.client.EventBean theEvent) {
         DecoratingEventBean decorated = (DecoratingEventBean) theEvent;
-        com.espertech.esper.client.EventBean decoratedUnderlying = decorated.getUnderlyingEvent();
-        com.espertech.esper.client.EventBean copiedUnderlying = underlyingCopyMethod.copy(decoratedUnderlying);
+        eu.uk.ncl.pet5o.esper.client.EventBean decoratedUnderlying = decorated.getUnderlyingEvent();
+        eu.uk.ncl.pet5o.esper.client.EventBean copiedUnderlying = underlyingCopyMethod.copy(decoratedUnderlying);
         if (copiedUnderlying == null) {
             return null;
         }

@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.collection.UniformPair;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.metric.StatementMetricHandle;
+import eu.uk.ncl.pet5o.esper.collection.UniformPair;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.metric.StatementMetricHandle;
 
 /**
  * Interface for a statement-level service for coordinating the insert/remove stream generation,
@@ -80,7 +80,7 @@ public interface StatementResultService {
      *
      * @param results is the insert and remove stream data
      */
-    public void indicate(UniformPair<com.espertech.esper.client.EventBean[]> results);
+    public void indicate(UniformPair<eu.uk.ncl.pet5o.esper.client.EventBean[]> results);
 
     /**
      * Execution of result indication.

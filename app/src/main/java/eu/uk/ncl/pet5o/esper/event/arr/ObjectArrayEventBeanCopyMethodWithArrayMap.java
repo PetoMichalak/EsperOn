@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.event.arr;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.event.EventBeanCopyMethod;
-import com.espertech.esper.event.ObjectArrayBackedEventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.event.EventBeanCopyMethod;
+import eu.uk.ncl.pet5o.esper.event.ObjectArrayBackedEventBean;
 
 import java.lang.reflect.Array;
 import java.util.HashMap;
@@ -51,7 +51,7 @@ public class ObjectArrayEventBeanCopyMethodWithArrayMap implements EventBeanCopy
         }
     }
 
-    public com.espertech.esper.client.EventBean copy(com.espertech.esper.client.EventBean theEvent) {
+    public eu.uk.ncl.pet5o.esper.client.EventBean copy(eu.uk.ncl.pet5o.esper.client.EventBean theEvent) {
         ObjectArrayBackedEventBean arrayBacked = (ObjectArrayBackedEventBean) theEvent;
         Object[] props = arrayBacked.getProperties();
         Object[] shallowCopy = new Object[props.length];

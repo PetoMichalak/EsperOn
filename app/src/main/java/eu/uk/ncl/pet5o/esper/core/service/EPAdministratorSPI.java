@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.EPAdministrator;
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.client.EPStatement;
-import com.espertech.esper.client.soda.*;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.spec.StatementSpecRaw;
-import com.espertech.esper.pattern.EvalFactoryNode;
+import eu.uk.ncl.pet5o.esper.client.EPAdministrator;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.client.EPStatement;
+import eu.uk.ncl.pet5o.esper.client.soda.*;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.epl.spec.StatementSpecRaw;
+import eu.uk.ncl.pet5o.esper.pattern.EvalFactoryNode;
 
 /**
  * Administrative SPI.

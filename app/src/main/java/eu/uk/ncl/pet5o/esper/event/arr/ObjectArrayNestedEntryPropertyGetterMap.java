@@ -10,18 +10,18 @@
  */
 package eu.uk.ncl.pet5o.esper.event.arr;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.codegen.base.CodegenClassScope;
-import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.epl.expression.codegen.CodegenLegoPropertyBeanOrUnd;
-import com.espertech.esper.codegen.model.expression.CodegenExpression;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.event.map.MapEventPropertyGetter;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenClassScope;
+import eu.uk.ncl.pet5o.esper.codegen.base.CodegenMethodScope;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.CodegenLegoPropertyBeanOrUnd;
+import eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpression;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.event.map.MapEventPropertyGetter;
 
 import java.util.Map;
 
-import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
+import static eu.uk.ncl.pet5o.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
 
 /**
  * A getter that works on EventBean events residing within a Map as an event property.
@@ -37,8 +37,8 @@ public class ObjectArrayNestedEntryPropertyGetterMap extends ObjectArrayNestedEn
 
     public Object handleNestedValue(Object value) {
         if (!(value instanceof Map)) {
-            if (value instanceof com.espertech.esper.client.EventBean) {
-                return mapGetter.get((com.espertech.esper.client.EventBean) value);
+            if (value instanceof eu.uk.ncl.pet5o.esper.client.EventBean) {
+                return mapGetter.get((eu.uk.ncl.pet5o.esper.client.EventBean) value);
             }
             return null;
         }
@@ -47,21 +47,21 @@ public class ObjectArrayNestedEntryPropertyGetterMap extends ObjectArrayNestedEn
 
     public Object handleNestedValueFragment(Object value) {
         if (!(value instanceof Map)) {
-            if (value instanceof com.espertech.esper.client.EventBean) {
-                return mapGetter.getFragment((com.espertech.esper.client.EventBean) value);
+            if (value instanceof eu.uk.ncl.pet5o.esper.client.EventBean) {
+                return mapGetter.getFragment((eu.uk.ncl.pet5o.esper.client.EventBean) value);
             }
             return null;
         }
 
         // If the map does not contain the key, this is allowed and represented as null
-        com.espertech.esper.client.EventBean eventBean = eventAdapterService.adapterForTypedMap((Map<String, Object>) value, fragmentType);
+        eu.uk.ncl.pet5o.esper.client.EventBean eventBean = eventAdapterService.adapterForTypedMap((Map<String, Object>) value, fragmentType);
         return mapGetter.getFragment(eventBean);
     }
 
     public boolean handleNestedValueExists(Object value) {
         if (!(value instanceof Map)) {
-            if (value instanceof com.espertech.esper.client.EventBean) {
-                return mapGetter.isExistsProperty((com.espertech.esper.client.EventBean) value);
+            if (value instanceof eu.uk.ncl.pet5o.esper.client.EventBean) {
+                return mapGetter.isExistsProperty((eu.uk.ncl.pet5o.esper.client.EventBean) value);
             }
             return false;
         }

@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.client.annotation;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.epl.annotation.AnnotationException;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.epl.annotation.AnnotationException;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;

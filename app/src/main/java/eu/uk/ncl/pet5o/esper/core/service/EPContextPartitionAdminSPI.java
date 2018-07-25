@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.context.ContextPartitionSelector;
-import com.espertech.esper.client.context.EPContextPartitionAdmin;
-import com.espertech.esper.core.context.mgr.AgentInstanceSelector;
+import eu.uk.ncl.pet5o.esper.client.context.ContextPartitionSelector;
+import eu.uk.ncl.pet5o.esper.client.context.EPContextPartitionAdmin;
+import eu.uk.ncl.pet5o.esper.core.context.mgr.AgentInstanceSelector;
 
 public interface EPContextPartitionAdminSPI extends EPContextPartitionAdmin {
     public boolean isSupportsExtract();

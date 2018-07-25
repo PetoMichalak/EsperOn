@@ -23,7 +23,7 @@ public class InsertIntoLatchWait {
     // The earlier latch is the latch generated before this latch
     private InsertIntoLatchWait earlier;
     private long msecTimeout;
-    private com.espertech.esper.client.EventBean payload;
+    private eu.uk.ncl.pet5o.esper.client.EventBean payload;
 
     // The later latch is the latch generated after this latch
     private InsertIntoLatchWait later;
@@ -36,7 +36,7 @@ public class InsertIntoLatchWait {
      * @param msecTimeout the timeout after which delivery occurs
      * @param payload     the payload is an event to deliver
      */
-    public InsertIntoLatchWait(InsertIntoLatchWait earlier, long msecTimeout, com.espertech.esper.client.EventBean payload) {
+    public InsertIntoLatchWait(InsertIntoLatchWait earlier, long msecTimeout, eu.uk.ncl.pet5o.esper.client.EventBean payload) {
         this.earlier = earlier;
         this.msecTimeout = msecTimeout;
         this.payload = payload;
@@ -76,7 +76,7 @@ public class InsertIntoLatchWait {
      *
      * @return payload of the latch
      */
-    public com.espertech.esper.client.EventBean await() {
+    public eu.uk.ncl.pet5o.esper.client.EventBean await() {
         if (!earlier.isCompleted) {
             synchronized (this) {
                 if (!earlier.isCompleted) {

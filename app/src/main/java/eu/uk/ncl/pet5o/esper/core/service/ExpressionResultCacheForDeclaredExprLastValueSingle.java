@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.event.EventBeanUtility;
+import eu.uk.ncl.pet5o.esper.event.EventBeanUtility;
 
 import java.lang.ref.SoftReference;
 import java.util.IdentityHashMap;
@@ -24,7 +24,7 @@ public class ExpressionResultCacheForDeclaredExprLastValueSingle implements Expr
         return true;
     }
 
-    public ExpressionResultCacheEntryEventBeanArrayAndObj getDeclaredExpressionLastValue(Object node, com.espertech.esper.client.EventBean[] eventsPerStream) {
+    public ExpressionResultCacheEntryEventBeanArrayAndObj getDeclaredExpressionLastValue(Object node, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream) {
         SoftReference<ExpressionResultCacheEntryEventBeanArrayAndObj> cacheRef = this.exprDeclCacheObject.get(node);
         if (cacheRef == null) {
             return null;
@@ -36,8 +36,8 @@ public class ExpressionResultCacheForDeclaredExprLastValueSingle implements Expr
         return EventBeanUtility.compareEventReferences(entry.getReference(), eventsPerStream) ? entry : null;
     }
 
-    public void saveDeclaredExpressionLastValue(Object node, com.espertech.esper.client.EventBean[] eventsPerStream, Object result) {
-        com.espertech.esper.client.EventBean[] copy = EventBeanUtility.copyArray(eventsPerStream);
+    public void saveDeclaredExpressionLastValue(Object node, eu.uk.ncl.pet5o.esper.client.EventBean[] eventsPerStream, Object result) {
+        eu.uk.ncl.pet5o.esper.client.EventBean[] copy = EventBeanUtility.copyArray(eventsPerStream);
         ExpressionResultCacheEntryEventBeanArrayAndObj entry = new ExpressionResultCacheEntryEventBeanArrayAndObj(copy, result);
         exprDeclCacheObject.put(node, new SoftReference<ExpressionResultCacheEntryEventBeanArrayAndObj>(entry));
     }

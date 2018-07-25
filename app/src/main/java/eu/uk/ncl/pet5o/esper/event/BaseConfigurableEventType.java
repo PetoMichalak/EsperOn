@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-import com.espertech.esper.client.*;
-import com.espertech.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.client.*;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

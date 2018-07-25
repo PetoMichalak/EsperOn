@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.event.map;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.event.EventBeanWriter;
-import com.espertech.esper.event.MappedEventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.event.EventBeanWriter;
+import eu.uk.ncl.pet5o.esper.event.MappedEventBean;
 
 import java.util.Map;
 
@@ -37,7 +37,7 @@ public class MapEventBeanWriterPerProp implements EventBeanWriter {
      * @param values   to write
      * @param theEvent to write to
      */
-    public void write(Object[] values, com.espertech.esper.client.EventBean theEvent) {
+    public void write(Object[] values, eu.uk.ncl.pet5o.esper.client.EventBean theEvent) {
         MappedEventBean mappedEvent = (MappedEventBean) theEvent;
         Map<String, Object> map = mappedEvent.getProperties();
 

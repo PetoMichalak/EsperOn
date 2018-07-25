@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.epl.table.mgmt;
 
-import com.espertech.esper.epl.agg.access.AggregationAccessor;
+import eu.uk.ncl.pet5o.esper.epl.agg.access.AggregationAccessor;
 
 public class TableMetadataColumnPairAggAccess extends TableMetadataColumnPairBase {
     private final AggregationAccessor accessor;

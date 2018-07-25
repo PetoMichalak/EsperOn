@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.EPServiceProviderIsolated;
-import com.espertech.esper.client.EPStatement;
+import eu.uk.ncl.pet5o.esper.client.EPServiceProviderIsolated;
+import eu.uk.ncl.pet5o.esper.client.EPStatement;
 
 /**
  * Service for managing statement isolation.

@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.ConfigurationEngineDefaults;
-import com.espertech.esper.timer.TimeSourceService;
+import eu.uk.ncl.pet5o.esper.client.ConfigurationEngineDefaults;
+import eu.uk.ncl.pet5o.esper.timer.TimeSourceService;
 
 /**
  * Class to hold a current latch per statement that uses an insert-into stream (per statement and insert-into stream
@@ -61,7 +61,7 @@ public class InsertIntoLatchFactory {
      * @param payload is the object returned by the await.
      * @return latch
      */
-    public Object newLatch(com.espertech.esper.client.EventBean payload) {
+    public Object newLatch(eu.uk.ncl.pet5o.esper.client.EventBean payload) {
         if (stateless) {
             return payload;
         }

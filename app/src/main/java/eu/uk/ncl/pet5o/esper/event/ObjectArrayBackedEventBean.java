@@ -13,7 +13,7 @@ package eu.uk.ncl.pet5o.esper.event;
 /**
  * For events that are array of properties.
  */
-public interface ObjectArrayBackedEventBean extends com.espertech.esper.client.EventBean {
+public interface ObjectArrayBackedEventBean extends eu.uk.ncl.pet5o.esper.client.EventBean {
     /**
      * Returns property array.
      *

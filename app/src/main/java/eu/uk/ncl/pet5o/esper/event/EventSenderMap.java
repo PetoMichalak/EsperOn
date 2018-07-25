@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.event;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.client.EventSender;
-import com.espertech.esper.core.service.EPRuntimeEventSender;
-import com.espertech.esper.core.thread.InboundUnitSendWrapped;
-import com.espertech.esper.core.thread.ThreadingOption;
-import com.espertech.esper.core.thread.ThreadingService;
-import com.espertech.esper.event.map.MapEventType;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.client.EventSender;
+import eu.uk.ncl.pet5o.esper.core.service.EPRuntimeEventSender;
+import eu.uk.ncl.pet5o.esper.core.thread.InboundUnitSendWrapped;
+import eu.uk.ncl.pet5o.esper.core.thread.ThreadingOption;
+import eu.uk.ncl.pet5o.esper.core.thread.ThreadingService;
+import eu.uk.ncl.pet5o.esper.event.map.MapEventType;
 
 import java.util.Map;
 
@@ -52,7 +52,7 @@ public class EventSenderMap implements EventSender {
         }
 
         Map<String, Object> map = (Map<String, Object>) theEvent;
-        com.espertech.esper.client.EventBean mapEvent = eventAdapterService.adapterForTypedMap(map, mapEventType);
+        eu.uk.ncl.pet5o.esper.client.EventBean mapEvent = eventAdapterService.adapterForTypedMap(map, mapEventType);
 
         if ((ThreadingOption.isThreadingEnabled) && (threadingService.isInboundThreading())) {
             threadingService.submitInbound(new InboundUnitSendWrapped(mapEvent, runtimeEventSender));
@@ -66,7 +66,7 @@ public class EventSenderMap implements EventSender {
             throw new EPException("Unexpected event object of type " + theEvent.getClass().getName() + ", expected " + Map.class.getName());
         }
         Map<String, Object> map = (Map<String, Object>) theEvent;
-        com.espertech.esper.client.EventBean mapEvent = eventAdapterService.adapterForTypedMap(map, mapEventType);
+        eu.uk.ncl.pet5o.esper.client.EventBean mapEvent = eventAdapterService.adapterForTypedMap(map, mapEventType);
         runtimeEventSender.routeEventBean(mapEvent);
     }
 }

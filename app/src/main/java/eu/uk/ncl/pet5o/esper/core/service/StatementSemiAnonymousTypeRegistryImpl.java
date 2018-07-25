@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.EventType;
 
 public class StatementSemiAnonymousTypeRegistryImpl implements StatementSemiAnonymousTypeRegistry {
     public final static StatementSemiAnonymousTypeRegistryImpl INSTANCE = new StatementSemiAnonymousTypeRegistryImpl();

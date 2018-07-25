@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.core.service;
 
-import com.espertech.esper.client.StatementAwareUpdateListener;
-import com.espertech.esper.client.UpdateListener;
-import com.espertech.esper.util.CollectionUtil;
+import eu.uk.ncl.pet5o.esper.client.StatementAwareUpdateListener;
+import eu.uk.ncl.pet5o.esper.client.UpdateListener;
+import eu.uk.ncl.pet5o.esper.util.CollectionUtil;
 
 /**
  * Provides update listeners for use by statement instances, and the management methods around these.
