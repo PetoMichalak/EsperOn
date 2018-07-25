@@ -31,6 +31,6 @@ public class EsperOn extends AppCompatActivity {
         event.put("z", 3);
 
         // send event to Esper
-        epService.getEPRuntime(\).sendEvent(event, "AccelEvent");
+        epService.getEPRuntime().sendEvent(event, "AccelEvent");
     }
 }
