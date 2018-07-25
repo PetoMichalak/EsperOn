@@ -10,17 +10,14 @@
  */
 package eu.uk.ncl.pet5o.esper.client;
 
-import com.espertech.esper.client.hook.ObjectValueTypeWidenerFactory;
-import com.espertech.esper.client.hook.TypeRepresentationMapper;
-import com.espertech.esper.client.soda.StreamSelector;
-import com.espertech.esper.client.util.EventUnderlyingType;
-
 import java.io.Serializable;
 import java.math.MathContext;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
+
+import eu.uk.ncl.pet5o.esper.client.util.EventUnderlyingType;
 
 /**
  * Provides access to engine configuration defaults for modification.
