@@ -14,6 +14,8 @@ import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
 
+import eu.uk.ncl.pet5o.esper.client.annotation.Name;
+
 /**
  * Implements a JNDI context for providing a directory for engine-external resources such as adapters.
  */
