@@ -17,7 +17,10 @@ import java.util.List;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
+import eu.uk.ncl.pet5o.esper.client.soda.StreamSelector;
 import eu.uk.ncl.pet5o.esper.client.util.EventUnderlyingType;
+import eu.uk.ncl.pet5o.esper.client.hook.TypeRepresentationMapper;
+import eu.uk.ncl.pet5o.esper.client.hook.ObjectValueTypeWidenerFactory;
 
 /**
  * Provides access to engine configuration defaults for modification.
@@ -2168,7 +2171,7 @@ public class ConfigurationEngineDefaults implements Serializable {
 
         /**
          * Returns the list of exception handler factory class names,
-         * see {@link com.espertech.esper.client.hook.ExceptionHandlerFactory}
+         * see {@link eu.uk.ncl.pet5o.esper.client.hook.ExceptionHandlerFactory}
          *
          * @return list of fully-qualified class names
          */
@@ -2180,7 +2183,7 @@ public class ConfigurationEngineDefaults implements Serializable {
          * Add an exception handler factory class name.
          * <p>
          * Provide a fully-qualified class name of the implementation
-         * of the {@link com.espertech.esper.client.hook.ExceptionHandlerFactory}
+         * of the {@link eu.uk.ncl.pet5o.esper.client.hook.ExceptionHandlerFactory}
          * interface.
          *
          * @param exceptionHandlerFactoryClassName class name of exception handler factory
@@ -2208,7 +2211,7 @@ public class ConfigurationEngineDefaults implements Serializable {
          * Add an exception handler factory class.
          * <p>
          * The class provided should implement the
-         * {@link com.espertech.esper.client.hook.ExceptionHandlerFactory}
+         * {@link eu.uk.ncl.pet5o.esper.client.hook.ExceptionHandlerFactory}
          * interface.
          *
          * @param exceptionHandlerFactoryClass class of implementation
@@ -2262,7 +2265,7 @@ public class ConfigurationEngineDefaults implements Serializable {
 
         /**
          * Returns the list of condition handler factory class names,
-         * see {@link com.espertech.esper.client.hook.ConditionHandlerFactory}
+         * see {@link eu.uk.ncl.pet5o.esper.client.hook.ConditionHandlerFactory}
          *
          * @return list of fully-qualified class names
          */
@@ -2274,7 +2277,7 @@ public class ConfigurationEngineDefaults implements Serializable {
          * Add an condition handler factory class name.
          * <p>
          * Provide a fully-qualified class name of the implementation
-         * of the {@link com.espertech.esper.client.hook.ConditionHandlerFactory}
+         * of the {@link eu.uk.ncl.pet5o.esper.client.hook.ConditionHandlerFactory}
          * interface.
          *
          * @param className class name of condition handler factory
@@ -2302,7 +2305,7 @@ public class ConfigurationEngineDefaults implements Serializable {
          * Add an condition handler factory class.
          * <p>
          * The class provided should implement the
-         * {@link com.espertech.esper.client.hook.ConditionHandlerFactory}
+         * {@link eu.uk.ncl.pet5o.esper.client.hook.ConditionHandlerFactory}
          * interface.
          *
          * @param clazz class of implementation
