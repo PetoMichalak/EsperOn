@@ -27,7 +27,7 @@ public class BeanInstantiatorByFactoryReflection implements BeanInstantiator {
 
     public Object instantiate() {
         try {
-            return method.invoke(null, null);
+            return method.invoke(null, (Class<?>) null);
         } catch (InvocationTargetException e) {
             String message = "Unexpected exception encountered invoking factory method '" + method.getName() + "' on class '" + method.getDeclaringClass().getName() + "': " + e.getTargetException().getMessage();
             log.error(message, e);
