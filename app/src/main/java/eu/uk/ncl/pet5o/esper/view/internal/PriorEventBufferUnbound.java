@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.view.internal;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.collection.RollingEventBuffer;
-import com.espertech.esper.collection.ViewUpdatedCollection;
-import com.espertech.esper.view.window.RandomAccessByIndex;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.collection.RollingEventBuffer;
+import eu.uk.ncl.pet5o.esper.collection.ViewUpdatedCollection;
+import eu.uk.ncl.pet5o.esper.view.window.RandomAccessByIndex;
 
 import java.util.Collection;
 import java.util.Iterator;

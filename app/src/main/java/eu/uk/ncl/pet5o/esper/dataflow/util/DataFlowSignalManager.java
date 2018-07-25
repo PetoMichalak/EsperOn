@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.dataflow.util;
 
-import com.espertech.esper.client.dataflow.EPDataFlowSignal;
+import eu.uk.ncl.pet5o.esper.client.dataflow.EPDataFlowSignal;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.view;
 
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import java.lang.reflect.Method;
 

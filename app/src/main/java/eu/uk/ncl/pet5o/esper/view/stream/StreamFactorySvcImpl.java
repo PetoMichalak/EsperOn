@@ -10,21 +10,21 @@
  */
 package eu.uk.ncl.pet5o.esper.view.stream;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.collection.RefCountedMap;
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.core.context.util.EPStatementAgentInstanceHandle;
-import com.espertech.esper.core.service.EPStatementHandleCallback;
-import com.espertech.esper.core.service.StatementAgentInstanceLock;
-import com.espertech.esper.filter.*;
-import com.espertech.esper.filterspec.FilterSpecCompiled;
-import com.espertech.esper.filterspec.FilterValueSet;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
-import com.espertech.esper.view.EventStream;
-import com.espertech.esper.view.ZeroDepthStreamIterable;
-import com.espertech.esper.view.ZeroDepthStreamNoIterate;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.collection.RefCountedMap;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.core.context.util.EPStatementAgentInstanceHandle;
+import eu.uk.ncl.pet5o.esper.core.service.EPStatementHandleCallback;
+import eu.uk.ncl.pet5o.esper.core.service.StatementAgentInstanceLock;
+import eu.uk.ncl.pet5o.esper.filter.*;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterSpecCompiled;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterValueSet;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.view.EventStream;
+import eu.uk.ncl.pet5o.esper.view.ZeroDepthStreamIterable;
+import eu.uk.ncl.pet5o.esper.view.ZeroDepthStreamNoIterate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -87,7 +87,7 @@ public class StreamFactorySvcImpl implements StreamFactoryService {
     }
 
     /**
-     * See the method of the same name in {@link com.espertech.esper.view.stream.StreamFactoryService}. Always attempts to reuse an existing event stream.
+     * See the method of the same name in {@link eu.uk.ncl.pet5o.esper.view.stream.StreamFactoryService}. Always attempts to reuse an existing event stream.
      * May thus return a new event stream or an existing event stream depending on whether filter criteria match.
      *
      * @param filterSpec                     is the filter definition
@@ -203,7 +203,7 @@ public class StreamFactorySvcImpl implements StreamFactoryService {
     }
 
     /**
-     * See the method of the same name in {@link com.espertech.esper.view.stream.StreamFactoryService}.
+     * See the method of the same name in {@link eu.uk.ncl.pet5o.esper.view.stream.StreamFactoryService}.
      *
      * @param filterSpec is the filter definition
      */

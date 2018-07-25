@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.dataflow.interfaces;
 
-import com.espertech.esper.client.dataflow.EPDataFlowSignal;
+import eu.uk.ncl.pet5o.esper.client.dataflow.EPDataFlowSignal;
 
 public interface EPDataFlowSignalHandler {
     public void onSignal(EPDataFlowSignal signal);

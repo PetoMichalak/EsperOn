@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.view.ext;
 
-import com.espertech.esper.view.window.RandomAccessByIndex;
+import eu.uk.ncl.pet5o.esper.view.window.RandomAccessByIndex;
 
 import java.util.TreeMap;
 

@@ -10,17 +10,17 @@
  */
 package eu.uk.ncl.pet5o.esper.spatial.quadtree.mxciffilterindex;
 
-import com.espertech.esper.spatial.quadtree.core.BoundingBox;
-import com.espertech.esper.spatial.quadtree.core.QuadrantAppliesEnum;
-import com.espertech.esper.spatial.quadtree.mxcif.MXCIFQuadTree;
-import com.espertech.esper.spatial.quadtree.mxcif.MXCIFQuadTreeNode;
-import com.espertech.esper.spatial.quadtree.mxcif.MXCIFQuadTreeNodeBranch;
-import com.espertech.esper.spatial.quadtree.mxcif.MXCIFQuadTreeNodeLeaf;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.core.BoundingBox;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.core.QuadrantAppliesEnum;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.mxcif.MXCIFQuadTree;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.mxcif.MXCIFQuadTreeNode;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.mxcif.MXCIFQuadTreeNodeBranch;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.mxcif.MXCIFQuadTreeNodeLeaf;
 
 import java.util.Collection;
 import java.util.LinkedList;
 
-import static com.espertech.esper.spatial.quadtree.mxcifrowindex.MXCIFQuadTreeFilterIndexCheckBB.checkBB;
+import static eu.uk.ncl.pet5o.esper.spatial.quadtree.mxcifrowindex.MXCIFQuadTreeFilterIndexCheckBB.checkBB;
 
 public class MXCIFQuadTreeFilterIndexSet {
     public static <L> void set(double x, double y, double width, double height, L value, MXCIFQuadTree<Object> tree) {

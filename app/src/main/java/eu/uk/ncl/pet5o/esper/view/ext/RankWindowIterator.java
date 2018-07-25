@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.view.ext;
 
-import com.espertech.esper.collection.MixedEventBeanAndCollectionIteratorBase;
+import eu.uk.ncl.pet5o.esper.collection.MixedEventBeanAndCollectionIteratorBase;
 
 import java.util.SortedMap;
 
 /**
- * Iterator for use by {@link com.espertech.esper.view.ext.RankWindowView}.
+ * Iterator for use by {@link eu.uk.ncl.pet5o.esper.view.ext.RankWindowView}.
  */
 public final class RankWindowIterator extends MixedEventBeanAndCollectionIteratorBase {
     private final SortedMap<Object, Object> window;

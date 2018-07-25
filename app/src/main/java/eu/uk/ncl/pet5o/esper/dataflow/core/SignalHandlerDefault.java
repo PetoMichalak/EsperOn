@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.dataflow.core;
 
-import com.espertech.esper.client.dataflow.EPDataFlowSignal;
+import eu.uk.ncl.pet5o.esper.client.dataflow.EPDataFlowSignal;
 
 public class SignalHandlerDefault implements SignalHandler {
     protected static final SignalHandlerDefault INSTANCE = new SignalHandlerDefault();

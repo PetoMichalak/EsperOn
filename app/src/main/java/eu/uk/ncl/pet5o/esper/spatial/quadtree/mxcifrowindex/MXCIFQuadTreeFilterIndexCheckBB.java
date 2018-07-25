@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.spatial.quadtree.mxcifrowindex;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.spatial.quadtree.core.BoundingBox;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.core.BoundingBox;
 
 public class MXCIFQuadTreeFilterIndexCheckBB {
     public static void checkBB(BoundingBox bb, double x, double y, double width, double height) throws EPException {

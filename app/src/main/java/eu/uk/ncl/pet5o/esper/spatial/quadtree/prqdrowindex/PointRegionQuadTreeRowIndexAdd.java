@@ -10,14 +10,14 @@
  */
 package eu.uk.ncl.pet5o.esper.spatial.quadtree.prqdrowindex;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.epl.join.table.PropertyIndexedEventTableUnique;
-import com.espertech.esper.spatial.quadtree.core.BoundingBox;
-import com.espertech.esper.spatial.quadtree.core.QuadrantEnum;
-import com.espertech.esper.spatial.quadtree.pointregion.PointRegionQuadTree;
-import com.espertech.esper.spatial.quadtree.pointregion.PointRegionQuadTreeNode;
-import com.espertech.esper.spatial.quadtree.pointregion.PointRegionQuadTreeNodeBranch;
-import com.espertech.esper.spatial.quadtree.pointregion.PointRegionQuadTreeNodeLeaf;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.epl.join.table.PropertyIndexedEventTableUnique;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.core.BoundingBox;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.core.QuadrantEnum;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.pointregion.PointRegionQuadTree;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.pointregion.PointRegionQuadTreeNode;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.pointregion.PointRegionQuadTreeNodeBranch;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.pointregion.PointRegionQuadTreeNodeLeaf;
 
 import java.util.Collection;
 import java.util.LinkedList;

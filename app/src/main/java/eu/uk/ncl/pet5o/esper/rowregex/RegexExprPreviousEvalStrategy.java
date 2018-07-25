@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.rowregex;
 
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
 
 public interface RegexExprPreviousEvalStrategy {
     public RegexPartitionStateRandomAccess getAccess(ExprEvaluatorContext exprEvaluatorContext);

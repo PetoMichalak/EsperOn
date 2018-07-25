@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.view.internal;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.util.CollectionUtil;
-import com.espertech.esper.view.GroupableView;
-import com.espertech.esper.view.ViewFactory;
-import com.espertech.esper.view.ViewSupport;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.util.CollectionUtil;
+import eu.uk.ncl.pet5o.esper.view.GroupableView;
+import eu.uk.ncl.pet5o.esper.view.ViewFactory;
+import eu.uk.ncl.pet5o.esper.view.ViewSupport;
 
 import java.util.Iterator;
 

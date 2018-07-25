@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.dataflow.ops.epl;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.collection.UniformPair;
-import com.espertech.esper.core.service.UpdateDispatchView;
-import com.espertech.esper.dataflow.ops.Select;
-import com.espertech.esper.view.ViewSupport;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.collection.UniformPair;
+import eu.uk.ncl.pet5o.esper.core.service.UpdateDispatchView;
+import eu.uk.ncl.pet5o.esper.dataflow.ops.Select;
+import eu.uk.ncl.pet5o.esper.view.ViewSupport;
 
 import java.util.Iterator;
 

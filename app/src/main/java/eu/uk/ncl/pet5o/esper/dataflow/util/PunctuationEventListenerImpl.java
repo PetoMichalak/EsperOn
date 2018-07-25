@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.dataflow.util;
 
-import com.espertech.esper.client.dataflow.EPDataFlowSignal;
-import com.espertech.esper.client.dataflow.EPDataFlowSignalFinalMarker;
-import com.espertech.esper.dataflow.runnables.BaseRunnable;
+import eu.uk.ncl.pet5o.esper.client.dataflow.EPDataFlowSignal;
+import eu.uk.ncl.pet5o.esper.client.dataflow.EPDataFlowSignalFinalMarker;
+import eu.uk.ncl.pet5o.esper.dataflow.runnables.BaseRunnable;
 
 public class PunctuationEventListenerImpl implements DataFlowSignalListener {
     private final OperatorMetadataDescriptor myOperator;

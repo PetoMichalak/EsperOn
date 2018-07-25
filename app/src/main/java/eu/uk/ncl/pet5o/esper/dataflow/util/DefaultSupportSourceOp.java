@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.dataflow.util;
 
-import com.espertech.esper.client.dataflow.EPDataFlowSignalFinalMarker;
-import com.espertech.esper.dataflow.annotations.DataFlowContext;
-import com.espertech.esper.dataflow.annotations.DataFlowOpProvideSignal;
-import com.espertech.esper.dataflow.interfaces.*;
+import eu.uk.ncl.pet5o.esper.client.dataflow.EPDataFlowSignalFinalMarker;
+import eu.uk.ncl.pet5o.esper.dataflow.annotations.DataFlowContext;
+import eu.uk.ncl.pet5o.esper.dataflow.annotations.DataFlowOpProvideSignal;
+import eu.uk.ncl.pet5o.esper.dataflow.interfaces.*;
 
 import java.util.concurrent.CountDownLatch;
 

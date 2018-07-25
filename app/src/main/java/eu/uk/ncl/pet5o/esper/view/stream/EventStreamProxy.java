@@ -10,15 +10,15 @@
  */
 package eu.uk.ncl.pet5o.esper.view.stream;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.annotation.Audit;
-import com.espertech.esper.client.annotation.AuditEnum;
-import com.espertech.esper.filterspec.FilterSpecCompiled;
-import com.espertech.esper.filterspec.FilterSpecParam;
-import com.espertech.esper.util.AuditPath;
-import com.espertech.esper.util.EventBeanSummarizer;
-import com.espertech.esper.util.JavaClassHelper;
-import com.espertech.esper.view.EventStream;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.annotation.Audit;
+import eu.uk.ncl.pet5o.esper.client.annotation.AuditEnum;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterSpecCompiled;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterSpecParam;
+import eu.uk.ncl.pet5o.esper.util.AuditPath;
+import eu.uk.ncl.pet5o.esper.util.EventBeanSummarizer;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.view.EventStream;
 
 import java.io.StringWriter;
 import java.lang.annotation.Annotation;

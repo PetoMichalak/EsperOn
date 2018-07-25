@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.view.window;
 
-import com.espertech.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
 
 /**
  * Provides random-access into window contents by event and index as a combination.

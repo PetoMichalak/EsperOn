@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.dataflow.util;
 
-import com.espertech.esper.client.dataflow.EPDataFlowSignal;
-import com.espertech.esper.dataflow.annotations.DataFlowOperator;
-import com.espertech.esper.dataflow.interfaces.EPDataFlowSignalHandler;
+import eu.uk.ncl.pet5o.esper.client.dataflow.EPDataFlowSignal;
+import eu.uk.ncl.pet5o.esper.dataflow.annotations.DataFlowOperator;
+import eu.uk.ncl.pet5o.esper.dataflow.interfaces.EPDataFlowSignalHandler;
 
 import java.util.ArrayList;
 import java.util.List;

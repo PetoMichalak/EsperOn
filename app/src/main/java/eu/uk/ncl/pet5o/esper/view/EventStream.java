@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.view;
 
-import com.espertech.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
 
 /**
  * A streams is a conduct for incoming events. Incoming data is placed into streams for consumption by queries.

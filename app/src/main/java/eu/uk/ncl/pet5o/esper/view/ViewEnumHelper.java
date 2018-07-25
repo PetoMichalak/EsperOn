@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.view;
 
-import com.espertech.esper.epl.spec.PluggableObjectCollection;
-import com.espertech.esper.epl.spec.PluggableObjectType;
+import eu.uk.ncl.pet5o.esper.epl.spec.PluggableObjectCollection;
+import eu.uk.ncl.pet5o.esper.epl.spec.PluggableObjectType;
 
 /**
  * Helper producing a repository of built-in views.

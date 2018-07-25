@@ -10,14 +10,14 @@
  */
 package eu.uk.ncl.pet5o.esper.dataflow.util;
 
-import com.espertech.esper.client.ConfigurationEventTypeXMLDOM;
-import com.espertech.esper.client.EPServiceProvider;
-import com.espertech.esper.event.SendableEvent;
-import com.espertech.esper.event.arr.SendableEventObjectArray;
-import com.espertech.esper.event.bean.SendableEventBean;
-import com.espertech.esper.event.map.SendableEventMap;
-import com.espertech.esper.event.xml.SendableEventXML;
-import com.espertech.esper.util.FileUtil;
+import eu.uk.ncl.pet5o.esper.client.ConfigurationEventTypeXMLDOM;
+import eu.uk.ncl.pet5o.esper.client.EPServiceProvider;
+import eu.uk.ncl.pet5o.esper.event.SendableEvent;
+import eu.uk.ncl.pet5o.esper.event.arr.SendableEventObjectArray;
+import eu.uk.ncl.pet5o.esper.event.bean.SendableEventBean;
+import eu.uk.ncl.pet5o.esper.event.map.SendableEventMap;
+import eu.uk.ncl.pet5o.esper.event.xml.SendableEventXML;
+import eu.uk.ncl.pet5o.esper.util.FileUtil;
 import org.w3c.dom.Node;
 import org.xml.sax.InputSource;
 

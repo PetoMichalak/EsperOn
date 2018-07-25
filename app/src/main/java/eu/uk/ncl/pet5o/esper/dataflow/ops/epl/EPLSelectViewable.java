@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.dataflow.ops.epl;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.view.View;
-import com.espertech.esper.view.ViewSupport;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.view.View;
+import eu.uk.ncl.pet5o.esper.view.ViewSupport;
 
 import java.util.Iterator;
 

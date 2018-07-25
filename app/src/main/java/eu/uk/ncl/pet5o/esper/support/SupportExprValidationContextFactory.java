@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.support;
 
-import com.espertech.esper.client.ConfigurationEngineDefaults;
-import com.espertech.esper.epl.agg.factory.AggregationFactoryFactoryDefault;
-import com.espertech.esper.epl.core.engineimport.EngineImportServiceImpl;
-import com.espertech.esper.epl.core.streamtype.StreamTypeService;
-import com.espertech.esper.epl.expression.core.ExprValidationContext;
-import com.espertech.esper.epl.expression.time.TimeAbacusMilliseconds;
+import eu.uk.ncl.pet5o.esper.client.ConfigurationEngineDefaults;
+import eu.uk.ncl.pet5o.esper.epl.agg.factory.AggregationFactoryFactoryDefault;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportServiceImpl;
+import eu.uk.ncl.pet5o.esper.epl.core.streamtype.StreamTypeService;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.time.TimeAbacusMilliseconds;
 
 import java.util.TimeZone;
 

@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.dataflow.util;
 
-import com.espertech.esper.client.dataflow.EPDataFlowOperatorProvider;
-import com.espertech.esper.client.dataflow.EPDataFlowOperatorProviderContext;
+import eu.uk.ncl.pet5o.esper.client.dataflow.EPDataFlowOperatorProvider;
+import eu.uk.ncl.pet5o.esper.client.dataflow.EPDataFlowOperatorProviderContext;
 
 import java.util.Map;
 

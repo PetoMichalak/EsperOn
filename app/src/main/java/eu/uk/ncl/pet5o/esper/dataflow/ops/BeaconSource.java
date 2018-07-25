@@ -10,24 +10,24 @@
  */
 package eu.uk.ncl.pet5o.esper.dataflow.ops;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.dataflow.EPDataFlowSignalFinalMarker;
-import com.espertech.esper.core.service.StatementContext;
-import com.espertech.esper.dataflow.annotations.DataFlowContext;
-import com.espertech.esper.dataflow.annotations.DataFlowOpParameter;
-import com.espertech.esper.dataflow.annotations.DataFlowOperator;
-import com.espertech.esper.dataflow.interfaces.*;
-import com.espertech.esper.dataflow.util.GraphTypeDesc;
-import com.espertech.esper.epl.expression.codegen.ExprNodeCompiler;
-import com.espertech.esper.epl.expression.core.*;
-import com.espertech.esper.epl.util.EPLValidationUtil;
-import com.espertech.esper.event.EventBeanManufacturer;
-import com.espertech.esper.event.EventTypeUtility;
-import com.espertech.esper.event.WriteablePropertyDescriptor;
-import com.espertech.esper.util.TypeWidener;
-import com.espertech.esper.util.TypeWidenerCustomizer;
-import com.espertech.esper.util.TypeWidenerFactory;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.dataflow.EPDataFlowSignalFinalMarker;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.dataflow.annotations.DataFlowContext;
+import eu.uk.ncl.pet5o.esper.dataflow.annotations.DataFlowOpParameter;
+import eu.uk.ncl.pet5o.esper.dataflow.annotations.DataFlowOperator;
+import eu.uk.ncl.pet5o.esper.dataflow.interfaces.*;
+import eu.uk.ncl.pet5o.esper.dataflow.util.GraphTypeDesc;
+import eu.uk.ncl.pet5o.esper.epl.expression.codegen.ExprNodeCompiler;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.*;
+import eu.uk.ncl.pet5o.esper.epl.util.EPLValidationUtil;
+import eu.uk.ncl.pet5o.esper.event.EventBeanManufacturer;
+import eu.uk.ncl.pet5o.esper.event.EventTypeUtility;
+import eu.uk.ncl.pet5o.esper.event.WriteablePropertyDescriptor;
+import eu.uk.ncl.pet5o.esper.util.TypeWidener;
+import eu.uk.ncl.pet5o.esper.util.TypeWidenerCustomizer;
+import eu.uk.ncl.pet5o.esper.util.TypeWidenerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

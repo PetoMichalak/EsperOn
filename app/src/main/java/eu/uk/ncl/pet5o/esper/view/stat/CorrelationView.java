@@ -10,15 +10,15 @@
  */
 package eu.uk.ncl.pet5o.esper.view.stat;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.core.service.StatementContext;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.view.ViewFactory;
-import com.espertech.esper.view.ViewFieldEnum;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.view.ViewFactory;
+import eu.uk.ncl.pet5o.esper.view.ViewFieldEnum;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,7 +26,7 @@ import java.util.Map;
 /**
  * A view that calculates correlation on two fields. The view uses internally a {@link BaseStatisticsBean}
  * instance for the calculations, it also returns this bean as the result.
- * This class accepts most of its behaviour from its parent, {@link com.espertech.esper.view.stat.BaseBivariateStatisticsView}. It adds
+ * This class accepts most of its behaviour from its parent, {@link eu.uk.ncl.pet5o.esper.view.stat.BaseBivariateStatisticsView}. It adds
  * the usage of the correlation bean and the appropriate schema.
  */
 public class CorrelationView extends BaseBivariateStatisticsView {

@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.view.ext;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.collection.ArrayMaxEventCollectionRO;
-import com.espertech.esper.collection.ArrayMaxEventIterator;
-import com.espertech.esper.view.window.RandomAccessByIndex;
-import com.espertech.esper.view.window.RandomAccessByIndexObserver;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.collection.ArrayMaxEventCollectionRO;
+import eu.uk.ncl.pet5o.esper.collection.ArrayMaxEventIterator;
+import eu.uk.ncl.pet5o.esper.view.window.RandomAccessByIndex;
+import eu.uk.ncl.pet5o.esper.view.window.RandomAccessByIndexObserver;
 
 import java.util.Collection;
 import java.util.Iterator;

@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.rowregex;
 
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.epl.expression.core.ExprEvaluator;
-import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.view.View;
-import com.espertech.esper.view.Viewable;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluator;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNode;
+import eu.uk.ncl.pet5o.esper.view.View;
+import eu.uk.ncl.pet5o.esper.view.Viewable;
 
 import java.util.*;
 

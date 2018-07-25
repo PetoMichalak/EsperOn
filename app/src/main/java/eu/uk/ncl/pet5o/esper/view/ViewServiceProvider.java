@@ -11,7 +11,7 @@
 package eu.uk.ncl.pet5o.esper.view;
 
 /**
- * Static factory for implementations of the {@link com.espertech.esper.view.ViewService} interface.
+ * Static factory for implementations of the {@link eu.uk.ncl.pet5o.esper.view.ViewService} interface.
  */
 public final class ViewServiceProvider {
     /**

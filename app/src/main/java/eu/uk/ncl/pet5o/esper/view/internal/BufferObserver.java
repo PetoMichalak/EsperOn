@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.view.internal;
 
-import com.espertech.esper.event.FlushedEventBuffer;
+import eu.uk.ncl.pet5o.esper.event.FlushedEventBuffer;
 
 /**
  * Observer interface to a stream publishing new and old events.

@@ -10,15 +10,15 @@
  */
 package eu.uk.ncl.pet5o.esper.adapter;
 
-import com.espertech.esper.client.EPServiceProvider;
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.core.context.util.EPStatementAgentInstanceHandle;
-import com.espertech.esper.core.service.*;
-import com.espertech.esper.epl.metric.StatementMetricHandle;
-import com.espertech.esper.filter.FilterHandleCallback;
-import com.espertech.esper.filterspec.FilterSpecCompiled;
-import com.espertech.esper.filterspec.FilterValueSet;
+import eu.uk.ncl.pet5o.esper.client.EPServiceProvider;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.core.context.util.EPStatementAgentInstanceHandle;
+import eu.uk.ncl.pet5o.esper.core.service.*;
+import eu.uk.ncl.pet5o.esper.epl.metric.StatementMetricHandle;
+import eu.uk.ncl.pet5o.esper.filter.FilterHandleCallback;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterSpecCompiled;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterValueSet;
 
 import java.util.Collection;
 import java.util.List;

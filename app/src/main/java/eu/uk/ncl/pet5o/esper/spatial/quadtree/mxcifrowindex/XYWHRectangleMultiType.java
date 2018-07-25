@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.spatial.quadtree.mxcifrowindex;
 
-import com.espertech.esper.type.XYWHRectangle;
+import eu.uk.ncl.pet5o.esper.type.XYWHRectangle;
 
 import java.util.Collection;
 import java.util.LinkedList;

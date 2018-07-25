@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.dataflow.core;
 
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.core.service.EPServicesContext;
-import com.espertech.esper.core.service.StatementContext;
-import com.espertech.esper.epl.spec.CreateDataFlowDesc;
-import com.espertech.esper.epl.spec.GraphOperatorSpec;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.core.service.EPServicesContext;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.epl.spec.CreateDataFlowDesc;
+import eu.uk.ncl.pet5o.esper.epl.spec.GraphOperatorSpec;
 
 import java.lang.annotation.Annotation;
 import java.util.Map;

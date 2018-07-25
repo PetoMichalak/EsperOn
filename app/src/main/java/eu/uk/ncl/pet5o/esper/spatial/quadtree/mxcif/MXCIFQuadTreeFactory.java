@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.spatial.quadtree.mxcif;
 
-import com.espertech.esper.spatial.quadtree.core.BoundingBox;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.core.BoundingBox;
 
 public class MXCIFQuadTreeFactory {
     public final static int DEFAULT_LEAF_CAPACITY = 4;

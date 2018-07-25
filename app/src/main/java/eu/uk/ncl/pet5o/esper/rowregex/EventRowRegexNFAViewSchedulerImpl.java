@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.rowregex;
 
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.core.service.EPStatementHandleCallback;
-import com.espertech.esper.core.service.EngineLevelExtensionServicesContext;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
-import com.espertech.esper.schedule.ScheduleHandleCallback;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.core.service.EPStatementHandleCallback;
+import eu.uk.ncl.pet5o.esper.core.service.EngineLevelExtensionServicesContext;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.schedule.ScheduleHandleCallback;
 
 public class EventRowRegexNFAViewSchedulerImpl implements EventRowRegexNFAViewScheduler {
     private AgentInstanceContext agentInstanceContext;

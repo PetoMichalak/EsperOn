@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.dataflow.core;
 
-import com.espertech.esper.client.dataflow.EPDataFlowRuntime;
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.core.service.EPServicesContext;
-import com.espertech.esper.core.service.StatementContext;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.epl.spec.CreateDataFlowDesc;
+import eu.uk.ncl.pet5o.esper.client.dataflow.EPDataFlowRuntime;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.core.service.EPServicesContext;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.epl.spec.CreateDataFlowDesc;
 
 public interface DataFlowService extends EPDataFlowRuntime {
 

@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.view.std;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.collection.MultiKeyUntyped;
-import com.espertech.esper.collection.OneEventCollection;
-import com.espertech.esper.core.context.util.AgentInstanceViewFactoryChainContext;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.view.*;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.collection.MultiKeyUntyped;
+import eu.uk.ncl.pet5o.esper.collection.OneEventCollection;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceViewFactoryChainContext;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.view.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

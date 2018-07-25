@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.dataflow.core;
 
-import com.espertech.esper.client.dataflow.EPDataFlowSignal;
-import com.espertech.esper.dataflow.interfaces.EPDataFlowEmitter;
-import com.espertech.esper.dataflow.util.DataFlowSignalManager;
+import eu.uk.ncl.pet5o.esper.client.dataflow.EPDataFlowSignal;
+import eu.uk.ncl.pet5o.esper.dataflow.interfaces.EPDataFlowEmitter;
+import eu.uk.ncl.pet5o.esper.dataflow.util.DataFlowSignalManager;
 
 public class EPDataFlowEmitterNoTarget implements EPDataFlowEmitter {
 

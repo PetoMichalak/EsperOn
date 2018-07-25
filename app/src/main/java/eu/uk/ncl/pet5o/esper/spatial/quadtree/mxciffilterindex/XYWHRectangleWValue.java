@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.spatial.quadtree.mxciffilterindex;
 
-import com.espertech.esper.type.XYWHRectangle;
+import eu.uk.ncl.pet5o.esper.type.XYWHRectangle;
 
 public class XYWHRectangleWValue<L> extends XYWHRectangle {
     private L value;

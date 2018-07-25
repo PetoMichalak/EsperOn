@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.view.std;
 
-import com.espertech.esper.view.View;
-import com.espertech.esper.view.ViewDataVisitableContainer;
+import eu.uk.ncl.pet5o.esper.view.View;
+import eu.uk.ncl.pet5o.esper.view.ViewDataVisitableContainer;
 
 public interface GroupByView extends View, ViewDataVisitableContainer {
     GroupByViewFactory getViewFactory();

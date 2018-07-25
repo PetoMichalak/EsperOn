@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.spatial.quadtree.prqdfilterindex;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.spatial.quadtree.core.*;
-import com.espertech.esper.spatial.quadtree.pointregion.PointRegionQuadTree;
-import com.espertech.esper.spatial.quadtree.pointregion.PointRegionQuadTreeNode;
-import com.espertech.esper.spatial.quadtree.pointregion.PointRegionQuadTreeNodeBranch;
-import com.espertech.esper.spatial.quadtree.pointregion.PointRegionQuadTreeNodeLeaf;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.core.*;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.pointregion.PointRegionQuadTree;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.pointregion.PointRegionQuadTreeNode;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.pointregion.PointRegionQuadTreeNodeBranch;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.pointregion.PointRegionQuadTreeNodeLeaf;
 
 import java.util.Collection;
 

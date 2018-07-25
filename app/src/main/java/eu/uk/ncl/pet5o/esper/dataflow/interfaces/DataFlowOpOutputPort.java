@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.dataflow.interfaces;
 
-import com.espertech.esper.dataflow.util.GraphTypeDesc;
+import eu.uk.ncl.pet5o.esper.dataflow.util.GraphTypeDesc;
 
 public class DataFlowOpOutputPort {
     private final String streamName;

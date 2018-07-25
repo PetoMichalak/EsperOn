@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.rowregex;
 
-import com.espertech.esper.client.ConfigurationEngineDefaults;
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.epl.spec.MatchRecognizeSpec;
-import com.espertech.esper.view.ViewFactoryChain;
+import eu.uk.ncl.pet5o.esper.client.ConfigurationEngineDefaults;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.epl.spec.MatchRecognizeSpec;
+import eu.uk.ncl.pet5o.esper.view.ViewFactoryChain;
 
 import java.lang.annotation.Annotation;
 

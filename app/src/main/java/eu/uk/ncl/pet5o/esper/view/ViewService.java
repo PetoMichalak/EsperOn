@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.view;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.core.context.util.AgentInstanceViewFactoryChainContext;
-import com.espertech.esper.core.service.StatementContext;
-import com.espertech.esper.epl.spec.StreamSpecOptions;
-import com.espertech.esper.epl.spec.ViewSpec;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceViewFactoryChainContext;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.epl.spec.StreamSpecOptions;
+import eu.uk.ncl.pet5o.esper.epl.spec.ViewSpec;
 
 import java.util.List;
 

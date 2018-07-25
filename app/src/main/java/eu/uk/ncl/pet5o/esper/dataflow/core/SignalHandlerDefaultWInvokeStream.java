@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.dataflow.core;
 
-import com.espertech.esper.client.dataflow.EPDataFlowSignal;
-import com.espertech.esper.epl.core.engineimport.EngineImportService;
+import eu.uk.ncl.pet5o.esper.client.dataflow.EPDataFlowSignal;
+import eu.uk.ncl.pet5o.esper.epl.core.engineimport.EngineImportService;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

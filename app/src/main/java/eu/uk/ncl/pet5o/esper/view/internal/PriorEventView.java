@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.view.internal;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.collection.ViewUpdatedCollection;
-import com.espertech.esper.view.ViewDataVisitable;
-import com.espertech.esper.view.ViewDataVisitor;
-import com.espertech.esper.view.ViewSupport;
-import com.espertech.esper.view.Viewable;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.collection.ViewUpdatedCollection;
+import eu.uk.ncl.pet5o.esper.view.ViewDataVisitable;
+import eu.uk.ncl.pet5o.esper.view.ViewDataVisitor;
+import eu.uk.ncl.pet5o.esper.view.ViewSupport;
+import eu.uk.ncl.pet5o.esper.view.Viewable;
 
 import java.util.Iterator;
 

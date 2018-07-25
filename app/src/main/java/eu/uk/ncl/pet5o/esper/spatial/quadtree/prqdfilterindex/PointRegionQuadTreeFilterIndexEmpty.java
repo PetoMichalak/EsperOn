@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.spatial.quadtree.prqdfilterindex;
 
-import com.espertech.esper.spatial.quadtree.pointregion.PointRegionQuadTree;
-import com.espertech.esper.spatial.quadtree.pointregion.PointRegionQuadTreeNode;
-import com.espertech.esper.spatial.quadtree.pointregion.PointRegionQuadTreeNodeLeaf;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.pointregion.PointRegionQuadTree;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.pointregion.PointRegionQuadTreeNode;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.pointregion.PointRegionQuadTreeNodeLeaf;
 
 public class PointRegionQuadTreeFilterIndexEmpty {
     public static boolean isEmpty(PointRegionQuadTree<Object> quadTree) {

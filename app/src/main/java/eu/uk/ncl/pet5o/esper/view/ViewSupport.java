@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.view;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.collection.UniformPair;
-import com.espertech.esper.util.CollectionUtil;
-import com.espertech.esper.util.ExecutionPathDebugLog;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.collection.UniformPair;
+import eu.uk.ncl.pet5o.esper.util.CollectionUtil;
+import eu.uk.ncl.pet5o.esper.util.ExecutionPathDebugLog;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

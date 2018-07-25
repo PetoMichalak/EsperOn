@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.spatial.quadtree.mxciffilterindex;
 
-import com.espertech.esper.spatial.quadtree.mxcif.MXCIFQuadTree;
-import com.espertech.esper.spatial.quadtree.mxcif.MXCIFQuadTreeNode;
-import com.espertech.esper.spatial.quadtree.mxcif.MXCIFQuadTreeNodeLeaf;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.mxcif.MXCIFQuadTree;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.mxcif.MXCIFQuadTreeNode;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.mxcif.MXCIFQuadTreeNodeLeaf;
 
 public class MXCIFQuadTreeFilterIndexEmpty {
     public static boolean isEmpty(MXCIFQuadTree<Object> quadTree) {

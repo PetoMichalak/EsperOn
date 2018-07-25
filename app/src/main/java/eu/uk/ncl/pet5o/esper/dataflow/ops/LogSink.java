@@ -10,16 +10,16 @@
  */
 package eu.uk.ncl.pet5o.esper.dataflow.ops;
 
-import com.espertech.esper.client.EPRuntime;
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.util.*;
-import com.espertech.esper.dataflow.annotations.DataFlowOpParameter;
-import com.espertech.esper.dataflow.annotations.DataFlowOperator;
-import com.espertech.esper.dataflow.interfaces.*;
-import com.espertech.esper.epl.expression.core.ExprValidationException;
-import com.espertech.esper.event.EventBeanSPI;
-import com.espertech.esper.util.EventBeanSummarizer;
+import eu.uk.ncl.pet5o.esper.client.EPRuntime;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.util.*;
+import eu.uk.ncl.pet5o.esper.dataflow.annotations.DataFlowOpParameter;
+import eu.uk.ncl.pet5o.esper.dataflow.annotations.DataFlowOperator;
+import eu.uk.ncl.pet5o.esper.dataflow.interfaces.*;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprValidationException;
+import eu.uk.ncl.pet5o.esper.event.EventBeanSPI;
+import eu.uk.ncl.pet5o.esper.util.EventBeanSummarizer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.spatial.quadtree.pointregion;
 
-import com.espertech.esper.spatial.quadtree.core.BoundingBox;
+import eu.uk.ncl.pet5o.esper.spatial.quadtree.core.BoundingBox;
 
 public class PointRegionQuadTreeNodeLeaf<L> extends PointRegionQuadTreeNode<L> {
     private L points;

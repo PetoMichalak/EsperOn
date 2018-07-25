@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.dataflow.core;
 
-import com.espertech.esper.client.annotation.AuditEnum;
-import com.espertech.esper.client.dataflow.EPDataFlowExceptionContext;
-import com.espertech.esper.client.dataflow.EPDataFlowExceptionHandler;
-import com.espertech.esper.util.AuditPath;
+import eu.uk.ncl.pet5o.esper.client.annotation.AuditEnum;
+import eu.uk.ncl.pet5o.esper.client.dataflow.EPDataFlowExceptionContext;
+import eu.uk.ncl.pet5o.esper.client.dataflow.EPDataFlowExceptionHandler;
+import eu.uk.ncl.pet5o.esper.util.AuditPath;
 import net.sf.cglib.reflect.FastMethod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

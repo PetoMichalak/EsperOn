@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.dataflow.core;
 
-import com.espertech.esper.client.EPStatementState;
+import eu.uk.ncl.pet5o.esper.client.EPStatementState;
 
 public class DataFlowServiceEntry {
     private final DataFlowStmtDesc dataFlowDesc;

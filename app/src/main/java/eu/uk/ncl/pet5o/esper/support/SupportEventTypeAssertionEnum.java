@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.support;
 
-import com.espertech.esper.client.EventPropertyDescriptor;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.FragmentEventType;
+import eu.uk.ncl.pet5o.esper.client.EventPropertyDescriptor;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.FragmentEventType;
 
 public enum SupportEventTypeAssertionEnum {
     NAME(new Extractor() {

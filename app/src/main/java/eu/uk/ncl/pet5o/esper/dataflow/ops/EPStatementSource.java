@@ -10,18 +10,18 @@
  */
 package eu.uk.ncl.pet5o.esper.dataflow.ops;
 
-import com.espertech.esper.client.*;
-import com.espertech.esper.client.dataflow.EPDataFlowEPStatementFilter;
-import com.espertech.esper.client.dataflow.EPDataFlowIRStreamCollector;
-import com.espertech.esper.client.dataflow.EPDataFlowIRStreamCollectorContext;
-import com.espertech.esper.client.dataflow.EPDataFlowSignal;
-import com.espertech.esper.core.service.StatementLifecycleEvent;
-import com.espertech.esper.core.service.StatementLifecycleObserver;
-import com.espertech.esper.core.service.StatementLifecycleSvc;
-import com.espertech.esper.dataflow.annotations.DataFlowContext;
-import com.espertech.esper.dataflow.annotations.DataFlowOpParameter;
-import com.espertech.esper.dataflow.annotations.DataFlowOperator;
-import com.espertech.esper.dataflow.interfaces.*;
+import eu.uk.ncl.pet5o.esper.client.*;
+import eu.uk.ncl.pet5o.esper.client.dataflow.EPDataFlowEPStatementFilter;
+import eu.uk.ncl.pet5o.esper.client.dataflow.EPDataFlowIRStreamCollector;
+import eu.uk.ncl.pet5o.esper.client.dataflow.EPDataFlowIRStreamCollectorContext;
+import eu.uk.ncl.pet5o.esper.client.dataflow.EPDataFlowSignal;
+import eu.uk.ncl.pet5o.esper.core.service.StatementLifecycleEvent;
+import eu.uk.ncl.pet5o.esper.core.service.StatementLifecycleObserver;
+import eu.uk.ncl.pet5o.esper.core.service.StatementLifecycleSvc;
+import eu.uk.ncl.pet5o.esper.dataflow.annotations.DataFlowContext;
+import eu.uk.ncl.pet5o.esper.dataflow.annotations.DataFlowOpParameter;
+import eu.uk.ncl.pet5o.esper.dataflow.annotations.DataFlowOperator;
+import eu.uk.ncl.pet5o.esper.dataflow.interfaces.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

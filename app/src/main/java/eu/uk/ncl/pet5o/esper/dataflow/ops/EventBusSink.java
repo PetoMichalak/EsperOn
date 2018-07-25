@@ -10,18 +10,18 @@
  */
 package eu.uk.ncl.pet5o.esper.dataflow.ops;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.client.dataflow.EPDataFlowEventCollector;
-import com.espertech.esper.client.dataflow.EPDataFlowEventCollectorContext;
-import com.espertech.esper.client.dataflow.EventBusCollector;
-import com.espertech.esper.core.service.EPRuntimeEventSender;
-import com.espertech.esper.dataflow.annotations.DataFlowOpParameter;
-import com.espertech.esper.dataflow.annotations.DataFlowOperator;
-import com.espertech.esper.dataflow.interfaces.*;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.event.EventBeanAdapterFactory;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.client.dataflow.EPDataFlowEventCollector;
+import eu.uk.ncl.pet5o.esper.client.dataflow.EPDataFlowEventCollectorContext;
+import eu.uk.ncl.pet5o.esper.client.dataflow.EventBusCollector;
+import eu.uk.ncl.pet5o.esper.core.service.EPRuntimeEventSender;
+import eu.uk.ncl.pet5o.esper.dataflow.annotations.DataFlowOpParameter;
+import eu.uk.ncl.pet5o.esper.dataflow.annotations.DataFlowOperator;
+import eu.uk.ncl.pet5o.esper.dataflow.interfaces.*;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.event.EventBeanAdapterFactory;
 import org.w3c.dom.Node;
 
 import java.util.Map;

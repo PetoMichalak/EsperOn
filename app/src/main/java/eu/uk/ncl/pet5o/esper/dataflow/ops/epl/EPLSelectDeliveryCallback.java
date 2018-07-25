@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.dataflow.ops.epl;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.core.select.SelectExprProcessorDeliveryCallback;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.core.select.SelectExprProcessorDeliveryCallback;
 
 public class EPLSelectDeliveryCallback implements SelectExprProcessorDeliveryCallback {
     private Object[] delivered;

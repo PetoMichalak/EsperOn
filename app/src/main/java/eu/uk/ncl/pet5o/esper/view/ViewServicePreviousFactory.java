@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.view;
 
-import com.espertech.esper.collection.ViewUpdatedCollection;
-import com.espertech.esper.core.context.util.AgentInstanceViewFactoryChainContext;
-import com.espertech.esper.view.ext.IStreamSortRankRandomAccess;
+import eu.uk.ncl.pet5o.esper.collection.ViewUpdatedCollection;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceViewFactoryChainContext;
+import eu.uk.ncl.pet5o.esper.view.ext.IStreamSortRankRandomAccess;
 
 public interface ViewServicePreviousFactory {
     ViewUpdatedCollection getOptPreviousExprRandomAccess(AgentInstanceViewFactoryChainContext agentInstanceViewFactoryContext);

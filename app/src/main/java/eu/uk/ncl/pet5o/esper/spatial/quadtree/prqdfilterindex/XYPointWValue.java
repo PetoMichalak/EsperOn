@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.spatial.quadtree.prqdfilterindex;
 
-import com.espertech.esper.type.XYPoint;
+import eu.uk.ncl.pet5o.esper.type.XYPoint;
 
 public class XYPointWValue<L> extends XYPoint {
     private L value;

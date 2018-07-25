@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.support;
 
-import com.espertech.esper.client.*;
-import com.espertech.esper.client.scopetest.EPAssertionUtil;
-import com.espertech.esper.client.scopetest.ScopeTestHelper;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.client.*;
+import eu.uk.ncl.pet5o.esper.client.scopetest.EPAssertionUtil;
+import eu.uk.ncl.pet5o.esper.client.scopetest.ScopeTestHelper;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 import org.w3c.dom.NodeList;
 
 import java.io.StringWriter;

@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.rowregex;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.util.CollectionUtil;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.util.CollectionUtil;
 
 /**
  * State holder for matches, backed by an array, for fast copying and writing.

@@ -34,4 +34,5 @@ dependencies {
     implementation files('libs/commons-logging-1.2.jar')
     implementation files('libs/slf4j-api-1.7.25.jar')
     implementation files('libs/xerces-2.4.0.jar')
+    implementation files('libs/javax.servlet-api-4.0.1.jar')
 }

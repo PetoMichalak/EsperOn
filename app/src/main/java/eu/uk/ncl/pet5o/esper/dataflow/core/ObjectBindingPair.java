@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.dataflow.core;
 
-import com.espertech.esper.dataflow.util.LogicalChannelBinding;
+import eu.uk.ncl.pet5o.esper.dataflow.util.LogicalChannelBinding;
 
 public class ObjectBindingPair {
     private Object target;

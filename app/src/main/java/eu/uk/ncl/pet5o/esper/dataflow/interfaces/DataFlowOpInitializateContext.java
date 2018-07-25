@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.dataflow.interfaces;
 
-import com.espertech.esper.client.EPServiceProvider;
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.core.service.EPRuntimeEventSender;
-import com.espertech.esper.core.service.EPServicesContext;
-import com.espertech.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.client.EPServiceProvider;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.core.service.EPRuntimeEventSender;
+import eu.uk.ncl.pet5o.esper.core.service.EPServicesContext;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
 
 import java.lang.annotation.Annotation;
 import java.util.Map;

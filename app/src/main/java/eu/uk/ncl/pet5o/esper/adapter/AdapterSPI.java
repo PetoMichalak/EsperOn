@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.adapter;
 
-import com.espertech.esper.client.EPServiceProvider;
+import eu.uk.ncl.pet5o.esper.client.EPServiceProvider;
 
 /**
  * An Adapter takes some external data, converts it into events, and sends it

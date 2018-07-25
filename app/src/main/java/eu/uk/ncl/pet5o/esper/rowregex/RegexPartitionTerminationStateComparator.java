@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.rowregex;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.event.EventBeanUtility;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.event.EventBeanUtility;
 
 import java.util.Comparator;
 import java.util.LinkedHashMap;

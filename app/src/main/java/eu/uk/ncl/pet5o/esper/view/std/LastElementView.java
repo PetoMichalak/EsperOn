@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.view.std;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.collection.OneEventCollection;
-import com.espertech.esper.collection.SingleEventIterator;
-import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
-import com.espertech.esper.view.*;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.collection.OneEventCollection;
+import eu.uk.ncl.pet5o.esper.collection.SingleEventIterator;
+import eu.uk.ncl.pet5o.esper.metrics.instrumentation.InstrumentationHelper;
+import eu.uk.ncl.pet5o.esper.view.*;
 
 import java.util.Iterator;
 

@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.view.internal;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.view.window.RelativeAccessByEventNIndex;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.view.window.RelativeAccessByEventNIndex;
 
 import java.util.Collection;
 import java.util.Iterator;

@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.dataflow.ops;
 
-import com.espertech.esper.client.dataflow.EPDataFlowSignal;
-import com.espertech.esper.dataflow.annotations.DataFlowContext;
-import com.espertech.esper.dataflow.annotations.DataFlowOpParameter;
-import com.espertech.esper.dataflow.annotations.DataFlowOpProvideSignal;
-import com.espertech.esper.dataflow.annotations.DataFlowOperator;
-import com.espertech.esper.dataflow.interfaces.EPDataFlowEmitter;
+import eu.uk.ncl.pet5o.esper.client.dataflow.EPDataFlowSignal;
+import eu.uk.ncl.pet5o.esper.dataflow.annotations.DataFlowContext;
+import eu.uk.ncl.pet5o.esper.dataflow.annotations.DataFlowOpParameter;
+import eu.uk.ncl.pet5o.esper.dataflow.annotations.DataFlowOpProvideSignal;
+import eu.uk.ncl.pet5o.esper.dataflow.annotations.DataFlowOperator;
+import eu.uk.ncl.pet5o.esper.dataflow.interfaces.EPDataFlowEmitter;
 
 @DataFlowOperator
 @DataFlowOpProvideSignal

@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.view;
 
-import com.espertech.esper.util.StopCallback;
+import eu.uk.ncl.pet5o.esper.util.StopCallback;
 
 public interface StoppableView extends StopCallback {
 }

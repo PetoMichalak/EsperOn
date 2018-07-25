@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.view.stream;
 
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.core.context.util.EPStatementAgentInstanceHandle;
-import com.espertech.esper.core.service.StatementAgentInstanceLock;
-import com.espertech.esper.filter.FilterService;
-import com.espertech.esper.filterspec.FilterSpecCompiled;
-import com.espertech.esper.view.EventStream;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.core.context.util.EPStatementAgentInstanceHandle;
+import eu.uk.ncl.pet5o.esper.core.service.StatementAgentInstanceLock;
+import eu.uk.ncl.pet5o.esper.filter.FilterService;
+import eu.uk.ncl.pet5o.esper.filterspec.FilterSpecCompiled;
+import eu.uk.ncl.pet5o.esper.view.EventStream;
 
 import java.lang.annotation.Annotation;
 

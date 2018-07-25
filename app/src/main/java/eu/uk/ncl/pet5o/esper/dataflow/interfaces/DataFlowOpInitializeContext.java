@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.dataflow.interfaces;
 
-import com.espertech.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
 
 public class DataFlowOpInitializeContext {
 

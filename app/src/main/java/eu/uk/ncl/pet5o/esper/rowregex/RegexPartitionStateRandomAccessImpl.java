@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.rowregex;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.collection.RollingEventBuffer;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.collection.RollingEventBuffer;
 
 import java.util.HashMap;
 import java.util.Map;

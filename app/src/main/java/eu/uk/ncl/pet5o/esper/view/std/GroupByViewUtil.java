@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.view.std;
 
-import com.espertech.esper.client.EPException;
-import com.espertech.esper.core.context.util.AgentInstanceViewFactoryChainContext;
-import com.espertech.esper.epl.expression.core.ExprNodeUtilityCore;
-import com.espertech.esper.view.GroupableView;
-import com.espertech.esper.view.View;
+import eu.uk.ncl.pet5o.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceViewFactoryChainContext;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprNodeUtilityCore;
+import eu.uk.ncl.pet5o.esper.view.GroupableView;
+import eu.uk.ncl.pet5o.esper.view.View;
 
 public class GroupByViewUtil {
     /**

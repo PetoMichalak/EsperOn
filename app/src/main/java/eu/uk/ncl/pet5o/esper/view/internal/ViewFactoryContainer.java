@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.view.internal;
 
-import com.espertech.esper.view.ViewFactory;
+import eu.uk.ncl.pet5o.esper.view.ViewFactory;
 
 import java.util.Collection;
 

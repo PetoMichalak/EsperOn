@@ -10,11 +10,11 @@
  */
 package eu.uk.ncl.pet5o.esper.view;
 
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.epl.spec.PluggableObjectEntry;
-import com.espertech.esper.epl.spec.PluggableObjectRegistry;
-import com.espertech.esper.epl.spec.PluggableObjectType;
-import com.espertech.esper.epl.virtualdw.VirtualDWViewFactoryImpl;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.epl.spec.PluggableObjectEntry;
+import eu.uk.ncl.pet5o.esper.epl.spec.PluggableObjectRegistry;
+import eu.uk.ncl.pet5o.esper.epl.spec.PluggableObjectType;
+import eu.uk.ncl.pet5o.esper.epl.virtualdw.VirtualDWViewFactoryImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

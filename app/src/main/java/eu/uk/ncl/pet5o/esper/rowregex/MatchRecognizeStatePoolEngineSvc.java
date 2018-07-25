@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.rowregex;
 
-import com.espertech.esper.client.hook.ConditionMatchRecognizeStatesMax;
-import com.espertech.esper.core.context.util.AgentInstanceContext;
-import com.espertech.esper.util.ExecutionPathDebugLog;
+import eu.uk.ncl.pet5o.esper.client.hook.ConditionMatchRecognizeStatesMax;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceContext;
+import eu.uk.ncl.pet5o.esper.util.ExecutionPathDebugLog;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

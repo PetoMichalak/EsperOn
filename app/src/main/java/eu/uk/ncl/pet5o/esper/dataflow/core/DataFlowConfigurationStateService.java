@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.dataflow.core;
 
-import com.espertech.esper.client.dataflow.EPDataFlowSavedConfiguration;
+import eu.uk.ncl.pet5o.esper.client.dataflow.EPDataFlowSavedConfiguration;
 
 public interface DataFlowConfigurationStateService {
 

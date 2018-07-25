@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.rowregex;
 
-import com.espertech.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
 
 import java.util.ArrayList;
 import java.util.Collections;

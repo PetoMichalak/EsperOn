@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.spatial.quadtree.prqdrowindex;
 
-import com.espertech.esper.type.XYPoint;
+import eu.uk.ncl.pet5o.esper.type.XYPoint;
 
 import java.util.Collection;
 import java.util.LinkedList;

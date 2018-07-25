@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.view.window;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.epl.expression.time.ExprTimePeriodEvalDeltaConstFactory;
-import com.espertech.esper.view.ViewParameterException;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.epl.expression.time.ExprTimePeriodEvalDeltaConstFactory;
+import eu.uk.ncl.pet5o.esper.view.ViewParameterException;
 
 import java.util.Locale;
 

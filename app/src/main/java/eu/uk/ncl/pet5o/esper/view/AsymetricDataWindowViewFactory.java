@@ -16,7 +16,7 @@ package eu.uk.ncl.pet5o.esper.view;
  * Data windows that post only a partial insert and remove stream as output when compared to
  * the insert and remove stream received.
  * <p>
- * Please {@link com.espertech.esper.view.DataWindowView} for details on views that meet data window requirements.
+ * Please {@link eu.uk.ncl.pet5o.esper.view.DataWindowView} for details on views that meet data window requirements.
  */
 public interface AsymetricDataWindowViewFactory extends DataWindowViewFactory {
 

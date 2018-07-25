@@ -10,10 +10,10 @@
  */
 package eu.uk.ncl.pet5o.esper.view.internal;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.event.FlushedEventBuffer;
-import com.espertech.esper.view.ViewSupport;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.event.FlushedEventBuffer;
+import eu.uk.ncl.pet5o.esper.view.ViewSupport;
 
 import java.util.Iterator;
 

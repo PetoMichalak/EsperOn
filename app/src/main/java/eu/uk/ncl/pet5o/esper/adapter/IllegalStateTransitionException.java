@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.adapter;
 
-import com.espertech.esper.client.EPException;
+import eu.uk.ncl.pet5o.esper.client.EPException;
 
 /**
  * Thrown when an illegal Adapter state transition is attempted.

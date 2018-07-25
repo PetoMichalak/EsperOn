@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.view;
 
-import com.espertech.esper.core.service.EPStatementHandle;
-import com.espertech.esper.core.service.StatementContext;
-import com.espertech.esper.core.service.StatementExtensionSvcContext;
-import com.espertech.esper.event.EventAdapterService;
-import com.espertech.esper.schedule.ScheduleBucket;
-import com.espertech.esper.schedule.SchedulingService;
+import eu.uk.ncl.pet5o.esper.core.service.EPStatementHandle;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.core.service.StatementExtensionSvcContext;
+import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
+import eu.uk.ncl.pet5o.esper.schedule.ScheduleBucket;
+import eu.uk.ncl.pet5o.esper.schedule.SchedulingService;
 
 /**
  * Context calss for specific views within a statement. Each view in a statement gets it's own context

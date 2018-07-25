@@ -10,12 +10,12 @@
  */
 package eu.uk.ncl.pet5o.esper.view;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.epl.db.DataCache;
-import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
-import com.espertech.esper.epl.join.pollindex.PollResultIndexingStrategy;
-import com.espertech.esper.epl.join.table.EventTable;
-import com.espertech.esper.util.StopCallback;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.epl.db.DataCache;
+import eu.uk.ncl.pet5o.esper.epl.expression.core.ExprEvaluatorContext;
+import eu.uk.ncl.pet5o.esper.epl.join.pollindex.PollResultIndexingStrategy;
+import eu.uk.ncl.pet5o.esper.epl.join.table.EventTable;
+import eu.uk.ncl.pet5o.esper.util.StopCallback;
 
 import java.util.SortedSet;
 
@@ -42,7 +42,7 @@ public interface HistoricalEventViewable extends Viewable, ValidatedView, StopCa
 
     /**
      * Historical views are expected to provide a thread-local data cache
-     * for use in keeping row ({@link com.espertech.esper.client.EventBean} references) returned during iteration
+     * for use in keeping row ({@link eu.uk.ncl.pet5o.esper.client.EventBean} references) returned during iteration
      * stable, since the concept of a primary key does not exist.
      *
      * @return thread-local cache, can be null for any thread to indicate no caching

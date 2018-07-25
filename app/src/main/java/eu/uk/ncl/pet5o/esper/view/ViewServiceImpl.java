@@ -10,17 +10,17 @@
  */
 package eu.uk.ncl.pet5o.esper.view;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.collection.Pair;
-import com.espertech.esper.core.context.util.AgentInstanceViewFactoryChainContext;
-import com.espertech.esper.core.service.StatementContext;
-import com.espertech.esper.epl.spec.StreamSpecOptions;
-import com.espertech.esper.epl.spec.ViewSpec;
-import com.espertech.esper.view.internal.IntersectViewFactory;
-import com.espertech.esper.view.internal.UnionViewFactory;
-import com.espertech.esper.view.std.GroupByViewFactoryMarker;
-import com.espertech.esper.view.std.MergeViewFactory;
-import com.espertech.esper.view.std.MergeViewFactoryMarker;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.collection.Pair;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceViewFactoryChainContext;
+import eu.uk.ncl.pet5o.esper.core.service.StatementContext;
+import eu.uk.ncl.pet5o.esper.epl.spec.StreamSpecOptions;
+import eu.uk.ncl.pet5o.esper.epl.spec.ViewSpec;
+import eu.uk.ncl.pet5o.esper.view.internal.IntersectViewFactory;
+import eu.uk.ncl.pet5o.esper.view.internal.UnionViewFactory;
+import eu.uk.ncl.pet5o.esper.view.std.GroupByViewFactoryMarker;
+import eu.uk.ncl.pet5o.esper.view.std.MergeViewFactory;
+import eu.uk.ncl.pet5o.esper.view.std.MergeViewFactoryMarker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

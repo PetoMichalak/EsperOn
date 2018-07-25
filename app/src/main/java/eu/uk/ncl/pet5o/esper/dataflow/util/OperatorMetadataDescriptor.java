@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.dataflow.util;
 
-import com.espertech.esper.epl.spec.GraphOperatorSpec;
+import eu.uk.ncl.pet5o.esper.epl.spec.GraphOperatorSpec;
 
 import java.lang.annotation.Annotation;
 

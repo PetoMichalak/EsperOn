@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.view.ext;
 
-import com.espertech.esper.collection.MixedEventBeanAndCollectionIteratorBase;
+import eu.uk.ncl.pet5o.esper.collection.MixedEventBeanAndCollectionIteratorBase;
 
 import java.util.SortedMap;
 

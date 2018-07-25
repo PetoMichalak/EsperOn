@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.view.window;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.collection.ViewUpdatedCollection;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.collection.ViewUpdatedCollection;
 
 import java.util.ArrayList;
 import java.util.Collection;

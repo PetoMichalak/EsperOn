@@ -10,8 +10,8 @@
  */
 package eu.uk.ncl.pet5o.esper.view;
 
-import com.espertech.esper.client.EventType;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.client.EventType;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 /**
  * Utility class for checking in a schema if fields exist and/or have an expected type.

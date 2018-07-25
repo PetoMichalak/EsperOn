@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.view.internal;
 
-import com.espertech.esper.client.EventBean;
-import com.espertech.esper.view.DataWindowViewFactory;
-import com.espertech.esper.view.ViewDataVisitor;
+import eu.uk.ncl.pet5o.esper.client.EventBean;
+import eu.uk.ncl.pet5o.esper.view.DataWindowViewFactory;
+import eu.uk.ncl.pet5o.esper.view.ViewDataVisitor;
 
 import java.util.*;
 

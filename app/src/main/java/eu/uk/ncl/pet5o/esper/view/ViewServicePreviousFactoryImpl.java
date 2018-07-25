@@ -10,14 +10,14 @@
  */
 package eu.uk.ncl.pet5o.esper.view;
 
-import com.espertech.esper.collection.ViewUpdatedCollection;
-import com.espertech.esper.core.context.util.AgentInstanceViewFactoryChainContext;
-import com.espertech.esper.view.ext.IStreamSortRankRandomAccess;
-import com.espertech.esper.view.ext.IStreamSortRankRandomAccessImpl;
-import com.espertech.esper.view.window.IStreamRandomAccess;
-import com.espertech.esper.view.window.IStreamRelativeAccess;
-import com.espertech.esper.view.window.RandomAccessByIndexGetter;
-import com.espertech.esper.view.window.RelativeAccessByEventNIndexGetter;
+import eu.uk.ncl.pet5o.esper.collection.ViewUpdatedCollection;
+import eu.uk.ncl.pet5o.esper.core.context.util.AgentInstanceViewFactoryChainContext;
+import eu.uk.ncl.pet5o.esper.view.ext.IStreamSortRankRandomAccess;
+import eu.uk.ncl.pet5o.esper.view.ext.IStreamSortRankRandomAccessImpl;
+import eu.uk.ncl.pet5o.esper.view.window.IStreamRandomAccess;
+import eu.uk.ncl.pet5o.esper.view.window.IStreamRelativeAccess;
+import eu.uk.ncl.pet5o.esper.view.window.RandomAccessByIndexGetter;
+import eu.uk.ncl.pet5o.esper.view.window.RelativeAccessByEventNIndexGetter;
 
 public class ViewServicePreviousFactoryImpl implements ViewServicePreviousFactory {
     public ViewUpdatedCollection getOptPreviousExprRandomAccess(AgentInstanceViewFactoryChainContext agentInstanceViewFactoryContext) {

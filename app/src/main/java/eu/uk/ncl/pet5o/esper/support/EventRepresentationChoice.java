@@ -10,13 +10,13 @@
  */
 package eu.uk.ncl.pet5o.esper.support;
 
-import com.espertech.esper.client.EPServiceProvider;
-import com.espertech.esper.client.annotation.EventRepresentation;
-import com.espertech.esper.client.soda.AnnotationPart;
-import com.espertech.esper.client.soda.EPStatementObjectModel;
-import com.espertech.esper.client.util.EventUnderlyingType;
-import com.espertech.esper.core.service.EPServiceProviderSPI;
-import com.espertech.esper.util.JavaClassHelper;
+import eu.uk.ncl.pet5o.esper.client.EPServiceProvider;
+import eu.uk.ncl.pet5o.esper.client.annotation.EventRepresentation;
+import eu.uk.ncl.pet5o.esper.client.soda.AnnotationPart;
+import eu.uk.ncl.pet5o.esper.client.soda.EPStatementObjectModel;
+import eu.uk.ncl.pet5o.esper.client.util.EventUnderlyingType;
+import eu.uk.ncl.pet5o.esper.core.service.EPServiceProviderSPI;
+import eu.uk.ncl.pet5o.esper.util.JavaClassHelper;
 
 import java.util.Collections;
 import java.util.HashSet;

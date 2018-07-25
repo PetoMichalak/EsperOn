@@ -10,7 +10,7 @@
  */
 package eu.uk.ncl.pet5o.esper.view.std;
 
-import com.espertech.esper.view.View;
+import eu.uk.ncl.pet5o.esper.view.View;
 
 public class GroupByViewAgedEntry {
     private final View subview;

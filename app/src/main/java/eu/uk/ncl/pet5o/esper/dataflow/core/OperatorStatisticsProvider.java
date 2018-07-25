@@ -10,9 +10,9 @@
  */
 package eu.uk.ncl.pet5o.esper.dataflow.core;
 
-import com.espertech.esper.client.dataflow.EPDataFlowInstanceOperatorStat;
-import com.espertech.esper.client.dataflow.EPDataFlowInstanceStatistics;
-import com.espertech.esper.dataflow.util.OperatorMetadataDescriptor;
+import eu.uk.ncl.pet5o.esper.client.dataflow.EPDataFlowInstanceOperatorStat;
+import eu.uk.ncl.pet5o.esper.client.dataflow.EPDataFlowInstanceStatistics;
+import eu.uk.ncl.pet5o.esper.dataflow.util.OperatorMetadataDescriptor;
 
 import java.util.ArrayList;
 import java.util.List;
