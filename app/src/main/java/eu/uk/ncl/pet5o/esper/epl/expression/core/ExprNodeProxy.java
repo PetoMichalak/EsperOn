@@ -8,7 +8,7 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.expression.core;
+package eu.uk.ncl.pet5o.esper.epl.expression.core;
 
 import com.espertech.esper.util.JavaClassHelper;
 
@@ -34,7 +34,7 @@ public class ExprNodeProxy implements java.lang.reflect.InvocationHandler {
     private ExprNode exprNode;
 
     public static Object newInstance(String engineURI, String statementName, ExprNode exprNode) {
-        return java.lang.reflect.Proxy.newProxyInstance(
+        return Proxy.newProxyInstance(
                 exprNode.getClass().getClassLoader(),
                 JavaClassHelper.getSuperInterfaces(exprNode.getClass()),
                 new ExprNodeProxy(engineURI, statementName, exprNode));

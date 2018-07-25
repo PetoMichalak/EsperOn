@@ -8,7 +8,7 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.expression.visitor;
+package eu.uk.ncl.pet5o.esper.epl.expression.visitor;
 
 import com.espertech.esper.epl.expression.core.ExprNode;
 

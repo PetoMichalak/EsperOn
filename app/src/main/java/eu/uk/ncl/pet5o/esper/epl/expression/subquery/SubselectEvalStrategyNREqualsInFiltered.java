@@ -8,7 +8,7 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.expression.subquery;
+package eu.uk.ncl.pet5o.esper.epl.expression.subquery;
 
 import com.espertech.esper.client.EventBean;
 import com.espertech.esper.epl.agg.service.common.AggregationService;
@@ -29,9 +29,9 @@ public class SubselectEvalStrategyNREqualsInFiltered extends SubselectEvalStrate
         this.filterEval = filterEval;
     }
 
-    protected Object evaluateInternal(Object leftResult, EventBean[] eventsZeroOffset, boolean isNewData, Collection<EventBean> matchingEvents, ExprEvaluatorContext exprEvaluatorContext, AggregationService aggregationService) {
+    protected Object evaluateInternal(Object leftResult, com.espertech.esper.client.EventBean[] eventsZeroOffset, boolean isNewData, Collection<EventBean> matchingEvents, ExprEvaluatorContext exprEvaluatorContext, AggregationService aggregationService) {
         boolean hasNullRow = false;
-        for (EventBean subselectEvent : matchingEvents) {
+        for (com.espertech.esper.client.EventBean subselectEvent : matchingEvents) {
             // Prepare filter expression event list
             eventsZeroOffset[0] = subselectEvent;
 

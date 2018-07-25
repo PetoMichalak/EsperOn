@@ -8,9 +8,8 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.expression.ops;
+package eu.uk.ncl.pet5o.esper.epl.expression.ops;
 
-import com.espertech.esper.client.EventBean;
 import com.espertech.esper.codegen.base.CodegenClassScope;
 import com.espertech.esper.codegen.base.CodegenMember;
 import com.espertech.esper.codegen.base.CodegenMethodNode;
@@ -24,6 +23,10 @@ import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
 import com.espertech.esper.util.LikeUtil;
 
 import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.member;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.not;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
 
 public class ExprLikeNodeForgeConstEval implements ExprEvaluator {
     private final ExprLikeNodeForgeConst forge;
@@ -34,7 +37,7 @@ public class ExprLikeNodeForgeConstEval implements ExprEvaluator {
         this.lhsEval = lhsEval;
     }
 
-    public Object evaluate(EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qExprLike(forge.getForgeRenderable());
         }

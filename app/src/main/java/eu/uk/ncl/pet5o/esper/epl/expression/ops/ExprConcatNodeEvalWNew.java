@@ -8,9 +8,8 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.expression.ops;
+package eu.uk.ncl.pet5o.esper.epl.expression.ops;
 
-import com.espertech.esper.client.EventBean;
 import com.espertech.esper.epl.expression.core.ExprEvaluator;
 import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
 import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
@@ -24,12 +23,12 @@ public class ExprConcatNodeEvalWNew implements ExprEvaluator {
         this.evaluators = evaluators;
     }
 
-    public Object evaluate(EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         StringBuffer buffer = new StringBuffer();
         return evaluate(eventsPerStream, isNewData, context, buffer, evaluators, parent);
     }
 
-    protected static String evaluate(EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context, StringBuffer buffer, ExprEvaluator[] evaluators, ExprConcatNode parent) {
+    protected static String evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context, StringBuffer buffer, ExprEvaluator[] evaluators, ExprConcatNode parent) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qExprConcat(parent);
         }

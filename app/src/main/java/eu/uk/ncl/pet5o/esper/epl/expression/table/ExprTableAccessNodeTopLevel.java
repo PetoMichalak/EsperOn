@@ -8,13 +8,12 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.expression.table;
+package eu.uk.ncl.pet5o.esper.epl.expression.table;
 
-import com.espertech.esper.client.EventBean;
 import com.espertech.esper.codegen.base.CodegenClassScope;
 import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.epl.expression.codegen.CodegenLegoEvaluateSelf;
 import com.espertech.esper.codegen.model.expression.CodegenExpression;
+import com.espertech.esper.epl.expression.codegen.CodegenLegoEvaluateSelf;
 import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
 import com.espertech.esper.epl.expression.core.*;
 import com.espertech.esper.epl.table.mgmt.TableMetadata;
@@ -68,7 +67,7 @@ public class ExprTableAccessNodeTopLevel extends ExprTableAccessNode implements 
         }
     }
 
-    public Object evaluate(EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qExprTableTop(this, tableName);
             Object result = strategy.evaluate(eventsPerStream, isNewData, exprEvaluatorContext);
@@ -102,7 +101,7 @@ public class ExprTableAccessNodeTopLevel extends ExprTableAccessNode implements 
         return false;
     }
 
-    public Object[] evaluateTypableSingle(EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Object[] evaluateTypableSingle(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return strategy.evaluateTypableSingle(eventsPerStream, isNewData, context);
     }
 
@@ -110,7 +109,7 @@ public class ExprTableAccessNodeTopLevel extends ExprTableAccessNode implements 
         return CodegenLegoEvaluateSelf.evaluateSelfTypableSingle(this, codegenMethodScope, exprSymbol, codegenClassScope);
     }
 
-    public Object[][] evaluateTypableMulti(EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Object[][] evaluateTypableMulti(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         throw new UnsupportedOperationException();
     }
 

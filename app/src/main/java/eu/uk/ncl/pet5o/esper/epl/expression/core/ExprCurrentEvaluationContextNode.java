@@ -8,9 +8,8 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.expression.core;
+package eu.uk.ncl.pet5o.esper.epl.expression.core;
 
-import com.espertech.esper.client.EventBean;
 import com.espertech.esper.client.hook.EPLExpressionEvaluationContext;
 import com.espertech.esper.codegen.base.CodegenClassScope;
 import com.espertech.esper.codegen.base.CodegenMethodScope;
@@ -71,7 +70,7 @@ public class ExprCurrentEvaluationContextNode extends ExprNodeBase implements Ex
         return false;
     }
 
-    public Object evaluate(EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         EPLExpressionEvaluationContext ctx = exprCurrentEvaluationContextMake(exprEvaluatorContext);
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qaExprConst(ctx);

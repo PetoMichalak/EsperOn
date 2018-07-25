@@ -8,9 +8,8 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.expression.ops;
+package eu.uk.ncl.pet5o.esper.epl.expression.ops;
 
-import com.espertech.esper.client.EventBean;
 import com.espertech.esper.codegen.base.CodegenBlock;
 import com.espertech.esper.codegen.base.CodegenClassScope;
 import com.espertech.esper.codegen.base.CodegenMethodNode;
@@ -22,9 +21,9 @@ import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
 import com.espertech.esper.epl.expression.core.ExprForge;
 import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
 
-import static com.espertech.esper.epl.expression.codegen.CodegenLegoCompareEquals.codegenEqualsNonNullNoCoerce;
 import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.not;
 import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static com.espertech.esper.epl.expression.codegen.CodegenLegoCompareEquals.codegenEqualsNonNullNoCoerce;
 
 public class ExprEqualsNodeForgeNCEvalEquals implements ExprEvaluator {
     private final ExprEqualsNodeImpl parent;
@@ -37,7 +36,7 @@ public class ExprEqualsNodeForgeNCEvalEquals implements ExprEvaluator {
         this.rhs = rhs;
     }
 
-    public Object evaluate(EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qExprEquals(parent);
         }

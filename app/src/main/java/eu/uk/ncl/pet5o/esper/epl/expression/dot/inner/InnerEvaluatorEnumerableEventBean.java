@@ -8,7 +8,7 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.expression.dot.inner;
+package eu.uk.ncl.pet5o.esper.epl.expression.dot.inner;
 
 import com.espertech.esper.client.EventBean;
 import com.espertech.esper.client.EventType;
@@ -28,19 +28,19 @@ public class InnerEvaluatorEnumerableEventBean implements ExprDotEvalRootChildIn
         this.eventType = eventType;
     }
 
-    public Object evaluate(EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return rootLambdaEvaluator.evaluateGetEventBean(eventsPerStream, isNewData, context);
     }
 
-    public Collection<EventBean> evaluateGetROCollectionEvents(EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Collection<EventBean> evaluateGetROCollectionEvents(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return rootLambdaEvaluator.evaluateGetROCollectionEvents(eventsPerStream, isNewData, context);
     }
 
-    public Collection evaluateGetROCollectionScalar(EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Collection evaluateGetROCollectionScalar(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return rootLambdaEvaluator.evaluateGetROCollectionScalar(eventsPerStream, isNewData, context);
     }
 
-    public EventBean evaluateGetEventBean(EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public com.espertech.esper.client.EventBean evaluateGetEventBean(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return rootLambdaEvaluator.evaluateGetEventBean(eventsPerStream, isNewData, context);
     }
 

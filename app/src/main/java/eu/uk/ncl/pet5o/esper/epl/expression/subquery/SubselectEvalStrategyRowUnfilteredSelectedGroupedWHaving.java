@@ -8,7 +8,7 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.expression.subquery;
+package eu.uk.ncl.pet5o.esper.epl.expression.subquery;
 
 import com.espertech.esper.client.EventBean;
 import com.espertech.esper.epl.agg.service.common.AggregationService;
@@ -32,7 +32,7 @@ public class SubselectEvalStrategyRowUnfilteredSelectedGroupedWHaving extends Su
         this.havingClause = havingClause;
     }
 
-    public Object evaluate(EventBean[] eventsPerStream, boolean newData, Collection<EventBean> matchingEvents, ExprEvaluatorContext exprEvaluatorContext, ExprSubselectRowNode parent) {
+    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean newData, Collection<EventBean> matchingEvents, ExprEvaluatorContext exprEvaluatorContext, ExprSubselectRowNode parent) {
 
         AggregationService aggregationService = parent.getSubselectAggregationService().getContextPartitionAggregationService(exprEvaluatorContext.getAgentInstanceId());
         Collection<Object> groupKeys = aggregationService.getGroupKeys(exprEvaluatorContext);
@@ -40,7 +40,7 @@ public class SubselectEvalStrategyRowUnfilteredSelectedGroupedWHaving extends Su
             return null;
         }
 
-        EventBean[] events = EventBeanUtility.allocatePerStreamShift(eventsPerStream);
+        com.espertech.esper.client.EventBean[] events = EventBeanUtility.allocatePerStreamShift(eventsPerStream);
         boolean haveResult = false;
         Object result = null;
         for (Object groupKey : groupKeys) {
@@ -59,21 +59,21 @@ public class SubselectEvalStrategyRowUnfilteredSelectedGroupedWHaving extends Su
         return haveResult ? result : null;
     }
 
-    public Collection evaluateGetCollScalar(EventBean[] eventsPerStream, boolean isNewData, Collection<EventBean> matchingEvents, ExprEvaluatorContext context, ExprSubselectRowNode parent) {
+    public Collection evaluateGetCollScalar(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, Collection<EventBean> matchingEvents, ExprEvaluatorContext context, ExprSubselectRowNode parent) {
         return null;
     }
 
-    public EventBean evaluateGetEventBean(EventBean[] eventsPerStream, boolean newData, Collection<EventBean> matchingEvents, ExprEvaluatorContext context, ExprSubselectRowNode parent) {
+    public com.espertech.esper.client.EventBean evaluateGetEventBean(com.espertech.esper.client.EventBean[] eventsPerStream, boolean newData, Collection<EventBean> matchingEvents, ExprEvaluatorContext context, ExprSubselectRowNode parent) {
         return null;
     }
 
-    public Collection<EventBean> evaluateGetCollEvents(EventBean[] eventsPerStream, boolean newData, Collection<EventBean> matchingEvents, ExprEvaluatorContext context, ExprSubselectRowNode parent) {
+    public Collection<EventBean> evaluateGetCollEvents(com.espertech.esper.client.EventBean[] eventsPerStream, boolean newData, Collection<EventBean> matchingEvents, ExprEvaluatorContext context, ExprSubselectRowNode parent) {
         AggregationService aggregationService = parent.getSubselectAggregationService().getContextPartitionAggregationService(context.getAgentInstanceId());
         Collection<Object> groupKeys = aggregationService.getGroupKeys(context);
         if (groupKeys.isEmpty()) {
             return null;
         }
-        EventBean[] events = EventBeanUtility.allocatePerStreamShift(eventsPerStream);
+        com.espertech.esper.client.EventBean[] events = EventBeanUtility.allocatePerStreamShift(eventsPerStream);
         Collection<EventBean> result = new ArrayDeque<EventBean>(groupKeys.size());
         for (Object groupKey : groupKeys) {
             aggregationService.setCurrentAccess(groupKey, context.getAgentInstanceId(), null);
@@ -81,7 +81,7 @@ public class SubselectEvalStrategyRowUnfilteredSelectedGroupedWHaving extends Su
             Boolean pass = (Boolean) havingClause.evaluate(events, newData, context);
             if (pass != null && pass) {
                 Map<String, Object> row = parent.evaluateRow(events, true, context);
-                EventBean event = parent.subselectMultirowType.getEventAdapterService().adapterForTypedMap(row, parent.subselectMultirowType.getEventType());
+                com.espertech.esper.client.EventBean event = parent.subselectMultirowType.getEventAdapterService().adapterForTypedMap(row, parent.subselectMultirowType.getEventType());
                 result.add(event);
             }
         }

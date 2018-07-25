@@ -8,9 +8,8 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.expression.core;
+package eu.uk.ncl.pet5o.esper.epl.expression.core;
 
-import com.espertech.esper.client.EventBean;
 import com.espertech.esper.codegen.base.CodegenClassScope;
 import com.espertech.esper.codegen.base.CodegenMethodScope;
 import com.espertech.esper.codegen.model.expression.CodegenExpression;
@@ -20,6 +19,10 @@ import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
 import java.io.StringWriter;
 
 import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.arrayAtIndex;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.cast;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotUnderlying;
 
 public class ExprNodeUtilExprStreamNumUnd implements ExprForge, ExprEvaluator, ExprNodeRenderable {
     private final int streamNum;
@@ -30,7 +33,7 @@ public class ExprNodeUtilExprStreamNumUnd implements ExprForge, ExprEvaluator, E
         this.returnType = returnType;
     }
 
-    public Object evaluate(EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return eventsPerStream[streamNum].getUnderlying();
     }
 

@@ -8,9 +8,7 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.expression.core;
-
-import com.espertech.esper.client.EventBean;
+package eu.uk.ncl.pet5o.esper.epl.expression.core;
 
 public class ExprEvaluatorNull implements ExprEvaluator {
     public final static ExprEvaluatorNull INSTANCE = new ExprEvaluatorNull();
@@ -18,7 +16,7 @@ public class ExprEvaluatorNull implements ExprEvaluator {
     private ExprEvaluatorNull() {
     }
 
-    public Object evaluate(EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return null;
     }
 }

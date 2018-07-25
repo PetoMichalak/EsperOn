@@ -8,9 +8,8 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.expression.core;
+package eu.uk.ncl.pet5o.esper.epl.expression.core;
 
-import com.espertech.esper.client.EventBean;
 import com.espertech.esper.core.service.ExpressionResultCacheService;
 import com.espertech.esper.core.service.StatementAgentInstanceLock;
 import com.espertech.esper.core.service.StatementType;
@@ -43,7 +42,7 @@ public interface ExprEvaluatorContext {
 
     public int getAgentInstanceId();
 
-    public EventBean getContextProperties();
+    public com.espertech.esper.client.EventBean getContextProperties();
 
     public StatementAgentInstanceLock getAgentInstanceLock();
 

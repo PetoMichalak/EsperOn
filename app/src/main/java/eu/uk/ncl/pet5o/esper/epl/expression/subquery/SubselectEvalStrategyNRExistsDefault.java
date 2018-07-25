@@ -8,7 +8,7 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.expression.subquery;
+package eu.uk.ncl.pet5o.esper.epl.expression.subquery;
 
 import com.espertech.esper.client.EventBean;
 import com.espertech.esper.epl.agg.service.common.AggregationService;
@@ -27,7 +27,7 @@ public class SubselectEvalStrategyNRExistsDefault implements SubselectEvalStrate
         this.havingEval = havingEval;
     }
 
-    public Object evaluate(EventBean[] eventsPerStream, boolean isNewData, Collection<EventBean> matchingEvents, ExprEvaluatorContext exprEvaluatorContext, AggregationService aggregationService) {
+    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, Collection<EventBean> matchingEvents, ExprEvaluatorContext exprEvaluatorContext, AggregationService aggregationService) {
         if (matchingEvents == null || matchingEvents.size() == 0) {
             return false;
         }
@@ -35,12 +35,12 @@ public class SubselectEvalStrategyNRExistsDefault implements SubselectEvalStrate
             return true;
         }
 
-        EventBean[] events = EventBeanUtility.allocatePerStreamShift(eventsPerStream);
+        com.espertech.esper.client.EventBean[] events = EventBeanUtility.allocatePerStreamShift(eventsPerStream);
         if (havingEval != null) {
             Boolean pass = (Boolean) havingEval.evaluate(events, true, exprEvaluatorContext);
             return (pass != null) && pass;
         } else if (filterEval != null) {
-            for (EventBean subselectEvent : matchingEvents) {
+            for (com.espertech.esper.client.EventBean subselectEvent : matchingEvents) {
                 // Prepare filter expression event list
                 events[0] = subselectEvent;
 

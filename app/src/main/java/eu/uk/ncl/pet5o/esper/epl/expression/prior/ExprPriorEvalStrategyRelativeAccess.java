@@ -8,9 +8,8 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.expression.prior;
+package eu.uk.ncl.pet5o.esper.epl.expression.prior;
 
-import com.espertech.esper.client.EventBean;
 import com.espertech.esper.view.window.RelativeAccessByEventNIndex;
 
 /**
@@ -23,7 +22,7 @@ public class ExprPriorEvalStrategyRelativeAccess extends ExprPriorEvalStrategyBa
         this.relativeAccess = relativeAccess;
     }
 
-    public EventBean getSubstituteEvent(EventBean originalEvent, boolean isNewData, int constantIndexNumber) {
+    public com.espertech.esper.client.EventBean getSubstituteEvent(com.espertech.esper.client.EventBean originalEvent, boolean isNewData, int constantIndexNumber) {
         return relativeAccess.getRelativeToEvent(originalEvent, constantIndexNumber);
     }
 }

@@ -8,22 +8,26 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.expression.dot;
+package eu.uk.ncl.pet5o.esper.epl.expression.dot;
 
-import com.espertech.esper.client.EventBean;
 import com.espertech.esper.codegen.base.CodegenClassScope;
+import com.espertech.esper.codegen.base.CodegenMethodNode;
 import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.epl.expression.codegen.CodegenLegoCast;
 import com.espertech.esper.codegen.model.expression.CodegenExpression;
 import com.espertech.esper.codegen.model.expression.CodegenExpressionRef;
+import com.espertech.esper.epl.expression.codegen.CodegenLegoCast;
 import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
 import com.espertech.esper.epl.expression.core.ExprEvaluator;
 import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.arrayAtIndex;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
 
 public class ExprDotNodeForgePropertyExprEvalIndexed implements ExprEvaluator {
     private static final Logger log = LoggerFactory.getLogger(ExprDotNodeForgePropertyExprEvalIndexed.class);
@@ -36,8 +40,8 @@ public class ExprDotNodeForgePropertyExprEvalIndexed implements ExprEvaluator {
         this.exprEvaluator = exprEvaluator;
     }
 
-    public Object evaluate(EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
-        EventBean event = eventsPerStream[forge.getStreamNum()];
+    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+        com.espertech.esper.client.EventBean event = eventsPerStream[forge.getStreamNum()];
         if (event == null) {
             return null;
         }
@@ -54,7 +58,7 @@ public class ExprDotNodeForgePropertyExprEvalIndexed implements ExprEvaluator {
 
         CodegenExpressionRef refEPS = exprSymbol.getAddEPS(methodNode);
         methodNode.getBlock()
-                .declareVar(EventBean.class, "event", arrayAtIndex(refEPS, constant(forge.getStreamNum())))
+                .declareVar(com.espertech.esper.client.EventBean.class, "event", arrayAtIndex(refEPS, constant(forge.getStreamNum())))
                 .ifRefNullReturnNull("event")
                 .declareVar(Integer.class, "index", forge.getExprForge().evaluateCodegen(Integer.class, methodNode, exprSymbol, codegenClassScope))
                 .ifRefNullReturnNull("index")

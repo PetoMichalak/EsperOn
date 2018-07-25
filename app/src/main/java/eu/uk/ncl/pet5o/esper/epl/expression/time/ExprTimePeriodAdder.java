@@ -8,13 +8,17 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.expression.time;
+package eu.uk.ncl.pet5o.esper.epl.expression.time;
 
 import com.espertech.esper.codegen.model.expression.CodegenExpression;
 
 import java.util.Calendar;
 
 import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.noop;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.op;
 
 public class ExprTimePeriodAdder {
     public interface TimePeriodAdder {

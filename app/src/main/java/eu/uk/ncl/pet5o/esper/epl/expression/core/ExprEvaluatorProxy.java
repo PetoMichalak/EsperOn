@@ -8,7 +8,7 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.expression.core;
+package eu.uk.ncl.pet5o.esper.epl.expression.core;
 
 import com.espertech.esper.client.EventBean;
 import com.espertech.esper.client.annotation.AuditEnum;
@@ -70,7 +70,7 @@ public class ExprEvaluatorProxy implements java.lang.reflect.InvocationHandler {
                         } else {
                             StringWriter buf = new StringWriter();
                             int count = 0;
-                            for (EventBean theEvent : resultBeans) {
+                            for (com.espertech.esper.client.EventBean theEvent : resultBeans) {
                                 buf.append(" Event ");
                                 buf.append(Integer.toString(count++));
                                 buf.append(":");
@@ -98,7 +98,7 @@ public class ExprEvaluatorProxy implements java.lang.reflect.InvocationHandler {
                     String outStr = "null";
                     if (result != null) {
                         StringWriter buf = new StringWriter();
-                        EventBeanUtility.appendEvent(buf, (EventBean) result);
+                        EventBeanUtility.appendEvent(buf, (com.espertech.esper.client.EventBean) result);
                         outStr = buf.toString();
                     }
                     AuditPath.auditLog(engineURI, statementName, AuditEnum.EXPRESSION, expressionToString + " result " + outStr);

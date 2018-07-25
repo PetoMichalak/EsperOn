@@ -8,9 +8,8 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.expression.core;
+package eu.uk.ncl.pet5o.esper.epl.expression.core;
 
-import com.espertech.esper.client.EventBean;
 import com.espertech.esper.codegen.base.CodegenClassScope;
 import com.espertech.esper.codegen.base.CodegenMethodScope;
 import com.espertech.esper.codegen.model.expression.CodegenExpression;
@@ -29,7 +28,7 @@ public class ExprNodeUtilExprStreamNumEvent implements ExprForge, ExprEvaluator,
         this.streamNum = streamNum;
     }
 
-    public Object evaluate(EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return eventsPerStream[streamNum];
     }
 
@@ -47,7 +46,7 @@ public class ExprNodeUtilExprStreamNumEvent implements ExprForge, ExprEvaluator,
     }
 
     public Class getEvaluationType() {
-        return EventBean.class;
+        return com.espertech.esper.client.EventBean.class;
     }
 
     public ExprNodeRenderable getForgeRenderable() {

@@ -8,9 +8,8 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.expression.codegen;
+package eu.uk.ncl.pet5o.esper.epl.expression.codegen;
 
-import com.espertech.esper.client.EventBean;
 import com.espertech.esper.client.EventType;
 import com.espertech.esper.codegen.base.*;
 import com.espertech.esper.codegen.model.expression.CodegenExpression;
@@ -22,6 +21,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.arrayAtIndex;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.cast;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotUnderlying;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
 
 public class ExprForgeCodegenSymbol implements CodegenSymbolProvider {
     private final boolean allowUnderlyingReferences;
@@ -88,7 +92,7 @@ public class ExprForgeCodegenSymbol implements CodegenSymbolProvider {
 
     public void provide(Map<String, Class> symbols) {
         if (optionalEPSRef != null) {
-            symbols.put(optionalEPSRef.getRef(), EventBean[].class);
+            symbols.put(optionalEPSRef.getRef(), com.espertech.esper.client.EventBean[].class);
         }
         if (optionalExprEvalCtxRef != null) {
             symbols.put(optionalExprEvalCtxRef.getRef(), ExprEvaluatorContext.class);
@@ -112,9 +116,9 @@ public class ExprForgeCodegenSymbol implements CodegenSymbolProvider {
             if (!underlying.getValue().isOptionalEvent()) {
                 processBlock.declareVar(underlyingType, name, cast(underlyingType, exprDotUnderlying(arrayAtIndex)));
             } else {
-                CodegenMethodNode methodNode = parent.makeChild(underlyingType, ExprForgeCodegenSymbol.class, codegenClassScope).addParam(EventBean[].class, ExprForgeCodegenNames.NAME_EPS);
+                CodegenMethodNode methodNode = parent.makeChild(underlyingType, ExprForgeCodegenSymbol.class, codegenClassScope).addParam(com.espertech.esper.client.EventBean[].class, ExprForgeCodegenNames.NAME_EPS);
                 methodNode.getBlock()
-                        .declareVar(EventBean.class, "event", arrayAtIndex)
+                        .declareVar(com.espertech.esper.client.EventBean.class, "event", arrayAtIndex)
                         .ifRefNullReturnNull("event")
                         .methodReturn(cast(underlyingType, exprDotUnderlying(ref("event"))));
                 processBlock.declareVar(underlyingType, name, localMethod(methodNode, ExprForgeCodegenNames.REF_EPS));

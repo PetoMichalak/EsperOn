@@ -8,15 +8,15 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.expression.ops;
+package eu.uk.ncl.pet5o.esper.epl.expression.ops;
 
 import com.espertech.esper.client.EventBean;
 import com.espertech.esper.codegen.base.CodegenBlock;
 import com.espertech.esper.codegen.base.CodegenClassScope;
+import com.espertech.esper.codegen.base.CodegenMethodNode;
 import com.espertech.esper.codegen.base.CodegenMethodScope;
 import com.espertech.esper.codegen.model.expression.CodegenExpression;
 import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
 import com.espertech.esper.epl.expression.core.*;
 import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
 
@@ -26,6 +26,14 @@ import java.util.Collection;
 import java.util.Collections;
 
 import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantTrue;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.newArrayByLength;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.newInstance;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.notEqualsNull;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.staticMethod;
 
 public class ExprArrayNodeForgeEval implements ExprEvaluator, ExprEnumerationEval {
 
@@ -41,7 +49,7 @@ public class ExprArrayNodeForgeEval implements ExprEvaluator, ExprEnumerationEva
         return this;
     }
 
-    public Object evaluate(EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qExprArray(forge.getForgeRenderable());
         }
@@ -96,11 +104,11 @@ public class ExprArrayNodeForgeEval implements ExprEvaluator, ExprEnumerationEva
     }
 
 
-    public Collection<EventBean> evaluateGetROCollectionEvents(EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Collection<EventBean> evaluateGetROCollectionEvents(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return null;
     }
 
-    public Collection evaluateGetROCollectionScalar(EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Collection evaluateGetROCollectionScalar(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         if (forge.getForgeRenderable().getChildNodes().length == 0) {
             return Collections.emptyList();
         }
@@ -152,7 +160,7 @@ public class ExprArrayNodeForgeEval implements ExprEvaluator, ExprEnumerationEva
         return localMethod(methodNode);
     }
 
-    public EventBean evaluateGetEventBean(EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public com.espertech.esper.client.EventBean evaluateGetEventBean(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return null;
     }
 }

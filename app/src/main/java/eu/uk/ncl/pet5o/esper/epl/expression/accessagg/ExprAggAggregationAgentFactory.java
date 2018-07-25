@@ -8,7 +8,7 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.expression.accessagg;
+package eu.uk.ncl.pet5o.esper.epl.expression.accessagg;
 
 import com.espertech.esper.epl.agg.access.*;
 import com.espertech.esper.epl.core.engineimport.EngineImportService;

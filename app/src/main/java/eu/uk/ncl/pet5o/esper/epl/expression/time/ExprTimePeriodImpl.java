@@ -8,9 +8,8 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.expression.time;
+package eu.uk.ncl.pet5o.esper.epl.expression.time;
 
-import com.espertech.esper.client.EventBean;
 import com.espertech.esper.client.util.TimePeriod;
 import com.espertech.esper.codegen.base.CodegenClassScope;
 import com.espertech.esper.codegen.base.CodegenMethodScope;
@@ -99,12 +98,12 @@ public class ExprTimePeriodImpl extends ExprNodeBase implements ExprTimePeriod {
         return forge.isHasVariable();
     }
 
-    public TimePeriod evaluateGetTimePeriod(EventBean[] eventsPerStream, boolean newData, ExprEvaluatorContext context) {
+    public TimePeriod evaluateGetTimePeriod(com.espertech.esper.client.EventBean[] eventsPerStream, boolean newData, ExprEvaluatorContext context) {
         checkValidated(forge);
         return forge.evaluateGetTimePeriod(eventsPerStream, newData, context);
     }
 
-    public double evaluateAsSeconds(EventBean[] eventsPerStream, boolean newData, ExprEvaluatorContext context) {
+    public double evaluateAsSeconds(com.espertech.esper.client.EventBean[] eventsPerStream, boolean newData, ExprEvaluatorContext context) {
         checkValidated(forge);
         return forge.evaluateAsSeconds(eventsPerStream, newData, context);
     }

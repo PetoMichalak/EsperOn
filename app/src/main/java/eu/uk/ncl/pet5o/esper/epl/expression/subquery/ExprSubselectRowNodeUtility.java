@@ -8,10 +8,11 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.expression.subquery;
+package eu.uk.ncl.pet5o.esper.epl.expression.subquery;
 
 import com.espertech.esper.client.EventBean;
 import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,10 +22,10 @@ public class ExprSubselectRowNodeUtility {
 
     private static final Logger log = LoggerFactory.getLogger(ExprSubselectRowNodeUtility.class);
 
-    public static EventBean evaluateFilterExpectSingleMatch(EventBean[] eventsZeroSubselect, boolean newData, Collection<EventBean> matchingEvents, ExprEvaluatorContext exprEvaluatorContext, ExprSubselectRowNode parent) {
+    public static com.espertech.esper.client.EventBean evaluateFilterExpectSingleMatch(com.espertech.esper.client.EventBean[] eventsZeroSubselect, boolean newData, Collection<EventBean> matchingEvents, ExprEvaluatorContext exprEvaluatorContext, ExprSubselectRowNode parent) {
 
-        EventBean subSelectResult = null;
-        for (EventBean subselectEvent : matchingEvents) {
+        com.espertech.esper.client.EventBean subSelectResult = null;
+        for (com.espertech.esper.client.EventBean subselectEvent : matchingEvents) {
             // Prepare filter expression event list
             eventsZeroSubselect[0] = subselectEvent;
 

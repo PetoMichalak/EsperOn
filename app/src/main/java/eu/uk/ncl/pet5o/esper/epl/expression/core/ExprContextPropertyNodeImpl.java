@@ -8,18 +8,17 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.expression.core;
+package eu.uk.ncl.pet5o.esper.epl.expression.core;
 
-import com.espertech.esper.client.EventBean;
 import com.espertech.esper.client.EventPropertyGetter;
 import com.espertech.esper.codegen.base.CodegenBlock;
 import com.espertech.esper.codegen.base.CodegenClassScope;
+import com.espertech.esper.codegen.base.CodegenMethodNode;
 import com.espertech.esper.codegen.base.CodegenMethodScope;
-import com.espertech.esper.epl.expression.codegen.CodegenLegoCast;
 import com.espertech.esper.codegen.model.expression.CodegenExpression;
 import com.espertech.esper.codegen.model.expression.CodegenExpressionRef;
+import com.espertech.esper.epl.expression.codegen.CodegenLegoCast;
 import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
 import com.espertech.esper.event.EventPropertyGetterSPI;
 import com.espertech.esper.event.EventTypeSPI;
 import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
@@ -29,6 +28,9 @@ import java.io.StringWriter;
 import java.util.Arrays;
 
 import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.exprDotMethod;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
 
 /**
  * Represents an stream property identifier in a filter expressiun tree.
@@ -83,11 +85,11 @@ public class ExprContextPropertyNodeImpl extends ExprNodeBase implements ExprCon
         return false;
     }
 
-    public Object evaluate(EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qExprContextProp(this);
         }
-        EventBean props = context.getContextProperties();
+        com.espertech.esper.client.EventBean props = context.getContextProperties();
         Object result = props != null ? getter.get(props) : null;
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().aExprContextProp(result);
@@ -99,7 +101,7 @@ public class ExprContextPropertyNodeImpl extends ExprNodeBase implements ExprCon
         CodegenMethodNode methodNode = codegenMethodScope.makeChild(getEvaluationType(), ExprContextPropertyNodeImpl.class, codegenClassScope);
         CodegenExpressionRef refExprEvalCtx = exprSymbol.getAddExprEvalCtx(methodNode);
         CodegenBlock block = methodNode.getBlock()
-                .declareVar(EventBean.class, "props", exprDotMethod(refExprEvalCtx, "getContextProperties"))
+                .declareVar(com.espertech.esper.client.EventBean.class, "props", exprDotMethod(refExprEvalCtx, "getContextProperties"))
                 .ifRefNullReturnNull("props");
         block.methodReturn(CodegenLegoCast.castSafeFromObjectType(returnType, getter.eventBeanGetCodegen(ref("props"), methodNode, codegenClassScope)));
         return localMethod(methodNode);

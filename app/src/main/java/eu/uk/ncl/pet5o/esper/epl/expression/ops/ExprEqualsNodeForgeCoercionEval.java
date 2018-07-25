@@ -8,9 +8,8 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.expression.ops;
+package eu.uk.ncl.pet5o.esper.epl.expression.ops;
 
-import com.espertech.esper.client.EventBean;
 import com.espertech.esper.codegen.base.CodegenBlock;
 import com.espertech.esper.codegen.base.CodegenClassScope;
 import com.espertech.esper.codegen.base.CodegenMethodNode;
@@ -24,6 +23,10 @@ import com.espertech.esper.metrics.instrumentation.InstrumentationHelper;
 import com.espertech.esper.util.SimpleNumberCoercer;
 
 import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantFalse;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.equalsNull;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.not;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
 
 public class ExprEqualsNodeForgeCoercionEval implements ExprEvaluator {
     private final ExprEqualsNodeImpl parent;
@@ -40,7 +43,7 @@ public class ExprEqualsNodeForgeCoercionEval implements ExprEvaluator {
         this.numberCoercerRHS = numberCoercerRHS;
     }
 
-    public Object evaluate(EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         if (InstrumentationHelper.ENABLED) {
             InstrumentationHelper.get().qExprEquals(parent);
         }
@@ -51,7 +54,7 @@ public class ExprEqualsNodeForgeCoercionEval implements ExprEvaluator {
         return result;
     }
 
-    private Boolean evaluateInternal(EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    private Boolean evaluateInternal(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         Object leftResult = lhs.evaluate(eventsPerStream, isNewData, context);
         Object rightResult = rhs.evaluate(eventsPerStream, isNewData, context);
 

@@ -8,16 +8,15 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.expression.time;
+package eu.uk.ncl.pet5o.esper.epl.expression.time;
 
-import com.espertech.esper.client.EventBean;
 import com.espertech.esper.codegen.base.CodegenBlock;
 import com.espertech.esper.codegen.base.CodegenClassScope;
 import com.espertech.esper.codegen.base.CodegenMember;
+import com.espertech.esper.codegen.base.CodegenMethodNode;
 import com.espertech.esper.codegen.base.CodegenMethodScope;
 import com.espertech.esper.codegen.model.expression.CodegenExpression;
 import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
 import com.espertech.esper.epl.expression.core.ExprEvaluator;
 import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
 import com.espertech.esper.schedule.TimeProvider;
@@ -26,6 +25,11 @@ import java.util.Calendar;
 import java.util.TimeZone;
 
 import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.member;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.op;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
 
 public class ExprTimePeriodEvalDeltaNonConstCalAdd implements ExprTimePeriodEvalDeltaNonConst {
     private final Calendar cal;
@@ -38,7 +42,7 @@ public class ExprTimePeriodEvalDeltaNonConstCalAdd implements ExprTimePeriodEval
         this.indexMicroseconds = ExprTimePeriodUtil.findIndexMicroseconds(forge.getAdders());
     }
 
-    public synchronized long deltaAdd(long currentTime, EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public synchronized long deltaAdd(long currentTime, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return addSubtract(currentTime, 1, eventsPerStream, isNewData, context);
     }
 
@@ -46,16 +50,16 @@ public class ExprTimePeriodEvalDeltaNonConstCalAdd implements ExprTimePeriodEval
         return addSubtractCodegen(reference, constant(1), codegenMethodScope, exprSymbol, codegenClassScope);
     }
 
-    public synchronized long deltaSubtract(long currentTime, EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public synchronized long deltaSubtract(long currentTime, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         return addSubtract(currentTime, -1, eventsPerStream, isNewData, context);
     }
 
-    public synchronized long deltaUseEngineTime(EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext, TimeProvider timeProvider) {
+    public synchronized long deltaUseEngineTime(com.espertech.esper.client.EventBean[] eventsPerStream, ExprEvaluatorContext exprEvaluatorContext, TimeProvider timeProvider) {
         long currentTime = timeProvider.getTime();
         return addSubtract(currentTime, 1, eventsPerStream, true, exprEvaluatorContext);
     }
 
-    public synchronized ExprTimePeriodEvalDeltaResult deltaAddWReference(long current, long reference, EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public synchronized ExprTimePeriodEvalDeltaResult deltaAddWReference(long current, long reference, com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         // find the next-nearest reference higher then the current time, compute delta, return reference one lower
         if (reference > current) {
             while (reference > current) {
@@ -73,7 +77,7 @@ public class ExprTimePeriodEvalDeltaNonConstCalAdd implements ExprTimePeriodEval
         return new ExprTimePeriodEvalDeltaResult(next - current, last);
     }
 
-    private long addSubtract(long currentTime, int factor, EventBean[] eventsPerStream, boolean newData, ExprEvaluatorContext context) {
+    private long addSubtract(long currentTime, int factor, com.espertech.esper.client.EventBean[] eventsPerStream, boolean newData, ExprEvaluatorContext context) {
         long remainder = forge.getTimeAbacus().calendarSet(currentTime, cal);
 
         ExprTimePeriodAdder.TimePeriodAdder[] adders = forge.getAdders();

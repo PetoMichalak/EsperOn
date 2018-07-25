@@ -8,9 +8,8 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.expression.prior;
+package eu.uk.ncl.pet5o.esper.epl.expression.prior;
 
-import com.espertech.esper.client.EventBean;
 import com.espertech.esper.epl.expression.core.ExprEvaluator;
 import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
 
@@ -18,12 +17,12 @@ import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
  * Represents the 'prior' prior event function in an expression node tree.
  */
 public abstract class ExprPriorEvalStrategyBase implements ExprPriorEvalStrategy {
-    public abstract EventBean getSubstituteEvent(EventBean originalEvent, boolean isNewData, int constantIndexNumber);
+    public abstract com.espertech.esper.client.EventBean getSubstituteEvent(com.espertech.esper.client.EventBean originalEvent, boolean isNewData, int constantIndexNumber);
 
-    public Object evaluate(EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext, int streamNumber, ExprEvaluator evaluator, int constantIndexNumber) {
-        EventBean originalEvent = eventsPerStream[streamNumber];
+    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext, int streamNumber, ExprEvaluator evaluator, int constantIndexNumber) {
+        com.espertech.esper.client.EventBean originalEvent = eventsPerStream[streamNumber];
 
-        EventBean substituteEvent = getSubstituteEvent(originalEvent, isNewData, constantIndexNumber);
+        com.espertech.esper.client.EventBean substituteEvent = getSubstituteEvent(originalEvent, isNewData, constantIndexNumber);
 
         // Substitute original event with prior event, evaluate inner expression
         eventsPerStream[streamNumber] = substituteEvent;

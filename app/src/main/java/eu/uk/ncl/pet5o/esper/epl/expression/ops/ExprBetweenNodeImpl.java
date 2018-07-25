@@ -8,7 +8,7 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.expression.ops;
+package eu.uk.ncl.pet5o.esper.epl.expression.ops;
 
 import com.espertech.esper.codegen.base.CodegenBlock;
 import com.espertech.esper.codegen.base.CodegenClassScope;
@@ -29,6 +29,13 @@ import java.util.Arrays;
 import java.util.Iterator;
 
 import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantFalse;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantTrue;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.equalsIdentity;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.relational;
 import static com.espertech.esper.codegen.model.expression.CodegenExpressionRelational.CodegenRelational.GT;
 import static com.espertech.esper.codegen.model.expression.CodegenExpressionRelational.CodegenRelational.LT;
 

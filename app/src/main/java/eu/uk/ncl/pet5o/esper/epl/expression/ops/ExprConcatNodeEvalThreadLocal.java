@@ -8,9 +8,8 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.expression.ops;
+package eu.uk.ncl.pet5o.esper.epl.expression.ops;
 
-import com.espertech.esper.client.EventBean;
 import com.espertech.esper.epl.expression.core.ExprEvaluator;
 import com.espertech.esper.epl.expression.core.ExprEvaluatorContext;
 
@@ -30,7 +29,7 @@ public class ExprConcatNodeEvalThreadLocal implements ExprEvaluator {
         this.evaluators = evaluators;
     }
 
-    public Object evaluate(EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
+    public Object evaluate(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext context) {
         StringBuffer buffer = localBuffer.get();
         buffer.delete(0, buffer.length());
         return ExprConcatNodeEvalWNew.evaluate(eventsPerStream, isNewData, context, buffer, evaluators, parent);

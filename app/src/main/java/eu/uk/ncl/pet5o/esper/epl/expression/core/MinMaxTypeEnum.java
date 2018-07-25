@@ -8,17 +8,16 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.expression.core;
+package eu.uk.ncl.pet5o.esper.epl.expression.core;
 
-import com.espertech.esper.client.EventBean;
 import com.espertech.esper.codegen.base.CodegenBlock;
 import com.espertech.esper.codegen.base.CodegenClassScope;
+import com.espertech.esper.codegen.base.CodegenMethodNode;
 import com.espertech.esper.codegen.base.CodegenMethodScope;
 import com.espertech.esper.codegen.model.expression.CodegenExpression;
 import com.espertech.esper.codegen.model.expression.CodegenExpressionRef;
 import com.espertech.esper.codegen.model.expression.CodegenExpressionRelational;
 import com.espertech.esper.epl.expression.codegen.ExprForgeCodegenSymbol;
-import com.espertech.esper.codegen.base.CodegenMethodNode;
 import com.espertech.esper.type.RelationalOpEnum;
 import com.espertech.esper.util.JavaClassHelper;
 import com.espertech.esper.util.SimpleNumberBigDecimalCoercer;
@@ -28,6 +27,13 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.*;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constant;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.constantNull;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.localMethod;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.not;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.op;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.ref;
+import static com.espertech.esper.codegen.model.expression.CodegenExpressionBuilder.relational;
 import static com.espertech.esper.type.RelationalOpEnum.GT;
 import static com.espertech.esper.type.RelationalOpEnum.LT;
 
@@ -73,7 +79,7 @@ public enum MinMaxTypeEnum {
          * @param exprEvaluatorContext expression evaluation context
          * @return result
          */
-        public Number execute(EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext);
+        public Number execute(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext);
     }
 
     /**
@@ -91,7 +97,7 @@ public enum MinMaxTypeEnum {
             this.childNodes = childNodes;
         }
 
-        public Number execute(EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+        public Number execute(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
             Number valueChildOne = (Number) childNodes[0].evaluate(eventsPerStream, isNewData, exprEvaluatorContext);
             Number valueChildTwo = (Number) childNodes[1].evaluate(eventsPerStream, isNewData, exprEvaluatorContext);
 
@@ -137,7 +143,7 @@ public enum MinMaxTypeEnum {
             this.childNodes = childNodes;
         }
 
-        public Number execute(EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+        public Number execute(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
             Number valueChildOne = (Number) childNodes[0].evaluate(eventsPerStream, isNewData, exprEvaluatorContext);
             Number valueChildTwo = (Number) childNodes[1].evaluate(eventsPerStream, isNewData, exprEvaluatorContext);
 
@@ -189,7 +195,7 @@ public enum MinMaxTypeEnum {
             this.isMax = isMax;
         }
 
-        public Number execute(EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+        public Number execute(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
             Number valueChildOne = (Number) childNodes[0].evaluate(eventsPerStream, isNewData, exprEvaluatorContext);
             Number valueChildTwo = (Number) childNodes[1].evaluate(eventsPerStream, isNewData, exprEvaluatorContext);
 
@@ -288,7 +294,7 @@ public enum MinMaxTypeEnum {
             this.isMax = isMax;
         }
 
-        public Number execute(EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
+        public Number execute(com.espertech.esper.client.EventBean[] eventsPerStream, boolean isNewData, ExprEvaluatorContext exprEvaluatorContext) {
             Number valueChildOne = (Number) childNodes[0].evaluate(eventsPerStream, isNewData, exprEvaluatorContext);
             Number valueChildTwo = (Number) childNodes[1].evaluate(eventsPerStream, isNewData, exprEvaluatorContext);
 

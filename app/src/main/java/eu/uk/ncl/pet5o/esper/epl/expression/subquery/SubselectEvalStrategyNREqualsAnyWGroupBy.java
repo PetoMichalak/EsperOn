@@ -8,7 +8,7 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.expression.subquery;
+package eu.uk.ncl.pet5o.esper.epl.expression.subquery;
 
 import com.espertech.esper.client.EventBean;
 import com.espertech.esper.epl.agg.service.common.AggregationService;
@@ -30,7 +30,7 @@ public class SubselectEvalStrategyNREqualsAnyWGroupBy extends SubselectEvalStrat
         this.havingEval = havingEval;
     }
 
-    protected Object evaluateInternal(Object leftResult, EventBean[] events, boolean isNewData, Collection<EventBean> matchingEvents, ExprEvaluatorContext exprEvaluatorContext, AggregationService aggregationServiceAnyPartition) {
+    protected Object evaluateInternal(Object leftResult, com.espertech.esper.client.EventBean[] events, boolean isNewData, Collection<EventBean> matchingEvents, ExprEvaluatorContext exprEvaluatorContext, AggregationService aggregationServiceAnyPartition) {
         AggregationService aggregationService = aggregationServiceAnyPartition.getContextPartitionAggregationService(exprEvaluatorContext.getAgentInstanceId());
         Collection<Object> groupKeys = aggregationService.getGroupKeys(exprEvaluatorContext);
         boolean hasNullRow = false;

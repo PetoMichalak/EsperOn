@@ -8,17 +8,17 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.expression.methodagg;
+package eu.uk.ncl.pet5o.esper.epl.expression.methodagg;
 
 import com.espertech.esper.core.service.StatementType;
 import com.espertech.esper.epl.agg.service.common.AggregationMethodFactory;
 import com.espertech.esper.epl.expression.baseagg.ExprAggregateNode;
 import com.espertech.esper.epl.expression.baseagg.ExprAggregateNodeBase;
 import com.espertech.esper.epl.expression.core.ExprNode;
-import com.espertech.esper.epl.util.ExprNodeUtilityRich;
 import com.espertech.esper.epl.expression.core.ExprValidationContext;
 import com.espertech.esper.epl.expression.core.ExprValidationException;
 import com.espertech.esper.epl.expression.core.MinMaxTypeEnum;
+import com.espertech.esper.epl.util.ExprNodeUtilityRich;
 
 /**
  * Represents the min/max(distinct? ...) aggregate function is an expression tree.
