@@ -11,6 +11,15 @@ import eu.uk.ncl.pet5o.esper.client.EPServiceProvider;
 import eu.uk.ncl.pet5o.esper.client.EPServiceProviderManager;
 import eu.uk.ncl.pet5o.esper.client.EPStatement;
 
+/**
+ * @author Peter Michalak
+ *
+ * Port of the Esper CEP library (http://www.espertech.com/esper) for Android OS,
+ * guided by Asper project (https://github.com/mobile-event-processing/Asper).
+ *
+ * The software in this package is published under the terms of the GPL license
+ *  a copy of which has been included with this distribution in the license.txt file.
+ */
 public class EsperOn extends AppCompatActivity {
 
     @Override
