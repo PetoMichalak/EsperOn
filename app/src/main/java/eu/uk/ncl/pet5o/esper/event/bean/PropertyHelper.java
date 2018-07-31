@@ -14,6 +14,11 @@ import eu.uk.ncl.pet5o.esper.event.EventAdapterService;
 import eu.uk.ncl.pet5o.esper.event.EventPropertyGetterSPI;
 import eu.uk.ncl.pet5o.esper.event.EventPropertyType;
 import eu.uk.ncl.pet5o.esper.event.WriteablePropertyDescriptor;
+import eu.uk.ncl.pet5o.sources.openbeans.BeanInfo;
+import eu.uk.ncl.pet5o.sources.openbeans.IndexedPropertyDescriptor;
+import eu.uk.ncl.pet5o.sources.openbeans.IntrospectionException;
+import eu.uk.ncl.pet5o.sources.openbeans.Introspector;
+import eu.uk.ncl.pet5o.sources.openbeans.PropertyDescriptor;
 
 import net.sf.cglib.reflect.FastClass;
 import net.sf.cglib.reflect.FastMethod;
