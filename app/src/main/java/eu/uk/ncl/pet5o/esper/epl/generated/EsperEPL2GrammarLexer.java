@@ -10,7 +10,7 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.generated;
+package eu.uk.ncl.pet5o.esper.epl.generated;
 
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.atn.*;

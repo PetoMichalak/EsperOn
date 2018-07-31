@@ -10,7 +10,7 @@
  *  a copy of which has been included with this distribution in the license.txt file.  *
  ***************************************************************************************
  */
-package com.espertech.esper.epl.generated;
+package eu.uk.ncl.pet5o.esper.epl.generated;
 
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -22,7 +22,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  * which can be extended to create a listener which only needs to handle a subset
  * of the available methods.
  */
-public class EsperEPL2GrammarBaseListener implements EsperEPL2GrammarListener {
+public class EsperEPL2GrammarBaseListener implements eu.uk.ncl.pet5o.esper.epl.generated.EsperEPL2GrammarListener {
 	/**
 	 * {@inheritDoc}
 	 *
