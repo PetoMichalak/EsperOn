@@ -15,10 +15,14 @@ import eu.uk.ncl.pet5o.esper.client.EPStatement;
  * @author Peter Michalak
  *
  * Port of the Esper CEP library (http://www.espertech.com/esper) for Android OS,
- * guided by Asper project (https://github.com/mobile-event-processing/Asper).
+ * guided by Asper project (https://github.com/mobile-event-processing/Asper)
+ * by Marcel Eggum.
  *
  * The software in this package is published under the terms of the GPL license
  *  a copy of which has been included with this distribution in the license.txt file.
+ *
+ *  package replace command:
+ *  find . -name "*.java" -exec sed -i '' -e 's/com.espertech/eu.uk.ncl.pet5o/g' {} \;
  */
 public class EsperOn extends AppCompatActivity {
 
